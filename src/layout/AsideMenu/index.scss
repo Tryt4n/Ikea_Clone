@@ -1,0 +1,85 @@
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+@use "../../abstracts/colors" as c;
+
+.aside-menu {
+  $padding-left: func.rem(120);
+
+  position: fixed;
+  inset: 0;
+  width: 30rem;
+  padding-inline: func.rem(30);
+  background-color: c.$white;
+  z-index: 999;
+  transition: translate 300ms ease-in-out;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  &[aria-hidden="false"] {
+    translate: 0;
+  }
+  &[aria-hidden="true"] {
+    translate: -100%;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    background-color: c.$white;
+    @include flex(row, flex-start, center);
+
+    & > button {
+      position: absolute;
+      margin-inline-start: 24px;
+      width: 40px;
+      height: 40px;
+      @include center;
+    }
+  }
+
+  &__svg-wrapper {
+    padding-left: $padding-left;
+    padding-block: func.rem(28);
+    & > a {
+      display: block;
+      width: func.rem(90);
+      height: func.rem(36);
+    }
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__navigation {
+    padding-left: $padding-left;
+    padding-block: 2rem;
+
+    & ul > *:not(:first-child) {
+      margin-top: 1.25rem;
+    }
+
+    &--top {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    &--bottom {
+      padding-top: func.rem(46);
+    }
+  }
+
+  & li:has(.aside-menu__fs-sm) {
+    line-height: func.rem(19);
+  }
+
+  &__change-country {
+    padding-top: func.rem(70);
+    width: fit-content;
+  }
+
+  &__fs-sm {
+    font-size: func.rem(14);
+    line-height: 1;
+  }
+}

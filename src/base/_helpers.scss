@@ -1,3 +1,5 @@
+@use "./breakpoints" as b;
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -6,4 +8,22 @@
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+.container {
+  max-width: 112rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media screen and (width >= b.$desktop) {
+    padding-inline: 1.25rem 2.5rem;
+  }
+
+  @media screen and (width >= b.$tablet) and (width < b.$desktop) {
+    padding-inline: 3rem;
+  }
+
+  @media screen and (width >= b.$mobile-lg) and (width < b.$tablet) {
+    padding-inline: 2rem;
+  }
 }

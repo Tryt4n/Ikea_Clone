@@ -4,3 +4,8 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin center() {
+  display: grid;
+  place-items: center;
+}
