@@ -1,4 +1,5 @@
 @use "./breakpoints" as b;
+@use "../abstracts/mixins" as *;
 
 .visually-hidden {
   position: absolute !important;
@@ -25,5 +26,25 @@
 
   @media screen and (width >= b.$mobile-lg) and (width < b.$tablet) {
     padding-inline: 2rem;
+  }
+}
+
+.btn-container {
+  outline: none;
+
+  &__svg-wrapper {
+    width: 44px;
+    height: 44px;
+    @include center;
+    border-radius: 50%;
+    transition: 300ms ease-in-out;
+  }
+
+  &:hover .btn-container__svg-wrapper {
+    background-color: #dfdfdf;
+  }
+
+  &:focus-visible .btn-container__svg-wrapper {
+    outline: auto;
   }
 }

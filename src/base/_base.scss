@@ -119,3 +119,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   transition: all 1000s;
 }
+
+body {
+  transition: background-color 300ms ease-in-out;
+}
+body[data-overlay="true"] {
+  background-color: hsla(0, 0%, 0%, 0.25);
+}

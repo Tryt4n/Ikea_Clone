@@ -1,12 +1,18 @@
+// Hooks
+import useSideMenu from "../../hooks/useSideMenu";
+import useWindowSize from "../../hooks/useWindowSize";
+// Components
+import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
+// Logos
 import CloseIcon from "../../Icons/CloseIcon";
 import IkeaLogo from "../../Icons/IkeaLogo";
-import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
-import { useSideMenu } from "../../hooks/useSideMenu";
 
 import "./index.scss";
+import AvatarIcon from "../../Icons/AvatarIcon";
 
 export default function AsideMenu() {
   const { isMenuOpen, sideMenuId, toggleOpenState } = useSideMenu();
+  const { width } = useWindowSize();
 
   return (
     <aside
@@ -16,21 +22,33 @@ export default function AsideMenu() {
     >
       <div className="aside-menu__top">
         <button
-          onClick={toggleOpenState}
+          className="btn-container"
           disabled={!isMenuOpen}
+          onClick={toggleOpenState}
         >
-          <CloseIcon />
+          <div className=" btn-container__svg-wrapper">
+            <CloseIcon />
+          </div>
           <span className="visually-hidden">Zamknij Menu</span>
         </button>
-        <div className="aside-menu__svg-wrapper">
+        <div className="aside-menu__container aside-menu__svg-wrapper">
           <a href="/">
             <IkeaLogo />
           </a>
         </div>
       </div>
 
+      {width < 1200 && (
+        <div className="aside-menu__container aside-menu__login">
+          <a href="#">
+            <AvatarIcon />
+            <span>Hej! Zaloguj się</span>
+          </a>
+        </div>
+      )}
+
       <nav
-        className="aside-menu__navigation"
+        className="aside-menu__container aside-menu__navigation"
         aria-label="Nawigacja menu pobocznego"
       >
         <ul className="aside-menu__navigation--top">

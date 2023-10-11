@@ -18,6 +18,7 @@ export function SideMenuProvider({ children }: SideMenuProviderPropsType) {
 
   function toggleOpenState() {
     setIsMenuOpen((prevState) => !prevState);
+    document.body.setAttribute("data-overlay", isMenuOpen ? "false" : "true");
   }
 
   return (

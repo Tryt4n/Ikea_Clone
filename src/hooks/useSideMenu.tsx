@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { SideMenuContext } from "../context/sideMenuContext";
+import { SideMenuContext } from "../context/SideMenuContext";
 
-export function useSideMenu() {
+export default function useSideMenu() {
   const sideMenu = useContext(SideMenuContext);
 
   if (sideMenu == null) {
