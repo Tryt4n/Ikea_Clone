@@ -1,10 +1,19 @@
+// Icon
 import AvatarIcon from "../../Icons/AvatarIcon";
 
-export default function LoginBtn() {
+type LoginBtnPropsType = {
+  className?: string;
+  short?: boolean;
+};
+
+export default function LoginBtn({ className, short }: LoginBtnPropsType) {
   return (
-    <a href="#">
+    <a
+      href="#"
+      className={className ? className : undefined}
+    >
       <AvatarIcon />
-      <span>Hej! Zaloguj się</span>
+      <span className={short ? "visually-hidden" : undefined}>Hej! Zaloguj się</span>
     </a>
   );
 }

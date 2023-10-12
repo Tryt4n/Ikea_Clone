@@ -11,6 +11,7 @@
   font-weight: bold;
   font-size: func.rem(12);
   text-decoration: none;
+  outline-offset: 0;
   &:hover {
     text-decoration: none;
   }

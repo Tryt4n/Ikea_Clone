@@ -1,0 +1,64 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
+
+.navbar {
+  display: grid;
+  grid-template-areas:
+    "logo        icons"
+    "searchbar   searchbar"
+    "btns        btns";
+
+  &__logo {
+    padding-block: func.rem(22);
+    & svg {
+      width: func.rem(90);
+      height: func.rem(36);
+    }
+  }
+
+  &__icons-list {
+    @include flex(row, flex-end, center);
+  }
+
+  &__btn-wrapper {
+    @include flex(row, space-between);
+    column-gap: 0.5rem;
+    border-bottom: func.rem(1) solid c.$gray-border;
+    height: func.rem(56);
+    overflow: hidden;
+
+    &--inner {
+      @include flex(row, flex-start, center);
+      gap: 0.5rem;
+      overflow: hidden;
+    }
+
+    & span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+  .icons {
+    grid-area: icons;
+  }
+  .searchbar {
+    grid-area: searchbar;
+    width: 100%;
+  }
+  .postal {
+    grid-area: postal;
+  }
+  .shop {
+    grid-area: shop;
+  }
+  .btns {
+    grid-area: btns;
+  }
+}

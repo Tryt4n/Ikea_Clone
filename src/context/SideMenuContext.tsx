@@ -36,7 +36,6 @@ export function SideMenuProvider({ children }: SideMenuProviderPropsType) {
 
   useEffect(() => {
     document.body.setAttribute("data-overlay", isMenuOpen ? "true" : "false");
-    console.log("fsaf");
   }, [isMenuOpen]);
 
   return (

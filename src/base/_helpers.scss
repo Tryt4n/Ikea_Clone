@@ -11,26 +11,25 @@
   overflow: hidden;
 }
 
-.container {
-  max-width: 112rem;
-  margin-inline: auto;
-  padding-inline: 1.25rem;
+:root {
+  --wrapper-padding-inline: 1.25rem;
 
   @media screen and (width >= b.$desktop) {
-    padding-inline: 1.25rem 2.5rem;
+    --wrapper-padding-inline: 1.25rem 2.5rem;
   }
 
   @media screen and (width >= b.$tablet) and (width < b.$desktop) {
-    padding-inline: 3rem;
+    --wrapper-padding-inline: 3rem;
   }
 
-  @media screen and (width >= b.$mobile-lg) and (width < b.$tablet) {
-    padding-inline: 2rem;
+  @media screen and (width >= b.$mobile-md) and (width < b.$tablet) {
+    --wrapper-padding-inline: 2rem;
   }
 }
 
 .btn-container {
   outline: none;
+  @include flex(column, center, center);
 
   &__svg-wrapper {
     width: 44px;
@@ -46,5 +45,22 @@
 
   &:focus-visible .btn-container__svg-wrapper {
     outline: auto;
+  }
+}
+
+.page-container {
+  max-width: 112rem;
+  margin-inline: auto;
+  padding-inline: var(--wrapper-padding-inline);
+  display: grid;
+  grid-column-gap: 1.25rem;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  grid-template-rows: 1fr;
+
+  & > *:not(.btn-container) {
+    grid-column: 1/-1;
+    @media screen and (width >= b.$desktop) {
+      grid-column: 2/-1;
+    }
   }
 }

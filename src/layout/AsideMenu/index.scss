@@ -122,7 +122,7 @@
   }
 
   &__login a {
-    border-bottom: func.rem(1) solid rgb(223, 223, 223);
+    border-bottom: func.rem(1) solid c.$gray-border;
     @include flex(row, flex-start, center);
     gap: func.rem(8);
     padding-block: 1rem;
