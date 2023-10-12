@@ -1,4 +1,5 @@
-import { ReactElement, createContext, useState } from "react";
+import { ReactElement, createContext, useEffect, useState } from "react";
+import useEventListener from "../hooks/useEventListener";
 
 type SideMenuContextType = {
   isMenuOpen: boolean;
@@ -18,8 +19,25 @@ export function SideMenuProvider({ children }: SideMenuProviderPropsType) {
 
   function toggleOpenState() {
     setIsMenuOpen((prevState) => !prevState);
-    document.body.setAttribute("data-overlay", isMenuOpen ? "false" : "true");
   }
+
+  useEventListener<KeyboardEvent>("keydown", (e) => {
+    if (e.key === "Escape" && isMenuOpen) {
+      toggleOpenState();
+    }
+  });
+
+  useEventListener<MouseEvent>("mousedown", (e) => {
+    const menu = document.querySelector(`#${sideMenuId}`);
+    if (isMenuOpen && menu && !menu.contains(e.target as Node)) {
+      toggleOpenState();
+    }
+  });
+
+  useEffect(() => {
+    document.body.setAttribute("data-overlay", isMenuOpen ? "true" : "false");
+    console.log("fsaf");
+  }, [isMenuOpen]);
 
   return (
     <SideMenuContext.Provider value={{ isMenuOpen, toggleOpenState, sideMenuId }}>

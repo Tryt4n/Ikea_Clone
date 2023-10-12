@@ -8,7 +8,7 @@ import CloseIcon from "../../Icons/CloseIcon";
 import IkeaLogo from "../../Icons/IkeaLogo";
 
 import "./index.scss";
-import AvatarIcon from "../../Icons/AvatarIcon";
+import LoginBtn from "../../components/LoginBtn/LoginBtn";
 
 export default function AsideMenu() {
   const { isMenuOpen, sideMenuId, toggleOpenState } = useSideMenu();
@@ -40,10 +40,7 @@ export default function AsideMenu() {
 
       {width < 1200 && (
         <div className="aside-menu__container aside-menu__login">
-          <a href="#">
-            <AvatarIcon />
-            <span>Hej! Zaloguj się</span>
-          </a>
+          <LoginBtn />
         </div>
       )}
 

@@ -111,8 +111,9 @@
   }
 
   &__change-country {
-    padding-top: func.rem(70);
     width: fit-content;
+    padding-top: func.rem(70);
+    margin-left: -1rem;
   }
 
   &__fs-sm {
@@ -125,6 +126,6 @@
     @include flex(row, flex-start, center);
     gap: func.rem(8);
     padding-block: 1rem;
-    translate: 0 1%;
+    margin-top: func.rem(4);
   }
 }
