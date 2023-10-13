@@ -1,32 +1,98 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .navbar {
-  display: grid;
-  grid-template-areas:
-    "logo        icons"
-    "searchbar   searchbar"
-    "btns        btns";
+  & > * {
+    background-color: c.$white;
+  }
+
+  &__inner-container {
+    @media screen and (width < b.$mobile-lg) {
+      display: grid;
+      grid-template-areas:
+        "logo        icons"
+        "searchbar   searchbar";
+    }
+    @media screen and (width >= b.$mobile-lg) {
+      @include flex(row, flex-start, center);
+      height: func.rem(90);
+    }
+  }
 
   &__logo {
+    max-width: fit-content;
     padding-block: func.rem(22);
     & svg {
-      width: func.rem(90);
       height: func.rem(36);
+      width: func.rem(90);
+    }
+  }
+
+  &__searchbar-wrapper {
+    position: relative;
+    @include center;
+    @media screen and (width >= b.$mobile-lg) {
+      flex-grow: 1;
+      margin-left: func.rem(40);
+    }
+    @media screen and (width >= b.$desktop) {
+      width: 45%;
+      margin-left: 2rem;
+    }
+  }
+
+  &__searchbar-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  &__searchbar {
+    height: 3.125rem;
+    width: 100%;
+    padding-block: 0.5rem;
+    padding-inline: 3.25rem 3.375rem;
+    background-color: c.$grayish;
+    border-color: transparent;
+    border-radius: 999px;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: v.$main-transition;
+    &:hover {
+      background-color: c.$gray;
     }
   }
 
   &__icons-list {
     @include flex(row, flex-end, center);
+    translate: 1em;
+    @media screen and (width >= b.$desktop) {
+      flex-grow: 1;
+      justify-self: flex-end;
+    }
+
+    & .self-align {
+      & > * {
+        width: auto;
+        @include flex(row, center, center);
+        gap: 0.5rem;
+        padding-inline: 0.875rem 1.25rem;
+        border-radius: 999px;
+        text-decoration: none;
+      }
+    }
   }
 
-  &__btn-wrapper {
+  &__btns-wrapper {
+    height: func.rem(56);
     @include flex(row, space-between);
     column-gap: 0.5rem;
-    border-bottom: func.rem(1) solid c.$gray-border;
-    height: func.rem(56);
     overflow: hidden;
+    border-bottom: func.rem(1) solid c.$gray;
 
     &--inner {
       @include flex(row, flex-start, center);
@@ -35,13 +101,18 @@
     }
 
     & span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
+  &__navigation-desktop {
+    @include flex();
+  }
+
+  //? Grid Placement:
   .logo {
     grid-area: logo;
   }
@@ -50,7 +121,6 @@
   }
   .searchbar {
     grid-area: searchbar;
-    width: 100%;
   }
   .postal {
     grid-area: postal;
@@ -58,7 +128,64 @@
   .shop {
     grid-area: shop;
   }
-  .btns {
-    grid-area: btns;
+
+  //? Navbar animations:
+  .scrolled {
+    $safeGuardValue: 0.25%;
+
+    translate: 0 -100%;
+    position: fixed;
+    top: 0;
+    width: calc(100% - (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)));
+    transform: translateX(var(--wrapper-padding-inline-start));
+    transform: translateY(-100%);
+
+    @media screen and (width < b.$mobile-md) {
+      width: 100%;
+    }
+
+    @media screen and (b.$desktop <= width < v.$navbar-max-width) {
+      right: var(--wrapper-padding-inline-end);
+      left: calc(
+        (100% / v.$container-grid-columns) + var(--wrapper-padding-inline-start) - $safeGuardValue
+      );
+      max-width: calc(
+        100% - (100% / v.$container-grid-columns) -
+          (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)) +
+          $safeGuardValue
+      );
+    }
+
+    @media screen and (width >= v.$navbar-max-width) {
+      left: var(--wrapper-padding-inline-start);
+      right: calc(
+        var(--wrapper-padding-inline-end) - (v.$navbar-max-width / v.$container-grid-columns)
+      );
+      max-width: calc(
+        v.$navbar-max-width -
+          (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)) -
+          (v.$navbar-max-width / v.$container-grid-columns) + $safeGuardValue
+      );
+      margin-inline: auto;
+    }
   }
+
+  .slideDown {
+    translate: 0 100%;
+    transition: translate 1s ease-in;
+    &.mobile {
+      transition-duration: 300ms;
+    }
+  }
+  .slideUp {
+    translate: 0 -100%;
+    transition: translate 1s ease-out;
+    &.mobile {
+      transition-duration: 300ms;
+    }
+  }
+}
+
+body[data-overlay="true"] .navbar__searchbar {
+  background-color: c.$overlay-opaque-fix;
 }

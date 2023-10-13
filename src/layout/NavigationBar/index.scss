@@ -1,0 +1,88 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.navigation-bar {
+  & button {
+    outline-offset: 0.25em;
+  }
+
+  &__nav {
+    grid-column: 2/8;
+    position: relative;
+    border-bottom: func.rem(1) solid c.$grayish;
+    font-weight: bold;
+    @include center;
+    &::after {
+      content: "";
+      position: absolute;
+      height: func.rem(1);
+      width: 100%;
+      bottom: 0;
+      background-color: c.$grayish;
+      translate: 100% 100%;
+    }
+
+    & ul {
+      width: 100%;
+      @include flex(row, flex-start, top);
+
+      & a {
+        padding-block: func.rem(10);
+        padding-inline: func.rem(15);
+        @include center;
+        line-height: func.rem(22);
+      }
+
+      & li:first-child a {
+        margin-left: func.rem(-15);
+      }
+    }
+  }
+
+  &__btns-container {
+    grid-column: 1/-1;
+    @include flex(row, space-between);
+    column-gap: 0.5rem;
+    border-bottom: func.rem(1) solid;
+
+    @media screen and (width >= b.$desktop) {
+      grid-column: 10/-1;
+      border-color: c.$grayish;
+      justify-content: flex-end;
+      gap: 2rem;
+    }
+    @media screen and (width < b.$desktop) {
+      height: func.rem(56);
+      border-color: c.$gray;
+    }
+  }
+
+  &__btn-wrapper {
+    @include flex(row, flex-start, center);
+    column-gap: 0.5rem;
+    overflow: hidden;
+
+    & span {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+body[data-overlay="true"] {
+  & .navigation-bar__nav {
+    border-color: c.$overlay-opaque-fix;
+
+    &::after {
+      background-color: c.$overlay-opaque-fix;
+    }
+  }
+
+  & .navigation-bar__btns-container {
+    border-color: c.$overlay-opaque-fix;
+  }
+}

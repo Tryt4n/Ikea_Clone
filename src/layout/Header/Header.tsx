@@ -10,6 +10,7 @@ import PhoneIcon from "../../Icons/PhoneIcon";
 import TruckIcon from "../../Icons/TruckIcon";
 // Style
 import "./index.scss";
+import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function Header() {
   const { width } = useWindowSize();
@@ -24,24 +25,17 @@ export default function Header() {
         className="header__messages"
         ref={messagesRef}
       >
-        <a href="#">
-          <TruckIcon />
-          Odbiór w paczkomatach InPost od 1,-
-        </a>
         {width >= 900 && (
           <a href="#">
-            <PhoneIcon />
-            Zakupy przez telefon lub czat
+            <TruckIcon />
+            Odbiór w paczkomatach InPost od 1,-
           </a>
         )}
+        <a href="#">
+          <PhoneIcon />
+          Zakupy przez telefon lub czat
+        </a>
       </div>
-
-      {/* <div className={`page-container`}>
-        <HamburgerButton
-          className={`header__hamburger-btn${!inView && width >= 1200 ? " fixed" : ""}`}
-        />
-        <Navbar />
-      </div> */}
 
       <div className="page-container">
         {width >= 1200 && (
@@ -49,6 +43,7 @@ export default function Header() {
         )}
         <Navbar />
       </div>
+      <NavigationBar />
     </header>
   );
 }

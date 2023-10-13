@@ -1,17 +1,18 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
 @use "../../base/breakpoints" as b;
 
 .aside-menu {
   position: fixed;
-  inset: 0;
   width: 30rem;
+  inset: 0;
+  overflow-y: auto;
+  z-index: 999;
   padding-inline: func.rem(30);
   background-color: c.$white;
-  z-index: 999;
-  transition: translate 300ms ease-in-out;
-  overflow-y: auto;
+  transition: translate v.$main-transition;
   scroll-behavior: smooth;
   scroll-margin-block: auto;
   scrollbar-width: thin;
@@ -55,9 +56,9 @@
 
     & > button {
       position: absolute;
-      margin-inline-start: 24px;
       width: 40px;
       height: 40px;
+      margin-inline-start: 24px;
       @include center;
       @media screen and (width <= b.$tablet) {
         right: 0;
@@ -112,8 +113,8 @@
 
   &__change-country {
     width: fit-content;
-    padding-top: func.rem(70);
     margin-left: -1rem;
+    padding-top: func.rem(70);
   }
 
   &__fs-sm {
@@ -122,10 +123,10 @@
   }
 
   &__login a {
-    border-bottom: func.rem(1) solid c.$gray-border;
     @include flex(row, flex-start, center);
     gap: func.rem(8);
-    padding-block: 1rem;
     margin-top: func.rem(4);
+    padding-block: 1rem;
+    border-bottom: func.rem(1) solid c.$gray;
   }
 }

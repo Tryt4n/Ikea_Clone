@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="page-container">
-      <div>
+      <div className="main-layout">
         <br />
         <br />
         <br />

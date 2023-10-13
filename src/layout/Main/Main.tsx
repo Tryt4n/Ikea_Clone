@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom";
 
 export default function Main() {
   return (
-    <main className="page-container main-layout">
+    <main className="page-container">
       <Outlet />
-      <div>
+      <div className="main-layout">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque aliquid dolorem deleniti,
         eveniet quibusdam sunt maiores dolorum! Suscipit tempora necessitatibus, qui eveniet
         architecto ipsa cumque consequuntur laborum maxime blanditiis voluptatem laudantium ex
