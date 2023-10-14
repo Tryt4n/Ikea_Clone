@@ -2,18 +2,21 @@
 import { useInView } from "react-intersection-observer";
 // Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+// Layout
+import Navbar from "../Navbar/Navbar";
 // Components
 import HamburgerButton from "../../components/HamburgerBtn/HamburgerButton";
-import Navbar from "../Navbar/Navbar";
 // Icons
 import PhoneIcon from "../../Icons/PhoneIcon";
 import TruckIcon from "../../Icons/TruckIcon";
 // Style
 import "./index.scss";
 import NavigationBar from "../NavigationBar/NavigationBar";
+import useSideMenu from "../../hooks/useSideMenu";
 
 export default function Header() {
   const { width } = useWindowSize();
+  const { isMenuOpen } = useSideMenu();
 
   const [messagesRef, inView] = useInView({
     triggerOnce: false,
@@ -26,12 +29,18 @@ export default function Header() {
         ref={messagesRef}
       >
         {width >= 900 && (
-          <a href="#">
+          <a
+            href="#"
+            tabIndex={isMenuOpen ? -1 : 0}
+          >
             <TruckIcon />
             Odbiór w paczkomatach InPost od 1,-
           </a>
         )}
-        <a href="#">
+        <a
+          href="#"
+          tabIndex={isMenuOpen ? -1 : 0}
+        >
           <PhoneIcon />
           Zakupy przez telefon lub czat
         </a>

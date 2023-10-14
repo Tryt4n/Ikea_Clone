@@ -17,7 +17,6 @@
   scroll-margin-block: auto;
   scrollbar-width: thin;
   scrollbar-color: hsl(0, 0%, 60%) transparent;
-  scrollbar-gutter: stable;
   @media screen and (width < b.$tablet) {
     width: 100%;
   }

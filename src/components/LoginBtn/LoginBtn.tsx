@@ -1,4 +1,5 @@
 // Icon
+import { HTMLProps } from "react";
 import AvatarIcon from "../../Icons/AvatarIcon";
 
 type LoginBtnPropsType = {
@@ -6,11 +7,14 @@ type LoginBtnPropsType = {
   short?: boolean;
 };
 
-export default function LoginBtn({ className, short }: LoginBtnPropsType) {
+type CustomAnchorProps = HTMLProps<HTMLAnchorElement> & LoginBtnPropsType;
+
+export default function LoginBtn({ className, short, ...props }: CustomAnchorProps) {
   return (
     <a
       href="#"
       className={className ? className : undefined}
+      {...props}
     >
       <AvatarIcon />
       <span className={short ? "visually-hidden" : undefined}>Hej! Zaloguj się</span>

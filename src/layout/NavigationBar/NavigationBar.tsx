@@ -1,5 +1,10 @@
 // Hooks
+import useSideMenu from "../../hooks/useSideMenu";
 import useWindowSize from "../../hooks/useWindowSize";
+// Components
+import { ListElement } from "../../components/NavigationListElement/ListElement";
+// Constants
+import { mainNavigationList } from "../../constants/navigationLists";
 // Icons
 import ShopIcon from "../../Icons/ShopIcon";
 import TruckIcon from "../../Icons/TruckIcon";
@@ -8,41 +13,35 @@ import "./index.scss";
 
 export default function NavigationBar() {
   const { width } = useWindowSize();
+  const { isMenuOpen } = useSideMenu();
 
   return (
     <div className="page-container navigation-bar">
       {width >= 1200 && (
         <nav className="navigation-bar__nav">
-          <ul className="">
-            <li>
-              <a
-                href="#"
-                autoFocus
-              >
-                Produkty
-              </a>
-            </li>
-            <li>
-              <a href="#">Pomieszczenia</a>
-            </li>
-            <li>
-              <a href="#">Oferty</a>
-            </li>
-            <li>
-              <a href="#">Nowości</a>
-            </li>
-            <li>
-              <a href="#">Przechowywanie w całym domu</a>
-            </li>
+          <ul>
+            {mainNavigationList.map((element) => (
+              <ListElement
+                key={element}
+                text={element}
+                menuOpen
+              />
+            ))}
           </ul>
         </nav>
       )}
       <div className="navigation-bar__btns-container">
-        <button className="navigation-bar__btn-wrapper">
+        <button
+          className="navigation-bar__btn-wrapper"
+          tabIndex={isMenuOpen ? -1 : 0}
+        >
           <TruckIcon />
           <span>Wpisz kod pocztowy</span>
         </button>
-        <button className="navigation-bar__btn-wrapper">
+        <button
+          className="navigation-bar__btn-wrapper"
+          tabIndex={isMenuOpen ? -1 : 0}
+        >
           <ShopIcon />
           <span>Wybierz sklep</span>
         </button>

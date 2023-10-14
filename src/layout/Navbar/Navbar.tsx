@@ -1,9 +1,11 @@
 // React
-import { useState } from "react";
+import React, { HTMLProps, ReactNode, useState } from "react";
 // Intersection Observer
 import { useInView } from "react-intersection-observer";
 // Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+import useEventListener from "../../hooks/useEventListener";
+import useSideMenu from "../../hooks/useSideMenu";
 // Components
 import HamburgerButton from "../../components/HamburgerBtn/HamburgerButton";
 import LoginBtn from "../../components/LoginBtn/LoginBtn";
@@ -14,13 +16,11 @@ import ShoppingCartIcon from "../../Icons/ShoppingCartIcon";
 import MagnifierIcon from "../../Icons/MagnifierIcon";
 // Style
 import "./index.scss";
-import useEventListener from "../../hooks/useEventListener";
-import useSideMenu from "../../hooks/useSideMenu";
 
 export default function Navbar() {
   const { width } = useWindowSize();
-  const { isMenuOpen } = useSideMenu();
-  const isDesktop = !("ontouchstart" in window);
+  const { isMenuOpen, isDesktop } = useSideMenu();
+  // const isDesktop = !("ontouchstart" in window);
 
   const [navbarRef, inView] = useInView({
     triggerOnce: false,
@@ -54,7 +54,7 @@ export default function Navbar() {
   const navbarInnerClasses = `navbar__inner${!inView ? " scrolled" : ""}${
     !isMenuOpen && !inView && isScrolledToTop && scrollDirection !== "down" ? " slideDown" : ""
   }${!isMenuOpen && !inView && !isScrolledToTop && scrollDirection === "down" ? " slideUp" : ""}${
-    isDesktop && isMenuOpen && !inView ? " slideUp" : ""
+    isMenuOpen && !inView ? " slideUp" : ""
   }${!isDesktop ? " mobile" : ""}`;
 
   return (
@@ -67,49 +67,55 @@ export default function Navbar() {
           <div className="navbar__logo logo">
             <a
               href="/"
+              tabIndex={isMenuOpen ? -1 : 0}
               aria-label="Idź na stronę główną."
             >
               <IkeaLogo />
-              <span className="visually-hidden">Ikea</span>
+              <span className="visually-hidden">Strona głowna</span>
             </a>
           </div>
-          {(inView || width >= 700) && <SearchBar />}
+
+          {(inView || width >= 700) && <SearchBar isMenuOpen={isMenuOpen} />}
+
           <ul className="navbar__icons-list icons">
             {!inView && width < 700 && (
-              <li className="btn-container">
-                <button className="btn-container__svg-wrapper">
-                  <MagnifierIcon />
-                </button>
-              </li>
+              <ListElement
+                as="button"
+                isMenuOpen={isMenuOpen}
+              >
+                <MagnifierIcon />
+                <span className="visually-hidden">Wyszukaj produkty</span>
+              </ListElement>
             )}
-            <li className={`btn-container${width >= 1200 ? " self-align" : ""}`}>
+
+            <ListElement className={`${width >= 1200 ? "self-align" : ""}`}>
               <LoginBtn
                 className="btn-container__svg-wrapper"
                 short={width < 1200}
+                tabIndex={isMenuOpen ? -1 : 0}
               />
-            </li>
-            <li className="btn-container">
-              <a
-                href="#"
-                className="btn-container__svg-wrapper"
-              >
-                <HeartIcon />
-                <span className="visually-hidden">Lista zakupowa</span>
-              </a>
-            </li>
-            <li className="btn-container">
-              <a
-                href="#"
-                className="btn-container__svg-wrapper"
-              >
-                <ShoppingCartIcon />
-                <span className="visually-hidden">Koszyk</span>
-              </a>
-            </li>
+            </ListElement>
+
+            <ListElement
+              as="link"
+              isMenuOpen={isMenuOpen}
+            >
+              <HeartIcon />
+              <span className="visually-hidden">Lista zakupowa</span>
+            </ListElement>
+
+            <ListElement
+              as="link"
+              isMenuOpen={isMenuOpen}
+            >
+              <ShoppingCartIcon />
+              <span className="visually-hidden">Koszyk</span>
+            </ListElement>
+
             {width < 1200 && (
-              <li>
+              <ListElement container="false">
                 <HamburgerButton />
-              </li>
+              </ListElement>
             )}
           </ul>
         </div>
@@ -118,9 +124,12 @@ export default function Navbar() {
   );
 }
 
-function SearchBar() {
+function SearchBar({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
-    <div className="navbar__searchbar-wrapper searchbar">
+    <form
+      className="navbar__searchbar-wrapper searchbar"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <label
         htmlFor="search-product"
         className="visually-hidden"
@@ -136,7 +145,66 @@ function SearchBar() {
         id="search-product"
         className="navbar__searchbar"
         placeholder="Czego szukasz?"
+        tabIndex={isMenuOpen ? -1 : 0}
       />
-    </div>
+    </form>
+  );
+}
+
+type ButtonProps = {
+  children: ReactNode;
+  as?: "button";
+  className?: string;
+  isMenuOpen?: boolean;
+  container?: "true" | "false";
+};
+
+type LinkProps = {
+  children: ReactNode;
+  as: "link";
+  className?: string;
+  isMenuOpen?: boolean;
+  link?: string;
+  container?: "true" | "false";
+};
+
+type ListElementPropsType =
+  | (ButtonProps & HTMLProps<HTMLButtonElement>)
+  | (LinkProps & HTMLProps<HTMLAnchorElement>);
+
+function ListElement({
+  children,
+  as,
+  className,
+  isMenuOpen,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  link = "#",
+  container = "true",
+  ...props
+}: ListElementPropsType) {
+  const Element = !as ? React.Fragment : as === "button" ? "button" : "a";
+
+  return (
+    <li
+      className={`${container === "true" ? "btn-container" : ""}${
+        className ? ` ${className}` : ""
+      }`}
+    >
+      {Element === React.Fragment ? (
+        <>{children}</>
+      ) : (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        <Element
+          href={as === "link" ? link : undefined}
+          tabIndex={isMenuOpen ? -1 : 0}
+          className="btn-container__svg-wrapper"
+          {...props}
+        >
+          {children}
+        </Element>
+      )}
+    </li>
   );
 }

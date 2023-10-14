@@ -5,10 +5,6 @@
 @use "../../base/breakpoints" as b;
 
 .navbar {
-  & > * {
-    background-color: c.$white;
-  }
-
   &__inner-container {
     @media screen and (width < b.$mobile-lg) {
       display: grid;
@@ -131,18 +127,16 @@
 
   //? Navbar animations:
   .scrolled {
-    $safeGuardValue: 0.25%;
+    $safeGuardValue: func.rem(3.09);
 
+    z-index: 1000;
     translate: 0 -100%;
     position: fixed;
     top: 0;
+    background-color: c.$white;
     width: calc(100% - (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)));
     transform: translateX(var(--wrapper-padding-inline-start));
     transform: translateY(-100%);
-
-    @media screen and (width < b.$mobile-md) {
-      width: 100%;
-    }
 
     @media screen and (b.$desktop <= width < v.$navbar-max-width) {
       right: var(--wrapper-padding-inline-end);
@@ -154,10 +148,11 @@
           (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)) +
           $safeGuardValue
       );
+      margin-inline: auto;
     }
 
     @media screen and (width >= v.$navbar-max-width) {
-      left: var(--wrapper-padding-inline-start);
+      left: calc(var(--wrapper-padding-inline-start) - $safeGuardValue);
       right: calc(
         var(--wrapper-padding-inline-end) - (v.$navbar-max-width / v.$container-grid-columns)
       );
@@ -181,7 +176,7 @@
     translate: 0 -100%;
     transition: translate 1s ease-out;
     &.mobile {
-      transition-duration: 300ms;
+      transition-duration: 500ms;
     }
   }
 }

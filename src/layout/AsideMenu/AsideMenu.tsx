@@ -3,12 +3,19 @@ import useSideMenu from "../../hooks/useSideMenu";
 import useWindowSize from "../../hooks/useWindowSize";
 // Components
 import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
+import LoginBtn from "../../components/LoginBtn/LoginBtn";
+import { ListElement } from "../../components/NavigationListElement/ListElement";
+// Constants
+import {
+  mainNavigationList,
+  mainNavigationSubList,
+  secondaryNavigationList,
+} from "../../constants/navigationLists";
 // Logos
 import CloseIcon from "../../Icons/CloseIcon";
 import IkeaLogo from "../../Icons/IkeaLogo";
-
+// Style
 import "./index.scss";
-import LoginBtn from "../../components/LoginBtn/LoginBtn";
 
 export default function AsideMenu() {
   const { isMenuOpen, sideMenuId, toggleOpenState } = useSideMenu();
@@ -25,6 +32,7 @@ export default function AsideMenu() {
           className="btn-container"
           disabled={!isMenuOpen}
           onClick={toggleOpenState}
+          tabIndex={isMenuOpen ? 0 : -1}
         >
           <div className=" btn-container__svg-wrapper">
             <CloseIcon />
@@ -32,7 +40,10 @@ export default function AsideMenu() {
           <span className="visually-hidden">Zamknij Menu</span>
         </button>
         <div className="aside-menu__container aside-menu__svg-wrapper">
-          <a href="/">
+          <a
+            href="/"
+            tabIndex={isMenuOpen ? 0 : -1}
+          >
             <IkeaLogo />
           </a>
         </div>
@@ -40,7 +51,7 @@ export default function AsideMenu() {
 
       {width < 1200 && (
         <div className="aside-menu__container aside-menu__login">
-          <LoginBtn />
+          <LoginBtn tabIndex={isMenuOpen ? 0 : -1} />
         </div>
       )}
 
@@ -49,91 +60,36 @@ export default function AsideMenu() {
         aria-label="Nawigacja menu pobocznego"
       >
         <ul className="aside-menu__navigation--top">
-          <li>
-            <a
-              href="#"
-              autoFocus
-            >
-              Produkty
-            </a>
-          </li>
-          <li>
-            <a href="#">Pomieszczenia</a>
-          </li>
-          <li>
-            <a href="#">Oferty</a>
-          </li>
-          <li>
-            <a href="#">Nowości</a>
-          </li>
-          <li>
-            <a href="#">Przechowywanie w całym domu</a>
-          </li>
-          <li>
-            <a
-              href="#"
+          {mainNavigationList.map((element) => (
+            <ListElement
+              key={element}
+              text={element}
+              menuOpen={false}
+            />
+          ))}
+
+          {mainNavigationSubList.map((element) => (
+            <ListElement
+              key={element}
+              text={element}
               className="aside-menu__fs-sm"
-            >
-              Sezon na domowanie z IKEA
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="aside-menu__fs-sm"
-            >
-              Inspiracje i pomysły
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="aside-menu__fs-sm"
-            >
-              Usługi projektowania
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="aside-menu__fs-sm"
-            >
-              Wypróbuj IKEA Kreativ
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="aside-menu__fs-sm"
-            >
-              Obsługa klienta
-            </a>
-          </li>
+              menuOpen={false}
+            />
+          ))}
         </ul>
 
         <ul className="aside-menu__navigation--bottom">
-          <li>
-            <a href="#">Sklepy</a>
-          </li>
-          <li>
-            <a href="#">Restauracja</a>
-          </li>
-          <li>
-            <a href="#">IKEA Family</a>
-          </li>
-          <li>
-            <a href="#">IKEA dla Firm</a>
-          </li>
-          <li>
-            <a href="#">Oddaj i Zyskaj</a>
-          </li>
-          <li>
-            <a href="#">Produkty drugiej szansy</a>
-          </li>
+          {secondaryNavigationList.map((element) => (
+            <ListElement
+              key={element}
+              text={element}
+              menuOpen={false}
+            />
+          ))}
         </ul>
 
         <div className="aside-menu__change-country">
-          <ChangeCountry />
+          <ChangeCountry tabIndex={isMenuOpen ? 0 : -1} />
         </div>
       </nav>
     </aside>
