@@ -1,0 +1,21 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.btn {
+  min-height: 2.5rem;
+  padding-inline: func.rem(24);
+  background-color: c.$black;
+  font-size: func.rem(12);
+  font-weight: bold;
+  color: c.$white;
+  border-radius: 50vw;
+  transition: v.$main-transition;
+
+  &:hover {
+    background-color: c.$dark-gray;
+  }
+  &:focus {
+    outline-offset: 0.5rem;
+  }
+}

@@ -2,8 +2,10 @@
 import { useInView } from "react-intersection-observer";
 // Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+import useSideMenu from "../../hooks/useSideMenu";
 // Layout
-import Navbar from "../Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 // Components
 import HamburgerButton from "../../components/HamburgerBtn/HamburgerButton";
 // Icons
@@ -11,8 +13,6 @@ import PhoneIcon from "../../Icons/PhoneIcon";
 import TruckIcon from "../../Icons/TruckIcon";
 // Style
 import "./index.scss";
-import NavigationBar from "../NavigationBar/NavigationBar";
-import useSideMenu from "../../hooks/useSideMenu";
 
 export default function Header() {
   const { width } = useWindowSize();
@@ -24,6 +24,7 @@ export default function Header() {
 
   return (
     <header>
+      <h1 className="visually-hidden">IKEA</h1>
       <div
         className="header__messages"
         ref={messagesRef}

@@ -1,0 +1,32 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.footer {
+  background-color: c.$grayish;
+  padding-top: 4rem;
+
+  & > * {
+    margin-bottom: 2rem;
+  }
+
+  &__change-country {
+    width: max-content;
+    height: 2.5rem;
+    padding-inline: 1rem 1.5rem;
+    @include flex(row, flex-start, center);
+    gap: 0.5rem;
+    border: func.rem(1) solid c.$black;
+    border-radius: 50vw;
+    transition: v.$main-transition;
+    &:hover {
+      text-decoration: none;
+      opacity: 0.75;
+    }
+  }
+
+  &__copyright {
+    color: c.$text-gray;
+  }
+}

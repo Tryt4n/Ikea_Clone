@@ -1,0 +1,64 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.accordions-list {
+  font-size: func.rem(14);
+
+  &__list-element {
+    border-top: func.rem(1) solid c.$gray;
+    &:last-of-type {
+      border-bottom: func.rem(1) solid c.$gray;
+    }
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
+
+.accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms ease-in-out;
+
+  & > ul {
+    overflow: hidden;
+  }
+}
+
+.accordion[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-btn {
+  width: 100%;
+  @include flex(row, space-between, center);
+  padding-block: 2.5rem;
+  padding-inline: 0.25em;
+  font-weight: bold;
+
+  & svg {
+    transform: rotate(90deg);
+    transition: v.$main-transition;
+  }
+
+  &[aria-expanded="true"] svg {
+    rotate: 180deg;
+  }
+}
+
+.accordion-inner-list {
+  & li {
+    padding-block: 0.5rem;
+    padding-inline: 0.25em;
+    &:last-of-type {
+      padding-bottom: 2.5rem;
+    }
+  }
+  & a {
+    width: 100%;
+    display: inline-block;
+  }
+}

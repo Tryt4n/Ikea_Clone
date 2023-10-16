@@ -1,13 +1,13 @@
 // Hooks
-import useSideMenu from "../../hooks/useSideMenu";
-import useWindowSize from "../../hooks/useWindowSize";
+import useSideMenu from "../../../../hooks/useSideMenu";
+import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import { ListElement } from "../../components/NavigationListElement/ListElement";
+import { ListElement } from "../../../../components/NavigationListElement/ListElement";
 // Constants
-import { mainNavigationList } from "../../constants/navigationLists";
+import { mainNavigationList } from "../../../../constants/navigationLists";
 // Icons
-import ShopIcon from "../../Icons/ShopIcon";
-import TruckIcon from "../../Icons/TruckIcon";
+import ShopIcon from "../../../../Icons/ShopIcon";
+import TruckIcon from "../../../../Icons/TruckIcon";
 // Style
 import "./index.scss";
 
@@ -19,6 +19,7 @@ export default function NavigationBar() {
     <div className="page-container navigation-bar">
       {width >= 1200 && (
         <nav className="navigation-bar__nav">
+          <h2 className="visually-hidden">Główna Nawigacja</h2>
           <ul>
             {mainNavigationList.map((element) => (
               <ListElement

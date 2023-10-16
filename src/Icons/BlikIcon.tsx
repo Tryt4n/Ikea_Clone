@@ -47,7 +47,7 @@ export default function BlikIcon() {
           y2="4"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#262626" />
+          <stop stopColor="#262626" />
           <stop offset="1" />
         </linearGradient>
         <radialGradient

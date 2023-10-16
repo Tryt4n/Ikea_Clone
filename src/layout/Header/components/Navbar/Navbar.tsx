@@ -3,24 +3,23 @@ import React, { HTMLProps, ReactNode, useState } from "react";
 // Intersection Observer
 import { useInView } from "react-intersection-observer";
 // Hooks
-import useWindowSize from "../../hooks/useWindowSize";
-import useEventListener from "../../hooks/useEventListener";
-import useSideMenu from "../../hooks/useSideMenu";
+import useWindowSize from "../../../../hooks/useWindowSize";
+import useEventListener from "../../../../hooks/useEventListener";
+import useSideMenu from "../../../../hooks/useSideMenu";
 // Components
-import HamburgerButton from "../../components/HamburgerBtn/HamburgerButton";
-import LoginBtn from "../../components/LoginBtn/LoginBtn";
+import HamburgerButton from "../../../../components/HamburgerBtn/HamburgerButton";
+import LoginBtn from "../../../../components/LoginBtn/LoginBtn";
 // Icons
-import IkeaLogo from "../../Icons/IkeaLogo";
-import HeartIcon from "../../Icons/HeartIcon";
-import ShoppingCartIcon from "../../Icons/ShoppingCartIcon";
-import MagnifierIcon from "../../Icons/MagnifierIcon";
+import IkeaLogo from "../../../../Icons/IkeaLogo";
+import HeartIcon from "../../../../Icons/HeartIcon";
+import ShoppingCartIcon from "../../../../Icons/ShoppingCartIcon";
+import MagnifierIcon from "../../../../Icons/MagnifierIcon";
 // Style
 import "./index.scss";
 
 export default function Navbar() {
   const { width } = useWindowSize();
   const { isMenuOpen, isDesktop } = useSideMenu();
-  // const isDesktop = !("ontouchstart" in window);
 
   const [navbarRef, inView] = useInView({
     triggerOnce: false,

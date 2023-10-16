@@ -1,0 +1,17 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+
+.sub-footer-list {
+  @include flex();
+  column-gap: func.rem(20);
+  flex-wrap: wrap;
+  font-size: func.rem(12);
+
+  & li {
+    padding-block: 0.5rem;
+    text-wrap: balance;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

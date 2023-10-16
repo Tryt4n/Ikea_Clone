@@ -1,7 +1,7 @@
-@use "../../abstracts/mixins" as *;
-@use "../../abstracts/colors" as c;
-@use "../../base/functions" as func;
-@use "../../base/breakpoints" as b;
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .navigation-bar {
   & button {

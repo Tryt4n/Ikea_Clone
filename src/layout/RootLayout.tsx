@@ -4,7 +4,7 @@ import { ScrollRestoration } from "react-router-dom";
 import { SideMenuProvider } from "../context/SideMenuContext";
 // Layout
 import Header from "./Header/Header";
-import AsideMenu from "./AsideMenu/AsideMenu";
+import SideMenu from "./SideMenu/SideMenu";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 
@@ -12,7 +12,7 @@ export function RootLayout() {
   return (
     <SideMenuProvider>
       <Header />
-      <AsideMenu />
+      <SideMenu />
 
       <Main />
 

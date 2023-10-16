@@ -1,0 +1,28 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.footer__features {
+  @include flex(column, flex-start, flex-start);
+  margin-bottom: func.rem(20);
+
+  & > *:not(:last-child) {
+    margin-bottom: func.rem(15);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer__learn-more {
+  color: c.$text-gray;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  transition: v.$main-transition;
+
+  &:hover {
+    color: c.$black;
+  }
+}

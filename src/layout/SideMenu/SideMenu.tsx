@@ -17,7 +17,7 @@ import IkeaLogo from "../../Icons/IkeaLogo";
 // Style
 import "./index.scss";
 
-export default function AsideMenu() {
+export default function SideMenu() {
   const { isMenuOpen, sideMenuId, toggleOpenState } = useSideMenu();
   const { width } = useWindowSize();
 
@@ -27,6 +27,7 @@ export default function AsideMenu() {
       className="aside-menu"
       aria-hidden={!isMenuOpen}
     >
+      <h2 className="visually-hidden">Menu Poboczne</h2>
       <div className="aside-menu__top">
         <button
           className="btn-container"
@@ -59,6 +60,7 @@ export default function AsideMenu() {
         className="aside-menu__container aside-menu__navigation"
         aria-label="Nawigacja menu pobocznego"
       >
+        <h3 className="visually-hidden">Nawigacja Menu Pobocznego</h3>
         <ul className="aside-menu__navigation--top">
           {mainNavigationList.map((element) => (
             <ListElement
