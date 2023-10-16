@@ -1,7 +1,11 @@
 @use "../base/functions" as func;
 
 $main-transition: 300ms ease-in-out;
+
 $grid-column-gap: 1.25rem;
 $grid-colum-width-on-desktop: func.rem(115);
-$navbar-max-width: 112rem;
 $container-grid-columns: 13;
+
+$navbar-max-width: 112rem;
+
+$fs-sm: func.rem(12);

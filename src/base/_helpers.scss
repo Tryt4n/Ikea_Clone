@@ -39,8 +39,8 @@
   @include flex(column, center, center);
 
   &__svg-wrapper {
-    width: func.rem(44);
-    height: func.rem(44);
+    width: func.rem(40);
+    height: func.rem(40);
     @include center;
     border-radius: 50%;
     transition: v.$main-transition;

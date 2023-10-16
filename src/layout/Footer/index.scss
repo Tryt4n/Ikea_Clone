@@ -2,13 +2,28 @@
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .footer {
+  $_links-gap: func.rem(20);
+
   background-color: c.$grayish;
   padding-top: 4rem;
 
   & > * {
     margin-bottom: 2rem;
+  }
+
+  &__icons-links-container {
+    position: relative;
+  }
+
+  &__icons-links-inner-container {
+    @include flex();
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+    flex-wrap: wrap;
+    margin-right: func.rem(150);
   }
 
   &__change-country {
@@ -19,14 +34,46 @@
     gap: 0.5rem;
     border: func.rem(1) solid c.$black;
     border-radius: 50vw;
+    font-size: v.$fs-sm;
+    font-weight: bold;
     transition: v.$main-transition;
     &:hover {
       text-decoration: none;
       opacity: 0.75;
     }
+    @media screen and (width < b.$tablet) {
+      margin-top: $_links-gap;
+    }
+    @media screen and (width >= b.$tablet) {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      translate: 0 -50%;
+    }
+  }
+
+  &__sub-list-container {
+    width: 100%;
+    @include flex();
+    row-gap: $_links-gap;
+
+    @media screen and (width < b.$tablet) {
+      flex-direction: column;
+    }
+    @media screen and (width >= b.$tablet) {
+      border-top: func.rem(1) solid c.$gray;
+      padding-top: func.rem(40);
+      margin-bottom: 0;
+    }
   }
 
   &__copyright {
     color: c.$text-gray;
+
+    @media screen and (width >= b.$tablet) {
+      &:is(.main-layout) {
+        grid-column: 1/5;
+      }
+    }
   }
 }

@@ -1,14 +1,15 @@
-@use "../../base/functions" as func;
-@use "../../base/breakpoints" as b;
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .header {
   &__messages {
     padding-inline: func.rem(20) func.rem(56);
     padding-block: func.rem(14);
     background-color: c.$black;
-    font-size: func.rem(12);
+    font-size: v.$fs-sm;
     line-height: 1.5;
 
     @media screen and (width >= b.$tablet) {

@@ -5,6 +5,8 @@
 @use "../../../../base/breakpoints" as b;
 
 .navbar {
+  $_logo-width: func.rem(90);
+
   &__inner-container {
     @media screen and (width < b.$mobile-lg) {
       display: grid;
@@ -23,7 +25,7 @@
     padding-block: func.rem(22);
     & svg {
       height: func.rem(36);
-      width: func.rem(90);
+      width: $_logo-width;
     }
   }
 
@@ -54,7 +56,7 @@
     padding-inline: 3.25rem 3.375rem;
     background-color: c.$grayish;
     border-color: transparent;
-    border-radius: 999px;
+    border-radius: 50vw;
     font-size: 1rem;
     line-height: 1.5;
     transition: v.$main-transition;
@@ -66,9 +68,7 @@
   &__icons-list {
     @include flex(row, flex-end, center);
     translate: 1em;
-    @media screen and (width < func.rem(360)) {
-      translate: -0.5em;
-    }
+
     @media screen and (width >= b.$desktop) {
       flex-grow: 1;
       justify-self: flex-end;
@@ -80,7 +80,7 @@
         @include flex(row, center, center);
         gap: 0.5rem;
         padding-inline: 0.875rem 1.25rem;
-        border-radius: 999px;
+        border-radius: 50vw;
         text-decoration: none;
       }
     }
@@ -137,9 +137,10 @@
     position: fixed;
     top: 0;
     background-color: c.$white;
-    width: calc(100% - (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)));
-    transform: translateX(var(--wrapper-padding-inline-start));
-    transform: translateY(-100%);
+    padding-left: var(--wrapper-padding-inline-start);
+    padding-right: var(--wrapper-padding-inline-end);
+    width: 100%;
+    transform: translateX(calc((var(--wrapper-padding-inline-start)) * -1)) translateY(-100%);
 
     @media screen and (b.$desktop <= width < v.$navbar-max-width) {
       right: var(--wrapper-padding-inline-end);

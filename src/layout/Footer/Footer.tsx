@@ -44,26 +44,27 @@ export default function Footer() {
         <Accordions />
       </nav>
 
-      <nav className="main-layout">
-        <h3 className="visually-hidden">Nawigacja Socialów</h3>
-        <NavList
-          list={footerLinksList}
-          iconsRounded
-        />
-      </nav>
+      <div className="main-layout footer__icons-links-container">
+        <div className="footer__icons-links-inner-container">
+          <nav>
+            <h3 className="visually-hidden">Nawigacja Socialów</h3>
+            <NavList
+              list={footerLinksList}
+              iconsRounded
+            />
+          </nav>
+          <nav>
+            <h3 className="visually-hidden">Nawigacja Systemów Płatności</h3>
+            <NavList list={footerPaymentsList} />
+          </nav>
+        </div>
+        <ChangeCountry className="footer__change-country" />
+      </div>
 
-      <nav className="main-layout">
-        <h3 className="visually-hidden">Nawigacja Systemów Płatności</h3>
-        <NavList list={footerPaymentsList} />
-      </nav>
-
-      <ChangeCountry className="main-layout footer__change-country" />
-
-      <small className="main-layout footer__copyright">
-        &copy; Inter IKEA Systems B.V 1999-{date}
-      </small>
-
-      <SubList />
+      <div className="main-layout footer__sub-list-container">
+        <small className="footer__copyright">&copy; Inter IKEA Systems B.V 1999-{date}</small>
+        <SubList />
+      </div>
     </footer>
   );
 }
