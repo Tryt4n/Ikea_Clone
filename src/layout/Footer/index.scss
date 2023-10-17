@@ -10,8 +10,26 @@
   background-color: c.$grayish;
   padding-top: 4rem;
 
-  & > * {
+  & > * > * {
     margin-bottom: 2rem;
+  }
+
+  @media screen and (width >= b.$tablet) {
+    &__features-container.main-layout {
+      grid-column: 1/4;
+      margin-bottom: 4rem;
+    }
+
+    &__accordions-container.main-layout {
+      grid-column: 5/-1;
+    }
+  }
+
+  @media screen and (width >= b.$desktop) {
+    &__features-container.main-layout {
+      grid-column: 2/5;
+      padding-right: 2rem;
+    }
   }
 
   &__icons-links-container {
@@ -55,25 +73,24 @@
   &__sub-list-container {
     width: 100%;
     @include flex();
-    row-gap: $_links-gap;
+    gap: $_links-gap;
 
     @media screen and (width < b.$tablet) {
       flex-direction: column;
     }
     @media screen and (width >= b.$tablet) {
-      border-top: func.rem(1) solid c.$gray;
-      padding-top: func.rem(40);
+      justify-content: space-between;
       margin-bottom: 0;
+      padding-top: func.rem(40);
+      border-top: func.rem(1) solid c.$gray;
     }
   }
 
   &__copyright {
+    min-width: fit-content;
     color: c.$text-gray;
-
     @media screen and (width >= b.$tablet) {
-      &:is(.main-layout) {
-        grid-column: 1/5;
-      }
+      margin-bottom: 2rem;
     }
   }
 }

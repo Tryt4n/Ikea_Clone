@@ -1,6 +1,8 @@
 // Hooks
+import { useRef } from "react";
 import useSideMenu from "../../hooks/useSideMenu";
 import useWindowSize from "../../hooks/useWindowSize";
+import useLayoutEventListener from "../../hooks/useLayoutEventListener";
 // Components
 import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
 import LoginBtn from "../../components/LoginBtn/LoginBtn";
@@ -20,11 +22,35 @@ import "./index.scss";
 export default function SideMenu() {
   const { isMenuOpen, sideMenuId, toggleOpenState } = useSideMenu();
   const { width } = useWindowSize();
+  const sideMenuRef = useRef<null | HTMLElement>(null);
+
+  function handleBlockTabbingOutsideOfMenu(e: KeyboardEvent) {
+    if (!isMenuOpen || sideMenuRef.current == null) return;
+
+    if (e.key === "Tab") {
+      const focusableMenuElements = sideMenuRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableMenuElements[0];
+      const lastElement = focusableMenuElements[focusableMenuElements.length - 1];
+
+      if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        (firstElement as HTMLElement).focus();
+      } else if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        (lastElement as HTMLElement).focus();
+      }
+    }
+  }
+
+  useLayoutEventListener("keydown", handleBlockTabbingOutsideOfMenu);
 
   return (
     <aside
       id={sideMenuId}
       className="aside-menu"
+      ref={sideMenuRef}
       aria-hidden={!isMenuOpen}
     >
       <h2 className="visually-hidden">Menu Poboczne</h2>

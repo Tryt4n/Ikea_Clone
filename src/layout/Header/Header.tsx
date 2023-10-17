@@ -2,7 +2,6 @@
 import { useInView } from "react-intersection-observer";
 // Hooks
 import useWindowSize from "../../hooks/useWindowSize";
-import useSideMenu from "../../hooks/useSideMenu";
 // Layout
 import Navbar from "./components/Navbar/Navbar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -16,7 +15,6 @@ import "./index.scss";
 
 export default function Header() {
   const { width } = useWindowSize();
-  const { isMenuOpen } = useSideMenu();
 
   const [messagesRef, inView] = useInView({
     triggerOnce: false,
@@ -30,18 +28,12 @@ export default function Header() {
         ref={messagesRef}
       >
         {width >= 900 && (
-          <a
-            href="#"
-            tabIndex={isMenuOpen ? -1 : 0}
-          >
+          <a href="#">
             <TruckIcon />
             Odbiór w paczkomatach InPost od 1,-
           </a>
         )}
-        <a
-          href="#"
-          tabIndex={isMenuOpen ? -1 : 0}
-        >
+        <a href="#">
           <PhoneIcon />
           Zakupy przez telefon lub czat
         </a>

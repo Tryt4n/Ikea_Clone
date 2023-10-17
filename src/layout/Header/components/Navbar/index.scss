@@ -6,6 +6,7 @@
 
 .navbar {
   $_logo-width: func.rem(90);
+  isolation: isolate;
 
   &__inner-container {
     @media screen and (width < b.$mobile-lg) {
@@ -132,7 +133,6 @@
   .scrolled {
     $safeGuardValue: func.rem(3.09);
 
-    z-index: 1000;
     translate: 0 -100%;
     position: fixed;
     top: 0;
@@ -141,31 +141,29 @@
     padding-right: var(--wrapper-padding-inline-end);
     width: 100%;
     transform: translateX(calc((var(--wrapper-padding-inline-start)) * -1)) translateY(-100%);
+    & > * {
+      position: relative;
+      isolation: isolate;
+    }
+    & > *::before {
+      position: absolute;
+      content: "";
+      width: 200dvw;
+      height: 100%;
+      background-color: c.$white;
+      translate: -50%;
+      z-index: -1;
+    }
 
     @media screen and (b.$desktop <= width < v.$navbar-max-width) {
-      right: var(--wrapper-padding-inline-end);
-      left: calc(
-        (100% / v.$container-grid-columns) + var(--wrapper-padding-inline-start) - $safeGuardValue
-      );
-      max-width: calc(
-        100% - (100% / v.$container-grid-columns) -
-          (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)) +
-          $safeGuardValue
-      );
-      margin-inline: auto;
+      max-width: calc(100% - (100% / v.$container-grid-columns) + 4px);
     }
 
     @media screen and (width >= v.$navbar-max-width) {
-      left: calc(var(--wrapper-padding-inline-start) - $safeGuardValue);
-      right: calc(
-        var(--wrapper-padding-inline-end) - (v.$navbar-max-width / v.$container-grid-columns)
-      );
-      max-width: calc(
-        v.$navbar-max-width -
-          (var(--wrapper-padding-inline-start) + var(--wrapper-padding-inline-end)) -
-          (v.$navbar-max-width / v.$container-grid-columns) + $safeGuardValue
-      );
-      margin-inline: auto;
+      max-width: v.$navbar-max-width;
+      & > * {
+        width: calc(((100% / v.$container-grid-columns) * (v.$container-grid-columns - 1)));
+      }
     }
   }
 
@@ -183,8 +181,4 @@
       transition-duration: 500ms;
     }
   }
-}
-
-body[data-overlay="true"] .navbar__searchbar {
-  background-color: c.$overlay-opaque-fix;
 }

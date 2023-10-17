@@ -1,5 +1,7 @@
 // React
 import { useState } from "react";
+// Hooks
+import useWindowSize from "../../../../hooks/useWindowSize";
 // Constants
 import { footerLists } from "../../../../constants/footerLists";
 // Icons
@@ -8,6 +10,7 @@ import ChevronRightIcon from "../../../../Icons/ChevronRightIcon";
 import "./index.scss";
 
 export function Accordions() {
+  const { width } = useWindowSize();
   const [openedAccordion, setOpenedAccordion] = useState<undefined | string>();
 
   return (
@@ -30,7 +33,7 @@ export function Accordions() {
             }}
           >
             <span>{list.name}</span>
-            <ChevronRightIcon />
+            {width < 900 && <ChevronRightIcon />}
           </button>
 
           <div

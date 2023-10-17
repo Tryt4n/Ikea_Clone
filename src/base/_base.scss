@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as v;
+@use "../base/functions" as func;
 
 *,
 *::before,
@@ -96,6 +97,10 @@ button {
   }
 }
 
+p {
+  line-height: func.rem(22);
+}
+
 /* clears the ‘X’ from Internet Explorer */
 input[type="search"]::-ms-clear {
   display: none;
@@ -122,10 +127,21 @@ input:-webkit-autofill:focus {
   transition: all 1000s;
 }
 
-body {
-  transition: background-color v.$main-transition;
-}
 body[data-overlay="true"] {
-  background-color: hsla(0, 0%, 0%, 0.25);
   overflow-y: hidden;
+}
+
+body {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  transition: background-color v.$main-transition;
+  visibility: hidden;
+}
+body[data-overlay="true"] > .overlay {
+  background-color: hsla(0, 0%, 0%, 0.25);
+  visibility: visible;
 }

@@ -2,9 +2,15 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .accordions-list {
   font-size: func.rem(14);
+
+  @media screen and (width >= b.$tablet) {
+    @include flex();
+    gap: 1rem;
+  }
 
   &__list-element {
     border-top: func.rem(1) solid c.$gray;
@@ -15,16 +21,26 @@
     & > * {
       width: 100%;
     }
+
+    @media screen and (width >= b.$tablet) {
+      width: 25%;
+      border-top: none;
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
   }
 }
 
-.accordion {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 500ms ease-in-out;
+@media screen and (width < b.$tablet) {
+  .accordion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms ease-in-out;
 
-  & > ul {
-    overflow: hidden;
+    & > ul {
+      overflow: hidden;
+    }
   }
 }
 
@@ -47,6 +63,11 @@
   &[aria-expanded="true"] svg {
     rotate: 180deg;
   }
+
+  @media screen and (width >= b.$tablet) {
+    padding: 0;
+    margin-bottom: func.rem(20);
+  }
 }
 
 .accordion-inner-list {
@@ -56,7 +77,11 @@
     &:last-of-type {
       padding-bottom: 2.5rem;
     }
+    @media screen and (width >= b.$tablet) {
+      padding-inline: 0;
+    }
   }
+
   & a {
     width: 100%;
     display: inline-block;

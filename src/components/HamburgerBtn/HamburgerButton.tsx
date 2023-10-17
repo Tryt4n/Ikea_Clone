@@ -1,10 +1,15 @@
 // Hooks
+import { HTMLProps } from "react";
 import useSideMenu from "../../hooks/useSideMenu";
 import useWindowSize from "../../hooks/useWindowSize";
 // Icons
 import HamburgerIcon from "../../Icons/HamburgerIcon";
 
-export default function HamburgerButton({ className }: { className?: string }) {
+type HamburgerBtnType = {
+  className?: string;
+} & HTMLProps<HTMLButtonElement>;
+
+export default function HamburgerButton({ className }: HamburgerBtnType) {
   const { isMenuOpen, toggleOpenState, sideMenuId } = useSideMenu();
   const { width } = useWindowSize();
 

@@ -35,12 +35,16 @@
   }
 
   &__hamburger-btn {
+    z-index: 10;
     grid-column: 1/2;
     height: func.rem(90);
     &.fixed {
       position: fixed;
       top: 0;
-      width: func.rem(115);
+      width: calc(
+        (100% / v.$container-grid-columns) - var(--wrapper-padding-inline-start) - 0.25rem
+      );
+      max-width: func.rem(115);
     }
   }
 }

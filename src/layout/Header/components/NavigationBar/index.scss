@@ -72,17 +72,3 @@
     }
   }
 }
-
-body[data-overlay="true"] {
-  & .navigation-bar__nav {
-    border-color: c.$overlay-opaque-fix;
-
-    &::after {
-      background-color: c.$overlay-opaque-fix;
-    }
-  }
-
-  & .navigation-bar__btns-container {
-    border-color: c.$overlay-opaque-fix;
-  }
-}
