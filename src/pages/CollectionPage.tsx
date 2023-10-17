@@ -1,3 +1,3 @@
 export default function CollectionPage() {
-  return <h1>Collection</h1>;
+  return <h2>Collection</h2>;
 }

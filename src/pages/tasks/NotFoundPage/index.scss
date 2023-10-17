@@ -1,0 +1,38 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../base/functions" as func;
+
+.not-found {
+  margin-top: func.rem(40);
+  margin-bottom: func.rem(104);
+  text-align: center;
+
+  &__ufo-container {
+    @include center;
+    & video {
+      max-width: 100%;
+    }
+  }
+
+  & h2 {
+    margin-block: func.rem(40) func.rem(20);
+    font-size: func.rem(22);
+  }
+
+  & p:first-of-type {
+    margin-bottom: func.rem(12);
+    text-wrap: balance;
+  }
+
+  & a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    color: c.$text-gray;
+    &:hover {
+      color: c.$black;
+    }
+    &:focus {
+      outline-offset: 0.5em;
+    }
+  }
+}
