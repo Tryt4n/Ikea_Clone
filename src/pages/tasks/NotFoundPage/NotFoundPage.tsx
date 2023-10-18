@@ -2,7 +2,7 @@ import "./index.scss";
 
 export default function NotFoundPage() {
   return (
-    <div className="main-layout not-found">
+    <div className="not-found">
       <div className="not-found__ufo-container">
         <video
           src="/video/ufo.2d5c35ab6c116cc323bb.mp4"

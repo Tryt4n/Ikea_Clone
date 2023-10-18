@@ -1,0 +1,73 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.articles {
+  & > section {
+    margin-block: 4rem;
+
+    @media screen and (width < b.$mobile-md) {
+      margin-block: 2rem;
+    }
+  }
+}
+
+.article {
+  @media screen and (width >= b.$article-desktop) {
+    @include flex();
+  }
+
+  &__img-container {
+    @media screen and (width >= b.$article-desktop) {
+      width: 66%;
+    }
+
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      @media screen and (width < b.$mobile-md) {
+        aspect-ratio: 3/4;
+      }
+    }
+  }
+
+  &__text-container {
+    @media screen and (width >= b.$article-desktop) {
+      width: 34%;
+      padding: 3rem;
+    }
+    @media screen and (width < b.$article-desktop) {
+      padding: func.rem(80);
+      & > * {
+        max-width: 80%;
+      }
+    }
+    @media screen and (width < b.$tablet) {
+      padding: func.rem(40);
+      padding-bottom: func.rem(60);
+    }
+    @media screen and (width < b.$mobile-md) {
+      & > * {
+        max-width: 100%;
+      }
+    }
+    background-color: c.$red;
+    color: c.$white;
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    &:is(strong) {
+      display: inline-block;
+    }
+  }
+
+  &__text {
+    color: inherit;
+    margin-bottom: 1.5rem;
+  }
+}

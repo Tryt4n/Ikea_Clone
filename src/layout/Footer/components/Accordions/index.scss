@@ -68,6 +68,12 @@
     padding: 0;
     margin-bottom: func.rem(20);
   }
+
+  &__list-name {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: func.rem(25);
+  }
 }
 
 .accordion-inner-list {

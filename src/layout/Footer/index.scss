@@ -9,6 +9,7 @@
 
   background-color: c.$grayish;
   padding-top: 4rem;
+  isolation: isolate;
 
   & > * > * {
     margin-bottom: 2rem;

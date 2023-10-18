@@ -5,11 +5,9 @@ import AvatarIcon from "../../Icons/AvatarIcon";
 type LoginBtnPropsType = {
   className?: string;
   short?: boolean;
-};
+} & HTMLProps<HTMLAnchorElement>;
 
-type CustomAnchorProps = HTMLProps<HTMLAnchorElement> & LoginBtnPropsType;
-
-export default function LoginBtn({ className, short, ...props }: CustomAnchorProps) {
+export default function LoginBtn({ className, short, ...props }: LoginBtnPropsType) {
   return (
     <a
       href="#"

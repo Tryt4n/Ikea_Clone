@@ -20,21 +20,25 @@ export function Accordions() {
           className="accordions-list__list-element"
           key={list.name}
         >
-          <button
-            className="accordion-btn"
-            aria-controls={`accordion-${index + 1}-content`}
-            aria-expanded={openedAccordion === index.toString()}
-            onClick={() => {
-              if (openedAccordion !== `${index}`) {
-                setOpenedAccordion(`${index}`);
-              } else {
-                setOpenedAccordion(undefined);
-              }
-            }}
-          >
-            <span>{list.name}</span>
-            {width < 900 && <ChevronRightIcon />}
-          </button>
+          {width < 900 ? (
+            <button
+              className="accordion-btn"
+              aria-controls={`accordion-${index + 1}-content`}
+              aria-expanded={openedAccordion === index.toString()}
+              onClick={() => {
+                if (openedAccordion !== `${index}`) {
+                  setOpenedAccordion(`${index}`);
+                } else {
+                  setOpenedAccordion(undefined);
+                }
+              }}
+            >
+              <span>{list.name}</span>
+              <ChevronRightIcon />
+            </button>
+          ) : (
+            <span className="accordion-btn__list-name">{list.name}</span>
+          )}
 
           <div
             id={`accordion-${index + 1}-content`}

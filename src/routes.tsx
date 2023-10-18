@@ -3,8 +3,8 @@ import { RootLayout } from "./layout/RootLayout";
 
 import ErrorPage from "./pages/tasks/ErrorPage";
 import NotFoundPage from "./pages/tasks/NotFoundPage/NotFoundPage";
-import HomePage from "./pages/HomePage";
-import CollectionPage from "./pages/CollectionPage";
+import HomePage from "./pages/Home/HomePage";
+import CollectionPage from "./pages/Collection/CollectionPage";
 
 export const routes = createBrowserRouter([
   {

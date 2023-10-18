@@ -5,6 +5,7 @@
 @use "../../base/breakpoints" as b;
 
 .header {
+  isolation: isolate;
   &__messages {
     padding-inline: func.rem(20) func.rem(56);
     padding-block: func.rem(14);

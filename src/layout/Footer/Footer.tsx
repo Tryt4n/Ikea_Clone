@@ -5,11 +5,11 @@ import { FeatureSection } from "./components/FeatureSection/FeatureSection";
 import { Accordions } from "./components/Accordions/Accordions";
 import { NavList } from "./components/NavList/NavList";
 import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
+import SubList from "./components/SubList/SubList";
 // Constants
 import { footerLinksList, footerPaymentsList } from "../../constants/footerLists";
 // Style
 import "./index.scss";
-import SubList from "./components/SubList/SubList";
 
 export default function Footer() {
   const date = useMemo(() => {
@@ -41,22 +41,40 @@ export default function Footer() {
           </FeatureSection>
         </div>
 
-        <nav className="main-layout footer__accordions-container">
-          <h3 className="visually-hidden">Nawigacja Stópki</h3>
+        <nav
+          className="main-layout footer__accordions-container"
+          aria-labelledby="main-nav-footer"
+        >
+          <h3
+            id="main-nav-footer"
+            className="visually-hidden"
+          >
+            Główna Nawigacja Stópki
+          </h3>
           <Accordions />
         </nav>
 
         <div className="main-layout footer__icons-links-container">
           <div className="footer__icons-links-inner-container">
-            <nav>
-              <h3 className="visually-hidden">Nawigacja Socialów</h3>
+            <nav aria-labelledby="socials">
+              <h3
+                id="socials"
+                className="visually-hidden"
+              >
+                Sociale
+              </h3>
               <NavList
                 list={footerLinksList}
                 iconsRounded
               />
             </nav>
-            <nav>
-              <h3 className="visually-hidden">Nawigacja Systemów Płatności</h3>
+            <nav aria-labelledby="payments">
+              <h3
+                id="payments"
+                className="visually-hidden"
+              >
+                Systemy Płatności
+              </h3>
               <NavList list={footerPaymentsList} />
             </nav>
           </div>

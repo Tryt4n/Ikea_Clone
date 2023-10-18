@@ -7,8 +7,20 @@
 .navbar {
   $_logo-width: func.rem(90);
   isolation: isolate;
+  @media screen and (width >= b.$mobile-lg) {
+    height: func.rem(90);
+  }
+  @media screen and (width < b.$mobile-lg) {
+    height: func.rem(130);
+  }
+
+  &__inner {
+    height: func.rem(90);
+  }
 
   &__inner-container {
+    height: 100%;
+
     @media screen and (width < b.$mobile-lg) {
       display: grid;
       grid-template-areas:
@@ -17,7 +29,6 @@
     }
     @media screen and (width >= b.$mobile-lg) {
       @include flex(row, flex-start, center);
-      height: func.rem(90);
     }
   }
 

@@ -6,11 +6,15 @@ type ListElementPropsType = {
   link?: string;
   className?: string;
   menuOpen: boolean;
-};
+} & HTMLProps<HTMLAnchorElement>;
 
-type ListElementType = HTMLProps<HTMLAnchorElement> & ListElementPropsType;
-
-export function ListElement({ text, link = "#", className, menuOpen, ...props }: ListElementType) {
+export function ListElement({
+  text,
+  link = "#",
+  className,
+  menuOpen,
+  ...props
+}: ListElementPropsType) {
   const { isMenuOpen } = useSideMenu();
 
   return (

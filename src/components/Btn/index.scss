@@ -5,17 +5,30 @@
 .btn {
   min-height: 2.5rem;
   padding-inline: func.rem(24);
-  background-color: c.$black;
   font-size: v.$fs-sm;
   font-weight: bold;
-  color: c.$white;
   border-radius: 50vw;
   transition: v.$main-transition;
 
-  &:hover {
-    background-color: c.$dark-gray;
-  }
   &:focus {
     outline-offset: 0.5rem;
+  }
+
+  &--dark {
+    background-color: c.$black;
+    color: c.$white;
+
+    &:hover {
+      background-color: c.$dark-gray;
+    }
+  }
+
+  &--light {
+    background-color: c.$white;
+    color: c.$black;
+
+    &:hover {
+      background-color: c.$grayish;
+    }
   }
 }
