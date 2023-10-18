@@ -133,6 +133,7 @@ body[data-overlay="true"] {
 
 body {
   position: relative;
+  transition: background-color 2s;
 }
 
 .overlay {

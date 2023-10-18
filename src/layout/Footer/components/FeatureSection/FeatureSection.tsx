@@ -22,7 +22,7 @@ function Navigation() {
   return (
     <>
       <LearnMoreLink />
-      <Btn text="Dołącz lub zaloguj się" />
+      <Btn>Dołącz lub zaloguj się</Btn>
     </>
   );
 }

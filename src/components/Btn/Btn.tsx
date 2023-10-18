@@ -1,14 +1,19 @@
-import { HTMLProps } from "react";
+import { ButtonHTMLAttributes } from "react";
 import "./index.scss";
 
 type BtnPropsType = {
-  text: string;
+  children: string;
   className?: string;
   variant?: "light" | "dark";
-} & HTMLProps<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Btn({ text, className, variant = "dark" }: BtnPropsType) {
+export default function Btn({ children, className, variant = "dark", ...props }: BtnPropsType) {
   return (
-    <button className={`btn btn--${variant}${className ? ` ${className}` : ""}`}>{text}</button>
+    <button
+      className={`btn btn--${variant}${className ? ` ${className}` : ""}`}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }
