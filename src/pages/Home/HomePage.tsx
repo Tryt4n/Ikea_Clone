@@ -1,13 +1,16 @@
 // Components
 import Article from "../../components/Article/Article";
+// Icons
+import SaleIcon from "../../Icons/SaleIcon";
+import Shop2Icon from "../../Icons/Shop2Icon";
+import ShoppingCart2Icon from "../../Icons/ShoppingCart2Icon";
+import TruckIcon from "../../Icons/TruckIcon";
 // Style
 import "./index.scss";
 
 export default function HomePage() {
   return (
-    <article className="articles">
-      <h2 className="visually-hidden">Strona Główna</h2>
-
+    <div className="articles">
       <Article>
         <Article.Body>
           <Article.ImgContainer>
@@ -35,23 +38,23 @@ export default function HomePage() {
         </Article.Body>
       </Article>
 
-      <section>
-        <h3 className="article__heading">Przygotuj sie na jesienne domowanie z IKEA</h3>
-      </section>
+      <article>
+        <h2 className="article__heading">Przygotuj sie na jesienne domowanie z IKEA</h2>
+      </article>
 
-      <section>
-        <h3 className="article__heading">
+      <article>
+        <h2 className="article__heading">
           Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści
-        </h3>
-      </section>
+        </h2>
+      </article>
 
-      <section>
-        <h3 className="article__heading">Wasze wnętrza</h3>
-      </section>
+      <article>
+        <h2 className="article__heading">Wasze wnętrza</h2>
+      </article>
 
-      <section>
-        <h3 className="article__heading">Aktualnie w IKEA</h3>
-      </section>
+      <article>
+        <h2 className="article__heading">Aktualnie w IKEA</h2>
+      </article>
 
       <Article>
         <Article.Body>
@@ -92,13 +95,42 @@ export default function HomePage() {
         </Article.Body>
       </Article>
 
-      <section>
-        <h3 className="article__heading">Wybierz przestrzeń, którą chcesz zaprojektować</h3>
-      </section>
+      <article>
+        <h2 className="article__heading">Wybierz przestrzeń, którą chcesz zaprojektować</h2>
+      </article>
 
-      <section>
-        <h3 className="article__heading">Zakupowe korzyści w IKEA</h3>
-      </section>
+      <Article>
+        <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
+        <Article.Body>
+          <Article.Section>
+            <ShoppingCart2Icon />
+            <Article.Header headingLevel={3}>3 lub 6 rat 0% na stałe w IKEA</Article.Header>
+            <Article.Text>Nie musisz płacić od razu – zapłać w wygodnych ratach.</Article.Text>
+            <Article.Link href="#" />
+          </Article.Section>
+          <Article.Section>
+            <TruckIcon />
+            <Article.Header headingLevel={3}>Dostawa już od 1,-</Article.Header>
+            <Article.Text>
+              Zamów z dostawą za 1,- do Paczkomatu InPost (przy zakupach za min. 69,-) lub za 5,- do
+              Punktu Odbioru GLS lub kurierem na wybrany adres (przy zakupach za min. 119,-).
+            </Article.Text>
+            <Article.Link href="#" />
+          </Article.Section>
+          <Article.Section>
+            <Shop2Icon />
+            <Article.Header headingLevel={3}>Zamów i odbierz</Article.Header>
+            <Article.Text>Zrób zakupy przez Internet i odbierz je w Punkcie Odbioru.</Article.Text>
+            <Article.Link href="#" />
+          </Article.Section>
+          <Article.Section>
+            <SaleIcon />
+            <Article.Header headingLevel={3}>Okazje na Okrągło</Article.Header>
+            <Article.Text>Podaruj meblom nowe życie w nowym domu.</Article.Text>
+            <Article.Link href="#" />
+          </Article.Section>
+        </Article.Body>
+      </Article>
 
       <Article>
         <Article.Body className="col-reverse">
@@ -121,9 +153,9 @@ export default function HomePage() {
         </Article.Body>
       </Article>
 
-      <section>
-        <h3 className="article__heading">Aranżacje wnętrz i inspiracje</h3>
-      </section>
-    </article>
+      <article>
+        <h2 className="article__heading">Aranżacje wnętrz i inspiracje</h2>
+      </article>
+    </div>
   );
 }

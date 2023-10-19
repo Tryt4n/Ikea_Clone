@@ -42,7 +42,12 @@
     column-gap: 2.5rem;
     row-gap: 1rem;
     flex-wrap: wrap;
-    margin-right: func.rem(150);
+    @media screen and (width > 800px) {
+      margin-right: 3rem;
+    }
+    @media screen and (width >= b.$tablet) {
+      margin-right: func.rem(150);
+    }
   }
 
   &__change-country {

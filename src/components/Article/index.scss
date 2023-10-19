@@ -7,6 +7,28 @@
   @media screen and (width >= b.$article-desktop) {
     @include flex();
   }
+  &:has(.article__section) {
+    display: grid;
+    @media screen and (width >= b.$tablet) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (b.$mobile-md <= width <= b.$tablet) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      & > :first-child,
+      & > :nth-child(2) {
+        margin-bottom: func.rem(1);
+      }
+    }
+
+    @media screen and (width < b.$mobile-md) {
+      grid-template-rows: repeat(4, 1fr);
+      & > :not(:last-child) {
+        margin-bottom: func.rem(1);
+      }
+    }
+  }
 
   &__img-container {
     @media screen and (width >= b.$article-desktop) {
@@ -32,7 +54,7 @@
   }
 
   &__text-container {
-    background-color: rgb(245, 245, 245);
+    background-color: c.$grayish;
     color: inherit;
     @media screen and (width >= b.$article-desktop) {
       width: 34%;
@@ -77,6 +99,30 @@
   @media screen and (width >= b.$article-desktop) {
     &.col-reverse {
       flex-direction: row-reverse;
+    }
+  }
+
+  &__section {
+    margin-right: func.rem(1);
+    padding: 2rem;
+    background-color: c.$grayish;
+    color: c.$text-gray;
+
+    & h3 {
+      font-size: 1rem;
+      color: c.$black;
+    }
+
+    & a {
+      text-decoration: underline;
+
+      &:hover {
+        color: c.$black;
+      }
+    }
+
+    & > *:not(:last-child) {
+      margin-bottom: 0.25rem;
     }
   }
 }
