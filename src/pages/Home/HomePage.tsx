@@ -14,8 +14,48 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export default function HomePage() {
+  const { width } = useWindowSize();
+  // const smallScrollbarSlides = () => {
+  //   if (width > 1680) {
+  //     return 6;
+  //   } else if (width > 1360) {
+  //     return 5;
+  //   } else if (width > 1080) {
+  //     return 4;
+  //   } else if (width > 800) {
+  //     return 3;
+  //   } else {
+  //     return 2;
+  //   }
+  // };
+  const smallScrollbarSlides = () => {
+    let slides = 2;
+
+    switch (true) {
+      case width > 1680:
+        slides = 6;
+        break;
+      case width > 1360:
+        slides = 5;
+        break;
+      case width > 1080:
+        slides = 4;
+        break;
+      case width > 800:
+        slides = 3;
+        break;
+      default:
+        slides = 2;
+    }
+
+    return slides;
+  };
+
+  const numberOfSlides = smallScrollbarSlides();
+
   return (
     <div className="articles">
       <Article>
@@ -48,8 +88,8 @@ export default function HomePage() {
       <Article>
         <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
         <Swiper
-          slidesPerView={6}
-          slidesPerGroup={6}
+          slidesPerView={numberOfSlides}
+          slidesPerGroup={numberOfSlides}
           spaceBetween={20}
           freeMode={true}
           navigation={true}
@@ -276,9 +316,167 @@ export default function HomePage() {
         </Article.Body>
       </Article>
 
-      <article>
-        <h2 className="article__heading">Wybierz przestrzeń, którą chcesz zaprojektować</h2>
-      </article>
+      <Article>
+        <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>
+        <Swiper
+          slidesPerView={numberOfSlides}
+          slidesPerGroup={numberOfSlides}
+          freeMode={true}
+          navigation={true}
+          scrollbar={{ hide: true }}
+          keyboard={{
+            enabled: true,
+          }}
+          modules={[Navigation, Scrollbar, Keyboard, FreeMode, A11y]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.Header headingLevel={3}>Ty wybierasz, my projektujemy</Article.Header>
+                <Article.SlideBtn
+                  shape="circle"
+                  variant="dark"
+                  aria-hidden="true"
+                >
+                  <ArrowRightIcon />
+                </Article.SlideBtn>
+              </Article.Link>
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Planowanie szafy</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/wardrobes.webp"
+                alt="Planowanie szafy"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Kuchnia</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/kitchen.avif"
+                alt="Kuchnia"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Pokój dzienny</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/living-room.avif"
+                alt="Pokój dzienny"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Sypialnia</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/bedroom.avif"
+                alt="Sypialnia"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Domowe biuro</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/home-office.webp"
+                alt="Domowe biuro"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Pokój dziecięcy</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/childrens-room.avif"
+                alt="Pokój dziecięcy"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Projektowanie mieszkania</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/apartment-design.avif"
+                alt="Projektowanie mieszkania"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Przestrzeń biznesowa</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_2/business-space.avif"
+                alt="Przestrzeń biznesowa"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+        </Swiper>
+      </Article>
 
       <Article>
         <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
