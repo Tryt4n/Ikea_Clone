@@ -127,6 +127,7 @@ function SearchBar({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <form
       className="navbar__searchbar-wrapper searchbar"
+      autoComplete="off"
       onSubmit={(e) => e.preventDefault()}
     >
       <label

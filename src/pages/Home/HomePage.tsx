@@ -1,3 +1,9 @@
+// SwiperJS
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import "swiper/css/navigation";
 // Components
 import Article from "../../components/Article/Article";
 // Icons
@@ -5,6 +11,7 @@ import SaleIcon from "../../Icons/SaleIcon";
 import Shop2Icon from "../../Icons/Shop2Icon";
 import ShoppingCart2Icon from "../../Icons/ShoppingCart2Icon";
 import TruckIcon from "../../Icons/TruckIcon";
+import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
 
@@ -38,9 +45,183 @@ export default function HomePage() {
         </Article.Body>
       </Article>
 
-      <article>
-        <h2 className="article__heading">Przygotuj sie na jesienne domowanie z IKEA</h2>
-      </article>
+      <Article>
+        <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
+        <Swiper
+          slidesPerView={6}
+          slidesPerGroup={6}
+          spaceBetween={20}
+          freeMode={true}
+          navigation={true}
+          scrollbar={{ hide: true }}
+          keyboard={{
+            enabled: true,
+          }}
+          modules={[Navigation, Scrollbar, Keyboard, FreeMode, A11y]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <Article.Slide variant="accent">
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.Header headingLevel={3}>Produkt z nową niższą ceną</Article.Header>
+                <Article.SlideBtn
+                  shape="circle"
+                  aria-hidden="true"
+                >
+                  <ArrowRightIcon />
+                </Article.SlideBtn>
+              </Article.Link>
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Meble modułowe BESTÅ</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/modular-furnitures.avif"
+                alt="Meble modułowe BESTÅ"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Dekoracje</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/decorations.avif"
+                alt="Dekoracje"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Sofy i narożniki</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/sofas.avif"
+                alt="Sofy i narożniki"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Oświetlenie</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/lightning.avif"
+                alt="Oświetlenie"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Tekstylia</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/textiles.avif"
+                alt="Tekstylia"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Fotele i szezlongi</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/chairs.avif"
+                alt="Fotele i szezlongi"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Dywany</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/carpets.avif"
+                alt="Dywany"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Drobne przechowywanie</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/containers.avif"
+                alt="Drobne przechowywanie"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.Slide>
+              <Article.Link
+                href="#"
+                className="flex-container"
+              >
+                <Article.SlideBtn>Stoliki kawowe</Article.SlideBtn>
+              </Article.Link>
+              <img
+                src="images/scrollbars/scrollbar_1/coffee-tables.avif"
+                alt="Stoliki kawowe"
+                loading="lazy"
+              />
+            </Article.Slide>
+          </SwiperSlide>
+        </Swiper>
+      </Article>
 
       <article>
         <h2 className="article__heading">

@@ -12,6 +12,13 @@ type BodyPropsType = {
 
 type ImgContainerPropsType = BodyPropsType;
 type SectionPropsType = BodyPropsType;
+interface SlidePropsType extends BodyPropsType {
+  variant?: "normal" | "accent";
+}
+interface SlideBtnPropsType extends BodyPropsType {
+  variant?: "normal" | "dark";
+  shape?: "oval" | "circle";
+}
 
 type TextContainerPropsType = {
   children: ReactNode;
@@ -97,6 +104,30 @@ function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
   return <a {...props}>{children}</a>;
 }
 
+function Slide({ children, variant, className }: SlidePropsType) {
+  return (
+    <div
+      className={`article__slide${variant ? ` article__slide--${variant}` : ""}${
+        className ? ` ${className}` : ""
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function SlideBtn({ children, variant = "normal", shape = "oval", className }: SlideBtnPropsType) {
+  return (
+    <span
+      className={`article__slide-btn${variant ? ` article__slide-btn--${variant}` : ""}${
+        shape ? ` article__slide-btn--${shape}` : ""
+      }${className ? ` ${className}` : ""}`}
+    >
+      {children}
+    </span>
+  );
+}
+
 Article.Header = Header;
 Article.Body = Body;
 Article.Section = Section;
@@ -106,3 +137,5 @@ Article.TextContainer = TextContainer;
 Article.Text = Text;
 Article.Btn = ContainerBtn;
 Article.Link = Link;
+Article.Slide = Slide;
+Article.SlideBtn = SlideBtn;

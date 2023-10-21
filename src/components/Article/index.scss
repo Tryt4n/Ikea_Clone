@@ -1,5 +1,6 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
 @use "../../base/breakpoints" as b;
 
@@ -115,6 +116,7 @@
 
     & a {
       text-decoration: underline;
+      transition: v.$main-transition;
 
       &:hover {
         color: c.$black;
@@ -123,6 +125,156 @@
 
     & > *:not(:last-child) {
       margin-bottom: 0.25rem;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    width: calc(309px * (3 / 4));
+    aspect-ratio: 3/4;
+    margin-bottom: 2.5rem;
+    margin-top: 0.75rem;
+    background-color: c.$grayish;
+    font-size: 1rem;
+    padding: func.rem(40) 2.05rem;
+    color: inherit;
+    isolation: isolate;
+    cursor: pointer;
+
+    &--accent {
+      background-color: c.$red;
+      color: c.$white;
+    }
+
+    &:hover a {
+      text-decoration: none;
+      & h3 {
+        text-decoration: underline;
+      }
+    }
+
+    &:focus-within {
+      outline: auto;
+      outline-offset: 0.5rem;
+    }
+
+    & h3 {
+      font-size: inherit;
+    }
+
+    & .flex-container {
+      @include flex(column, flex-end, center);
+      height: 100%;
+      width: 100%;
+      &:has(.article__heading) {
+        @include flex(column, space-between, flex-start);
+        outline-offset: 2.75rem;
+      }
+    }
+
+    & img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: v.$main-transition;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &__slide-btn {
+    color: black;
+    height: func.rem(44);
+    @include center;
+    background-color: c.$grayish;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-align: center;
+    transition: v.$main-transition;
+    z-index: 1;
+
+    &:hover {
+      background-color: c.$gray;
+      text-decoration: none !important;
+    }
+
+    &--dark {
+      background-color: c.$black;
+      color: white;
+      &:hover {
+        background-color: c.$text-gray;
+      }
+    }
+
+    &--oval {
+      border-radius: 9999px;
+      padding-inline: 1.5rem;
+    }
+
+    &--circle {
+      border-radius: 50%;
+      aspect-ratio: 1;
+    }
+  }
+}
+
+//? Swiper JS
+.swiper {
+  cursor: grab;
+  $btn-size: 2.5rem;
+
+  & .swiper-button-next,
+  & .swiper-button-prev {
+    transition: v.$main-transition;
+    width: $btn-size;
+    height: $btn-size;
+    background-color: c.$black;
+    border-radius: 50%;
+    opacity: 0;
+    translate: 0 calc(($btn-size / 2) * -1);
+
+    &:hover {
+      background-color: c.$text-gray;
+    }
+
+    &[aria-disabled="true"] {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &::after {
+      width: func.rem(24);
+      height: func.rem(24);
+    }
+  }
+
+  & .swiper-button-prev::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='m7 12.0009 8.0012-8.0007 1.4142 1.4142-6.587 6.5866 6.5859 6.5868L15 20.002l-8-8.0011z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+    translate: 0 -55%;
+  }
+  & .swiper-button-next::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='m16.415 12.0011-8.0012 8.0007-1.4141-1.4143 6.587-6.5866-6.586-6.5868L8.415 4l8 8.0011z'/%3E%3C/svg%3E");
+    translate: 10% -55%;
+  }
+
+  &:hover .swiper-button-next,
+  &:hover .swiper-button-prev {
+    opacity: 1;
+  }
+
+  & .swiper-scrollbar {
+    width: 100%;
+    left: 0;
+  }
+
+  & .swiper-scrollbar {
+    opacity: 1 !important;
+
+    & .swiper-scrollbar-drag {
+      background-color: c.$black;
     }
   }
 }

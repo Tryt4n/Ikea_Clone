@@ -6,7 +6,6 @@
 
 .navbar {
   $_logo-width: func.rem(90);
-  isolation: isolate;
   @media screen and (width >= b.$mobile-lg) {
     height: func.rem(90);
   }
@@ -147,14 +146,14 @@
     translate: 0 -100%;
     position: fixed;
     top: 0;
-    background-color: c.$white;
+    width: 100%;
+    z-index: 10;
     padding-left: var(--wrapper-padding-inline-start);
     padding-right: var(--wrapper-padding-inline-end);
-    width: 100%;
+    background-color: c.$white;
     transform: translateX(calc((var(--wrapper-padding-inline-start)) * -1)) translateY(-100%);
     & > * {
       position: relative;
-      isolation: isolate;
     }
     & > *::before {
       position: absolute;

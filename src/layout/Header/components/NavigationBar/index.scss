@@ -4,10 +4,6 @@
 @use "../../../../base/breakpoints" as b;
 
 .navigation-bar {
-  & > * {
-    z-index: -1;
-  }
-
   & button {
     outline-offset: 0.25em;
   }
