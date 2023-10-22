@@ -4,8 +4,11 @@ import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules"
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
+// Hooks
+import useWindowSize from "../../hooks/useWindowSize";
 // Components
 import Article from "../../components/Article/Article";
+import Card from "../../components/Card/Card";
 // Icons
 import SaleIcon from "../../Icons/SaleIcon";
 import Shop2Icon from "../../Icons/Shop2Icon";
@@ -14,23 +17,9 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
-import useWindowSize from "../../hooks/useWindowSize";
 
 export default function HomePage() {
   const { width } = useWindowSize();
-  // const smallScrollbarSlides = () => {
-  //   if (width > 1680) {
-  //     return 6;
-  //   } else if (width > 1360) {
-  //     return 5;
-  //   } else if (width > 1080) {
-  //     return 4;
-  //   } else if (width > 800) {
-  //     return 3;
-  //   } else {
-  //     return 2;
-  //   }
-  // };
   const smallScrollbarSlides = () => {
     let slides = 2;
 
@@ -80,11 +69,11 @@ export default function HomePage() {
               Wciąż wprowadzamy pomysłowe rozwiązania i ulepszamy procesy, dzięki czemu obniżamy
               koszty. To pozwoliło nam obniżyć ceny dziesiątek produktów
             </Article.Text>
-            <Article.Btn>Zobacz wszystkie produkty z niższą ceną</Article.Btn>
+            <Article.Btn variant="light">Zobacz wszystkie produkty z niższą ceną</Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
-
+      {/* //? Carousel */}
       <Article>
         <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
         <Swiper
@@ -108,8 +97,8 @@ export default function HomePage() {
               >
                 <Article.Header headingLevel={3}>Produkt z nową niższą ceną</Article.Header>
                 <Article.SlideBtn
+                  variant="light"
                   shape="circle"
-                  aria-hidden="true"
                 >
                   <ArrowRightIcon />
                 </Article.SlideBtn>
@@ -123,7 +112,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Meble modułowe BESTÅ</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Meble modułowe BESTÅ</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/modular-furnitures.avif"
@@ -139,7 +128,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Dekoracje</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Dekoracje</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/decorations.avif"
@@ -155,7 +144,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Sofy i narożniki</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Sofy i narożniki</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/sofas.avif"
@@ -171,7 +160,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Oświetlenie</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Oświetlenie</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/lightning.avif"
@@ -187,7 +176,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Tekstylia</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Tekstylia</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/textiles.avif"
@@ -203,7 +192,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Fotele i szezlongi</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Fotele i szezlongi</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/chairs.avif"
@@ -219,7 +208,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Dywany</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Dywany</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/carpets.avif"
@@ -235,7 +224,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Drobne przechowywanie</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Drobne przechowywanie</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/containers.avif"
@@ -251,7 +240,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Stoliki kawowe</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Stoliki kawowe</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_1/coffee-tables.avif"
@@ -262,21 +251,148 @@ export default function HomePage() {
           </SwiperSlide>
         </Swiper>
       </Article>
-
-      <article>
-        <h2 className="article__heading">
+      <Article>
+        <Article.Header>
           Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści
-        </h2>
-      </article>
+        </Article.Header>
 
+        <div className="cards-container">
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/IKEA_Family_club/1.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>
+                    Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie
+                    za min. 20 zł
+                  </Card.Heading>
+                  <Card.Text>
+                    Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
+                    IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
+                  </Card.Text>
+                </div>
+                <Card.Btn />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
+
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/IKEA_Family_club/2.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>
+                    Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy
+                    zakupie za min. 20 zł
+                  </Card.Heading>
+                  <Card.Text>
+                    Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
+                    IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
+                  </Card.Text>
+                </div>
+                <Card.Btn />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
+
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/IKEA_Family_club/3.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>Klubowicze IKEA Family mogą więcej</Card.Heading>
+                  <Card.Text>
+                    Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym
+                    ofertom i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu i
+                    poczuj się jak w domu.
+                  </Card.Text>
+                </div>
+                <Card.Btn />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
+        </div>
+      </Article>
       <article>
         <h2 className="article__heading">Wasze wnętrza</h2>
       </article>
+      <Article>
+        <Article.Header>Aktualnie w IKEA</Article.Header>
 
-      <article>
-        <h2 className="article__heading">Aktualnie w IKEA</h2>
-      </article>
+        <div className="cards-container">
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/currently/1.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>Sezon na domowanie z IKEA</Card.Heading>
+                  <Card.Text>
+                    Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie od
+                    tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy seans
+                    na kanapie czy poświęcić się nowemu hobby – w IKEA znajdziesz wszystko, czego
+                    potrzebujesz
+                  </Card.Text>
+                </div>
+                <Card.Btn variant="dark" />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
 
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/currently/2.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>
+                    Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!
+                  </Card.Heading>
+                  <Card.Text>
+                    Otwórz się na zupełnie nowe możliwości w aranżacji wnętrz – skanuj
+                    pomieszczenia, wymaż niepotrzebne przedmioty i puść wodze wyobraźni w
+                    interaktywnej przestrzeni wirtualnej.
+                  </Card.Text>
+                </div>
+                <Card.Btn />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
+
+          <Article.Link href="#">
+            <Card>
+              <Card.Img
+                src="/images/scrollbars/currently/3.avif"
+                alt=""
+              />
+              <Card.TextContainer>
+                <div>
+                  <Card.Heading>Kolekcja AFTONSPARV dotarła na Ziemię!</Card.Heading>
+                  <Card.Text>
+                    Dołącz do programu kosmicznego IKEA na największym placu zabaw we wszechświecie
+                    – w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i świecąca w
+                    ciemności zasłona pozwolą ci wyruszyć w podróż tam, gdzie wszystko jest możliwe.
+                  </Card.Text>
+                </div>
+                <Card.Btn variant="dark" />
+              </Card.TextContainer>
+            </Card>
+          </Article.Link>
+        </div>
+      </Article>
       <Article>
         <Article.Body>
           <Article.ImgContainer>
@@ -296,11 +412,11 @@ export default function HomePage() {
               uporządkowanej i dobrze zorganizowanej przestrzeni – tutaj znajdziesz pomysły i
               wskazówki, jak zorganizować przestrzeń po swojemu!
             </Article.Text>
-            <Article.Btn variant="dark">Pierwszy krok do lepszej organizacji</Article.Btn>
+            <Article.Btn>Pierwszy krok do lepszej organizacji</Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
-
+      Zobacz wszystkie produkty z niższą ceną
       <Article>
         <Article.Header>
           Nowości z przeszłości - odkryj drugą odsłone archiwalnych projektów IKEA
@@ -315,12 +431,13 @@ export default function HomePage() {
           </Article.ImgContainer>
         </Article.Body>
       </Article>
-
+      {/* //? Carousel */}
       <Article>
         <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>
         <Swiper
           slidesPerView={numberOfSlides}
           slidesPerGroup={numberOfSlides}
+          spaceBetween={20}
           freeMode={true}
           navigation={true}
           scrollbar={{ hide: true }}
@@ -340,7 +457,6 @@ export default function HomePage() {
                 <Article.SlideBtn
                   shape="circle"
                   variant="dark"
-                  aria-hidden="true"
                 >
                   <ArrowRightIcon />
                 </Article.SlideBtn>
@@ -354,7 +470,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Planowanie szafy</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Planowanie szafy</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/wardrobes.webp"
@@ -370,7 +486,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Kuchnia</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Kuchnia</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/kitchen.avif"
@@ -386,7 +502,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Pokój dzienny</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Pokój dzienny</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/living-room.avif"
@@ -402,7 +518,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Sypialnia</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Sypialnia</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/bedroom.avif"
@@ -418,7 +534,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Domowe biuro</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Domowe biuro</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/home-office.webp"
@@ -434,7 +550,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Pokój dziecięcy</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Pokój dziecięcy</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/childrens-room.avif"
@@ -450,7 +566,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Projektowanie mieszkania</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Projektowanie mieszkania</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/apartment-design.avif"
@@ -466,7 +582,7 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
-                <Article.SlideBtn>Przestrzeń biznesowa</Article.SlideBtn>
+                <Article.SlideBtn variant="light">Przestrzeń biznesowa</Article.SlideBtn>
               </Article.Link>
               <img
                 src="images/scrollbars/scrollbar_2/business-space.avif"
@@ -477,7 +593,6 @@ export default function HomePage() {
           </SwiperSlide>
         </Swiper>
       </Article>
-
       <Article>
         <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
         <Article.Body>
@@ -510,7 +625,6 @@ export default function HomePage() {
           </Article.Section>
         </Article.Body>
       </Article>
-
       <Article>
         <Article.Body className="col-reverse">
           <Article.ImgContainer>
@@ -527,11 +641,10 @@ export default function HomePage() {
               Dołącz do IKEA Business Network i poznaj korzyści dedykowane dla małych i dużych
               przedsiębiorców.
             </Article.Text>
-            <Article.Btn variant="dark">Dołącz do IKEA Business Network</Article.Btn>
+            <Article.Btn>Dołącz do IKEA Business Network</Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
-
       <article>
         <h2 className="article__heading">Aranżacje wnętrz i inspiracje</h2>
       </article>

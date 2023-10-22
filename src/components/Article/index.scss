@@ -133,10 +133,8 @@
     // width: calc(309px * (3 / 4));
     aspect-ratio: 3/4;
     margin-bottom: 2.5rem;
-    margin-top: 0.75rem;
     background-color: c.$grayish;
     font-size: 1rem;
-    padding: func.rem(40) 2.05rem;
     color: inherit;
     isolation: isolate;
     cursor: pointer;
@@ -152,10 +150,8 @@
         text-decoration: underline;
       }
     }
-
-    &:focus-within {
-      outline: auto;
-      outline-offset: 0.5rem;
+    &:hover img {
+      opacity: 0.75;
     }
 
     & h3 {
@@ -163,12 +159,13 @@
     }
 
     & .flex-container {
+      padding: func.rem(40) 2rem;
+
       @include flex(column, flex-end, center);
       height: 100%;
       width: 100%;
       &:has(.article__heading) {
         @include flex(column, space-between, flex-start);
-        outline-offset: 2.75rem;
       }
     }
 
@@ -178,15 +175,11 @@
       width: 100%;
       height: 100%;
       transition: v.$main-transition;
-
-      &:hover {
-        opacity: 0.75;
-      }
     }
   }
 
   &__slide-btn {
-    color: black;
+    color: c.$black;
     height: func.rem(44);
     @include center;
     background-color: c.$grayish;
@@ -195,46 +188,26 @@
     text-align: center;
     transition: v.$main-transition;
     z-index: 1;
-
-    &:hover {
-      background-color: c.$gray;
-      text-decoration: none !important;
-    }
-
-    &--dark {
-      background-color: c.$black;
-      color: white;
-      &:hover {
-        background-color: c.$text-gray;
-      }
-    }
-
-    &--oval {
-      border-radius: 9999px;
-      padding-inline: 1.5rem;
-    }
-
-    &--circle {
-      border-radius: 50%;
-      aspect-ratio: 1;
-    }
   }
 }
 
 //? Swiper JS
 .swiper {
+  $_btn-size: 2.5rem;
+
+  padding-inline: 0.5rem;
+  margin-inline: -0.5rem;
   cursor: grab;
-  $btn-size: 2.5rem;
 
   & .swiper-button-next,
   & .swiper-button-prev {
     transition: v.$main-transition;
-    width: $btn-size;
-    height: $btn-size;
+    width: $_btn-size;
+    height: $_btn-size;
     background-color: c.$black;
     border-radius: 50%;
     opacity: 0;
-    translate: 0 calc(($btn-size / 2) * -1);
+    translate: 0 calc(($_btn-size / 2) * -1);
 
     &:hover {
       background-color: c.$text-gray;
@@ -270,6 +243,11 @@
     left: 0;
   }
 
+  & .swiper {
+    padding-inline: 0.25rem;
+    margin-inline: -0.25rem;
+  }
+
   & .swiper-scrollbar {
     opacity: 1 !important;
 
@@ -278,8 +256,8 @@
     }
   }
 
-  .swiper-slide {
-    // width: calc((100% / 6) - 13.33px) !important;
-    // width: calc((100% / 6) - (10px + (20px / 6)) - 20px) !important;
+  .swiper-wrapper {
+    padding-top: 0.5rem;
+    margin-top: -0.5rem;
   }
 }

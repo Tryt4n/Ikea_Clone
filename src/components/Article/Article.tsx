@@ -1,7 +1,7 @@
 // React
 import { HTMLProps, ReactNode, createElement } from "react";
 // Components
-import Btn from "../Btn/Btn";
+import Btn, { BtnPropsType } from "../Btn/Btn";
 // Style
 import "./index.scss";
 
@@ -15,27 +15,19 @@ type SectionPropsType = BodyPropsType;
 interface SlidePropsType extends BodyPropsType {
   variant?: "normal" | "accent";
 }
-interface SlideBtnPropsType extends BodyPropsType {
-  variant?: "normal" | "dark";
-  shape?: "oval" | "circle";
-}
 
 type TextContainerPropsType = {
   children: ReactNode;
   variant?: "accent";
 };
 
+type CardBtnPropsType = Omit<BtnPropsType, "shape">;
+
 type HeaderPropsType = {
   children: string;
   headingLevel?: number;
   className?: string;
 } & HTMLProps<HTMLHeadingElement>;
-
-type ContainerBtnPropsType = {
-  children: string;
-  type?: "button" | "submit" | "reset";
-  variant?: "light" | "dark";
-} & HTMLProps<HTMLButtonElement>;
 
 type LinkPropsType = {
   children?: ReactNode;
@@ -86,18 +78,8 @@ function Text({ children }: { children: ReactNode } & HTMLProps<HTMLParagraphEle
   return <p className="article__text">{children}</p>;
 }
 
-function ContainerBtn({ children, variant = "light", ...props }: ContainerBtnPropsType) {
-  const { type, ...rest } = props;
-
-  return (
-    <Btn
-      variant={variant}
-      type={type}
-      {...rest}
-    >
-      {children}
-    </Btn>
-  );
+function ContainerBtn(props: CardBtnPropsType) {
+  return <Btn {...props} />;
 }
 
 function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
@@ -116,15 +98,14 @@ function Slide({ children, variant, className }: SlidePropsType) {
   );
 }
 
-function SlideBtn({ children, variant = "normal", shape = "oval", className }: SlideBtnPropsType) {
+function SlideBtn(props: BtnPropsType) {
   return (
-    <span
-      className={`article__slide-btn${variant ? ` article__slide-btn--${variant}` : ""}${
-        shape ? ` article__slide-btn--${shape}` : ""
-      }${className ? ` ${className}` : ""}`}
-    >
-      {children}
-    </span>
+    <Btn
+      {...props}
+      className="article__slide-btn"
+      aria-hidden="true"
+      tabIndex={-1}
+    />
   );
 }
 

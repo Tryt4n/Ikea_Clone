@@ -67,6 +67,7 @@ a {
   text-decoration: none;
   outline-offset: 0.25em;
   text-underline-offset: 0.25em;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;

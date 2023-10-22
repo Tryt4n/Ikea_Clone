@@ -1,17 +1,26 @@
+@use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
 
 .btn {
   min-height: 2.5rem;
-  padding-inline: func.rem(24);
   font-size: v.$fs-sm;
   font-weight: bold;
-  border-radius: 50vw;
   transition: v.$main-transition;
 
   &:focus {
     outline-offset: 0.5rem;
+  }
+
+  &--oval {
+    padding-inline: func.rem(24);
+    border-radius: 50vw;
+  }
+  &--circle {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    @include center;
   }
 
   &--dark {
@@ -28,7 +37,7 @@
     color: c.$black;
 
     &:hover {
-      background-color: c.$grayish;
+      background-color: c.$gray;
     }
   }
 }
