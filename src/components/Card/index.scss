@@ -1,60 +1,92 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
 
 .cards-container {
-  overflow: hidden;
+  $_gap: 1.25rem;
+
   @include flex(row);
-  gap: 1.25rem;
+  gap: $_gap;
   padding-block: 0.75rem;
   padding-inline: 0.25rem;
   margin-block: -0.75rem;
   margin-inline: -0.25rem;
-
-  & > * {
-    flex: 1;
-    color: c.$white;
-  }
-}
-
-.card {
-  overflow: hidden;
-  height: 100%;
-  @include flex(column);
-  background-color: c.$blue;
-  text-wrap: balance;
-
-  img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-}
-
-.card-text-wrapper {
-  height: 100%;
-  @include flex(column, space-between, flex-start);
-  padding: 2rem;
-
-  h3 {
-    margin-bottom: 0.25rem;
-    font-size: func.rem(25);
-    line-height: 2.5rem;
+  &:has(:nth-child(4)) {
+    overflow-x: scroll;
   }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.625;
-    color: inherit;
-  }
-}
+  .card {
+    @include flex(column);
+    flex-shrink: 0;
+    flex-basis: calc((100% / 3) - $_gap);
+    color: c.$black;
+    text-wrap: balance;
 
-.card-btn {
-  margin-top: 4rem;
+    &--blue {
+      background-color: c.$blue;
+    }
+    &--brown {
+      background-color: c.$brown;
+      color: c.$white;
+    }
+    &--light-brown {
+      background-color: c.$light-brown;
+    }
+    &--violet {
+      background-color: c.$violet;
+    }
+    &--yellow {
+      background-color: c.$yellow;
+    }
+    &--light-yellow {
+      background-color: c.$light-yellow;
+    }
 
-  & svg {
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
+    &:hover {
+      text-decoration: none;
+      & h3 {
+        text-decoration: underline;
+        text-underline-offset: 0.3em;
+      }
+      & img {
+        filter: grayscale(0.5);
+      }
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      transition: v.$main-transition;
+    }
+
+    &__text-wrapper {
+      height: 100%;
+      @include flex(column, space-between, flex-start);
+      padding: 2rem;
+
+      h3 {
+        margin-bottom: 0.25rem;
+        font-size: func.rem(25);
+        line-height: 2.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.625;
+        color: inherit;
+      }
+    }
+
+    &__btn {
+      margin-top: 4rem;
+
+      & svg {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+      }
+    }
   }
 }

@@ -7,14 +7,23 @@ import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
 
-type CardPropsType = {
-  children: ReactNode;
+type CardPropsType<T> = {
+  children: React.ReactNode;
   className?: string;
-};
+  as?: "div" | "link";
+  variant?: "blue" | "brown" | "light-brown" | "violet" | "yellow" | "light-yellow";
+} & (T extends "div"
+  ? HTMLProps<HTMLDivElement>
+  : T extends "a"
+  ? HTMLProps<HTMLAnchorElement>
+  : never);
 
 type ImgPropsType = HTMLProps<HTMLImageElement>;
 
-type TextContainerPropsType = CardPropsType & HTMLProps<HTMLDivElement>;
+type TextContainerPropsType = {
+  children: ReactNode;
+  className?: string;
+} & HTMLProps<HTMLDivElement>;
 
 type HeadingPropsType = HTMLProps<HTMLHeadingElement>;
 
@@ -22,8 +31,23 @@ type TextPropsType = HTMLProps<HTMLParagraphElement>;
 
 type CardBtnPropsType = Omit<BtnPropsType, "children" | "shape">;
 
-export default function Card({ children, className }: CardPropsType) {
-  return <div className={`card${className ? ` ${className}` : ""}`}>{children}</div>;
+export default function Card<T extends "div" | "a">({
+  children,
+  as = "div",
+  variant = "blue",
+  className,
+  ...props
+}: CardPropsType<T>) {
+  const Element = as === "div" ? "div" : "a";
+
+  return (
+    <Element
+      {...(props as React.HTMLProps<HTMLDivElement> & React.HTMLProps<HTMLAnchorElement>)}
+      className={`card card--${variant}${className ? ` ${className}` : ""}`}
+    >
+      {children}
+    </Element>
+  );
 }
 
 function CardImg(props: ImgPropsType) {
@@ -31,7 +55,7 @@ function CardImg(props: ImgPropsType) {
 }
 
 function TextContainer({ children, className }: TextContainerPropsType) {
-  return <div className={`card-text-wrapper${className ? ` ${className}` : ""}`}>{children}</div>;
+  return <div className={`card__text-wrapper${className ? ` ${className}` : ""}`}>{children}</div>;
 }
 
 function Heading({ children }: HeadingPropsType) {
@@ -50,7 +74,7 @@ function CardBtn(props: CardBtnPropsType) {
       {...props}
       aria-hidden="true"
       tabIndex={-1}
-      className="card-btn"
+      className="card__btn"
     >
       <ArrowRightIcon />
     </Btn>

@@ -73,6 +73,7 @@ export default function HomePage() {
           </Article.TextContainer>
         </Article.Body>
       </Article>
+
       {/* //? Carousel */}
       <Article>
         <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
@@ -251,148 +252,205 @@ export default function HomePage() {
           </SwiperSlide>
         </Swiper>
       </Article>
+
       <Article>
         <Article.Header>
           Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści
         </Article.Header>
 
         <div className="cards-container">
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/IKEA_Family_club/1.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>
-                    Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie
-                    za min. 20 zł
-                  </Card.Heading>
-                  <Card.Text>
-                    Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
-                    IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
-                  </Card.Text>
-                </div>
-                <Card.Btn />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+          >
+            <Card.Img
+              src="/images/scrollbars/IKEA_Family_club/1.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>
+                  Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie za
+                  min. 20 zł
+                </Card.Heading>
+                <Card.Text>
+                  Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
+                  IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
+                </Card.Text>
+              </div>
+              <Card.Btn />
+            </Card.TextContainer>
+          </Card>
 
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/IKEA_Family_club/2.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>
-                    Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy
-                    zakupie za min. 20 zł
-                  </Card.Heading>
-                  <Card.Text>
-                    Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
-                    IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
-                  </Card.Text>
-                </div>
-                <Card.Btn />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+          >
+            <Card.Img
+              src="/images/scrollbars/IKEA_Family_club/2.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>
+                  Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy zakupie
+                  za min. 20 zł
+                </Card.Heading>
+                <Card.Text>
+                  Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów
+                  IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
+                </Card.Text>
+              </div>
+              <Card.Btn />
+            </Card.TextContainer>
+          </Card>
 
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/IKEA_Family_club/3.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>Klubowicze IKEA Family mogą więcej</Card.Heading>
-                  <Card.Text>
-                    Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym
-                    ofertom i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu i
-                    poczuj się jak w domu.
-                  </Card.Text>
-                </div>
-                <Card.Btn />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+          >
+            <Card.Img
+              src="/images/scrollbars/IKEA_Family_club/3.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>Klubowicze IKEA Family mogą więcej</Card.Heading>
+                <Card.Text>
+                  Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym ofertom
+                  i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu i poczuj się
+                  jak w domu.
+                </Card.Text>
+              </div>
+              <Card.Btn />
+            </Card.TextContainer>
+          </Card>
         </div>
       </Article>
+
       <article>
         <h2 className="article__heading">Wasze wnętrza</h2>
       </article>
+
       <Article>
         <Article.Header>Aktualnie w IKEA</Article.Header>
 
         <div className="cards-container">
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/currently/1.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>Sezon na domowanie z IKEA</Card.Heading>
-                  <Card.Text>
-                    Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie od
-                    tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy seans
-                    na kanapie czy poświęcić się nowemu hobby – w IKEA znajdziesz wszystko, czego
-                    potrzebujesz
-                  </Card.Text>
-                </div>
-                <Card.Btn variant="dark" />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+            variant="light-brown"
+          >
+            <Card.Img
+              src="/images/scrollbars/currently/1.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>Sezon na domowanie z IKEA</Card.Heading>
+                <Card.Text>
+                  Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie od
+                  tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy seans na
+                  kanapie czy poświęcić się nowemu hobby – w IKEA znajdziesz wszystko, czego
+                  potrzebujesz
+                </Card.Text>
+              </div>
+              <Card.Btn variant="dark" />
+            </Card.TextContainer>
+          </Card>
 
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/currently/2.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>
-                    Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!
-                  </Card.Heading>
-                  <Card.Text>
-                    Otwórz się na zupełnie nowe możliwości w aranżacji wnętrz – skanuj
-                    pomieszczenia, wymaż niepotrzebne przedmioty i puść wodze wyobraźni w
-                    interaktywnej przestrzeni wirtualnej.
-                  </Card.Text>
-                </div>
-                <Card.Btn />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+            variant="brown"
+          >
+            <Card.Img
+              src="/images/scrollbars/currently/2.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>
+                  Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!
+                </Card.Heading>
+                <Card.Text>
+                  Otwórz się na zupełnie nowe możliwości w aranżacji wnętrz – skanuj pomieszczenia,
+                  wymaż niepotrzebne przedmioty i puść wodze wyobraźni w interaktywnej przestrzeni
+                  wirtualnej.
+                </Card.Text>
+              </div>
+              <Card.Btn />
+            </Card.TextContainer>
+          </Card>
 
-          <Article.Link href="#">
-            <Card>
-              <Card.Img
-                src="/images/scrollbars/currently/3.avif"
-                alt=""
-              />
-              <Card.TextContainer>
-                <div>
-                  <Card.Heading>Kolekcja AFTONSPARV dotarła na Ziemię!</Card.Heading>
-                  <Card.Text>
-                    Dołącz do programu kosmicznego IKEA na największym placu zabaw we wszechświecie
-                    – w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i świecąca w
-                    ciemności zasłona pozwolą ci wyruszyć w podróż tam, gdzie wszystko jest możliwe.
-                  </Card.Text>
-                </div>
-                <Card.Btn variant="dark" />
-              </Card.TextContainer>
-            </Card>
-          </Article.Link>
+          <Card
+            as="link"
+            href="#"
+            variant="violet"
+          >
+            <Card.Img
+              src="/images/scrollbars/currently/3.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>Kolekcja AFTONSPARV dotarła na Ziemię!</Card.Heading>
+                <Card.Text>
+                  Dołącz do programu kosmicznego IKEA na największym placu zabaw we wszechświecie –
+                  w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i świecąca w ciemności
+                  zasłona pozwolą ci wyruszyć w podróż tam, gdzie wszystko jest możliwe.
+                </Card.Text>
+              </div>
+              <Card.Btn variant="dark" />
+            </Card.TextContainer>
+          </Card>
+
+          <Card
+            as="link"
+            href="#"
+            variant="yellow"
+          >
+            <Card.Img
+              src="/images/scrollbars/currently/4.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>Zaprojektowane przez IKEA – wykonane w Polsce</Card.Heading>
+                <Card.Text>
+                  Czy wiesz, że co piąty mebel IKEA powstaje w Polsce? Celebrujemy ponad 60 lat
+                  obecności IKEA w Polsce – dowiedz się więcej o współpracy, której efektem są
+                  tysiące miejsc pracy w kraju oraz miliony lepiej pomyślanych produktów wykonanych
+                  w Polsce.
+                </Card.Text>
+              </div>
+              <Card.Btn variant="dark" />
+            </Card.TextContainer>
+          </Card>
+
+          <Card
+            as="link"
+            href="#"
+            variant="light-yellow"
+          >
+            <Card.Img
+              src="/images/scrollbars/currently/5.avif"
+              alt=""
+            />
+            <Card.TextContainer>
+              <div>
+                <Card.Heading>IKEA to więcej niż sklep</Card.Heading>
+                <Card.Text>
+                  Co sprawia, że miliony ludzi na całym świecie uwielbiają wizyty w IKEA? Zobacz, co
+                  czeka na ciebie w naszych sklepach i zaplanuj odwiedziny!
+                </Card.Text>
+              </div>
+              <Card.Btn variant="dark" />
+            </Card.TextContainer>
+          </Card>
         </div>
       </Article>
+
       <Article>
         <Article.Body>
           <Article.ImgContainer>
@@ -416,7 +474,7 @@ export default function HomePage() {
           </Article.TextContainer>
         </Article.Body>
       </Article>
-      Zobacz wszystkie produkty z niższą ceną
+
       <Article>
         <Article.Header>
           Nowości z przeszłości - odkryj drugą odsłone archiwalnych projektów IKEA
@@ -431,6 +489,7 @@ export default function HomePage() {
           </Article.ImgContainer>
         </Article.Body>
       </Article>
+
       {/* //? Carousel */}
       <Article>
         <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>
@@ -593,6 +652,7 @@ export default function HomePage() {
           </SwiperSlide>
         </Swiper>
       </Article>
+
       <Article>
         <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
         <Article.Body>
@@ -625,6 +685,7 @@ export default function HomePage() {
           </Article.Section>
         </Article.Body>
       </Article>
+
       <Article>
         <Article.Body className="col-reverse">
           <Article.ImgContainer>
@@ -645,6 +706,7 @@ export default function HomePage() {
           </Article.TextContainer>
         </Article.Body>
       </Article>
+
       <article>
         <h2 className="article__heading">Aranżacje wnętrz i inspiracje</h2>
       </article>
