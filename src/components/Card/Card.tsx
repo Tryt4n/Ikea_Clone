@@ -51,7 +51,12 @@ export default function Card<T extends "div" | "a">({
 }
 
 function CardImg(props: ImgPropsType) {
-  return <img {...props} />;
+  return (
+    <img
+      {...props}
+      loading="lazy"
+    />
+  );
 }
 
 function TextContainer({ children, className }: TextContainerPropsType) {

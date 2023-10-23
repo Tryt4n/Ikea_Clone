@@ -1,0 +1,99 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/functions" as func;
+@use "../base/breakpoints" as b;
+
+.swiper {
+  $_btn-size: 2.5rem;
+
+  padding-inline: 0.5rem;
+  margin-inline: -0.5rem;
+  cursor: grab;
+
+  & .swiper-button-next,
+  & .swiper-button-prev {
+    transition: v.$main-transition;
+    width: $_btn-size;
+    height: $_btn-size;
+    background-color: c.$black;
+    border-radius: 50%;
+    opacity: 0;
+    translate: 0 calc(($_btn-size / 2) * -1);
+
+    &:hover {
+      background-color: c.$text-gray;
+    }
+
+    &:focus {
+      opacity: 1;
+      outline-offset: 0.25rem;
+    }
+
+    &[aria-disabled="true"] {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &::after {
+      width: func.rem(24);
+      height: func.rem(24);
+    }
+  }
+
+  & .swiper-button-prev::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='m7 12.0009 8.0012-8.0007 1.4142 1.4142-6.587 6.5866 6.5859 6.5868L15 20.002l-8-8.0011z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+    translate: 0 -55%;
+  }
+  & .swiper-button-next::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='m16.415 12.0011-8.0012 8.0007-1.4141-1.4143 6.587-6.5866-6.586-6.5868L8.415 4l8 8.0011z'/%3E%3C/svg%3E");
+    translate: 10% -55%;
+  }
+
+  &:hover .swiper-button-next,
+  &:hover .swiper-button-prev {
+    opacity: 1;
+  }
+
+  & .swiper-scrollbar {
+    width: 100%;
+    left: 0;
+  }
+
+  & .swiper {
+    padding-inline: 0.25rem;
+    margin-inline: -0.25rem;
+  }
+
+  & .swiper-scrollbar {
+    opacity: 1 !important;
+    margin-top: 2.5rem;
+
+    & .swiper-scrollbar-drag {
+      background-color: c.$black;
+    }
+  }
+
+  .swiper-wrapper {
+    padding-top: 0.5rem;
+    margin-top: -0.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .swiper-notification {
+    visibility: hidden;
+    z-index: -1;
+  }
+}
+
+@media screen and (width < b.$mobile-md) {
+  .breakOnMobile {
+    width: 100%;
+    & .swiper-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: max-content;
+      width: 100%;
+      gap: 0.75rem;
+    }
+  }
+}

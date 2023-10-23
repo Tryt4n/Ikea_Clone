@@ -2,29 +2,20 @@
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .cards-container {
-  $_gap: 1.25rem;
-
   @include flex(row);
-  gap: $_gap;
-  padding-block: 0.75rem;
-  padding-inline: 0.25rem;
-  margin-block: -0.75rem;
-  margin-inline: -0.25rem;
-  &:has(:nth-child(4)) {
-    overflow-x: scroll;
-  }
 
   .card {
     @include flex(column);
-    flex-shrink: 0;
-    flex-basis: calc((100% / 3) - $_gap);
     color: c.$black;
     text-wrap: balance;
+    height: calc(100% - 2.5rem);
 
     &--blue {
       background-color: c.$blue;
+      color: c.$white;
     }
     &--brown {
       background-color: c.$brown;
@@ -70,6 +61,10 @@
         margin-bottom: 0.25rem;
         font-size: func.rem(25);
         line-height: 2.5rem;
+        @media screen and (width < b.$mobile-md) {
+          font-size: func.rem(18);
+          line-height: 1.778;
+        }
       }
 
       p {
@@ -86,6 +81,10 @@
         width: 100%;
         height: 100%;
         padding: 1rem;
+      }
+
+      @media screen and (width < b.$mobile-md) {
+        margin-top: 2rem;
       }
     }
   }

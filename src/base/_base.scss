@@ -134,12 +134,13 @@ body[data-overlay="true"] {
 
 body {
   position: relative;
-  transition: background-color 2s;
+  transition: v.$main-transition;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
+  background-color: transparent;
   transition: background-color v.$main-transition;
   visibility: hidden;
 }

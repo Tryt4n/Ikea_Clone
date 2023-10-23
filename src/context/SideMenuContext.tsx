@@ -1,6 +1,5 @@
 import { ReactElement, createContext, useLayoutEffect, useState } from "react";
 import useEventListener from "../hooks/useEventListener";
-import useLayoutEventListener from "../hooks/useLayoutEventListener";
 
 type SideMenuContextType = {
   isMenuOpen: boolean;
@@ -17,7 +16,6 @@ export const SideMenuContext = createContext<SideMenuContextType | null>(null);
 
 export function SideMenuProvider({ children }: SideMenuProviderPropsType) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(0);
   const isDesktop = !("ontouchstart" in window);
   const sideMenuId = "sideMenu";
 
@@ -43,29 +41,6 @@ export function SideMenuProvider({ children }: SideMenuProviderPropsType) {
       .querySelector("[data-overlay]")
       ?.setAttribute("data-overlay", isMenuOpen ? "true" : "false");
   }, [isMenuOpen]);
-
-  function handleTouchStart(e: TouchEvent) {
-    if (isDesktop) return;
-
-    setTouchStartX(e.touches[0].clientX);
-  }
-
-  function handleTouchMove(e: TouchEvent) {
-    if (isDesktop) return;
-
-    const currentX = e.touches[0].clientX;
-    const deltaX = currentX - touchStartX;
-
-    if (!isMenuOpen && deltaX > 50) {
-      toggleOpenState();
-    } else if (isMenuOpen && deltaX < -50) {
-      toggleOpenState();
-    }
-    setTouchStartX(currentX);
-  }
-
-  useLayoutEventListener("touchstart", handleTouchStart);
-  useLayoutEventListener("touchmove", handleTouchMove);
 
   const contextValue = {
     isMenuOpen,
