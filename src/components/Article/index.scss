@@ -154,9 +154,6 @@
 
     & h3 {
       font-size: inherit;
-      @media screen and (width < func.rem(400)) {
-        font-size: 1.5rem;
-      }
     }
 
     & .flex-container {
@@ -176,17 +173,15 @@
       width: 100%;
       height: 100%;
       transition: v.$main-transition;
+      z-index: -1;
     }
   }
 
   &__slide-btn {
-    color: c.$black;
     @include center;
-    background-color: c.$grayish;
     font-size: 0.75em;
     font-weight: bold;
     text-align: center;
-    transition: v.$main-transition;
     z-index: 1;
   }
 }

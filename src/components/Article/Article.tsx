@@ -11,7 +11,9 @@ type BodyPropsType = {
 } & HTMLProps<HTMLDivElement>;
 
 type ImgContainerPropsType = BodyPropsType;
+
 type SectionPropsType = BodyPropsType;
+
 interface SlidePropsType extends BodyPropsType {
   variant?: "normal" | "accent";
 }
@@ -21,7 +23,11 @@ type TextContainerPropsType = {
   variant?: "accent";
 };
 
-type CardBtnPropsType = Omit<BtnPropsType, "shape">;
+type CardBtnPropsType = {
+  children: string;
+  className?: string;
+  variant?: "light" | "dark";
+} & HTMLProps<HTMLAnchorElement>;
 
 type HeaderPropsType = {
   children: string;
@@ -78,8 +84,15 @@ function Text({ children }: { children: ReactNode } & HTMLProps<HTMLParagraphEle
   return <p className="article__text">{children}</p>;
 }
 
-function ContainerBtn(props: CardBtnPropsType) {
-  return <Btn {...props} />;
+function ContainerBtn({ children, className, variant = "dark", ...props }: CardBtnPropsType) {
+  return (
+    <a
+      {...props}
+      className={`btn btn--${variant} btn--oval${className ? ` ${className}` : ""}`}
+    >
+      {children}
+    </a>
+  );
 }
 
 function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
@@ -95,6 +108,15 @@ function Slide({ children, variant, className }: SlidePropsType) {
     >
       {children}
     </div>
+  );
+}
+
+function Img(props: HTMLProps<HTMLImageElement>) {
+  return (
+    <img
+      {...props}
+      loading="lazy"
+    />
   );
 }
 
@@ -118,5 +140,7 @@ Article.TextContainer = TextContainer;
 Article.Text = Text;
 Article.Btn = ContainerBtn;
 Article.Link = Link;
+Article.Img = Img;
+
 Article.Slide = Slide;
 Article.SlideBtn = SlideBtn;

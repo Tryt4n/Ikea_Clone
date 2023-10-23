@@ -70,7 +70,9 @@ export default function SideMenu() {
           <a
             href="/"
             tabIndex={isMenuOpen ? 0 : -1}
+            aria-label="Idź na stronę główną"
           >
+            <span className="visually-hidden">Strona główna</span>
             <IkeaLogo />
           </a>
         </div>

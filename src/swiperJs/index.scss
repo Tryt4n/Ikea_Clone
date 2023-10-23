@@ -38,6 +38,20 @@
       width: func.rem(24);
       height: func.rem(24);
     }
+
+    @media (hover: none) {
+      opacity: 1;
+      &:focus {
+        background-color: c.$black;
+      }
+    }
+  }
+
+  & .swiper-button-prev {
+    translate: -25%;
+  }
+  & .swiper-button-next {
+    translate: 25%;
   }
 
   & .swiper-button-prev::after {

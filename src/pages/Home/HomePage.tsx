@@ -27,16 +27,17 @@ export default function HomePage() {
       <Article>
         <Article.Body>
           <Article.ImgContainer>
-            <img
-              sizes="(max-width: 1055px) 100vw, 1055px"
+            <Article.Img
+              sizes="(max-width: 1600px) 100vw, 1600px"
               srcSet="
-                  /images/collections/1/collection_asjspy_c_scale,w_280.avif 280w,
-                  /images/collections/1/collection_asjspy_c_scale,w_629.avif 629w,
-                  /images/collections/1/collection_asjspy_c_scale,w_1025.avif 1025w,
-                  /images/collections/1/collection_asjspy_c_scale,w_1055.avif 1055w"
-              src="/images/collections/1/collection_asjspy_c_scale,w_1055.avif"
-              alt="Some Description"
-              loading="lazy"
+                /images/collections/1/collection_rzilav_c_scale,w_320.avif 320w,
+                /images/collections/1/collection_rzilav_c_scale,w_744.avif 744w,
+                /images/collections/1/collection_rzilav_c_scale,w_1010.avif 1010w,
+                /images/collections/1/collection_rzilav_c_scale,w_1351.avif 1351w,
+                /images/collections/1/collection_rzilav_c_scale,w_1561.avif 1561w,
+                /images/collections/1/collection_rzilav_c_scale,w_1600.avif 1600w"
+              src="/images/collections/1/collection_rzilav_c_scale,w_1600.avif"
+              alt="Urządzony salon"
             />
           </Article.ImgContainer>
 
@@ -46,17 +47,21 @@ export default function HomePage() {
               Wciąż wprowadzamy pomysłowe rozwiązania i ulepszamy procesy, dzięki czemu obniżamy
               koszty. To pozwoliło nam obniżyć ceny dziesiątek produktów
             </Article.Text>
-            <Article.Btn variant="light">Zobacz wszystkie produkty z niższą ceną</Article.Btn>
+            <Article.Btn
+              href="#"
+              variant="light"
+            >
+              Zobacz wszystkie produkty z niższą ceną
+            </Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
 
-      {/* //? Carousel */}
       <Article>
         <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
         <Swiper
-          slidesPerView={1}
-          slidesPerGroup={1}
+          slidesPerView={2}
+          slidesPerGroup={2}
           spaceBetween={20}
           freeMode={true}
           mousewheel={true}
@@ -67,10 +72,6 @@ export default function HomePage() {
           }}
           modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
           breakpoints={{
-            400: {
-              slidesPerView: 2,
-              slidesPerGroup: 2,
-            },
             800: {
               slidesPerView: 3,
               slidesPerGroup: 3,
@@ -113,12 +114,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Meble modułowe BESTÅ</span>
                 <Article.SlideBtn variant="light">Meble modułowe BESTÅ</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/modular-furnitures.avif"
                 alt="Meble modułowe BESTÅ"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -129,12 +130,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Dekoracje</span>
                 <Article.SlideBtn variant="light">Dekoracje</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/decorations.avif"
                 alt="Dekoracje"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -145,12 +146,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Sofy i narożniki</span>
                 <Article.SlideBtn variant="light">Sofy i narożniki</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/sofas.avif"
                 alt="Sofy i narożniki"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -161,12 +162,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Oświetlenie</span>
                 <Article.SlideBtn variant="light">Oświetlenie</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/lightning.avif"
                 alt="Oświetlenie"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -177,12 +178,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Tekstylia</span>
                 <Article.SlideBtn variant="light">Tekstylia</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/textiles.avif"
                 alt="Tekstylia"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -193,12 +194,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Fotele i szezlongi</span>
                 <Article.SlideBtn variant="light">Fotele i szezlongi</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/chairs.avif"
                 alt="Fotele i szezlongi"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -209,12 +210,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Dywany</span>
                 <Article.SlideBtn variant="light">Dywany</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/carpets.avif"
                 alt="Dywany"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -225,12 +226,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Drobne przechowywanie</span>
                 <Article.SlideBtn variant="light">Drobne przechowywanie</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/containers.avif"
                 alt="Drobne przechowywanie"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -241,12 +242,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Stoliki kawowe</span>
                 <Article.SlideBtn variant="light">Stoliki kawowe</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_1/coffee-tables.avif"
                 alt="Stoliki kawowe"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -263,14 +264,20 @@ export default function HomePage() {
             slidesPerView={1}
             slidesPerGroup={1}
             spaceBetween={20}
-            freeMode={true}
-            mousewheel={true}
-            navigation={true}
-            scrollbar={{ hide: true }}
-            keyboard={{
-              enabled: true,
-            }}
-            modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
+            freeMode={width < 900 && true}
+            mousewheel={width < 900 && true}
+            navigation={width < 900 && true}
+            scrollbar={width < 900 && { hide: true }}
+            keyboard={
+              width < 900 && {
+                enabled: true,
+              }
+            }
+            modules={
+              width < 900
+                ? [Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]
+                : undefined
+            }
             breakpoints={{
               600: {
                 slidesPerView: 2,
@@ -292,7 +299,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/1.avif"
-                  alt=""
+                  alt="Krzesło przykryte częściowo kocem"
                 />
                 <Card.TextContainer>
                   <div>
@@ -317,7 +324,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/2.avif"
-                  alt=""
+                  alt="Łóżko"
                 />
                 <Card.TextContainer>
                   <div>
@@ -342,7 +349,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/3.avif"
-                  alt=""
+                  alt="Rodzina przy stole"
                 />
                 <Card.TextContainer>
                   <div>
@@ -408,7 +415,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/currently/1.avif"
-                  alt=""
+                  alt="Urządzony salon"
                 />
                 <Card.TextContainer>
                   <div>
@@ -433,7 +440,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/currently/2.avif"
-                  alt=""
+                  alt="Telefon z włączoną aplikacją IKEA Kreativ"
                 />
                 <Card.TextContainer>
                   <div>
@@ -459,7 +466,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/currently/3.avif"
-                  alt=""
+                  alt="Pluszowy chomik w stroju kosmonauty siedzący na poduszcze w kształcie UFO"
                 />
                 <Card.TextContainer>
                   <div>
@@ -484,7 +491,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/currently/4.avif"
-                  alt=""
+                  alt="Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
                 />
                 <Card.TextContainer>
                   <div>
@@ -509,7 +516,7 @@ export default function HomePage() {
               >
                 <Card.Img
                   src="/images/scrollbars/currently/5.avif"
-                  alt=""
+                  alt="Chłopiec idący do sklepu IKEA"
                 />
                 <Card.TextContainer>
                   <div>
@@ -530,10 +537,16 @@ export default function HomePage() {
       <Article>
         <Article.Body>
           <Article.ImgContainer>
-            <img
-              src="/images/organization_ideas/organization.avif"
+            <Article.Img
+              sizes="(max-width: 2667px) 60vw, 1600px"
+              srcSet="
+                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_971.avif 971w,
+                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1123.avif 1123w,
+                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1507.avif 1507w,
+                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+              src="/images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
               alt="Kolaż z kolorowymi kwadrantami i wycinankami zdjęć ludzi."
-              loading="lazy"
             />
           </Article.ImgContainer>
 
@@ -546,7 +559,7 @@ export default function HomePage() {
               uporządkowanej i dobrze zorganizowanej przestrzeni – tutaj znajdziesz pomysły i
               wskazówki, jak zorganizować przestrzeń po swojemu!
             </Article.Text>
-            <Article.Btn>Pierwszy krok do lepszej organizacji</Article.Btn>
+            <Article.Btn href="#">Pierwszy krok do lepszej organizacji</Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
@@ -557,16 +570,22 @@ export default function HomePage() {
         </Article.Header>
         <Article.Body>
           <Article.ImgContainer>
-            <img
-              src="/images/collections/2/collection.avif"
+            <Article.Img
+              sizes="(max-width: 2667px) 60vw, 1600px"
+              srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+              src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
               alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
-              loading="lazy"
             />
           </Article.ImgContainer>
         </Article.Body>
       </Article>
 
-      {/* //? Carousel */}
       <Article>
         <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>
         <Swiper
@@ -624,12 +643,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Planowanie szafy</span>
                 <Article.SlideBtn variant="light">Planowanie szafy</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/wardrobes.webp"
                 alt="Planowanie szafy"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -640,12 +659,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Kuchnia</span>
                 <Article.SlideBtn variant="light">Kuchnia</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/kitchen.avif"
                 alt="Kuchnia"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -656,12 +675,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Pokój dzienny</span>
                 <Article.SlideBtn variant="light">Pokój dzienny</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/living-room.avif"
                 alt="Pokój dzienny"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -672,12 +691,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Sypialnia</span>
                 <Article.SlideBtn variant="light">Sypialnia</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/bedroom.avif"
                 alt="Sypialnia"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -688,12 +707,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Domowe biuro</span>
                 <Article.SlideBtn variant="light">Domowe biuro</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/home-office.webp"
                 alt="Domowe biuro"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -704,12 +723,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Pokój dziecięcy</span>
                 <Article.SlideBtn variant="light">Pokój dziecięcy</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/childrens-room.avif"
                 alt="Pokój dziecięcy"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -720,12 +739,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Projektowanie mieszkania</span>
                 <Article.SlideBtn variant="light">Projektowanie mieszkania</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/apartment-design.avif"
                 alt="Projektowanie mieszkania"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -736,12 +755,12 @@ export default function HomePage() {
                 href="#"
                 className="flex-container"
               >
+                <span className="visually-hidden">Przestrzeń biznesowa</span>
                 <Article.SlideBtn variant="light">Przestrzeń biznesowa</Article.SlideBtn>
               </Article.Link>
-              <img
+              <Article.Img
                 src="images/scrollbars/scrollbar_2/business-space.avif"
                 alt="Przestrzeń biznesowa"
-                loading="lazy"
               />
             </Article.Slide>
           </SwiperSlide>
@@ -750,6 +769,7 @@ export default function HomePage() {
 
       <Article>
         <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
+
         <Article.Body>
           <Article.Section>
             <ShoppingCart2Icon />
@@ -757,6 +777,7 @@ export default function HomePage() {
             <Article.Text>Nie musisz płacić od razu – zapłać w wygodnych ratach.</Article.Text>
             <Article.Link href="#" />
           </Article.Section>
+
           <Article.Section>
             <TruckIcon />
             <Article.Header headingLevel={3}>Dostawa już od 1,-</Article.Header>
@@ -766,12 +787,14 @@ export default function HomePage() {
             </Article.Text>
             <Article.Link href="#" />
           </Article.Section>
+
           <Article.Section>
             <Shop2Icon />
             <Article.Header headingLevel={3}>Zamów i odbierz</Article.Header>
             <Article.Text>Zrób zakupy przez Internet i odbierz je w Punkcie Odbioru.</Article.Text>
             <Article.Link href="#" />
           </Article.Section>
+
           <Article.Section>
             <SaleIcon />
             <Article.Header headingLevel={3}>Okazje na Okrągło</Article.Header>
@@ -784,10 +807,15 @@ export default function HomePage() {
       <Article>
         <Article.Body className="col-reverse">
           <Article.ImgContainer>
-            <img
-              src="/images/for_business/office.avif"
+            <Article.Img
+              sizes="(max-width: 2667px) 60vw, 1600px"
+              srcSet="
+                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1285.avif 1285w,
+                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1520.avif 1520w,
+                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+              src="/images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
               alt="Office"
-              loading="lazy"
             />
           </Article.ImgContainer>
 
@@ -797,7 +825,7 @@ export default function HomePage() {
               Dołącz do IKEA Business Network i poznaj korzyści dedykowane dla małych i dużych
               przedsiębiorców.
             </Article.Text>
-            <Article.Btn>Dołącz do IKEA Business Network</Article.Btn>
+            <Article.Btn href="#">Dołącz do IKEA Business Network</Article.Btn>
           </Article.TextContainer>
         </Article.Body>
       </Article>
