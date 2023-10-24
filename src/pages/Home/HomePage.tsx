@@ -18,7 +18,8 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
-import Collection from "../../components/CollectionProducts/Collection";
+import Collection from "../../components/CollectionProducts/components/Collection";
+import CollectionNameContainer from "../../components/CollectionProducts/components/CollectionNameContainer";
 
 export default function HomePage() {
   const { width } = useWindowSize();
@@ -46,11 +47,14 @@ export default function HomePage() {
               <Collection.ListItem
                 top="23.3%"
                 left="37.0677%"
-                linkToProduct="#"
-                descriptionContainerId="list-item-1"
+                descriptionContainerId="list-item-1_main"
               >
-                <Collection.ListItemDescriptionContainer id="list-item-1">
-                  <Collection.ListItemNewPriceTag />
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-1_main"
+                  linkToProduct="#"
+                  placeBottomRight
+                >
+                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
                   <Collection.ListItemHeadingContainer>
                     <Collection.ListItemHeading>Eket</Collection.ListItemHeading>
                     <Collection.ListItemSubHeading>Szafka ścienna</Collection.ListItemSubHeading>
@@ -63,10 +67,13 @@ export default function HomePage() {
               <Collection.ListItem
                 top="30.4%"
                 left="50.3%"
-                linkToProduct="#"
-                descriptionContainerId="list-item-2"
+                descriptionContainerId="list-item-2_main"
               >
-                <Collection.ListItemDescriptionContainer id="list-item-2">
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-2_main"
+                  linkToProduct="#"
+                  placeBottomCenter
+                >
                   <Collection.ListItemHeadingContainer>
                     <Collection.ListItemHeading>Konstfull</Collection.ListItemHeading>
                     <Collection.ListItemSubHeading>Wazon</Collection.ListItemSubHeading>
@@ -81,10 +88,13 @@ export default function HomePage() {
               <Collection.ListItem
                 top="75.8%"
                 left="17.2%"
-                linkToProduct="#"
-                descriptionContainerId="list-item-3"
+                descriptionContainerId="list-item-3_main"
               >
-                <Collection.ListItemDescriptionContainer id="list-item-3">
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-3_main"
+                  linkToProduct="#"
+                  placeTopRight
+                >
                   <Collection.ListItemHeadingContainer>
                     <Collection.ListItemHeading>Kivik</Collection.ListItemHeading>
                     <Collection.ListItemSubHeading>
@@ -98,30 +108,36 @@ export default function HomePage() {
               <Collection.ListItem
                 top="68.7%"
                 left="43.3%"
-                linkToProduct="#"
-                descriptionContainerId="list-item-4"
+                descriptionContainerId="list-item-4_main"
               >
-                <Collection.ListItemDescriptionContainer id="list-item-4">
-                  <Collection.ListItemNewPriceTag />
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-4_main"
+                  linkToProduct="#"
+                  placeTopCenter
+                >
+                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
                   <Collection.ListItemHeadingContainer>
                     <Collection.ListItemHeading>BESTÅ</Collection.ListItemHeading>
                     <Collection.ListItemSubHeading>
                       Kombinacja z drzwiami
                     </Collection.ListItemSubHeading>
                   </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={1080} />
-                  <Collection.ListItemLastPriceDescription lastPrice={1178} />
+                  <Collection.ListItemPrice price={710} />
+                  <Collection.ListItemLastPriceDescription lastPrice={763} />
                 </Collection.ListItemDescriptionContainer>
               </Collection.ListItem>
 
               <Collection.ListItem
                 top="92.1%"
                 left="58.3%"
-                linkToProduct="#"
-                descriptionContainerId="list-item-5"
+                descriptionContainerId="list-item-5_main"
               >
-                <Collection.ListItemDescriptionContainer id="list-item-5">
-                  <Collection.ListItemNewPriceTag />
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-5_main"
+                  linkToProduct="#"
+                  placeTopCenter
+                >
+                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
                   <Collection.ListItemHeadingContainer>
                     <Collection.ListItemHeading>Gladom</Collection.ListItemHeading>
                     <Collection.ListItemSubHeading>Stolik z tacą</Collection.ListItemSubHeading>
@@ -679,6 +695,142 @@ export default function HomePage() {
                 /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
               src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
               alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+            />
+
+            <Collection>
+              <Collection.ListItem
+                top="73.9%"
+                left={width >= 600 ? "55.5007%" : "63.024%"}
+                descriptionContainerId="list-item-1_Nytillverkad"
+              >
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-1_Nytillverkad"
+                  linkToProduct="#"
+                  placeTopCenter
+                >
+                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>SKÅLBODA</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Fotel</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={249} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="53.1%"
+                left={width >= 600 ? "35.8982%" : "16.6112%"}
+                descriptionContainerId="list-item-2_Nytillverkad"
+              >
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-2_Nytillverkad"
+                  linkToProduct="#"
+                  placeRightCenter
+                >
+                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>TUVKORNELL</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>
+                      Świeczniki, 3 szt.
+                    </Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice
+                    price={39}
+                    priceDecimal={99}
+                  />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="28.4%"
+                left={width >= 600 ? "62.0015%" : "78.416%"}
+                descriptionContainerId="list-item-3_Nytillverkad"
+              >
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-3_Nytillverkad"
+                  linkToProduct="#"
+                  placeBottomLeft
+                >
+                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>HAVSFJÄDER</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>
+                      Klosz lampy wiszącej
+                    </Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={149} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="61.2%"
+                left={width >= 600 ? "66.4021%" : "88.8352%"}
+                descriptionContainerId="list-item-4_Nytillverkad"
+              >
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-4_Nytillverkad"
+                  linkToProduct="#"
+                  placeTopLeft
+                >
+                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>JÄRLÅSA</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Stolik na kółkach</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={179} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              {width >= 600 && (
+                <Collection.ListItem
+                  top="68%"
+                  left="90.205%"
+                  descriptionContainerId="list-item-5_Nytillverkad"
+                >
+                  <Collection.ListItemDescriptionContainer
+                    id="list-item-5_Nytillverkad"
+                    linkToProduct="#"
+                    placeTopLeft
+                  >
+                    <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                    <Collection.ListItemHeadingContainer>
+                      <Collection.ListItemHeading>JÄRLÅSA</Collection.ListItemHeading>
+                      <Collection.ListItemSubHeading>
+                        Stolik na kółkach
+                      </Collection.ListItemSubHeading>
+                    </Collection.ListItemHeadingContainer>
+                    <Collection.ListItemPrice price={179} />
+                  </Collection.ListItemDescriptionContainer>
+                </Collection.ListItem>
+              )}
+
+              <Collection.ListItem
+                top="60%"
+                left={width >= 600 ? "45.9995%" : "40.528%"}
+                descriptionContainerId="list-item-6_Nytillverkad"
+              >
+                <Collection.ListItemDescriptionContainer
+                  id="list-item-6_Nytillverkad"
+                  linkToProduct="#"
+                  placeTopCenter
+                >
+                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>SVEDJENÄVA</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Poszewka</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice
+                    price={24}
+                    priceDecimal={99}
+                  />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+            </Collection>
+
+            <CollectionNameContainer
+              collectionName="Nytillverkad"
+              collectionLink="#"
+              isNew
             />
           </Article.ImgContainer>
         </Article.Body>

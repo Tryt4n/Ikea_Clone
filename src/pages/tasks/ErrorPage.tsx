@@ -5,7 +5,7 @@ function ErrorPage() {
 
   return (
     <>
-      <h1>Error - Something went wrong</h1>
+      <h2>Error - Something went wrong</h2>
       {import.meta.env.MODE !== "production" && error instanceof Error && (
         <>
           <pre>{error.message}</pre>

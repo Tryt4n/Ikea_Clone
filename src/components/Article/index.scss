@@ -52,58 +52,6 @@
     }
   }
 
-  // &__collection-list {
-  //   position: absolute;
-  //   inset: 0;
-
-  //   & > * {
-  //     position: absolute;
-  //   }
-  // }
-
-  // &__collection-list-item {
-  //   $_size: 2rem;
-
-  //   position: relative;
-  //   width: $_size;
-  //   height: $_size;
-  //   @include flex(row, center, center);
-  //   background-color: hsla(0, 0%, 7%, 0.2);
-  //   border: func.rem(2) solid transparent;
-  //   border-radius: 50%;
-  //   transition: v.$main-transition;
-  //   translate: calc(($_size / 2) * -1) calc(($_size / 2) * -1);
-
-  //   &::before {
-  //     position: absolute;
-  //     content: "";
-  //     width: 0.75rem;
-  //     height: 0.75rem;
-  //     background-color: c.$white;
-  //     box-shadow: 0 func.rem(1) func.rem(4) rgba(17, 17, 17, 0.55);
-  //     border-radius: 50%;
-  //     transition: v.$main-transition;
-  //   }
-
-  //   &:hover,
-  //   &:focus-visible {
-  //     background-color: rgba(17, 17, 17, 0.4);
-  //     border-color: rgba(255, 255, 255, 0.5);
-  //     outline-offset: 0.5rem;
-  //     outline-color: orange;
-
-  //     &::before {
-  //       scale: 0.667;
-  //     }
-  //   }
-  // }
-
-  // &__collection-list-item-description {
-  //   @include flex(row);
-  //   background-color: c.$white;
-  //   color: c.$black;
-  // }
-
   &__heading {
     font-size: 1.5rem;
     margin-bottom: 2rem;
