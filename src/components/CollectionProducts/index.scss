@@ -1,0 +1,122 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.collection-list {
+  $_item-dot-size: 2rem;
+
+  position: absolute;
+  inset: 0;
+
+  & > * {
+    position: absolute;
+    cursor: pointer;
+    translate: calc(($_item-dot-size / 2) * -1) calc(($_item-dot-size / 2) * -1);
+
+    & a:hover {
+      text-decoration: none;
+    }
+    & a:where(:hover, :focus-visible) .collection-list__item-description-container {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  & small {
+    font-size: inherit;
+  }
+
+  &__item {
+    position: relative;
+    width: $_item-dot-size;
+    height: $_item-dot-size;
+    @include flex(row, center, center);
+    background-color: hsla(0, 0%, 7%, 0.2);
+    border: func.rem(2) solid transparent;
+    border-radius: 50%;
+    transition: v.$main-transition;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: c.$white;
+      box-shadow: 0 func.rem(1) func.rem(4) rgba(17, 17, 17, 0.55);
+      border-radius: 50%;
+      transition: v.$main-transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba(17, 17, 17, 0.4);
+      border-color: rgba(255, 255, 255, 0.5);
+      outline-offset: 0.5rem;
+      outline-color: orange;
+
+      &::before {
+        scale: 0.667;
+      }
+    }
+  }
+
+  &__item-description-container {
+    position: absolute;
+    @include flex(row, stretch, center);
+    width: func.rem(135);
+    background-color: c.$white;
+    color: c.$black;
+    translate: 0 0.5rem;
+    transition: v.$main-transition;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+
+    & svg {
+      flex-shrink: 0;
+      color: c.$text-gray;
+    }
+  }
+
+  &__item-description-inner-wrapper {
+    @include flex(column);
+    padding: 0.75rem;
+    border-right: func.rem(1) solid c.$gray;
+    font-size: v.$fs-sm;
+    line-height: 1.5;
+  }
+
+  &__item-new-price {
+    margin-bottom: 0.25rem;
+    font-style: normal;
+    font-weight: bold;
+    color: c.$red;
+  }
+
+  &__item-heading-container {
+    @include flex(column);
+    margin-bottom: 0.5rem;
+    font-size: inherit;
+  }
+
+  &__item-heading {
+    text-transform: uppercase;
+  }
+
+  &__item-subheading {
+    font-weight: normal;
+    color: c.$text-gray;
+  }
+
+  &__item-price {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    & small {
+      font-size: v.$fs-sm;
+    }
+  }
+}

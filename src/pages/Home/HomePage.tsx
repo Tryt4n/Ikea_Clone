@@ -18,6 +18,7 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
+import Collection from "../../components/CollectionProducts/Collection";
 
 export default function HomePage() {
   const { width } = useWindowSize();
@@ -26,6 +27,7 @@ export default function HomePage() {
     <div className="articles">
       <Article>
         <Article.Body>
+          <Article.Header className="visually-hidden">Witaj w nowym lepszym domu</Article.Header>
           <Article.ImgContainer>
             <Article.Img
               sizes="(max-width: 1600px) 100vw, 1600px"
@@ -39,6 +41,102 @@ export default function HomePage() {
               src="/images/collections/1/collection_rzilav_c_scale,w_1600.avif"
               alt="Urządzony salon"
             />
+
+            <Collection>
+              <Collection.ListItem
+                top="23.3%"
+                left="37.0677%"
+                linkToProduct="#"
+                descriptionContainerId="list-item-1"
+              >
+                <Collection.ListItemDescriptionContainer id="list-item-1">
+                  <Collection.ListItemNewPriceTag />
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>Eket</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Szafka ścienna</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={80} />
+                  <Collection.ListItemLastPriceDescription lastPrice={105} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="30.4%"
+                left="50.3%"
+                linkToProduct="#"
+                descriptionContainerId="list-item-2"
+              >
+                <Collection.ListItemDescriptionContainer id="list-item-2">
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>Konstfull</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Wazon</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice
+                    price={59}
+                    priceDecimal={99}
+                  />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="75.8%"
+                left="17.2%"
+                linkToProduct="#"
+                descriptionContainerId="list-item-3"
+              >
+                <Collection.ListItemDescriptionContainer id="list-item-3">
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>Kivik</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>
+                      1o sofa rozkładana
+                    </Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={1899} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="68.7%"
+                left="43.3%"
+                linkToProduct="#"
+                descriptionContainerId="list-item-4"
+              >
+                <Collection.ListItemDescriptionContainer id="list-item-4">
+                  <Collection.ListItemNewPriceTag />
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>BESTÅ</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>
+                      Kombinacja z drzwiami
+                    </Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice price={1080} />
+                  <Collection.ListItemLastPriceDescription lastPrice={1178} />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+
+              <Collection.ListItem
+                top="92.1%"
+                left="58.3%"
+                linkToProduct="#"
+                descriptionContainerId="list-item-5"
+              >
+                <Collection.ListItemDescriptionContainer id="list-item-5">
+                  <Collection.ListItemNewPriceTag />
+                  <Collection.ListItemHeadingContainer>
+                    <Collection.ListItemHeading>Gladom</Collection.ListItemHeading>
+                    <Collection.ListItemSubHeading>Stolik z tacą</Collection.ListItemSubHeading>
+                  </Collection.ListItemHeadingContainer>
+                  <Collection.ListItemPrice
+                    price={69}
+                    priceDecimal={99}
+                  />
+                  <Collection.ListItemLastPriceDescription
+                    lastPrice={89}
+                    lastPriceDecimal={99}
+                  />
+                </Collection.ListItemDescriptionContainer>
+              </Collection.ListItem>
+            </Collection>
           </Article.ImgContainer>
 
           <Article.TextContainer variant="accent">
@@ -119,7 +217,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/modular-furnitures.avif"
-                alt="Meble modułowe BESTÅ"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -135,7 +233,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/decorations.avif"
-                alt="Dekoracje"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -151,7 +249,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/sofas.avif"
-                alt="Sofy i narożniki"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -167,7 +265,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/lightning.avif"
-                alt="Oświetlenie"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -183,7 +281,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/textiles.avif"
-                alt="Tekstylia"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -199,7 +297,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/chairs.avif"
-                alt="Fotele i szezlongi"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -215,7 +313,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/carpets.avif"
-                alt="Dywany"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -231,7 +329,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/containers.avif"
-                alt="Drobne przechowywanie"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -247,7 +345,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_1/coffee-tables.avif"
-                alt="Stoliki kawowe"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -648,7 +746,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/wardrobes.webp"
-                alt="Planowanie szafy"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -664,7 +762,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/kitchen.avif"
-                alt="Kuchnia"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -680,7 +778,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/living-room.avif"
-                alt="Pokój dzienny"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -696,7 +794,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/bedroom.avif"
-                alt="Sypialnia"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -712,7 +810,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/home-office.webp"
-                alt="Domowe biuro"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -728,7 +826,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/childrens-room.avif"
-                alt="Pokój dziecięcy"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -744,7 +842,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/apartment-design.avif"
-                alt="Projektowanie mieszkania"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>
@@ -760,7 +858,7 @@ export default function HomePage() {
               </Article.Link>
               <Article.Img
                 src="images/scrollbars/scrollbar_2/business-space.avif"
-                alt="Przestrzeń biznesowa"
+                alt=""
               />
             </Article.Slide>
           </SwiperSlide>

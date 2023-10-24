@@ -1,5 +1,5 @@
 // React
-import { HTMLProps, ReactNode, createElement } from "react";
+import { CSSProperties, HTMLProps, ReactNode, createElement } from "react";
 // Components
 import Btn, { BtnPropsType } from "../Btn/Btn";
 // Style
@@ -38,6 +38,22 @@ type HeaderPropsType = {
 type LinkPropsType = {
   children?: ReactNode;
 } & HTMLProps<HTMLAnchorElement>;
+
+type CollectionListPropsType = {
+  children: ReactNode;
+} & HTMLProps<HTMLUListElement>;
+
+type CollectionListItemPropsType = {
+  children: ReactNode;
+  // top?: number;
+  // bottom?: number;
+  // left?: number;
+  // right?: number;
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+} & HTMLProps<HTMLLIElement>;
 
 export default function Article({ children }: { children: ReactNode }) {
   return <article>{children}</article>;
@@ -99,6 +115,37 @@ function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
   return <a {...props}>{children}</a>;
 }
 
+function Img(props: HTMLProps<HTMLImageElement>) {
+  return (
+    <img
+      {...props}
+      loading="lazy"
+    />
+  );
+}
+
+function CollectionList({ children }: CollectionListPropsType) {
+  return <ul className="article__collection-list">{children}</ul>;
+}
+
+function CollectionListItem({ children, top, bottom, left, right }: CollectionListItemPropsType) {
+  const style: CSSProperties = {
+    top: top ? top : "auto",
+    bottom: bottom ? bottom : "auto",
+    left: left ? left : "auto",
+    right: right ? right : "auto",
+  };
+
+  return (
+    <li
+      style={style}
+      className=""
+    >
+      {children}
+    </li>
+  );
+}
+
 function Slide({ children, variant, className }: SlidePropsType) {
   return (
     <div
@@ -108,15 +155,6 @@ function Slide({ children, variant, className }: SlidePropsType) {
     >
       {children}
     </div>
-  );
-}
-
-function Img(props: HTMLProps<HTMLImageElement>) {
-  return (
-    <img
-      {...props}
-      loading="lazy"
-    />
   );
 }
 
@@ -141,6 +179,8 @@ Article.Text = Text;
 Article.Btn = ContainerBtn;
 Article.Link = Link;
 Article.Img = Img;
+Article.CollectionList = CollectionList;
+Article.CollectionListItem = CollectionListItem;
 
 Article.Slide = Slide;
 Article.SlideBtn = SlideBtn;
