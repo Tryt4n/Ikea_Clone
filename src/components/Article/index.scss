@@ -68,6 +68,10 @@
         }
       }
     }
+
+    &:where(:hover, :focus-within) .article__instagram-badge .article__instagram-nickname {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__heading {
@@ -130,6 +134,30 @@
   @media screen and (width >= b.$article-desktop) {
     &.col-reverse {
       flex-direction: row-reverse;
+    }
+  }
+
+  &__instagram-badge {
+    position: absolute;
+    @include flex(row, flex-start, center);
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem;
+    background: c.$grayish;
+    border-radius: 50vw;
+    opacity: 0.7;
+    font-size: v.$fs-sm;
+    font-weight: bold;
+    line-height: 1.33333;
+  }
+
+  &__instagram-nickname {
+    display: grid;
+    grid-template-columns: 0fr;
+    transition: v.$main-transition;
+    & > * {
+      overflow: hidden;
+      text-indent: 0.5rem;
     }
   }
 

@@ -12,6 +12,7 @@ import "../index.scss";
 
 type CollectionListPropsType = {
   children: ReactNode;
+  showOnlyOnHover?: boolean;
 } & HTMLProps<HTMLUListElement>;
 
 type CollectionListItemPropsType = {
@@ -27,11 +28,6 @@ type ListItemDescriptionContainerPropsType = {
   children: ReactNode;
   id: string;
   linkToProduct: string;
-  placeCenter?: boolean;
-  placeLeft?: boolean;
-  placeRight?: boolean;
-  placeTop?: boolean;
-  placeBottom?: boolean;
   placeRightCenter?: boolean;
   placeLeftCenter?: boolean;
   placeTopCenter?: boolean;
@@ -45,6 +41,8 @@ type ListItemDescriptionContainerPropsType = {
 type ListItemPricePropsType = {
   price: number;
   priceDecimal?: number;
+  quantity?: number;
+  sizeInMeters?: number;
 };
 
 type ListItemTagPropsType = {
@@ -57,11 +55,11 @@ type ListItemLastPriceDescriptionPropsType = {
   lastPriceDecimal?: number;
 };
 
-export default function Collection({ children }: CollectionListPropsType) {
+export default function Collection({ children, showOnlyOnHover }: CollectionListPropsType) {
   return (
     <CollectionContextProvider>
       <ul
-        className="collection-list"
+        className={`collection-list${showOnlyOnHover ? ` show-only-on-hover` : ""}`}
         aria-label="Produkty ze zdjęcia"
       >
         {children}
@@ -169,7 +167,7 @@ function ListItemSubHeading({ children }: { children: string }) {
   return <span className="collection-list__item-subheading">{children}</span>;
 }
 
-function ListItemPrice({ price, priceDecimal }: ListItemPricePropsType) {
+function ListItemPrice({ price, priceDecimal, quantity, sizeInMeters }: ListItemPricePropsType) {
   const formattedPrice = addThousandSeparator(price);
 
   return (
@@ -183,6 +181,10 @@ function ListItemPrice({ price, priceDecimal }: ListItemPricePropsType) {
           </sup>
         ) : (
           <small>,-</small>
+        )}
+        {quantity && <small> /{quantity} szt.</small>}
+        {sizeInMeters && (
+          <small className="collection-list__item-size-in-meters"> /{sizeInMeters} m</small>
         )}
       </div>
     </strong>
@@ -208,7 +210,7 @@ function ListItemLastPriceDescription({
   const formattedLastPrice = addThousandSeparator(lastPrice);
 
   return (
-    <p>
+    <p className="collection-list__last-price-text-wrapper">
       Najniższa cena z 30 dni przed obniżką:
       <small>
         &nbsp;

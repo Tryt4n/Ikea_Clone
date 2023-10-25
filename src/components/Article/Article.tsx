@@ -1,7 +1,9 @@
 // React
-import { CSSProperties, HTMLProps, ReactNode, createElement } from "react";
+import { HTMLProps, ReactNode, createElement } from "react";
 // Components
 import Btn, { BtnPropsType } from "../Btn/Btn";
+// Icons
+import InstagramIcon from "../../Icons/InstagramIcon";
 // Style
 import "./index.scss";
 
@@ -10,24 +12,14 @@ type BodyPropsType = {
   className?: string;
 } & HTMLProps<HTMLDivElement>;
 
-type ImgContainerPropsType = BodyPropsType;
-
 type SectionPropsType = BodyPropsType;
 
-interface SlidePropsType extends BodyPropsType {
-  variant?: "normal" | "accent";
-}
+type ImgContainerPropsType = BodyPropsType;
 
 type TextContainerPropsType = {
   children: ReactNode;
   variant?: "accent";
 };
-
-type CardBtnPropsType = {
-  children: string;
-  className?: string;
-  variant?: "light" | "dark";
-} & HTMLProps<HTMLAnchorElement>;
 
 type HeaderPropsType = {
   children: string;
@@ -35,21 +27,24 @@ type HeaderPropsType = {
   className?: string;
 } & HTMLProps<HTMLHeadingElement>;
 
+type CardBtnPropsType = {
+  children: string;
+  className?: string;
+  variant?: "light" | "dark";
+} & HTMLProps<HTMLAnchorElement>;
+
 type LinkPropsType = {
   children?: ReactNode;
 } & HTMLProps<HTMLAnchorElement>;
 
-type CollectionListPropsType = {
-  children: ReactNode;
-} & HTMLProps<HTMLUListElement>;
+type ImgPropsType = {
+  aspectRatio?: "1/1" | "3/4" | "16/9";
+  aspectRatioMobile?: "1/1" | "3/4" | "16/9";
+} & HTMLProps<HTMLImageElement>;
 
-type CollectionListItemPropsType = {
-  children: ReactNode;
-  top?: string;
-  bottom?: string;
-  left?: string;
-  right?: string;
-} & HTMLProps<HTMLLIElement>;
+interface SlidePropsType extends BodyPropsType {
+  variant?: "normal" | "accent";
+}
 
 export default function Article({ children }: { children: ReactNode }) {
   return <article>{children}</article>;
@@ -115,11 +110,6 @@ function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
   return <a {...props}>{children}</a>;
 }
 
-type ImgPropsType = {
-  aspectRatio?: "1/1" | "3/4" | "16/9";
-  aspectRatioMobile?: "1/1" | "3/4" | "16/9";
-} & HTMLProps<HTMLImageElement>;
-
 function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType) {
   const formattedAspectRatio = aspectRatio.replace("/", "-");
   const formattedAspectRatioMobile = aspectRatioMobile ? aspectRatioMobile.replace("/", "-") : "";
@@ -136,25 +126,17 @@ function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType
   );
 }
 
-function CollectionList({ children }: CollectionListPropsType) {
-  return <ul className="article__collection-list">{children}</ul>;
-}
-
-function CollectionListItem({ children, top, bottom, left, right }: CollectionListItemPropsType) {
-  const style: CSSProperties = {
-    top: top ? top : "auto",
-    bottom: bottom ? bottom : "auto",
-    left: left ? left : "auto",
-    right: right ? right : "auto",
-  };
-
+function InstagramBadge({ children }: { children: string }) {
   return (
-    <li
-      style={style}
-      className=""
+    <div
+      className="article__instagram-badge"
+      aria-label="Użytkownik Instagram"
     >
-      {children}
-    </li>
+      <InstagramIcon />
+      <div className="article__instagram-nickname">
+        <span>{children}</span>
+      </div>
+    </div>
   );
 }
 
@@ -192,8 +174,7 @@ Article.Text = Text;
 Article.Btn = ContainerBtn;
 Article.Link = Link;
 Article.Img = Img;
-Article.CollectionList = CollectionList;
-Article.CollectionListItem = CollectionListItem;
+Article.InstagramBadge = InstagramBadge;
 
 Article.Slide = Slide;
 Article.SlideBtn = SlideBtn;

@@ -61,6 +61,14 @@
     }
   }
 
+  &.show-only-on-hover .collection-list__item {
+    opacity: 0;
+  }
+
+  &.show-only-on-hover:where(:hover, :focus-within) .collection-list__item {
+    opacity: 1;
+  }
+
   &__item-description-container {
     --translateX: 0;
     --translateY: 0;
@@ -171,6 +179,11 @@
     & small {
       font-size: v.$fs-sm;
     }
+  }
+
+  &__last-price-text-wrapper small,
+  & &__item-size-in-meters {
+    text-wrap: nowrap;
   }
 }
 
