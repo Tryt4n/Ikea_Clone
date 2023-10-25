@@ -45,10 +45,6 @@ type CollectionListPropsType = {
 
 type CollectionListItemPropsType = {
   children: ReactNode;
-  // top?: number;
-  // bottom?: number;
-  // left?: number;
-  // right?: number;
   top?: string;
   bottom?: string;
   left?: string;
@@ -96,6 +92,10 @@ function Header({ children, className, headingLevel, ...props }: HeaderPropsType
   );
 }
 
+function SubHeader({ children }: { children: string }) {
+  return <p className="article__subheading">{children}</p>;
+}
+
 function Text({ children }: { children: ReactNode } & HTMLProps<HTMLParagraphElement>) {
   return <p className="article__text">{children}</p>;
 }
@@ -115,11 +115,23 @@ function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
   return <a {...props}>{children}</a>;
 }
 
-function Img(props: HTMLProps<HTMLImageElement>) {
+type ImgPropsType = {
+  aspectRatio?: "1/1" | "3/4" | "16/9";
+  aspectRatioMobile?: "1/1" | "3/4" | "16/9";
+} & HTMLProps<HTMLImageElement>;
+
+function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType) {
+  const formattedAspectRatio = aspectRatio.replace("/", "-");
+  const formattedAspectRatioMobile = aspectRatioMobile ? aspectRatioMobile.replace("/", "-") : "";
+  const imgClassNames = `aspect-ratio-${formattedAspectRatio}${
+    formattedAspectRatioMobile ? ` mobile-aspect-ratio-${formattedAspectRatioMobile}` : ""
+  }`;
+
   return (
     <img
       {...props}
       loading="lazy"
+      className={imgClassNames}
     />
   );
 }
@@ -170,6 +182,7 @@ function SlideBtn(props: BtnPropsType) {
 }
 
 Article.Header = Header;
+Article.SubHeader = SubHeader;
 Article.Body = Body;
 Article.Section = Section;
 

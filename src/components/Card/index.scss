@@ -12,6 +12,7 @@
     color: c.$black;
     text-wrap: balance;
     height: calc(100% - 2.5rem);
+    background-color: c.$gray;
 
     &--blue {
       background-color: c.$blue;
@@ -51,6 +52,10 @@
       aspect-ratio: 1;
       object-fit: cover;
       transition: v.$main-transition;
+
+      &.aspect-ratio-3-4 {
+        aspect-ratio: 3/4;
+      }
     }
 
     &__text-wrapper {

@@ -46,8 +46,26 @@
       object-fit: cover;
       width: 100%;
       height: 100%;
-      @media screen and (width < b.$mobile-md) {
+      &.aspect-ratio-16-9 {
+        aspect-ratio: 16/9;
+      }
+      &.aspect-ratio-3-4 {
         aspect-ratio: 3/4;
+      }
+      &.aspect-ratio-1-1 {
+        aspect-ratio: 1/1;
+      }
+
+      @media screen and (width < b.$mobile-md) {
+        &.mobile-aspect-ratio-16-9 {
+          aspect-ratio: 16/9;
+        }
+        &.mobile-aspect-ratio-3-4 {
+          aspect-ratio: 3/4;
+        }
+        &.mobile-aspect-ratio-1-1 {
+          aspect-ratio: 1/1;
+        }
       }
     }
   }
@@ -55,6 +73,15 @@
   &__heading {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    @media screen and (width < b.$mobile-md) {
+      font-size: func.rem(18);
+    }
+  }
+
+  &__subheading {
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    padding-block: 0.5rem;
   }
 
   &__text-container {
@@ -167,6 +194,9 @@
       width: 100%;
       &:has(.article__heading) {
         @include flex(column, space-between, flex-start);
+      }
+      h3 {
+        margin-bottom: auto;
       }
     }
 

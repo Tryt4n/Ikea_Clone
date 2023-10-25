@@ -18,7 +18,9 @@ type CardPropsType<T> = {
   ? HTMLProps<HTMLAnchorElement>
   : never);
 
-type ImgPropsType = HTMLProps<HTMLImageElement>;
+type ImgPropsType = {
+  aspectRatio?: "1/1" | "3/4";
+} & HTMLProps<HTMLImageElement>;
 
 type TextContainerPropsType = {
   children: ReactNode;
@@ -34,7 +36,7 @@ type CardBtnPropsType = Omit<BtnPropsType, "children" | "shape">;
 export default function Card<T extends "div" | "a">({
   children,
   as = "div",
-  variant = "blue",
+  variant,
   className,
   ...props
 }: CardPropsType<T>) {
@@ -50,10 +52,11 @@ export default function Card<T extends "div" | "a">({
   );
 }
 
-function CardImg(props: ImgPropsType) {
+function CardImg({ aspectRatio = "1/1", ...props }: ImgPropsType) {
   return (
     <img
       {...props}
+      className={aspectRatio === "3/4" ? "aspect-ratio-3-4" : undefined}
       loading="lazy"
     />
   );

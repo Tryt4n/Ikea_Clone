@@ -10,6 +10,8 @@ import useWindowSize from "../../hooks/useWindowSize";
 import Article from "../../components/Article/Article";
 import CardsContainer from "../../components/Card/CardsContainer";
 import Card from "../../components/Card/Card";
+import CollectionNameContainer from "../../components/CollectionProducts/components/CollectionNameContainer";
+import Collection from "../../components/CollectionProducts/components/Collection";
 // Icons
 import SaleIcon from "../../Icons/SaleIcon";
 import Shop2Icon from "../../Icons/Shop2Icon";
@@ -18,8 +20,6 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
-import Collection from "../../components/CollectionProducts/components/Collection";
-import CollectionNameContainer from "../../components/CollectionProducts/components/CollectionNameContainer";
 
 export default function HomePage() {
   const { width } = useWindowSize();
@@ -41,6 +41,7 @@ export default function HomePage() {
                 /images/collections/1/collection_rzilav_c_scale,w_1600.avif 1600w"
               src="/images/collections/1/collection_rzilav_c_scale,w_1600.avif"
               alt="Urządzony salon"
+              aspectRatioMobile="3/4"
             />
 
             <Collection>
@@ -410,6 +411,7 @@ export default function HomePage() {
               <Card
                 as="link"
                 href="#"
+                variant="blue"
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/1.avif"
@@ -435,6 +437,7 @@ export default function HomePage() {
               <Card
                 as="link"
                 href="#"
+                variant="blue"
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/2.avif"
@@ -460,6 +463,7 @@ export default function HomePage() {
               <Card
                 as="link"
                 href="#"
+                variant="blue"
               >
                 <Card.Img
                   src="/images/scrollbars/IKEA_Family_club/3.avif"
@@ -482,9 +486,204 @@ export default function HomePage() {
         </CardsContainer>
       </Article>
 
-      <article>
-        <h2 className="article__heading">Wasze wnętrza</h2>
-      </article>
+      <Article>
+        <Article.Header>Wasze wnętrza</Article.Header>
+        <Article.SubHeader>
+          Przeglądaj aranżacje wnętrz klientów na podstawie ostatnio przeglądanych produktów.
+        </Article.SubHeader>
+
+        <Swiper
+          slidesPerView={1}
+          slidesPerGroup={1}
+          spaceBetween={20}
+          freeMode={true}
+          mousewheel={true}
+          navigation={true}
+          scrollbar={{ hide: true }}
+          keyboard={{
+            enabled: true,
+          }}
+          modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
+          breakpoints={{
+            600: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            1100: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+            1500: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+            },
+          }}
+          className="mySwiper3"
+        >
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                // style={{ aspectRatio: 3 / 4 }}
+                aspectRatio="3/4"
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Article.ImgContainer>
+              <Article.Img
+                sizes="(max-width: 2667px) 60vw, 1600px"
+                srcSet="
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
+                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
+                src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
+                alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+                style={{ aspectRatio: 3 / 4 }}
+              />
+            </Article.ImgContainer>
+          </SwiperSlide>
+        </Swiper>
+      </Article>
 
       <Article>
         <Article.Header>Aktualnie w IKEA</Article.Header>
@@ -519,7 +718,7 @@ export default function HomePage() {
                 spaceBetween: 20,
               },
             }}
-            className="mySwiper3"
+            className="mySwiper4"
           >
             <SwiperSlide>
               <Card
@@ -695,6 +894,7 @@ export default function HomePage() {
                 /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
               src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
               alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
+              aspectRatioMobile="3/4"
             />
 
             <Collection>
@@ -868,7 +1068,7 @@ export default function HomePage() {
               slidesPerGroup: 6,
             },
           }}
-          className="mySwiper4"
+          className="mySwiper5"
         >
           <SwiperSlide>
             <Article.Slide>
