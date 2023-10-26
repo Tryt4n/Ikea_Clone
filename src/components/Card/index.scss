@@ -65,9 +65,15 @@
 
     &:hover {
       text-decoration: none;
-      &:is(a) h3 {
-        text-decoration: underline;
-        text-underline-offset: 0.3em;
+      &:is(a) {
+        & h2,
+        & h3,
+        & h4,
+        & h5,
+        & h6 {
+          text-decoration: underline;
+          text-underline-offset: 0.3em;
+        }
       }
       & img {
         filter: grayscale(0.5);
@@ -90,7 +96,11 @@
       @include flex(column, space-between, flex-start);
       padding: 2rem;
 
-      h3 {
+      & h2,
+      & h3,
+      & h4,
+      & h5,
+      & h6 {
         margin-bottom: 0.25rem;
         font-size: func.rem(25);
         line-height: 2.5rem;
@@ -100,7 +110,7 @@
         }
       }
 
-      p {
+      & p {
         font-size: 1rem;
         line-height: 1.625;
         color: inherit;

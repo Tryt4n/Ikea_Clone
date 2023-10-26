@@ -140,6 +140,9 @@
 
   &__section {
     background-color: c.$grayish;
+    &[aria-controls] {
+      cursor: pointer;
+    }
   }
 
   &__slide {

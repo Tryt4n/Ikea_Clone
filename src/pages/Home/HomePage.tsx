@@ -4,8 +4,9 @@ import { Scrollbar, Navigation, Keyboard, FreeMode, Mousewheel, A11y } from "swi
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-// Hooks
+// Custom Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+import useModal from "../../hooks/useModal";
 // Components
 import Article from "../../components/Article/Article";
 import CardsContainer from "../../components/Card/CardsContainer";
@@ -23,6 +24,27 @@ import "./index.scss";
 
 export default function HomePage() {
   const { width } = useWindowSize();
+
+  const { modalId, setIsModalOpen } = useModal();
+
+  function checkIfIsListItem(element: HTMLElement) {
+    if (element.tagName === "LI") {
+      return true;
+    } else {
+      if (element.parentNode as HTMLElement) {
+        return checkIfIsListItem(element.parentNode as HTMLElement);
+      }
+    }
+    return false;
+  }
+
+  function openImageModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    const isListItem = checkIfIsListItem(e.target as HTMLElement);
+
+    if (isListItem) return;
+
+    setIsModalOpen(true);
+  }
 
   return (
     <div className="articles">
@@ -419,7 +441,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>
+                    <Card.Heading headingLevel={3}>
                       Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie
                       za min. 20 zł
                     </Card.Heading>
@@ -445,7 +467,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>
+                    <Card.Heading headingLevel={3}>
                       Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy
                       zakupie za min. 20 zł
                     </Card.Heading>
@@ -471,7 +493,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>Klubowicze IKEA Family mogą więcej</Card.Heading>
+                    <Card.Heading headingLevel={3}>Klubowicze IKEA Family mogą więcej</Card.Heading>
                     <Card.Text>
                       Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym
                       ofertom i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu
@@ -485,6 +507,7 @@ export default function HomePage() {
           </Swiper>
         </CardsContainer>
       </Article>
+
       <Article>
         <Article.Header>Wasze wnętrza</Article.Header>
         <Article.SubHeader>
@@ -520,7 +543,10 @@ export default function HomePage() {
           className="mySwiper3"
         >
           <SwiperSlide>
-            <Article.Section>
+            <Article.Section
+              aria-controls={modalId}
+              onClick={(e) => openImageModal(e)}
+            >
               <Article.ImgContainer>
                 <Article.Img
                   src="/images/scrollbars/instagram_photos/1/UGC100009357.avif"
@@ -1484,7 +1510,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>Sezon na domowanie z IKEA</Card.Heading>
+                    <Card.Heading headingLevel={3}>Sezon na domowanie z IKEA</Card.Heading>
                     <Card.Text>
                       Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie
                       od tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy
@@ -1509,7 +1535,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>
+                    <Card.Heading headingLevel={3}>
                       Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!
                     </Card.Heading>
                     <Card.Text>
@@ -1535,7 +1561,9 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>Kolekcja AFTONSPARV dotarła na Ziemię!</Card.Heading>
+                    <Card.Heading headingLevel={3}>
+                      Kolekcja AFTONSPARV dotarła na Ziemię!
+                    </Card.Heading>
                     <Card.Text>
                       Dołącz do programu kosmicznego IKEA na największym placu zabaw we
                       wszechświecie – w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i
@@ -1560,7 +1588,9 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>Zaprojektowane przez IKEA – wykonane w Polsce</Card.Heading>
+                    <Card.Heading headingLevel={3}>
+                      Zaprojektowane przez IKEA – wykonane w Polsce
+                    </Card.Heading>
                     <Card.Text>
                       Czy wiesz, że co piąty mebel IKEA powstaje w Polsce? Celebrujemy ponad 60 lat
                       obecności IKEA w Polsce – dowiedz się więcej o współpracy, której efektem są
@@ -1585,7 +1615,7 @@ export default function HomePage() {
                 />
                 <Card.TextContainer>
                   <div>
-                    <Card.Heading>IKEA to więcej niż sklep</Card.Heading>
+                    <Card.Heading headingLevel={3}>IKEA to więcej niż sklep</Card.Heading>
                     <Card.Text>
                       Co sprawia, że miliony ludzi na całym świecie uwielbiają wizyty w IKEA?
                       Zobacz, co czeka na ciebie w naszych sklepach i zaplanuj odwiedziny!
