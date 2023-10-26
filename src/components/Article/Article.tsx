@@ -23,7 +23,7 @@ type TextContainerPropsType = {
 
 type HeaderPropsType = {
   children: string;
-  headingLevel?: number;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 } & HTMLProps<HTMLHeadingElement>;
 
@@ -54,15 +54,25 @@ function Body({ children, className }: BodyPropsType) {
   return <div className={`article${className ? ` ${className}` : ""}`}>{children}</div>;
 }
 
-function Section({ children, className }: SectionPropsType) {
+function Section({ children, className, ...props }: SectionPropsType) {
   return (
-    <section className={`article__section${className ? ` ${className}` : ""}`}>{children}</section>
+    <section
+      className={`article__section${className ? ` ${className}` : ""}`}
+      {...props}
+    >
+      {children}
+    </section>
   );
 }
 
-function ImgContainer({ children, className }: ImgContainerPropsType) {
+function ImgContainer({ children, className, ...props }: ImgContainerPropsType) {
   return (
-    <div className={`article__img-container${className ? ` ${className}` : ""}`}>{children}</div>
+    <div
+      className={`article__img-container${className ? ` ${className}` : ""}`}
+      {...props}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -91,7 +101,7 @@ function SubHeader({ children }: { children: string }) {
   return <p className="article__subheading">{children}</p>;
 }
 
-function Text({ children }: { children: ReactNode } & HTMLProps<HTMLParagraphElement>) {
+function Text({ children }: { children: ReactNode }) {
   return <p className="article__text">{children}</p>;
 }
 
@@ -140,12 +150,13 @@ function InstagramBadge({ children }: { children: string }) {
   );
 }
 
-function Slide({ children, variant, className }: SlidePropsType) {
+function Slide({ children, variant, className, ...props }: SlidePropsType) {
   return (
     <div
       className={`article__slide${variant ? ` article__slide--${variant}` : ""}${
         className ? ` ${className}` : ""
       }`}
+      {...props}
     >
       {children}
     </div>

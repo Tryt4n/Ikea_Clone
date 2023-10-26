@@ -10,12 +10,14 @@ import "./index.scss";
 type CardPropsType<T> = {
   children: React.ReactNode;
   className?: string;
-  as?: "div" | "link";
-  variant?: "blue" | "brown" | "light-brown" | "violet" | "yellow" | "light-yellow";
+  as?: "div" | "link" | "section";
+  variant?: "blue" | "brown" | "light-brown" | "violet" | "yellow" | "light-yellow" | "light-gray";
 } & (T extends "div"
   ? HTMLProps<HTMLDivElement>
   : T extends "a"
   ? HTMLProps<HTMLAnchorElement>
+  : T extends "section"
+  ? HTMLProps<HTMLElement>
   : never);
 
 type ImgPropsType = {
@@ -27,7 +29,9 @@ type TextContainerPropsType = {
   className?: string;
 } & HTMLProps<HTMLDivElement>;
 
-type HeadingPropsType = HTMLProps<HTMLHeadingElement>;
+type HeadingPropsType = {
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+} & HTMLProps<HTMLHeadingElement>;
 
 type TextPropsType = HTMLProps<HTMLParagraphElement>;
 
@@ -40,7 +44,7 @@ export default function Card<T extends "div" | "a">({
   className,
   ...props
 }: CardPropsType<T>) {
-  const Element = as === "div" ? "div" : "a";
+  const Element = as === "div" ? "div" : as === "link" ? "a" : "section";
 
   return (
     <Element
@@ -66,8 +70,10 @@ function TextContainer({ children, className }: TextContainerPropsType) {
   return <div className={`card__text-wrapper${className ? ` ${className}` : ""}`}>{children}</div>;
 }
 
-function Heading({ children }: HeadingPropsType) {
-  return <h3>{children}</h3>;
+function Heading({ children, headingLevel, ...props }: HeadingPropsType) {
+  const Element = headingLevel ? `h${headingLevel}` : "h2";
+
+  return <Element {...props}>{children}</Element>;
 }
 
 function Text({ children }: TextPropsType) {

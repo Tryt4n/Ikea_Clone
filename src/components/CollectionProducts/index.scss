@@ -61,12 +61,13 @@
     }
   }
 
-  &.show-only-on-hover .collection-list__item {
-    opacity: 0;
-  }
-
-  &.show-only-on-hover:where(:hover, :focus-within) .collection-list__item {
-    opacity: 1;
+  @media (hover: hover) {
+    &.show-only-on-hover .collection-list__item {
+      opacity: 0;
+    }
+    &.show-only-on-hover:where(:hover, :focus-within) .collection-list__item {
+      opacity: 1;
+    }
   }
 
   &__item-description-container {

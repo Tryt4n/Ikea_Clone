@@ -7,6 +7,30 @@
 .cards-container {
   @include flex(row);
 
+  &:has(> section) {
+    display: grid;
+
+    @media screen and (width >= b.$tablet) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (b.$mobile-md <= width <= b.$tablet) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      & > :first-child,
+      & > :nth-child(2) {
+        margin-bottom: func.rem(1);
+      }
+    }
+
+    @media screen and (width < b.$mobile-md) {
+      grid-template-rows: repeat(4, 1fr);
+      & > :not(:last-child) {
+        margin-bottom: func.rem(1);
+      }
+    }
+  }
+
   .card {
     @include flex(column);
     color: c.$black;
@@ -14,6 +38,9 @@
     height: calc(100% - 2.5rem);
     background-color: c.$gray;
 
+    &--light-gray {
+      background-color: c.$grayish;
+    }
     &--blue {
       background-color: c.$blue;
       color: c.$white;
@@ -38,7 +65,7 @@
 
     &:hover {
       text-decoration: none;
-      & h3 {
+      &:is(a) h3 {
         text-decoration: underline;
         text-underline-offset: 0.3em;
       }
@@ -91,6 +118,47 @@
 
       @media screen and (width < b.$mobile-md) {
         margin-top: 2rem;
+      }
+    }
+
+    &:is(section) {
+      height: auto;
+      margin-right: func.rem(1);
+      color: c.$text-gray;
+
+      & .card__text-wrapper {
+        justify-content: flex-start;
+        font-size: func.rem(14);
+
+        & > *:not(:last-child) {
+          margin-bottom: 0.25rem;
+        }
+
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5,
+        & h6 {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: c.$black;
+        }
+
+        & p {
+          font-size: inherit;
+          line-height: func.rem(22);
+          text-wrap: balance;
+        }
+
+        & a {
+          text-decoration: underline;
+          transition: v.$main-transition;
+
+          &:hover {
+            color: c.$black;
+          }
+        }
       }
     }
   }
