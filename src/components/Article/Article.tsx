@@ -8,6 +8,7 @@ import InstagramIcon from "../../Icons/InstagramIcon";
 import {
   ArticleBtnVariantsType,
   AspectRatioType,
+  SlideVariantsType,
   TextContainerVariantsType,
 } from "../../types/articleTypes";
 // Style
@@ -28,7 +29,7 @@ type TextContainerPropsType = {
 };
 
 type HeaderPropsType = {
-  children: string;
+  children: ReactNode;
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 } & HTMLProps<HTMLHeadingElement>;
@@ -49,7 +50,7 @@ type ImgPropsType = {
 } & HTMLProps<HTMLImageElement>;
 
 interface SlidePropsType extends BodyPropsType {
-  variant?: "normal" | "accent";
+  variant?: SlideVariantsType;
 }
 
 export default function Article({ children }: { children: ReactNode }) {

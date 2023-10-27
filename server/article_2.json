@@ -1,0 +1,157 @@
+{
+  "id": "UBMH6TV9TW",
+  "header": "Przygotuj sie na jesienne domowanie z IKEA",
+  "swiperConfig": {
+    "numberOfInitialSlides": 2,
+    "spaceBetweenSlides": 20,
+    "breakpoints": {
+      "800": {
+        "slidesPerView": 3,
+        "slidesPerGroup": 3
+      },
+      "1080": {
+        "slidesPerView": 4,
+        "slidesPerGroup": 4
+      },
+      "1360": {
+        "slidesPerView": 5,
+        "slidesPerGroup": 5
+      },
+      "1680": {
+        "slidesPerView": 6,
+        "slidesPerGroup": 6
+      }
+    }
+  },
+  "slides": [
+    {
+      "id": "5DR0SI1GGZ",
+      "variant": "accent",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "heading": "Produkty z nową niższą ceną",
+      "btn": {
+        "variant": "light",
+        "shape": "circle",
+        "icon": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"m20.0008 12.0001-8-8.001-1.4143 1.414L16.1727 11H4v2h12.1723l-5.5868 5.5866 1.4141 1.4142 8.0012-8.0007z\"></path></svg>"
+      }
+    },
+    {
+      "id": "6NYTI57L58",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Meble modułowe BESTÅ"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/modular-furnitures.avif",
+        "imgAlt": "Modułowa szafa BESTÅ"
+      }
+    },
+    {
+      "id": "MYOR9RZV86",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Dekoracje"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/decorations.avif",
+        "imgAlt": "Kwiaty w wazonach na różowych stojakach"
+      }
+    },
+    {
+      "id": "L1IC9HT3IA",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Sofy i narożniki"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/sofas.avif",
+        "imgAlt": "Sofa"
+      }
+    },
+    {
+      "id": "63V93W6D11",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Oświetlenie"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/lightning.avif",
+        "imgAlt": "Lampa ÖKENSAND"
+      }
+    },
+    {
+      "id": "SJ2HQ0NZPS",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Tekstylia"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/textiles.avif",
+        "imgAlt": "Poduszki ułożone w wieżę jedna na drugiej"
+      }
+    },
+    {
+      "id": "A20W86M1IM",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Fotele i szezlongi"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/chairs.avif",
+        "imgAlt": ""
+      }
+    },
+    {
+      "id": "KSU4JKQXUE",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Dywany"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/carpets.avif",
+        "imgAlt": "Dywan zarzucony na stojak na greenscreenie"
+      }
+    },
+    {
+      "id": "P2GTPI4AA9",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Drobne przechowywanie"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/containers.avif",
+        "imgAlt": "Materiałowe pojemniki z uszami w kształcie walca"
+      }
+    },
+    {
+      "id": "D2Y3OXW7AC",
+      "link": "#",
+      "linkStyles": "flex-container",
+      "btn": {
+        "variant": "light",
+        "text": "Stoliki kawowe"
+      },
+      "img": {
+        "imgSrc": "images/scrollbars/scrollbar_1/coffee-tables.avif",
+        "imgAlt": "Małe stoliki kawowe w kształcie okręgu w kolorach: biały/czarny/szary"
+      }
+    }
+  ]
+}

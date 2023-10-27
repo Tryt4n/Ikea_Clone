@@ -1,11 +1,15 @@
-import { ButtonHTMLAttributes, ReactElement } from "react";
+// React
+import { ButtonHTMLAttributes, ReactNode } from "react";
+// Types
+import { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
+// Style
 import "./index.scss";
 
 export type BtnPropsType = {
-  children: string | ReactElement;
+  children: string | ReactNode;
   className?: string;
-  variant?: "light" | "dark";
-  shape?: "oval" | "circle";
+  variant?: BtnVariantsType;
+  shape?: BtnShapesType;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Btn({

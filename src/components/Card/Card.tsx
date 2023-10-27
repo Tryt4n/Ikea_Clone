@@ -2,6 +2,8 @@
 import { HTMLProps, ReactNode } from "react";
 // Components
 import Btn, { BtnPropsType } from "../Btn/Btn";
+// Types
+import { CardHTMLElementsType, CardVariantsType } from "../../types/cardTypes";
 // Icons
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
@@ -10,8 +12,8 @@ import "./index.scss";
 type CardPropsType<T> = {
   children: React.ReactNode;
   className?: string;
-  as?: "div" | "link" | "section";
-  variant?: "blue" | "brown" | "light-brown" | "violet" | "yellow" | "light-yellow" | "light-gray";
+  as?: CardHTMLElementsType;
+  variant?: CardVariantsType;
 } & (T extends "div"
   ? HTMLProps<HTMLDivElement>
   : T extends "a"

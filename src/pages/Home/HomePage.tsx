@@ -12,22 +12,25 @@ import Article from "../../components/Article/Article";
 import CardsContainer from "../../components/Card/CardsContainer";
 import Card from "../../components/Card/Card";
 import Collection from "../../components/CollectionProducts/components/Collection";
-// Icons
-import SaleIcon from "../../Icons/SaleIcon";
-import Shop2Icon from "../../Icons/Shop2Icon";
-import ShoppingCart2Icon from "../../Icons/ShoppingCart2Icon";
-import TruckIcon from "../../Icons/TruckIcon";
-import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
 
 //!
 // Articles
 import article_1 from "../../../server/article_1.json";
+import article_2 from "../../../server/article_2.json";
 import article_6 from "../../../server/article_6.json";
 import article_7 from "../../../server/article_7.json";
+import article_8 from "../../../server/article_8.json";
+import article_9 from "../../../server/article_9.json";
+import article_10 from "../../../server/article_10.json";
 
-import Article_1, { ArticleType } from "../../layout/Articles/Article_1";
+// Article Components
+import MainArticle, { MainArticleType } from "../../layout/Articles/MainArticle";
+import CardsArticle, { CardsArticleType } from "../../layout/Articles/CardsArticle";
+import CarouselSliderArticle, {
+  CarouselSliderArticleType,
+} from "../../layout/Articles/CarouselSliderArticle";
 //!
 
 export default function HomePage() {
@@ -56,204 +59,9 @@ export default function HomePage() {
 
   return (
     <div className="articles">
-      <Article_1 article={article_1 as ArticleType} />
+      <MainArticle article={article_1 as MainArticleType} />
 
-      <Article>
-        <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
-        <Swiper
-          slidesPerView={2}
-          slidesPerGroup={2}
-          spaceBetween={20}
-          freeMode={true}
-          mousewheel={true}
-          navigation={true}
-          scrollbar={{ hide: true }}
-          keyboard={{
-            enabled: true,
-          }}
-          modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
-          breakpoints={{
-            800: {
-              slidesPerView: 3,
-              slidesPerGroup: 3,
-            },
-            1080: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
-            },
-            1360: {
-              slidesPerView: 5,
-              slidesPerGroup: 5,
-            },
-            1680: {
-              slidesPerView: 6,
-              slidesPerGroup: 6,
-            },
-          }}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <Article.Slide variant="accent">
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <Article.Header headingLevel={3}>Produkt z nową niższą ceną</Article.Header>
-                <Article.SlideBtn
-                  variant="light"
-                  shape="circle"
-                >
-                  <ArrowRightIcon />
-                </Article.SlideBtn>
-              </Article.Link>
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Meble modułowe BESTÅ</span>
-                <Article.SlideBtn variant="light">Meble modułowe BESTÅ</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/modular-furnitures.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Dekoracje</span>
-                <Article.SlideBtn variant="light">Dekoracje</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/decorations.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Sofy i narożniki</span>
-                <Article.SlideBtn variant="light">Sofy i narożniki</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/sofas.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Oświetlenie</span>
-                <Article.SlideBtn variant="light">Oświetlenie</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/lightning.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Tekstylia</span>
-                <Article.SlideBtn variant="light">Tekstylia</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/textiles.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Fotele i szezlongi</span>
-                <Article.SlideBtn variant="light">Fotele i szezlongi</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/chairs.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Dywany</span>
-                <Article.SlideBtn variant="light">Dywany</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/carpets.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Drobne przechowywanie</span>
-                <Article.SlideBtn variant="light">Drobne przechowywanie</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/containers.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Stoliki kawowe</span>
-                <Article.SlideBtn variant="light">Stoliki kawowe</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_1/coffee-tables.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-        </Swiper>
-      </Article>
+      <CarouselSliderArticle article={article_2 as CarouselSliderArticleType} />
 
       <Article>
         <Article.Header>
@@ -1493,273 +1301,15 @@ export default function HomePage() {
         </CardsContainer>
       </Article>
 
-      <Article_1 article={article_6 as ArticleType} />
+      <MainArticle article={article_6 as MainArticleType} />
 
-      <Article_1 article={article_7 as ArticleType} />
+      <MainArticle article={article_7 as MainArticleType} />
 
-      <Article>
-        <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>
-        <Swiper
-          slidesPerView={2}
-          slidesPerGroup={2}
-          spaceBetween={20}
-          freeMode={true}
-          mousewheel={true}
-          navigation={true}
-          scrollbar={{ hide: true }}
-          keyboard={{
-            enabled: true,
-          }}
-          modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
-          breakpoints={{
-            800: {
-              slidesPerView: 3,
-              slidesPerGroup: 3,
-            },
-            1080: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
-            },
-            1360: {
-              slidesPerView: 5,
-              slidesPerGroup: 5,
-            },
-            1680: {
-              slidesPerView: 6,
-              slidesPerGroup: 6,
-            },
-          }}
-          className="mySwiper5"
-        >
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <Article.Header headingLevel={3}>Ty wybierasz, my projektujemy</Article.Header>
-                <Article.SlideBtn
-                  shape="circle"
-                  variant="dark"
-                >
-                  <ArrowRightIcon />
-                </Article.SlideBtn>
-              </Article.Link>
-            </Article.Slide>
-          </SwiperSlide>
+      <CarouselSliderArticle article={article_8 as CarouselSliderArticleType} />
 
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Planowanie szafy</span>
-                <Article.SlideBtn variant="light">Planowanie szafy</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/wardrobes.webp"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
+      <CardsArticle article={article_9 as CardsArticleType} />
 
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Kuchnia</span>
-                <Article.SlideBtn variant="light">Kuchnia</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/kitchen.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Pokój dzienny</span>
-                <Article.SlideBtn variant="light">Pokój dzienny</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/living-room.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Sypialnia</span>
-                <Article.SlideBtn variant="light">Sypialnia</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/bedroom.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Domowe biuro</span>
-                <Article.SlideBtn variant="light">Domowe biuro</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/home-office.webp"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Pokój dziecięcy</span>
-                <Article.SlideBtn variant="light">Pokój dziecięcy</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/childrens-room.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Projektowanie mieszkania</span>
-                <Article.SlideBtn variant="light">Projektowanie mieszkania</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/apartment-design.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Article.Slide>
-              <Article.Link
-                href="#"
-                className="flex-container"
-              >
-                <span className="visually-hidden">Przestrzeń biznesowa</span>
-                <Article.SlideBtn variant="light">Przestrzeń biznesowa</Article.SlideBtn>
-              </Article.Link>
-              <Article.Img
-                src="images/scrollbars/scrollbar_2/business-space.avif"
-                alt=""
-              />
-            </Article.Slide>
-          </SwiperSlide>
-        </Swiper>
-      </Article>
-
-      <Article>
-        <Article.Header>Zakupowe korzyści w IKEA</Article.Header>
-
-        <CardsContainer>
-          <Card
-            variant="light-gray"
-            as="section"
-          >
-            <Card.TextContainer>
-              <ShoppingCart2Icon />
-              <Card.Heading headingLevel={3}>3 lub 6 rat 0% na stałe w IKEA</Card.Heading>
-              <Card.Text>Nie musisz płacić od razu – zapłać w wygodnych ratach.</Card.Text>
-              <Article.Link href="#" />
-            </Card.TextContainer>
-          </Card>
-
-          <Card
-            variant="light-gray"
-            as="section"
-          >
-            <Card.TextContainer>
-              <TruckIcon />
-              <Card.Heading headingLevel={3}>Dostawa już od 1,-</Card.Heading>
-              <Card.Text>
-                Zamów z dostawą za 1,- do Paczkomatu InPost (przy zakupach za min. 69,-) lub za 5,-
-                do Punktu Odbioru GLS lub kurierem na wybrany adres (przy zakupach za min. 119,-).
-              </Card.Text>
-              <Article.Link href="#" />
-            </Card.TextContainer>
-          </Card>
-
-          <Card
-            variant="light-gray"
-            as="section"
-          >
-            <Card.TextContainer>
-              <Shop2Icon />
-              <Card.Heading headingLevel={3}>Zamów i odbierz</Card.Heading>
-              <Card.Text>Zrób zakupy przez Internet i odbierz je w Punkcie Odbioru.</Card.Text>
-              <Article.Link href="#" />
-            </Card.TextContainer>
-          </Card>
-
-          <Card
-            variant="light-gray"
-            as="section"
-          >
-            <Card.TextContainer>
-              <SaleIcon />
-              <Card.Heading headingLevel={3}>Okazje na Okrągło</Card.Heading>
-              <Card.Text>Podaruj meblom nowe życie w nowym domu.</Card.Text>
-              <Article.Link href="#" />
-            </Card.TextContainer>
-          </Card>
-        </CardsContainer>
-      </Article>
-
-      <Article>
-        <Article.Body className="col-reverse">
-          <Article.ImgContainer>
-            <Article.Img
-              sizes="(max-width: 2667px) 60vw, 1600px"
-              srcSet="
-                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
-                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1285.avif 1285w,
-                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1520.avif 1520w,
-                /images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
-              src="/images/for_business/office_amsyms_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
-              alt="Office"
-            />
-          </Article.ImgContainer>
-
-          <Article.TextContainer>
-            <Article.Header>IKEA dla Firm</Article.Header>
-            <Article.Text>
-              Dołącz do IKEA Business Network i poznaj korzyści dedykowane dla małych i dużych
-              przedsiębiorców.
-            </Article.Text>
-            <Article.Btn href="#">Dołącz do IKEA Business Network</Article.Btn>
-          </Article.TextContainer>
-        </Article.Body>
-      </Article>
+      <MainArticle article={article_10 as MainArticleType} />
 
       <article>
         <h2 className="article__heading">Aranżacje wnętrz i inspiracje</h2>

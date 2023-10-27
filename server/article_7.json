@@ -4,7 +4,7 @@
   "imgSrc": "/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif",
   "imgSrcSet": "/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w",
   "imgSizes": "(max-width: 2667px) 60vw, 1600px",
-  "imgAlt": "Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad.",
+  "imgAlt": "Produkty przedstawiające kolekcję Nytillverkad",
   "imgAspectRatioMobile": "3/4",
   "products": [
     {
@@ -115,7 +115,7 @@
       "productSubHeading": "Poszewka",
       "productLink": "#",
       "productPriceInteger": 24,
-      "productPriceIntegerDecimal": 99
+      "productPriceDecimal": 99
     }
   ],
   "collection": {

@@ -1,3 +1,4 @@
+import React from "react";
 // Custom Hooks
 import useWindowSize from "../../hooks/useWindowSize";
 // Components
@@ -15,8 +16,9 @@ import {
   ListItemTagVariantsType,
 } from "../../types/collectionTypes";
 
-export type ArticleType = {
+export type MainArticleType = {
   id: string;
+  reverseOrder?: boolean;
   textContainerVariant?: TextContainerVariantsType;
   header?: string;
   headerSrOnly?: boolean;
@@ -73,7 +75,7 @@ type ProductType = {
   hideOnMobile?: boolean;
 };
 
-export default function Article_1({ article }: { article: ArticleType }) {
+export default function MainArticle({ article }: { article: MainArticleType }) {
   const { width } = useWindowSize();
 
   return (
@@ -83,7 +85,7 @@ export default function Article_1({ article }: { article: ArticleType }) {
           {article.header}
         </Article.Header>
       )}
-      <Article.Body>
+      <Article.Body className={article.reverseOrder ? "col-reverse" : ""}>
         <Article.ImgContainer>
           <Article.Img
             sizes={article.imgSizes}
@@ -113,7 +115,7 @@ export default function Article_1({ article }: { article: ArticleType }) {
                 } = product;
 
                 if (hideOnMobile && width < 600) {
-                  return <></>;
+                  return <React.Fragment key={id}></React.Fragment>;
                 } else {
                   return (
                     <Collection.ListItem
