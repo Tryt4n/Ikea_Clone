@@ -1,0 +1,105 @@
+{
+  "id": "UK3JR1O1RU",
+  "textContainerVariant": "accent",
+  "header": "Witaj w nowym lepszym domu",
+  "headerSrOnly": true,
+  "subheader": "Nowa niższa cena",
+  "text": "Wciąż wprowadzamy pomysłowe rozwiązania i ulepszamy procesy, dzięki czemu obniżamy koszty. To pozwoliło nam obniżyć ceny dziesiątek produktów.",
+  "btn": {
+    "text": "Zobacz wszystkie produkty z niższą ceną",
+    "variant": "light",
+    "link": "#"
+  },
+  "imgSrc": "/images/collections/1/collection_rzilav_c_scale,w_1600.avif",
+  "imgSrcSet": "/images/collections/1/collection_rzilav_c_scale,w_320.avif 320w, /images/collections/1/collection_rzilav_c_scale,w_744.avif 744w, /images/collections/1/collection_rzilav_c_scale,w_1010.avif 1010w, /images/collections/1/collection_rzilav_c_scale,w_1351.avif 1351w, /images/collections/1/collection_rzilav_c_scale,w_1561.avif 1561w, /images/collections/1/collection_rzilav_c_scale,w_1600.avif 1600w",
+  "imgSizes": "(max-width: 1600px) 100vw, 1600px",
+  "imgAlt": "Urządzony salon",
+  "imgAspectRatioMobile": "3/4",
+  "products": [
+    {
+      "id": "85XB4Y8F33",
+      "placement": {
+        "top": "30.4%",
+        "right": "auto",
+        "bottom": "auto",
+        "left": "50.3%"
+      },
+      "newPriceTag": {
+        "variant": "red",
+        "lastItemPriceInteger": 105
+      },
+      "descriptionPlacement": "bottom-right",
+      "productHeading": "Eket",
+      "productSubHeading": "Szafka ścienna",
+      "productLink": "#",
+      "productPriceInteger": 80
+    },
+    {
+      "id": "C32XA8O3KO",
+      "placement": {
+        "top": "23.3%",
+        "right": "auto",
+        "bottom": "auto",
+        "left": "37.0677%"
+      },
+      "descriptionPlacement": "bottom-center",
+      "productHeading": "Konstfull",
+      "productSubHeading": "Wazon",
+      "productLink": "#",
+      "productPriceInteger": 59,
+      "productPriceDecimal": 99
+    },
+    {
+      "id": "LTW6LMSZVG",
+      "placement": {
+        "top": "75.8%",
+        "right": "auto",
+        "bottom": "auto",
+        "left": "17.2%"
+      },
+      "descriptionPlacement": "top-right",
+      "productHeading": "Kivik",
+      "productSubHeading": "1o sofa rozkładana",
+      "productLink": "#",
+      "productPriceInteger": 1899
+    },
+    {
+      "id": "R4IVRK6CCB",
+      "placement": {
+        "top": "68.7%",
+        "right": "auto",
+        "bottom": "auto",
+        "left": "43.3%"
+      },
+      "newPriceTag": {
+        "variant": "red",
+        "lastItemPriceInteger": 763
+      },
+      "descriptionPlacement": "top-center",
+      "productHeading": "BESTÅ",
+      "productSubHeading": "Kombinacja z drzwiami",
+      "productLink": "#",
+      "productPriceInteger": 710
+    },
+    {
+      "id": "E4Z4PYY9BD",
+      "placement": {
+        "top": "92.1%",
+        "right": "auto",
+        "bottom": "auto",
+        "left": "58.3%"
+      },
+      "newPriceTag": {
+        "variant": "red",
+        "lastItemPriceInteger": 89,
+        "lastItemPriceIntegerDecimal": 99
+      },
+      "descriptionPlacement": "top-center",
+      "productHeading": "Gladom",
+      "productSubHeading": "Stolik z tacą",
+      "productLink": "#",
+      "productPriceInteger": 69,
+      "productPriceIntegerDecimal": 99
+    }
+  ]
+}

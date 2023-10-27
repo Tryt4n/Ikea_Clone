@@ -4,6 +4,12 @@ import { HTMLProps, ReactNode, createElement } from "react";
 import Btn, { BtnPropsType } from "../Btn/Btn";
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
+// Types
+import {
+  ArticleBtnVariantsType,
+  AspectRatioType,
+  TextContainerVariantsType,
+} from "../../types/articleTypes";
 // Style
 import "./index.scss";
 
@@ -18,7 +24,7 @@ type ImgContainerPropsType = BodyPropsType;
 
 type TextContainerPropsType = {
   children: ReactNode;
-  variant?: "accent";
+  variant?: TextContainerVariantsType;
 };
 
 type HeaderPropsType = {
@@ -27,10 +33,10 @@ type HeaderPropsType = {
   className?: string;
 } & HTMLProps<HTMLHeadingElement>;
 
-type CardBtnPropsType = {
+type ContainerBtnPropsType = {
   children: string;
   className?: string;
-  variant?: "light" | "dark";
+  variant?: ArticleBtnVariantsType;
 } & HTMLProps<HTMLAnchorElement>;
 
 type LinkPropsType = {
@@ -38,8 +44,8 @@ type LinkPropsType = {
 } & HTMLProps<HTMLAnchorElement>;
 
 type ImgPropsType = {
-  aspectRatio?: "1/1" | "3/4" | "16/9";
-  aspectRatioMobile?: "1/1" | "3/4" | "16/9";
+  aspectRatio?: AspectRatioType;
+  aspectRatioMobile?: AspectRatioType;
 } & HTMLProps<HTMLImageElement>;
 
 interface SlidePropsType extends BodyPropsType {
@@ -105,7 +111,7 @@ function Text({ children }: { children: ReactNode }) {
   return <p className="article__text">{children}</p>;
 }
 
-function ContainerBtn({ children, className, variant = "dark", ...props }: CardBtnPropsType) {
+function ContainerBtn({ children, className, variant = "dark", ...props }: ContainerBtnPropsType) {
   return (
     <a
       {...props}

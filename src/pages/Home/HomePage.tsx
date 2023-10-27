@@ -11,7 +11,6 @@ import useModal from "../../hooks/useModal";
 import Article from "../../components/Article/Article";
 import CardsContainer from "../../components/Card/CardsContainer";
 import Card from "../../components/Card/Card";
-import CollectionNameContainer from "../../components/CollectionProducts/components/CollectionNameContainer";
 import Collection from "../../components/CollectionProducts/components/Collection";
 // Icons
 import SaleIcon from "../../Icons/SaleIcon";
@@ -21,6 +20,15 @@ import TruckIcon from "../../Icons/TruckIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
+
+//!
+// Articles
+import article_1 from "../../../server/article_1.json";
+import article_6 from "../../../server/article_6.json";
+import article_7 from "../../../server/article_7.json";
+
+import Article_1, { ArticleType } from "../../layout/Articles/Article_1";
+//!
 
 export default function HomePage() {
   const { width } = useWindowSize();
@@ -48,151 +56,7 @@ export default function HomePage() {
 
   return (
     <div className="articles">
-      <Article>
-        <Article.Body>
-          <Article.Header className="visually-hidden">Witaj w nowym lepszym domu</Article.Header>
-          <Article.ImgContainer>
-            <Article.Img
-              sizes="(max-width: 1600px) 100vw, 1600px"
-              srcSet="
-                /images/collections/1/collection_rzilav_c_scale,w_320.avif 320w,
-                /images/collections/1/collection_rzilav_c_scale,w_744.avif 744w,
-                /images/collections/1/collection_rzilav_c_scale,w_1010.avif 1010w,
-                /images/collections/1/collection_rzilav_c_scale,w_1351.avif 1351w,
-                /images/collections/1/collection_rzilav_c_scale,w_1561.avif 1561w,
-                /images/collections/1/collection_rzilav_c_scale,w_1600.avif 1600w"
-              src="/images/collections/1/collection_rzilav_c_scale,w_1600.avif"
-              alt="Urządzony salon"
-              aspectRatioMobile="3/4"
-            />
-
-            <Collection>
-              <Collection.ListItem
-                top="23.3%"
-                left="37.0677%"
-                descriptionContainerId="list-item-1_main"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-1_main"
-                  linkToProduct="#"
-                  placeBottomRight
-                >
-                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>Eket </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Szafka ścienna</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={80} />
-                  <Collection.ListItemLastPriceDescription lastPrice={105} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="30.4%"
-                left="50.3%"
-                descriptionContainerId="list-item-2_main"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-2_main"
-                  linkToProduct="#"
-                  placeBottomCenter
-                >
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>Konstfull </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Wazon</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice
-                    price={59}
-                    priceDecimal={99}
-                  />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="75.8%"
-                left="17.2%"
-                descriptionContainerId="list-item-3_main"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-3_main"
-                  linkToProduct="#"
-                  placeTopRight
-                >
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>Kivik </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>
-                      1o sofa rozkładana
-                    </Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={1899} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="68.7%"
-                left="43.3%"
-                descriptionContainerId="list-item-4_main"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-4_main"
-                  linkToProduct="#"
-                  placeTopCenter
-                >
-                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>BESTÅ </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>
-                      Kombinacja z drzwiami
-                    </Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={710} />
-                  <Collection.ListItemLastPriceDescription lastPrice={763} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="92.1%"
-                left="58.3%"
-                descriptionContainerId="list-item-5_main"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-5_main"
-                  linkToProduct="#"
-                  placeTopCenter
-                >
-                  <Collection.ListItemTag variant="red">Nowa niższa cena</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>Gladom </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Stolik z tacą</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice
-                    price={69}
-                    priceDecimal={99}
-                  />
-                  <Collection.ListItemLastPriceDescription
-                    lastPrice={89}
-                    lastPriceDecimal={99}
-                  />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-            </Collection>
-          </Article.ImgContainer>
-
-          <Article.TextContainer variant="accent">
-            <Article.Header>Nowa niższa cena</Article.Header>
-            <Article.Text>
-              Wciąż wprowadzamy pomysłowe rozwiązania i ulepszamy procesy, dzięki czemu obniżamy
-              koszty. To pozwoliło nam obniżyć ceny dziesiątek produktów
-            </Article.Text>
-            <Article.Btn
-              href="#"
-              variant="light"
-            >
-              Zobacz wszystkie produkty z niższą ceną
-            </Article.Btn>
-          </Article.TextContainer>
-        </Article.Body>
-      </Article>
+      <Article_1 article={article_1 as ArticleType} />
 
       <Article>
         <Article.Header>Przygotuj sie na jesienne domowanie z IKEA</Article.Header>
@@ -564,7 +428,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="JÄTTELIK-pluszak"
                       linkToProduct="#"
-                      placeLeftCenter
+                      placement="left-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>JÄTTELIK </Collection.ListItemHeading>
@@ -600,7 +464,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="SOARÉ-podkladka"
                       linkToProduct="#"
-                      placeBottomCenter
+                      placement="bottom-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -624,7 +488,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="RINNIG-scierka"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>RINNIG </Collection.ListItemHeading>
@@ -648,7 +512,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="KORKEN-sloik_z_pokrywka"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>KORKEN </Collection.ListItemHeading>
@@ -671,7 +535,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="VARDAGEN-sloik_z_pokrywka"
                       linkToProduct="#"
-                      placeTopLeft
+                      placement="top-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>VARDAGEN </Collection.ListItemHeading>
@@ -709,7 +573,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="ALSEDA-stolek"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>ALSEDA </Collection.ListItemHeading>
@@ -742,7 +606,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="GRADVIS-wazon"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>GRADVIS </Collection.ListItemHeading>
@@ -780,7 +644,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="ENERYDA-uchwyt"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>ENERYDA </Collection.ListItemHeading>
@@ -801,7 +665,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady_60x40"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -821,7 +685,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady_60x20"
                       linkToProduct="#"
-                      placeTopLeft
+                      placement="top-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -841,7 +705,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady_80x40"
                       linkToProduct="#"
-                      placeTopCenter
+                      placement="top-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -876,7 +740,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="MALM-komoda"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>MALM </Collection.ListItemHeading>
@@ -896,7 +760,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="MALM-rama-lozka"
                       linkToProduct="#"
-                      placeTopCenter
+                      placement="top-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">
@@ -935,7 +799,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="TOFTLUND-dywan"
                       linkToProduct="#"
-                      placeLeftCenter
+                      placement="left-center"
                     >
                       <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
                       <Collection.ListItemTag variant="red">
@@ -966,7 +830,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="STRANDMON-fotel"
                       linkToProduct="#"
-                      placeTopLeft
+                      placement="top-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -1000,7 +864,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="ENERYDA-galka"
                       linkToProduct="#"
-                      placeRightCenter
+                      placement="right-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>ENERYDA </Collection.ListItemHeading>
@@ -1021,7 +885,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady-80x20"
                       linkToProduct="#"
-                      placeTopLeft
+                      placement="top-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1041,7 +905,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady-60x40_2"
                       linkToProduct="#"
-                      placeTopLeft
+                      placement="top-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1061,7 +925,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="ENERYDA-uchwyt_23"
                       linkToProduct="#"
-                      placeBottomLeft
+                      placement="bottom-left"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>ENERYDA </Collection.ListItemHeading>
@@ -1082,7 +946,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="SÄLJAN-blat"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -1121,7 +985,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="STRANDMON-fotel_2421"
                       linkToProduct="#"
-                      placeTopCenter
+                      placement="top-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -1155,7 +1019,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="SAMLA-pojemnik-79x57x18cm/55l"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">
@@ -1185,7 +1049,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="SAMLA-pojemnik-38x28x28cm/22l"
                       linkToProduct="#"
-                      placeTopCenter
+                      placement="top-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">
@@ -1215,7 +1079,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="SAMLA-pojemnik-57x39x42cm/65l"
                       linkToProduct="#"
-                      placeRightCenter
+                      placement="right-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>SAMLA </Collection.ListItemHeading>
@@ -1253,7 +1117,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-drzwi-40x60-24423"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1273,7 +1137,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BAGGANÄS-uchwyt-2444"
                       linkToProduct="#"
-                      placeBottomRight
+                      placement="bottom-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -1297,7 +1161,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-drzwi-60x100-5623623"
                       linkToProduct="#"
-                      placeBottomRight
+                      placement="bottom-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1317,7 +1181,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="HULTARP-szyna-24412"
                       linkToProduct="#"
-                      placeRightCenter
+                      placement="right-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>HULTARP </Collection.ListItemHeading>
@@ -1338,7 +1202,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady-80x40-06943"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1358,7 +1222,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="BODBYN-front-szuflady-60x40-8833"
                       linkToProduct="#"
-                      placeBottomCenter
+                      placement="bottom-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>BODBYN </Collection.ListItemHeading>
@@ -1393,7 +1257,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="FEJKA-sztuczna-roslina-doniczkowa-24242"
                       linkToProduct="#"
-                      placeBottomCenter
+                      placement="bottom-center"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">
@@ -1423,7 +1287,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="LÄTTAD-podkladka_2442"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemHeading>LÄTTAD </Collection.ListItemHeading>
@@ -1446,7 +1310,7 @@ export default function HomePage() {
                     <Collection.ListItemDescriptionContainer
                       id="INGOLF-krzeslo-24fa"
                       linkToProduct="#"
-                      placeTopRight
+                      placement="top-right"
                     >
                       <Collection.ListItemHeadingContainer>
                         <Collection.ListItemTag variant="red">Top Seller</Collection.ListItemTag>
@@ -1629,194 +1493,9 @@ export default function HomePage() {
         </CardsContainer>
       </Article>
 
-      <Article>
-        <Article.Body>
-          <Article.ImgContainer>
-            <Article.Img
-              sizes="(max-width: 2667px) 60vw, 1600px"
-              srcSet="
-                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
-                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_971.avif 971w,
-                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1123.avif 1123w,
-                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1507.avif 1507w,
-                /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
-              src="/images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
-              alt="Kolaż z kolorowymi kwadrantami i wycinankami zdjęć ludzi."
-            />
-          </Article.ImgContainer>
+      <Article_1 article={article_6 as ArticleType} />
 
-          <Article.TextContainer>
-            <Article.Header>
-              Hej! Szukasz pomysłów na przechowywanie i organizację w domu?
-            </Article.Header>
-            <Article.Text>
-              W każdym bałaganie kryją się nowe możliwości. Zainspiruj się do stworzenia
-              uporządkowanej i dobrze zorganizowanej przestrzeni – tutaj znajdziesz pomysły i
-              wskazówki, jak zorganizować przestrzeń po swojemu!
-            </Article.Text>
-            <Article.Btn href="#">Pierwszy krok do lepszej organizacji</Article.Btn>
-          </Article.TextContainer>
-        </Article.Body>
-      </Article>
-
-      <Article>
-        <Article.Header>
-          Nowości z przeszłości - odkryj drugą odsłone archiwalnych projektów IKEA
-        </Article.Header>
-        <Article.Body>
-          <Article.ImgContainer>
-            <Article.Img
-              sizes="(max-width: 2667px) 60vw, 1600px"
-              srcSet="
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w,
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w,
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w,
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w,
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w,
-                /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w"
-              src="/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif"
-              alt="Dwa fotele SKÅLBODA, klosz lampy wiszącej HAVSFJÄDER i inne produkty z drugiej premiery kolekcji Nytillverkad."
-              aspectRatioMobile="3/4"
-            />
-
-            <Collection>
-              <Collection.ListItem
-                top="73.9%"
-                left={width >= 600 ? "55.5007%" : "63.024%"}
-                descriptionContainerId="list-item-1_Nytillverkad"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-1_Nytillverkad"
-                  linkToProduct="#"
-                  placeTopCenter
-                >
-                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>SKÅLBODA </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Fotel</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={249} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="53.1%"
-                left={width >= 600 ? "35.8982%" : "16.6112%"}
-                descriptionContainerId="list-item-2_Nytillverkad"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-2_Nytillverkad"
-                  linkToProduct="#"
-                  placeRightCenter
-                >
-                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>TUVKORNELL </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>
-                      Świeczniki, 3 szt.
-                    </Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice
-                    price={39}
-                    priceDecimal={99}
-                  />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="28.4%"
-                left={width >= 600 ? "62.0015%" : "78.416%"}
-                descriptionContainerId="list-item-3_Nytillverkad"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-3_Nytillverkad"
-                  linkToProduct="#"
-                  placeBottomLeft
-                >
-                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>HAVSFJÄDER </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>
-                      Klosz lampy wiszącej
-                    </Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={149} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              <Collection.ListItem
-                top="61.2%"
-                left={width >= 600 ? "66.4021%" : "88.8352%"}
-                descriptionContainerId="list-item-4_Nytillverkad"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-4_Nytillverkad"
-                  linkToProduct="#"
-                  placeTopLeft
-                >
-                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>JÄRLÅSA </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Stolik na kółkach</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice price={179} />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-
-              {width >= 600 && (
-                <Collection.ListItem
-                  top="68%"
-                  left="90.205%"
-                  descriptionContainerId="list-item-5_Nytillverkad"
-                >
-                  <Collection.ListItemDescriptionContainer
-                    id="list-item-5_Nytillverkad"
-                    linkToProduct="#"
-                    placeTopLeft
-                  >
-                    <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                    <Collection.ListItemHeadingContainer>
-                      <Collection.ListItemHeading>JÄRLÅSA </Collection.ListItemHeading>
-                      <Collection.ListItemSubHeading>
-                        Stolik na kółkach
-                      </Collection.ListItemSubHeading>
-                    </Collection.ListItemHeadingContainer>
-                    <Collection.ListItemPrice price={179} />
-                  </Collection.ListItemDescriptionContainer>
-                </Collection.ListItem>
-              )}
-
-              <Collection.ListItem
-                top="60%"
-                left={width >= 600 ? "45.9995%" : "40.528%"}
-                descriptionContainerId="list-item-6_Nytillverkad"
-              >
-                <Collection.ListItemDescriptionContainer
-                  id="list-item-6_Nytillverkad"
-                  linkToProduct="#"
-                  placeTopCenter
-                >
-                  <Collection.ListItemTag variant="orange">Nowość</Collection.ListItemTag>
-                  <Collection.ListItemHeadingContainer>
-                    <Collection.ListItemHeading>SVEDJENÄVA </Collection.ListItemHeading>
-                    <Collection.ListItemSubHeading>Poszewka</Collection.ListItemSubHeading>
-                  </Collection.ListItemHeadingContainer>
-                  <Collection.ListItemPrice
-                    price={24}
-                    priceDecimal={99}
-                  />
-                </Collection.ListItemDescriptionContainer>
-              </Collection.ListItem>
-            </Collection>
-
-            <CollectionNameContainer
-              collectionName="Nytillverkad"
-              collectionLink="#"
-              isNew
-            />
-          </Article.ImgContainer>
-        </Article.Body>
-      </Article>
+      <Article_1 article={article_7 as ArticleType} />
 
       <Article>
         <Article.Header>Wybierz przestrzeń, którą chcesz zaprojektować</Article.Header>

@@ -3,6 +3,11 @@ import { CSSProperties, HTMLProps, ReactNode } from "react";
 // Context
 import { CollectionContextProvider } from "../Context/context";
 import useCollection from "../hooks/useContext";
+// Types
+import {
+  ListItemDescriptionPlacementTypes,
+  ListItemTagVariantsType,
+} from "../../../types/collectionTypes";
 // Utils
 import { addThousandSeparator } from "../../../utils/addThousandSeparator";
 // Icons
@@ -28,14 +33,7 @@ type ListItemDescriptionContainerPropsType = {
   children: ReactNode;
   id: string;
   linkToProduct: string;
-  placeRightCenter?: boolean;
-  placeLeftCenter?: boolean;
-  placeTopCenter?: boolean;
-  placeBottomCenter?: boolean;
-  placeTopLeft?: boolean;
-  placeTopRight?: boolean;
-  placeBottomLeft?: boolean;
-  placeBottomRight?: boolean;
+  placement: ListItemDescriptionPlacementTypes;
 };
 
 type ListItemPricePropsType = {
@@ -47,7 +45,7 @@ type ListItemPricePropsType = {
 
 type ListItemTagPropsType = {
   children: string;
-  variant?: "red" | "orange";
+  variant?: ListItemTagVariantsType;
 };
 
 type ListItemLastPriceDescriptionPropsType = {
@@ -113,26 +111,13 @@ function ListItemDescriptionContainer({
   children,
   id,
   linkToProduct,
-  placeRightCenter,
-  placeLeftCenter,
-  placeTopCenter,
-  placeBottomCenter,
-  placeTopLeft,
-  placeTopRight,
-  placeBottomLeft,
-  placeBottomRight,
+  placement,
 }: ListItemDescriptionContainerPropsType) {
   const { isDescriptionMenuVisible, hoveredItemID, setIsDescriptionMenuVisible } = useCollection();
 
   const visibilityCondition = hoveredItemID === id && isDescriptionMenuVisible;
 
-  const itemDescriptionClasses = `collection-list__item-description-container${
-    placeRightCenter ? " right-center" : ""
-  }${placeLeftCenter ? " left-center" : ""}${placeTopCenter ? " top-center" : ""}${
-    placeBottomCenter ? " bottom-center" : ""
-  }${placeTopLeft ? " top-left" : ""}${placeTopRight ? " top-right" : ""}${
-    placeBottomLeft ? " bottom-left" : ""
-  }${placeBottomRight ? " bottom-right" : ""}`;
+  const itemDescriptionClasses = `collection-list__item-description-container ${placement}`;
 
   return (
     <div
@@ -159,7 +144,7 @@ function ListItemHeadingContainer({ children }: { children: ReactNode }) {
   return <h3 className="collection-list__item-heading-container">{children}</h3>;
 }
 
-function ListItemHeading({ children }: { children: string }) {
+function ListItemHeading({ children }: { children: ReactNode }) {
   return <span className="collection-list__item-heading">{children}</span>;
 }
 

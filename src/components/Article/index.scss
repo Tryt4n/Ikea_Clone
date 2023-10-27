@@ -11,6 +11,7 @@
 
   &__img-container {
     position: relative;
+    background-color: c.$gray;
 
     @media screen and (width >= b.$article-desktop) {
       width: 66%;
