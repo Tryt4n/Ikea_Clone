@@ -1,0 +1,58 @@
+@use "../abstracts/colors" as c;
+
+.bg-light-gray {
+  background-color: c.$grayish !important;
+}
+
+.bg-red {
+  background-color: c.$red !important;
+  color: c.$white !important;
+}
+
+.bg-blue {
+  background-color: c.$blue !important;
+  color: c.$white !important;
+}
+
+.bg-brown {
+  background-color: c.$brown !important;
+  color: c.$white !important;
+}
+
+.bg-light-brown {
+  background-color: c.$light-brown !important;
+}
+
+.bg-violet {
+  background-color: c.$violet !important;
+  color: black !important;
+}
+
+.bg-yellow {
+  background-color: c.$yellow !important;
+}
+
+.bg-light-yellow {
+  background-color: c.$light-yellow !important;
+}
+
+.bg-orange {
+  background-color: c.$orange !important;
+  color: c.$white !important;
+}
+
+.tx-white {
+  color: white !important;
+}
+
+.tx-black {
+  color: black !important;
+}
+
+.tx-red {
+  color: c.$red !important;
+}
+
+.tx-orange {
+  color: c.$orange !important;
+}

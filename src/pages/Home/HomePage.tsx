@@ -5,13 +5,10 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Custom Hooks
-import useWindowSize from "../../hooks/useWindowSize";
 import useModal from "../../hooks/useModal";
 // Components
-import Article from "../../components/Article/Article";
-import CardsContainer from "../../components/Card/CardsContainer";
-import Card from "../../components/Card/Card";
-import Collection from "../../components/CollectionProducts/components/Collection";
+import Article from "../../compoundComponents/Article/Article";
+import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
 // Style
 import "./index.scss";
 
@@ -19,6 +16,8 @@ import "./index.scss";
 // Articles
 import article_1 from "../../../server/article_1.json";
 import article_2 from "../../../server/article_2.json";
+import article_3 from "../../../server/article_3.json";
+import article_5 from "../../../server/article_5.json";
 import article_6 from "../../../server/article_6.json";
 import article_7 from "../../../server/article_7.json";
 import article_8 from "../../../server/article_8.json";
@@ -27,15 +26,14 @@ import article_10 from "../../../server/article_10.json";
 
 // Article Components
 import MainArticle, { MainArticleType } from "../../layout/Articles/MainArticle";
-import CardsArticle, { CardsArticleType } from "../../layout/Articles/CardsArticle";
+import TextCardsArticle, { TextCardsArticleType } from "../../layout/Articles/TextCardsArticle";
 import CarouselSliderArticle, {
   CarouselSliderArticleType,
 } from "../../layout/Articles/CarouselSliderArticle";
+import ImgCardsArticle, { ImgCardsArticleType } from "../../layout/Articles/ImgCardsArticle";
 //!
 
 export default function HomePage() {
-  const { width } = useWindowSize();
-
   const { modalId, setIsModalOpen } = useModal();
 
   function checkIfIsListItem(element: HTMLElement) {
@@ -63,122 +61,7 @@ export default function HomePage() {
 
       <CarouselSliderArticle article={article_2 as CarouselSliderArticleType} />
 
-      <Article>
-        <Article.Header>
-          Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści
-        </Article.Header>
-
-        <CardsContainer>
-          <Swiper
-            slidesPerView={1}
-            slidesPerGroup={1}
-            spaceBetween={20}
-            freeMode={width < 900 && true}
-            mousewheel={width < 900 && true}
-            navigation={width < 900 && true}
-            scrollbar={width < 900 && { hide: true }}
-            keyboard={
-              width < 900 && {
-                enabled: true,
-              }
-            }
-            modules={
-              width < 900
-                ? [Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]
-                : undefined
-            }
-            breakpoints={{
-              600: {
-                slidesPerView: 2,
-                slidesPerGroup: 2,
-                spaceBetween: 20,
-              },
-              900: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 8,
-              },
-            }}
-            className="mySwiper2"
-          >
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="blue"
-              >
-                <Card.Img
-                  src="/images/scrollbars/IKEA_Family_club/1.avif"
-                  alt="Krzesło przykryte częściowo kocem"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>
-                      Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie
-                      za min. 20 zł
-                    </Card.Heading>
-                    <Card.Text>
-                      Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych
-                      Klubowiczów IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="blue"
-              >
-                <Card.Img
-                  src="/images/scrollbars/IKEA_Family_club/2.avif"
-                  alt="Łóżko"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>
-                      Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy
-                      zakupie za min. 20 zł
-                    </Card.Heading>
-                    <Card.Text>
-                      Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych
-                      Klubowiczów IKEA Family i IKEA Business Network. Szczegóły w regulaminie.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="blue"
-              >
-                <Card.Img
-                  src="/images/scrollbars/IKEA_Family_club/3.avif"
-                  alt="Rodzina przy stole"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>Klubowicze IKEA Family mogą więcej</Card.Heading>
-                    <Card.Text>
-                      Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym
-                      ofertom i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu
-                      i poczuj się jak w domu.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-          </Swiper>
-        </CardsContainer>
-      </Article>
+      <ImgCardsArticle article={article_3 as ImgCardsArticleType} />
 
       <Article>
         <Article.Header>Wasze wnętrza</Article.Header>
@@ -1135,171 +1018,7 @@ export default function HomePage() {
         </Swiper>
       </Article>
 
-      <Article>
-        <Article.Header>Aktualnie w IKEA</Article.Header>
-
-        <CardsContainer breakOnMobile={true}>
-          <Swiper
-            slidesPerView={0}
-            slidesPerGroup={0}
-            freeMode={width >= 600 && true}
-            mousewheel={width >= 600 && true}
-            navigation={width >= 600 && true}
-            scrollbar={width >= 600 && { hide: true }}
-            keyboard={
-              width >= 600 && {
-                enabled: true,
-              }
-            }
-            modules={
-              width >= 600
-                ? [Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]
-                : undefined
-            }
-            breakpoints={{
-              600: {
-                slidesPerView: 2,
-                slidesPerGroup: 2,
-                spaceBetween: 8,
-              },
-              900: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 20,
-              },
-            }}
-            className="mySwiper4"
-          >
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="light-brown"
-              >
-                <Card.Img
-                  src="/images/scrollbars/currently/1.avif"
-                  alt="Urządzony salon"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>Sezon na domowanie z IKEA</Card.Heading>
-                    <Card.Text>
-                      Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie
-                      od tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy
-                      seans na kanapie czy poświęcić się nowemu hobby – w IKEA znajdziesz wszystko,
-                      czego potrzebujesz
-                    </Card.Text>
-                  </div>
-                  <Card.Btn variant="dark" />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="brown"
-              >
-                <Card.Img
-                  src="/images/scrollbars/currently/2.avif"
-                  alt="Telefon z włączoną aplikacją IKEA Kreativ"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>
-                      Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!
-                    </Card.Heading>
-                    <Card.Text>
-                      Otwórz się na zupełnie nowe możliwości w aranżacji wnętrz – skanuj
-                      pomieszczenia, wymaż niepotrzebne przedmioty i puść wodze wyobraźni w
-                      interaktywnej przestrzeni wirtualnej.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="violet"
-              >
-                <Card.Img
-                  src="/images/scrollbars/currently/3.avif"
-                  alt="Pluszowy chomik w stroju kosmonauty siedzący na poduszcze w kształcie UFO"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>
-                      Kolekcja AFTONSPARV dotarła na Ziemię!
-                    </Card.Heading>
-                    <Card.Text>
-                      Dołącz do programu kosmicznego IKEA na największym placu zabaw we
-                      wszechświecie – w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i
-                      świecąca w ciemności zasłona pozwolą ci wyruszyć w podróż tam, gdzie wszystko
-                      jest możliwe.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn variant="dark" />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="yellow"
-              >
-                <Card.Img
-                  src="/images/scrollbars/currently/4.avif"
-                  alt="Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>
-                      Zaprojektowane przez IKEA – wykonane w Polsce
-                    </Card.Heading>
-                    <Card.Text>
-                      Czy wiesz, że co piąty mebel IKEA powstaje w Polsce? Celebrujemy ponad 60 lat
-                      obecności IKEA w Polsce – dowiedz się więcej o współpracy, której efektem są
-                      tysiące miejsc pracy w kraju oraz miliony lepiej pomyślanych produktów
-                      wykonanych w Polsce.
-                    </Card.Text>
-                  </div>
-                  <Card.Btn variant="dark" />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Card
-                as="link"
-                href="#"
-                variant="light-yellow"
-              >
-                <Card.Img
-                  src="/images/scrollbars/currently/5.avif"
-                  alt="Chłopiec idący do sklepu IKEA"
-                />
-                <Card.TextContainer>
-                  <div>
-                    <Card.Heading headingLevel={3}>IKEA to więcej niż sklep</Card.Heading>
-                    <Card.Text>
-                      Co sprawia, że miliony ludzi na całym świecie uwielbiają wizyty w IKEA?
-                      Zobacz, co czeka na ciebie w naszych sklepach i zaplanuj odwiedziny!
-                    </Card.Text>
-                  </div>
-                  <Card.Btn variant="dark" />
-                </Card.TextContainer>
-              </Card>
-            </SwiperSlide>
-          </Swiper>
-        </CardsContainer>
-      </Article>
+      <ImgCardsArticle article={article_5 as ImgCardsArticleType} />
 
       <MainArticle article={article_6 as MainArticleType} />
 
@@ -1307,7 +1026,7 @@ export default function HomePage() {
 
       <CarouselSliderArticle article={article_8 as CarouselSliderArticleType} />
 
-      <CardsArticle article={article_9 as CardsArticleType} />
+      <TextCardsArticle article={article_9 as TextCardsArticleType} />
 
       <MainArticle article={article_10 as MainArticleType} />
 

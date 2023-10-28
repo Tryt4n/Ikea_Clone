@@ -1,19 +1,20 @@
 // React
 import { HTMLProps, ReactNode } from "react";
 // Components
-import Btn, { BtnPropsType } from "../Btn/Btn";
+import Btn, { BtnPropsType } from "../../components/Btn/Btn";
 // Types
-import { CardHTMLElementsType, CardVariantsType } from "../../types/cardTypes";
+import { CardHTMLElementsType } from "../../types/cardTypes";
 // Icons
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
+import { BackgroundVariants } from "../../types/colorsVariantsType";
 
 type CardPropsType<T> = {
   children: React.ReactNode;
   className?: string;
   as?: CardHTMLElementsType;
-  variant?: CardVariantsType;
+  variant?: BackgroundVariants;
 } & (T extends "div"
   ? HTMLProps<HTMLDivElement>
   : T extends "a"
@@ -51,7 +52,7 @@ export default function Card<T extends "div" | "a">({
   return (
     <Element
       {...(props as React.HTMLProps<HTMLDivElement> & React.HTMLProps<HTMLAnchorElement>)}
-      className={`card card--${variant}${className ? ` ${className}` : ""}`}
+      className={`card bg-${variant}${className ? ` ${className}` : ""}`}
     >
       {children}
     </Element>

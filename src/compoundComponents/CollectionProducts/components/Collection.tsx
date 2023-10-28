@@ -4,10 +4,8 @@ import { CSSProperties, HTMLProps, ReactNode } from "react";
 import { CollectionContextProvider } from "../Context/context";
 import useCollection from "../hooks/useContext";
 // Types
-import {
-  ListItemDescriptionPlacementTypes,
-  ListItemTagVariantsType,
-} from "../../../types/collectionTypes";
+import { ListItemDescriptionPlacementTypes } from "../../../types/collectionTypes";
+import { TextVariants } from "../../../types/colorsVariantsType";
 // Utils
 import { addThousandSeparator } from "../../../utils/addThousandSeparator";
 // Icons
@@ -45,7 +43,7 @@ type ListItemPricePropsType = {
 
 type ListItemTagPropsType = {
   children: string;
-  variant?: ListItemTagVariantsType;
+  variant?: TextVariants;
 };
 
 type ListItemLastPriceDescriptionPropsType = {
@@ -178,13 +176,7 @@ function ListItemPrice({ price, priceDecimal, quantity, sizeInMeters }: ListItem
 
 export function ListItemTag({ children, variant }: ListItemTagPropsType) {
   return (
-    <em
-      className={`collection-list__item-tag${
-        variant ? ` collection-list__item-tag--${variant}` : ""
-      }`}
-    >
-      {children}
-    </em>
+    <em className={`collection-list__item-tag${variant ? ` tx-${variant}` : ""}`}>{children}</em>
   );
 }
 

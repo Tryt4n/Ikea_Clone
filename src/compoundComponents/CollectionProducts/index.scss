@@ -149,13 +149,6 @@
     font-style: normal;
     font-weight: bold;
     color: inherit;
-
-    &--red {
-      color: c.$red;
-    }
-    &--orange {
-      color: c.$orange;
-    }
   }
 
   &__item-heading-container {
@@ -179,7 +172,6 @@
     line-height: 1.1;
     & small {
       font-size: v.$fs-sm;
-      // font-size: initial;
     }
   }
 

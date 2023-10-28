@@ -1,0 +1,39 @@
+{
+  "id": "FC4IC5FMAA",
+  "header": "Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści",
+  "cards": [
+    {
+      "id": "1SAQZ9W8Y1",
+      "link": "#",
+      "variant": "blue",
+      "img": {
+        "imgSrc": "/images/scrollbars/IKEA_Family_club/1.avif",
+        "imgAlt": "Krzesło przykryte częściowo kocem"
+      },
+      "heading": "Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie za min. 20 zł",
+      "text": "Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów IKEA Family i IKEA Business Network. Szczegóły w regulaminie."
+    },
+    {
+      "id": "JB95HFVARV",
+      "link": "#",
+      "variant": "blue",
+      "img": {
+        "imgSrc": "/images/scrollbars/IKEA_Family_club/2.avif",
+        "imgAlt": "Łóżko"
+      },
+      "heading": "Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy zakupie za min. 20 zł",
+      "text": "Oferta obowiązuje od 13.10.2023 do 18.11.2023 dla nowych i obecnych Klubowiczów IKEA Family i IKEA Business Network. Szczegóły w regulaminie."
+    },
+    {
+      "id": "S13DSTZ63N",
+      "link": "#",
+      "variant": "blue",
+      "img": {
+        "imgSrc": "/images/scrollbars/IKEA_Family_club/3.avif",
+        "imgAlt": "Rodzina przy stole"
+      },
+      "heading": "Klubowicze IKEA Family mogą więcej",
+      "text": "Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym ofertom i inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu i poczuj się jak w domu."
+    }
+  ]
+}

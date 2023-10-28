@@ -89,11 +89,6 @@
       }
     }
 
-    &--accent {
-      background-color: c.$red;
-      color: c.$white;
-    }
-
     & .article__heading {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
@@ -154,11 +149,6 @@
     color: inherit;
     isolation: isolate;
     cursor: pointer;
-
-    &--accent {
-      background-color: c.$red;
-      color: c.$white;
-    }
 
     &:hover a {
       text-decoration: none;

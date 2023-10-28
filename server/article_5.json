@@ -1,0 +1,66 @@
+{
+  "id": "YBP2YRDJJI",
+  "breakOnMobile": true,
+  "header": "Aktualnie w IKEA",
+  "cards": [
+    {
+      "id": "MB6BW55GJL",
+      "link": "#",
+      "variant": "light-brown",
+      "img": {
+        "imgSrc": "/images/scrollbars/currently/1.avif",
+        "imgAlt": "Urządzony salon"
+      },
+      "heading": "Sezon na domowanie z IKEA",
+      "text": "Gdy zbliża się jesień, brak planów to najlepszy plan na wieczór. Niezależnie od tego, czy wolisz długo ucztować z bliskimi przy stole, urządzić serialowy seans na kanapie czy poświęcić się nowemu hobby – w IKEA znajdziesz wszystko, czego potrzebujesz.",
+      "btnVariant": "dark"
+    },
+    {
+      "id": "FW71QEGUEH",
+      "link": "#",
+      "variant": "brown",
+      "img": {
+        "imgSrc": "/images/scrollbars/currently/2.avif",
+        "imgAlt": "Telefon z włączoną aplikacją IKEA Kreativ"
+      },
+      "heading": "Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!",
+      "text": "Otwórz się na zupełnie nowe możliwości w aranżacji wnętrz – skanuj pomieszczenia, wymaż niepotrzebne przedmioty i puść wodze wyobraźni w interaktywnej przestrzeni wirtualnej."
+    },
+    {
+      "id": "QXCLC3M10K",
+      "link": "#",
+      "variant": "violet",
+      "img": {
+        "imgSrc": "/images/scrollbars/currently/3.avif",
+        "imgAlt": "Pluszowy chomik w stroju kosmonauty siedzący na poduszcze w kształcie UFO"
+      },
+      "heading": "Kolekcja AFTONSPARV dotarła na Ziemię!",
+      "text": "Dołącz do programu kosmicznego IKEA na największym placu zabaw we wszechświecie – w swojej wyobraźni! Astronauci, statki kosmiczne, rakiety i świecąca w ciemności zasłona pozwolą ci wyruszyć w podróż tam, gdzie wszystko jest możliwe.",
+      "btnVariant": "dark"
+    },
+    {
+      "id": "7J9CUCKGTR",
+      "link": "#",
+      "variant": "yellow",
+      "img": {
+        "imgSrc": "/images/scrollbars/currently/4.avif",
+        "imgAlt": "Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
+      },
+      "heading": "Zaprojektowane przez IKEA – wykonane w Polsce",
+      "text": "Czy wiesz, że co piąty mebel IKEA powstaje w Polsce? Celebrujemy ponad 60 lat obecności IKEA w Polsce – dowiedz się więcej o współpracy, której efektem są tysiące miejsc pracy w kraju oraz miliony lepiej pomyślanych produktów wykonanych w Polsce.",
+      "btnVariant": "dark"
+    },
+    {
+      "id": "6L2XU2EO3V",
+      "link": "#",
+      "variant": "light-yellow",
+      "img": {
+        "imgSrc": "/images/scrollbars/currently/5.avif",
+        "imgAlt": "Chłopiec idący do sklepu IKEA"
+      },
+      "heading": "IKEA to więcej niż sklep",
+      "text": "Co sprawia, że miliony ludzi na całym świecie uwielbiają wizyty w IKEA?Zobacz, co czeka na ciebie w naszych sklepach i zaplanuj odwiedziny!",
+      "btnVariant": "dark"
+    }
+  ]
+}

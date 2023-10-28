@@ -1,11 +1,12 @@
 // Types
-import { CardHTMLElementsType, CardVariantsType } from "../../types/cardTypes";
+import { CardHTMLElementsType } from "../../types/cardTypes";
+import { BackgroundVariants } from "../../types/colorsVariantsType";
 // Components
-import Article from "../../components/Article/Article";
-import Card from "../../components/Card/Card";
-import CardsContainer from "../../components/Card/CardsContainer";
+import Article from "../../compoundComponents/Article/Article";
+import Card from "../../compoundComponents/Card/Card";
+import CardsContainer from "../../compoundComponents/Card/CardsContainer";
 
-export type CardsArticleType = {
+export type TextCardsArticleType = {
   id: string;
   header?: string;
   cards: CardType[];
@@ -13,7 +14,7 @@ export type CardsArticleType = {
 
 type CardType = {
   id: string;
-  variant: CardVariantsType;
+  variant: BackgroundVariants;
   as?: CardHTMLElementsType;
   heading: string;
   text: string;
@@ -21,7 +22,7 @@ type CardType = {
   icon?: string;
 };
 
-export default function CardsArticle({ article }: { article: CardsArticleType }) {
+export default function TextCardsArticle({ article }: { article: TextCardsArticleType }) {
   return (
     <Article>
       {article.header && <Article.Header>{article.header}</Article.Header>}

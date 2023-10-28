@@ -7,5 +7,3 @@ export type ListItemDescriptionPlacementTypes =
   | "top-right"
   | "bottom-left"
   | "bottom-right";
-
-export type ListItemTagVariantsType = "red" | "orange";

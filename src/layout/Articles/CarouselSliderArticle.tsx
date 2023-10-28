@@ -5,10 +5,10 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Components
-import Article from "../../components/Article/Article";
+import Article from "../../compoundComponents/Article/Article";
 // Types
-import { SlideVariantsType } from "../../types/articleTypes";
 import { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
+import { BackgroundVariants } from "../../types/colorsVariantsType";
 
 export type CarouselSliderArticleType = {
   id: "string";
@@ -19,7 +19,7 @@ export type CarouselSliderArticleType = {
 
 type SlideType = {
   id: string;
-  variant?: SlideVariantsType;
+  variant?: BackgroundVariants;
   link: string;
   linkStyles?: string;
   heading?: string;

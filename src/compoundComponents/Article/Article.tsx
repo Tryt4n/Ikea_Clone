@@ -1,16 +1,12 @@
 // React
 import { HTMLProps, ReactNode, createElement } from "react";
 // Components
-import Btn, { BtnPropsType } from "../Btn/Btn";
+import Btn, { BtnPropsType } from "../../components/Btn/Btn";
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
 // Types
-import {
-  ArticleBtnVariantsType,
-  AspectRatioType,
-  SlideVariantsType,
-  TextContainerVariantsType,
-} from "../../types/articleTypes";
+import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
+import { BackgroundVariants } from "../../types/colorsVariantsType";
 // Style
 import "./index.scss";
 
@@ -25,7 +21,7 @@ type ImgContainerPropsType = BodyPropsType;
 
 type TextContainerPropsType = {
   children: ReactNode;
-  variant?: TextContainerVariantsType;
+  variant?: BackgroundVariants;
 };
 
 type HeaderPropsType = {
@@ -50,7 +46,7 @@ type ImgPropsType = {
 } & HTMLProps<HTMLImageElement>;
 
 interface SlidePropsType extends BodyPropsType {
-  variant?: SlideVariantsType;
+  variant?: BackgroundVariants;
 }
 
 export default function Article({ children }: { children: ReactNode }) {
@@ -85,13 +81,7 @@ function ImgContainer({ children, className, ...props }: ImgContainerPropsType) 
 
 function TextContainer({ children, variant }: TextContainerPropsType) {
   return (
-    <div
-      className={`article__text-container${
-        variant === "accent" ? ` article__text-container--accent` : ""
-      }`}
-    >
-      {children}
-    </div>
+    <div className={`article__text-container${variant ? ` bg-${variant}` : ""}`}>{children}</div>
   );
 }
 
@@ -160,7 +150,7 @@ function InstagramBadge({ children }: { children: string }) {
 function Slide({ children, variant, className, ...props }: SlidePropsType) {
   return (
     <div
-      className={`article__slide${variant ? ` article__slide--${variant}` : ""}${
+      className={`article__slide${variant ? ` bg-${variant}` : ""}${
         className ? ` ${className}` : ""
       }`}
       {...props}
