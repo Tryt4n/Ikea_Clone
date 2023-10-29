@@ -1,18 +1,22 @@
+// React
 import { ReactNode, createContext, useEffect, useRef, useState } from "react";
+// Components
+import { ImgModalWithProducts } from "../components/ImgModalWithProducts/ImgModalWithProducts";
+// Types
+import { CardCollectionType } from "../layout/Articles/components/ImageCardCollection/ImageCardCollection";
 
 type ModalContextType = {
   modalId: string;
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
-  imgSrc: string;
-  setImgSrc: (src: string) => void;
+  setModalData: (data: CardCollectionType) => void;
 };
 
 export const ModalContext = createContext<ModalContextType | null>(null);
 
 export function ModalContextProvider({ children }: { children: ReactNode }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [imgSrc, setImgSrc] = useState("someText");
+  const [modalData, setModalData] = useState<CardCollectionType>();
 
   const modalRef = useRef<null | HTMLDialogElement>(null);
   const modalId = "kh9ngakrff";
@@ -29,6 +33,7 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
 
     modalRef.current.close();
     setIsModalOpen(false);
+    setModalData(undefined);
   }
 
   function closeModalOnBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
@@ -63,14 +68,13 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     modalId,
     isModalOpen,
     setIsModalOpen,
-    setImgSrc,
-    imgSrc,
+    setModalData,
   };
 
   return (
     <ModalContext.Provider value={contextValue}>
       <>
-        <dialog
+        {/* <dialog
           id={modalId}
           ref={modalRef}
           onClick={closeModalOnBackdropClick}
@@ -88,8 +92,16 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
             src={imgSrc}
             alt=""
           />
-        </dialog>
+        </dialog> */}
         {children}
+        <ImgModalWithProducts
+          id={modalId}
+          closeModal={closeModal}
+          onClickFunction={closeModalOnBackdropClick}
+          onKeyDownFunction={closeModalOnEscapeKey}
+          modalData={modalData}
+          ref={modalRef}
+        />
       </>
     </ModalContext.Provider>
   );

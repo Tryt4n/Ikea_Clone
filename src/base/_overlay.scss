@@ -1,6 +1,8 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/colors" as c;
 
-html:has(body[data-overlay="true"]) {
+html:has(body[data-overlay="true"]),
+html:has(dialog.modal[open]) {
   overflow-y: hidden;
   margin-right: v.$scrollbar-width;
 
@@ -28,6 +30,6 @@ body {
   visibility: hidden;
 }
 body[data-overlay="true"] > .overlay {
-  background-color: hsla(0, 0%, 0%, 0.25);
+  background-color: c.$overlay-opaque;
   visibility: visible;
 }

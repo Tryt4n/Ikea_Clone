@@ -26,7 +26,7 @@ export type CardCollectionType = {
 };
 
 export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCollectionType) {
-  const { modalId, setIsModalOpen } = useModal();
+  const { modalId, setIsModalOpen, setModalData } = useModal();
 
   const { id, img, instagramUser, products } = card;
 
@@ -47,6 +47,8 @@ export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCo
     if (isListItem) return;
 
     setIsModalOpen(true);
+    setModalData(card);
+    console.log(card);
   }
 
   return (
