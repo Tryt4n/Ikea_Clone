@@ -10,7 +10,7 @@ import ImageCardCollection, {
   CardCollectionType,
 } from "./components/ImageCardCollection/ImageCardCollection";
 
-export type ImagesCardsCollectionSliderType = {
+export type ImageCardsCollectionSliderType = {
   id: string;
   header: string;
   subheader?: string;
@@ -18,10 +18,10 @@ export type ImagesCardsCollectionSliderType = {
   cards: CardCollectionType[];
 };
 
-export default function ImagesCardsCollectionSlider({
+export default function ImageCardsCollectionSlider({
   article,
 }: {
-  article: ImagesCardsCollectionSliderType;
+  article: ImageCardsCollectionSliderType;
 }) {
   const { id, header, subheader, cards, showProductsOnlyOnHover } = article;
 

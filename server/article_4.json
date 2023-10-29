@@ -107,17 +107,14 @@
         {
           "id": "K1C6VJLZJM",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "0%",
+            "left": "15%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-right",
+          "productHeading": "ALSEDA",
+          "productSubHeading": "Stołek",
           "productLink": "#",
-          "productPriceInteger": 29,
-          "productPriceDecimal": 99
+          "productPriceInteger": 159
         }
       ]
     },
@@ -133,16 +130,14 @@
         {
           "id": "V2HQH8R65P",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "10%",
+            "left": "36%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-right",
+          "productHeading": "GRADVIS",
+          "productSubHeading": "Wazon z metalowym wkładem, 21 cm",
           "productLink": "#",
-          "productPriceInteger": 29,
+          "productPriceInteger": 49,
           "productPriceDecimal": 99
         }
       ]
@@ -159,17 +154,51 @@
         {
           "id": "COEHZHPLYW",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "24.5%",
+            "left": "21%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-right",
+          "productHeading": "ENERYDA",
+          "productSubHeading": "Uchwyt, 89 mm",
           "productLink": "#",
-          "productPriceInteger": 29,
-          "productPriceDecimal": 99
+          "productPriceInteger": 20,
+          "productQuantity": 2
+        },
+        {
+          "id": "52U92W5C00",
+          "placement": {
+            "left": "17.5%",
+            "bottom": "7%"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 60x40 cm",
+          "productLink": "#",
+          "productPriceInteger": 115
+        },
+        {
+          "id": "RI1GPZMYOR",
+          "placement": {
+            "right": "17.5%",
+            "bottom": "2.5%"
+          },
+          "descriptionPlacement": "top-left",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 60x20 cm",
+          "productLink": "#",
+          "productPriceInteger": 80
+        },
+        {
+          "id": "91ZV75L0HL",
+          "placement": {
+            "right": "46%",
+            "bottom": "10%"
+          },
+          "descriptionPlacement": "top-center",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 80x40 cm",
+          "productLink": "#",
+          "productPriceInteger": 140
         }
       ]
     },
@@ -185,17 +214,30 @@
         {
           "id": "BQ72Z7JT80",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "50%",
+            "left": "32%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-center",
+          "productHeading": "MALM",
+          "productSubHeading": "Komoda, 2 szuflady, 40x55 cm",
           "productLink": "#",
-          "productPriceInteger": 29,
-          "productPriceDecimal": 99
+          "productPriceInteger": 279
+        },
+        {
+          "id": "JRT3IJQWTD",
+          "placement": {
+            "bottom": "15%",
+            "right": "33%"
+          },
+          "newPriceTag": {
+            "variant": "red",
+            "lastItemPriceInteger": 1449
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "MALM",
+          "productSubHeading": "Rama łóżka z 2 pojemnikami, 120x200 cm",
+          "productLink": "#",
+          "productPriceInteger": 1249
         }
       ]
     },
@@ -211,17 +253,38 @@
         {
           "id": "ZWO3WQZ6UU",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "right": "25%",
+            "bottom": "19%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "newPriceTag": {
+            "variant": "red",
+            "lastItemPriceInteger": 49,
+            "lastItemPriceDecimal": 99
           },
           "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "productHeading": "TOFTLUND",
+          "productSubHeading": "Dywan, 55x85 cm",
           "productLink": "#",
-          "productPriceInteger": 29,
+          "productPriceInteger": 39,
           "productPriceDecimal": 99
+        },
+        {
+          "id": "O1FSOH39A8",
+          "placement": {
+            "right": "15%",
+            "bottom": "40%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "descriptionPlacement": "top-left",
+          "productHeading": "STRANDMON",
+          "productSubHeading": "Fotel uszak",
+          "productLink": "#",
+          "productPriceInteger": 899
         }
       ]
     },
@@ -237,17 +300,68 @@
         {
           "id": "LCVAJTGSIL",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "top": "20%",
+            "left": "18.25%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "right-center",
+          "productHeading": "ENERYDA",
+          "productSubHeading": "Gałka, 27 mm",
           "productLink": "#",
-          "productPriceInteger": 29,
-          "productPriceDecimal": 99
+          "productPriceInteger": 15,
+          "productQuantity": 2
+        },
+        {
+          "id": "C2X2NWV69B",
+          "placement": {
+            "right": "-2%",
+            "bottom": "34%"
+          },
+          "descriptionPlacement": "top-left",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 80x20 cm",
+          "productLink": "#",
+          "productPriceInteger": 95
+        },
+        {
+          "id": "5MXSH46K47",
+          "placement": {
+            "right": "40%",
+            "bottom": "16.5%"
+          },
+          "descriptionPlacement": "top-left",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 60x40 cm",
+          "productLink": "#",
+          "productPriceInteger": 115
+        },
+        {
+          "id": "HO2C3TCSRA",
+          "placement": {
+            "right": "5.75%",
+            "bottom": "29%"
+          },
+          "descriptionPlacement": "bottom-left",
+          "productHeading": "ENERYDA",
+          "productSubHeading": "Uchwyt, 89 mm",
+          "productLink": "#",
+          "productPriceInteger": 20,
+          "productQuantity": 2
+        },
+        {
+          "id": "X902K3A6JH",
+          "placement": {
+            "bottom": "40%",
+            "left": "23%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "SÄLJAN",
+          "productSubHeading": "Blat, 246x3.8 cm",
+          "productLink": "#",
+          "productPriceInteger": 349,
+          "productSizeInMeters": 2.46
         }
       ]
     },
@@ -263,17 +377,14 @@
         {
           "id": "3VTP2ZFUBF",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "40%",
+            "left": "45%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-center",
+          "productHeading": "STRANDMON",
+          "productSubHeading": "Fotel uszak",
           "productLink": "#",
-          "productPriceInteger": 29,
-          "productPriceDecimal": 99
+          "productPriceInteger": 899
         }
       ]
     },
@@ -289,16 +400,50 @@
         {
           "id": "DLNXCDKRN7",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "bottom": "13.5%",
+            "left": "15%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "newPriceTag": {
+            "variant": "red",
+            "lastItemPriceInteger": 79,
+            "lastItemPriceDecimal": 99
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "SAMLA",
+          "productSubHeading": "Pojemnik z pokrywką, 79x57x18 cm/ 55 l",
           "productLink": "#",
-          "productPriceInteger": 29,
+          "productPriceInteger": 69,
+          "productPriceDecimal": 99
+        },
+        {
+          "id": "XCTNLT4FTL",
+          "placement": {
+            "bottom": "29.5%",
+            "left": "38%"
+          },
+          "newPriceTag": {
+            "variant": "red",
+            "lastItemPriceInteger": 29,
+            "lastItemPriceDecimal": 99
+          },
+          "descriptionPlacement": "top-center",
+          "productHeading": "SAMLA",
+          "productSubHeading": "Pojemnik z pokrywką, 39x28x28 cm/ 22 l",
+          "productLink": "#",
+          "productPriceInteger": 27,
+          "productPriceDecimal": 99
+        },
+        {
+          "id": "R84PQCQU0S",
+          "placement": {
+            "bottom": "22%",
+            "right": "38%"
+          },
+          "descriptionPlacement": "right-center",
+          "productHeading": "SAMLA",
+          "productSubHeading": "Pojemnik z pokrywką, 57x39x42 cm/ 65 l",
+          "productLink": "#",
+          "productPriceInteger": 59,
           "productPriceDecimal": 99
         }
       ]
@@ -315,17 +460,79 @@
         {
           "id": "IV9MIBX343",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "top": "30%",
+            "left": "37%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "descriptionPlacement": "top-right",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Drzwi, 40x60 cm",
           "productLink": "#",
-          "productPriceInteger": 29,
+          "productPriceInteger": 115
+        },
+        {
+          "id": "ELLKN38DY7",
+          "placement": {
+            "top": "38.5%",
+            "left": "17.5%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "descriptionPlacement": "bottom-right",
+          "productHeading": "BAGGANÄS",
+          "productSubHeading": "Uchwyt, 143 mm",
+          "productLink": "#",
+          "productPriceInteger": 25,
+          "productQuantity": 2
+        },
+        {
+          "id": "7IKMGY83SG",
+          "placement": {
+            "top": "25%",
+            "left": "49%"
+          },
+          "descriptionPlacement": "bottom-right",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Drzwi, 60x100 cm",
+          "productLink": "#",
+          "productPriceInteger": 255
+        },
+        {
+          "id": "HVFISQEN55",
+          "placement": {
+            "top": "44%",
+            "left": "47%"
+          },
+          "descriptionPlacement": "right-center",
+          "productHeading": "HULTARP",
+          "productSubHeading": "Szyna, 60 cm",
+          "productLink": "#",
+          "productPriceInteger": 24,
           "productPriceDecimal": 99
+        },
+        {
+          "id": "NT2MZL1EWE",
+          "placement": {
+            "bottom": "25%",
+            "left": "40%"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 80x40 cm",
+          "productLink": "#",
+          "productPriceInteger": 140
+        },
+        {
+          "id": "PMESLFOWKJ",
+          "placement": {
+            "bottom": "43%",
+            "right": "22.5%"
+          },
+          "descriptionPlacement": "bottom-center",
+          "productHeading": "BODBYN",
+          "productSubHeading": "Front szuflady, 60x40 cm",
+          "productLink": "#",
+          "productPriceInteger": 115
         }
       ]
     },
@@ -341,17 +548,48 @@
         {
           "id": "6WRWHQP035",
           "placement": {
-            "top": "50%",
-            "right": "9%",
-            "bottom": "auto",
-            "left": "auto"
+            "top": "14%",
+            "right": "17%"
           },
-          "descriptionPlacement": "left-center",
-          "productHeading": "JÄTTELIK",
-          "productSubHeading": "Pluszak, 44cm",
+          "newPriceTag": {
+            "variant": "red",
+            "lastItemPriceInteger": 24,
+            "lastItemPriceDecimal": 99
+          },
+          "descriptionPlacement": "bottom-center",
+          "productHeading": "FEJKA",
+          "productSubHeading": "Sztuczna roślina doniczkowa, 9 cm",
           "productLink": "#",
-          "productPriceInteger": 29,
+          "productPriceInteger": 19,
           "productPriceDecimal": 99
+        },
+        {
+          "id": "B1KZ8I5H7A",
+          "placement": {
+            "left": "5.5%",
+            "bottom": "28.5%"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "LÄTTAD",
+          "productSubHeading": "Podkładka, 37 cm",
+          "productLink": "#",
+          "productPriceInteger": 19,
+          "productPriceDecimal": 99
+        },
+        {
+          "id": "SKIERP4K15",
+          "placement": {
+            "left": "40%",
+            "bottom": "0%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "INGOLF",
+          "productSubHeading": "Krzesło",
+          "productLink": "#",
+          "productPriceInteger": 249
         }
       ]
     }

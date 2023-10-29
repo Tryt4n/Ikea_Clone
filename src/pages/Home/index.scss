@@ -1,3 +1,5 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
 @use "../../base/functions" as func;
 @use "../../base/breakpoints" as b;
 
@@ -8,5 +10,55 @@
     @media screen and (width < b.$mobile-md) {
       margin-block: func.rem(40);
     }
+  }
+}
+
+.message-container {
+  min-height: 30dvh;
+  @include flex(column, center, center);
+  margin-block: 3rem;
+  text-align: center;
+
+  & button {
+    margin-top: 1em;
+    font-size: 1rem;
+    color: c.$text-gray;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+
+    &:hover {
+      color: c.$black;
+    }
+    &:focus {
+      outline-offset: 1em;
+    }
+  }
+}
+
+.message {
+  font-size: 2rem;
+
+  &--error {
+    color: c.$red;
+  }
+}
+
+.loading-spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid hsla(0, 0%, 0%, 0.3);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
