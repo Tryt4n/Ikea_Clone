@@ -1,27 +1,34 @@
 // Custom Hooks
-import useModal from "../../hooks/useModal";
+import useModal from "../../../../hooks/useModal";
 // Types
-import { AspectRatioType } from "../../types/articleTypes";
+import { AspectRatioType } from "../../../../types/articleTypes";
 // Components
-import Article from "../../compoundComponents/Article/Article";
+import Article from "../../../../compoundComponents/Article/Article";
 import CollectionProductsList, {
   ProductType,
 } from "../CollectionProductsList/CollectionProductsList";
 
-type ImageCardCollectionType = {
-  id: string;
-  imgSrc: string;
-  imgAlt: string;
-  imgAspectRatio: AspectRatioType;
-  instagramUser?: string;
-  favoriteIcon?: boolean;
-  collection: ProductType[];
+export type ImageCardCollectionType = {
+  card: CardCollectionType;
+  onHoverStatus?: boolean;
 };
 
-export default function ImageCardCollection({ card }: { card: ImageCardCollectionType }) {
+export type CardCollectionType = {
+  id: string;
+  img: {
+    imgSrc: string;
+    imgAlt: string;
+    imgAspectRatio: AspectRatioType;
+  };
+  instagramUser?: string;
+  favoriteIcon?: boolean;
+  products: ProductType[];
+};
+
+export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCollectionType) {
   const { modalId, setIsModalOpen } = useModal();
 
-  const { id, imgSrc, imgAlt, imgAspectRatio, instagramUser, collection } = card;
+  const { id, img, instagramUser, products } = card;
 
   function checkIfIsListItem(element: HTMLElement) {
     if (element.tagName === "LI") {
@@ -50,13 +57,16 @@ export default function ImageCardCollection({ card }: { card: ImageCardCollectio
     >
       <Article.ImgContainer>
         <Article.Img
-          src={imgSrc}
-          alt={imgAlt}
-          aspectRatio={imgAspectRatio}
+          src={img.imgSrc}
+          alt={img.imgAlt}
+          aspectRatio={img.imgAspectRatio}
         />
         {instagramUser && <Article.InstagramBadge>{instagramUser}</Article.InstagramBadge>}
 
-        <CollectionProductsList products={collection} />
+        <CollectionProductsList
+          products={products}
+          onHoverStatus={onHoverStatus}
+        />
       </Article.ImgContainer>
     </Article.Section>
   );

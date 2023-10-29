@@ -1,11 +1,16 @@
 import React from "react";
 // Custom Hooks
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
 // Types
-import { ListItemDescriptionPlacementTypes } from "../../types/collectionTypes";
-import { TextVariants } from "../../types/colorsVariantsType";
+import { ListItemDescriptionPlacementTypes } from "../../../../types/collectionTypes";
+import { TextVariants } from "../../../../types/colorsVariantsType";
+
+type CollectionProductsListType = {
+  products: ProductType[];
+  onHoverStatus?: boolean;
+};
 
 export type ProductType = {
   id: string;
@@ -36,14 +41,19 @@ export type ProductType = {
   productLink: string;
   productPriceInteger: number;
   productPriceDecimal?: number;
+  productQuantity: number;
+  productSizeInMeters: number;
   hideOnMobile?: boolean;
 };
 
-export default function CollectionProductsList({ products }: { products: ProductType[] }) {
+export default function CollectionProductsList({
+  products,
+  onHoverStatus = false,
+}: CollectionProductsListType) {
   const { width } = useWindowSize();
 
   return (
-    <Collection>
+    <Collection showOnlyOnHover={onHoverStatus}>
       {products.map((product) => {
         const {
           placement,
@@ -57,6 +67,8 @@ export default function CollectionProductsList({ products }: { products: Product
           productSubHeading,
           productPriceInteger,
           productPriceDecimal,
+          productQuantity,
+          productSizeInMeters,
           hideOnMobile,
         } = product;
 
@@ -121,6 +133,8 @@ export default function CollectionProductsList({ products }: { products: Product
                 <Collection.ListItemPrice
                   price={productPriceInteger}
                   priceDecimal={productPriceDecimal}
+                  quantity={productQuantity}
+                  sizeInMeters={productSizeInMeters}
                 />
                 {newPriceTag && (
                   <Collection.ListItemLastPriceDescription

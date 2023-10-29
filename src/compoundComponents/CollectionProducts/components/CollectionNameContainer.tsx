@@ -20,7 +20,6 @@ export default function CollectionNameContainer({
     <a
       href={collectionLink}
       className="collection-name"
-      aria-label="Idź na stronę kolekcji"
     >
       <div className="collection-name__inner-wrapper">
         {isNew && <ListItemTag variant="orange">Nowość</ListItemTag>}

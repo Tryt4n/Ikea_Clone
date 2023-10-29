@@ -1,0 +1,359 @@
+{
+  "id": "3GU73WIOON",
+  "header": "Wasze wnętrza",
+  "subheader": "Przeglądaj aranżacje wnętrz klientów na podstawie ostatnio przeglądanych produktów.",
+  "showProductsOnlyOnHover": true,
+  "cards": [
+    {
+      "id": "90JY7H4G69",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/1/UGC100009357.avif",
+        "imgAlt": "Zdjęcie użytkownika AdventureSoul82",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "AdventureSoul82",
+      "products": [
+        {
+          "id": "RJHDQO3IZ4",
+          "placement": {
+            "top": "50%",
+            "right": "9%"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "19BL018FBV",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/2/UGC100008730.avif",
+        "imgAlt": "Zdjęcie użytkownika FashionistaGlobe",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "FashionistaGlobe",
+      "products": [
+        {
+          "id": "R6NHFNY9OF",
+          "placement": {
+            "bottom": "27.5%",
+            "left": "30%"
+          },
+          "topSellerTag": {
+            "variant": "red"
+          },
+          "descriptionPlacement": "bottom-center",
+          "productHeading": "SOARÉ",
+          "productSubHeading": "Podkładka, 37 cm",
+          "productLink": "#",
+          "productPriceInteger": 19,
+          "productPriceDecimal": 99
+        },
+        {
+          "id": "R3UXEX40DB",
+          "placement": {
+            "right": "35%",
+            "bottom": "0%"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "RINNIG",
+          "productSubHeading": "Ścierka, 45x60 cm",
+          "productLink": "#",
+          "productPriceInteger": 14,
+          "productPriceDecimal": 99,
+          "productQuantity": 4
+        },
+        {
+          "id": "BIW6XN6ML4",
+          "placement": {
+            "top": "58%",
+            "right": "30%"
+          },
+          "descriptionPlacement": "top-right",
+          "productHeading": "KORKEN",
+          "productSubHeading": "Słoik z pokrywką, 1 l",
+          "productLink": "#",
+          "productPriceInteger": 12,
+          "productPriceDecimal": 99
+        },
+        {
+          "id": "ZGRMBY0EY1",
+          "placement": {
+            "top": "55%",
+            "left": "39%"
+          },
+          "descriptionPlacement": "top-left",
+          "productHeading": "VARDAGEN",
+          "productSubHeading": "Słoik z pokrywką, 1.9 l",
+          "productLink": "#",
+          "productPriceInteger": 19,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "6JXA7ZLRSR",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/3/UGC100009307.avif",
+        "imgAlt": "Zdjęcie użytkownika TechGeniusNinja",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "TechGeniusNinja",
+      "products": [
+        {
+          "id": "K1C6VJLZJM",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "UKFK5EDORT",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/4/UGC100026647.avif",
+        "imgAlt": "Zdjęcie użytkownika FitnessFervor365",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "FitnessFervor365",
+      "products": [
+        {
+          "id": "V2HQH8R65P",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "N4FAZMO2MP",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/5/UGC100007426.avif",
+        "imgAlt": "Zdjęcie użytkownika ArtisticVoyager",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "ArtisticVoyager",
+      "products": [
+        {
+          "id": "COEHZHPLYW",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "Z6KULBUA9S",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/6/UGC100009091.avif",
+        "imgAlt": "Zdjęcie użytkownika MusicMaven88",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "MusicMaven88",
+      "products": [
+        {
+          "id": "BQ72Z7JT80",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "FSIL3LTO1Z",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/7/UGC100008065.avif",
+        "imgAlt": "Zdjęcie użytkownika FoodieExplorer",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "FoodieExplorer",
+      "products": [
+        {
+          "id": "ZWO3WQZ6UU",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "FUB53BNXC3",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/8/UGC100019561.avif",
+        "imgAlt": "Zdjęcie użytkownika WanderlustDreamer",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "WanderlustDreamer",
+      "products": [
+        {
+          "id": "LCVAJTGSIL",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "KH9NHAKRFF",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/9/UGC100008853.avif",
+        "imgAlt": "Zdjęcie użytkownika NatureNurturer",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "NatureNurturer",
+      "products": [
+        {
+          "id": "3VTP2ZFUBF",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "6XFV4E1D36",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/10/UGC100007970.avif",
+        "imgAlt": "Zdjęcie użytkownika BookwormChic",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "BookwormChic",
+      "products": [
+        {
+          "id": "DLNXCDKRN7",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "OGEAMK0FW0",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/11/UGC100008111.avif",
+        "imgAlt": "Zdjęcie użytkownika SportsJunkie365",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "SportsJunkie365",
+      "products": [
+        {
+          "id": "IV9MIBX343",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    },
+    {
+      "id": "X68IXY4B8S",
+      "img": {
+        "imgSrc": "/images/scrollbars/instagram_photos/12/UGC100008954.avif",
+        "imgAlt": "Zdjęcie użytkownika ThrillSeekerElite",
+        "imgAspectRatio": "3/4"
+      },
+      "instagramUser": "ThrillSeekerElite",
+      "products": [
+        {
+          "id": "6WRWHQP035",
+          "placement": {
+            "top": "50%",
+            "right": "9%",
+            "bottom": "auto",
+            "left": "auto"
+          },
+          "descriptionPlacement": "left-center",
+          "productHeading": "JÄTTELIK",
+          "productSubHeading": "Pluszak, 44cm",
+          "productLink": "#",
+          "productPriceInteger": 29,
+          "productPriceDecimal": 99
+        }
+      ]
+    }
+  ]
+}

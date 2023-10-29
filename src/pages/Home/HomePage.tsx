@@ -17,6 +17,7 @@ import "./index.scss";
 import article_1 from "../../../server/article_1.json";
 import article_2 from "../../../server/article_2.json";
 import article_3 from "../../../server/article_3.json";
+import article_4 from "../../../server/article_4.json";
 import article_5 from "../../../server/article_5.json";
 import article_6 from "../../../server/article_6.json";
 import article_7 from "../../../server/article_7.json";
@@ -31,6 +32,9 @@ import CarouselSliderArticle, {
   CarouselSliderArticleType,
 } from "../../layout/Articles/CarouselSliderArticle";
 import ImgCardsArticle, { ImgCardsArticleType } from "../../layout/Articles/ImgCardsArticle";
+import ImagesCardsCollectionSlider, {
+  ImagesCardsCollectionSliderType,
+} from "../../layout/Articles/ImagesCardsCollectionSlider";
 //!
 
 export default function HomePage() {
@@ -63,6 +67,7 @@ export default function HomePage() {
 
       <ImgCardsArticle article={article_3 as ImgCardsArticleType} />
 
+      <ImagesCardsCollectionSlider article={article_4 as ImagesCardsCollectionSliderType} />
       <Article>
         <Article.Header>Wasze wnętrza</Article.Header>
         <Article.SubHeader>

@@ -3,7 +3,7 @@ import Article from "../../compoundComponents/Article/Article";
 import CollectionNameContainer from "../../compoundComponents/CollectionProducts/components/CollectionNameContainer";
 import CollectionProductsList, {
   ProductType,
-} from "../../components/CollectionProductsList/CollectionProductsList";
+} from "./components/CollectionProductsList/CollectionProductsList";
 // Types
 import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
 import { BackgroundVariants } from "../../types/colorsVariantsType";
