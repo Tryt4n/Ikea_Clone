@@ -24,27 +24,6 @@
       object-fit: cover;
       width: 100%;
       height: 100%;
-      &.aspect-ratio-16-9 {
-        aspect-ratio: 16/9;
-      }
-      &.aspect-ratio-3-4 {
-        aspect-ratio: 3/4;
-      }
-      &.aspect-ratio-1-1 {
-        aspect-ratio: 1/1;
-      }
-
-      @media screen and (width < b.$mobile-md) {
-        &.mobile-aspect-ratio-16-9 {
-          aspect-ratio: 16/9;
-        }
-        &.mobile-aspect-ratio-3-4 {
-          aspect-ratio: 3/4;
-        }
-        &.mobile-aspect-ratio-1-1 {
-          aspect-ratio: 1/1;
-        }
-      }
     }
 
     &:where(:hover, :focus-within) .article__instagram-badge .article__instagram-nickname {
@@ -126,11 +105,14 @@
 
   &__instagram-nickname {
     display: grid;
-    grid-template-columns: 0fr;
     transition: v.$main-transition;
     & > * {
       overflow: hidden;
       text-indent: 0.5rem;
+    }
+
+    &--hide {
+      grid-template-columns: 0fr;
     }
   }
 

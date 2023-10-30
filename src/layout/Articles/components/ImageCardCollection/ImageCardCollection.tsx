@@ -63,7 +63,9 @@ export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCo
           alt={img.imgAlt}
           aspectRatio={img.imgAspectRatio}
         />
-        {instagramUser && <Article.InstagramBadge>{instagramUser}</Article.InstagramBadge>}
+        {instagramUser && (
+          <Article.InstagramBadge nickVisible={false}>{instagramUser}</Article.InstagramBadge>
+        )}
 
         <CollectionProductsList
           products={products}

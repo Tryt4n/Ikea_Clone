@@ -26,14 +26,22 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
 
     modalRef.current.showModal();
     setIsModalOpen(true);
+
+    modalRef.current.classList.add("show");
   }
 
   function closeModal() {
     if (!modalRef.current) return;
 
-    modalRef.current.close();
-    setIsModalOpen(false);
-    setModalData(undefined);
+    modalRef.current.classList.remove("show");
+
+    setTimeout(() => {
+      if (!modalRef.current) return;
+
+      modalRef.current.close();
+      setIsModalOpen(false);
+      setModalData(undefined);
+    }, 325);
   }
 
   function closeModalOnBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
@@ -51,6 +59,8 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
   }
 
   function closeModalOnEscapeKey(e: React.KeyboardEvent<HTMLDialogElement>) {
+    e.preventDefault();
+
     if (e.key === "Escape" && isModalOpen) {
       closeModal();
     }
@@ -74,25 +84,6 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
   return (
     <ModalContext.Provider value={contextValue}>
       <>
-        {/* <dialog
-          id={modalId}
-          ref={modalRef}
-          onClick={closeModalOnBackdropClick}
-          onKeyDown={closeModalOnEscapeKey}
-        >
-          <button
-            type="button"
-            onClick={closeModal}
-            autoFocus
-          >
-            X
-          </button>
-          <p>Przykładowy dialog</p>
-          <img
-            src={imgSrc}
-            alt=""
-          />
-        </dialog> */}
         {children}
         <ImgModalWithProducts
           id={modalId}

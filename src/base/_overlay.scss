@@ -1,8 +1,7 @@
 @use "../abstracts/variables" as v;
 @use "../abstracts/colors" as c;
 
-html:has(body[data-overlay="true"]),
-html:has(dialog.modal[open]) {
+html:has(body[data-overlay="true"]) {
   overflow-y: hidden;
   margin-right: v.$scrollbar-width;
 
@@ -16,6 +15,11 @@ html:has(dialog.modal[open]) {
     z-index: -1;
     user-select: none;
   }
+}
+
+html:has(dialog.modal[open]) {
+  overflow-y: hidden;
+  margin-right: v.$scrollbar-width;
 }
 
 body {

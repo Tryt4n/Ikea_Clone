@@ -14,7 +14,7 @@
 }
 
 .message-container {
-  min-height: 30dvh;
+  min-height: 50dvh;
   @include flex(column, center, center);
   margin-block: 3rem;
   text-align: center;

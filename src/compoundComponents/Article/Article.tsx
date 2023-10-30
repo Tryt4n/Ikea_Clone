@@ -45,6 +45,11 @@ type ImgPropsType = {
   aspectRatioMobile?: AspectRatioType;
 } & HTMLProps<HTMLImageElement>;
 
+type InstagramBadgeType = {
+  children: string;
+  nickVisible?: boolean;
+};
+
 interface SlidePropsType extends BodyPropsType {
   variant?: BackgroundVariants;
 }
@@ -133,14 +138,18 @@ function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType
   );
 }
 
-function InstagramBadge({ children }: { children: string }) {
+function InstagramBadge({ children, nickVisible = true }: InstagramBadgeType) {
   return (
     <div
       className="article__instagram-badge"
       aria-label="Użytkownik Instagram"
     >
       <InstagramIcon />
-      <div className="article__instagram-nickname">
+      <div
+        className={`article__instagram-nickname${
+          !nickVisible ? ` article__instagram-nickname--hide` : ""
+        }`}
+      >
         <span>{children}</span>
       </div>
     </div>

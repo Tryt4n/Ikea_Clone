@@ -36,35 +36,9 @@
 
   .card {
     @include flex(column);
-    // color: c.$black;
     text-wrap: balance;
     height: calc(100% - 2.5rem);
     background-color: c.$gray;
-
-    // &--light-gray {
-    //   background-color: c.$grayish;
-    // }
-    // &--blue {
-    //   background-color: c.$blue;
-    //   color: c.$white;
-    // }
-    // &--brown {
-    //   background-color: c.$brown;
-    //   color: c.$white;
-    // }
-    // &--light-brown {
-    //   background-color: c.$light-brown;
-    // }
-    // &--violet {
-    //   background-color: c.$violet;
-    //   color: black;
-    // }
-    // &--yellow {
-    //   background-color: c.$yellow;
-    // }
-    // &--light-yellow {
-    //   background-color: c.$light-yellow;
-    // }
 
     &:hover {
       text-decoration: none;
@@ -88,10 +62,6 @@
       aspect-ratio: 1;
       object-fit: cover;
       transition: v.$main-transition;
-
-      &.aspect-ratio-3-4 {
-        aspect-ratio: 3/4;
-      }
     }
 
     &__text-wrapper {
