@@ -48,7 +48,6 @@ export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCo
 
     setIsModalOpen(true);
     setModalData(card);
-    console.log(card);
   }
 
   return (
