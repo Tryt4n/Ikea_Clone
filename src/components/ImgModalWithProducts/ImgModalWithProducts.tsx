@@ -14,6 +14,8 @@ import HeartIcon from "../../Icons/HeartIcon";
 // Style
 import "./index.scss";
 import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
+import useWindowSize from "../../hooks/useWindowSize";
+import InstagramIcon from "../../Icons/InstagramIcon";
 
 type DialogPropsType = {
   id: string;
@@ -27,6 +29,8 @@ function InnerComponent(
   { id, closeModal, onClickFunction, onKeyDownFunction, modalData }: DialogPropsType,
   ref: ForwardedRef<HTMLDialogElement>
 ) {
+  const { width, height } = useWindowSize();
+
   return (
     <dialog
       id={id}
@@ -40,28 +44,33 @@ function InnerComponent(
         <button
           type="button"
           onClick={closeModal}
-          autoFocus
         >
           <span className="visually-hidden">Zamknij</span>
           <CloseIcon />
         </button>
       </div>
+      {(width < 1000 || height < 700) && (
+        <div className="modal__instagram-nick-mobile">
+          <InstagramIcon />
+          <span>{modalData?.instagramUser}</span>
+        </div>
+      )}
 
       <div className="modal__main-content">
-        <div className="modal__img-container">
-          <img
-            src={modalData?.img.imgSrc}
-            alt={modalData?.img.imgAlt}
-            className={
-              modalData ? `aspect-ratio-${modalData.img.imgAspectRatio.replace("/", "-")}` : ""
-            }
-          />
+        {width >= 1000 && height >= 700 && (
+          <Article.ImgContainer className="modal__img-container">
+            <Article.Img
+              src={modalData?.img.imgSrc}
+              alt={modalData?.img.imgAlt}
+              aspectRatio={modalData?.img.imgAspectRatio}
+            />
 
-          {modalData && <CollectionProductsList products={modalData?.products} />}
-          {modalData?.instagramUser && (
-            <Article.InstagramBadge>{modalData.instagramUser}</Article.InstagramBadge>
-          )}
-        </div>
+            {modalData && <CollectionProductsList products={modalData?.products} />}
+            {modalData?.instagramUser && (
+              <Article.InstagramBadge>{modalData.instagramUser}</Article.InstagramBadge>
+            )}
+          </Article.ImgContainer>
+        )}
 
         <ul className="modal__products-list">
           {modalData?.products.map((product) => (
@@ -74,7 +83,6 @@ function InnerComponent(
                   <img
                     src={modalData.img.imgSrc}
                     alt={`${product.productHeading} ${product.productSubHeading}`}
-                    // className="aspect-ratio-3-4"
                   />
                   {product.topSellerTag && (
                     <strong className="modal__img-top-seller-badge">Top Seller</strong>

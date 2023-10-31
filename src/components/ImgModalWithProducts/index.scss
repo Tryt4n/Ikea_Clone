@@ -8,23 +8,66 @@
   $_height_cut: 6rem;
   $_product-padding-block: func.rem(30);
 
+  $_padding-right: 2rem;
+  $_padding-right-mobile: func.rem(14);
+  $_border-radius: 0.5rem;
+
   $_star-icon-size: func.rem(24);
   $_star-quantity: 5;
   $_translate-increment: -0.5rem;
 
-  max-width: max(func.rem(1200), 110dvh);
-  // max-width: 1200px;
-  max-height: calc(100dvh - $_height_cut);
-  width: 100%;
-  height: 100%;
-  padding: 0 2rem 2rem 4.5rem;
   border: none;
-  border-radius: 0.5rem;
-  scale: 0;
   transition: v.$main-transition;
 
+  @media screen and (width >= b.$tablet-lg) and (height >= b.$mobile-lg) {
+    max-width: min(func.rem(1200), 90dvw);
+    max-height: calc(100dvh - $_height_cut);
+    width: 100%;
+    height: 100%;
+    padding: 0 $_padding-right $_padding-right 4.5rem;
+    border-radius: $_border-radius;
+    scale: 0;
+  }
+
+  @media screen and (width < b.$tablet-lg), (height < b.$mobile-lg) {
+    inset: auto;
+    bottom: 0;
+    right: 0;
+  }
+
+  @media screen and (b.$mobile-md <= width < b.$tablet-lg), (height < b.$mobile-lg) {
+    width: func.rem(480);
+    max-width: func.rem(480);
+    max-height: 100%;
+    height: 100%;
+    top: 0;
+    border-top-left-radius: $_border-radius;
+    border-bottom-left-radius: $_border-radius;
+    translate: 100%;
+  }
+
+  @media screen and (width < b.$mobile-md), (height < b.$mobile-lg) {
+    width: 100dvw;
+    max-width: 100dvw;
+    max-height: 85dvh;
+    height: 85dvh;
+    border-top-left-radius: $_border-radius;
+    border-top-right-radius: $_border-radius;
+    left: 0;
+    top: auto;
+    translate: 0 100% !important;
+  }
+
   &.show {
-    scale: 1;
+    @media screen and (width >= b.$tablet-lg) and (height > b.$mobile-lg) {
+      scale: 1;
+    }
+    @media screen and (width < b.$tablet-lg), (height < b.$mobile-lg) {
+      translate: 0;
+    }
+    @media screen and (width < b.$mobile-md), (height < b.$mobile-lg) {
+      translate: 0 0 !important;
+    }
 
     &::backdrop {
       background-color: c.$overlay-opaque;
@@ -46,6 +89,17 @@
     font-weight: bold;
   }
 
+  &__instagram-nick-mobile {
+    @include flex(row, flex-start, center);
+    margin-top: -1.75rem;
+    color: c.$text-gray;
+    translate: -0.25rem;
+
+    & svg {
+      height: 1rem;
+    }
+  }
+
   &__main-content {
     @include flex(row);
     gap: func.rem(40);
@@ -53,27 +107,50 @@
   }
 
   &__img-container {
-    width: 100%;
     max-width: 50%;
-    position: relative;
-
-    & img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
+    width: auto;
   }
 
   &__products-list {
     max-height: 100%;
     overflow-y: auto;
     flex-grow: 1;
+    @media screen and (width >= b.$tablet-lg) and (height > b.$mobile-lg) {
+      margin-right: calc($_padding-right * -1);
+      padding-right: $_padding-right;
+    }
+    @media screen and (width < b.$tablet-lg), (height < b.$mobile-lg) {
+      margin-right: calc($_padding-right-mobile * -1);
+      padding-right: $_padding-right-mobile;
+    }
+
+    scroll-behavior: smooth;
+    scroll-margin-block: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(0, 0%, 60%) transparent;
+    &::-webkit-scrollbar {
+      width: v.$scrollbar-width;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 100vw;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: hsl(0, 0%, 60%);
+      border-radius: 100vw;
+    }
+    &::-webkit-scrollbar-track:hover {
+      background-color: hsl(0, 0%, 60%, 0.25);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: hsl(0, 0%, 50%);
+    }
   }
 
   &__product {
     position: relative;
     @include flex(row, flex-start, center);
-    gap: calc(1.2rem + 1vw);
+    gap: calc(1.2rem + 1dvw);
     padding-block: $_product-padding-block;
     border-bottom: func.rem(1) solid c.$gray;
     color: c.$black;
@@ -92,7 +169,7 @@
     position: relative;
 
     & img {
-      width: calc(5rem + 2vw);
+      width: calc(5rem + 2dvw);
       aspect-ratio: 1;
     }
   }

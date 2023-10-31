@@ -113,6 +113,9 @@
 
     &--hide {
       grid-template-columns: 0fr;
+      @media (hover: none) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 

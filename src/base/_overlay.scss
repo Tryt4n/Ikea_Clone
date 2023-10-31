@@ -1,9 +1,13 @@
+@use "./functions" as func;
+@use "./breakpoints" as b;
 @use "../abstracts/variables" as v;
 @use "../abstracts/colors" as c;
 
 html:has(body[data-overlay="true"]) {
   overflow-y: hidden;
-  margin-right: v.$scrollbar-width;
+  @media (hover: hover) {
+    margin-right: v.$scrollbar-width;
+  }
 
   .collection-list > li {
     opacity: 0;
@@ -19,7 +23,9 @@ html:has(body[data-overlay="true"]) {
 
 html:has(dialog.modal[open]) {
   overflow-y: hidden;
-  margin-right: v.$scrollbar-width;
+  @media screen and (width >= b.$tablet-lg) and (height > func.rem(700)) and (hover: hover) {
+    margin-right: v.$scrollbar-width;
+  }
 }
 
 body {
