@@ -58,20 +58,18 @@ function InnerComponent(
 
       <div className="modal__main-content">
         {width >= 1000 && height >= 700 && (
-          <Article.ImgContainer className="modal__img-container">
+          <Article.ImgContainer className="modal__img-inner-wrapper">
             <Article.Img
               src={modalData?.img.imgSrc}
               alt={modalData?.img.imgAlt}
               aspectRatio={modalData?.img.imgAspectRatio}
             />
-
             {modalData && <CollectionProductsList products={modalData?.products} />}
             {modalData?.instagramUser && (
               <Article.InstagramBadge>{modalData.instagramUser}</Article.InstagramBadge>
             )}
           </Article.ImgContainer>
         )}
-
         <ul className="modal__products-list">
           {modalData?.products.map((product) => (
             <li key={product.id}>
