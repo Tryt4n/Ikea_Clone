@@ -39,6 +39,7 @@ function componentMapper(article: ArticleType) {
 //   const URL = "https://tryt4n.github.io/Ikea-data/server/pages/homePage.json";
 //   const articles = useFetch(URL);
 //   const homePageArticles = articles.data;
+//   console.log(homePageArticles);
 
 //   return (
 //     <>

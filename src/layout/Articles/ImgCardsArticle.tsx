@@ -18,6 +18,7 @@ export type ImgCardsArticleType = {
   id: string;
   breakOnMobile?: boolean;
   header?: string;
+  imgSizes: string;
   cards: ImgCard[];
 };
 
@@ -27,6 +28,7 @@ type ImgCard = {
   variant: BackgroundVariants;
   img: {
     imgSrc: string;
+    imgSrcSet: string;
     imgAlt: string;
   };
   heading: string;
@@ -85,7 +87,7 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
           className={`mySwiper${article.id}`}
         >
           {article.cards.map((card) => {
-            const { id, link, variant, img, heading, text } = card;
+            const { id, link, variant, img, heading, text, btnVariant } = card;
 
             return (
               <SwiperSlide key={id}>
@@ -96,6 +98,8 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
                 >
                   <Card.Img
                     src={img.imgSrc}
+                    srcSet={img.imgSrcSet}
+                    sizes={article.imgSizes}
                     alt={img.imgAlt}
                   />
 
@@ -104,7 +108,7 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
                       <Card.Heading headingLevel={article.header ? 3 : 2}>{heading}</Card.Heading>
                       <Card.Text>{text}</Card.Text>
                     </div>
-                    <Card.Btn />
+                    <Card.Btn variant={btnVariant ? btnVariant : "light"} />
                   </Card.TextContainer>
                 </Card>
               </SwiperSlide>

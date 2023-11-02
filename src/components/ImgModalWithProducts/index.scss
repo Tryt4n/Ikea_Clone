@@ -108,9 +108,40 @@
     height: calc(100% - $_height_cut);
   }
 
-  &__img-container {
-    overflow: auto;
-    height: 100%;
+  &__thumbnail-wrapper {
+    position: relative;
+    isolation: isolate;
+  }
+
+  &__thumbnail-img-hover {
+    position: absolute;
+    inset: 0;
+    transition: v.$main-transition;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+
+    &:hover {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__thumbnail-img {
+    transition: v.$main-transition;
+
+    &:hover {
+      z-index: -1;
+      opacity: 0;
+      visibility: hidden;
+
+      & ~ .modal__thumbnail-img-hover {
+        z-index: 1;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &__img-inner-wrapper {

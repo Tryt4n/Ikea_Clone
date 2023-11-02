@@ -15,6 +15,7 @@ export type CarouselSliderArticleType = {
   header?: string;
   swiperConfig: SwiperType;
   slides: SlideType[];
+  imgSizes: string;
 };
 
 type SlideType = {
@@ -31,6 +32,7 @@ type SlideType = {
   };
   img?: {
     imgSrc: string;
+    imgSrcSet: string;
     imgAlt: string;
   };
 };
@@ -94,6 +96,8 @@ export default function CarouselSliderArticle({ article }: { article: CarouselSl
                   {img && (
                     <Article.Img
                       src={img.imgSrc}
+                      srcSet={img.imgSrcSet}
+                      sizes={article.imgSizes}
                       alt={img.imgAlt}
                     />
                   )}

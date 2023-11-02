@@ -24,7 +24,7 @@ export type ProductType = {
     bottomMobile?: string;
     leftMobile?: string;
   };
-  newTag: {
+  newTag?: {
     variant: TextVariants;
   };
   topSellerTag?: {

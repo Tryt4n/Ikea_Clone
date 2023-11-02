@@ -2,7 +2,9 @@
 import { ForwardedRef, forwardRef } from "react";
 // Components
 import Article from "../../compoundComponents/Article/Article";
-import CollectionProductsList from "../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
+import CollectionProductsList, {
+  ProductType,
+} from "../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 // Types
 import { CardCollectionType } from "../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
 // Icons
@@ -23,6 +25,11 @@ type DialogPropsType = {
   onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;
   onKeyDownFunction: (e: React.KeyboardEvent<HTMLDialogElement>) => void;
   modalData: CardCollectionType | undefined;
+};
+
+type extendedProductType = ProductType & {
+  imgSrc?: string;
+  imgHoverSrc?: string;
 };
 
 function InnerComponent(
@@ -71,17 +78,29 @@ function InnerComponent(
           </Article.ImgContainer>
         )}
         <ul className="modal__products-list">
-          {modalData?.products.map((product) => (
+          {modalData?.products.map((product: extendedProductType) => (
             <li key={product.id}>
               <a
                 href={product.productLink}
                 className="modal__product"
               >
                 <div className="modal__product-img-container">
-                  <img
-                    src={modalData.img.imgSrc}
-                    alt={`${product.productHeading} ${product.productSubHeading}`}
-                  />
+                  <div className="modal__thumbnail-wrapper">
+                    <img
+                      src={`https://www.ikea.com/pl/pl/images/products/${product.imgSrc}_s5.jpg?f=xxs`}
+                      srcSet={`https://www.ikea.com/pl/pl/images/products/${product.imgSrc}_s5.jpg?f=m 600w, https://www.ikea.com/pl/pl/images/products/${product.imgSrc}_s5.jpg?f=xxs 300w, https://www.ikea.com/pl/pl/images/products/${product.imgSrc}_s5.jpg?f=xxxs 160w, https://www.ikea.com/pl/pl/images/products/${product.imgSrc}_s5.jpg?f=u 80w`}
+                      sizes="(max-width: 400px) 80px, (max-width: 1450px) 160px, 300px"
+                      alt={`${product.productHeading} ${product.productSubHeading}`}
+                      className="modal__thumbnail-img"
+                    />
+                    <img
+                      src={`https://www.ikea.com/pl/pl/images/products/${product.imgHoverSrc}_s5.jpg?f=xxs`}
+                      srcSet={`https://www.ikea.com/pl/pl/images/products/${product.imgHoverSrc}_s5.jpg?f=m 600w, https://www.ikea.com/pl/pl/images/products/${product.imgHoverSrc}_s5.jpg?f=xxs 300w, https://www.ikea.com/pl/pl/images/products/${product.imgHoverSrc}_s5.jpg?f=xxxs 160w, https://www.ikea.com/pl/pl/images/products/${product.imgHoverSrc}_s5.jpg?f=u 80w`}
+                      sizes="(max-width: 400px) 80px, (max-width: 1450px) 160px, 300px"
+                      alt="Zdjęcie produktu pokazujące jego wykorzystanie"
+                      className="modal__thumbnail-img-hover"
+                    />
+                  </div>
                   {product.topSellerTag && (
                     <strong className="modal__img-top-seller-badge">Top Seller</strong>
                   )}

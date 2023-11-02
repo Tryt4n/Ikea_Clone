@@ -46,9 +46,9 @@ export default function MainArticle({ article }: { article: MainArticleType }) {
       <Article.Body className={article.reverseOrder ? "col-reverse" : ""}>
         <Article.ImgContainer>
           <Article.Img
-            sizes={article.imgSizes}
-            srcSet={article.imgSrcSet}
             src={article.imgSrc}
+            srcSet={article.imgSrcSet}
+            sizes={article.imgSizes}
             alt={article.imgAlt}
             aspectRatio={article.imgAspectRatio ? article.imgAspectRatio : "16/9"}
             aspectRatioMobile={article.imgAspectRatioMobile ? article.imgAspectRatioMobile : "16/9"}

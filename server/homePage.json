@@ -16,9 +16,9 @@
           "variant": "light",
           "link": "#"
         },
-        "imgSrc": "/images/collections/1/collection_rzilav_c_scale,w_1600.avif",
-        "imgSrcSet": "/images/collections/1/collection_rzilav_c_scale,w_320.avif 320w, /images/collections/1/collection_rzilav_c_scale,w_744.avif 744w, /images/collections/1/collection_rzilav_c_scale,w_1010.avif 1010w, /images/collections/1/collection_rzilav_c_scale,w_1351.avif 1351w, /images/collections/1/collection_rzilav_c_scale,w_1561.avif 1561w, /images/collections/1/collection_rzilav_c_scale,w_1600.avif 1600w",
-        "imgSizes": "(max-width: 1600px) 100vw, 1600px",
+        "imgSrc": "https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=s",
+        "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/73a4aae2f1f90a1b/original/PH193360.jpg?f=xxxs 240w",
+        "imgSizes": "(min-width: 56.25em) 40vw, 90vw",
         "imgAlt": "Urządzony salon",
         "imgAspectRatioMobile": "3/4",
         "products": [
@@ -138,6 +138,7 @@
             }
           }
         },
+        "imsSizes": "272px",
         "slides": [
           {
             "id": "5DR0SI1GGZ",
@@ -160,7 +161,8 @@
               "text": "Meble modułowe BESTÅ"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/modular-furnitures.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/cbbc05e6c18057f/original/PH189196.jpg?f=xxxs 240w",
               "imgAlt": "Modułowa szafa BESTÅ"
             }
           },
@@ -173,7 +175,8 @@
               "text": "Dekoracje"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/decorations.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/5b74718eb326e683/original/PH194090.jpg?f=xxxs 240w",
               "imgAlt": "Kwiaty w wazonach na różowych stojakach"
             }
           },
@@ -186,7 +189,8 @@
               "text": "Sofy i narożniki"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/sofas.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/6b387ce32b9339d/original/PH194132.jpg?f=xxxs 240w",
               "imgAlt": "Sofa"
             }
           },
@@ -199,7 +203,8 @@
               "text": "Oświetlenie"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/lightning.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/d377404e078e18/original/PH194074.jpg?f=xxxs 240w",
               "imgAlt": "Lampa ÖKENSAND"
             }
           },
@@ -212,7 +217,8 @@
               "text": "Tekstylia"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/textiles.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/5659dd9e0596755f/original/PH194077.jpg?f=xxxs 240w",
               "imgAlt": "Poduszki ułożone w wieżę jedna na drugiej"
             }
           },
@@ -225,7 +231,8 @@
               "text": "Fotele i szezlongi"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/chairs.avif",
+              "imgSrc": "https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=sg 1600w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxxl 1400w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxl 950w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xl 800w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=l 750w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=m 600w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=s 500w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xs 400w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxs 300w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxxs 240w",
               "imgAlt": ""
             }
           },
@@ -238,7 +245,8 @@
               "text": "Dywany"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/carpets.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/5ea1bb1d9ba4c04e/original/PH194171.jpg?f=xxxs 240w",
               "imgAlt": "Dywan zarzucony na stojak na greenscreenie"
             }
           },
@@ -251,7 +259,8 @@
               "text": "Drobne przechowywanie"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/containers.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/7b034656d581b566/original/PH194059.jpg?f=xxxs 240w",
               "imgAlt": "Materiałowe pojemniki z uszami w kształcie walca"
             }
           },
@@ -264,7 +273,8 @@
               "text": "Stoliki kawowe"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_1/coffee-tables.avif",
+              "imgSrc": "https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=sg 1600w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xxxl 1400w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xxl 950w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xl 800w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=l 750w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=m 600w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=s 500w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xs 400w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xxs 300w, https://www.ikea.com/images/stoliki-gladom-469039a9c696f81907922b2210a70b66.jpg?f=xxxs 240w",
               "imgAlt": "Małe stoliki kawowe w kształcie okręgu w kolorach: biały/czarny/szary"
             }
           }
@@ -277,13 +287,15 @@
       "content": {
         "id": "FC4IC5FMAA",
         "header": "Dołącz do klubu IKEA Family i korzystaj ze wszystkich korzyści",
+        "imgSizes": "(min-width: 56.25em) 27vw, (min-width: 37.5em) 43vw, 85vw",
         "cards": [
           {
             "id": "1SAQZ9W8Y1",
             "link": "#",
             "variant": "blue",
             "img": {
-              "imgSrc": "/images/scrollbars/IKEA_Family_club/1.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/4337a10e7318733b/original/PH194356-crop001.jpg?f=xxxs 240w",
               "imgAlt": "Krzesło przykryte częściowo kocem"
             },
             "heading": "Rabat 15% na zasłony, koce, poduszki i inne tekstylia dekoracyjne przy zakupie za min. 20 zł",
@@ -294,7 +306,8 @@
             "link": "#",
             "variant": "blue",
             "img": {
-              "imgSrc": "/images/scrollbars/IKEA_Family_club/2.avif",
+              "imgSrc": "https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=sg 1600w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xxxl 1400w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xxl 950w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xl 800w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=l 750w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=m 600w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=s 500w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xs 400w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xxs 300w, https://www.ikea.com/images/2f/38/2f3854b8907da9862b3cb00b50884ef2.jpg?f=xxxs 240w",
               "imgAlt": "Łóżko"
             },
             "heading": "Rabat 15% na kołdry, poduszki, pościele i inne tekstylia do sypialni przy zakupie za min. 20 zł",
@@ -305,7 +318,8 @@
             "link": "#",
             "variant": "blue",
             "img": {
-              "imgSrc": "/images/scrollbars/IKEA_Family_club/3.avif",
+              "imgSrc": "https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=sg 1600w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xxxl 1400w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xxl 950w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xl 800w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=l 750w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=m 600w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=s 500w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xs 400w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xxs 300w, https://www.ikea.com/images/24/87/2487a77a1849b0185d6bf229ba838aad.png?f=xxxs 240w",
               "imgAlt": "Rodzina przy stole"
             },
             "heading": "Klubowicze IKEA Family mogą więcej",
@@ -338,10 +352,12 @@
                   "top": "50%",
                   "right": "9%"
                 },
+                "imgSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0804669_pe769260",
+                "imgHoverSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0959244_ph174027",
                 "descriptionPlacement": "left-center",
                 "productHeading": "JÄTTELIK",
                 "productSubHeading": "Pluszak, 44cm",
-                "productLink": "#",
+                "productLink": "/#",
                 "productPriceInteger": 29,
                 "productPriceDecimal": 99
               }
@@ -365,6 +381,8 @@
                 "topSellerTag": {
                   "variant": "red"
                 },
+                "imgSrc": "soare-podkladka-hiacynt-wodny__0711868_pe728538",
+                "imgHoverSrc": "soare-podkladka-hiacynt-wodny__0947715_ph173952",
                 "descriptionPlacement": "bottom-center",
                 "productHeading": "SOARÉ",
                 "productSubHeading": "Podkładka, 37 cm",
@@ -378,6 +396,8 @@
                   "right": "35%",
                   "bottom": "0%"
                 },
+                "imgSrc": "rinnig-scierka-bialy-zielony-wzor__0813215_pe772339",
+                "imgHoverSrc": "rinnig-scierka-bialy-zielony-wzor__0918272_pe786442",
                 "descriptionPlacement": "top-right",
                 "productHeading": "RINNIG",
                 "productSubHeading": "Ścierka, 45x60 cm",
@@ -392,6 +412,8 @@
                   "top": "58%",
                   "right": "30%"
                 },
+                "imgSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0713739_pe729738",
+                "imgHoverSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0897521_pe611672",
                 "descriptionPlacement": "top-right",
                 "productHeading": "KORKEN",
                 "productSubHeading": "Słoik z pokrywką, 1 l",
@@ -405,6 +427,8 @@
                   "top": "55%",
                   "left": "39%"
                 },
+                "imgSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0713736_pe729735",
+                "imgHoverSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0930079_pe790591",
                 "descriptionPlacement": "top-left",
                 "productHeading": "VARDAGEN",
                 "productSubHeading": "Słoik z pokrywką, 1.9 l",
@@ -429,6 +453,8 @@
                   "bottom": "0%",
                   "left": "15%"
                 },
+                "imgSrc": "alseda-stolek-wlokno-bananowca__24302_pe089431",
+                "imgHoverSrc": "alseda-stolek-wlokno-bananowca__1097696_ph173556",
                 "descriptionPlacement": "top-right",
                 "productHeading": "ALSEDA",
                 "productSubHeading": "Stołek",
@@ -452,6 +478,8 @@
                   "bottom": "10%",
                   "left": "36%"
                 },
+                "imgSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066310_pe852371",
+                "imgHoverSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066308_pe852370",
                 "descriptionPlacement": "top-right",
                 "productHeading": "GRADVIS",
                 "productSubHeading": "Wazon z metalowym wkładem, 21 cm",
@@ -476,6 +504,8 @@
                   "bottom": "24.5%",
                   "left": "21%"
                 },
+                "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
+                "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
                 "descriptionPlacement": "top-right",
                 "productHeading": "ENERYDA",
                 "productSubHeading": "Uchwyt, 89 mm",
@@ -489,6 +519,8 @@
                   "left": "17.5%",
                   "bottom": "7%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-right",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 60x40 cm",
@@ -501,6 +533,8 @@
                   "right": "17.5%",
                   "bottom": "2.5%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645014_pe703167",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-left",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 60x20 cm",
@@ -513,6 +547,8 @@
                   "right": "46%",
                   "bottom": "10%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0706696_pe725959",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-center",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 80x40 cm",
@@ -536,6 +572,8 @@
                   "bottom": "50%",
                   "left": "32%"
                 },
+                "imgSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154592_pe886219",
+                "imgHoverSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154590_pe886216",
                 "descriptionPlacement": "top-center",
                 "productHeading": "MALM",
                 "productSubHeading": "Komoda, 2 szuflady, 40x55 cm",
@@ -552,6 +590,8 @@
                   "variant": "red",
                   "lastItemPriceInteger": 1449
                 },
+                "imgSrc": "malm-rama-lozka-z-2-pojemnikami-okleina-debowa-bejcowana-na-bialo-loenset__1154400_pe886048",
+                "imgHoverSrc": "malm-rama-lozka-z-2-pojemnikami-okleina-debowa-bejcowana-na-bialo-loenset__1101549_pe866676",
                 "descriptionPlacement": "top-right",
                 "productHeading": "MALM",
                 "productSubHeading": "Rama łóżka z 2 pojemnikami, 120x200 cm",
@@ -583,6 +623,8 @@
                   "lastItemPriceInteger": 49,
                   "lastItemPriceDecimal": 99
                 },
+                "imgSrc": "toftlund-dywan-bialy__0617682_pe688130",
+                "imgHoverSrc": "toftlund-dywan-bialy__0891785_pe704319",
                 "descriptionPlacement": "left-center",
                 "productHeading": "TOFTLUND",
                 "productSubHeading": "Dywan, 55x85 cm",
@@ -599,6 +641,8 @@
                 "topSellerTag": {
                   "variant": "red"
                 },
+                "imgSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__0325432_pe517964",
+                "imgHoverSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__1116445_pe872501",
                 "descriptionPlacement": "top-left",
                 "productHeading": "STRANDMON",
                 "productSubHeading": "Fotel uszak",
@@ -622,6 +666,8 @@
                   "top": "20%",
                   "left": "18.25%"
                 },
+                "imgSrc": "eneryda-galka-chrom__0754159_pe747801",
+                "imgHoverSrc": "eneryda-galka-chrom__0718635_pe731627",
                 "descriptionPlacement": "right-center",
                 "productHeading": "ENERYDA",
                 "productSubHeading": "Gałka, 27 mm",
@@ -635,6 +681,8 @@
                   "right": "-2%",
                   "bottom": "34%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0706697_pe725963",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-left",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 80x20 cm",
@@ -647,6 +695,8 @@
                   "right": "40%",
                   "bottom": "16.5%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-left",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 60x40 cm",
@@ -659,6 +709,8 @@
                   "right": "5.75%",
                   "bottom": "29%"
                 },
+                "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
+                "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
                 "descriptionPlacement": "bottom-left",
                 "productHeading": "ENERYDA",
                 "productSubHeading": "Uchwyt, 89 mm",
@@ -675,6 +727,8 @@
                 "topSellerTag": {
                   "variant": "red"
                 },
+                "imgSrc": "saeljan-blat-imit-debu-laminat__0808056_pe770665",
+                "imgHoverSrc": "saeljan-blat-imit-debu-laminat__0808062_pe770668",
                 "descriptionPlacement": "top-right",
                 "productHeading": "SÄLJAN",
                 "productSubHeading": "Blat, 246x3.8 cm",
@@ -699,6 +753,8 @@
                   "bottom": "40%",
                   "left": "45%"
                 },
+                "imgSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__0325432_pe517964",
+                "imgHoverSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__1116445_pe872501",
                 "descriptionPlacement": "top-center",
                 "productHeading": "STRANDMON",
                 "productSubHeading": "Fotel uszak",
@@ -727,6 +783,8 @@
                   "lastItemPriceInteger": 79,
                   "lastItemPriceDecimal": 99
                 },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711818_pe728497",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418237_pe575307",
                 "descriptionPlacement": "top-right",
                 "productHeading": "SAMLA",
                 "productSubHeading": "Pojemnik z pokrywką, 79x57x18 cm/ 55 l",
@@ -745,6 +803,8 @@
                   "lastItemPriceInteger": 29,
                   "lastItemPriceDecimal": 99
                 },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711820_pe728499",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418253_pe575323",
                 "descriptionPlacement": "top-center",
                 "productHeading": "SAMLA",
                 "productSubHeading": "Pojemnik z pokrywką, 39x28x28 cm/ 22 l",
@@ -758,6 +818,8 @@
                   "bottom": "22%",
                   "right": "38%"
                 },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711823_pe728496",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418237_pe575307",
                 "descriptionPlacement": "right-center",
                 "productHeading": "SAMLA",
                 "productSubHeading": "Pojemnik z pokrywką, 57x39x42 cm/ 65 l",
@@ -782,6 +844,8 @@
                   "top": "30%",
                   "left": "37%"
                 },
+                "imgSrc": "bodbyn-drzwi-szary__0644840_pe703007",
+                "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
                 "descriptionPlacement": "top-right",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Drzwi, 40x60 cm",
@@ -797,6 +861,8 @@
                 "topSellerTag": {
                   "variant": "red"
                 },
+                "imgSrc": "bagganaes-uchwyt-czarny__0754228_pe747827",
+                "imgHoverSrc": "bagganaes-uchwyt-czarny__0718663_pe731611",
                 "descriptionPlacement": "bottom-right",
                 "productHeading": "BAGGANÄS",
                 "productSubHeading": "Uchwyt, 143 mm",
@@ -810,6 +876,8 @@
                   "top": "25%",
                   "left": "49%"
                 },
+                "imgSrc": "bodbyn-drzwi-szary__0644978_pe703134",
+                "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
                 "descriptionPlacement": "bottom-right",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Drzwi, 60x100 cm",
@@ -822,6 +890,8 @@
                   "top": "44%",
                   "left": "47%"
                 },
+                "imgSrc": "hultarp-szyna-czarny__0941870_pe795789",
+                "imgHoverSrc": "hultarp-szyna-czarny__0941454_pe795466",
                 "descriptionPlacement": "right-center",
                 "productHeading": "HULTARP",
                 "productSubHeading": "Szyna, 60 cm",
@@ -835,6 +905,8 @@
                   "bottom": "25%",
                   "left": "40%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-szary__0706700_pe725960",
+                "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
                 "descriptionPlacement": "top-right",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 80x40 cm",
@@ -847,6 +919,8 @@
                   "bottom": "43%",
                   "right": "22.5%"
                 },
+                "imgSrc": "bodbyn-front-szuflady-szary__0645015_pe703168",
+                "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
                 "descriptionPlacement": "bottom-center",
                 "productHeading": "BODBYN",
                 "productSubHeading": "Front szuflady, 60x40 cm",
@@ -875,6 +949,8 @@
                   "lastItemPriceInteger": 24,
                   "lastItemPriceDecimal": 99
                 },
+                "imgSrc": "fejka-sztuczna-roslina-doniczkowa-do-wewnatrz-na-zewnatrz-wiszacy__0748917_pe745318",
+                "imgHoverSrc": "fejka-sztuczna-roslina-doniczkowa-do-wewnatrz-na-zewnatrz-wiszacy__0748529_pe745052",
                 "descriptionPlacement": "bottom-center",
                 "productHeading": "FEJKA",
                 "productSubHeading": "Sztuczna roślina doniczkowa, 9 cm",
@@ -888,6 +964,8 @@
                   "left": "5.5%",
                   "bottom": "28.5%"
                 },
+                "imgSrc": "laettad-podkladka-trawa-morska-czarny__0711861_pe728547",
+                "imgHoverSrc": "laettad-podkladka-trawa-morska-czarny__0896854_pe607503",
                 "descriptionPlacement": "top-right",
                 "productHeading": "LÄTTAD",
                 "productSubHeading": "Podkładka, 37 cm",
@@ -904,6 +982,8 @@
                 "topSellerTag": {
                   "variant": "red"
                 },
+                "imgSrc": "ingolf-krzeslo-bialy__0728152_pe736113",
+                "imgHoverSrc": "ingolf-krzeslo-bialy__1052477_pe846140",
                 "descriptionPlacement": "top-right",
                 "productHeading": "INGOLF",
                 "productSubHeading": "Krzesło",
@@ -922,13 +1002,15 @@
         "id": "YBP2YRDJJI",
         "breakOnMobile": true,
         "header": "Aktualnie w IKEA",
+        "imgSizes": "(min-width: 56.25em) 27vw, (min-width: 37.5em) 43vw, 85vw",
         "cards": [
           {
             "id": "MB6BW55GJL",
             "link": "#",
             "variant": "light-brown",
             "img": {
-              "imgSrc": "/images/scrollbars/currently/1.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/2e3337f666a95dc9/original/PH188182.jpg?f=xxxs 240w",
               "imgAlt": "Urządzony salon"
             },
             "heading": "Sezon na domowanie z IKEA",
@@ -940,7 +1022,8 @@
             "link": "#",
             "variant": "brown",
             "img": {
-              "imgSrc": "/images/scrollbars/currently/2.avif",
+              "imgSrc": "https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=sg 1600w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xxxl 1400w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xxl 950w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xl 800w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=l 750w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=m 600w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=s 500w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xs 400w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xxs 300w, https://www.ikea.com/images/osoba-trzymajaca-w-dloniach-telefon-z-wlaczona-aplikacja-ike-7697f83a0b6178245a0648ae0932c479.png?f=xxxs 240w",
               "imgAlt": "Telefon z włączoną aplikacją IKEA Kreativ"
             },
             "heading": "Zmiany w wystroju? Nieskończone możliwości czekają w IKEA Kreativ!",
@@ -951,7 +1034,8 @@
             "link": "#",
             "variant": "violet",
             "img": {
-              "imgSrc": "/images/scrollbars/currently/3.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/3031728fb2cc3d39/original/PH194465.jpg?f=xxxs 240w",
               "imgAlt": "Pluszowy chomik w stroju kosmonauty siedzący na poduszcze w kształcie UFO"
             },
             "heading": "Kolekcja AFTONSPARV dotarła na Ziemię!",
@@ -959,11 +1043,25 @@
             "btnVariant": "dark"
           },
           {
+            "id": "GDL56VCK5N",
+            "link": "#",
+            "variant": "light-gray",
+            "img": {
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxxs 240w",
+              "imgAlt": "Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
+            },
+            "heading": "Zmieńmy przyszłość naszej planety na dobre",
+            "text": "IKEA Foundation co roku zapewnia cenne fundusze, by przeciwdziałać zmianom klimatycznym oraz poprawić warunki życia dzieci poprzez umożliwienie ich opiekunom pozyskania stabilnych źródeł dochodu.",
+            "btnVariant": "dark"
+          },
+          {
             "id": "7J9CUCKGTR",
             "link": "#",
             "variant": "yellow",
             "img": {
-              "imgSrc": "/images/scrollbars/currently/4.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/8b46d6ddec6aae2/original/PH179968.jpg?f=xxxs 240w",
               "imgAlt": "Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
             },
             "heading": "Zaprojektowane przez IKEA – wykonane w Polsce",
@@ -975,7 +1073,8 @@
             "link": "#",
             "variant": "light-yellow",
             "img": {
-              "imgSrc": "/images/scrollbars/currently/5.avif",
+              "imgSrc": "https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=s",
+              "imgSrcSet": "https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=sg 1600w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xxxl 1400w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xxl 950w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xl 800w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=l 750w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=m 600w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=s 500w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xs 400w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xxs 300w, https://www.ikea.com/images/83/a9/83a9eec39cafd30ee57952651412782a.png?f=xxxs 240w",
               "imgAlt": "Chłopiec idący do sklepu IKEA"
             },
             "heading": "IKEA to więcej niż sklep",
@@ -997,10 +1096,9 @@
           "variant": "dark",
           "link": "#"
         },
-        "imgSrc": "/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif",
-        "imgSrcSet": "/images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w, /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_971.avif 971w, /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1123.avif 1123w, /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1507.avif 1507w, /images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w",
-        "src": "/images/organization_ideas/organization_wnguvj_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif",
-        "imgSizes": "(max-width: 2667px) 60vw, 1600px",
+        "imgSrc": "https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=s",
+        "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/7d338889613a8df7/original/FY24_Kick-off_Online_300ppi_2048x1152px.jpg?f=xxxs 240w",
+        "imgSizes": "(min-width: 56.25em) 40vw, 90vw",
         "imgAlt": "Kolaż z kolorowymi kwadrantami i wycinankami zdjęć ludzi.",
         "imgAspectRatioMobile": "3/4"
       }
@@ -1011,9 +1109,9 @@
       "content": {
         "id": "AN1FB3PWWV",
         "header": "Nowości z przeszłości - odkryj drugą odsłone archiwalnych projektów IKEA",
-        "imgSrc": "/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif",
-        "imgSrcSet": "/images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_320.avif 320w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_737.avif 737w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_961.avif 961w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1488.avif 1488w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1544.avif 1544w, /images/collections/2/collection_dh1zfn_ar_16_9,c_fill,g_auto__c_scale,w_1600.avif 1600w",
-        "imgSizes": "(max-width: 2667px) 60vw, 1600px",
+        "imgSrc": "https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=s",
+        "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/5fc92273f3e28140/original/PH194844.jpg?f=xxxs 240w",
+        "imgSizes": "(min-width: 56.25em) 78vw, 100vw",
         "imgAlt": "Produkty przedstawiające kolekcję Nytillverkad",
         "imgAspectRatioMobile": "3/4",
         "products": [
@@ -1163,6 +1261,7 @@
             }
           }
         },
+        "imgSizes": "272px",
         "slides": [
           {
             "id": "YA03L3B7KI",
@@ -1183,7 +1282,8 @@
               "text": "Planowanie szafy"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/wardrobes.webp",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/52fbfff18f5e50ab/original/PH195018.jpg?f=xxxs 240w",
               "imgAlt": "Szafa w pokoju z poukładanymi rzeczami"
             }
           },
@@ -1196,7 +1296,8 @@
               "text": "Kuchnia"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/kitchen.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/db486586f46c181/original/PH194600.jpg?f=xxxs 240w",
               "imgAlt": "Fragment kuchni z przestrzenią zlewową w centrum"
             }
           },
@@ -1209,7 +1310,8 @@
               "text": "Pokój dzienny"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/living-room.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/4b080942230fe99/original/PH194352.jpg?f=xxxs 240w",
               "imgAlt": "Pokój z sofą w centrum, z przodu stolik i kolorowy dywan"
             }
           },
@@ -1222,7 +1324,8 @@
               "text": "Sypialnia"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/bedroom.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/5cdeca67daff41d8/original/PH195099.jpg?f=xxxs 240w",
               "imgAlt": "Pokój sypialniany z łóżkiem w centrum"
             }
           },
@@ -1235,7 +1338,8 @@
               "text": "Domowe biuro"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/home-office.webp",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/2746de48ccb02029/original/PH195061.jpg?f=xxxs 240w",
               "imgAlt": "Biurko z poukładanymi rzeczami oraz krzesło"
             }
           },
@@ -1248,7 +1352,8 @@
               "text": "Pokój dziecięcy"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/childrens-room.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/6f441c5c42079ccb/original/PH195191.jpg?f=xxxs 240w",
               "imgAlt": "Pokój nocą z łóżkiem z otwartym oknem w tle oraz niebieską lampką ze wzorkami"
             }
           },
@@ -1261,7 +1366,8 @@
               "text": "Projektowanie mieszkania"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/apartment-design.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/4519147690d535ea/original/PH191697.jpg?f=xxxs 240w",
               "imgAlt": "Pokój z białym stołem i krzesłami dookoła w centrum"
             }
           },
@@ -1274,7 +1380,8 @@
               "text": "Przestrzeń biznesowa"
             },
             "img": {
-              "imgSrc": "images/scrollbars/scrollbar_2/business-space.avif",
+              "imgSrc": "https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=s",
+              "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/10db4582931531d7/original/PH188480.jpg?f=xxxs 240w",
               "imgAlt": "Biurko z komputerem i segregatorami oraz fotel biurowy"
             }
           }
