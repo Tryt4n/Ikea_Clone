@@ -2,6 +2,7 @@
 import { CarouselSliderArticleType } from "../CarouselSliderArticle";
 import { ImageCardsCollectionSliderType } from "../ImagesCardsCollectionSlider";
 import { ImgCardsArticleType } from "../ImgCardsArticle";
+import { InspirationImageGalleryArticleType } from "../InspirationImageGalleryArticle";
 import { MainArticleType } from "../MainArticle";
 import { TextCardsArticleType } from "../TextCardsArticle";
 
@@ -10,14 +11,16 @@ export type ArticleVariantsTypes =
   | "carousel-slider-article"
   | "image-cards-article"
   | "image-cards-collection-slider"
-  | "text-cards-article";
+  | "text-cards-article"
+  | "images-gallery";
 
 export type ArticleContentsTypes =
   | MainArticleType
   | CarouselSliderArticleType
   | ImgCardsArticleType
   | ImageCardsCollectionSliderType
-  | TextCardsArticleType;
+  | TextCardsArticleType
+  | InspirationImageGalleryArticleType;
 
 export type ArticleType = {
   id: string;

@@ -5,7 +5,7 @@ export default function NotFoundPage() {
     <div className="not-found">
       <div className="not-found__ufo-container">
         <video
-          src="/video/ufo.2d5c35ab6c116cc323bb.mp4"
+          src="https://www.ikea.com/pl/pl/static/mp4s/ufo.2d5c35ab6c116cc323bb.mp4"
           autoPlay
           muted
           playsInline

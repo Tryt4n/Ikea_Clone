@@ -75,7 +75,7 @@
     --translateY: 0;
 
     position: absolute;
-    width: func.rem(135);
+    min-width: func.rem(135);
     background-color: transparent;
     color: c.$black;
     cursor: auto;
@@ -125,6 +125,12 @@
     & svg {
       flex-shrink: 0;
       color: c.$text-gray;
+    }
+
+    &.tooltip-hide {
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
     }
   }
 

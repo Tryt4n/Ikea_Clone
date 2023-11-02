@@ -11,6 +11,7 @@ import CollectionProductsList, {
 export type ImageCardCollectionType = {
   card: CardCollectionType;
   onHoverStatus?: boolean;
+  hideTooltips?: boolean;
 };
 
 export type CardCollectionType = {
@@ -25,7 +26,11 @@ export type CardCollectionType = {
   products: ProductType[];
 };
 
-export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCollectionType) {
+export default function ImageCardCollection({
+  card,
+  onHoverStatus,
+  hideTooltips,
+}: ImageCardCollectionType) {
   const { modalId, setIsModalOpen, setModalData } = useModal();
 
   const { id, img, instagramUser, products } = card;
@@ -42,7 +47,7 @@ export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCo
   }
 
   function openImageModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const isListItem = checkIfIsListItem(e.target as HTMLElement);
+    const isListItem = !hideTooltips ? checkIfIsListItem(e.target as HTMLElement) : false;
 
     if (isListItem) return;
 
@@ -69,6 +74,7 @@ export default function ImageCardCollection({ card, onHoverStatus }: ImageCardCo
         <CollectionProductsList
           products={products}
           onHoverStatus={onHoverStatus}
+          hideTooltips={hideTooltips}
         />
       </Article.ImgContainer>
     </Article.Section>

@@ -239,7 +239,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .collection-list__last-price-text-wrapper {
+  &__product-last-price-tag {
     font-size: v.$fs-sm;
     margin-bottom: 1rem;
 
@@ -269,6 +269,10 @@
     & svg {
       width: $_star-icon-size;
       aspect-ratio: 1;
+
+      &.no-fill {
+        fill: c.$gray;
+      }
     }
   }
 

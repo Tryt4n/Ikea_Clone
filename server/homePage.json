@@ -233,7 +233,7 @@
             "img": {
               "imgSrc": "https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=s",
               "imgSrcSet": "https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=sg 1600w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxxl 1400w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxl 950w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xl 800w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=l 750w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=m 600w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=s 500w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xs 400w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxs 300w, https://www.ikea.com/images/be/af/beaff09c446da5e4197d8c29ce03f84a.jpg?f=xxxs 240w",
-              "imgAlt": ""
+              "imgAlt": "Krzesło z poduszką jako siedzisko"
             }
           },
           {
@@ -352,6 +352,10 @@
                   "top": "50%",
                   "right": "9%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 67
+                },
                 "imgSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0804669_pe769260",
                 "imgHoverSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0959244_ph174027",
                 "descriptionPlacement": "left-center",
@@ -378,6 +382,10 @@
                   "bottom": "27.5%",
                   "left": "30%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 266
+                },
                 "topSellerTag": {
                   "variant": "red"
                 },
@@ -396,6 +404,10 @@
                   "right": "35%",
                   "bottom": "0%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 748
+                },
                 "imgSrc": "rinnig-scierka-bialy-zielony-wzor__0813215_pe772339",
                 "imgHoverSrc": "rinnig-scierka-bialy-zielony-wzor__0918272_pe786442",
                 "descriptionPlacement": "top-right",
@@ -412,6 +424,10 @@
                   "top": "58%",
                   "right": "30%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1501
+                },
                 "imgSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0713739_pe729738",
                 "imgHoverSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0897521_pe611672",
                 "descriptionPlacement": "top-right",
@@ -426,6 +442,10 @@
                 "placement": {
                   "top": "55%",
                   "left": "39%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 484
                 },
                 "imgSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0713736_pe729735",
                 "imgHoverSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0930079_pe790591",
@@ -453,6 +473,10 @@
                   "bottom": "0%",
                   "left": "15%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 29
+                },
                 "imgSrc": "alseda-stolek-wlokno-bananowca__24302_pe089431",
                 "imgHoverSrc": "alseda-stolek-wlokno-bananowca__1097696_ph173556",
                 "descriptionPlacement": "top-right",
@@ -477,6 +501,10 @@
                 "placement": {
                   "bottom": "10%",
                   "left": "36%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 8
                 },
                 "imgSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066310_pe852371",
                 "imgHoverSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066308_pe852370",
@@ -504,6 +532,10 @@
                   "bottom": "24.5%",
                   "left": "21%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 31
+                },
                 "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
                 "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
                 "descriptionPlacement": "top-right",
@@ -519,6 +551,10 @@
                   "left": "17.5%",
                   "bottom": "7%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
                 "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
                 "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-right",
@@ -533,6 +569,10 @@
                   "right": "17.5%",
                   "bottom": "2.5%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
                 "imgSrc": "bodbyn-front-szuflady-kremowy__0645014_pe703167",
                 "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-left",
@@ -546,6 +586,10 @@
                 "placement": {
                   "right": "46%",
                   "bottom": "10%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
                 },
                 "imgSrc": "bodbyn-front-szuflady-kremowy__0706696_pe725959",
                 "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
@@ -572,6 +616,10 @@
                   "bottom": "50%",
                   "left": "32%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 545
+                },
                 "imgSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154592_pe886219",
                 "imgHoverSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154590_pe886216",
                 "descriptionPlacement": "top-center",
@@ -585,6 +633,10 @@
                 "placement": {
                   "bottom": "15%",
                   "right": "33%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 119
                 },
                 "newPriceTag": {
                   "variant": "red",
@@ -615,6 +667,10 @@
                   "right": "25%",
                   "bottom": "19%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 376
+                },
                 "topSellerTag": {
                   "variant": "red"
                 },
@@ -637,6 +693,10 @@
                 "placement": {
                   "right": "15%",
                   "bottom": "40%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1312
                 },
                 "topSellerTag": {
                   "variant": "red"
@@ -666,6 +726,10 @@
                   "top": "20%",
                   "left": "18.25%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 208
+                },
                 "imgSrc": "eneryda-galka-chrom__0754159_pe747801",
                 "imgHoverSrc": "eneryda-galka-chrom__0718635_pe731627",
                 "descriptionPlacement": "right-center",
@@ -681,6 +745,10 @@
                   "right": "-2%",
                   "bottom": "34%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
                 "imgSrc": "bodbyn-front-szuflady-kremowy__0706697_pe725963",
                 "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
                 "descriptionPlacement": "top-left",
@@ -694,6 +762,10 @@
                 "placement": {
                   "right": "40%",
                   "bottom": "16.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
                 },
                 "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
                 "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
@@ -709,6 +781,10 @@
                   "right": "5.75%",
                   "bottom": "29%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 31
+                },
                 "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
                 "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
                 "descriptionPlacement": "bottom-left",
@@ -723,6 +799,10 @@
                 "placement": {
                   "bottom": "40%",
                   "left": "23%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 205
                 },
                 "topSellerTag": {
                   "variant": "red"
@@ -753,6 +833,10 @@
                   "bottom": "40%",
                   "left": "45%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1312
+                },
                 "imgSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__0325432_pe517964",
                 "imgHoverSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__1116445_pe872501",
                 "descriptionPlacement": "top-center",
@@ -778,6 +862,10 @@
                   "bottom": "13.5%",
                   "left": "15%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
+                },
                 "newPriceTag": {
                   "variant": "red",
                   "lastItemPriceInteger": 79,
@@ -798,6 +886,10 @@
                   "bottom": "29.5%",
                   "left": "38%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
+                },
                 "newPriceTag": {
                   "variant": "red",
                   "lastItemPriceInteger": 29,
@@ -817,6 +909,10 @@
                 "placement": {
                   "bottom": "22%",
                   "right": "38%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
                 },
                 "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711823_pe728496",
                 "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418237_pe575307",
@@ -844,6 +940,10 @@
                   "top": "30%",
                   "left": "37%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 195
+                },
                 "imgSrc": "bodbyn-drzwi-szary__0644840_pe703007",
                 "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
                 "descriptionPlacement": "top-right",
@@ -857,6 +957,10 @@
                 "placement": {
                   "top": "38.5%",
                   "left": "17.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 119
                 },
                 "topSellerTag": {
                   "variant": "red"
@@ -876,6 +980,10 @@
                   "top": "25%",
                   "left": "49%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 195
+                },
                 "imgSrc": "bodbyn-drzwi-szary__0644978_pe703134",
                 "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
                 "descriptionPlacement": "bottom-right",
@@ -889,6 +997,10 @@
                 "placement": {
                   "top": "44%",
                   "left": "47%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 82
                 },
                 "imgSrc": "hultarp-szyna-czarny__0941870_pe795789",
                 "imgHoverSrc": "hultarp-szyna-czarny__0941454_pe795466",
@@ -905,6 +1017,10 @@
                   "bottom": "25%",
                   "left": "40%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
                 "imgSrc": "bodbyn-front-szuflady-szary__0706700_pe725960",
                 "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
                 "descriptionPlacement": "top-right",
@@ -918,6 +1034,10 @@
                 "placement": {
                   "bottom": "43%",
                   "right": "22.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
                 },
                 "imgSrc": "bodbyn-front-szuflady-szary__0645015_pe703168",
                 "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
@@ -944,6 +1064,10 @@
                   "top": "14%",
                   "right": "17%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 255
+                },
                 "newPriceTag": {
                   "variant": "red",
                   "lastItemPriceInteger": 24,
@@ -964,6 +1088,10 @@
                   "left": "5.5%",
                   "bottom": "28.5%"
                 },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 212
+                },
                 "imgSrc": "laettad-podkladka-trawa-morska-czarny__0711861_pe728547",
                 "imgHoverSrc": "laettad-podkladka-trawa-morska-czarny__0896854_pe607503",
                 "descriptionPlacement": "top-right",
@@ -978,6 +1106,10 @@
                 "placement": {
                   "left": "40%",
                   "bottom": "0%"
+                },
+                "rating": {
+                  "rate": 4.5,
+                  "quantity": 372
                 },
                 "topSellerTag": {
                   "variant": "red"
@@ -1049,7 +1181,7 @@
             "img": {
               "imgSrc": "https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=s",
               "imgSrcSet": "https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=sg 1600w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxxl 1400w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxl 950w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xl 800w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=l 750w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=m 600w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=s 500w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xs 400w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxs 300w, https://www.ikea.com/ext/ingkadam/m/7fc1eaefd1b6129d/original/IF_Selco_05-crop003.jpg?f=xxxs 240w",
-              "imgAlt": "Pokój z dwoma fotelami o kontrastującym kolorze i wiele elementów dekoracji wnętrz"
+              "imgAlt": "Las z górami w tle"
             },
             "heading": "Zmieńmy przyszłość naszej planety na dobre",
             "text": "IKEA Foundation co roku zapewnia cenne fundusze, by przeciwdziałać zmianom klimatycznym oraz poprawić warunki życia dzieci poprzez umożliwienie ich opiekunom pozyskania stabilnych źródeł dochodu.",
@@ -1453,6 +1585,804 @@
         "imgSizes": "(max-width: 2667px) 60vw, 1600px",
         "imgAlt": "Office",
         "imgAspectRatioMobile": "3/4"
+      }
+    },
+    {
+      "id": "LE2B7TZ8WV",
+      "variant": "images-gallery",
+      "content": {
+        "id": "3GU73WIOON",
+        "header": "Aranżacje wnętrz i inspiracje",
+        "showProductsOnlyOnHover": true,
+        "cards": [
+          {
+            "id": "90JY7H4G69",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/1/UGC100009357.avif",
+              "imgAlt": "Zdjęcie użytkownika AdventureSoul82",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "AdventureSoul82",
+            "products": [
+              {
+                "id": "RJHDQO3IZ4",
+                "placement": {
+                  "top": "50%",
+                  "right": "9%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 67
+                },
+                "imgSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0804669_pe769260",
+                "imgHoverSrc": "jaettelik-pluszak-dinozaur-dinozaur-thyrannosaurus-rex__0959244_ph174027",
+                "descriptionPlacement": "left-center",
+                "productHeading": "JÄTTELIK",
+                "productSubHeading": "Pluszak, 44cm",
+                "productLink": "/#",
+                "productPriceInteger": 29,
+                "productPriceDecimal": 99
+              }
+            ]
+          },
+          {
+            "id": "19BL018FBV",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/2/UGC100008730.avif",
+              "imgAlt": "Zdjęcie użytkownika FashionistaGlobe",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "FashionistaGlobe",
+            "products": [
+              {
+                "id": "R6NHFNY9OF",
+                "placement": {
+                  "bottom": "27.5%",
+                  "left": "30%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 266
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "imgSrc": "soare-podkladka-hiacynt-wodny__0711868_pe728538",
+                "imgHoverSrc": "soare-podkladka-hiacynt-wodny__0947715_ph173952",
+                "descriptionPlacement": "bottom-center",
+                "productHeading": "SOARÉ",
+                "productSubHeading": "Podkładka, 37 cm",
+                "productLink": "#",
+                "productPriceInteger": 19,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "R3UXEX40DB",
+                "placement": {
+                  "right": "35%",
+                  "bottom": "0%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 748
+                },
+                "imgSrc": "rinnig-scierka-bialy-zielony-wzor__0813215_pe772339",
+                "imgHoverSrc": "rinnig-scierka-bialy-zielony-wzor__0918272_pe786442",
+                "descriptionPlacement": "top-right",
+                "productHeading": "RINNIG",
+                "productSubHeading": "Ścierka, 45x60 cm",
+                "productLink": "#",
+                "productPriceInteger": 14,
+                "productPriceDecimal": 99,
+                "productQuantity": 4
+              },
+              {
+                "id": "BIW6XN6ML4",
+                "placement": {
+                  "top": "58%",
+                  "right": "30%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1501
+                },
+                "imgSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0713739_pe729738",
+                "imgHoverSrc": "korken-sloik-z-pokrywka-szklo-bezbarwne__0897521_pe611672",
+                "descriptionPlacement": "top-right",
+                "productHeading": "KORKEN",
+                "productSubHeading": "Słoik z pokrywką, 1 l",
+                "productLink": "#",
+                "productPriceInteger": 12,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "ZGRMBY0EY1",
+                "placement": {
+                  "top": "55%",
+                  "left": "39%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 484
+                },
+                "imgSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0713736_pe729735",
+                "imgHoverSrc": "vardagen-sloik-z-pokrywka-szklo-bezbarwne__0930079_pe790591",
+                "descriptionPlacement": "top-left",
+                "productHeading": "VARDAGEN",
+                "productSubHeading": "Słoik z pokrywką, 1.9 l",
+                "productLink": "#",
+                "productPriceInteger": 19,
+                "productPriceDecimal": 99
+              }
+            ]
+          },
+          {
+            "id": "6JXA7ZLRSR",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/3/UGC100009307.avif",
+              "imgAlt": "Zdjęcie użytkownika TechGeniusNinja",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "TechGeniusNinja",
+            "products": [
+              {
+                "id": "K1C6VJLZJM",
+                "placement": {
+                  "bottom": "0%",
+                  "left": "15%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 29
+                },
+                "imgSrc": "alseda-stolek-wlokno-bananowca__24302_pe089431",
+                "imgHoverSrc": "alseda-stolek-wlokno-bananowca__1097696_ph173556",
+                "descriptionPlacement": "top-right",
+                "productHeading": "ALSEDA",
+                "productSubHeading": "Stołek",
+                "productLink": "#",
+                "productPriceInteger": 159
+              }
+            ]
+          },
+          {
+            "id": "UKFK5EDORT",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/4/UGC100026647.avif",
+              "imgAlt": "Zdjęcie użytkownika FitnessFervor365",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "FitnessFervor365",
+            "products": [
+              {
+                "id": "V2HQH8R65P",
+                "placement": {
+                  "bottom": "10%",
+                  "left": "36%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 8
+                },
+                "imgSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066310_pe852371",
+                "imgHoverSrc": "gradvis-wazon-z-metalowym-wkladem-szklo-bezbarwne-zloty-kolor__1066308_pe852370",
+                "descriptionPlacement": "top-right",
+                "productHeading": "GRADVIS",
+                "productSubHeading": "Wazon z metalowym wkładem, 21 cm",
+                "productLink": "#",
+                "productPriceInteger": 49,
+                "productPriceDecimal": 99
+              }
+            ]
+          },
+          {
+            "id": "N4FAZMO2MP",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/5/UGC100007426.avif",
+              "imgAlt": "Zdjęcie użytkownika ArtisticVoyager",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "ArtisticVoyager",
+            "products": [
+              {
+                "id": "COEHZHPLYW",
+                "placement": {
+                  "bottom": "24.5%",
+                  "left": "21%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 31
+                },
+                "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
+                "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
+                "descriptionPlacement": "top-right",
+                "productHeading": "ENERYDA",
+                "productSubHeading": "Uchwyt, 89 mm",
+                "productLink": "#",
+                "productPriceInteger": 20,
+                "productQuantity": 2
+              },
+              {
+                "id": "52U92W5C00",
+                "placement": {
+                  "left": "17.5%",
+                  "bottom": "7%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
+                "descriptionPlacement": "top-right",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 60x40 cm",
+                "productLink": "#",
+                "productPriceInteger": 115
+              },
+              {
+                "id": "RI1GPZMYOR",
+                "placement": {
+                  "right": "17.5%",
+                  "bottom": "2.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645014_pe703167",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
+                "descriptionPlacement": "top-left",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 60x20 cm",
+                "productLink": "#",
+                "productPriceInteger": 80
+              },
+              {
+                "id": "91ZV75L0HL",
+                "placement": {
+                  "right": "46%",
+                  "bottom": "10%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0706696_pe725959",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
+                "descriptionPlacement": "top-center",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 80x40 cm",
+                "productLink": "#",
+                "productPriceInteger": 140
+              }
+            ]
+          },
+          {
+            "id": "Z6KULBUA9S",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/6/UGC100009091.avif",
+              "imgAlt": "Zdjęcie użytkownika MusicMaven88",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "MusicMaven88",
+            "products": [
+              {
+                "id": "BQ72Z7JT80",
+                "placement": {
+                  "bottom": "50%",
+                  "left": "32%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 545
+                },
+                "imgSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154592_pe886219",
+                "imgHoverSrc": "malm-komoda-2-szuflady-okleina-debowa-bejcowana-na-bialo__1154590_pe886216",
+                "descriptionPlacement": "top-center",
+                "productHeading": "MALM",
+                "productSubHeading": "Komoda, 2 szuflady, 40x55 cm",
+                "productLink": "#",
+                "productPriceInteger": 279
+              },
+              {
+                "id": "JRT3IJQWTD",
+                "placement": {
+                  "bottom": "15%",
+                  "right": "33%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 119
+                },
+                "newPriceTag": {
+                  "variant": "red",
+                  "lastItemPriceInteger": 1449
+                },
+                "imgSrc": "malm-rama-lozka-z-2-pojemnikami-okleina-debowa-bejcowana-na-bialo-loenset__1154400_pe886048",
+                "imgHoverSrc": "malm-rama-lozka-z-2-pojemnikami-okleina-debowa-bejcowana-na-bialo-loenset__1101549_pe866676",
+                "descriptionPlacement": "top-right",
+                "productHeading": "MALM",
+                "productSubHeading": "Rama łóżka z 2 pojemnikami, 120x200 cm",
+                "productLink": "#",
+                "productPriceInteger": 1249
+              }
+            ]
+          },
+          {
+            "id": "FSIL3LTO1Z",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/7/UGC100008065.avif",
+              "imgAlt": "Zdjęcie użytkownika FoodieExplorer",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "FoodieExplorer",
+            "products": [
+              {
+                "id": "ZWO3WQZ6UU",
+                "placement": {
+                  "right": "25%",
+                  "bottom": "19%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 376
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "newPriceTag": {
+                  "variant": "red",
+                  "lastItemPriceInteger": 49,
+                  "lastItemPriceDecimal": 99
+                },
+                "imgSrc": "toftlund-dywan-bialy__0617682_pe688130",
+                "imgHoverSrc": "toftlund-dywan-bialy__0891785_pe704319",
+                "descriptionPlacement": "left-center",
+                "productHeading": "TOFTLUND",
+                "productSubHeading": "Dywan, 55x85 cm",
+                "productLink": "#",
+                "productPriceInteger": 39,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "O1FSOH39A8",
+                "placement": {
+                  "right": "15%",
+                  "bottom": "40%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1312
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "imgSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__0325432_pe517964",
+                "imgHoverSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__1116445_pe872501",
+                "descriptionPlacement": "top-left",
+                "productHeading": "STRANDMON",
+                "productSubHeading": "Fotel uszak",
+                "productLink": "#",
+                "productPriceInteger": 899
+              }
+            ]
+          },
+          {
+            "id": "FUB53BNXC3",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/8/UGC100019561.avif",
+              "imgAlt": "Zdjęcie użytkownika WanderlustDreamer",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "WanderlustDreamer",
+            "products": [
+              {
+                "id": "LCVAJTGSIL",
+                "placement": {
+                  "top": "20%",
+                  "left": "18.25%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 208
+                },
+                "imgSrc": "eneryda-galka-chrom__0754159_pe747801",
+                "imgHoverSrc": "eneryda-galka-chrom__0718635_pe731627",
+                "descriptionPlacement": "right-center",
+                "productHeading": "ENERYDA",
+                "productSubHeading": "Gałka, 27 mm",
+                "productLink": "#",
+                "productPriceInteger": 15,
+                "productQuantity": 2
+              },
+              {
+                "id": "C2X2NWV69B",
+                "placement": {
+                  "right": "-2%",
+                  "bottom": "34%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0706697_pe725963",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
+                "descriptionPlacement": "top-left",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 80x20 cm",
+                "productLink": "#",
+                "productPriceInteger": 95
+              },
+              {
+                "id": "5MXSH46K47",
+                "placement": {
+                  "right": "40%",
+                  "bottom": "16.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-kremowy__0645007_pe703160",
+                "imgHoverSrc": "bodbyn-front-szuflady-kremowy__0863342_pe682341",
+                "descriptionPlacement": "top-left",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 60x40 cm",
+                "productLink": "#",
+                "productPriceInteger": 115
+              },
+              {
+                "id": "HO2C3TCSRA",
+                "placement": {
+                  "right": "5.75%",
+                  "bottom": "29%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 31
+                },
+                "imgSrc": "eneryda-uchwyt-chrom__0754247_pe747842",
+                "imgHoverSrc": "eneryda-uchwyt-chrom__0718648_pe731601",
+                "descriptionPlacement": "bottom-left",
+                "productHeading": "ENERYDA",
+                "productSubHeading": "Uchwyt, 89 mm",
+                "productLink": "#",
+                "productPriceInteger": 20,
+                "productQuantity": 2
+              },
+              {
+                "id": "X902K3A6JH",
+                "placement": {
+                  "bottom": "40%",
+                  "left": "23%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 205
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "imgSrc": "saeljan-blat-imit-debu-laminat__0808056_pe770665",
+                "imgHoverSrc": "saeljan-blat-imit-debu-laminat__0808062_pe770668",
+                "descriptionPlacement": "top-right",
+                "productHeading": "SÄLJAN",
+                "productSubHeading": "Blat, 246x3.8 cm",
+                "productLink": "#",
+                "productPriceInteger": 349,
+                "productSizeInMeters": 2.46
+              }
+            ]
+          },
+          {
+            "id": "KH9NHAKRFF",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/9/UGC100008853.avif",
+              "imgAlt": "Zdjęcie użytkownika NatureNurturer",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "NatureNurturer",
+            "products": [
+              {
+                "id": "3VTP2ZFUBF",
+                "placement": {
+                  "bottom": "40%",
+                  "left": "45%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 1312
+                },
+                "imgSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__0325432_pe517964",
+                "imgHoverSrc": "strandmon-fotel-uszak-nordvalla-ciemnoszary__1116445_pe872501",
+                "descriptionPlacement": "top-center",
+                "productHeading": "STRANDMON",
+                "productSubHeading": "Fotel uszak",
+                "productLink": "#",
+                "productPriceInteger": 899
+              }
+            ]
+          },
+          {
+            "id": "6XFV4E1D36",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/10/UGC100007970.avif",
+              "imgAlt": "Zdjęcie użytkownika BookwormChic",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "BookwormChic",
+            "products": [
+              {
+                "id": "DLNXCDKRN7",
+                "placement": {
+                  "bottom": "13.5%",
+                  "left": "15%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
+                },
+                "newPriceTag": {
+                  "variant": "red",
+                  "lastItemPriceInteger": 79,
+                  "lastItemPriceDecimal": 99
+                },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711818_pe728497",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418237_pe575307",
+                "descriptionPlacement": "top-right",
+                "productHeading": "SAMLA",
+                "productSubHeading": "Pojemnik z pokrywką, 79x57x18 cm/ 55 l",
+                "productLink": "#",
+                "productPriceInteger": 69,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "XCTNLT4FTL",
+                "placement": {
+                  "bottom": "29.5%",
+                  "left": "38%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
+                },
+                "newPriceTag": {
+                  "variant": "red",
+                  "lastItemPriceInteger": 29,
+                  "lastItemPriceDecimal": 99
+                },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711820_pe728499",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418253_pe575323",
+                "descriptionPlacement": "top-center",
+                "productHeading": "SAMLA",
+                "productSubHeading": "Pojemnik z pokrywką, 39x28x28 cm/ 22 l",
+                "productLink": "#",
+                "productPriceInteger": 27,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "R84PQCQU0S",
+                "placement": {
+                  "bottom": "22%",
+                  "right": "38%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 446
+                },
+                "imgSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0711823_pe728496",
+                "imgHoverSrc": "samla-pojemnik-z-pokrywka-przezroczysty__0418237_pe575307",
+                "descriptionPlacement": "right-center",
+                "productHeading": "SAMLA",
+                "productSubHeading": "Pojemnik z pokrywką, 57x39x42 cm/ 65 l",
+                "productLink": "#",
+                "productPriceInteger": 59,
+                "productPriceDecimal": 99
+              }
+            ]
+          },
+          {
+            "id": "OGEAMK0FW0",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/11/UGC100008111.avif",
+              "imgAlt": "Zdjęcie użytkownika SportsJunkie365",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "SportsJunkie365",
+            "products": [
+              {
+                "id": "IV9MIBX343",
+                "placement": {
+                  "top": "30%",
+                  "left": "37%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 195
+                },
+                "imgSrc": "bodbyn-drzwi-szary__0644840_pe703007",
+                "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
+                "descriptionPlacement": "top-right",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Drzwi, 40x60 cm",
+                "productLink": "#",
+                "productPriceInteger": 115
+              },
+              {
+                "id": "ELLKN38DY7",
+                "placement": {
+                  "top": "38.5%",
+                  "left": "17.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 119
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "imgSrc": "bagganaes-uchwyt-czarny__0754228_pe747827",
+                "imgHoverSrc": "bagganaes-uchwyt-czarny__0718663_pe731611",
+                "descriptionPlacement": "bottom-right",
+                "productHeading": "BAGGANÄS",
+                "productSubHeading": "Uchwyt, 143 mm",
+                "productLink": "#",
+                "productPriceInteger": 25,
+                "productQuantity": 2
+              },
+              {
+                "id": "7IKMGY83SG",
+                "placement": {
+                  "top": "25%",
+                  "left": "49%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 195
+                },
+                "imgSrc": "bodbyn-drzwi-szary__0644978_pe703134",
+                "imgHoverSrc": "bodbyn-drzwi-szary__0864580_pe682343",
+                "descriptionPlacement": "bottom-right",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Drzwi, 60x100 cm",
+                "productLink": "#",
+                "productPriceInteger": 255
+              },
+              {
+                "id": "HVFISQEN55",
+                "placement": {
+                  "top": "44%",
+                  "left": "47%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 82
+                },
+                "imgSrc": "hultarp-szyna-czarny__0941870_pe795789",
+                "imgHoverSrc": "hultarp-szyna-czarny__0941454_pe795466",
+                "descriptionPlacement": "right-center",
+                "productHeading": "HULTARP",
+                "productSubHeading": "Szyna, 60 cm",
+                "productLink": "#",
+                "productPriceInteger": 24,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "NT2MZL1EWE",
+                "placement": {
+                  "bottom": "25%",
+                  "left": "40%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-szary__0706700_pe725960",
+                "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
+                "descriptionPlacement": "top-right",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 80x40 cm",
+                "productLink": "#",
+                "productPriceInteger": 140
+              },
+              {
+                "id": "PMESLFOWKJ",
+                "placement": {
+                  "bottom": "43%",
+                  "right": "22.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 98
+                },
+                "imgSrc": "bodbyn-front-szuflady-szary__0645015_pe703168",
+                "imgHoverSrc": "bodbyn-front-szuflady-szary__0863460_pe659441",
+                "descriptionPlacement": "bottom-center",
+                "productHeading": "BODBYN",
+                "productSubHeading": "Front szuflady, 60x40 cm",
+                "productLink": "#",
+                "productPriceInteger": 115
+              }
+            ]
+          },
+          {
+            "id": "X68IXY4B8S",
+            "img": {
+              "imgSrc": "/images/scrollbars/instagram_photos/12/UGC100008954.avif",
+              "imgAlt": "Zdjęcie użytkownika ThrillSeekerElite",
+              "imgAspectRatio": "3/4"
+            },
+            "instagramUser": "ThrillSeekerElite",
+            "products": [
+              {
+                "id": "6WRWHQP035",
+                "placement": {
+                  "top": "14%",
+                  "right": "17%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 255
+                },
+                "newPriceTag": {
+                  "variant": "red",
+                  "lastItemPriceInteger": 24,
+                  "lastItemPriceDecimal": 99
+                },
+                "imgSrc": "fejka-sztuczna-roslina-doniczkowa-do-wewnatrz-na-zewnatrz-wiszacy__0748917_pe745318",
+                "imgHoverSrc": "fejka-sztuczna-roslina-doniczkowa-do-wewnatrz-na-zewnatrz-wiszacy__0748529_pe745052",
+                "descriptionPlacement": "bottom-center",
+                "productHeading": "FEJKA",
+                "productSubHeading": "Sztuczna roślina doniczkowa, 9 cm",
+                "productLink": "#",
+                "productPriceInteger": 19,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "B1KZ8I5H7A",
+                "placement": {
+                  "left": "5.5%",
+                  "bottom": "28.5%"
+                },
+                "rating": {
+                  "rate": 5,
+                  "quantity": 212
+                },
+                "imgSrc": "laettad-podkladka-trawa-morska-czarny__0711861_pe728547",
+                "imgHoverSrc": "laettad-podkladka-trawa-morska-czarny__0896854_pe607503",
+                "descriptionPlacement": "top-right",
+                "productHeading": "LÄTTAD",
+                "productSubHeading": "Podkładka, 37 cm",
+                "productLink": "#",
+                "productPriceInteger": 19,
+                "productPriceDecimal": 99
+              },
+              {
+                "id": "SKIERP4K15",
+                "placement": {
+                  "left": "40%",
+                  "bottom": "0%"
+                },
+                "rating": {
+                  "rate": 4.5,
+                  "quantity": 372
+                },
+                "topSellerTag": {
+                  "variant": "red"
+                },
+                "imgSrc": "ingolf-krzeslo-bialy__0728152_pe736113",
+                "imgHoverSrc": "ingolf-krzeslo-bialy__1052477_pe846140",
+                "descriptionPlacement": "top-right",
+                "productHeading": "INGOLF",
+                "productSubHeading": "Krzesło",
+                "productLink": "#",
+                "productPriceInteger": 249
+              }
+            ]
+          }
+        ]
       }
     }
   ]

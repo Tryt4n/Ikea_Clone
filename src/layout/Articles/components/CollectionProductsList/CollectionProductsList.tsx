@@ -10,6 +10,7 @@ import { TextVariants } from "../../../../types/colorsVariantsType";
 type CollectionProductsListType = {
   products: ProductType[];
   onHoverStatus?: boolean;
+  hideTooltips?: boolean;
 };
 
 export type ProductType = {
@@ -49,6 +50,7 @@ export type ProductType = {
 export default function CollectionProductsList({
   products,
   onHoverStatus = false,
+  hideTooltips = false,
 }: CollectionProductsListType) {
   const { width } = useWindowSize();
 
@@ -112,6 +114,7 @@ export default function CollectionProductsList({
                 id={id}
                 linkToProduct={productLink}
                 placement={descriptionPlacement}
+                className={hideTooltips ? "tooltip-hide" : ""}
               >
                 {newTag && (
                   <Collection.ListItemTag variant={newTag.variant}>Nowość</Collection.ListItemTag>

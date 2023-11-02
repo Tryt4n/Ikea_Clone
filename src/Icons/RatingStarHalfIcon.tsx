@@ -1,4 +1,4 @@
-export default function RaringStarHalfIcon() {
+export default function RatingStarHalfIcon() {
   return (
     <svg
       viewBox="0 0 24 24"

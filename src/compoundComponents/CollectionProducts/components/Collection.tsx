@@ -29,6 +29,7 @@ type CollectionListItemPropsType = {
 
 type ListItemDescriptionContainerPropsType = {
   children: ReactNode;
+  className?: string;
   id: string;
   linkToProduct: string;
   placement: ListItemDescriptionPlacementTypes;
@@ -47,6 +48,7 @@ type ListItemTagPropsType = {
 };
 
 type ListItemLastPriceDescriptionPropsType = {
+  className?: string;
   lastPrice: number;
   lastPriceDecimal?: number;
 };
@@ -107,6 +109,7 @@ function CollectionListItem({
 
 function ListItemDescriptionContainer({
   children,
+  className,
   id,
   linkToProduct,
   placement,
@@ -120,7 +123,7 @@ function ListItemDescriptionContainer({
   return (
     <div
       id={id}
-      className={itemDescriptionClasses}
+      className={`${itemDescriptionClasses}${className ? ` ${className}` : ""}`}
       role="tooltip"
       aria-hidden={visibilityCondition ? "false" : "true"}
     >
@@ -181,13 +184,14 @@ export function ListItemTag({ children, variant }: ListItemTagPropsType) {
 }
 
 function ListItemLastPriceDescription({
+  className,
   lastPrice,
   lastPriceDecimal,
 }: ListItemLastPriceDescriptionPropsType) {
   const formattedLastPrice = addThousandSeparator(lastPrice);
 
   return (
-    <p className="collection-list__last-price-text-wrapper">
+    <p className={`collection-list__last-price-text-wrapper${className ? ` ${className}` : ""}`}>
       Najniższa cena z 30 dni przed obniżką:
       <small>
         &nbsp;

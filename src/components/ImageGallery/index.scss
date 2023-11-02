@@ -1,0 +1,57 @@
+@use "../../abstracts/mixins" as *;
+@use "../../base/breakpoints" as b;
+
+.images-gallery {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-column-gap: 1.25rem;
+    grid-row-gap: 1.25rem;
+    grid-auto-flow: row dense;
+    margin-top: 1.5rem;
+
+    @media screen and (width >= b.$mobile-md) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    @media screen and (width < b.$mobile-md) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    & > *:not(:nth-child(2)) {
+      grid-column: span 2;
+      grid-row: span 4;
+    }
+    & > *:is(:nth-child(2)) {
+      grid-column: span 2;
+      grid-row: span 3;
+
+      & img {
+        aspect-ratio: 1;
+      }
+    }
+
+    @media screen and (width < b.$mobile-sm) {
+      & .article__instagram-badge {
+        top: 0.5em;
+        left: 0.5em;
+        padding: 0.25em;
+
+        & svg {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+
+      & .article__instagram-nickname span {
+        padding-right: 0.15em;
+        text-indent: 0.25em;
+        font-size: 10px;
+      }
+    }
+  }
+
+  &__btn-wrapper {
+    @include center;
+    margin-block: 2.5rem;
+  }
+}

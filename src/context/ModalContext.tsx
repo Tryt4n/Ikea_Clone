@@ -59,9 +59,8 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
   }
 
   function closeModalOnEscapeKey(e: React.KeyboardEvent<HTMLDialogElement>) {
-    e.preventDefault();
-
     if (e.key === "Escape" && isModalOpen) {
+      e.preventDefault();
       closeModal();
     }
   }

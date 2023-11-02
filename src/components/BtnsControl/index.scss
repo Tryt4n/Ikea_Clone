@@ -1,0 +1,60 @@
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+
+.btns-control {
+  position: relative;
+
+  &__container {
+    @include flex();
+    gap: func.rem(12);
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > * {
+      flex-shrink: 0;
+      outline-offset: 0 !important;
+      border: func.rem(1) solid transparent;
+
+      &:disabled {
+        cursor: default;
+      }
+    }
+  }
+
+  &__btn-navigation {
+    $_btn-position: 1rem;
+
+    position: absolute;
+    top: 50%;
+    height: 2rem;
+    min-height: auto;
+    translate: 0 -50%;
+    outline-offset: 0 !important;
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      background-color: white;
+    }
+
+    & svg {
+      width: 1.5rem;
+      aspect-ratio: 1;
+    }
+
+    &--prev {
+      left: $_btn-position;
+    }
+
+    &--next {
+      right: $_btn-position;
+    }
+
+    &[disabled] {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}

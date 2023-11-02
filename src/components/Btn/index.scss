@@ -46,4 +46,21 @@
       background-color: c.$gray;
     }
   }
+
+  &--gray {
+    background-color: c.$grayish;
+    color: c.$black;
+
+    &:hover {
+      background-color: c.$gray;
+    }
+  }
+
+  &[aria-pressed="true"] {
+    border: func.rem(1) solid c.$black;
+
+    &:disabled:hover {
+      background-color: c.$grayish;
+    }
+  }
 }
