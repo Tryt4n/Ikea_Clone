@@ -57,7 +57,6 @@ export default function CollectionProductsList({
   return (
     <Collection showOnlyOnHover={onHoverStatus}>
       {products.map((product) => {
-        console.log(products);
         const {
           placement,
           id,

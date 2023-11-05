@@ -9,8 +9,6 @@ import CollectionProductsList, {
 import { CardCollectionType } from "../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
 // Icons
 import CloseIcon from "../../Icons/CloseIcon";
-import RatingStarHalfIcon from "../../Icons/RatingStarHalfIcon";
-import RatingStarIcon from "../../Icons/RatingStarIcon";
 import ShoppingCartAddIcon from "../../Icons/ShoppingCartAddIcon";
 import HeartIcon from "../../Icons/HeartIcon";
 // Style
@@ -18,6 +16,8 @@ import "./index.scss";
 import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
 import useWindowSize from "../../hooks/useWindowSize";
 import InstagramIcon from "../../Icons/InstagramIcon";
+import RatingBlock from "../RatingBlock/RatingBlock";
+import Btn from "../Btn/Btn";
 
 type DialogPropsType = {
   id: string;
@@ -62,7 +62,7 @@ function InnerComponent(
               <CloseIcon />
             </button>
           </div>
-          {(width < 1000 || height < 700) && (
+          {(width < 1000 || height < 700) && modalData.instagramUser && (
             <div className="modal__instagram-nick-mobile">
               <InstagramIcon />
               <span>{modalData.instagramUser}</span>
@@ -109,9 +109,7 @@ function InnerComponent(
                           className="modal__thumbnail-img-hover"
                         />
                       </div>
-                      {product.topSellerTag && (
-                        <strong className="modal__img-top-seller-badge">Top Seller</strong>
-                      )}
+                      {product.topSellerTag && <strong className="top-seller">Top Seller</strong>}
                     </div>
 
                     <div className="modal__product-text-wrapper">
@@ -133,44 +131,24 @@ function InnerComponent(
                           className="modal__product-last-price-tag"
                         />
                       )}
-                      {product.rating && (
-                        <div className="modal__product-ratings-container">
-                          <span className="modal__product-ratings">
-                            {[...Array(5)].map((_, index) => {
-                              const currentRate = product.rating?.rate || 0;
-                              if (index < Math.floor(currentRate)) {
-                                return <RatingStarIcon key={`star-${index}`} />;
-                              } else if (
-                                index === Math.floor(currentRate) &&
-                                currentRate % 1 !== 0
-                              ) {
-                                return <RatingStarHalfIcon key={`star-half-${index}`} />;
-                              } else {
-                                return (
-                                  <RatingStarIcon
-                                    key={`star-empty-${index}`}
-                                    isEmpty
-                                  />
-                                );
-                              }
-                            })}
-                          </span>
-                          <span className="modal__product-rating-text">
-                            ({product.rating?.quantity})
-                          </span>
-                        </div>
-                      )}
+                      {product.rating && <RatingBlock rating={product.rating} />}
                     </div>
 
                     <div className="modal__product-btns-wrapper">
-                      <button className="modal__product-btn modal__product-btn--accent">
+                      <Btn
+                        variant="blue"
+                        shape="circle"
+                      >
                         <span className="visually-hidden">Dodaj produkt do koszyka</span>
                         <ShoppingCartAddIcon />
-                      </button>
-                      <button className="modal__product-btn">
-                        <span className="visually-hidden">Dodaj produkt do listy życzeń</span>
+                      </Btn>
+                      <Btn
+                        variant="light-with-border"
+                        shape="circle"
+                      >
+                        <span className="visually-hidden">Dodaj do ulubionych</span>
                         <HeartIcon />
-                      </button>
+                      </Btn>
                     </div>
                   </a>
                 </li>

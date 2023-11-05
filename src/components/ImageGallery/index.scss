@@ -2,6 +2,8 @@
 @use "../../base/breakpoints" as b;
 
 .images-gallery {
+  overflow: hidden;
+
   &__container {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));

@@ -1,0 +1,40 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
+
+.product-ratings {
+  $_star-icon-size: func.rem(24);
+  $_star-quantity: 5;
+  $_translate-increment: -0.5rem;
+
+  @include flex();
+
+  &__wrapper {
+    $_svg-count: 0;
+
+    @include flex(row, center, center);
+    translate: calc($_translate-increment / 2);
+
+    @for $i from 1 through $_star-quantity {
+      & svg:nth-of-type(#{$i}) {
+        transform: translateX($_translate-increment * $_svg-count);
+        $_svg-count: $_svg-count + 1;
+      }
+    }
+
+    & svg {
+      width: $_star-icon-size;
+      aspect-ratio: 1;
+
+      &.no-fill {
+        fill: c.$gray;
+      }
+    }
+  }
+
+  &__text {
+    margin-left: 0.25rem;
+    translate: calc($_star-quantity * $_translate-increment);
+    line-height: $_star-icon-size;
+  }
+}

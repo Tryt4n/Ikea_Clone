@@ -38,12 +38,26 @@
     }
   }
 
-  &--light {
+  &--light,
+  &--light-with-border {
     background-color: c.$white;
     color: c.$black;
 
     &:hover {
       background-color: c.$gray;
+    }
+  }
+
+  &--light-with-border {
+    border: func.rem(1) solid c.$text-gray;
+  }
+
+  &--blue {
+    background-color: c.$blue-dark;
+    color: c.$white;
+
+    &:hover {
+      background-color: c.$very-dark-blue;
     }
   }
 

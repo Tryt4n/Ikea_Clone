@@ -2,18 +2,28 @@
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .product {
   $_container-gap: func.rem(20);
 
-  position: relative;
-  margin-block: 3rem;
-
-  &__images-container {
-    max-width: calc(100% * (2 / 3));
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  @media screen and (width >= b.$tablet) {
     @include flex();
     gap: $_container-gap;
-    flex-wrap: wrap;
+  }
+
+  &__images-container {
+    @media screen and (width >= b.$tablet) {
+      max-width: calc(100% * (2 / 3) - $_container-gap);
+      @include flex();
+      gap: $_container-gap;
+      flex-wrap: wrap;
+    }
+    @media screen and (width < b.$tablet) {
+      position: relative;
+    }
 
     & img {
       object-fit: cover;
@@ -23,9 +33,53 @@
   }
 
   &__img-btn {
-    width: calc(50% - ($_container-gap / 2));
+    @media screen and (width >= b.$tablet) {
+      position: relative;
+      width: calc(50% - ($_container-gap / 2));
+    }
+  }
+}
+
+.buy-module {
+  @media screen and (width >= b.$tablet) {
+    position: sticky;
+    top: 6rem;
+    flex-grow: 1;
+    height: fit-content;
+    padding-inline: func.rem(40);
   }
 
-  &__buy-module {
+  &__header {
+    @include flex(row, space-between);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    color: c.$text-gray;
+
+    & h3 {
+      font: inherit;
+    }
+
+    & strong {
+      color: c.$black;
+    }
+
+    & button {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      transition: v.$main-transition;
+
+      &:where(:hover, :focus-visible) {
+        color: c.$black;
+      }
+    }
+  }
+
+  & .collection-list__item-price {
+    font-size: func.rem(28);
+
+    & small {
+      font-size: func.rem(14);
+    }
   }
 }
