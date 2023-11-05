@@ -59,7 +59,6 @@ export default function CarouselSliderArticle({ article }: { article: CarouselSl
         slidesPerGroup={numberOfInitialSlides}
         spaceBetween={spaceBetweenSlides}
         freeMode={true}
-        mousewheel={true}
         navigation={true}
         scrollbar={{ hide: true }}
         keyboard={{

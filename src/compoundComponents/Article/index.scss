@@ -121,6 +121,24 @@
     }
   }
 
+  &__wishlist-badge {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: func.rem(40);
+    aspect-ratio: 1;
+    @include center;
+    border-radius: 50vw;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    color: c.$white;
+    transition: v.$main-transition;
+    z-index: 10;
+
+    &:where(:hover, :focus-visible) {
+      background-color: hsla(0, 0%, 0%, 0.9);
+    }
+  }
+
   &__section {
     background-color: c.$grayish;
     &[aria-controls] {
@@ -177,6 +195,14 @@
       & h5,
       & h6 {
         margin-bottom: auto;
+      }
+
+      @media screen and (width < b.$mobile-sm) {
+        padding: 1.5rem;
+
+        & .article__heading {
+          font-size: func.rem(14);
+        }
       }
     }
 

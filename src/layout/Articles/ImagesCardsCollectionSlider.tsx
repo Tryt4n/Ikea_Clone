@@ -35,7 +35,6 @@ export default function ImageCardsCollectionSlider({
         slidesPerGroup={1}
         spaceBetween={20}
         freeMode={true}
-        mousewheel={true}
         navigation={true}
         scrollbar={{ hide: true }}
         keyboard={{

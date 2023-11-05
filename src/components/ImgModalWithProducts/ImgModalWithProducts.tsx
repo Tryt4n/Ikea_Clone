@@ -74,8 +74,10 @@ function InnerComponent(
               <Article.ImgContainer className="modal__img-inner-wrapper">
                 <Article.Img
                   src={modalData.img.imgSrc}
+                  srcSet={modalData.img.imgSrcSet}
                   alt={modalData.img.imgAlt}
                   aspectRatio={modalData.img.imgAspectRatio}
+                  sizes="(min-width: 900px) 50vw, (max-width: 900px) 100vw, 100vw"
                 />
                 <CollectionProductsList products={modalData.products} />
                 {modalData.instagramUser && (

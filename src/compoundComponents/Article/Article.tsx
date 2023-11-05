@@ -4,6 +4,7 @@ import { HTMLProps, ReactNode, createElement } from "react";
 import Btn, { BtnPropsType } from "../../components/Btn/Btn";
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
+import HeartIcon from "../../Icons/HeartIcon";
 // Types
 import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
 import { BackgroundVariants } from "../../types/colorsVariantsType";
@@ -156,6 +157,15 @@ function InstagramBadge({ children, nickVisible = true }: InstagramBadgeType) {
   );
 }
 
+function WishListBadge() {
+  return (
+    <button className="article__wishlist-badge">
+      <span className="visually-hidden">Dodaj do ulubionych</span>
+      <HeartIcon />
+    </button>
+  );
+}
+
 function Slide({ children, variant, className, ...props }: SlidePropsType) {
   return (
     <div
@@ -192,6 +202,7 @@ Article.Btn = ContainerBtn;
 Article.Link = Link;
 Article.Img = Img;
 Article.InstagramBadge = InstagramBadge;
+Article.WishListBadge = WishListBadge;
 
 Article.Slide = Slide;
 Article.SlideBtn = SlideBtn;

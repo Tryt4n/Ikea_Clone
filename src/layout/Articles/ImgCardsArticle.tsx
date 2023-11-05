@@ -51,7 +51,6 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
           slidesPerGroup={breakOnMobile ? 0 : 1}
           spaceBetween={breakOnMobile ? 0 : 20}
           freeMode={breakOnMobile ? width >= 600 : width < 900}
-          mousewheel={breakOnMobile ? width >= 600 : width < 900}
           navigation={breakOnMobile ? width >= 600 : width < 900}
           scrollbar={breakOnMobile ? width >= 600 && { hide: true } : width < 900 && { hide: true }}
           keyboard={

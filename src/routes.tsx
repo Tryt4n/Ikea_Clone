@@ -7,9 +7,9 @@ import ErrorPage from "./pages/tasks/ErrorPage";
 import NotFoundPage from "./pages/tasks/NotFoundPage/NotFoundPage";
 import HomePage from "./pages/Home/HomePage";
 import CollectionPage from "./pages/Collection/CollectionPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 // Context
 import { ModalContextProvider } from "./context/ModalContext";
-import ProductPage from "./pages/ProductPage/ProductPage";
 
 export const routes = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
             children: [
               { index: true, element: <Navigate to="/" /> },
               {
-                path: ":collectionId",
+                path: ":collection/:product/:type/:productID",
                 element: <ProductPage />,
               },
             ],
