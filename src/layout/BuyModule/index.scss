@@ -1,0 +1,55 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.buy-module {
+  @media screen and (width >= b.$tablet) {
+    position: sticky;
+    top: 6rem;
+    flex-grow: 1;
+    height: fit-content;
+    padding-inline: func.rem(40);
+  }
+
+  &__header {
+    @include flex(row, space-between);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    color: c.$text-gray;
+
+    & h3 {
+      font: inherit;
+    }
+
+    & strong {
+      color: c.$black;
+    }
+
+    & button {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      transition: v.$main-transition;
+      outline-offset: 0.25em;
+
+      &:where(:hover, :focus-visible) {
+        color: c.$black;
+      }
+    }
+  }
+
+  & .collection-list__item-price {
+    font-size: func.rem(28);
+
+    & small {
+      font-size: func.rem(14);
+    }
+  }
+
+  &__thumbnails-container {
+    padding-bottom: 1rem;
+    border-bottom: func.rem(1) solid c.$gray;
+  }
+}

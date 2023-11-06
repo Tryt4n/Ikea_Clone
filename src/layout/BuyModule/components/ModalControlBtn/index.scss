@@ -1,0 +1,22 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+
+.modal-control-btn {
+  @include flex(row, space-between, center);
+  width: 100%;
+  padding-block: func.rem(20);
+
+  &__text-wrapper {
+    @include flex(column, flex-start, flex-start);
+    line-height: func.rem(22);
+    gap: 0.25rem;
+
+    & > *:first-child {
+      font-weight: bold;
+    }
+
+    & > *:last-child::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

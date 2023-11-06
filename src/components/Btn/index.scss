@@ -27,6 +27,7 @@
   &--circle {
     border-radius: 50%;
     aspect-ratio: 1/1;
+    outline-offset: 0 !important;
   }
 
   &--dark {

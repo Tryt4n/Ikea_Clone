@@ -10,6 +10,7 @@ import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 // Context
 import { ModalContextProvider } from "./context/ModalContext";
+import { ProductProvider } from "./pages/ProductPage/context/ProductContext";
 
 export const routes = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ export const routes = createBrowserRouter([
               { index: true, element: <Navigate to="/" /> },
               {
                 path: ":collection/:product/:type/:productID",
-                element: <ProductPage />,
+                element: (
+                  <ProductProvider>
+                    <ProductPage />
+                  </ProductProvider>
+                ),
               },
             ],
           },
