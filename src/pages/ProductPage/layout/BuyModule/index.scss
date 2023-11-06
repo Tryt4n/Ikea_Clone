@@ -1,0 +1,94 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.buy-module {
+  @media screen and (width >= b.$tablet) {
+    position: sticky;
+    top: 6rem;
+    flex-grow: 1;
+    height: fit-content;
+    padding-inline: func.rem(40);
+  }
+
+  @media screen and (width < b.$tablet) {
+    display: grid;
+  }
+
+  &__header {
+    @include flex(row, space-between);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    color: c.$text-gray;
+
+    @media screen and (width < b.$tablet) {
+      order: 2;
+    }
+
+    & h3 {
+      font: inherit;
+      @include flex(column);
+      flex-shrink: 0;
+    }
+
+    & strong {
+      color: c.$black;
+    }
+
+    & button {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      transition: v.$main-transition;
+      outline-offset: 0.25em;
+
+      &:where(:hover, :focus-visible) {
+        color: c.$black;
+      }
+    }
+  }
+
+  &__price {
+    @media screen and (width < b.$tablet) {
+      order: 3;
+    }
+
+    & .collection-list__item-price {
+      font-size: func.rem(28);
+
+      & small {
+        font-size: func.rem(14);
+      }
+    }
+  }
+
+  &__rating {
+    @media screen and (width < b.$tablet) {
+      order: 4;
+
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__thumbnails-container {
+    padding-bottom: v.$product-container-gap;
+
+    @media screen and (width < b.$tablet) {
+      order: 1;
+
+      margin-bottom: func.rem(40);
+    }
+  }
+
+  &__size {
+    border-top: func.rem(1) solid c.$gray;
+
+    @media screen and (width < b.$tablet) {
+      order: 5;
+    }
+  }
+}

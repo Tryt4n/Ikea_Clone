@@ -6,53 +6,13 @@ import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useProduct from "./context/useProduct";
 // Layout
-import ProductImageGallery from "../../layout/BuyModule/components/ProductImageGallery/ProductImageGallery";
-import BuyModule from "../../layout/BuyModule/BuyModule";
+import ProductImageGallery from "./layout/ProductImageGallery/ProductImageGallery";
+import BuyModule from "./layout/BuyModule/BuyModule";
+import ProductInformations from "./layout/ProductInformations/ProductInformations";
+// Types
+import { ProductDataType } from "./types/ProductDataType";
 // Style
 import "./index.scss";
-
-export type ProductDataType = {
-  collection: string;
-  name: string;
-  nameToDisplay: string;
-  productNumber: string;
-  size: string;
-  price: {
-    integer: number;
-    decimal?: number;
-    quantity?: number;
-    sizeInMeters?: number;
-  };
-  variants: string[];
-  variantsName: string[];
-  variant: string;
-  variantName: string;
-  relatedProducts?: {
-    sizes?: Record<string, string>;
-    variants?: Record<string, string>;
-  };
-  description: string;
-  rating?: {
-    rate: number;
-    quantity: number;
-  };
-  topSeller?: boolean;
-  guarantee?: boolean;
-  thumbnails: Record<string, string>;
-  images: Record<string, string>;
-  additionalInfo?: {
-    history?: {
-      sections: {
-        header: string;
-        description: string;
-      }[];
-    };
-    material: {
-      header: string;
-      description: string;
-    };
-  };
-};
 
 export default function ProductPage() {
   const { path, URL, setDisplayedMainImg } = useProduct();
@@ -64,9 +24,10 @@ export default function ProductPage() {
   useEffect(() => {
     console.log(data);
     if (data) {
-      setDisplayedMainImg(
-        `https://www.ikea.com/pl/pl/images/products/${path.collection}-${data.name}-${data.variant}__${data.images.main}`
-      );
+      setDisplayedMainImg({
+        src: `https://www.ikea.com/pl/pl/images/products/${path.collection}-${data.name}-${data.variant}__${data.images.main}`,
+        variant: data.variant,
+      });
     }
 
     if (isError) {
@@ -99,10 +60,15 @@ export default function ProductPage() {
         <>
           {data && (
             <article className="product">
-              <h2 className="visually-hidden">Produkt</h2>
-              <ProductImageGallery data={data} />
+              <h2 className="visually-hidden">Strona produktu</h2>
 
-              <BuyModule data={data} />
+              <section className="product__wrapper">
+                <ProductImageGallery data={data} />
+
+                <BuyModule data={data} />
+
+                <ProductInformations data={data} />
+              </section>
             </article>
           )}
         </>

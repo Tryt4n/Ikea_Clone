@@ -1,7 +1,7 @@
 // Hooks
-import useProduct from "../../../../pages/ProductPage/context/useProduct";
+import useProduct from "../../context/useProduct";
 // Types
-import { ProductDataType } from "../../../../pages/ProductPage/ProductPage";
+import { ProductDataType } from "../../types/ProductDataType";
 // Styles
 import "./index.scss";
 
@@ -11,13 +11,12 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
   const { images, name, variant, topSeller } = data;
 
   return (
-    <section className="product-image-gallery">
-      <h3 className="visually-hidden">Galeria zdjęć</h3>
+    <div className="product-image-gallery">
       {Object.keys(images).map((key, index) => {
         const imgUrl =
           index > 0
             ? `https://www.ikea.com/pl/pl/images/products/${path.collection}-${name}-${variant}__${images[key]}`
-            : displayedMainImg;
+            : displayedMainImg.src;
         const imgSrc = `${imgUrl}?f=s`;
         const imgSrcSet = `${imgUrl}?f=xl 750w, ${imgUrl}?f=l 700w, ${imgUrl}?f=m 600w, ${imgUrl}?f=s 500w, ${imgUrl}?f=xs 400w, ${imgUrl}?f=xxs 300w, ${imgUrl}?f=xxxs 160w`;
         const imgSizes =
@@ -36,9 +35,10 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
               loading="lazy"
             />
             {topSeller && index === 0 && <strong className="top-seller">Top Seller</strong>}
+            <span className="visually-hidden">Naciśnij aby powiększyć</span>
           </button>
         );
       })}
-    </section>
+    </div>
   );
 }

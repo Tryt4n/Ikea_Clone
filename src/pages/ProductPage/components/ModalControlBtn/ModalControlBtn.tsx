@@ -1,4 +1,6 @@
+// Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
+// Style
 import "./index.scss";
 
 type ModalControlBtnPropsType = {

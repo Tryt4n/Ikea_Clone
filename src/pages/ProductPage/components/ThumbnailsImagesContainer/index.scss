@@ -4,16 +4,19 @@
 
 .product-thumbnails {
   display: flex;
-  gap: 0.25em;
+  gap: 0.5em;
   margin-top: 0.25em;
 
   &__link {
+    --_border-width: #{func.rem(1)};
+    --_border-color: transparent;
+
     width: func.rem(70);
     padding: 0.5rem;
-    border: func.rem(1) solid transparent;
     border-radius: 0.25rem;
     outline-offset: 0;
     transition: v.$main-transition;
+    box-shadow: var(--_border-color) 0px 0px 0px var(--_border-width);
 
     & img {
       object-fit: cover;
@@ -21,17 +24,19 @@
       height: 100%;
     }
 
-    &:hover:not(.active) {
-      border-color: c.$medium-gray;
+    &.active {
+      --_border-width: #{func.rem(2)};
+      --_border-color: #{c.$black};
+      outline: 0;
     }
 
-    &.active {
-      border: func.rem(2) solid c.$black;
-      outline: 0;
+    &:hover,
+    &.active:focus-visible {
+      --_border-color: #{c.$medium-gray};
+    }
 
-      &:where(:hover, :focus-visible) {
-        border-color: c.$medium-gray;
-      }
+    &.active:focus-visible {
+      --_border-width: #{func.rem(1)};
     }
   }
 }

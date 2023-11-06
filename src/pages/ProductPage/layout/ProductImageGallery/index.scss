@@ -3,14 +3,12 @@
 @use "../../../../base/breakpoints" as b;
 
 .product-image-gallery {
-  @media screen and (width >= b.$tablet) {
-    max-width: calc(100% * (2 / 3) - v.$product-container-gap);
-    @include flex();
-    gap: v.$product-container-gap;
-    flex-wrap: wrap;
-  }
+  @include flex();
+  gap: v.$product-container-gap;
+  flex-wrap: wrap;
+
   @media screen and (width < b.$tablet) {
-    position: relative;
+    margin-bottom: 1.5rem;
   }
 
   & img {
@@ -20,8 +18,8 @@
   }
 
   &__btn {
+    position: relative;
     @media screen and (width >= b.$tablet) {
-      position: relative;
       width: calc(50% - (v.$product-container-gap / 2));
     }
   }

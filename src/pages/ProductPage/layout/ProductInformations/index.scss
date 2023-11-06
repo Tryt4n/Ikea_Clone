@@ -1,0 +1,35 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../base/functions" as func;
+
+.product-information {
+  margin-top: 4rem;
+
+  &__description-container {
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    font-size: func.rem(20);
+    line-height: 2rem;
+    text-wrap: balance;
+  }
+
+  &__product-number-wrapper {
+    @include flex(column);
+    width: max-content;
+
+    & > *:first-child {
+      margin-bottom: 0.5rem;
+      color: c.$text-gray;
+    }
+  }
+
+  &__product-number {
+    width: fit-content;
+    padding: func.rem(3) func.rem(11);
+    background-color: c.$black;
+    color: c.$white;
+    font-weight: bold;
+  }
+}

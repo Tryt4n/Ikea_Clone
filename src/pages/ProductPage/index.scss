@@ -5,8 +5,12 @@
 .product {
   margin-top: 6rem;
   margin-bottom: 3rem;
-  @media screen and (width >= b.$tablet) {
-    @include flex();
-    gap: v.$product-container-gap;
+
+  &__wrapper {
+    @media screen and (width >= b.$tablet) {
+      display: grid;
+      grid-template-columns: calc(100% * (2 / 3) - v.$product-container-gap) 1fr;
+      gap: v.$product-container-gap;
+    }
   }
 }

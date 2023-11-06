@@ -3,14 +3,25 @@ import { Link } from "react-router-dom";
 // Hooks
 import useProduct from "../../../../pages/ProductPage/context/useProduct";
 // Types
-import { ProductDataType } from "../../../../pages/ProductPage/ProductPage";
+import { ProductDataType } from "../../types/ProductDataType";
 // Style
 import "./index.scss";
 
 export default function ThumbnailsImagesContainer({ data }: { data: ProductDataType }) {
-  const { path, displayedMainImg, setDisplayedMainImg } = useProduct();
+  const { path, setDisplayedMainImg } = useProduct();
 
-  const { variants, relatedProducts, name, thumbnails, collection, variant, size, images } = data;
+  const {
+    variant,
+    variants,
+    variantsName,
+    nameToDisplay,
+    relatedProducts,
+    name,
+    thumbnails,
+    collection,
+    size,
+    images,
+  } = data;
 
   return (
     <div className="product-thumbnails">
@@ -25,20 +36,26 @@ export default function ThumbnailsImagesContainer({ data }: { data: ProductDataT
         }-${name}-${productVariant}__${thumbnails[Object.keys(thumbnails)[index]]}`;
         const imgSrc = `${URL}?f=xu`;
         const imgSrcSet = `${URL}?f=u 2x, ${URL}?f=xu`;
-        const imgAlt = `${collection} ${name}, ${variant}${
+        const imgAlt = `${collection} ${nameToDisplay}, ${variantsName[index]}${
           size !== "universal" ? `, ${size}` : ""
         }`;
 
         return (
           <Link
             key={productVariant}
-            className="product-thumbnails__link"
+            className={`product-thumbnails__link${variant === productVariant ? ` active` : ""}`}
             to={href && path.type !== productVariant ? href : ""}
-            onMouseEnter={() => setDisplayedMainImg(imgSrc.replace("?f=xu", ""))}
+            onMouseEnter={() =>
+              setDisplayedMainImg({
+                src: imgSrc.replace("?f=xu", ""),
+                variant: variantsName[index],
+              })
+            }
             onMouseLeave={() =>
-              setDisplayedMainImg(
-                `https://www.ikea.com/pl/pl/images/products/${path.collection}-${name}-${variant}__${images.main}`
-              )
+              setDisplayedMainImg({
+                src: `https://www.ikea.com/pl/pl/images/products/${path.collection}-${name}-${variant}__${images.main}`,
+                variant: path.type ? path.type : variant,
+              })
             }
           >
             <img
@@ -47,7 +64,7 @@ export default function ThumbnailsImagesContainer({ data }: { data: ProductDataT
               alt={imgAlt}
               loading="lazy"
             />
-            <span className="visually-hidden">{imgAlt}</span>
+            <span className="visually-hidden">{variantsName[index]}</span>
           </Link>
         );
       })}
