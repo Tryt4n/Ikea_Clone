@@ -1,23 +1,24 @@
 // React
 import { ForwardedRef, forwardRef } from "react";
+// Hooks
+import useWindowSize from "../../hooks/useWindowSize";
 // Components
 import Article from "../../compoundComponents/Article/Article";
 import CollectionProductsList, {
   ProductType,
 } from "../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
+import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
+import RatingBlock from "../RatingBlock/RatingBlock";
+import Btn from "../Btn/Btn";
 // Types
 import { CardCollectionType } from "../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
 // Icons
 import CloseIcon from "../../Icons/CloseIcon";
 import ShoppingCartAddIcon from "../../Icons/ShoppingCartAddIcon";
 import HeartIcon from "../../Icons/HeartIcon";
+import InstagramIcon from "../../Icons/InstagramIcon";
 // Style
 import "./index.scss";
-import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
-import useWindowSize from "../../hooks/useWindowSize";
-import InstagramIcon from "../../Icons/InstagramIcon";
-import RatingBlock from "../RatingBlock/RatingBlock";
-import Btn from "../Btn/Btn";
 
 type DialogPropsType = {
   id: string;

@@ -9,7 +9,6 @@ import HomePage from "./pages/Home/HomePage";
 import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 // Context
-import { ModalContextProvider } from "./context/ModalContext";
 import { ProductProvider } from "./pages/ProductPage/context/ProductContext";
 
 export const routes = createBrowserRouter([
@@ -22,11 +21,7 @@ export const routes = createBrowserRouter([
         children: [
           {
             index: true,
-            element: (
-              <ModalContextProvider>
-                <HomePage />
-              </ModalContextProvider>
-            ),
+            element: <HomePage />,
           },
           {
             path: "collection",

@@ -32,7 +32,6 @@
     & h3 {
       font: inherit;
       @include flex(column);
-      flex-shrink: 0;
     }
 
     & strong {

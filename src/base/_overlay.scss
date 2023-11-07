@@ -21,7 +21,8 @@ html:has(body[data-overlay="true"]) {
   }
 }
 
-html:has(dialog.modal[open]) {
+html:has(dialog.modal[open]),
+html:has(dialog.side-modal[open]) {
   overflow-y: hidden;
   @media screen and (width >= b.$tablet-lg) and (height > b.$mobile-lg) and (hover: hover) {
     margin-right: v.$scrollbar-width;

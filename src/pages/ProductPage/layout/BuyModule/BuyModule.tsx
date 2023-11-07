@@ -1,6 +1,7 @@
 // Hooks
 import useWindowSize from "../../../../hooks/useWindowSize";
 import useProduct from "../../context/useProduct";
+import useModal from "../../../../hooks/useModal";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
@@ -16,7 +17,29 @@ import "./index.scss";
 
 export default function BuyModule({ data }: { data: ProductDataType }) {
   const { width } = useWindowSize();
-  const { displayedMainImg } = useProduct();
+  const { displayedMainImg, path } = useProduct();
+
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function showSizesModal(data: ProductDataType) {
+    setIsModalOpen(true);
+    setModalData({
+      type: "choose-size",
+      header: "Wybierz rozmiar",
+      productData: data,
+      path: path,
+    });
+  }
+
+  function showColorsModal(data: ProductDataType) {
+    setIsModalOpen(true);
+    setModalData({
+      type: "choose-color",
+      header: "Wybierz kolor",
+      productData: data,
+      path: path,
+    });
+  }
 
   return (
     <div className="buy-module">
@@ -63,6 +86,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
             <ModalControlBtn
               chooseText="kolor"
               variant={displayedMainImg.variant}
+              onClick={() => showColorsModal(data)}
             />
           )}
 
@@ -76,31 +100,11 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
             <ModalControlBtn
               chooseText="rozmiar"
               variant={data.size}
+              onClick={() => showSizesModal(data)}
             />
           </div>
         </div>
       )}
-
-      {/*//! Link to other sizes */}
-      {/* {data.relatedProducts?.sizes &&
-        Object.keys(data.relatedProducts.sizes).map((key, index) => {
-          return (
-            <>
-              <br />
-              <a
-                key={index}
-                href={
-                  data.relatedProducts?.sizes &&
-                  `/products/${path.collection}/${data.name}/${data.variant}/${
-                    data.relatedProducts.sizes[Object.keys(data.relatedProducts.sizes)[index]]
-                  }`
-                }
-              >
-                {key}
-              </a>
-            </>
-          );
-        })} */}
     </div>
   );
 }

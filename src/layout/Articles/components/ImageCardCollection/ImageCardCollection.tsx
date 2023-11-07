@@ -1,5 +1,5 @@
 // Custom Hooks
-import useModal from "../../../../hooks/useModal";
+import useImgModal from "../../../../hooks/useImgModal";
 // Types
 import { AspectRatioType } from "../../../../types/articleTypes";
 // Components
@@ -33,7 +33,7 @@ export default function ImageCardCollection({
   onHoverStatus,
   hideTooltips,
 }: ImageCardCollectionType) {
-  const { modalId, setIsModalOpen, setModalData } = useModal();
+  const { modalId, setIsModalOpen, setModalData } = useImgModal();
 
   const { id, img, instagramUser, products, addToWishlistIcon } = card;
 
