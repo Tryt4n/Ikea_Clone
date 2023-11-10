@@ -1,0 +1,63 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.purchase-options {
+  @media screen and (width < b.$tablet) {
+    order: 7;
+  }
+
+  &__header {
+    display: inline-block;
+    margin-block: 0.5rem;
+  }
+
+  &__content-wrapper {
+    padding: 0.25rem 1rem;
+    border: func.rem(1) solid c.$gray;
+    border-radius: 0.5rem;
+  }
+
+  &__btn-wrapper {
+    width: 100%;
+    padding-block: 0.75rem;
+    @include flex(row, flex-start);
+    gap: 1rem;
+    line-height: 1.57;
+
+    & svg {
+      flex-shrink: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: func.rem(1) solid c.$gray;
+    }
+
+    &:hover strong {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+    }
+  }
+
+  &__btn-inner-wrapper {
+    flex-grow: 1;
+    @include flex(row, flex-end, center);
+    gap: 0.75rem;
+    text-align: start;
+
+    & > *:first-child {
+      @include flex(column, flex-start, flex-start);
+      flex-grow: 1;
+
+      & strong {
+        text-wrap: nowrap;
+      }
+    }
+
+    & svg {
+      flex-shrink: 0;
+    }
+  }
+}

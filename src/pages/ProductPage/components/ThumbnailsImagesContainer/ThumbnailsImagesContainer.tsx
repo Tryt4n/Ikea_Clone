@@ -31,6 +31,7 @@ export default function ThumbnailsImagesContainer({ data }: { data: ProductDataT
             key={productVariant}
             className={`product-thumbnails__link${variant === productVariant ? ` active` : ""}`}
             href={Element === "a" ? href : undefined}
+            aria-label={Element === "div" ? "Aktualnie wybrany wariant" : undefined}
             onMouseEnter={() =>
               setDisplayedMainImg({
                 src: imgSrc.replace("?f=xu", ""),

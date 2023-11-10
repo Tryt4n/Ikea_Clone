@@ -29,7 +29,9 @@ export default function RatingBlock({ rating }: { rating: RatingType }) {
           }
         })}
       </span>
-      <span className="product-ratings__text">({rating?.quantity})</span>
+      <span className="product-ratings__text">
+        (<span>{rating?.quantity}</span>)
+      </span>
     </div>
   );
 }

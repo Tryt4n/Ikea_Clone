@@ -65,6 +65,7 @@
   }
 
   &__rating {
+    margin-block: 0.5rem;
     @media screen and (width < b.$tablet) {
       order: 4;
 
@@ -73,7 +74,32 @@
     }
   }
 
+  &__guarantee {
+    margin-top: 0.5em;
+    @include flex();
+    gap: 1em;
+
+    @media screen and (width < b.$tablet) {
+      order: 5;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__badge {
+    $_badge-width: 1.25rem;
+
+    width: $_badge-width;
+    aspect-ratio: 1;
+    background-color: c.$black;
+    color: c.$white;
+    font-size: v.$fs-sm;
+    font-weight: bold;
+    text-align: center;
+    line-height: $_badge-width;
+  }
+
   &__thumbnails-container {
+    margin-top: 1rem;
     padding-bottom: v.$product-container-gap;
 
     @media screen and (width < b.$tablet) {
@@ -87,7 +113,7 @@
     border-top: func.rem(1) solid c.$gray;
 
     @media screen and (width < b.$tablet) {
-      order: 5;
+      order: 6;
     }
   }
 }

@@ -23,7 +23,7 @@ import "./index.scss";
 export default function Modal() {
   const modalRef = useRef<HTMLDialogElement | null>(null);
 
-  const { isModalOpen, setIsModalOpen, modalData, setModalData } = useModal();
+  const { modalID, isModalOpen, setIsModalOpen, modalData, setModalData } = useModal();
 
   function showModal() {
     if (!modalRef.current) return;
@@ -78,36 +78,36 @@ export default function Modal() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isModalOpen]);
 
-  useEffect(() => {
-    console.log(modalData);
-  }, [modalData]);
-
   return (
-    <>
+    <dialog
+      ref={modalRef}
+      id={modalID}
+      className="side-modal"
+      onClick={closeModalOnBackdropClick}
+      onKeyDown={closeModalOnEscapeKey}
+    >
       {modalData && (
-        <dialog
-          ref={modalRef}
-          className="side-modal"
-          onClick={closeModalOnBackdropClick}
-          onKeyDown={closeModalOnEscapeKey}
-        >
-          <button
-            type="button"
-            onClick={closeModal}
-          >
-            <span className="visually-hidden">Zamknij</span>
-            <CloseIcon />
-          </button>
-          <h2>{modalData.header}</h2>
+        <>
+          <div className="side-modal__header">
+            <button
+              className="side-modal__close-btn"
+              type="button"
+              onClick={closeModal}
+            >
+              <span className="visually-hidden">Zamknij</span>
+              <CloseIcon />
+            </button>
+            <h2 className="side-modal__heading">{modalData.header}</h2>
+          </div>
 
-          <div>
+          <div className="side-modal__content-wrapper scrollbar-style">
             <Suspense fallback="Loading...">
               {modalData.type === "choose-size" && <ChooseSize data={modalData} />}
               {modalData.type === "choose-color" && <ChooseColor data={modalData} />}
             </Suspense>
           </div>
-        </dialog>
+        </>
       )}
-    </>
+    </dialog>
   );
 }

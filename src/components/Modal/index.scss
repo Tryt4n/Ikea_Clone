@@ -5,9 +5,14 @@
 @use "../../base/breakpoints" as b;
 
 .side-modal {
+  $_modal-spacing: 1.5rem;
+
+  overflow: hidden;
   inset: 0;
   bottom: 0;
   border: none;
+  outline: none;
+  scroll-behavior: smooth;
   transition: v.$main-transition;
 
   &::backdrop {
@@ -28,6 +33,8 @@
     max-height: 100%;
     height: 100%;
     top: 0;
+    padding: calc(2 * $_modal-spacing) func.rem(40);
+    padding-top: 0;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     translate: 100%;
@@ -40,13 +47,80 @@
     bottom: 0;
     left: 0;
     right: 0;
-    max-height: 85dvh;
+    max-height: 90dvh;
+    padding: $_modal-spacing;
+    padding-top: 0;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     translate: 0 100%;
+    overflow: auto;
   }
 
   &.show {
     translate: 0;
+  }
+
+  &__header {
+    padding-top: $_modal-spacing;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    @include flex(row-reverse, space-between, center);
+  }
+
+  &__close-btn {
+    margin-block: $_modal-spacing;
+    translate: 50% -100%;
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    line-height: 1.45;
+
+    @media screen and (width < b.$mobile-md) {
+      font-size: func.rem(18);
+    }
+  }
+
+  &__content-wrapper {
+    overflow: auto;
+    max-height: calc(100% - (2 * $_modal-spacing));
+    padding: 0.25rem;
+    margin: -0.25rem;
+    margin-top: 0;
+  }
+}
+
+.variant-item {
+  min-height: 5.5rem;
+  @include flex(row, flex-start, center);
+  gap: func.rem(20);
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: func.rem(1) solid c.$gray;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  transition: v.$main-transition;
+
+  &:is(a) {
+    text-decoration: none !important;
+  }
+
+  &:is(div) {
+    border-width: func.rem(2);
+    border-color: c.$black;
+  }
+
+  &:is(:not(div)):hover {
+    border-color: c.$medium-gray;
+  }
+
+  &__color {
+    text-transform: capitalize;
+
+    & > img {
+      max-width: func.rem(50);
+      aspect-ratio: 1;
+    }
   }
 }

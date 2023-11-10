@@ -49,7 +49,7 @@ export default function SideMenu() {
   return (
     <aside
       id={sideMenuId}
-      className="aside-menu"
+      className="aside-menu scrollbar-style"
       ref={sideMenuRef}
       aria-hidden={!isMenuOpen}
     >

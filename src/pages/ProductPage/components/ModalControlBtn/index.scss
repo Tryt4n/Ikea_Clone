@@ -19,4 +19,9 @@
       text-transform: capitalize;
     }
   }
+
+  &:hover .modal-control-btn__text-wrapper > :first-child {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
 }

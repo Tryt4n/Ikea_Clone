@@ -22,6 +22,8 @@ export default function ChooseSize({ data }: { data: ModalDataType }) {
             <Element
               key={index}
               href={Element === "a" ? href : undefined}
+              className="variant-item"
+              aria-label={Element === "div" ? "Obecnie wybrany rozmiar" : undefined}
             >
               {productVariant}
             </Element>

@@ -37,4 +37,9 @@
     translate: calc($_star-quantity * $_translate-increment);
     line-height: $_star-icon-size;
   }
+
+  &:hover .product-ratings__text > span {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
 }

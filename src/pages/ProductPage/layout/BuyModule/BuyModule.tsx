@@ -8,18 +8,20 @@ import Collection from "../../../../compoundComponents/CollectionProducts/compon
 import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
 import ModalControlBtn from "../../components/ModalControlBtn/ModalControlBtn";
 import ThumbnailsImagesContainer from "../../components/ThumbnailsImagesContainer/ThumbnailsImagesContainer";
+import PurchaseOptions from "../../components/PurchaseOptions/PurchaseOptions";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
 // Icons
 import HeartIcon from "../../../../Icons/HeartIcon";
 // Style
 import "./index.scss";
+import BuyBlock from "../../components/BuyBlock/BuyBlock";
 
 export default function BuyModule({ data }: { data: ProductDataType }) {
   const { width } = useWindowSize();
   const { displayedMainImg, path } = useProduct();
 
-  const { setIsModalOpen, setModalData } = useModal();
+  const { modalID, setIsModalOpen, setModalData } = useModal();
 
   function showSizesModal(data: ProductDataType) {
     setIsModalOpen(true);
@@ -47,6 +49,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
         <h3>
           <strong>{data.collection}</strong>
           <span>
+            {" "}
             {data.nameToDisplay}, {data.variantName}
             {data.size !== "universal" && (
               <>
@@ -80,6 +83,19 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
         </button>
       )}
 
+      {data.guarantee && (
+        <div className="buy-module__guarantee">
+          <span
+            className="buy-module__badge"
+            role="presentation"
+            aria-hidden="true"
+          >
+            25
+          </span>
+          <span>{data.guarantee}-letnia gwarancja</span>
+        </div>
+      )}
+
       {data.variants.length > 1 && (
         <div className="buy-module__thumbnails-container">
           {width >= 900 && (
@@ -87,6 +103,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
               chooseText="kolor"
               variant={displayedMainImg.variant}
               onClick={() => showColorsModal(data)}
+              aria-controls={modalID}
             />
           )}
 
@@ -96,15 +113,18 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
 
       {data.relatedProducts?.sizes && (
         <div className="buy-module__size">
-          <div>
-            <ModalControlBtn
-              chooseText="rozmiar"
-              variant={data.size}
-              onClick={() => showSizesModal(data)}
-            />
-          </div>
+          <ModalControlBtn
+            chooseText="rozmiar"
+            variant={data.size}
+            onClick={() => showSizesModal(data)}
+            aria-controls={modalID}
+          />
         </div>
       )}
+
+      <PurchaseOptions />
+
+      <BuyBlock />
     </div>
   );
 }

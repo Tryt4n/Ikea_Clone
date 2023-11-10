@@ -26,6 +26,8 @@ export default function ChooseColor({ data }: { data: ModalDataType }) {
           <Element
             key={productVariant}
             href={Element === "a" ? href : undefined}
+            className="variant-item variant-item__color"
+            aria-label={Element === "div" ? "Obecnie wybrany kolor" : undefined}
           >
             <img
               src={imgSrc}

@@ -19,6 +19,7 @@
 
   &__btn {
     position: relative;
+    cursor: zoom-in;
     @media screen and (width >= b.$tablet) {
       width: calc(50% - (v.$product-container-gap / 2));
     }

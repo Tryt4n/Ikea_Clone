@@ -21,7 +21,7 @@ export default function ModalControlBtn({
     >
       <div className="modal-control-btn__text-wrapper">
         <span>Wybierz {chooseText}</span>
-        <span>{variant}</span>
+        <span aria-label={`Aktualnie wybrany ${chooseText}`}>{variant}</span>
       </div>
       <ChevronRightSmall />
     </button>

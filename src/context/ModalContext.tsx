@@ -4,6 +4,7 @@ import { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
 import { Params } from "react-router-dom";
 
 type ModalContextType = {
+  modalID: string;
   isModalOpen: boolean;
   setIsModalOpen: (state: boolean) => void;
   modalData: ModalDataType | undefined;
@@ -25,7 +26,10 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState<ModalDataType | undefined>();
 
+  const modalID = "F2GA5G24SI";
+
   const contextValues = {
+    modalID,
     isModalOpen,
     setIsModalOpen,
     modalData,
