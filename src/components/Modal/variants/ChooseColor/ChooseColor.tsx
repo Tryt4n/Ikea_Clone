@@ -1,11 +1,11 @@
 // Hooks
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Types
-import { ModalDataType } from "../../../../context/ModalContext";
+import { ModalDataChooseColorType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Utils
 import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 
-export default function ChooseColor({ data }: { data: ModalDataType }) {
+export default function ChooseColor({ data }: { data: ModalDataChooseColorType }) {
   const { variants } = data.productData;
 
   const location = useCurrentProductPath(data.path);

@@ -1,5 +1,5 @@
 // Custom Hooks
-import useImgModal from "../../../../hooks/useImgModal";
+import useModal from "../../../../hooks/useModal";
 // Types
 import { AspectRatioType } from "../../../../types/articleTypes";
 // Components
@@ -33,7 +33,7 @@ export default function ImageCardCollection({
   onHoverStatus,
   hideTooltips,
 }: ImageCardCollectionType) {
-  const { modalId, setIsModalOpen, setModalData } = useImgModal();
+  const { modalID, setIsModalOpen, setModalData } = useModal();
 
   const { id, img, instagramUser, products, addToWishlistIcon } = card;
 
@@ -54,13 +54,16 @@ export default function ImageCardCollection({
     if (isListItem) return;
 
     setIsModalOpen(true);
-    setModalData(card);
+    setModalData({
+      type: "image-with-products",
+      productsData: card,
+    });
   }
 
   return (
     <Article.Section
       key={id}
-      aria-controls={modalId}
+      aria-controls={modalID}
       onClick={(e) => openImageModal(e)}
     >
       <Article.ImgContainer>

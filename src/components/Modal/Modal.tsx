@@ -1,113 +1,60 @@
 // React
-import { useEffect, useRef, lazy, Suspense } from "react";
+import { forwardRef, ForwardedRef } from "react";
 // Context
 import useModal from "../../hooks/useModal";
-// Modal Variants
-// import ChooseSize from "./variants/ChooseSize/ChooseSize";
-const ChooseSize = lazy(() => import("./variants/ChooseSize/ChooseSize"));
-const ChooseColor = lazy(() => import("./variants/ChooseColor/ChooseColor"));
-// const ChooseSize = lazy(() => wait(1000).then(() => import("./variants/ChooseSize/ChooseSize")));
-// Icons
-import CloseIcon from "../../Icons/CloseIcon";
-// Style
-import "./index.scss";
+// Modal
+import SideModal from "./layout/SideModal/SideModal";
+import ImagePreview from "./variants/ImagePreview/ImagePreview";
+import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
+// Styles
+import "./styles/index.scss";
 
-//!
-// function wait(duration: number) {
-//   return new Promise((resolve) => {
-//     setTimeout(resolve, duration);
-//   });
-// }
-//!
+type ModalPropsType = {
+  onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;
+  onKeyDownFunction: (e: React.KeyboardEvent<HTMLDialogElement>) => void;
+};
 
-export default function Modal() {
-  const modalRef = useRef<HTMLDialogElement | null>(null);
+function InnerComponent(
+  { onKeyDownFunction, onClickFunction }: ModalPropsType,
+  ref: ForwardedRef<HTMLDialogElement>
+) {
+  const { modalID, modalData } = useModal();
 
-  const { modalID, isModalOpen, setIsModalOpen, modalData, setModalData } = useModal();
+  const typeToClassMap: Record<string, string> = {
+    "choose-color": "side-modal",
+    "choose-size": "side-modal",
+    "image-preview": "image-modal",
+    "image-with-products": "image-with-products-modal",
+  };
 
-  function showModal() {
-    if (!modalRef.current) return;
-
-    modalRef.current.showModal();
-    setIsModalOpen(true);
-
-    modalRef.current.classList.add("show");
-  }
-
-  function closeModal() {
-    if (!modalRef.current) return;
-
-    modalRef.current.classList.remove("show");
-
-    setTimeout(() => {
-      if (!modalRef.current) return;
-
-      modalRef.current.close();
-      setIsModalOpen(false);
-      setModalData(undefined);
-    }, 325);
-  }
-
-  function closeModalOnBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
-    if (!e.target) return;
-
-    const dialogDimensions = (e.target as HTMLDialogElement).getBoundingClientRect();
-    if (
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom
-    ) {
-      closeModal();
-    }
-  }
-
-  function closeModalOnEscapeKey(e: React.KeyboardEvent<HTMLDialogElement>) {
-    if (e.key === "Escape" && isModalOpen) {
-      e.preventDefault();
-      closeModal();
-    }
-  }
-
-  useEffect(() => {
-    if (isModalOpen) {
-      showModal();
-    } else {
-      closeModal();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalOpen]);
+  const modalClass = modalData ? typeToClassMap[modalData?.type] : undefined;
 
   return (
     <dialog
-      ref={modalRef}
+      ref={ref}
       id={modalID}
-      className="side-modal"
-      onClick={closeModalOnBackdropClick}
-      onKeyDown={closeModalOnEscapeKey}
+      className={modalClass}
+      onClick={onClickFunction}
+      onKeyDown={onKeyDownFunction}
     >
-      {modalData && (
-        <>
-          <div className="side-modal__header">
-            <button
-              className="side-modal__close-btn"
-              type="button"
-              onClick={closeModal}
-            >
-              <span className="visually-hidden">Zamknij</span>
-              <CloseIcon />
-            </button>
-            <h2 className="side-modal__heading">{modalData.header}</h2>
-          </div>
-
-          <div className="side-modal__content-wrapper scrollbar-style">
-            <Suspense fallback="Loading...">
-              {modalData.type === "choose-size" && <ChooseSize data={modalData} />}
-              {modalData.type === "choose-color" && <ChooseColor data={modalData} />}
-            </Suspense>
-          </div>
-        </>
-      )}
+      {modalData &&
+        (((modalData.type === "choose-color" || modalData.type === "choose-size") && (
+          <>
+            <SideModal data={modalData} />
+          </>
+        )) ||
+          (modalData.type === "image-preview" && (
+            <>
+              <ImagePreview />
+            </>
+          )) ||
+          (modalData.type === "image-with-products" && (
+            <>
+              <ImageWithProducts data={modalData} />
+            </>
+          )))}
     </dialog>
   );
 }
+
+export const Modal = forwardRef(InnerComponent);

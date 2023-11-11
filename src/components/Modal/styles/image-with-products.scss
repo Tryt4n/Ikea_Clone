@@ -1,10 +1,10 @@
-@use "../../abstracts/mixins" as *;
-@use "../../abstracts/colors" as c;
-@use "../../abstracts/variables" as v;
-@use "../../base/functions" as func;
-@use "../../base/breakpoints" as b;
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+@use "../../../base/breakpoints" as b;
 
-.modal {
+.image-with-products-modal {
   $_height_cut: 6rem;
   $_product-padding-block: func.rem(30);
 
@@ -78,8 +78,9 @@
 
   &__header {
     @include flex(row, space-between, center);
-    margin-top: 2rem;
-    &:has(+ .modal__instagram-nick-mobile) {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    &:has(+ .image-with-products-modal__instagram-nick-mobile) {
       margin-bottom: 2rem;
     }
   }
@@ -135,7 +136,7 @@
       opacity: 0;
       visibility: hidden;
 
-      & ~ .modal__thumbnail-img-hover {
+      & ~ .image-with-products-modal__thumbnail-img-hover {
         z-index: 1;
         opacity: 1;
         visibility: visible;
@@ -196,7 +197,7 @@
     &:hover {
       text-decoration: none;
 
-      & .modal__product-heading {
+      & .image-with-products-modal__product-heading {
         text-decoration: underline;
       }
     }
