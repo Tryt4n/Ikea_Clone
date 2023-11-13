@@ -44,6 +44,7 @@ type ListItemPricePropsType = {
 
 type ListItemTagPropsType = {
   children: string;
+  className?: string;
   variant?: TextVariants;
 };
 
@@ -177,9 +178,15 @@ function ListItemPrice({ price, priceDecimal, quantity, sizeInMeters }: ListItem
   );
 }
 
-export function ListItemTag({ children, variant }: ListItemTagPropsType) {
+export function ListItemTag({ children, className, variant }: ListItemTagPropsType) {
   return (
-    <em className={`collection-list__item-tag${variant ? ` tx-${variant}` : ""}`}>{children}</em>
+    <em
+      className={`collection-list__item-tag${variant ? ` tx-${variant}` : ""}${
+        className ? ` ${className}` : ""
+      }`}
+    >
+      {children}
+    </em>
   );
 }
 

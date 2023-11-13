@@ -6,7 +6,7 @@ import { ModalDataChooseColorType } from "../../../../pages/ProductPage/types/Mo
 import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 
 export default function ChooseColor({ data }: { data: ModalDataChooseColorType }) {
-  const { variants } = data.productData;
+  const { variants, variantsName } = data.productData;
 
   const location = useCurrentProductPath(data.path);
 
@@ -34,7 +34,7 @@ export default function ChooseColor({ data }: { data: ModalDataChooseColorType }
               srcSet={imgSrcSet}
               alt={imgAlt}
             />
-            <span>{productVariant}</span>
+            <span>{variantsName[variants.indexOf(productVariant)]}</span>
           </Element>
         );
       })}

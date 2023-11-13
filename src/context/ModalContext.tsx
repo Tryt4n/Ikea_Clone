@@ -1,7 +1,7 @@
 // React
 import { ReactNode, createContext, useEffect, useRef, useState } from "react";
 // Components
-import { Modal } from "../components/Modal/Modal";
+import { Modal } from "../layout/Modal/Modal";
 // Types
 import { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
 

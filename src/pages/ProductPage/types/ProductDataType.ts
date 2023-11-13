@@ -1,3 +1,5 @@
+import { TextVariants } from "../../../types/colorsVariantsType";
+
 export type ProductDataType = {
   collection: string;
   name: string;
@@ -9,6 +11,16 @@ export type ProductDataType = {
     decimal?: number;
     quantity?: number;
     sizeInMeters?: number;
+  };
+  oldPriceTag: {
+    variant: TextVariants;
+    integer: number;
+    decimal?: number;
+    quantity?: number;
+    sizeInMeters?: number;
+  };
+  newTag: {
+    variant: TextVariants;
   };
   variants: string[];
   variantsName: string[];
@@ -24,9 +36,11 @@ export type ProductDataType = {
     quantity: number;
   };
   topSeller?: boolean;
-  guarantee?: boolean;
+  forKidsBadge?: boolean;
+  guarantee?: number;
   thumbnails: Record<string, string>;
   images: Record<string, string>;
+  additionalInformation?: string;
   additionalInfo?: {
     history?: {
       sections: {

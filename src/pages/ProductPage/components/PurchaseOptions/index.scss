@@ -25,7 +25,6 @@
     padding-block: 0.75rem;
     @include flex(row, flex-start);
     gap: 1rem;
-    line-height: 1.57;
 
     & svg {
       flex-shrink: 0;

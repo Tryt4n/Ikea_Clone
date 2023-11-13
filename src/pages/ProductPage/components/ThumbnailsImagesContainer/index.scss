@@ -1,11 +1,13 @@
+@use "../../../../abstracts/mixins" as *;
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
 
 .product-thumbnails {
-  display: flex;
-  gap: 0.5em;
   margin-top: 0.25em;
+  @include flex(row, flex-start, center);
+  gap: 0.5em;
+  flex-wrap: wrap;
 
   &__link {
     --_border-width: #{func.rem(1)};
@@ -37,6 +39,23 @@
 
     &.active:focus-visible {
       --_border-width: #{func.rem(1)};
+    }
+  }
+
+  &__remaining-thumbnails-count {
+    margin-left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: inset 0 0 0 func.rem(1) c.$black;
+    border-radius: 50vw;
+    font-size: v.$fs-sm;
+    font-weight: bold;
+    line-height: 1.333333;
+    color: c.$black;
+    transition: v.$main-transition;
+
+    &:hover {
+      box-shadow: inset 0 0 0 func.rem(2) c.$black;
     }
   }
 }

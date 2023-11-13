@@ -1,0 +1,15 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+
+.additional-information {
+  @include flex(row, flex-start, center);
+  font-size: v.$fs-sm;
+  margin-block: 1em;
+
+  & svg {
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    color: c.$dark-gray;
+  }
+}

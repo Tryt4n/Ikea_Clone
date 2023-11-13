@@ -13,6 +13,7 @@ export default function PurchaseOptions() {
   return (
     <div className="purchase-options">
       <strong className="purchase-options__header">Możliwości zakupu</strong>
+
       <div className="purchase-options__content-wrapper">
         <button
           className="purchase-options__btn-wrapper"

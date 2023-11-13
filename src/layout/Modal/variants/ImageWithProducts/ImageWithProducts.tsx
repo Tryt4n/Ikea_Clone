@@ -8,8 +8,8 @@ import CollectionProductsList, {
   ProductType,
 } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 // Components
-import Btn from "../../../Btn/Btn";
-import RatingBlock from "../../../RatingBlock/RatingBlock";
+import Btn from "../../../../components/Btn/Btn";
+import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
 // Types
 import { ModalImageWithProductsType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons

@@ -8,15 +8,25 @@ import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 // Style
 import "./index.scss";
 
-export default function ThumbnailsImagesContainer({ data }: { data: ProductDataType }) {
+type ThumbnailsImagesContainerPropsType = {
+  data: ProductDataType;
+  openModal: (data: ProductDataType) => void;
+};
+
+export default function ThumbnailsImagesContainer({
+  data,
+  openModal,
+}: ThumbnailsImagesContainerPropsType) {
   const { path, setDisplayedMainImg } = useProduct();
   const location = useCurrentProductPath(path);
 
   const { variant, variants, variantsName, name, images } = data;
 
+  const maxVisibleThumbnails = 7;
+
   return (
     <div className="product-thumbnails">
-      {variants.map((productVariant, index) => {
+      {variants.slice(0, maxVisibleThumbnails).map((productVariant, index) => {
         const { href, imgSrc, imgSrcSet, imgAlt } = getThumbnailsData(
           data,
           path,
@@ -55,6 +65,16 @@ export default function ThumbnailsImagesContainer({ data }: { data: ProductDataT
           </Element>
         );
       })}
+
+      {variants.length > maxVisibleThumbnails && (
+        <button
+          className="product-thumbnails__remaining-thumbnails-count"
+          aria-label="Pozostałe warianty"
+          onClick={() => openModal(data)}
+        >
+          +{variants.length - maxVisibleThumbnails}
+        </button>
+      )}
     </div>
   );
 }
