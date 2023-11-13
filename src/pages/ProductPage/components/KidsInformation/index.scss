@@ -25,6 +25,8 @@
   }
 
   @media screen and (width < b.$tablet) {
-    order: 8;
+    order: 12;
+
+    margin-bottom: -1.5rem;
   }
 }

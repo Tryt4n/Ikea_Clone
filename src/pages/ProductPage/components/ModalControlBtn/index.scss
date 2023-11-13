@@ -10,6 +10,7 @@
     @include flex(column, flex-start, flex-start);
     line-height: func.rem(22);
     gap: 0.25rem;
+    text-align: start;
 
     & > *:first-child {
       font-weight: bold;

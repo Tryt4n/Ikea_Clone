@@ -13,11 +13,22 @@ export type ModalDataChooseColorType = Omit<ModalDataChooseSizeType, "type"> & {
   type: "choose-color";
 };
 
-export type ModalDataImagePreviewType = {
-  type: "image-preview";
-  imgSrc: string;
-  imgSrcSet: string;
-};
+// export type ModalDataImagePreviewType = {
+//   type: "image-preview";
+//   imgSrc: string;
+//   imgSrcSet: string;
+// };
+export type ModalDataImagePreviewType =
+  | {
+      type: "image-preview";
+      imgSrc: string;
+      imgSrcSet: string;
+    }
+  | {
+      type: "image-preview";
+      imgSrc: string;
+      video?: boolean;
+    };
 
 export type ModalImageWithProductsType = {
   type: "image-with-products";

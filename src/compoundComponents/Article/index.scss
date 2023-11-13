@@ -129,13 +129,13 @@
     aspect-ratio: 1;
     @include center;
     border-radius: 50vw;
-    background-color: hsla(0, 0%, 0%, 0.7);
+    background-color: c.$opaque-dark;
     color: c.$white;
     transition: v.$main-transition;
     z-index: 10;
 
     &:where(:hover, :focus-visible) {
-      background-color: hsla(0, 0%, 0%, 0.9);
+      background-color: c.$opaque-dark-on-hover;
     }
   }
 

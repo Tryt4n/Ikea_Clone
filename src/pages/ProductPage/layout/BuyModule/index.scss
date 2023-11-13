@@ -19,7 +19,7 @@
 
   &__price {
     @media screen and (width < b.$tablet) {
-      order: 3;
+      order: 4;
     }
 
     & .collection-list__item-price {
@@ -33,12 +33,16 @@
 
   &__old-price {
     font-size: v.$fs-sm;
+
+    @media screen and (width < b.$tablet) {
+      order: 5;
+    }
   }
 
   &__rating {
     margin-block: 0.5rem;
     @media screen and (width < b.$tablet) {
-      order: 4;
+      order: 6;
 
       width: fit-content;
       margin-bottom: 1rem;
@@ -64,7 +68,7 @@
     border-top: func.rem(1) solid c.$gray;
 
     @media screen and (width < b.$tablet) {
-      order: 6;
+      order: 9;
     }
   }
 }

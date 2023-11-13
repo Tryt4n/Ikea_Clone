@@ -1,5 +1,7 @@
 @use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
 @use "../../../../base/breakpoints" as b;
 
 .product-image-gallery {
@@ -11,19 +13,88 @@
     margin-bottom: 1.5rem;
   }
 
-  & img {
+  & img,
+  & video {
     object-fit: cover;
     width: 100%;
     height: 100%;
     aspect-ratio: 1;
   }
 
+  & video {
+    position: relative;
+  }
+
   &__btn {
     position: relative;
     cursor: zoom-in;
+
+    &:is(:not(button)):hover .product-image-gallery__video-btn-control {
+      opacity: 1;
+    }
+
+    &:is(:not(button)):hover .firstPlayback svg {
+      scale: 1;
+    }
+
     @media screen and (width >= b.$tablet) {
       width: calc(50% - (v.$product-container-gap / 2));
     }
+  }
+
+  &__video-btn-control {
+    position: absolute;
+    width: func.rem(40);
+    aspect-ratio: 1;
+    @include center;
+    z-index: 2;
+    border-radius: 50vw;
+  }
+
+  &__video-btn-control {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: func.rem(40);
+    aspect-ratio: 1;
+    @include center;
+    z-index: 2;
+    background-color: c.$opaque-dark;
+    color: c.$white;
+    border-radius: 50vw;
+    transition: background-color 300ms ease-in-out, opacity 300ms ease-in-out;
+    opacity: 0;
+
+    &:where(:hover, :focus-visible) {
+      background-color: c.$opaque-dark-on-hover;
+    }
+
+    &.firstPlayback {
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      background-color: c.$opaque-light-dark;
+      opacity: 1;
+
+      & svg {
+        scale: 0.8;
+        transition: v.$main-transition;
+      }
+
+      &:where(:hover, :focus-visible) {
+        background-color: c.$opaque-light-dark-on-hover;
+      }
+    }
+  }
+
+  &__video-preview-btn {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__btn-wrapper {
+    width: 100%;
   }
 
   &__show-more-btn {
