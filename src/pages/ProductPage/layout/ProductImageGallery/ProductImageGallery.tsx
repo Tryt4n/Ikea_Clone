@@ -1,5 +1,10 @@
 // React
 import { useRef, useState } from "react";
+// SwiperJS
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Keyboard, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 // Custom Hooks
 import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
@@ -62,10 +67,28 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
     }));
   }
 
+  const SwiperContainer = width < 900 ? Swiper : "div";
+  const SwiperItem = width < 900 ? SwiperSlide : "div";
+
   return (
-    <div className="product-image-gallery">
+    <SwiperContainer
+      className={`product-image-gallery${
+        width < 900 ? " mySwiper-product-mobile-carousel-slider" : ""
+      }`}
+      pagination={width < 900 ? true : undefined}
+      loop={width < 900 ? true : undefined}
+      keyboard={
+        width < 900
+          ? {
+              enabled: true,
+            }
+          : undefined
+      }
+      modules={width < 900 ? [Pagination, Keyboard, A11y] : undefined}
+    >
       {Object.keys(images).map((key, index) => {
-        if (index < visibleImages) {
+        if (width < 900 || index < visibleImages) {
+          // if (index < visibleImages) {
           const imgUrl =
             index > 0
               ? `https://www.ikea.com/pl/pl/images/products/${path.collection}-${name}-${variant}__${images[key]}`
@@ -75,70 +98,77 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
           const imgSizes =
             "(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px";
 
-          const Element = key === "video" ? "div" : "button";
+          const InnerElement = key === "video" ? "div" : "button";
 
           return (
-            <Element
+            <SwiperItem
               key={key}
-              className="product-image-gallery__btn"
-              onClick={width >= 900 && key !== "video" ? () => openModalPreview(index) : undefined}
+              className="product-image-gallery__item-wrapper"
             >
-              {!limitedEdition && topSeller && index === 0 && (
-                <strong className="top-seller">Top Seller</strong>
-              )}
+              <InnerElement
+                className="product-image-gallery__btn"
+                onClick={
+                  width >= 900 && key !== "video" ? () => openModalPreview(index) : undefined
+                }
+              >
+                {!limitedEdition && topSeller && index === 0 && (
+                  <strong className="top-seller">Top Seller</strong>
+                )}
 
-              {limitedEdition && index === 0 && (
-                <strong className="limited-edition">Kolekcja limitowana</strong>
-              )}
+                {limitedEdition && index === 0 && (
+                  <strong className="limited-edition">Kolekcja limitowana</strong>
+                )}
 
-              {key === "video" ? (
-                <>
-                  <video
-                    ref={videoRef}
-                    src={images[key]}
-                    playsInline
-                    loop
-                    poster={images[key].replace("mp4?imwidth=800", "jpg?=f=m")}
-                    muted
-                  />
-                  <button
-                    className="product-image-gallery__video-preview-btn"
-                    onClick={width >= 900 ? () => openModalPreview(index) : undefined}
-                  >
-                    <span className="visually-hidden">Naciśnij aby powiększyć wideo</span>
-                  </button>
+                {key === "video" ? (
+                  <>
+                    <video
+                      ref={videoRef}
+                      src={images[key]}
+                      playsInline
+                      loop
+                      poster={images[key].replace("mp4?imwidth=800", "jpg?=f=m")}
+                      muted
+                    />
+                    <button
+                      className="product-image-gallery__video-preview-btn"
+                      onClick={width >= 900 ? () => openModalPreview(index) : undefined}
+                    >
+                      <span className="visually-hidden">Naciśnij aby powiększyć wideo</span>
+                    </button>
 
-                  <button
-                    className={`product-image-gallery__video-btn-control${
-                      videoControl.isFirstPlayback ? ` firstPlayback` : ""
-                    }`}
-                    onClick={handleVideoPlayPause}
-                  >
-                    <span className="visually-hidden">
-                      {videoControl.isPlaying ? "Zatrzymaj" : "Odtwórz"} wideo
-                    </span>
-                    {videoControl.isPlaying ? <PauseIcon /> : <PlayIcon />}
-                  </button>
-                </>
-              ) : (
-                <>
-                  <img
-                    src={imgSrc}
-                    srcSet={imgSrcSet}
-                    sizes={imgSizes}
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span className="visually-hidden">Naciśnij aby powiększyć</span>
-                </>
-              )}
-            </Element>
+                    <button
+                      className={`product-image-gallery__video-btn-control${
+                        videoControl.isFirstPlayback ? ` firstPlayback` : ""
+                      }`}
+                      onClick={handleVideoPlayPause}
+                    >
+                      <span className="visually-hidden">
+                        {videoControl.isPlaying ? "Zatrzymaj" : "Odtwórz"} wideo
+                      </span>
+                      {videoControl.isPlaying ? <PauseIcon /> : <PlayIcon />}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src={imgSrc}
+                      srcSet={imgSrcSet}
+                      sizes={imgSizes}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <span className="visually-hidden">Naciśnij aby powiększyć</span>
+                  </>
+                )}
+              </InnerElement>
+            </SwiperItem>
           );
         } else {
           return null;
         }
       })}
-      {Object.keys(images).length > 8 && (
+
+      {width >= 900 && Object.keys(images).length > 8 && (
         <div className="product-image-gallery__btn-wrapper">
           <Btn
             variant="light-with-border"
@@ -149,6 +179,6 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
           </Btn>
         </div>
       )}
-    </div>
+    </SwiperContainer>
   );
 }

@@ -5,7 +5,7 @@
 @use "../../../../base/breakpoints" as b;
 
 .product-image-gallery {
-  @include flex(row, flex-start, flex-start);
+  @include flex(row, stretch, stretch);
   gap: v.$product-container-gap;
   flex-wrap: wrap;
 
@@ -25,9 +25,8 @@
     position: relative;
   }
 
-  &__btn {
+  &__item-wrapper {
     position: relative;
-    cursor: zoom-in;
 
     &:is(:not(button)):hover .product-image-gallery__video-btn-control {
       opacity: 1;
@@ -39,7 +38,14 @@
 
     @media screen and (width >= b.$tablet) {
       width: calc(50% - (v.$product-container-gap / 2));
+      cursor: zoom-in;
     }
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   &__video-btn-control {
@@ -63,7 +69,9 @@
     color: c.$white;
     border-radius: 50vw;
     transition: background-color 300ms ease-in-out, opacity 300ms ease-in-out;
-    opacity: 0;
+    @media (hover: hover) {
+      opacity: 0;
+    }
 
     &:where(:hover, :focus-visible) {
       background-color: c.$opaque-dark-on-hover;
@@ -99,5 +107,12 @@
 
   &__show-more-btn {
     margin-inline: auto;
+  }
+
+  @media screen and (width < b.$tablet) {
+    &.swiper {
+      padding-inline: 0;
+      margin-inline: 0;
+    }
   }
 }

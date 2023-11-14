@@ -97,6 +97,15 @@
     visibility: hidden;
     z-index: -1;
   }
+
+  .swiper-pagination-bullet {
+    background: c.$gray;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: c.$text-gray;
+  }
 }
 
 @media screen and (width < b.$mobile-md) {
