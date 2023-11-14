@@ -1,10 +1,9 @@
 // Components
 import Article from "../../compoundComponents/Article/Article";
 import CollectionNameContainer from "../../compoundComponents/CollectionProducts/components/CollectionNameContainer";
-import CollectionProductsList, {
-  ProductType,
-} from "./components/CollectionProductsList/CollectionProductsList";
+import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList.1";
 // Types
+import { ProductType } from "./components/CollectionProductsList/CollectionProductsList";
 import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
 import { BackgroundVariants } from "../../types/colorsVariantsType";
 

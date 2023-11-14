@@ -12,6 +12,8 @@ type RatingType = {
 export default function RatingBlock({ rating }: { rating: RatingType }) {
   return (
     <div className="product-ratings">
+      <strong className="visually-hidden">Ocena: {rating.rate}</strong>
+      <span className="visually-hidden">Liczba ocen:</span>
       <span className="product-ratings__wrapper">
         {[...Array(5)].map((_, index) => {
           const currentRate = rating?.rate || 0;
@@ -30,7 +32,9 @@ export default function RatingBlock({ rating }: { rating: RatingType }) {
         })}
       </span>
       <span className="product-ratings__text">
-        (<span>{rating?.quantity}</span>)
+        <span aria-hidden="true">(</span>
+        <span className="product-ratings__rate">{rating?.quantity}</span>
+        <span aria-hidden="true">)</span>
       </span>
     </div>
   );

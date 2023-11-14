@@ -1,4 +1,5 @@
 import { TextVariants } from "../../../types/colorsVariantsType";
+import { SoftnessIndexType } from "../../../types/softnessVariants";
 
 export type ProductDataType = {
   collection: string;
@@ -36,8 +37,10 @@ export type ProductDataType = {
     quantity: number;
   };
   topSeller?: boolean;
+  limitedEdition?: boolean;
   forKidsBadge?: boolean;
   guarantee?: number;
+  softnessIndex: SoftnessIndexType;
   thumbnails: Record<string, string>;
   images: Record<string, string>;
   additionalInformation?: string;

@@ -5,6 +5,8 @@ import useModal from "../../../../hooks/useModal";
 // Modal Variants
 import ChooseSize from "../../variants/ChooseSize/ChooseSize";
 import ChooseColor from "../../variants/ChooseColor/ChooseColor";
+// Components
+import Btn from "../../../../components/Btn/Btn";
 // Types
 import {
   ModalDataChooseColorType,
@@ -25,14 +27,16 @@ export default function SideModal({
       {data && (
         <>
           <div className="side-modal__header">
-            <button
+            <Btn
+              variant="light"
+              shape="circle"
               className="side-modal__close-btn"
               type="button"
               onClick={closeModal}
             >
               <span className="visually-hidden">Zamknij</span>
               <CloseIcon />
-            </button>
+            </Btn>
             <h2 className="side-modal__heading">{data.header}</h2>
           </div>
 

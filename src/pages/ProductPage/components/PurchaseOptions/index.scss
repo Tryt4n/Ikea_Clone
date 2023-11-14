@@ -2,16 +2,12 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
-@use "../../../../base/breakpoints" as b;
 
 .purchase-options {
-  @media screen and (width < b.$tablet) {
-    order: 10;
-  }
-
   &__header {
     display: inline-block;
     margin-block: 0.5rem;
+    font-size: inherit;
   }
 
   &__content-wrapper {

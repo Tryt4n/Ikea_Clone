@@ -15,15 +15,6 @@
   scroll-behavior: smooth;
   transition: v.$main-transition;
 
-  &::backdrop {
-    background-color: transparent;
-    transition: v.$main-transition;
-  }
-
-  &.show::backdrop {
-    background-color: c.$overlay-opaque;
-  }
-
   @media screen and (width >= b.$mobile-md) {
     inset: auto;
     bottom: 0;
@@ -69,7 +60,8 @@
   }
 
   &__close-btn {
-    margin-block: $_modal-spacing;
+    margin-top: calc($_modal-spacing + 0.5rem);
+    margin-bottom: $_modal-spacing;
     translate: 50% -100%;
   }
 

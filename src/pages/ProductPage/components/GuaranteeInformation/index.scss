@@ -9,11 +9,6 @@
   @include flex(row, flex-start, center);
   gap: 1em;
 
-  @media screen and (width < b.$tablet) {
-    order: 8;
-    margin-bottom: 1rem;
-  }
-
   &__badge {
     $_badge-width: 1.25rem;
 

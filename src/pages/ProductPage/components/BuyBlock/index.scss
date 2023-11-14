@@ -21,10 +21,6 @@
     }
   }
 
-  @media screen and (width < b.$tablet) {
-    order: 11;
-  }
-
   & button {
     font-size: func.rem(14);
     @media screen and (width >= b.$desktop) {

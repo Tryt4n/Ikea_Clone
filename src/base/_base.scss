@@ -1,3 +1,4 @@
+@use "../abstracts/colors" as c;
 @use "../abstracts/variables" as v;
 @use "../base/functions" as func;
 
@@ -81,6 +82,14 @@ svg {
   user-select: none;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 svg {
   fill: currentColor;
 }
@@ -96,6 +105,14 @@ button {
   &:disabled {
     cursor: not-allowed;
   }
+}
+
+dialog::backdrop {
+  background-color: transparent;
+  transition: v.$main-transition;
+}
+dialog.show::backdrop {
+  background-color: c.$overlay-opaque;
 }
 
 /* clears the ‘X’ from Internet Explorer */

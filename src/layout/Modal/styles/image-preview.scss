@@ -1,0 +1,55 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.image-modal {
+  width: calc(100dvw - 6rem);
+  height: calc(100dvh - 6rem);
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+  scale: 0;
+  transition: v.$main-transition;
+
+  &.show {
+    scale: 1;
+  }
+
+  &__header {
+    @include flex(row, flex-end, center);
+    padding-top: 1rem;
+    padding-inline: 1rem;
+  }
+
+  &__img-wrapper {
+    height: 100%;
+    max-height: calc(100% - func.rem(56) - 2rem);
+    @include flex(row, center, center);
+    padding-inline: func.rem(100);
+
+    & > * {
+      height: 100%;
+    }
+
+    & .swiper {
+      cursor: initial;
+    }
+  }
+
+  & img,
+  & video {
+    height: 100%;
+    max-height: 75vh;
+    max-width: 100%;
+    width: auto;
+  }
+
+  & img {
+    cursor: zoom-in;
+  }
+
+  & .swiper-slide-zoomed img {
+    cursor: move;
+  }
+}

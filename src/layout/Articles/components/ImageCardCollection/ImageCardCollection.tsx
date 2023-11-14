@@ -4,9 +4,8 @@ import useModal from "../../../../hooks/useModal";
 import { AspectRatioType } from "../../../../types/articleTypes";
 // Components
 import Article from "../../../../compoundComponents/Article/Article";
-import CollectionProductsList, {
-  ProductType,
-} from "../CollectionProductsList/CollectionProductsList";
+import { ProductType } from "../CollectionProductsList/CollectionProductsList";
+import CollectionProductsList from "../CollectionProductsList/CollectionProductsList.1";
 
 export type ImageCardCollectionType = {
   card: CardCollectionType;

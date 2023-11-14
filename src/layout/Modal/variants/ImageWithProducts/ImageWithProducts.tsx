@@ -4,9 +4,8 @@ import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Compound Components
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
-import CollectionProductsList, {
-  ProductType,
-} from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
+import { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
+import CollectionProductsList from "../../../Articles/components/CollectionProductsList/CollectionProductsList.1";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import RatingBlock from "../../../../components/RatingBlock/RatingBlock";

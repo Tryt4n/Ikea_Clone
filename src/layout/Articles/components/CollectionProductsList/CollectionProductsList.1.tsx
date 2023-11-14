@@ -1,51 +1,11 @@
+// React
 import React from "react";
 // Custom Hooks
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
 // Types
-import { ListItemDescriptionPlacementTypes } from "../../../../types/collectionTypes";
-import { TextVariants } from "../../../../types/colorsVariantsType";
-
-export type CollectionProductsListType = {
-  products: ProductType[];
-  onHoverStatus?: boolean;
-  hideTooltips?: boolean;
-};
-
-export type ProductType = {
-  id: string;
-  placement: {
-    top: string;
-    right: string;
-    bottom: string;
-    left: string;
-    topMobile?: string;
-    rightMobile?: string;
-    bottomMobile?: string;
-    leftMobile?: string;
-  };
-  newTag?: {
-    variant: TextVariants;
-  };
-  topSellerTag?: {
-    variant: TextVariants;
-  };
-  newPriceTag?: {
-    variant: TextVariants;
-    lastItemPriceInteger: number;
-    lastItemPriceDecimal?: number;
-  };
-  descriptionPlacement: ListItemDescriptionPlacementTypes;
-  productHeading: string;
-  productSubHeading: string;
-  productLink: string;
-  productPriceInteger: number;
-  productPriceDecimal?: number;
-  productQuantity: number;
-  productSizeInMeters: number;
-  hideOnMobile?: boolean;
-};
+import { CollectionProductsListType } from "./CollectionProductsList";
 
 export default function CollectionProductsList({
   products,

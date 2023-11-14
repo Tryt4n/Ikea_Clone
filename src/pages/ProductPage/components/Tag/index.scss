@@ -1,12 +1,7 @@
 @use "../../../../abstracts/variables" as v;
-@use "../../../../base/breakpoints" as b;
 
 .product-tag {
   display: inline-block;
   margin-bottom: 0.25rem;
   font-size: v.$fs-sm;
-
-  @media screen and (width < b.$tablet) {
-    order: 2;
-  }
 }

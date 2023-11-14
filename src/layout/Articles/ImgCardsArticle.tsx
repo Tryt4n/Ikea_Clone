@@ -1,18 +1,18 @@
 // SwiperJS
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Navigation, Keyboard, FreeMode, Mousewheel, A11y } from "swiper/modules";
+import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-// Hooks
+// Custom Hooks
 import useWindowSize from "../../hooks/useWindowSize";
-// Types
-import { BackgroundVariants } from "../../types/colorsVariantsType";
-import { BtnVariantsType } from "../../types/btnTypes";
 // Components
 import Article from "../../compoundComponents/Article/Article";
 import CardsContainer from "../../compoundComponents/Card/CardsContainer";
 import Card from "../../compoundComponents/Card/Card";
+// Types
+import { BackgroundVariants } from "../../types/colorsVariantsType";
+import { BtnVariantsType } from "../../types/btnTypes";
 
 export type ImgCardsArticleType = {
   id: string;
@@ -65,10 +65,10 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
           modules={
             breakOnMobile
               ? width >= 600
-                ? [Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]
+                ? [Navigation, Scrollbar, Keyboard, FreeMode, A11y]
                 : undefined
               : width < 900
-              ? [Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]
+              ? [Navigation, Scrollbar, Keyboard, FreeMode, A11y]
               : undefined
           }
           breakpoints={{

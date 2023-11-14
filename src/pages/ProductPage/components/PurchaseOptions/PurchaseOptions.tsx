@@ -11,8 +11,8 @@ export default function PurchaseOptions() {
   const { modalID } = useModal();
 
   return (
-    <div className="purchase-options">
-      <strong className="purchase-options__header">Możliwości zakupu</strong>
+    <section className="purchase-options">
+      <h3 className="purchase-options__header">Możliwości zakupu</h3>
 
       <div className="purchase-options__content-wrapper">
         <button
@@ -43,6 +43,6 @@ export default function PurchaseOptions() {
           </div>
         </button>
       </div>
-    </div>
+    </section>
   );
 }

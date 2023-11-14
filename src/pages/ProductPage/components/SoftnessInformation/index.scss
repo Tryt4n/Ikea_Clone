@@ -1,0 +1,14 @@
+@use "../../../../abstracts/mixins" as *;
+
+.softness-information {
+  margin-top: 0.5em;
+  margin-bottom: 1rem;
+  @include flex(row, flex-start, center);
+  gap: 1em;
+
+  &__text {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

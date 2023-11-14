@@ -159,7 +159,6 @@ function ListItemPrice({ price, priceDecimal, quantity, sizeInMeters }: ListItem
 
   return (
     <strong>
-      <span className="visually-hidden">Cena {price},-</span>
       <div className="collection-list__item-price">
         {formattedPrice}
         {priceDecimal ? (

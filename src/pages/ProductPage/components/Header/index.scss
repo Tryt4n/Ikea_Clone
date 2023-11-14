@@ -1,19 +1,13 @@
 @use "../../../../abstracts/mixins" as *;
 @use "../../../../abstracts/colors" as c;
-@use "../../../../abstracts/variables" as v;
-@use "../../../../base/breakpoints" as b;
 
 .product-header {
-  @include flex(row, space-between);
+  @include flex(row, space-between, center);
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: normal;
   color: c.$text-gray;
-
-  @media screen and (width < b.$tablet) {
-    order: 3;
-  }
 
   & h3 {
     font: inherit;
@@ -27,7 +21,6 @@
   & button {
     text-decoration: underline;
     text-underline-offset: 0.25em;
-    transition: v.$main-transition;
     outline-offset: 0.25em;
 
     &:where(:hover, :focus-visible) {

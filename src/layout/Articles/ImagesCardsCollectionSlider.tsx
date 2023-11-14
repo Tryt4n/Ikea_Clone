@@ -1,6 +1,6 @@
 // SwiperJS
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Navigation, Keyboard, FreeMode, Mousewheel, A11y } from "swiper/modules";
+import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
@@ -40,7 +40,7 @@ export default function ImageCardsCollectionSlider({
         keyboard={{
           enabled: true,
         }}
-        modules={[Navigation, Scrollbar, Keyboard, FreeMode, Mousewheel, A11y]}
+        modules={[Navigation, Scrollbar, Keyboard, FreeMode, A11y]}
         breakpoints={{
           600: {
             slidesPerView: 2,

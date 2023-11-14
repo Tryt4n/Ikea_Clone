@@ -65,15 +65,6 @@
     @media screen and (width < b.$mobile-md), (height < b.$mobile-lg) {
       translate: 0 0 !important;
     }
-
-    &::backdrop {
-      background-color: c.$overlay-opaque;
-    }
-  }
-
-  &::backdrop {
-    background-color: transparent;
-    transition: v.$main-transition;
   }
 
   &__header {

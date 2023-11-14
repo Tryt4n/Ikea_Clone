@@ -45,7 +45,7 @@ function InnerComponent(
         )) ||
           (modalData.type === "image-preview" && (
             <>
-              <ImagePreview />
+              <ImagePreview data={modalData} />
             </>
           )) ||
           (modalData.type === "image-with-products" && (

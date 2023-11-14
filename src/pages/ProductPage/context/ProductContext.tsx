@@ -8,7 +8,7 @@ type ProductContextType = {
   URL: string;
 };
 
-type DisplayedImgType = {
+export type DisplayedImgType = {
   src: string;
   variant: string;
 };

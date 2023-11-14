@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 // Custom Hooks
 import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
+import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Icons
@@ -16,6 +17,7 @@ import "./index.scss";
 export default function ProductImageGallery({ data }: { data: ProductDataType }) {
   const { displayedMainImg, path } = useProduct();
   const { setIsModalOpen, setModalData } = useModal();
+  const { width } = useWindowSize();
   const [visibleImages, setVisibleImages] = useState(8);
   const [videoControl, setVideoControl] = useState({
     isFirstPlayback: true,
@@ -23,7 +25,7 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
   });
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const { images, name, variant, topSeller } = data;
+  const { images, name, variant, topSeller, limitedEdition } = data;
 
   function handleShowMoreClick() {
     if (visibleImages === Object.keys(images).length) {
@@ -35,21 +37,14 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
     }
   }
 
-  function openImagePreviewModal(imgSrc: string, imgSrcSet: string) {
+  function openModalPreview(index: number) {
     setIsModalOpen(true);
     setModalData({
       type: "image-preview",
-      imgSrc: imgSrc,
-      imgSrcSet: imgSrcSet,
-    });
-  }
-
-  function openVideoPreviewModal(imgSrc: string) {
-    setIsModalOpen(true);
-    setModalData({
-      type: "image-preview",
-      imgSrc: imgSrc,
-      video: true,
+      productData: data,
+      index: index,
+      path: path,
+      displayedMainImg: displayedMainImg,
     });
   }
 
@@ -86,9 +81,15 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
             <Element
               key={key}
               className="product-image-gallery__btn"
-              onClick={key !== "video" ? () => openImagePreviewModal(imgSrc, imgSrcSet) : undefined}
+              onClick={width >= 900 && key !== "video" ? () => openModalPreview(index) : undefined}
             >
-              {topSeller && index === 0 && <strong className="top-seller">Top Seller</strong>}
+              {!limitedEdition && topSeller && index === 0 && (
+                <strong className="top-seller">Top Seller</strong>
+              )}
+
+              {limitedEdition && index === 0 && (
+                <strong className="limited-edition">Kolekcja limitowana</strong>
+              )}
 
               {key === "video" ? (
                 <>
@@ -102,9 +103,9 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
                   />
                   <button
                     className="product-image-gallery__video-preview-btn"
-                    onClick={() => openVideoPreviewModal(imgSrc)}
+                    onClick={width >= 900 ? () => openModalPreview(index) : undefined}
                   >
-                    <span className="visually-hidden">Naciśnij aby powiększyć</span>
+                    <span className="visually-hidden">Naciśnij aby powiększyć wideo</span>
                   </button>
 
                   <button

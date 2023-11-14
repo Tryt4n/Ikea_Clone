@@ -13,6 +13,7 @@ import Tag from "../../components/Tag/Tag";
 import Header from "../../components/Header/Header";
 import AdditionalInformation from "../../components/AdditionalInformation/AdditionalInformation";
 import GuaranteeInformation from "../../components/GuaranteeInformation/GuaranteeInformation";
+import SoftnessInformation from "../../components/SoftnessInformation/SoftnessInformation";
 import KidsInformation from "../../components/KidsInformation/KidsInformation";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
@@ -30,6 +31,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
     price,
     rating,
     guarantee,
+    softnessIndex,
     variantsName,
     variant,
     variants,
@@ -86,7 +88,10 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
       )}
 
       {rating && (
-        <button className="buy-module__rating">
+        <button
+          className="buy-module__rating"
+          aria-label="Otwórz menu ocen"
+        >
           <RatingBlock rating={rating} />
         </button>
       )}
@@ -96,6 +101,8 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
       )}
 
       {guarantee && <GuaranteeInformation guarantee={guarantee} />}
+
+      {softnessIndex && <SoftnessInformation softnessIndex={softnessIndex} />}
 
       {variants.length > 1 && (
         <div className="buy-module__thumbnails-container">
