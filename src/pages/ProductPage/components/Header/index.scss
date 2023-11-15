@@ -2,7 +2,7 @@
 @use "../../../../abstracts/colors" as c;
 
 .product-header {
-  @include flex(row, space-between, center);
+  @include flex(row, space-between, flex-start);
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;

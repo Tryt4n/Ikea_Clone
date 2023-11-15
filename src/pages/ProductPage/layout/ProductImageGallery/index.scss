@@ -27,6 +27,8 @@
 
   &__item-wrapper {
     position: relative;
+    flex-shrink: 0;
+    aspect-ratio: 1;
 
     &:is(:not(button)):hover .product-image-gallery__video-btn-control {
       opacity: 1;
@@ -58,6 +60,7 @@
   }
 
   &__video-btn-control {
+    isolation: isolate;
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -69,6 +72,7 @@
     color: c.$white;
     border-radius: 50vw;
     transition: background-color 300ms ease-in-out, opacity 300ms ease-in-out;
+
     @media (hover: hover) {
       opacity: 0;
     }

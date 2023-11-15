@@ -23,12 +23,12 @@ export type ArticleContentsTypes =
   | InspirationImageGalleryArticleType;
 
 export type ArticleType = {
-  id: string;
+  readonly id: string;
   variant: ArticleVariantsTypes;
   content: ArticleContentsTypes;
 };
 
 export type ArticlesType = {
-  id: string;
+  readonly id: string;
   articles: ArticleType[];
 };

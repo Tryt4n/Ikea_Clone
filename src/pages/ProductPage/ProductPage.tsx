@@ -11,6 +11,8 @@ import BuyModule from "./layout/BuyModule/BuyModule";
 import ProductInformations from "./layout/ProductInformations/ProductInformations";
 // Types
 import { ProductDataType } from "./types/ProductDataType";
+// Constants
+import { productLink } from "../../constants/links";
 // Style
 import "./index.scss";
 
@@ -25,7 +27,7 @@ export default function ProductPage() {
     console.log(data);
     if (data) {
       setDisplayedMainImg({
-        src: `https://www.ikea.com/pl/pl/images/products/${path.collection}-${data.name}-${data.variant}__${data.images.main}`,
+        src: `${productLink}/${path.collection}-${data.name}-${data.variant}__${data.images.main}`,
         variant: data.variant,
       });
     }

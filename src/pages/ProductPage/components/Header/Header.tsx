@@ -1,9 +1,7 @@
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
-// Icons
-import HeartIcon from "../../../../Icons/HeartIcon";
 // Style
 import "./index.scss";
 
@@ -26,13 +24,7 @@ export default function Header({ data }: { data: ProductDataType }) {
         </span>
       </h3>
 
-      <Btn
-        variant="light"
-        shape="circle"
-      >
-        <span className="visually-hidden">Dodaj do ulubionych</span>
-        <HeartIcon />
-      </Btn>
+      <AddToWishListBtn variant="light" />
     </div>
   );
 }

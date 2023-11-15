@@ -71,6 +71,16 @@
     }
   }
 
+  &--dark-opaque {
+    background-color: c.$opaque-dark;
+    color: c.$white;
+
+    &:not(:disabled):where(:hover, :focus-visible) {
+      background-color: c.$opaque-dark-on-hover;
+      color: c.$white;
+    }
+  }
+
   &:is(:disabled)[aria-pressed="true"] {
     border: func.rem(1) solid c.$black;
   }

@@ -125,18 +125,7 @@
     position: absolute;
     right: 1rem;
     bottom: 1rem;
-    width: func.rem(40);
-    aspect-ratio: 1;
-    @include center;
-    border-radius: 50vw;
-    background-color: c.$opaque-dark;
-    color: c.$white;
-    transition: v.$main-transition;
     z-index: 10;
-
-    &:where(:hover, :focus-visible) {
-      background-color: c.$opaque-dark-on-hover;
-    }
   }
 
   &__section {

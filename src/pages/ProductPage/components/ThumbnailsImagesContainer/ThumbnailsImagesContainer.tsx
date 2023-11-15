@@ -1,12 +1,15 @@
-// Hooks
+// Custom Hooks
 import useProduct from "../../../../pages/ProductPage/context/useProduct";
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
 // Utils
 import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
+// Constants
+import { productLink } from "../../../../constants/links";
 // Style
 import "./index.scss";
+import Btn from "../../../../components/Btn/Btn";
 
 type ThumbnailsImagesContainerPropsType = {
   data: ProductDataType;
@@ -50,7 +53,7 @@ export default function ThumbnailsImagesContainer({
             }
             onMouseLeave={() =>
               setDisplayedMainImg({
-                src: `https://www.ikea.com/pl/pl/images/products/${path.collection}-${name}-${variant}__${images.main}`,
+                src: `${productLink}/${path.collection}-${name}-${variant}__${images.main}`,
                 variant: path.type ? path.type : variant,
               })
             }
@@ -67,13 +70,15 @@ export default function ThumbnailsImagesContainer({
       })}
 
       {variants.length > maxVisibleThumbnails && (
-        <button
+        <Btn
+          variant="light-with-border"
+          shape="circle"
           className="product-thumbnails__remaining-thumbnails-count"
-          aria-label="Pozostałe warianty"
+          aria-label={`Dostępne są jeszcze ${variants.length - maxVisibleThumbnails} warianty`}
           onClick={() => openModal(data)}
         >
           +{variants.length - maxVisibleThumbnails}
-        </button>
+        </Btn>
       )}
     </div>
   );

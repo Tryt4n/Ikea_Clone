@@ -4,18 +4,18 @@ import { CardCollectionType } from "../../../layout/Articles/components/ImageCar
 import { DisplayedImgType } from "../context/ProductContext";
 
 export type ModalDataChooseSizeType = {
-  type: "choose-size";
+  readonly type: "choose-size";
   header: string;
   productData: ProductDataType;
   path: Readonly<Params<string>>;
 };
 
 export type ModalDataChooseColorType = Omit<ModalDataChooseSizeType, "type"> & {
-  type: "choose-color";
+  readonly type: "choose-color";
 };
 
 export type ModalDataImagePreviewType = {
-  type: "image-preview";
+  readonly type: "image-preview";
   productData: ProductDataType;
   index: number;
   path: Params<string>;
@@ -23,7 +23,7 @@ export type ModalDataImagePreviewType = {
 };
 
 export type ModalImageWithProductsType = {
-  type: "image-with-products";
+  readonly type: "image-with-products";
   productsData: CardCollectionType;
 };
 

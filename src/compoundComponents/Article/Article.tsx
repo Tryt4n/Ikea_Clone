@@ -2,9 +2,9 @@
 import { HTMLProps, ReactNode, createElement } from "react";
 // Components
 import Btn, { BtnPropsType } from "../../components/Btn/Btn";
+import AddToWishListBtn from "../../components/AddToWishListBtn/AddToWishListBtn";
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
-import HeartIcon from "../../Icons/HeartIcon";
 // Types
 import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
 import { BackgroundVariants } from "../../types/colorsVariantsType";
@@ -159,10 +159,10 @@ function InstagramBadge({ children, nickVisible = true }: InstagramBadgeType) {
 
 function WishListBadge() {
   return (
-    <button className="article__wishlist-badge">
-      <span className="visually-hidden">Dodaj do ulubionych</span>
-      <HeartIcon />
-    </button>
+    <AddToWishListBtn
+      className="article__wishlist-badge"
+      variant="dark-opaque"
+    />
   );
 }
 

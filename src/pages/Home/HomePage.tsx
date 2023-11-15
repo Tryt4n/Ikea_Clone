@@ -77,15 +77,3 @@ export default function HomePage() {
     </>
   );
 }
-
-// import homePageArticles from "../../../server/homePage.json";
-
-// export default function HomePage() {
-//   return (
-//     <div className="articles">
-//       {(homePageArticles as ArticlesType).articles.map((article) => (
-//         <React.Fragment key={article.id}>{componentMapper(article)}</React.Fragment>
-//       ))}
-//     </div>
-//   );
-// }

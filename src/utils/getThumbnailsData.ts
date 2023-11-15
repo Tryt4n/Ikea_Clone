@@ -1,5 +1,9 @@
+// react-router-dom
 import { Params } from "react-router";
+// Types
 import { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
+// Constants
+import { productLink } from "../constants/links";
 
 export function getThumbnailsData(
   data: ProductDataType,
@@ -14,9 +18,9 @@ export function getThumbnailsData(
     `/products/${path.collection}/${path.product}/${productVariant}/${
       relatedProducts.variants[Object.keys(relatedProducts.variants)[index]]
     }`;
-  const URL = `https://www.ikea.com/pl/pl/images/products/${path.collection}-${
-    data.name
-  }-${productVariant}__${thumbnails[Object.keys(thumbnails)[index]]}`;
+  const URL = `${productLink}/${path.collection}-${data.name}-${productVariant}__${
+    thumbnails[Object.keys(thumbnails)[index]]
+  }`;
   const imgSrc = `${URL}?f=xu`;
   const imgSrcSet = `${URL}?f=u 2x, ${URL}?f=xu`;
   const imgAlt = `${collection} ${nameToDisplay}, ${variantsName[index]}${

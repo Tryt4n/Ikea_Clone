@@ -1,4 +1,5 @@
-// Hooks
+import React from "react";
+// Custom Hooks
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Types
 import { ModalDataChooseColorType } from "../../../../pages/ProductPage/types/ModalTypes";
@@ -34,10 +35,26 @@ export default function ChooseColor({ data }: { data: ModalDataChooseColorType }
               srcSet={imgSrcSet}
               alt={imgAlt}
             />
-            <span>{variantsName[variants.indexOf(productVariant)]}</span>
+            <VariantText text={variantsName[variants.indexOf(productVariant)]} />
           </Element>
         );
       })}
     </>
   );
+}
+
+function VariantText({ text }: { text: string }) {
+  const wrappedText = text.split("/").map((part, index) => (
+    <React.Fragment key={index}>
+      {index > 0 && (
+        <>
+          /
+          <wbr />
+        </>
+      )}
+      {part}
+    </React.Fragment>
+  ));
+
+  return <span>{wrappedText}</span>;
 }
