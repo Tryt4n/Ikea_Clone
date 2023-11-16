@@ -11,6 +11,10 @@
     margin-bottom: func.rem(15);
   }
 
+  &:not(:first-of-type) > h3 {
+    margin-top: func.rem(15);
+  }
+
   &:last-child {
     margin-bottom: 0;
   }

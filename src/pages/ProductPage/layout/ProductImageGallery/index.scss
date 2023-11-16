@@ -27,8 +27,6 @@
 
   &__item-wrapper {
     position: relative;
-    flex-shrink: 0;
-    aspect-ratio: 1;
 
     &:is(:not(button)):hover .product-image-gallery__video-btn-control {
       opacity: 1;

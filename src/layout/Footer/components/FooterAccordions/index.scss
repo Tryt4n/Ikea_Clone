@@ -1,0 +1,39 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.accordion-inner-list {
+  & li {
+    padding-block: 0.5rem;
+    padding-inline: 0.25em;
+    &:last-of-type {
+      padding-bottom: 2.5rem;
+    }
+    @media screen and (width >= b.$tablet) {
+      padding-inline: 0;
+    }
+  }
+
+  & a {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.lists-wrapper {
+  @include flex();
+  gap: 1rem;
+  color: c.$text-gray;
+
+  & > * {
+    flex: 1;
+  }
+
+  & h3 {
+    margin-bottom: 0.75rem;
+    font-size: func.rem(14);
+    line-height: 2rem;
+    color: c.$black;
+  }
+}

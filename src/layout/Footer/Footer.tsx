@@ -2,7 +2,7 @@
 import { useMemo } from "react";
 // Components
 import { FeatureSection } from "./components/FeatureSection/FeatureSection";
-import { Accordions } from "./components/Accordions/Accordions";
+import { FooterAccordions } from "./components/FooterAccordions/FooterAccordions";
 import { NavList } from "./components/NavList/NavList";
 import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
 import SubList from "./components/SubList/SubList";
@@ -51,7 +51,7 @@ export default function Footer() {
           >
             Główna Nawigacja Stópki
           </h3>
-          <Accordions />
+          <FooterAccordions />
         </nav>
 
         <div className="main-layout footer__icons-links-container">
