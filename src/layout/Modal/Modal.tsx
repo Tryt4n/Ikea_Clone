@@ -23,6 +23,11 @@ function InnerComponent(
   const typeToClassMap: Record<string, string> = {
     "choose-color": "side-modal",
     "choose-size": "side-modal",
+    "product-information": "side-modal",
+    "items-included": "side-modal",
+    dimensions: "side-modal",
+    ratings: "side-modal",
+    "installment-purchase": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
   };
@@ -38,7 +43,13 @@ function InnerComponent(
       onKeyDown={onKeyDownFunction}
     >
       {modalData &&
-        (((modalData.type === "choose-color" || modalData.type === "choose-size") && (
+        (((modalData.type === "choose-color" ||
+          modalData.type === "choose-size" ||
+          modalData.type === "product-information" ||
+          modalData.type === "items-included" ||
+          modalData.type === "dimensions" ||
+          modalData.type === "ratings" ||
+          modalData.type === "installment-purchase") && (
           <>
             <SideModal data={modalData} />
           </>

@@ -2,10 +2,11 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../base/functions" as func;
 
-.product-information {
+.product-summary {
   margin-top: 4rem;
 
   &__description-container {
+    margin-bottom: 3rem;
   }
 
   &__description {

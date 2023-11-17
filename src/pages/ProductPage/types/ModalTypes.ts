@@ -12,6 +12,32 @@ export type ModalDataChooseSizeType = {
 
 export type ModalDataChooseColorType = Omit<ModalDataChooseSizeType, "type"> & {
   readonly type: "choose-color";
+  header: string;
+};
+
+export type ModalDataProductInformationType = {
+  readonly type: "product-information";
+  header: string;
+};
+
+export type ModalDataItemsIncludedType = {
+  readonly type: "items-included";
+  header: string;
+};
+
+export type ModalDataDimensionsType = {
+  readonly type: "dimensions";
+  header: string;
+};
+
+export type ModalDataRatingsType = {
+  readonly type: "ratings";
+  header: string;
+};
+
+export type ModalDataInstallmentPurchaseType = {
+  readonly type: "installment-purchase";
+  header: string;
 };
 
 export type ModalDataImagePreviewType = {
@@ -31,4 +57,9 @@ export type ModalDataType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
   | ModalDataImagePreviewType
-  | ModalImageWithProductsType;
+  | ModalImageWithProductsType
+  | ModalDataProductInformationType
+  | ModalDataItemsIncludedType
+  | ModalDataDimensionsType
+  | ModalDataRatingsType
+  | ModalDataInstallmentPurchaseType;

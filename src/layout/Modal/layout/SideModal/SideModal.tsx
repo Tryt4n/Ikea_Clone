@@ -11,6 +11,11 @@ import Btn from "../../../../components/Btn/Btn";
 import {
   ModalDataChooseColorType,
   ModalDataChooseSizeType,
+  ModalDataDimensionsType,
+  ModalDataInstallmentPurchaseType,
+  ModalDataItemsIncludedType,
+  ModalDataProductInformationType,
+  ModalDataRatingsType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
@@ -18,7 +23,14 @@ import CloseIcon from "../../../../Icons/CloseIcon";
 export default function SideModal({
   data,
 }: {
-  data: ModalDataChooseSizeType | ModalDataChooseColorType;
+  data:
+    | ModalDataChooseSizeType
+    | ModalDataChooseColorType
+    | ModalDataProductInformationType
+    | ModalDataItemsIncludedType
+    | ModalDataDimensionsType
+    | ModalDataRatingsType
+    | ModalDataInstallmentPurchaseType;
 }) {
   const { closeModal } = useModal();
 

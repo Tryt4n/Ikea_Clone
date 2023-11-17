@@ -44,14 +44,12 @@ function Lists() {
       {footerLists.map((list, index) => (
         <li key={index}>
           <h3>{list.name}</h3>
-          <ul className="accordion-inner-list">
-            <InnerListsWrapper>
-              <InnerLists
-                list={list}
-                index={index}
-              />
-            </InnerListsWrapper>
-          </ul>
+          <InnerListsWrapper>
+            <InnerLists
+              list={list}
+              index={index}
+            />
+          </InnerListsWrapper>
         </li>
       ))}
     </ul>

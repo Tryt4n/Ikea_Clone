@@ -1,0 +1,38 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../base/functions" as func;
+
+.product-information {
+  & > * {
+    border-top: func.rem(1) solid c.$gray;
+
+    &:is(:last-child) {
+      border-bottom: func.rem(1) solid c.$gray;
+    }
+
+    &:hover .product-information__heading {
+      text-decoration: underline;
+      text-underline-offset: 0.3em;
+    }
+  }
+
+  &__btn {
+    @include flex(row, space-between, center);
+    padding-block: 2.5rem;
+    width: 100%;
+
+    & > svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__heading {
+    font-size: func.rem(24);
+    text-align: start;
+    line-height: 1.45;
+    &:is(:not(:last-child)) {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
