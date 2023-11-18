@@ -63,7 +63,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
   }
 
   return (
-    <section className="buy-module">
+    <aside className="buy-module">
       {newTag && <Tag variant={newTag.variant}>Nowość</Tag>}
 
       {oldPriceTag && <Tag variant={oldPriceTag.variant}>Nowa niższa cena</Tag>}
@@ -130,7 +130,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
 
       {relatedProducts?.sizes && (
         <section className="buy-module__size">
-          <h4>Rozmiary Produktu</h4>
+          <h4 className="visually-hidden">Rozmiary Produktu</h4>
           <ModalControlBtn
             chooseText="rozmiar"
             variant={size}
@@ -146,6 +146,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
       <BuyBlock />
 
       {forKidsBadge && <KidsInformation />}
-    </section>
+    </aside>
   );
 }

@@ -1,0 +1,119 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.additional-info {
+  $_container-padding: 2rem;
+  $_container-width: 150%;
+
+  position: relative;
+  margin-top: 4rem;
+
+  &__section-container {
+    padding-block: 4rem;
+    @include flex(column);
+    border-bottom: func.rem(1) solid c.$gray;
+    text-wrap: balance;
+  }
+
+  &__title {
+    padding-bottom: 0.75rem;
+    font-size: v.$fs-sm;
+    font-weight: bold;
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+  }
+
+  &__heading-small {
+    font-size: 1rem;
+  }
+
+  &__text-container {
+    @include flex();
+    gap: 1rem;
+
+    & > * {
+      flex: 1;
+      max-width: 50%;
+    }
+  }
+
+  &__description-container > :not(:first-child):last-child {
+    margin-top: 0.5rem;
+  }
+
+  &__long-section-container {
+    position: relative;
+    @include flex();
+  }
+
+  &__img-wrapper {
+    width: 65%;
+    flex-shrink: 0;
+  }
+
+  &__long-content-container {
+    position: relative;
+    width: 35%;
+    margin-top: 4rem;
+  }
+
+  &__long-content-wrapper {
+    position: absolute;
+    overflow: hidden;
+    width: $_container-width;
+    top: 0;
+    right: 0;
+    bottom: $_container-padding;
+    padding: $_container-padding;
+    background-color: c.$white;
+
+    & section {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__btn-wrapper {
+    position: absolute;
+    width: $_container-width;
+    right: 0;
+    bottom: $_container-padding;
+    padding: $_container-padding;
+    background: linear-gradient(
+      0deg,
+      rgb(255, 255, 255) 60%,
+      rgba(255, 255, 255, 0.1404936975) 100%
+    );
+  }
+
+  &__btn {
+    margin-top: 1rem;
+    outline-offset: 0.5em;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+
+    &:where(:hover, :focus-visible) {
+      color: black;
+    }
+  }
+
+  &__long-content-container.showMore {
+    $_translate: -33.25%;
+
+    .additional-info__long-content-wrapper {
+      position: initial;
+      overflow: auto;
+      padding-bottom: 0;
+      translate: $_translate;
+    }
+
+    .additional-info__btn-wrapper {
+      position: initial;
+      padding-top: 0;
+      translate: $_translate;
+    }
+  }
+}

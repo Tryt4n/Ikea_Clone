@@ -48,7 +48,7 @@ export type ProductDataType = {
   additionalInfo?: AdditionalInfo[];
 };
 
-type AdditionalInfo = {
+export type AdditionalInfo = {
   title: string;
   header: string;
   description: string;
