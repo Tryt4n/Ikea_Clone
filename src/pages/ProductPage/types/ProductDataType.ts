@@ -44,16 +44,21 @@ export type ProductDataType = {
   thumbnails: Record<string, string>;
   images: Record<string, string>;
   additionalInformation?: string;
-  additionalInfo?: {
-    history?: {
-      sections: {
-        header: string;
-        description: string;
-      }[];
-    };
-    material: {
-      header: string;
-      description: string;
-    };
-  };
+  sustainableDevelopment?: boolean;
+  additionalInfo?: AdditionalInfo[];
+};
+
+type AdditionalInfo = {
+  title: string;
+  header: string;
+  description: string;
+  subDescription?: string;
+  variant?: TextVariants;
+  backgroundImage?: string;
+  additionalSections?: AdditionalInfoSection[];
+};
+
+type AdditionalInfoSection = {
+  description: string;
+  header: string;
 };

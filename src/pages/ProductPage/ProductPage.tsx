@@ -64,13 +64,13 @@ export default function ProductPage() {
             <article className="product">
               <h2 className="visually-hidden">Strona produktu</h2>
 
-              <section className="product__wrapper">
+              <div className="product__wrapper">
                 <ProductImageGallery data={data} />
 
                 <BuyModule data={data} />
 
                 <ProductInformations data={data} />
-              </section>
+              </div>
             </article>
           )}
         </>

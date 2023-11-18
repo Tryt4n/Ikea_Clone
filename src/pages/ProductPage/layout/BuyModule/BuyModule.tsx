@@ -63,7 +63,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
   }
 
   return (
-    <div className="buy-module">
+    <section className="buy-module">
       {newTag && <Tag variant={newTag.variant}>Nowość</Tag>}
 
       {oldPriceTag && <Tag variant={oldPriceTag.variant}>Nowa niższa cena</Tag>}
@@ -105,7 +105,8 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
       {softnessIndex && <SoftnessInformation softnessIndex={softnessIndex} />}
 
       {variants.length > 1 && (
-        <div className="buy-module__thumbnails-container">
+        <section className="buy-module__thumbnails-container">
+          <h4 className="visually-hidden">Warianty Produktu</h4>
           {width >= 900 && (
             <ModalControlBtn
               chooseText="kolor"
@@ -115,6 +116,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
                   : displayedMainImg.variant
               }
               onClick={() => showColorsModal(data)}
+              aria-label="Naciśnij aby otworzyć menu wyboru kolorów"
               aria-controls={modalID}
             />
           )}
@@ -123,18 +125,20 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
             data={data}
             openModal={showColorsModal}
           />
-        </div>
+        </section>
       )}
 
       {relatedProducts?.sizes && (
-        <div className="buy-module__size">
+        <section className="buy-module__size">
+          <h4>Rozmiary Produktu</h4>
           <ModalControlBtn
             chooseText="rozmiar"
             variant={size}
             onClick={() => showSizesModal(data)}
+            aria-label="Naciśnij aby otworzyć menu wyboru rozmiarów"
             aria-controls={modalID}
           />
-        </div>
+        </section>
       )}
 
       <PurchaseOptions />
@@ -142,6 +146,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
       <BuyBlock />
 
       {forKidsBadge && <KidsInformation />}
-    </div>
+    </section>
   );
 }

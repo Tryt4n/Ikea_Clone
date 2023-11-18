@@ -87,7 +87,7 @@ function InformationItem({ heading, children }: { heading: string; children?: Re
         onClick={openModal}
       >
         <div>
-          <h3 className="product-information__heading">{heading}</h3>
+          <h4 className="product-information__heading">{heading}</h4>
           {children}
         </div>
         <ArrowRightIcon />

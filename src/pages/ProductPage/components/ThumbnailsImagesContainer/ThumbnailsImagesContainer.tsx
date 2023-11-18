@@ -28,7 +28,10 @@ export default function ThumbnailsImagesContainer({
   const maxVisibleThumbnails = 7;
 
   return (
-    <div className="product-thumbnails">
+    <div
+      className="product-thumbnails"
+      aria-label="Linki do innych wariantów produktu"
+    >
       {variants.slice(0, maxVisibleThumbnails).map((productVariant, index) => {
         const { href, imgSrc, imgSrcSet, imgAlt } = getThumbnailsData(
           data,

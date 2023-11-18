@@ -1,21 +1,27 @@
 // Components
-import AdditionalDescriptionInformation from "../../components/AdditionalDescriptionInformation/AdditionalDescriptionInformation";
-import InformationsList from "../../components/InformationsList/InformationsList";
 import Summary from "../../components/Summary/Summary";
+import InformationsList from "../../components/InformationsList/InformationsList";
+import SustainableDevelopment from "../../components/SustainableDevelopment/SustainableDevelopment";
+import AdditionalDescriptionInformation from "../../components/AdditionalDescriptionInformation/AdditionalDescriptionInformation";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
 
 export default function ProductInformations({ data }: { data: ProductDataType }) {
+  const { description, productNumber, rating, additionalInfo, sustainableDevelopment } = data;
+
   return (
-    <div className="product-summary">
+    <section className="product-summary">
+      <h3 className="visually-hidden">Dodatkowe informacje</h3>
       <Summary
-        description={data.description}
-        productNumber={data.productNumber}
+        description={description}
+        productNumber={productNumber}
       />
 
-      <InformationsList rating={data.rating} />
+      <InformationsList rating={rating} />
 
-      <AdditionalDescriptionInformation />
-    </div>
+      {sustainableDevelopment && <SustainableDevelopment />}
+
+      {additionalInfo && <AdditionalDescriptionInformation infoData={additionalInfo} />}
+    </section>
   );
 }

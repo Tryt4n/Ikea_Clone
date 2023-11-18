@@ -9,7 +9,7 @@ export default function Header({ data }: { data: ProductDataType }) {
   const { collection, nameToDisplay, variantName, size } = data;
 
   return (
-    <div className="product-header">
+    <header className="product-header">
       <h3>
         <strong>{collection}</strong>
         <span>
@@ -25,6 +25,6 @@ export default function Header({ data }: { data: ProductDataType }) {
       </h3>
 
       <AddToWishListBtn variant="light" />
-    </div>
+    </header>
   );
 }

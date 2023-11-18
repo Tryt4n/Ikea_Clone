@@ -9,4 +9,4 @@ export type BackgroundVariants =
   | "light-gray"
   | "orange";
 
-export type TextVariants = "white" | "black" | "red" | "orange";
+export type TextVariants = "white" | "black" | "red" | "orange" | "green";

@@ -40,7 +40,7 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
     });
   }
 
-  const SwiperContainer = width < 900 ? Swiper : "div";
+  const SwiperContainer = width < 900 ? Swiper : "section";
   const SwiperItem = width < 900 ? SwiperSlide : "div";
   const swiperContainerOptions = {
     className: `product-image-gallery${
@@ -59,6 +59,7 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
 
   return (
     <SwiperContainer {...swiperContainerOptions}>
+      <h3 className="visually-hidden">Galeria</h3>
       {Object.keys(images).map((key, index) => {
         if (width < 900 || index < visibleImages) {
           const imgUrl =
