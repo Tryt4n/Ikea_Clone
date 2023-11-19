@@ -2,6 +2,7 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .additional-info {
   $_container-padding: 2rem;
@@ -45,31 +46,14 @@
     margin-top: 0.5rem;
   }
 
-  &__long-section-container {
-    position: relative;
-    @include flex();
-  }
-
-  &__img-wrapper {
-    width: 65%;
-    flex-shrink: 0;
-  }
-
   &__long-content-container {
     position: relative;
-    width: 35%;
-    margin-top: 4rem;
+    background-color: c.$white;
   }
 
   &__long-content-wrapper {
-    position: absolute;
-    overflow: hidden;
-    width: $_container-width;
-    top: 0;
-    right: 0;
-    bottom: $_container-padding;
-    padding: $_container-padding;
     background-color: c.$white;
+    padding: $_container-padding;
 
     & section {
       margin-top: 1.5rem;
@@ -78,9 +62,6 @@
 
   &__btn-wrapper {
     position: absolute;
-    width: $_container-width;
-    right: 0;
-    bottom: $_container-padding;
     padding: $_container-padding;
     background: linear-gradient(
       0deg,
@@ -101,19 +82,87 @@
   }
 
   &__long-content-container.showMore {
-    $_translate: -33.25%;
-
     .additional-info__long-content-wrapper {
-      position: initial;
-      overflow: auto;
       padding-bottom: 0;
-      translate: $_translate;
     }
 
     .additional-info__btn-wrapper {
       position: initial;
       padding-top: 0;
-      translate: $_translate;
+    }
+  }
+
+  @media screen and (width >= b.$mobile-md) {
+    &__long-section-container {
+      position: relative;
+      @include flex();
+    }
+
+    &__img-wrapper {
+      width: 65%;
+      flex-shrink: 0;
+    }
+
+    &__long-content-container {
+      width: 35%;
+      margin-top: 4rem;
+    }
+
+    &__long-content-wrapper {
+      position: absolute;
+      overflow: hidden;
+      width: $_container-width;
+      top: 0;
+      right: 0;
+      bottom: $_container-padding;
+    }
+
+    &__btn-wrapper {
+      width: $_container-width;
+      right: 0;
+      bottom: $_container-padding;
+    }
+
+    &__long-content-container.showMore {
+      $_translate: -33.25%;
+
+      .additional-info__long-content-wrapper {
+        position: initial;
+        overflow: auto;
+        translate: $_translate;
+      }
+
+      .additional-info__btn-wrapper {
+        translate: $_translate;
+      }
+    }
+  }
+
+  @media screen and (width < b.$mobile-md) {
+    &__long-section-container {
+      border-bottom: func.rem(1) solid c.$gray;
+    }
+
+    &__img-wrapper {
+      width: 100dvw;
+      translate: func.rem(-20);
+    }
+
+    &__long-content-container {
+      overflow: hidden;
+      height: func.rem(450);
+      margin-bottom: calc(#{$_container-padding * -1});
+      padding-bottom: 0;
+      translate: 0 -5rem;
+    }
+
+    &__btn-wrapper {
+      width: 100%;
+      bottom: 0;
+    }
+
+    &__long-content-container.showMore {
+      height: auto;
     }
   }
 }

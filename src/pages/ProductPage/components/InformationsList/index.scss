@@ -1,6 +1,7 @@
 @use "../../../../abstracts/mixins" as *;
 @use "../../../../abstracts/colors" as c;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .product-information {
   & > * {
@@ -18,12 +19,16 @@
 
   &__btn {
     @include flex(row, space-between, center);
-    padding-block: 2.5rem;
+    padding-block: 2rem;
     width: 100%;
 
-    & > svg {
-      width: 2rem;
-      height: 2rem;
+    @media screen and (width >= b.$tablet) {
+      padding-block: 2.5rem;
+
+      & > svg {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 
@@ -31,8 +36,13 @@
     font-size: func.rem(24);
     text-align: start;
     line-height: 1.45;
+
     &:is(:not(:last-child)) {
       margin-bottom: 0.25rem;
+    }
+
+    @media screen and (width < b.$tablet) {
+      font-size: 1rem;
     }
   }
 }
