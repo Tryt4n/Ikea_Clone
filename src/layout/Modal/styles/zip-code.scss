@@ -1,0 +1,42 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.zip-code-modal {
+  height: 100%;
+  @include flex(column);
+
+  &__form {
+    margin-block: 1.5rem;
+  }
+
+  &__link {
+    display: inline;
+    max-width: fit-content;
+    text-decoration: underline;
+    overflow: hidden;
+
+    & svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &:where(:hover, :focus-visible) {
+      color: c.$black;
+    }
+  }
+
+  &__btn-wrapper {
+    $_btn-height: 3.5rem;
+
+    margin-top: auto;
+    translate: 0 calc($_btn-height * -1);
+
+    & button {
+      width: 100%;
+      min-height: $_btn-height;
+      font-size: func.rem(14);
+    }
+  }
+}

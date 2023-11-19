@@ -1,8 +1,14 @@
-// Hooks
+// Custom Hooks
+import useModal from "../../../../hooks/useModal";
 import useSideMenu from "../../../../hooks/useSideMenu";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import { ListElement } from "../../../../components/NavigationListElement/ListElement";
+// Types
+import {
+  ModalChooseShopType,
+  ModalZipCodeType,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Constants
 import { mainNavigationList } from "../../../../constants/navigationLists";
 // Icons
@@ -14,6 +20,15 @@ import "./index.scss";
 export default function NavigationBar() {
   const { width } = useWindowSize();
   const { isMenuOpen } = useSideMenu();
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function openModal({ type, header }: ModalZipCodeType | ModalChooseShopType) {
+    setIsModalOpen(true);
+    setModalData({
+      type: type,
+      header: header,
+    });
+  }
 
   return (
     <div className="page-container navigation-bar">
@@ -34,6 +49,7 @@ export default function NavigationBar() {
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
+          onClick={() => openModal({ type: "zip-code", header: "Użyj swojej lokalizacji" })}
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
@@ -41,6 +57,9 @@ export default function NavigationBar() {
         </button>
         <button
           className="navigation-bar__btn-wrapper"
+          onClick={() =>
+            openModal({ type: "choose-shop", header: "Znajdź swój preferowany sklep" })
+          }
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <ShopIcon />

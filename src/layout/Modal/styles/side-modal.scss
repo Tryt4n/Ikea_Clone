@@ -76,6 +76,7 @@
 
   &__content-wrapper {
     overflow: auto;
+    height: 100%;
     max-height: calc(100% - (2 * $_modal-spacing));
     padding: 0.25rem;
     margin: -0.25rem;
