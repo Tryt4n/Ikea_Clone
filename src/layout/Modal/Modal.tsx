@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef } from "react";
 // Context
 import useModal from "../../hooks/useModal";
 // Modal
-import SideModal from "./layout/SideModal/SideModal";
+import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
 // Styles
@@ -55,7 +55,7 @@ function InnerComponent(
           modalData.type === "zip-code" ||
           modalData.type === "choose-shop") && (
           <>
-            <SideModal data={modalData} />
+            <SideModalLayout data={modalData} />
           </>
         )) ||
           (modalData.type === "image-preview" && (

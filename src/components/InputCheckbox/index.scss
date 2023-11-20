@@ -17,6 +17,12 @@
     }
   }
 
+  &__input:checked:focus ~ .input-checkbox__checkbox,
+  &:hover .input-checkbox__input:is(:checked) ~ .input-checkbox__checkbox {
+    background-color: c.$text-gray;
+    color: c.$white;
+  }
+
   &__checkbox {
     position: relative;
     flex-shrink: 0;

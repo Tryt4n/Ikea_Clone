@@ -1,4 +1,4 @@
-import { ForwardedRef, HTMLProps, forwardRef } from "react";
+import { ChangeEvent, MouseEvent, ForwardedRef, HTMLProps, forwardRef } from "react";
 import "./index.scss";
 
 type InputTextPropsType = {
@@ -7,17 +7,39 @@ type InputTextPropsType = {
   exampleMessage?: string;
   errorMessage?: string;
   isError?: boolean;
+  onChangeFunction: (value: string) => void;
 } & HTMLProps<HTMLInputElement>;
 
 function InnerComponent(
-  { id, label, exampleMessage, errorMessage, isError, ...props }: InputTextPropsType,
+  {
+    id,
+    label,
+    exampleMessage,
+    errorMessage,
+    isError,
+    onChangeFunction,
+    ...props
+  }: InputTextPropsType,
   ref: ForwardedRef<HTMLInputElement>
 ) {
+  function inputOnChangeFunction(e: ChangeEvent<HTMLInputElement>) {
+    onChangeFunction(e.target.value);
+  }
+
+  function labelOnClickFunction(e: MouseEvent<HTMLLabelElement>) {
+    e.preventDefault();
+
+    if (ref && "current" in ref && ref.current) {
+      ref.current.focus();
+    }
+  }
+
   return (
     <div className="input-text">
       <label
         htmlFor={id}
         className="input-text__label"
+        onClick={labelOnClickFunction}
       >
         {label}
       </label>
@@ -30,6 +52,8 @@ function InnerComponent(
         required
         aria-describedby={exampleMessage ? `${id}-example` : undefined}
         aria-errormessage={errorMessage ? `${id}-errormessage` : undefined}
+        aria-invalid={isError}
+        onChange={inputOnChangeFunction}
         {...props}
       />
       {exampleMessage && (

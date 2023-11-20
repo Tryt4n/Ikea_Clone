@@ -24,7 +24,7 @@ import {
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ChooseShop from "../../variants/ChooseShop/ChooseShop";
 
-export default function SideModal({
+export default function SideModalLayout({
   data,
 }: {
   data:

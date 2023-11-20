@@ -1,5 +1,5 @@
 // React
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 // Custom Hooks
 import { useLocalStorage } from "../../../../hooks/useStorage";
 // Components
@@ -25,11 +25,7 @@ export default function PostalCode() {
     }
   }, []);
 
-  function handlePostalCodeChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPostalCodeValue(e.target.value);
-  }
-
-  function handleFormSubmit(e: React.FormEvent) {
+  function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
 
     const zipCodeValue = postalCodeRef.current?.value || "";
@@ -68,11 +64,11 @@ export default function PostalCode() {
           id="postal-code"
           label="Wprowadź kod pocztowy"
           exampleMessage="np. 12-345"
+          autoComplete="off"
           errorMessage={errorMessage}
           isError={isErrorMessageVisible}
           value={postalCodeValue}
-          onChange={handlePostalCodeChange}
-          autoComplete="off"
+          onChangeFunction={setPostalCodeValue}
         />
       </form>
 

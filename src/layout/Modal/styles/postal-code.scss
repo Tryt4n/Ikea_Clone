@@ -27,14 +27,18 @@
   }
 
   &__btn-wrapper {
+    $_outline-provider: 0.5rem;
     $_btn-height: 3.5rem;
 
+    padding-inline: $_outline-provider;
+    margin-inline: calc($_outline-provider * -1);
     margin-top: auto;
     translate: 0 calc($_btn-height * -1);
 
     & button {
-      width: 100%;
+      width: calc(100% - ($_outline-provider * 2));
       min-height: $_btn-height;
+      margin-inline: auto;
       font-size: func.rem(14);
 
       &:not(:first-child) {
@@ -48,6 +52,7 @@
     text-decoration: underline;
     text-underline-offset: 0.25em;
     transition: v.$main-transition;
+    outline-offset: 0.25em;
 
     &:where(:hover, :focus-visible) {
       color: black;

@@ -1,5 +1,5 @@
 // React
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 // Custom Hooks
 import { useLocalStorage } from "../../../../hooks/useStorage";
 // Components
@@ -15,8 +15,7 @@ export default function ChooseShop() {
   const postalCodeCheckboxRef = useRef<HTMLInputElement | null>(null);
 
   const [postalCode, setPostalCode] = useLocalStorage("postalCode", postalCodeValue);
-
-  const [checkboxStatus, setCheckboxStatus] = useState(true);
+  const [checkboxStatus, setCheckboxStatus] = useLocalStorage("rememberPostalCode", true);
 
   useEffect(() => {
     if (postalCode) {
@@ -24,11 +23,7 @@ export default function ChooseShop() {
     }
   }, []);
 
-  function handlePostalCodeChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPostalCodeValue(e.target.value);
-  }
-
-  function handleFormSubmit(e: React.FormEvent) {
+  function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
 
     const zipCodeValue = postalCodeRef.current?.value || "";
@@ -47,6 +42,10 @@ export default function ChooseShop() {
     }
   }
 
+  function changeCheckboxStatus() {
+    setCheckboxStatus(!checkboxStatus);
+  }
+
   return (
     <div className="postal-code-modal">
       <p>
@@ -62,17 +61,19 @@ export default function ChooseShop() {
           ref={postalCodeRef}
           id="postal-code"
           label="Wprowadź kod pocztowy"
+          autoComplete="off"
           exampleMessage="np. 12-345"
           errorMessage={errorMessage}
           isError={isErrorMessageVisible}
           value={postalCodeValue}
-          onChange={handlePostalCodeChange}
+          onChangeFunction={setPostalCodeValue}
         />
 
         <InputCheckbox
           ref={postalCodeCheckboxRef}
           id="postal-code-checkbox"
           checked={checkboxStatus}
+          onChangeFunction={changeCheckboxStatus}
         />
 
         <button
