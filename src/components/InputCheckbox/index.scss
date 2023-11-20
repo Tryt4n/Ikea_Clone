@@ -1,0 +1,59 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.input-checkbox {
+  @include flex(row, flex-start, flex-start);
+  margin-block: 1rem 2rem;
+  color: c.$text-gray;
+  cursor: pointer;
+
+  &__input:checked ~ .input-checkbox__checkbox {
+    background-color: c.$black;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__checkbox {
+    position: relative;
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: transparent;
+    border: func.rem(1) solid c.$medium-gray;
+    border-radius: 0.25rem;
+    transition: v.$main-transition;
+
+    &::before {
+      content: "\2714";
+      position: absolute;
+      inset: 0;
+      @include center;
+      color: c.$white;
+      opacity: 0;
+      transition: v.$main-transition;
+    }
+  }
+
+  &__label {
+    padding-left: 1rem;
+    color: currentColor;
+    cursor: inherit;
+  }
+
+  &:where(:hover, :focus-within) .input-checkbox__checkbox {
+    border-color: c.$black;
+
+    &::before {
+      opacity: 1;
+      color: c.$gray;
+    }
+  }
+
+  &:focus-within .input-checkbox__checkbox {
+    outline: auto;
+  }
+}

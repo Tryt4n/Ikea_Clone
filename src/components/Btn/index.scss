@@ -53,6 +53,15 @@
     border: func.rem(1) solid c.$text-gray;
   }
 
+  &--white-with-border {
+    border: func.rem(1) solid c.$text-gray;
+
+    &:not(:disabled):hover {
+      border-color: transparent;
+      box-shadow: c.$black 0px 0px 0px 0.125rem;
+    }
+  }
+
   &--blue {
     background-color: c.$blue-dark;
     color: c.$white;

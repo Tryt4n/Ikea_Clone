@@ -22,6 +22,9 @@ export default function NavigationBar() {
   const { isMenuOpen } = useSideMenu();
   const { setIsModalOpen, setModalData } = useModal();
 
+  const getPostalCode = localStorage.getItem("postalCode");
+  const postalCode = getPostalCode ? JSON.parse(getPostalCode) : undefined;
+
   function openModal({ type, header }: ModalZipCodeType | ModalChooseShopType) {
     setIsModalOpen(true);
     setModalData({
@@ -53,7 +56,7 @@ export default function NavigationBar() {
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
-          <span>Wpisz kod pocztowy</span>
+          <span key={postalCode}>{postalCode ? postalCode : "Wpisz kod pocztowy"}</span>
         </button>
         <button
           className="navigation-bar__btn-wrapper"

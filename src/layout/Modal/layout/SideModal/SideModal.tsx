@@ -5,6 +5,7 @@ import useModal from "../../../../hooks/useModal";
 // Modal Variants
 import ChooseSize from "../../variants/ChooseSize/ChooseSize";
 import ChooseColor from "../../variants/ChooseColor/ChooseColor";
+import PostalCode from "../../variants/PostalCode/PostalCode";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Types
@@ -21,7 +22,7 @@ import {
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
-import ZipCode from "../../variants/ZipCode/ZipCode";
+import ChooseShop from "../../variants/ChooseShop/ChooseShop";
 
 export default function SideModal({
   data,
@@ -61,7 +62,8 @@ export default function SideModal({
             <Suspense fallback="Loading...">
               {data.type === "choose-size" && <ChooseSize data={data} />}
               {data.type === "choose-color" && <ChooseColor data={data} />}
-              {data.type === "zip-code" && <ZipCode />}
+              {data.type === "zip-code" && <PostalCode />}
+              {data.type === "choose-shop" && <ChooseShop />}
             </Suspense>
           </div>
         </>

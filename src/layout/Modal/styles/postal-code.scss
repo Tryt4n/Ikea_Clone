@@ -3,7 +3,7 @@
 @use "../../../abstracts/variables" as v;
 @use "../../../base/functions" as func;
 
-.zip-code-modal {
+.postal-code-modal {
   height: 100%;
   @include flex(column);
 
@@ -15,7 +15,6 @@
     display: inline;
     max-width: fit-content;
     text-decoration: underline;
-    overflow: hidden;
 
     & svg {
       display: inline-block;
@@ -37,6 +36,21 @@
       width: 100%;
       min-height: $_btn-height;
       font-size: func.rem(14);
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  &__current-location-btn {
+    color: c.$text-gray;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    transition: v.$main-transition;
+
+    &:where(:hover, :focus-visible) {
+      color: black;
     }
   }
 }

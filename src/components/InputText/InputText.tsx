@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, HTMLProps, forwardRef } from "react";
 import "./index.scss";
 
 type InputTextPropsType = {
@@ -7,10 +7,10 @@ type InputTextPropsType = {
   exampleMessage?: string;
   errorMessage?: string;
   isError?: boolean;
-};
+} & HTMLProps<HTMLInputElement>;
 
 function InnerComponent(
-  { id, label, exampleMessage, errorMessage, isError }: InputTextPropsType,
+  { id, label, exampleMessage, errorMessage, isError, ...props }: InputTextPropsType,
   ref: ForwardedRef<HTMLInputElement>
 ) {
   return (
@@ -30,6 +30,7 @@ function InnerComponent(
         required
         aria-describedby={exampleMessage ? `${id}-example` : undefined}
         aria-errormessage={errorMessage ? `${id}-errormessage` : undefined}
+        {...props}
       />
       {exampleMessage && (
         <small

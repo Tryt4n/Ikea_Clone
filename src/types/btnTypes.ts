@@ -3,6 +3,7 @@ export type BtnVariantsType =
   | "dark"
   | "gray"
   | "blue"
+  | "white-with-border"
   | "light-with-border"
   | "dark-opaque";
 
