@@ -50,13 +50,15 @@
     cursor: inherit;
   }
 
-  &:where(:hover, :focus-within) .input-checkbox__checkbox {
-    border-color: c.$black;
+  &:where(:hover, :focus-within) .input-checkbox__checkbox::before {
+    opacity: 1;
+    color: c.$gray;
+  }
 
-    &::before {
-      opacity: 1;
-      color: c.$gray;
-    }
+  &:where(:hover, :focus-visible)
+    > .input-checkbox__input:not(:checked)
+    ~ .input-checkbox__checkbox {
+    border-color: c.$black;
   }
 
   &:focus-within .input-checkbox__checkbox {

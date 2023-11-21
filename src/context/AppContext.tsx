@@ -23,7 +23,9 @@ type ReducerActionsType =
     }
   | {
       type: "togglePostalCodeCheckbox";
-    };
+      payload: boolean;
+    }
+  | { type: "deletePostalCode" };
 
 export const AppContext = createContext<AppContextType | null>(null);
 
@@ -45,12 +47,20 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
 
     case "togglePostalCodeCheckbox": {
-      const newCheckboxStatus = !state.rememberPostalCodeCheckboxStatus;
-      localStorage.setItem("rememberPostalCodeCheckboxStatus", newCheckboxStatus.toString());
+      localStorage.setItem("rememberPostalCodeCheckboxStatus", action.payload.toString());
 
       return {
         ...state,
-        rememberPostalCodeCheckboxStatus: newCheckboxStatus,
+        rememberPostalCodeCheckboxStatus: action.payload,
+      };
+    }
+
+    case "deletePostalCode": {
+      localStorage.removeItem("postalCode");
+
+      return {
+        ...state,
+        postalCode: "",
       };
     }
 
@@ -71,15 +81,16 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const postalCode = localStorage.getItem("postalCode");
-
     if (postalCode) {
       dispatch({ type: "setPostalCode", payload: postalCode });
     }
-  }, []);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+    const storageCheckboxStatus = localStorage.getItem("rememberPostalCodeCheckboxStatus");
+    const checkboxValue = storageCheckboxStatus === "true" ? true : false;
+    if (storageCheckboxStatus) {
+      dispatch({ type: "togglePostalCodeCheckbox", payload: checkboxValue });
+    }
+  }, []);
 
   const contextValues = useMemo(
     () => ({

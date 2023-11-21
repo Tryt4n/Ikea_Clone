@@ -45,6 +45,8 @@ function InnerComponent(
         type="text"
         name="postal-code"
         required
+        pattern="\d{2}-\d{3}"
+        title="Wprowadź poprawny kod pocztowy (np. 12-345)"
         aria-describedby={!errorMessage ? "postal-code-example" : undefined}
         aria-errormessage={errorMessage ? "postal-code-errormessage" : undefined}
         aria-invalid={isErrorMessageVisible}

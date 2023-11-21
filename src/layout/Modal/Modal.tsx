@@ -28,8 +28,9 @@ function InnerComponent(
     dimensions: "side-modal",
     ratings: "side-modal",
     "installment-purchase": "side-modal",
-    "zip-code": "side-modal",
+    "postal-code": "side-modal",
     "choose-shop": "side-modal",
+    "preffered-shop": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
   };
@@ -52,8 +53,9 @@ function InnerComponent(
           modalData.type === "dimensions" ||
           modalData.type === "ratings" ||
           modalData.type === "installment-purchase" ||
-          modalData.type === "zip-code" ||
-          modalData.type === "choose-shop") && (
+          modalData.type === "postal-code" ||
+          modalData.type === "choose-shop" ||
+          modalData.type === "preffered-shop") && (
           <>
             <SideModalLayout data={modalData} />
           </>

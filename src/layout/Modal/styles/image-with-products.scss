@@ -47,7 +47,6 @@
     width: 100dvw;
     max-width: 100dvw;
     max-height: 85dvh;
-    height: 85dvh;
     border-top-left-radius: $_border-radius;
     border-top-right-radius: $_border-radius;
     left: 0;
@@ -144,12 +143,12 @@
     overflow-y: auto;
     flex-grow: 1;
     @media screen and (width >= b.$tablet-lg) and (height >= b.$mobile-lg) {
-      margin-right: calc($_padding-right * -1);
+      margin-right: -#{$_padding-right};
       padding-right: $_padding-right;
       min-width: func.rem(450);
     }
     @media screen and (width < b.$tablet-lg), (height < b.$mobile-lg) {
-      margin-right: calc($_padding-right-mobile * -1);
+      margin-right: -#{$_padding-right-mobile};
       padding-right: $_padding-right-mobile;
     }
 

@@ -1,109 +1,169 @@
 // React
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
 // Custom Hooks
-import { useLocalStorage } from "../../../../hooks/useStorage";
+import useApp from "../../../../hooks/useApp";
+import useModal from "../../../../hooks/useModal";
 // Components
-import Btn from "../../../../components/Btn/Btn";
 import { PostalCodeInput } from "../../../../components/PostalCodeInput/PostalCodeInput";
+import { PostalCodeRememberCheckbox } from "../../../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
+import Btn from "../../../../components/Btn/Btn";
+// Types
+import {
+  ModalChooseShopType,
+  ModalPostalCodeType,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import OpenNewWindowIcon from "../../../../Icons/OpenNewWindowIcon";
 
-export default function PostalCode() {
-  const [postalCodeValue, setPostalCodeValue] = useState("");
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const postalCodeRef = useRef<HTMLInputElement | null>(null);
+type PostalCodePropsType = {
+  modalType: ModalPostalCodeType["type"] | ModalChooseShopType["type"];
+};
 
-  const [postalCode, setPostalCode, removePostalCode] = useLocalStorage(
-    "postalCode",
-    postalCodeValue
-  );
+export default function PostalCode({ modalType }: PostalCodePropsType) {
+  const { dispatch } = useApp();
 
-  useEffect(() => {
-    if (postalCode) {
-      setPostalCodeValue(postalCode);
-    }
-  }, []);
+  const postalCodeRef = useRef<HTMLInputElement>(null);
 
   function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
-
-    if (postalCodeValue === postalCode) return;
 
     const zipCodeValue = postalCodeRef.current?.value || "";
     const zipCodeRegex = /^\d{2}-\d{3}$/;
 
     if (!zipCodeValue) {
-      setErrorMessage("Wprowadź kod pocztowy");
-      setIsErrorMessageVisible(true);
+      dispatchErrorMessage("Wprowadź kod pocztowy");
     } else if (!zipCodeRegex.test(zipCodeValue)) {
-      setErrorMessage("Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.");
-      setIsErrorMessageVisible(true);
+      dispatchErrorMessage("Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.");
     } else {
-      setErrorMessage("");
-      setIsErrorMessageVisible(false);
-      setPostalCode(postalCodeValue);
+      dispatchErrorMessage("");
+      dispatch({
+        type: "setPostalCode",
+        payload: zipCodeValue,
+      });
     }
   }
 
+  function dispatchErrorMessage(message: string) {
+    dispatch({
+      type: "showErrorMessage",
+      payload: message,
+    });
+  }
+
   function deletePostalCode() {
-    setPostalCodeValue("");
-    removePostalCode();
+    dispatch({ type: "deletePostalCode" });
   }
 
   return (
     <div className="postal-code-modal">
       <p>
-        Uzyskaj aktualne informacje o dostawie produktów i dostępności produktów w twojej okolicy.
+        {modalType === "postal-code"
+          ? "Uzyskaj aktualne informacje o dostawie produktów i dostępności produktów w twojej okolicy."
+          : "Znajdź swój preferowany sklep, aby uzyskać informacje o jego godzinach otwarcia, dostępności asortymentu i aktualnych ofertach."}
       </p>
 
-      <form
-        className="postal-code-modal__form"
-        onSubmit={handleFormSubmit}
-      >
-        <PostalCodeInput
-          ref={postalCodeRef}
-          id="postal-code"
-          label="Wprowadź kod pocztowy"
-          exampleMessage="np. 12-345"
-          autoComplete="off"
-          errorMessage={errorMessage}
-          isError={isErrorMessageVisible}
-          value={postalCodeValue}
-          onChangeFunction={setPostalCodeValue}
-        />
-      </form>
+      <Form
+        type={modalType}
+        postalCodeRef={postalCodeRef}
+        saveFunction={handleFormSubmit}
+      />
 
-      <p className="tx-gray">
-        Do świadczenia tej usługi wykorzystujemy pliki cookie. Więcej informacji o tym, jak używamy
-        plików cookie, możesz znaleźć w{" "}
-        <a
-          className="postal-code-modal__link"
-          href="#"
-          target="_blank"
-        >
-          nasza polityka
-          <OpenNewWindowIcon />
-        </a>
-        . Pamiętaj, że twoja lokalizacja nie będzie udostępniana.
-      </p>
+      <SubDescription type={modalType} />
 
-      <div className="postal-code-modal__btn-wrapper">
-        <Btn
-          onClick={handleFormSubmit}
-          disabled={postalCodeValue === postalCode}
-        >
-          Zapisz
-        </Btn>
-        {postalCode && (
-          <Btn
-            variant="white-with-border"
-            onClick={deletePostalCode}
+      <Btns
+        type={modalType}
+        saveFunction={handleFormSubmit}
+        deleteFunction={deletePostalCode}
+      />
+    </div>
+  );
+}
+
+type FormProps = {
+  type: PostalCodePropsType["modalType"];
+  postalCodeRef: React.RefObject<HTMLInputElement>;
+  saveFunction: (e: FormEvent) => void;
+};
+
+function Form({ type, postalCodeRef, saveFunction }: FormProps) {
+  const postalCodeCheckboxRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <form
+      className="postal-code-modal__form"
+      onSubmit={saveFunction}
+    >
+      <PostalCodeInput ref={postalCodeRef} />
+
+      {type === "choose-shop" && (
+        <>
+          <PostalCodeRememberCheckbox ref={postalCodeCheckboxRef} />
+          <button
+            type="button"
+            className="postal-code-modal__current-location-btn"
           >
-            Nie wykorzystuj kodu pocztowego
-          </Btn>
-        )}
-      </div>
+            Użyj obecnej lokalizacji
+          </button>
+        </>
+      )}
+    </form>
+  );
+}
+
+function SubDescription({ type }: { type: PostalCodePropsType["modalType"] }) {
+  return (
+    <>
+      {type === "postal-code" && (
+        <p className="postal-code-modal__subdescription tx-gray">
+          Do świadczenia tej usługi wykorzystujemy pliki cookie. Więcej informacji o tym, jak
+          używamy plików cookie, możesz znaleźć w{" "}
+          <a
+            className="postal-code-modal__link"
+            href="#"
+            target="_blank"
+          >
+            nasza polityka
+            <OpenNewWindowIcon />
+          </a>
+          . Pamiętaj, że twoja lokalizacja nie będzie udostępniana.
+        </p>
+      )}
+    </>
+  );
+}
+
+type BtnsProps = {
+  type: PostalCodePropsType["modalType"];
+  saveFunction: (e: FormEvent) => void;
+  deleteFunction: () => void;
+};
+
+function Btns({ type, saveFunction, deleteFunction }: BtnsProps) {
+  const { state } = useApp();
+  const { setModalData } = useModal();
+
+  function showShopsList() {
+    setModalData({
+      type: "preffered-shop",
+      header: "Wybierz swój preferowany sklep",
+    });
+  }
+
+  return (
+    <div className="postal-code-modal__btn-wrapper">
+      <Btn onClick={saveFunction}>
+        {type === "postal-code" ? "Zapisz" : "Znajdź preferowany sklep"}
+      </Btn>
+      {(type === "choose-shop" || (type === "postal-code" && state.postalCode)) && (
+        <Btn
+          variant="white-with-border"
+          onClick={type === "postal-code" ? deleteFunction : showShopsList}
+        >
+          {type === "postal-code"
+            ? "Nie wykorzystuj kodu pocztowego"
+            : "Zobacz pełną listę sklepów"}
+        </Btn>
+      )}
     </div>
   );
 }

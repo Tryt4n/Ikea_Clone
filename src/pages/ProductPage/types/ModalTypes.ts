@@ -53,13 +53,18 @@ export type ModalImageWithProductsType = {
   productsData: CardCollectionType;
 };
 
-export type ModalZipCodeType = {
-  readonly type: "zip-code";
+export type ModalPostalCodeType = {
+  readonly type: "postal-code";
   header: string;
 };
 
 export type ModalChooseShopType = {
   readonly type: "choose-shop";
+  header: string;
+};
+
+export type ModalPrefferedShopType = {
+  readonly type: "preffered-shop";
   header: string;
 };
 
@@ -73,5 +78,6 @@ export type ModalDataType =
   | ModalDataDimensionsType
   | ModalDataRatingsType
   | ModalDataInstallmentPurchaseType
-  | ModalZipCodeType
-  | ModalChooseShopType;
+  | ModalPostalCodeType
+  | ModalChooseShopType
+  | ModalPrefferedShopType;

@@ -6,6 +6,7 @@ import useModal from "../../../../hooks/useModal";
 import ChooseSize from "../../variants/ChooseSize/ChooseSize";
 import ChooseColor from "../../variants/ChooseColor/ChooseColor";
 import PostalCode from "../../variants/PostalCode/PostalCode";
+import PrefferedShop from "../../variants/PrefferedShop/PrefferedShop";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Types
@@ -18,11 +19,12 @@ import {
   ModalDataItemsIncludedType,
   ModalDataProductInformationType,
   ModalDataRatingsType,
-  ModalZipCodeType,
+  ModalPostalCodeType,
+  ModalPrefferedShopType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
-import ChooseShop from "../../variants/ChooseShop/ChooseShop";
+import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 
 export default function SideModalLayout({
   data,
@@ -35,26 +37,46 @@ export default function SideModalLayout({
     | ModalDataDimensionsType
     | ModalDataRatingsType
     | ModalDataInstallmentPurchaseType
-    | ModalZipCodeType
-    | ModalChooseShopType;
+    | ModalPostalCodeType
+    | ModalChooseShopType
+    | ModalPrefferedShopType;
 }) {
-  const { closeModal } = useModal();
+  const { setModalData, closeModal } = useModal();
+
+  function goBack() {
+    setModalData({
+      type: "choose-shop",
+      header: "Znajdź swój preferowany sklep",
+    });
+  }
 
   return (
     <>
       {data && (
         <>
           <div className="side-modal__header">
-            <Btn
-              variant="light"
-              shape="circle"
-              className="side-modal__close-btn"
-              type="button"
-              onClick={closeModal}
-            >
-              <span className="visually-hidden">Zamknij</span>
-              <CloseIcon />
-            </Btn>
+            <div className="side-modal__btns-wrapper">
+              {data.type === "preffered-shop" && (
+                <Btn
+                  variant="light"
+                  shape="circle"
+                  className="side-modal__go-back-btn"
+                  onClick={goBack}
+                >
+                  <ArrowLeftIcon />
+                </Btn>
+              )}
+              <Btn
+                variant="light"
+                shape="circle"
+                className="side-modal__close-btn"
+                type="button"
+                onClick={closeModal}
+              >
+                <span className="visually-hidden">Zamknij</span>
+                <CloseIcon />
+              </Btn>
+            </div>
             <h2 className="side-modal__heading">{data.header}</h2>
           </div>
 
@@ -62,8 +84,9 @@ export default function SideModalLayout({
             <Suspense fallback="Loading...">
               {data.type === "choose-size" && <ChooseSize data={data} />}
               {data.type === "choose-color" && <ChooseColor data={data} />}
-              {data.type === "zip-code" && <PostalCode />}
-              {data.type === "choose-shop" && <ChooseShop />}
+              {data.type === "choose-shop" && <PostalCode modalType={data.type} />}
+              {data.type === "postal-code" && <PostalCode modalType={data.type} />}
+              {data.type === "preffered-shop" && <PrefferedShop />}
             </Suspense>
           </div>
         </>

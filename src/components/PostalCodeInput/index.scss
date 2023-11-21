@@ -28,13 +28,11 @@
     transition: v.$main-transition;
 
     &:not(.error):hover {
-      margin-block: calc($_input-margin-block + $_box-shadow-thickness);
       border-color: transparent;
       box-shadow: c.$black $_box-shadow-size;
     }
 
     &:not(.error):focus-visible {
-      margin-block: calc($_input-margin-block + $_box-shadow-thickness);
       border-color: transparent;
       box-shadow: c.$very-dark-blue $_box-shadow-size;
     }
@@ -43,7 +41,6 @@
       border-color: c.$light-red;
 
       &:focus-visible {
-        margin-block: calc($_input-margin-block + $_box-shadow-thickness);
         border-color: transparent;
         box-shadow: c.$light-red $_box-shadow-size;
       }

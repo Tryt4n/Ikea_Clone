@@ -2,6 +2,7 @@
 @use "../../../abstracts/colors" as c;
 @use "../../../abstracts/variables" as v;
 @use "../../../base/functions" as func;
+@use "../../../base/breakpoints" as b;
 
 .postal-code-modal {
   height: 100%;
@@ -26,14 +27,19 @@
     }
   }
 
+  &__subdescription {
+    margin-bottom: 1.5rem;
+  }
+
   &__btn-wrapper {
     $_outline-provider: 0.5rem;
     $_btn-height: 3.5rem;
 
-    padding-inline: $_outline-provider;
-    margin-inline: calc($_outline-provider * -1);
     margin-top: auto;
-    translate: 0 calc($_btn-height * -1);
+
+    @media screen and (width >= b.$mobile-md) {
+      translate: 0 -#{$_outline-provider};
+    }
 
     & button {
       width: calc(100% - ($_outline-provider * 2));

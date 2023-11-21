@@ -8,7 +8,7 @@ import { ListElement } from "../../../../components/NavigationListElement/ListEl
 // Types
 import {
   ModalChooseShopType,
-  ModalZipCodeType,
+  ModalPostalCodeType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Constants
 import { mainNavigationList } from "../../../../constants/navigationLists";
@@ -23,11 +23,9 @@ export default function NavigationBar() {
   const { isMenuOpen } = useSideMenu();
   const { setIsModalOpen, setModalData } = useModal();
 
-  // const getPostalCode = localStorage.getItem("postalCode");
-  // const postalCode = getPostalCode ? JSON.parse(getPostalCode) : undefined;
   const { state } = useApp();
 
-  function openModal({ type, header }: ModalZipCodeType | ModalChooseShopType) {
+  function openModal({ type, header }: ModalPostalCodeType | ModalChooseShopType) {
     setIsModalOpen(true);
     setModalData({
       type: type,
@@ -54,11 +52,10 @@ export default function NavigationBar() {
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
-          onClick={() => openModal({ type: "zip-code", header: "Użyj swojej lokalizacji" })}
+          onClick={() => openModal({ type: "postal-code", header: "Użyj swojej lokalizacji" })}
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
-          {/* <span key={postalCode}>{postalCode ? postalCode : "Wpisz kod pocztowy"}</span> */}
           <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
         </button>
         <button
