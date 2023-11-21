@@ -1,27 +1,17 @@
 // React
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
 // Custom Hooks
-import { useLocalStorage } from "../../../../hooks/useStorage";
+import useApp from "../../../../hooks/useApp";
 // Components
 import Btn from "../../../../components/Btn/Btn";
-import { InputText } from "../../../../components/InputText/InputText";
-import { InputCheckbox } from "../../../../components/InputCheckbox/InputCheckbox";
+import { PostalCodeInput } from "../../../../components/PostalCodeInput/PostalCodeInput";
+import { PostalCodeRememberCheckbox } from "../../../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
 
 export default function ChooseShop() {
-  const [postalCodeValue, setPostalCodeValue] = useState("");
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const { dispatch } = useApp();
+
   const postalCodeRef = useRef<HTMLInputElement | null>(null);
   const postalCodeCheckboxRef = useRef<HTMLInputElement | null>(null);
-
-  const [postalCode, setPostalCode] = useLocalStorage("postalCode", postalCodeValue);
-  const [checkboxStatus, setCheckboxStatus] = useLocalStorage("rememberPostalCode", true);
-
-  useEffect(() => {
-    if (postalCode) {
-      setPostalCodeValue(postalCode);
-    }
-  }, []);
 
   function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
@@ -30,20 +20,25 @@ export default function ChooseShop() {
     const zipCodeRegex = /^\d{2}-\d{3}$/;
 
     if (!zipCodeValue) {
-      setErrorMessage("Wprowadź kod pocztowy");
-      setIsErrorMessageVisible(true);
+      dispatch({
+        type: "showErrorMessage",
+        payload: "Wprowadź kod pocztowy",
+      });
     } else if (!zipCodeRegex.test(zipCodeValue)) {
-      setErrorMessage("Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.");
-      setIsErrorMessageVisible(true);
+      dispatch({
+        type: "showErrorMessage",
+        payload: "Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.",
+      });
     } else {
-      setErrorMessage("");
-      setIsErrorMessageVisible(false);
-      setPostalCode(postalCodeValue);
+      dispatch({
+        type: "showErrorMessage",
+        payload: "",
+      });
+      dispatch({
+        type: "setPostalCode",
+        payload: zipCodeValue,
+      });
     }
-  }
-
-  function changeCheckboxStatus() {
-    setCheckboxStatus(!checkboxStatus);
   }
 
   return (
@@ -57,24 +52,9 @@ export default function ChooseShop() {
         className="postal-code-modal__form"
         onSubmit={handleFormSubmit}
       >
-        <InputText
-          ref={postalCodeRef}
-          id="postal-code"
-          label="Wprowadź kod pocztowy"
-          autoComplete="off"
-          exampleMessage="np. 12-345"
-          errorMessage={errorMessage}
-          isError={isErrorMessageVisible}
-          value={postalCodeValue}
-          onChangeFunction={setPostalCodeValue}
-        />
+        <PostalCodeInput ref={postalCodeRef} />
 
-        <InputCheckbox
-          ref={postalCodeCheckboxRef}
-          id="postal-code-checkbox"
-          checked={checkboxStatus}
-          onChangeFunction={changeCheckboxStatus}
-        />
+        <PostalCodeRememberCheckbox ref={postalCodeCheckboxRef} />
 
         <button
           type="button"

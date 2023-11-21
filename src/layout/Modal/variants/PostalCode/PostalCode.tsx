@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { useLocalStorage } from "../../../../hooks/useStorage";
 // Components
 import Btn from "../../../../components/Btn/Btn";
-import { InputText } from "../../../../components/InputText/InputText";
+import { PostalCodeInput } from "../../../../components/PostalCodeInput/PostalCodeInput";
 // Icons
 import OpenNewWindowIcon from "../../../../Icons/OpenNewWindowIcon";
 
@@ -27,6 +27,8 @@ export default function PostalCode() {
 
   function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
+
+    if (postalCodeValue === postalCode) return;
 
     const zipCodeValue = postalCodeRef.current?.value || "";
     const zipCodeRegex = /^\d{2}-\d{3}$/;
@@ -59,7 +61,7 @@ export default function PostalCode() {
         className="postal-code-modal__form"
         onSubmit={handleFormSubmit}
       >
-        <InputText
+        <PostalCodeInput
           ref={postalCodeRef}
           id="postal-code"
           label="Wprowadź kod pocztowy"
@@ -87,7 +89,12 @@ export default function PostalCode() {
       </p>
 
       <div className="postal-code-modal__btn-wrapper">
-        <Btn onClick={handleFormSubmit}>Zapisz</Btn>
+        <Btn
+          onClick={handleFormSubmit}
+          disabled={postalCodeValue === postalCode}
+        >
+          Zapisz
+        </Btn>
         {postalCode && (
           <Btn
             variant="white-with-border"

@@ -1,5 +1,5 @@
 // React
-import { ReactNode, createContext, useEffect, useRef, useState } from "react";
+import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from "react";
 // Components
 import { Modal } from "../layout/Modal/Modal";
 // Types
@@ -76,14 +76,17 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isModalOpen]);
 
-  const contextValues = {
-    modalID,
-    closeModal,
-    isModalOpen,
-    setIsModalOpen,
-    modalData,
-    setModalData,
-  };
+  const contextValues = useMemo(
+    () => ({
+      modalID,
+      closeModal,
+      isModalOpen,
+      setIsModalOpen,
+      modalData,
+      setModalData,
+    }),
+    [modalID, isModalOpen, modalData]
+  );
 
   return (
     <ModalContext.Provider value={contextValues}>

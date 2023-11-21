@@ -1,4 +1,5 @@
 // Custom Hooks
+import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useSideMenu from "../../../../hooks/useSideMenu";
 import useWindowSize from "../../../../hooks/useWindowSize";
@@ -22,8 +23,9 @@ export default function NavigationBar() {
   const { isMenuOpen } = useSideMenu();
   const { setIsModalOpen, setModalData } = useModal();
 
-  const getPostalCode = localStorage.getItem("postalCode");
-  const postalCode = getPostalCode ? JSON.parse(getPostalCode) : undefined;
+  // const getPostalCode = localStorage.getItem("postalCode");
+  // const postalCode = getPostalCode ? JSON.parse(getPostalCode) : undefined;
+  const { state } = useApp();
 
   function openModal({ type, header }: ModalZipCodeType | ModalChooseShopType) {
     setIsModalOpen(true);
@@ -56,7 +58,8 @@ export default function NavigationBar() {
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
-          <span key={postalCode}>{postalCode ? postalCode : "Wpisz kod pocztowy"}</span>
+          {/* <span key={postalCode}>{postalCode ? postalCode : "Wpisz kod pocztowy"}</span> */}
+          <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
         </button>
         <button
           className="navigation-bar__btn-wrapper"

@@ -1,20 +1,23 @@
 // React
 import { ChangeEvent, KeyboardEvent, MouseEvent, ForwardedRef, HTMLProps, forwardRef } from "react";
+// Custom Hooks
+import useApp from "../../hooks/useApp";
 // Style
 import "./index.scss";
 
-type InputCheckboxType = {
-  id: string;
-  onChangeFunction: () => void;
-} & HTMLProps<HTMLInputElement>;
-
 export default function InnerComponent(
-  { id, onChangeFunction, ...props }: InputCheckboxType,
+  { ...props }: HTMLProps<HTMLInputElement>,
   ref: ForwardedRef<HTMLInputElement>
 ) {
+  const { state, dispatch } = useApp();
+
+  function changeCheckboxStatus() {
+    dispatch({ type: "togglePostalCodeCheckbox" });
+  }
+
   function inputOnChangeFunction(e: ChangeEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
     e.preventDefault();
-    onChangeFunction();
+    changeCheckboxStatus();
   }
 
   function inputOnKeyDownFunction(e: KeyboardEvent<HTMLInputElement>) {
@@ -23,7 +26,7 @@ export default function InnerComponent(
     }
 
     if (e.keyCode === 13 || e.keyCode === 32) {
-      onChangeFunction();
+      changeCheckboxStatus();
     }
   }
 
@@ -33,19 +36,22 @@ export default function InnerComponent(
         ref={ref}
         type="checkbox"
         className="visually-hidden input-checkbox__input"
-        name={id}
-        id={id}
+        name="postal-code-checkbox"
+        id="postal-code-checkbox"
         onChange={inputOnChangeFunction}
         onKeyDown={inputOnKeyDownFunction}
+        checked={state.rememberPostalCodeCheckboxStatus}
         {...props}
       />
+
       <div
         className="input-checkbox__checkbox"
-        onClick={() => onChangeFunction()}
+        onClick={() => changeCheckboxStatus()}
         aria-hidden="true"
       ></div>
+
       <label
-        htmlFor={id}
+        htmlFor="postal-code-checkbox"
         className="input-checkbox__label"
         onClick={inputOnChangeFunction}
       >
@@ -55,4 +61,4 @@ export default function InnerComponent(
   );
 }
 
-export const InputCheckbox = forwardRef(InnerComponent);
+export const PostalCodeRememberCheckbox = forwardRef(InnerComponent);
