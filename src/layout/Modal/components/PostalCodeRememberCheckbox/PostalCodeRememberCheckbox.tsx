@@ -1,6 +1,5 @@
 // React
 import {
-  ChangeEvent,
   KeyboardEvent,
   MouseEvent,
   ForwardedRef,
@@ -8,11 +7,12 @@ import {
   forwardRef,
   useState,
   useEffect,
+  FormEvent,
 } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
-// Style
-import "./index.scss";
+// Components
+import Input from "../../../../components/Input/Input";
 
 function InnerComponent(
   { ...props }: HTMLProps<HTMLInputElement>,
@@ -25,7 +25,9 @@ function InnerComponent(
     dispatch({ type: "togglePostalCodeCheckbox", payload: !checkboxStatus });
   }
 
-  function inputOnChangeFunction(e: ChangeEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
+  function inputOnChangeFunction(
+    e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement | HTMLDivElement>
+  ) {
     e.preventDefault();
     changeCheckboxStatus();
   }
@@ -47,33 +49,20 @@ function InnerComponent(
   }, [state.rememberPostalCodeCheckboxStatus]);
 
   return (
-    <div className="input-checkbox">
-      <input
-        ref={ref}
-        type="checkbox"
-        className="visually-hidden input-checkbox__input"
-        name="postal-code-checkbox"
-        id="postal-code-checkbox"
-        onChange={inputOnChangeFunction}
-        onKeyDown={inputOnKeyDownFunction}
-        checked={checkboxStatus}
-        {...props}
-      />
-
-      <div
-        className="input-checkbox__checkbox"
-        onClick={() => changeCheckboxStatus()}
-        aria-hidden="true"
-      ></div>
-
-      <label
-        htmlFor="postal-code-checkbox"
-        className="input-checkbox__label"
-        onClick={inputOnChangeFunction}
-      >
-        Zapamiętaj mój kod pocztowy do dostawy oraz informacji o dostępności i stanie magazynowym.
-      </label>
-    </div>
+    <Input
+      type="checkbox"
+      id="postal-code-checkbox"
+      labelProps={{
+        onClick: inputOnChangeFunction,
+      }}
+      inputProps={{
+        ref: ref,
+        checked: checkboxStatus,
+        onChange: inputOnChangeFunction,
+        onKeyDown: inputOnKeyDownFunction,
+        ...props,
+      }}
+    />
   );
 }
 

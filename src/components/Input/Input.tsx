@@ -20,12 +20,21 @@ export default function Input({ type, id, labelProps, inputProps }: InputPropsTy
         type={type}
         {...labelProps}
       />
+
       <CustomInput
         id={id}
         name={id}
         type={type}
         {...inputProps}
       />
+
+      {type === "checkbox" && (
+        <div
+          className="checkbox-input__checkbox"
+          role="presentation"
+          aria-hidden="true"
+        />
+      )}
     </div>
   );
 }

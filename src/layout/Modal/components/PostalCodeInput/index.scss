@@ -9,21 +9,6 @@
 
   @include flex(column);
 
-  &__input[aria-invalid="true"] {
-    border-color: c.$light-red;
-
-    & ~ .postal-code-input__errormessage {
-      @include flex();
-      visibility: visible;
-      opacity: 1;
-    }
-
-    & ~ .postal-code-input__example {
-      display: none;
-      visibility: hidden;
-    }
-  }
-
   &__errormessage {
     position: relative;
     color: c.$light-red;
@@ -42,4 +27,19 @@
       border-radius: 50vw;
     }
   }
+}
+
+.postal-code-input
+  > .text-input:has(.postal-code-input__input[aria-invalid="true"])
+  ~ .postal-code-input__errormessage {
+  @include flex();
+  visibility: visible;
+  opacity: 1;
+}
+
+.postal-code-input
+  > .text-input:has(.postal-code-input__input[aria-invalid="true"])
+  ~ .postal-code-input__example {
+  display: none;
+  visibility: hidden;
 }
