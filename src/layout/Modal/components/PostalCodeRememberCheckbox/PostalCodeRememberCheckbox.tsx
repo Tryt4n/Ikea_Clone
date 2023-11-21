@@ -10,7 +10,7 @@ import {
   useEffect,
 } from "react";
 // Custom Hooks
-import useApp from "../../hooks/useApp";
+import useApp from "../../../../hooks/useApp";
 // Style
 import "./index.scss";
 

@@ -4,8 +4,8 @@ import { FormEvent, useRef } from "react";
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 // Components
-import { PostalCodeInput } from "../../../../components/PostalCodeInput/PostalCodeInput";
-import { PostalCodeRememberCheckbox } from "../../../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
+import { PostalCodeInput } from "../../components/PostalCodeInput/PostalCodeInput";
+import { PostalCodeRememberCheckbox } from "../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
 import Btn from "../../../../components/Btn/Btn";
 // Types
 import {

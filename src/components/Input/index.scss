@@ -1,0 +1,43 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.text-input__label {
+  color: c.$text-gray;
+  cursor: pointer;
+}
+
+.text-input__input {
+  $_box-shadow-thickness: 0.125rem;
+  $_box-shadow-size: 0px 0px 0px $_box-shadow-thickness;
+  height: 3rem;
+  margin-block: 0.25em;
+  padding-inline: func.rem(6);
+  outline: none;
+  border: func.rem(1) solid c.$text-gray;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: c.$text-gray;
+  caret-color: c.$very-dark-blue;
+  transition: v.$main-transition;
+
+  &:not([aria-invalid="true"]):hover {
+    border-color: transparent;
+    box-shadow: c.$black $_box-shadow-size;
+  }
+
+  &:not([aria-invalid="true"]):focus-visible {
+    border-color: transparent;
+    box-shadow: c.$very-dark-blue $_box-shadow-size;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: c.$light-red;
+
+    &:focus-visible {
+      border-color: transparent;
+      box-shadow: c.$light-red $_box-shadow-size;
+    }
+  }
+}
