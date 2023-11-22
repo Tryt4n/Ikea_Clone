@@ -1,0 +1,63 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.chosen-shop {
+  &__header {
+    $_space: 1.5rem;
+
+    padding-bottom: $_space;
+    margin-bottom: $_space;
+    border-bottom: func.rem(1) solid c.$gray;
+
+    & strong {
+      color: c.$text-gray;
+    }
+
+    & p {
+      color: c.$black;
+    }
+  }
+
+  &__subheading {
+    margin-top: 1.25rem;
+    font-size: inherit;
+    color: c.$black;
+  }
+
+  &__information {
+    margin-block: 2rem;
+  }
+
+  &__hours-list {
+    margin-top: 0.25rem;
+    @include flex();
+    flex-flow: row wrap;
+    color: c.$text-gray;
+
+    & > dt {
+      flex-basis: 35%;
+    }
+
+    & > dd {
+      flex-basis: 60%;
+      flex-grow: 1;
+    }
+  }
+
+  &__btns-wrapper {
+    $_focus-gap: 0.25rem;
+
+    max-width: 100%;
+    margin-inline: -#{$_focus-gap};
+    padding-inline: $_focus-gap;
+    @include flex(column);
+    gap: 1rem;
+
+    & > * {
+      width: calc(100% - ($_focus-gap * 2));
+      margin-inline: auto;
+    }
+  }
+}

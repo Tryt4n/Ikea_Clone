@@ -14,11 +14,11 @@ import Header from "../../components/Header/Header";
 import AdditionalInformation from "../../components/AdditionalInformation/AdditionalInformation";
 import GuaranteeInformation from "../../components/GuaranteeInformation/GuaranteeInformation";
 import SoftnessInformation from "../../components/SoftnessInformation/SoftnessInformation";
-import KidsInformation from "../../components/KidsInformation/KidsInformation";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
 // Style
 import "./index.scss";
+import InformationBox from "../../../../components/InformationBox/InformationBox";
 
 export default function BuyModule({ data }: { data: ProductDataType }) {
   const { width } = useWindowSize();
@@ -145,7 +145,15 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
 
       <BuyBlock />
 
-      {forKidsBadge && <KidsInformation />}
+      {forKidsBadge && (
+        <InformationBox
+          heading="Dbamy o bezpieczeństwo dzieci"
+          headingLevel={3}
+          as="section"
+          information="Nasze zabawki przechodzą ponad 150 różnych testów bezpieczeństwa zanim trafią do rąk dzieci"
+          className="buy-module__kids-information"
+        />
+      )}
     </aside>
   );
 }

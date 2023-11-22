@@ -32,4 +32,11 @@
       color: c.$text-gray;
     }
   }
+
+  &__no-result-text {
+    display: block;
+    margin-top: 2.5rem;
+    font-style: normal;
+    color: c.$text-gray;
+  }
 }

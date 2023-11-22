@@ -115,6 +115,15 @@ dialog.show::backdrop {
   background-color: c.$overlay-opaque;
 }
 
+dl {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+dd {
+  margin-inline-start: 0;
+}
+
 /* clears the ‘X’ from Internet Explorer */
 input[type="search"]::-ms-clear {
   display: none;

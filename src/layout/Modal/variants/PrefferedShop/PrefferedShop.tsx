@@ -51,27 +51,35 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
   }
 
   return (
-    <ul>
-      {filteredShops.map((shop) => {
-        return (
-          <li
-            key={shop.name}
-            className="preffered-shop__list-item"
-          >
-            <button
-              type="button"
-              className="preffered-shop__list-item-btn"
-              onClick={() => selectShop(shop)}
-            >
-              <div className="preffered-shop__list-item-text-wrapper">
-                <strong>{shop.name}</strong>
-                <small>{shop.address}</small>
-              </div>
-              <ChevronRightSmall />
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {filteredShops.length > 0 ? (
+        <ul>
+          {filteredShops.map((shop) => {
+            return (
+              <li
+                key={shop.name}
+                className="preffered-shop__list-item"
+              >
+                <button
+                  type="button"
+                  className="preffered-shop__list-item-btn"
+                  onClick={() => selectShop(shop)}
+                >
+                  <div className="preffered-shop__list-item-text-wrapper">
+                    <strong>{shop.name}</strong>
+                    <small>{shop.address}</small>
+                  </div>
+                  <ChevronRightSmall />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <em className="preffered-shop__no-result-text">
+          Niestety, nie udało nam się znaleźć sklepu IKEA na podstawie tego, co zostało wpisane.
+        </em>
+      )}
+    </>
   );
 }

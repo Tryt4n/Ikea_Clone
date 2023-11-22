@@ -59,7 +59,7 @@ export default function SideModalLayout({
         <>
           <div className="side-modal__header">
             <div className="side-modal__btns-wrapper">
-              {(data.type === "preffered-shop" || data.type === "chosen-shop") && (
+              {data.type === "preffered-shop" && (
                 <Btn
                   variant="light"
                   shape="circle"

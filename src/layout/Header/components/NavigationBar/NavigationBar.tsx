@@ -8,6 +8,7 @@ import { ListElement } from "../../../../components/NavigationListElement/ListEl
 // Types
 import {
   ModalChooseShopType,
+  ModalChosenShopType,
   ModalPostalCodeType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Constants
@@ -25,7 +26,10 @@ export default function NavigationBar() {
 
   const { state } = useApp();
 
-  function openModal({ type, header }: ModalPostalCodeType | ModalChooseShopType) {
+  function openModal({
+    type,
+    header,
+  }: ModalPostalCodeType | ModalChooseShopType | ModalChosenShopType) {
     setIsModalOpen(true);
     setModalData({
       type: type,
@@ -61,12 +65,16 @@ export default function NavigationBar() {
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() =>
-            openModal({ type: "choose-shop", header: "Znajdź swój preferowany sklep" })
+            openModal(
+              state.chosenShop
+                ? { type: "chosen-shop", header: state.chosenShop.name }
+                : { type: "choose-shop", header: "Znajdź swój preferowany sklep" }
+            )
           }
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <ShopIcon />
-          <span>Wybierz sklep</span>
+          <span>{state.chosenShop ? state.chosenShop.name.split("IKEA") : "Wybierz sklep"}</span>
         </button>
       </div>
     </div>

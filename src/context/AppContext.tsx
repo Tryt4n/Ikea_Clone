@@ -1,7 +1,7 @@
 // React
 import { Dispatch, ReactNode, createContext, useEffect, useMemo, useReducer } from "react";
 // Constants
-import { ShopType } from "../constants/shopsList";
+import { ShopType, shopsList } from "../constants/shopsList";
 
 type AppContextType = {
   state: ReducerStateType;
@@ -29,8 +29,13 @@ type ReducerActionsType =
       type: "togglePostalCodeCheckbox";
       payload: boolean;
     }
-  | { type: "deletePostalCode" }
-  | { type: "chooseShop"; payload: ShopType };
+  | {
+      type: "deletePostalCode";
+    }
+  | {
+      type: "chooseShop";
+      payload: ShopType;
+    };
 
 export const AppContext = createContext<AppContextType | null>(null);
 
@@ -70,6 +75,8 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "chooseShop": {
+      localStorage.setItem("chosenShop", action.payload.name);
+
       return {
         ...state,
         chosenShop: action.payload,
@@ -102,6 +109,12 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     const checkboxValue = storageCheckboxStatus === "true" ? true : false;
     if (storageCheckboxStatus) {
       dispatch({ type: "togglePostalCodeCheckbox", payload: checkboxValue });
+    }
+
+    const chosenShopStorage = localStorage.getItem("chosenShop");
+    const chosenShop = shopsList.find((shop) => shop.name === chosenShopStorage);
+    if (chosenShopStorage && chosenShop) {
+      dispatch({ type: "chooseShop", payload: chosenShop });
     }
   }, []);
 
