@@ -1,4 +1,7 @@
+// React
 import { Dispatch, ReactNode, createContext, useEffect, useMemo, useReducer } from "react";
+// Constants
+import { ShopType } from "../constants/shopsList";
 
 type AppContextType = {
   state: ReducerStateType;
@@ -10,6 +13,7 @@ type ReducerStateType = {
   isErrorMessageVisible: boolean;
   errorMessage: string;
   rememberPostalCodeCheckboxStatus: boolean;
+  chosenShop?: ShopType;
 };
 
 type ReducerActionsType =
@@ -25,7 +29,8 @@ type ReducerActionsType =
       type: "togglePostalCodeCheckbox";
       payload: boolean;
     }
-  | { type: "deletePostalCode" };
+  | { type: "deletePostalCode" }
+  | { type: "chooseShop"; payload: ShopType };
 
 export const AppContext = createContext<AppContextType | null>(null);
 
@@ -64,6 +69,13 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    case "chooseShop": {
+      return {
+        ...state,
+        chosenShop: action.payload,
+      };
+    }
+
     default:
       return state;
   }
@@ -74,6 +86,7 @@ const initState = {
   isErrorMessageVisible: false,
   errorMessage: "",
   rememberPostalCodeCheckboxStatus: true,
+  chosenShop: undefined,
 };
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
@@ -91,6 +104,10 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
       dispatch({ type: "togglePostalCodeCheckbox", payload: checkboxValue });
     }
   }, []);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const contextValues = useMemo(
     () => ({

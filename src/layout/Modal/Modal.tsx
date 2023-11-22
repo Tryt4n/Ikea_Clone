@@ -31,6 +31,7 @@ function InnerComponent(
     "postal-code": "side-modal",
     "choose-shop": "side-modal",
     "preffered-shop": "side-modal",
+    "chosen-shop": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
   };
@@ -55,7 +56,8 @@ function InnerComponent(
           modalData.type === "installment-purchase" ||
           modalData.type === "postal-code" ||
           modalData.type === "choose-shop" ||
-          modalData.type === "preffered-shop") && (
+          modalData.type === "preffered-shop" ||
+          modalData.type === "chosen-shop") && (
           <>
             <SideModalLayout data={modalData} />
           </>

@@ -3,7 +3,8 @@
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
 
-.text-input {
+.text-input,
+.search-input {
   @include flex(column);
 
   &__label {
@@ -51,8 +52,8 @@
   $_checkbox-size: 1.5rem;
 
   position: relative;
-  @include flex(row-reverse, flex-end, center);
-  margin-block: 1rem 2rem;
+  @include flex(row-reverse, flex-end, flex-start);
+  margin-block: 1rem;
   color: c.$text-gray;
   cursor: pointer;
 

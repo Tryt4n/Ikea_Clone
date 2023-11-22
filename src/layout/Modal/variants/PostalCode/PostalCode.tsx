@@ -7,6 +7,7 @@ import useModal from "../../../../hooks/useModal";
 import { PostalCodeInput } from "../../components/PostalCodeInput/PostalCodeInput";
 import { PostalCodeRememberCheckbox } from "../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
 import Btn from "../../../../components/Btn/Btn";
+import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Types
 import {
   ModalChooseShopType,
@@ -98,12 +99,8 @@ function Form({ type, postalCodeRef, saveFunction }: FormProps) {
       {type === "choose-shop" && (
         <>
           <PostalCodeRememberCheckbox ref={postalCodeCheckboxRef} />
-          <button
-            type="button"
-            className="postal-code-modal__current-location-btn"
-          >
-            Użyj obecnej lokalizacji
-          </button>
+
+          <LocationBtn className="postal-code-modal__location-btn" />
         </>
       )}
     </form>

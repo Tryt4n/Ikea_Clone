@@ -7,11 +7,13 @@ import ChooseSize from "../../variants/ChooseSize/ChooseSize";
 import ChooseColor from "../../variants/ChooseColor/ChooseColor";
 import PostalCode from "../../variants/PostalCode/PostalCode";
 import PrefferedShop from "../../variants/PrefferedShop/PrefferedShop";
+import ChosenShop from "../../variants/ChosenShop/ChosenShop";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Types
 import {
   ModalChooseShopType,
+  ModalChosenShopType,
   ModalDataChooseColorType,
   ModalDataChooseSizeType,
   ModalDataDimensionsType,
@@ -39,7 +41,8 @@ export default function SideModalLayout({
     | ModalDataInstallmentPurchaseType
     | ModalPostalCodeType
     | ModalChooseShopType
-    | ModalPrefferedShopType;
+    | ModalPrefferedShopType
+    | ModalChosenShopType;
 }) {
   const { setModalData, closeModal } = useModal();
 
@@ -56,7 +59,7 @@ export default function SideModalLayout({
         <>
           <div className="side-modal__header">
             <div className="side-modal__btns-wrapper">
-              {data.type === "preffered-shop" && (
+              {(data.type === "preffered-shop" || data.type === "chosen-shop") && (
                 <Btn
                   variant="light"
                   shape="circle"
@@ -87,6 +90,7 @@ export default function SideModalLayout({
               {data.type === "choose-shop" && <PostalCode modalType={data.type} />}
               {data.type === "postal-code" && <PostalCode modalType={data.type} />}
               {data.type === "preffered-shop" && <PrefferedShop />}
+              {data.type === "chosen-shop" && <ChosenShop />}
             </Suspense>
           </div>
         </>

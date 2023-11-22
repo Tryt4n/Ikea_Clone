@@ -47,6 +47,7 @@ function InnerComponent(
       <Input
         type="text"
         id="postal-code"
+        label="Wprowadź kod pocztowy"
         labelProps={{
           onClick: labelOnClickFunction,
         }}

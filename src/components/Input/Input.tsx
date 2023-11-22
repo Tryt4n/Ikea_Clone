@@ -3,23 +3,26 @@ import { ForwardedRef, HTMLProps, forwardRef } from "react";
 // Styles
 import "./index.scss";
 
-type InputTypes = "text" | "checkbox";
+type InputTypes = "text" | "search" | "checkbox";
 
 type InputPropsType = {
   type: InputTypes;
   id: string;
+  label: string;
   labelProps?: HTMLProps<HTMLLabelElement>;
   inputProps?: Omit<HTMLProps<HTMLInputElement>, "ref">;
 };
 
-export default function Input({ type, id, labelProps, inputProps }: InputPropsType) {
+export default function Input({ type, id, label, labelProps, inputProps }: InputPropsType) {
   return (
     <div className={`${type}-input`}>
       <Label
         htmlFor={id}
         type={type}
         {...labelProps}
-      />
+      >
+        {label}
+      </Label>
 
       <CustomInput
         id={id}
@@ -41,16 +44,17 @@ export default function Input({ type, id, labelProps, inputProps }: InputPropsTy
 
 type LabelPropsType<T> = {
   type: T;
+  children: string;
   className?: string;
 } & HTMLProps<HTMLLabelElement>;
 
-function Label<T>({ type, className, ...props }: LabelPropsType<T>) {
+function Label<T>({ type, className, children, ...props }: LabelPropsType<T>) {
   return (
     <label
       className={`${type}-input__label${className ? ` ${className}` : ""}`}
       {...props}
     >
-      Wprowadź kod pocztowy
+      {children}
     </label>
   );
 }

@@ -1,0 +1,35 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.preffered-shop {
+  &__location-btn {
+    margin-top: 1rem;
+  }
+
+  &__list-item {
+    border-bottom: func.rem(1) solid c.$gray;
+  }
+
+  &__list-item-btn {
+    width: 100%;
+    padding-block: 2rem;
+
+    @include flex(row, space-between, center);
+  }
+
+  &__list-item-text-wrapper {
+    @include flex(column);
+    text-align: start;
+    text-indent: 0.25em;
+
+    & strong {
+      color: c.$black;
+    }
+
+    & small {
+      color: c.$text-gray;
+    }
+  }
+}

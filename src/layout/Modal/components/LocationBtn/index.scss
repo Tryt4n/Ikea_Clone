@@ -1,0 +1,14 @@
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+
+.current-location-btn {
+  color: c.$text-gray;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  transition: v.$main-transition;
+  outline-offset: 0.25em;
+
+  &:where(:hover, :focus-visible) {
+    color: black;
+  }
+}

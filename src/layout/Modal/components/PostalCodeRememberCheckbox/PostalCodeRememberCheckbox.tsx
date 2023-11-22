@@ -25,9 +25,7 @@ function InnerComponent(
     dispatch({ type: "togglePostalCodeCheckbox", payload: !checkboxStatus });
   }
 
-  function inputOnChangeFunction(
-    e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement | HTMLDivElement>
-  ) {
+  function inputOnChangeFunction(e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
     e.preventDefault();
     changeCheckboxStatus();
   }
@@ -52,6 +50,7 @@ function InnerComponent(
     <Input
       type="checkbox"
       id="postal-code-checkbox"
+      label="Zapamiętaj mój kod pocztowy do dostawy oraz informacji o dostępności i stanie magazynowym."
       labelProps={{
         onClick: inputOnChangeFunction,
       }}

@@ -68,6 +68,11 @@ export type ModalPrefferedShopType = {
   header: string;
 };
 
+export type ModalChosenShopType = {
+  readonly type: "chosen-shop";
+  header: string;
+};
+
 export type ModalDataType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -80,4 +85,5 @@ export type ModalDataType =
   | ModalDataInstallmentPurchaseType
   | ModalPostalCodeType
   | ModalChooseShopType
-  | ModalPrefferedShopType;
+  | ModalPrefferedShopType
+  | ModalChosenShopType;
