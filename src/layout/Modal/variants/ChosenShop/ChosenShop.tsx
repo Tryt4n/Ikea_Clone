@@ -22,12 +22,45 @@ export default function ChosenShop() {
     });
   }
 
+  function calculateOpeningHours(
+    openingHours: Record<string, string>,
+    nonStandardOpeningHours: Record<string, string>
+  ): string {
+    const today = new Date();
+    const dayOfWeek = today.toLocaleDateString("en-US", { weekday: "long" });
+    const hours = openingHours[dayOfWeek];
+
+    if (hours === "Zamknięte") {
+      //? If regular hours indicate that the shop is closed, check non-standard hours
+      const nonStandardHours = nonStandardOpeningHours[today.toLocaleDateString("en-US")];
+      if (nonStandardHours) {
+        return `Czynne do ${nonStandardHours.split(" - ")[1]}`;
+      } else {
+        return "Dzisiaj zamknięte";
+      }
+    }
+
+    const [opening, closing] = hours.split(" - ");
+    const openingTime = new Date(today.toDateString() + " " + opening);
+    const closingTime = new Date(today.toDateString() + " " + closing);
+
+    if (today >= openingTime && today <= closingTime) {
+      return `Czynne do ${closing}`;
+    } else {
+      return "Dzisiaj zamknięte";
+    }
+  }
+
   return (
     <div className="chosen-shop">
       <section className="chosen-shop__header">
         <h3 className="visually-hidden">Informacje</h3>
-        {/* //! Change to proper hour */}
-        <strong>Czynne do 22:00</strong>
+        <strong>
+          {calculateOpeningHours(
+            chosenShop!.openingHoursPerDay,
+            chosenShop!.nonStandardOpeningHours
+          )}
+        </strong>
         <p>{chosenShop!.address}</p>
       </section>
 

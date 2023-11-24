@@ -9,6 +9,15 @@ export const shopsList = [
       "sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "10:00 - 20:00",
+      Tuesday: "10:00 - 20:00",
+      Wednesday: "10:00 - 20:00",
+      Thursday: "10:00 - 20:00",
+      Friday: "10:00 - 20:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "10:00 - 20:00",
       "24.12.2023": "Zamknięte",
@@ -24,6 +33,15 @@ export const shopsList = [
     openingHours: {
       "pon. - sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
+    },
+    openingHoursPerDay: {
+      Monday: "10:00 - 21:00",
+      Tuesday: "10:00 - 21:00",
+      Wednesday: "10:00 - 21:00",
+      Thursday: "10:00 - 21:00",
+      Friday: "10:00 - 21:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
     },
     nonStandardOpeningHours: {
       "17.12.2023": "10:00 - 21:00",
@@ -41,6 +59,15 @@ export const shopsList = [
       "pon. - sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "10:00 - 21:00",
+      Tuesday: "10:00 - 21:00",
+      Wednesday: "10:00 - 21:00",
+      Thursday: "10:00 - 21:00",
+      Friday: "10:00 - 21:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "10:00 - 21:00",
       "24.12.2023": "Zamknięte",
@@ -56,6 +83,15 @@ export const shopsList = [
     openingHours: {
       "pon. - sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
+    },
+    openingHoursPerDay: {
+      Monday: "10:00 - 21:00",
+      Tuesday: "10:00 - 21:00",
+      Wednesday: "10:00 - 21:00",
+      Thursday: "10:00 - 21:00",
+      Friday: "10:00 - 21:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
     },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 21:00",
@@ -74,6 +110,15 @@ export const shopsList = [
       "sob.": "09:00 - 21:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "10:00 - 21:00",
+      Tuesday: "10:00 - 21:00",
+      Wednesday: "10:00 - 21:00",
+      Thursday: "10:00 - 21:00",
+      Friday: "10:00 - 21:00",
+      Saturday: "09:00 - 21:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 20:00",
       "24.12.2023": "Zamknięte",
@@ -90,6 +135,15 @@ export const shopsList = [
       "pon. - sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "10:00 - 21:00",
+      Tuesday: "10:00 - 21:00",
+      Wednesday: "10:00 - 21:00",
+      Thursday: "10:00 - 21:00",
+      Friday: "10:00 - 21:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "10:00 - 20:00",
       "24.12.2023": "Zamknięte",
@@ -105,6 +159,15 @@ export const shopsList = [
     openingHours: {
       "pon. - sob.": "09:00 - 21:00",
       "niedz.": "Zamknięte",
+    },
+    openingHoursPerDay: {
+      Monday: "09:00 - 21:00",
+      Tuesday: "09:00 - 21:00",
+      Wednesday: "09:00 - 21:00",
+      Thursday: "09:00 - 21:00",
+      Friday: "09:00 - 21:00",
+      Saturday: "09:00 - 21:00",
+      Sunday: "Zamknięte",
     },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 20:00",
@@ -123,6 +186,15 @@ export const shopsList = [
       "sob.": "10:00 - 21:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "10:00 - 20:00",
+      Tuesday: "10:00 - 20:00",
+      Wednesday: "10:00 - 20:00",
+      Thursday: "10:00 - 20:00",
+      Friday: "10:00 - 20:00",
+      Saturday: "10:00 - 21:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "10:00 - 20:00",
       "24.12.2023": "Zamknięte",
@@ -138,6 +210,15 @@ export const shopsList = [
     openingHours: {
       "pon. - sob.": "09:00 - 22:00",
       "niedz.": "Zamknięte",
+    },
+    openingHoursPerDay: {
+      Monday: "09:00 - 22:00",
+      Tuesday: "09:00 - 22:00",
+      Wednesday: "09:00 - 22:00",
+      Thursday: "09:00 - 22:00",
+      Friday: "09:00 - 22:00",
+      Saturday: "09:00 - 22:00",
+      Sunday: "Zamknięte",
     },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 21:00",
@@ -155,6 +236,15 @@ export const shopsList = [
       "pon. - sob.": "09:00 - 22:00",
       "niedz.": "Zamknięte",
     },
+    openingHoursPerDay: {
+      Monday: "09:00 - 22:00",
+      Tuesday: "09:00 - 22:00",
+      Wednesday: "09:00 - 22:00",
+      Thursday: "09:00 - 22:00",
+      Friday: "09:00 - 22:00",
+      Saturday: "09:00 - 22:00",
+      Sunday: "Zamknięte",
+    },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 21:00",
       "24.12.2023": "Zamknięte",
@@ -170,6 +260,15 @@ export const shopsList = [
     openingHours: {
       "pon. - sob.": "09:00 - 21:00",
       "niedz.": "Zamknięte",
+    },
+    openingHoursPerDay: {
+      Monday: "09:00 - 21:00",
+      Tuesday: "09:00 - 21:00",
+      Wednesday: "09:00 - 21:00",
+      Thursday: "09:00 - 21:00",
+      Friday: "09:00 - 21:00",
+      Saturday: "09:00 - 21:00",
+      Sunday: "Zamknięte",
     },
     nonStandardOpeningHours: {
       "17.12.2023": "09:00 - 20:00",
