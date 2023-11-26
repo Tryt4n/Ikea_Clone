@@ -1,0 +1,63 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.login-modal {
+  &__header {
+    margin-top: 3rem;
+    margin-right: 0.25rem;
+    padding-bottom: 2.5rem;
+    @include flex(row, space-between, center);
+
+    & strong {
+      font-size: 2rem;
+    }
+  }
+
+  &__link-with-border-wrapper {
+    border-bottom: func.rem(1) solid c.$gray;
+
+    &:first-child {
+      border-top: func.rem(1) solid c.$gray;
+    }
+  }
+
+  &__join-link {
+    padding-block: 1.25rem;
+    @include flex(row, space-between, center);
+    font-weight: bold;
+  }
+
+  &__join-link-icon-wrapper {
+    width: func.rem(40);
+    height: func.rem(40);
+    @include center;
+    border: func.rem(1) solid;
+    border-radius: 50vw;
+  }
+
+  &__family-offer-link {
+    display: block;
+    margin-block: 2.5rem;
+    border: func.rem(1) solid;
+    border-radius: 0.25rem;
+    color: c.$blue;
+    font-weight: bold;
+  }
+
+  &__family-offer-link-inner-wrapper {
+    min-height: 4.5rem;
+    padding: 1rem 1.5rem;
+    @include flex(row, space-between, center);
+    gap: 0.5rem;
+
+    & > :not(svg) {
+      flex-grow: 1;
+    }
+  }
+
+  &__link-wrapper {
+    margin-bottom: 1.25rem;
+  }
+}

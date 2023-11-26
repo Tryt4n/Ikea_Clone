@@ -8,6 +8,7 @@ import ChooseColor from "../../variants/ChooseColor/ChooseColor";
 import PostalCode from "../../variants/PostalCode/PostalCode";
 import PrefferedShop from "../../variants/PrefferedShop/PrefferedShop";
 import ChosenShop from "../../variants/ChosenShop/ChosenShop";
+import Login from "../../variants/Login/Login";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Types
@@ -21,6 +22,7 @@ import {
   ModalDataItemsIncludedType,
   ModalDataProductInformationType,
   ModalDataRatingsType,
+  ModalLoginType,
   ModalPostalCodeType,
   ModalPrefferedShopType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
@@ -28,9 +30,7 @@ import {
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 
-export default function SideModalLayout({
-  data,
-}: {
+type SideModalLayoutType = {
   data:
     | ModalDataChooseSizeType
     | ModalDataChooseColorType
@@ -42,8 +42,11 @@ export default function SideModalLayout({
     | ModalPostalCodeType
     | ModalChooseShopType
     | ModalPrefferedShopType
-    | ModalChosenShopType;
-}) {
+    | ModalChosenShopType
+    | ModalLoginType;
+};
+
+export default function SideModalLayout({ data }: SideModalLayoutType) {
   const { setModalData, closeModal } = useModal();
 
   function goBack() {
@@ -57,7 +60,7 @@ export default function SideModalLayout({
     <>
       {data && (
         <>
-          <div className="side-modal__header">
+          <header className="side-modal__header">
             <div className="side-modal__btns-wrapper">
               {data.type === "preffered-shop" && (
                 <Btn
@@ -80,8 +83,12 @@ export default function SideModalLayout({
                 <CloseIcon />
               </Btn>
             </div>
-            <h2 className="side-modal__heading">{data.header}</h2>
-          </div>
+            <h2
+              className={`side-modal__heading${data.type === "log-in" ? ` visually-hidden` : ""}`}
+            >
+              {data.header}
+            </h2>
+          </header>
 
           <div className="side-modal__content-wrapper scrollbar-style">
             <Suspense fallback="Loading...">
@@ -91,6 +98,7 @@ export default function SideModalLayout({
               {data.type === "postal-code" && <PostalCode modalType={data.type} />}
               {data.type === "preffered-shop" && <PrefferedShop />}
               {data.type === "chosen-shop" && <ChosenShop />}
+              {data.type === "log-in" && <Login />}
             </Suspense>
           </div>
         </>

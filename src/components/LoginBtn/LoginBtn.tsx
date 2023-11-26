@@ -1,21 +1,34 @@
+// React
+import { ButtonHTMLAttributes } from "react";
+// Custom Hooks
+import useModal from "../../hooks/useModal";
 // Icon
-import { HTMLProps } from "react";
 import AvatarIcon from "../../Icons/AvatarIcon";
 
 type LoginBtnPropsType = {
   className?: string;
   short?: boolean;
-} & HTMLProps<HTMLAnchorElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function LoginBtn({ className, short, ...props }: LoginBtnPropsType) {
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function openModal() {
+    setIsModalOpen(true);
+    setModalData({
+      type: "log-in",
+      header: "Zaloguj się",
+    });
+  }
+
   return (
-    <a
-      href="#"
+    <button
       className={className ? className : undefined}
       {...props}
+      onClick={openModal}
     >
       <AvatarIcon />
       <span className={short ? "visually-hidden" : undefined}>Hej! Zaloguj się</span>
-    </a>
+    </button>
   );
 }

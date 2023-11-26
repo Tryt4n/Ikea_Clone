@@ -73,6 +73,15 @@ export type ModalChosenShopType = {
   header: string;
 };
 
+export type ModalLoginType = {
+  readonly type: "log-in";
+  header: string;
+};
+
+export type ModalMenuType = {
+  readonly type: "menu";
+};
+
 export type ModalDataType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -86,4 +95,6 @@ export type ModalDataType =
   | ModalPostalCodeType
   | ModalChooseShopType
   | ModalPrefferedShopType
-  | ModalChosenShopType;
+  | ModalChosenShopType
+  | ModalLoginType
+  | ModalMenuType;
