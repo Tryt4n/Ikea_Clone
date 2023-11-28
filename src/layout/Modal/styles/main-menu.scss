@@ -1,0 +1,57 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../base/functions" as func;
+@use "../../../base/breakpoints" as b;
+
+.main-menu {
+  $_inner-padding: 2rem;
+  $_header-padding-block: 1.75rem;
+  $_logo-height: func.rem(36);
+
+  overflow: auto;
+  max-height: calc(100% - (($_header-padding-block * 2) + $_logo-height));
+  padding-right: $_inner-padding;
+  padding-left: $_inner-padding;
+  margin-left: -#{$_inner-padding};
+
+  & button:not(.menu-modal__change-country-btn),
+  & a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    outline-offset: 0.25em;
+    text-underline-offset: 0.3em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__list > * {
+    padding-block: func.rem(10);
+  }
+
+  &__main-list {
+    font-weight: bold;
+    padding-block: $_inner-padding;
+  }
+
+  &__main-list-item {
+    font-size: func.rem(36);
+
+    @media screen and (width <= b.$mobile-md) {
+      font-size: func.rem(24);
+    }
+  }
+
+  &__secondary-list {
+    padding-bottom: $_inner-padding;
+  }
+
+  &__change-country-btn {
+    width: fit-content !important;
+    margin-block: 2rem 0.5rem;
+    padding-inline: 1rem;
+    display: flex !important;
+    gap: 0.5rem;
+  }
+}

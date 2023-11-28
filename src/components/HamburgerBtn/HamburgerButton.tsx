@@ -1,7 +1,8 @@
-// Hooks
+// React
 import { HTMLProps } from "react";
-import useSideMenu from "../../hooks/useSideMenu";
+// Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+import useModal from "../../hooks/useModal";
 // Icons
 import HamburgerIcon from "../../Icons/HamburgerIcon";
 
@@ -10,17 +11,18 @@ type HamburgerBtnType = {
 } & HTMLProps<HTMLButtonElement>;
 
 export default function HamburgerButton({ className }: HamburgerBtnType) {
-  const { isMenuOpen, toggleOpenState, sideMenuId } = useSideMenu();
   const { width } = useWindowSize();
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function openMenuModal() {
+    setIsModalOpen(true), setModalData({ type: "menu" });
+  }
 
   return (
     <div className={`btn-container${className ? ` ${className}` : ""}`}>
       <button
-        aria-controls={sideMenuId}
-        aria-expanded={isMenuOpen}
         aria-label="Otwórz Menu"
-        onClick={toggleOpenState}
-        disabled={isMenuOpen}
+        onClick={openMenuModal}
       >
         <div className="btn-container__svg-wrapper">
           <HamburgerIcon />

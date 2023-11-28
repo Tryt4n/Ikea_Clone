@@ -6,6 +6,7 @@ import { ShopType, shopsList } from "../constants/shopsList";
 type AppContextType = {
   state: ReducerStateType;
   dispatch: Dispatch<ReducerActionsType>;
+  isDesktop: boolean;
 };
 
 type ReducerStateType = {
@@ -98,6 +99,7 @@ const initState = {
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initState);
+  const isDesktop = !("ontouchstart" in window);
 
   useEffect(() => {
     const postalCode = localStorage.getItem("postalCode");
@@ -126,8 +128,9 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     () => ({
       state,
       dispatch,
+      isDesktop,
     }),
-    [state]
+    [state, isDesktop]
   );
 
   return <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>;

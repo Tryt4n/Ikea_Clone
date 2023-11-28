@@ -1,0 +1,82 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.menu-modal {
+  $_inner-padding: 2rem;
+  $_header-padding-block: 1.75rem;
+  $_logo-width: func.rem(90);
+  $_logo-height: func.rem(36);
+  $_border-radius: 0.5rem;
+
+  @media screen and (width < b.$tablet) {
+    $_logo-width: func.rem(75);
+    $_logo-height: func.rem(30);
+  }
+
+  overflow: hidden;
+  inset: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: func.rem(480);
+  height: 100%;
+  max-width: func.rem(480);
+  max-height: 100%;
+  padding-inline: func.rem(150) 0;
+  padding-block: 0 func.rem(24);
+  border: none;
+  border-top-right-radius: $_border-radius;
+  border-bottom-right-radius: $_border-radius;
+  outline: none;
+  scroll-behavior: smooth;
+  translate: -100%;
+  transition: v.$main-transition;
+
+  @media screen and (width < b.$tablet) {
+    width: 100dvw;
+    max-width: 100dvw;
+    padding-inline: $_inner-padding;
+  }
+
+  @media screen and (width <= b.$mobile-md) {
+    $_inner-padding: func.rem(20);
+    padding-inline: $_inner-padding;
+  }
+
+  &.show {
+    translate: 0;
+  }
+
+  &__header {
+    position: relative;
+    padding-block: $_header-padding-block;
+
+    @media screen and (width < b.$tablet) {
+      @include flex(row-reverse, space-between, center);
+    }
+
+    & a {
+      display: block;
+      width: $_logo-width;
+      height: $_logo-height;
+
+      & svg {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    & button {
+      @media screen and (width >= b.$tablet) {
+        position: absolute;
+        left: calc(func.rem(150) / -2);
+        translate: -50%;
+      }
+      @media screen and (width < b.$tablet) {
+        translate: 25%;
+      }
+    }
+  }
+}

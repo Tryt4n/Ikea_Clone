@@ -3,24 +3,6 @@
 @use "../abstracts/variables" as v;
 @use "../abstracts/colors" as c;
 
-html:has(body[data-overlay="true"]) {
-  overflow-y: hidden;
-  @media (hover: hover) {
-    margin-right: v.$scrollbar-width;
-  }
-
-  .collection-list > li {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .swiper {
-    overflow: hidden;
-    z-index: -1;
-    user-select: none;
-  }
-}
-
 html:has(dialog[open]),
 html:has(dialog[open]) {
   overflow-y: hidden;
@@ -29,19 +11,8 @@ html:has(dialog[open]) {
     margin-right: v.$scrollbar-width;
   }
 }
-
-body {
-  position: relative;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background-color: transparent;
-  transition: background-color v.$main-transition;
-  visibility: hidden;
-}
-body[data-overlay="true"] > .overlay {
-  background-color: c.$overlay-opaque;
-  visibility: visible;
+html:has(dialog[open].menu-modal) {
+  @media screen and (width >= b.$tablet) {
+    margin-right: v.$scrollbar-width;
+  }
 }

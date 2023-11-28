@@ -36,6 +36,7 @@ function InnerComponent(
     "log-in": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
+    menu: "menu-modal",
   };
 
   const modalClass = modalData ? typeToClassMap[modalData?.type] : undefined;

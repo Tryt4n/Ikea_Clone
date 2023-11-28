@@ -1,10 +1,9 @@
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
-import useSideMenu from "../../../../hooks/useSideMenu";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import { ListElement } from "../../../../components/NavigationListElement/ListElement";
+import ListElement from "../../../../components/NavigationListElement/ListElement";
 // Types
 import {
   ModalChooseShopType,
@@ -21,7 +20,6 @@ import "./index.scss";
 
 export default function NavigationBar() {
   const { width } = useWindowSize();
-  const { isMenuOpen } = useSideMenu();
   const { setIsModalOpen, setModalData } = useModal();
 
   const { state } = useApp();
@@ -43,7 +41,6 @@ export default function NavigationBar() {
               <ListElement
                 key={element}
                 text={element}
-                menuOpen
               />
             ))}
           </ul>
@@ -53,7 +50,6 @@ export default function NavigationBar() {
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() => openModal({ type: "postal-code" })}
-          tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
           <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
@@ -63,7 +59,6 @@ export default function NavigationBar() {
           onClick={() =>
             openModal(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
           }
-          tabIndex={isMenuOpen ? -1 : 0}
         >
           <ShopIcon />
           <span>{state.chosenShop ? state.chosenShop.name.split("IKEA") : "Wybierz sklep"}</span>
