@@ -4,11 +4,17 @@ import { Suspense, lazy } from "react";
 import useModal from "../../../../hooks/useModal";
 // Modal Variants
 const MainMenu = lazy(() => import("../../variants/MainMenu/MainMenu"));
+const ProductsMenu = lazy(() => import("../../variants/ProductsMenu/ProductsMenu"));
+const RoomsMenu = lazy(() => import("../../variants/RoomsMenu/RoomsMenu"));
 // Components
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
 import Btn from "../../../../components/Btn/Btn";
 // Types
-import { ModalMenuType } from "../../../../pages/ProductPage/types/ModalTypes";
+import {
+  ModalMenuType,
+  ModalProductsMenuType,
+  ModalRoomsMenuType,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import IkeaLogo from "../../../../Icons/IkeaLogo";
@@ -16,7 +22,7 @@ import IkeaLogo from "../../../../Icons/IkeaLogo";
 import "./index.scss";
 
 type MenuLayoutType = {
-  data: ModalMenuType;
+  data: ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 };
 
 export default function MenuLayout({ data }: MenuLayoutType) {
@@ -46,7 +52,9 @@ export default function MenuLayout({ data }: MenuLayoutType) {
           </header>
 
           <Suspense fallback={<LoadingSpinner />}>
-            <MainMenu />
+            {data.type === "menu" && <MainMenu />}
+            {data.type === "products-menu" && <ProductsMenu />}
+            {data.type === "rooms-menu" && <RoomsMenu />}
           </Suspense>
         </>
       )}

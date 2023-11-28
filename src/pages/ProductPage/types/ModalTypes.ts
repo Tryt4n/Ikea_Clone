@@ -70,6 +70,14 @@ export type ModalMenuType = {
   readonly type: "menu";
 };
 
+export type ModalProductsMenuType = {
+  readonly type: "products-menu";
+};
+
+export type ModalRoomsMenuType = {
+  readonly type: "rooms-menu";
+};
+
 export type ModalDataType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -85,4 +93,6 @@ export type ModalDataType =
   | ModalPrefferedShopType
   | ModalChosenShopType
   | ModalLoginType
-  | ModalMenuType;
+  | ModalMenuType
+  | ModalProductsMenuType
+  | ModalRoomsMenuType;

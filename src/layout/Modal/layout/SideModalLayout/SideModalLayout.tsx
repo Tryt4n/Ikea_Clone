@@ -93,7 +93,6 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
     case "installment-purchase":
       header = "Na raty w IKEA";
       break;
-
     default:
       break;
   }

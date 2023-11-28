@@ -1,5 +1,7 @@
+// Custom Hooks
+import useModal from "../../../../hooks/useModal";
 // Components
-import GlobeIcon from "../../../../Icons/GlobeIcon";
+import ListItem from "../../../../components/ListItem/ListItem";
 import Btn from "../../../../components/Btn/Btn";
 // Constants
 import {
@@ -7,8 +9,18 @@ import {
   mainNavigationSubList,
   secondaryNavigationList,
 } from "../../../../constants/navigationLists";
+// Icons
+import GlobeIcon from "../../../../Icons/GlobeIcon";
+// Style
+import "./index.scss";
 
 export default function MainMenu() {
+  const { setModalData } = useModal();
+
+  function changeMenu(label: "Produkty" | "Pomieszczenia") {
+    setModalData({ type: label === "Produkty" ? "products-menu" : "rooms-menu" });
+  }
+
   return (
     <nav className="main-menu scrollbar-style">
       <h3 className="visually-hidden">Nawigacja Menu Pobocznego</h3>
@@ -20,6 +32,11 @@ export default function MainMenu() {
             className="main-menu__main-list-item"
             link="#"
             as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"}
+            onClickFunction={
+              element === "Produkty" || element === "Pomieszczenia"
+                ? () => changeMenu(element)
+                : undefined
+            }
           >
             {element}
           </ListItem>
@@ -54,22 +71,5 @@ export default function MainMenu() {
         <span>Zmień kraj</span>
       </Btn>
     </nav>
-  );
-}
-
-type ListItemPropsType = {
-  as?: "a" | "button";
-  link: string;
-  children: string;
-  className?: string;
-};
-
-function ListItem({ as = "a", link, children, className }: ListItemPropsType) {
-  const Element = as;
-
-  return (
-    <li className={className ? className : undefined}>
-      <Element href={as === "a" ? link : undefined}>{children}</Element>
-    </li>
   );
 }

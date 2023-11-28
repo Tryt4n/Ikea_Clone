@@ -3,7 +3,7 @@ import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import ListElement from "../../../../components/NavigationListElement/ListElement";
+import ListItem from "../../../../components/ListItem/ListItem";
 // Types
 import {
   ModalChooseShopType,
@@ -38,10 +38,14 @@ export default function NavigationBar() {
           <h2 className="visually-hidden">Główna Nawigacja</h2>
           <ul>
             {mainNavigationList.map((element) => (
-              <ListElement
+              <ListItem
                 key={element}
-                text={element}
-              />
+                className=""
+                link="#"
+                as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"}
+              >
+                {element}
+              </ListItem>
             ))}
           </ul>
         </nav>

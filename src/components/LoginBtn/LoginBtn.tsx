@@ -2,6 +2,8 @@
 import { ButtonHTMLAttributes } from "react";
 // Custom Hooks
 import useModal from "../../hooks/useModal";
+// Types
+import { BtnShapesType } from "../../types/btnTypes";
 // Components
 import Btn from "../Btn/Btn";
 // Icon
@@ -12,9 +14,15 @@ import "./index.scss";
 type LoginBtnPropsType = {
   className?: string;
   short?: boolean;
+  shape?: BtnShapesType;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function LoginBtn({ className, short, ...props }: LoginBtnPropsType) {
+export default function LoginBtn({
+  className,
+  short,
+  shape = "oval",
+  ...props
+}: LoginBtnPropsType) {
   const { setIsModalOpen, setModalData } = useModal();
 
   function openModal() {
@@ -27,6 +35,7 @@ export default function LoginBtn({ className, short, ...props }: LoginBtnPropsTy
   return (
     <Btn
       variant="light"
+      shape={shape}
       onClick={openModal}
       className={`login-btn${className ? ` ${className}` : undefined}`}
       {...props}

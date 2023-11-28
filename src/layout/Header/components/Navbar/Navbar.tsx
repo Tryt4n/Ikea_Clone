@@ -90,6 +90,7 @@ export default function Navbar() {
             <ListElement className={`${width >= 1200 ? "self-align" : ""}`}>
               <LoginBtn
                 className="btn-container__svg-wrapper"
+                shape={width < 1200 ? "circle" : "oval"}
                 short={width < 1200}
               />
             </ListElement>

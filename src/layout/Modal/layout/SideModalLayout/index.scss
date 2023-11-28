@@ -90,6 +90,10 @@
     padding: 0.25rem;
     margin: -0.25rem;
     margin-top: 0;
+
+    &:has(> .login-modal) {
+      height: calc(100% - 68px);
+    }
   }
 }
 

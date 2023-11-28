@@ -7,8 +7,6 @@ import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
 import MenuLayout from "./layout/MenuLayout/MenuLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
-// Styles
-import "./styles/index.scss";
 
 type ModalPropsType = {
   onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;

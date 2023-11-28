@@ -6,14 +6,7 @@
 .menu-modal {
   $_inner-padding: 2rem;
   $_header-padding-block: 1.75rem;
-  $_logo-width: func.rem(90);
-  $_logo-height: func.rem(36);
   $_border-radius: 0.5rem;
-
-  @media screen and (width < b.$tablet) {
-    $_logo-width: func.rem(75);
-    $_logo-height: func.rem(30);
-  }
 
   overflow: hidden;
   inset: auto;
@@ -59,8 +52,13 @@
 
     & a {
       display: block;
-      width: $_logo-width;
-      height: $_logo-height;
+      width: func.rem(90);
+      height: func.rem(36);
+
+      @media screen and (width < b.$tablet) {
+        width: func.rem(75);
+        height: func.rem(30);
+      }
 
       & svg {
         max-width: 100%;

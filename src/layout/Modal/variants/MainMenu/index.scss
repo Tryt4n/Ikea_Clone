@@ -1,6 +1,6 @@
-@use "../../../abstracts/mixins" as *;
-@use "../../../base/functions" as func;
-@use "../../../base/breakpoints" as b;
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .main-menu {
   $_inner-padding: 2rem;

@@ -8,6 +8,8 @@ import InformationBox from "../../../../components/InformationBox/InformationBox
 import Btn from "../../../../components/Btn/Btn";
 // Constants
 import { nextTradingSunday } from "../../../../constants/shopsList";
+// Style
+import "./index.scss";
 
 export default function ChosenShop() {
   const { state } = useApp();

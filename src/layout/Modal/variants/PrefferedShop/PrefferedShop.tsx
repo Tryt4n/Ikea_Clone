@@ -10,6 +10,8 @@ import LocationBtn from "../../components/LocationBtn/LocationBtn";
 import { ShopType, shopsList } from "../../../../constants/shopsList";
 // Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
+// Style
+import "./index.scss";
 
 export default function PrefferedShop() {
   const [searchTerm, setSearchTerm] = useState("");

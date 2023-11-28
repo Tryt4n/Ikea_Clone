@@ -15,6 +15,8 @@ import {
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import OpenNewWindowIcon from "../../../../Icons/OpenNewWindowIcon";
+// Style
+import "./index.scss";
 
 type PostalCodePropsType = {
   modalType: ModalPostalCodeType["type"] | ModalChooseShopType["type"];

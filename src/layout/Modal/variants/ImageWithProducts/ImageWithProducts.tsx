@@ -18,6 +18,8 @@ import { productLink } from "../../../../constants/links";
 import CloseIcon from "../../../../Icons/CloseIcon";
 import InstagramIcon from "../../../../Icons/InstagramIcon";
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
+// Style
+import "./index.scss";
 
 type extendedProductType = ProductType & {
   imgSrc?: string;

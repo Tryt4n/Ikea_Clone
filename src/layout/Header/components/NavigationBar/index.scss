@@ -29,12 +29,18 @@
       width: 100%;
       @include flex(row, flex-start, top);
 
-      & a {
+      & a,
+      & button {
         padding-block: func.rem(10);
         margin-top: func.rem(-10);
         padding-inline: func.rem(15);
         @include center;
         line-height: func.rem(22);
+        text-underline-offset: 0.3em;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       & li:first-child a {

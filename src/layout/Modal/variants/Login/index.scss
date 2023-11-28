@@ -1,7 +1,8 @@
-@use "../../../abstracts/mixins" as *;
-@use "../../../abstracts/colors" as c;
-@use "../../../abstracts/variables" as v;
-@use "../../../base/functions" as func;
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .login-modal {
   &__header {
@@ -10,8 +11,15 @@
     padding-bottom: 2.5rem;
     @include flex(row, space-between, center);
 
+    @media screen and (width < b.$mobile-md) {
+      margin-top: 0;
+    }
+
     & strong {
       font-size: 2rem;
+      @media screen and (width < b.$mobile-md) {
+        font-size: func.rem(24);
+      }
     }
   }
 
@@ -21,12 +29,12 @@
     &:first-child {
       border-top: func.rem(1) solid c.$gray;
     }
-  }
 
-  &__join-link {
-    padding-block: 1.25rem;
-    @include flex(row, space-between, center);
-    font-weight: bold;
+    & > a {
+      padding-block: 1.25rem;
+      @include flex(row, space-between, center);
+      font-weight: bold;
+    }
   }
 
   &__join-link-icon-wrapper {
@@ -57,7 +65,7 @@
     }
   }
 
-  &__link-wrapper {
+  &__link-wrapper:not(:last-of-type) {
     margin-bottom: 1.25rem;
   }
 }

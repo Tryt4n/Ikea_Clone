@@ -15,6 +15,8 @@ import { productLink } from "../../../../constants/links";
 import CloseIcon from "../../../../Icons/CloseIcon";
 // Types
 import { ModalDataImagePreviewType } from "../../../../pages/ProductPage/types/ModalTypes";
+// Style
+import "./index.scss";
 
 export default function ImagePreview({ data }: { data: ModalDataImagePreviewType }) {
   const { closeModal } = useModal();

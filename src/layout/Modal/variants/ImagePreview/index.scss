@@ -1,7 +1,7 @@
-@use "../../../abstracts/mixins" as *;
-@use "../../../abstracts/colors" as c;
-@use "../../../abstracts/variables" as v;
-@use "../../../base/functions" as func;
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
 
 .image-modal {
   width: calc(100dvw - 6rem);
