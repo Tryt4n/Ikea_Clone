@@ -18,7 +18,6 @@ export default function ChosenShop() {
   function chooseOtherShop() {
     setModalData({
       type: "choose-shop",
-      header: "Znajdź swój preferowany sklep",
     });
   }
 

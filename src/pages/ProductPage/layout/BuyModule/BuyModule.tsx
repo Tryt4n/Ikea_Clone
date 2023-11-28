@@ -46,7 +46,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
     setIsModalOpen(true);
     setModalData({
       type: "choose-size",
-      header: "Wybierz rozmiar",
       productData: data,
       path: path,
     });
@@ -56,7 +55,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
     setIsModalOpen(true);
     setModalData({
       type: "choose-color",
-      header: "Wybierz kolor",
       productData: data,
       path: path,
     });

@@ -4,6 +4,7 @@ import { forwardRef, ForwardedRef } from "react";
 import useModal from "../../hooks/useModal";
 // Modal
 import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
+import MenuLayout from "./layout/MenuLayout/MenuLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
 // Styles
@@ -72,6 +73,11 @@ function InnerComponent(
           (modalData.type === "image-with-products" && (
             <>
               <ImageWithProducts data={modalData} />
+            </>
+          )) ||
+          (modalData.type === "menu" && (
+            <>
+              <MenuLayout data={modalData} />
             </>
           )))}
     </dialog>

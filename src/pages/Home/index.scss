@@ -15,8 +15,8 @@
 
 .message-container {
   min-height: 50dvh;
-  @include flex(column, center, center);
   margin-block: 3rem;
+  @include flex(column, center, center);
   text-align: center;
 
   & button {
@@ -40,25 +40,5 @@
 
   &--error {
     color: c.$red;
-  }
-}
-
-.loading-spinner {
-  width: 4rem;
-  height: 4rem;
-  border: 5px solid hsla(0, 0%, 0%, 0.3);
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }

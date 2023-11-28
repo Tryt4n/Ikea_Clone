@@ -14,6 +14,8 @@ import ImageCardsCollectionSlider, {
 import InspirationImageGalleryArticle, {
   InspirationImageGalleryArticleType,
 } from "../../layout/Articles/InspirationImageGalleryArticle";
+// Components
+import PageLoadingSpinner from "../../components/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
 // Types
 import { ArticleType, ArticlesType } from "../../layout/Articles/types/ArticleTypes";
 // Style
@@ -50,14 +52,7 @@ export default function HomePage() {
   return (
     <>
       {articles.isLoading && !articles.isError ? (
-        <div className="message-container">
-          <h2 className="visually-hidden">Loading</h2>
-          <span
-            className="loading-spinner"
-            role="presentation"
-            aria-hidden="true"
-          />
-        </div>
+        <PageLoadingSpinner />
       ) : articles.isError ? (
         <div className="message-container">
           <h2 className="message message--error">

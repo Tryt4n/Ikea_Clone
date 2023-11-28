@@ -17,7 +17,6 @@ export default function LoginBtn({ className, short, ...props }: LoginBtnPropsTy
     setIsModalOpen(true);
     setModalData({
       type: "log-in",
-      header: "Zaloguj się",
     });
   }
 

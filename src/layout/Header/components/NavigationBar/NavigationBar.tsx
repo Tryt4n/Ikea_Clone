@@ -26,14 +26,10 @@ export default function NavigationBar() {
 
   const { state } = useApp();
 
-  function openModal({
-    type,
-    header,
-  }: ModalPostalCodeType | ModalChooseShopType | ModalChosenShopType) {
+  function openModal({ type }: ModalPostalCodeType | ModalChooseShopType | ModalChosenShopType) {
     setIsModalOpen(true);
     setModalData({
       type: type,
-      header: header,
     });
   }
 
@@ -56,7 +52,7 @@ export default function NavigationBar() {
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
-          onClick={() => openModal({ type: "postal-code", header: "Użyj swojej lokalizacji" })}
+          onClick={() => openModal({ type: "postal-code" })}
           tabIndex={isMenuOpen ? -1 : 0}
         >
           <TruckIcon />
@@ -65,11 +61,7 @@ export default function NavigationBar() {
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() =>
-            openModal(
-              state.chosenShop
-                ? { type: "chosen-shop", header: state.chosenShop.name }
-                : { type: "choose-shop", header: "Znajdź swój preferowany sklep" }
-            )
+            openModal(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
           }
           tabIndex={isMenuOpen ? -1 : 0}
         >

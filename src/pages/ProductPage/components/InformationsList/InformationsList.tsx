@@ -74,7 +74,6 @@ function InformationItem({ heading, children }: { heading: string; children?: Re
 
     setModalData({
       type,
-      header: heading,
     });
   }
 

@@ -142,7 +142,6 @@ function Btns({ type, saveFunction, deleteFunction }: BtnsProps) {
   function showShopsList() {
     setModalData({
       type: "preffered-shop",
-      header: "Wybierz swój preferowany sklep",
     });
   }
 

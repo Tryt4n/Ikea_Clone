@@ -45,7 +45,6 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
   function selectShop(shop: ShopType) {
     setModalData({
       type: "chosen-shop",
-      header: shop.name,
     });
     dispatch({ type: "chooseShop", payload: shop });
   }

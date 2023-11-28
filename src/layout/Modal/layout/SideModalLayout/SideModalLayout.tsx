@@ -1,16 +1,18 @@
 // React
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 // Hooks
 import useModal from "../../../../hooks/useModal";
+import useApp from "../../../../hooks/useApp";
 // Modal Variants
-import ChooseSize from "../../variants/ChooseSize/ChooseSize";
-import ChooseColor from "../../variants/ChooseColor/ChooseColor";
-import PostalCode from "../../variants/PostalCode/PostalCode";
-import PrefferedShop from "../../variants/PrefferedShop/PrefferedShop";
-import ChosenShop from "../../variants/ChosenShop/ChosenShop";
-import Login from "../../variants/Login/Login";
+const ChooseSize = lazy(() => import("../../variants/ChooseSize/ChooseSize"));
+const ChooseColor = lazy(() => import("../../variants/ChooseColor/ChooseColor"));
+const PostalCode = lazy(() => import("../../variants/PostalCode/PostalCode"));
+const PrefferedShop = lazy(() => import("../../variants/PrefferedShop/PrefferedShop"));
+const ChosenShop = lazy(() => import("../../variants/ChosenShop/ChosenShop"));
+const Login = lazy(() => import("../../variants/Login/Login"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
+import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
 // Types
 import {
   ModalChooseShopType,
@@ -29,6 +31,8 @@ import {
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
+// Style
+import "./index.scss";
 
 type SideModalLayoutType = {
   data:
@@ -48,12 +52,50 @@ type SideModalLayoutType = {
 
 export default function SideModalLayout({ data }: SideModalLayoutType) {
   const { setModalData, closeModal } = useModal();
+  const { state } = useApp();
 
-  function goBack() {
-    setModalData({
-      type: "choose-shop",
-      header: "Znajdź swój preferowany sklep",
-    });
+  let header = null;
+
+  switch (data.type) {
+    case "choose-size":
+      header = "Wybierz rozmiar";
+      break;
+    case "choose-color":
+      header = "Wybierz kolor";
+      break;
+    case "choose-shop":
+      header = "Znajdź swój preferowany sklep";
+      break;
+    case "postal-code":
+      header = "Użyj swojej lokalizacji";
+      break;
+    case "preffered-shop":
+      header = "Wybierz swój preferowany sklep";
+      break;
+    case "chosen-shop":
+      header = state.chosenShop?.name;
+      break;
+    case "log-in":
+      header = "Zaloguj się";
+      break;
+    case "product-information":
+      header = "Informacje o produkcie";
+      break;
+    case "items-included":
+      header = "Elementu w zestawie";
+      break;
+    case "dimensions":
+      header = "Wymiary";
+      break;
+    case "ratings":
+      header = "Opinie";
+      break;
+    case "installment-purchase":
+      header = "Na raty w IKEA";
+      break;
+
+    default:
+      break;
   }
 
   return (
@@ -67,7 +109,7 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
                   variant="light"
                   shape="circle"
                   className="side-modal__go-back-btn"
-                  onClick={goBack}
+                  onClick={() => setModalData({ type: "choose-shop" })}
                 >
                   <ArrowLeftIcon />
                 </Btn>
@@ -86,12 +128,12 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
             <h2
               className={`side-modal__heading${data.type === "log-in" ? ` visually-hidden` : ""}`}
             >
-              {data.header}
+              {header}
             </h2>
           </header>
 
           <div className="side-modal__content-wrapper scrollbar-style">
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<LoadingSpinner />}>
               {data.type === "choose-size" && <ChooseSize data={data} />}
               {data.type === "choose-color" && <ChooseColor data={data} />}
               {data.type === "choose-shop" && <PostalCode modalType={data.type} />}
