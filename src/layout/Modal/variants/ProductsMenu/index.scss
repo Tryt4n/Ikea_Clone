@@ -1,1 +1,15 @@
+@use "../../../../base/functions" as func;
 
+.products-menu {
+  &__link {
+    padding-block: func.rem(6);
+
+    &--bold {
+      font-weight: bold;
+    }
+
+    &--additional-space {
+      margin-top: func.rem(22);
+    }
+  }
+}

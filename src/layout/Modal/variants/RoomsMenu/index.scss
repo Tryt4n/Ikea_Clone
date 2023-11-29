@@ -1,0 +1,28 @@
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.rooms-menu {
+  &__list {
+    display: grid;
+    row-gap: func.rem(20);
+    column-gap: func.rem(40);
+    margin-right: -2rem;
+
+    @media screen and (width >= b.$mobile-md) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (width < b.$mobile-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (width > b.$tablet) {
+      grid-template-columns: 1fr 1fr;
+      margin-right: 0;
+    }
+  }
+
+  & figcaption {
+    margin-top: 0.75rem;
+  }
+}

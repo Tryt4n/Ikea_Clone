@@ -132,6 +132,10 @@ dd {
   margin-inline-start: 0;
 }
 
+figure {
+  margin: 0;
+}
+
 /* clears the ‘X’ from Internet Explorer */
 input[type="search"]::-ms-clear {
   display: none;

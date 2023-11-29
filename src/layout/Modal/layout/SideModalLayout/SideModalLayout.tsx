@@ -116,7 +116,6 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
                   variant="light"
                   shape="circle"
                   className="side-modal__go-back-btn"
-                  // onClick={() => setModalData({ type: "choose-shop" })}
                   onClick={goBack}
                 >
                   <ArrowLeftIcon />
@@ -143,11 +142,17 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
           <div className="side-modal__content-wrapper scrollbar-style">
             <Suspense fallback={<LoadingSpinner />}>
               {data.type === "choose-size" && <ChooseSize data={data} />}
+
               {data.type === "choose-color" && <ChooseColor data={data} />}
+
               {data.type === "choose-shop" && <PostalCode modalType={data.type} />}
+
               {data.type === "postal-code" && <PostalCode modalType={data.type} />}
+
               {data.type === "preffered-shop" && <PrefferedShop />}
+
               {data.type === "chosen-shop" && <ChosenShop />}
+
               {data.type === "log-in" && <Login />}
             </Suspense>
           </div>

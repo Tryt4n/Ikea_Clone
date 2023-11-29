@@ -9,6 +9,8 @@ import {
   ModalChooseShopType,
   ModalChosenShopType,
   ModalPostalCodeType,
+  ModalProductsMenuType,
+  ModalRoomsMenuType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Constants
 import { mainNavigationList } from "../../../../constants/navigationLists";
@@ -24,7 +26,14 @@ export default function NavigationBar() {
 
   const { state } = useApp();
 
-  function openModal({ type }: ModalPostalCodeType | ModalChooseShopType | ModalChosenShopType) {
+  function openModal({
+    type,
+  }:
+    | ModalPostalCodeType
+    | ModalChooseShopType
+    | ModalChosenShopType
+    | ModalProductsMenuType
+    | ModalRoomsMenuType) {
     setIsModalOpen(true);
     setModalData({
       type: type,
@@ -36,20 +45,32 @@ export default function NavigationBar() {
       {width >= 1200 && (
         <nav className="navigation-bar__nav">
           <h2 className="visually-hidden">Główna Nawigacja</h2>
+
           <ul>
-            {mainNavigationList.map((element) => (
-              <ListItem
-                key={element}
-                className=""
-                link="#"
-                as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"}
-              >
-                {element}
-              </ListItem>
-            ))}
+            {mainNavigationList.map((element) => {
+              const onClickFunction =
+                element === "Produkty"
+                  ? () => openModal({ type: "products-menu" })
+                  : element === "Pomieszczenia"
+                  ? () => openModal({ type: "rooms-menu" })
+                  : undefined;
+
+              return (
+                <ListItem
+                  key={element}
+                  className=""
+                  link="#"
+                  as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"}
+                  onClickFunction={onClickFunction}
+                >
+                  {element}
+                </ListItem>
+              );
+            })}
           </ul>
         </nav>
       )}
+
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
@@ -58,6 +79,7 @@ export default function NavigationBar() {
           <TruckIcon />
           <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
         </button>
+
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() =>

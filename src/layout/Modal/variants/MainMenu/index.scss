@@ -4,27 +4,6 @@
 
 .main-menu {
   $_inner-padding: 2rem;
-  $_header-padding-block: 1.75rem;
-  $_logo-height: func.rem(36);
-
-  overflow: auto;
-  max-height: calc(100% - (($_header-padding-block * 2) + $_logo-height));
-  padding-right: $_inner-padding;
-  padding-left: $_inner-padding;
-  margin-left: -#{$_inner-padding};
-
-  & button:not(.menu-modal__change-country-btn),
-  & a {
-    display: block;
-    width: 100%;
-    text-align: left;
-    outline-offset: 0.25em;
-    text-underline-offset: 0.3em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 
   &__list > * {
     padding-block: func.rem(10);

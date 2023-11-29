@@ -35,6 +35,8 @@ function InnerComponent(
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
+    "products-menu": "menu-modal",
+    "rooms-menu": "menu-modal",
   };
 
   const modalClass = modalData ? typeToClassMap[modalData?.type] : undefined;
@@ -46,7 +48,6 @@ function InnerComponent(
       className={modalClass}
       onClick={onClickFunction}
       onKeyDown={onKeyDownFunction}
-      style={{ viewTransitionName: `modal` }}
     >
       {modalData &&
         (((modalData.type === "choose-color" ||
@@ -75,7 +76,9 @@ function InnerComponent(
               <ImageWithProducts data={modalData} />
             </>
           )) ||
-          (modalData.type === "menu" && (
+          ((modalData.type === "menu" ||
+            modalData.type === "products-menu" ||
+            modalData.type === "rooms-menu") && (
             <>
               <MenuLayout data={modalData} />
             </>

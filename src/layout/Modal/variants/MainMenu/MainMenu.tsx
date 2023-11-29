@@ -3,6 +3,8 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import ListItem from "../../../../components/ListItem/ListItem";
 import Btn from "../../../../components/Btn/Btn";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Constants
 import {
   mainNavigationList,
@@ -18,11 +20,13 @@ export default function MainMenu() {
   const { setModalData } = useModal();
 
   function changeMenu(label: "Produkty" | "Pomieszczenia") {
-    setModalData({ type: label === "Produkty" ? "products-menu" : "rooms-menu" });
+    startViewTransition(() => {
+      setModalData({ type: label === "Produkty" ? "products-menu" : "rooms-menu" });
+    });
   }
 
   return (
-    <nav className="main-menu scrollbar-style">
+    <nav className="main-menu">
       <h3 className="visually-hidden">Nawigacja Menu Pobocznego</h3>
 
       <ul className="main-menu__list main-menu__main-list">

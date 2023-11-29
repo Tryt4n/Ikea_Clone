@@ -4,6 +4,8 @@
 @use "../../../../base/breakpoints" as b;
 
 .menu-modal {
+  $_modal-width: func.rem(480);
+  $_modal_left-padding: func.rem(150);
   $_inner-padding: 2rem;
   $_header-padding-block: 1.75rem;
   $_border-radius: 0.5rem;
@@ -13,11 +15,11 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: func.rem(480);
+  width: $_modal-width;
   height: 100%;
-  max-width: func.rem(480);
+  max-width: $_modal-width;
   max-height: 100%;
-  padding-inline: func.rem(150) 0;
+  padding-inline: $_modal_left-padding 0;
   padding-block: 0 func.rem(24);
   border: none;
   border-top-right-radius: $_border-radius;
@@ -69,12 +71,56 @@
     & button {
       @media screen and (width >= b.$tablet) {
         position: absolute;
-        left: calc(func.rem(150) / -2);
+        left: calc($_modal_left-padding / -2);
         translate: -50%;
       }
       @media screen and (width < b.$tablet) {
         translate: 25%;
       }
     }
+  }
+
+  &__wrapper {
+    $_inner-padding: 2rem;
+    $_header-padding-block: 1.75rem;
+    $_logo-height: func.rem(36);
+
+    overflow: auto;
+    height: 100%;
+    max-height: calc(100% - (($_header-padding-block * 2) + $_logo-height));
+    padding-right: $_inner-padding;
+    padding-left: $_inner-padding;
+    margin-left: -#{$_inner-padding};
+
+    & button:not(.main-menu__change-country-btn, .menu-modal__go-back-btn),
+    & a {
+      display: block;
+      width: 100%;
+      text-align: left;
+      outline-offset: 0.25em;
+      text-underline-offset: 0.3em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__go-back-btn {
+    position: absolute;
+    left: calc($_modal_left-padding / 2);
+    translate: -50% $_inner-padding;
+
+    @media screen and (width < b.$tablet) {
+      top: 0;
+      translate: calc($_inner-padding / 2) $_inner-padding;
+      left: 0;
+    }
+  }
+
+  &__inner-wrapper-heading {
+    display: inline-block;
+    margin-block: $_inner-padding;
+    font-size: func.rem(22);
   }
 }
