@@ -46,6 +46,7 @@ function InnerComponent(
       className={modalClass}
       onClick={onClickFunction}
       onKeyDown={onKeyDownFunction}
+      style={{ viewTransitionName: `modal` }}
     >
       {modalData &&
         (((modalData.type === "choose-color" ||

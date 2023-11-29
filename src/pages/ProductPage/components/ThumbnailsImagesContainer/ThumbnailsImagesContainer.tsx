@@ -1,6 +1,8 @@
 // Custom Hooks
 import useProduct from "../../../../pages/ProductPage/context/useProduct";
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
+// Components
+import Btn from "../../../../components/Btn/Btn";
 // Types
 import { ProductDataType } from "../../types/ProductDataType";
 // Utils
@@ -9,7 +11,6 @@ import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 import { productLink } from "../../../../constants/links";
 // Style
 import "./index.scss";
-import Btn from "../../../../components/Btn/Btn";
 
 type ThumbnailsImagesContainerPropsType = {
   data: ProductDataType;
@@ -48,18 +49,18 @@ export default function ThumbnailsImagesContainer({
             className={`product-thumbnails__link${variant === productVariant ? ` active` : ""}`}
             href={Element === "a" ? href : undefined}
             aria-label={Element === "div" ? "Aktualnie wybrany wariant" : undefined}
-            onMouseEnter={() =>
+            onMouseEnter={() => {
               setDisplayedMainImg({
                 src: imgSrc.replace("?f=xu", ""),
                 variant: variantsName[index],
-              })
-            }
-            onMouseLeave={() =>
+              });
+            }}
+            onMouseLeave={() => {
               setDisplayedMainImg({
                 src: `${productLink}/${path.collection}-${name}-${variant}__${images.main}`,
                 variant: path.type ? path.type : variant,
-              })
-            }
+              });
+            }}
           >
             <img
               src={imgSrc}

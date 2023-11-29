@@ -6,6 +6,8 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import InformationBox from "../../../../components/InformationBox/InformationBox";
 import Btn from "../../../../components/Btn/Btn";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Constants
 import { nextTradingSunday } from "../../../../constants/shopsList";
 // Style
@@ -18,8 +20,10 @@ export default function ChosenShop() {
   const { chosenShop } = state;
 
   function chooseOtherShop() {
-    setModalData({
-      type: "choose-shop",
+    startViewTransition(() => {
+      setModalData({
+        type: "choose-shop",
+      });
     });
   }
 

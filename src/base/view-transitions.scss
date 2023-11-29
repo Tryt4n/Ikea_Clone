@@ -1,0 +1,10 @@
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(modal) {
+    animation-duration: 500ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(modal) {
+    animation-duration: 1ms;
+  }
+}

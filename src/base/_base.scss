@@ -111,6 +111,10 @@ button {
   }
 }
 
+p {
+  text-wrap: pretty;
+}
+
 dialog::backdrop {
   background-color: transparent;
   transition: v.$main-transition;

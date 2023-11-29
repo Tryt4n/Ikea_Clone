@@ -8,6 +8,8 @@ import Input from "../../../../components/Input/Input";
 import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Constants
 import { ShopType, shopsList } from "../../../../constants/shopsList";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 // Style
@@ -17,7 +19,7 @@ export default function PrefferedShop() {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
-    setSearchTerm(e.target.value.toLowerCase());
+    startViewTransition(() => setSearchTerm(e.target.value.toLowerCase()));
   }
 
   return (
@@ -45,36 +47,36 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
   const filteredShops = shopsList.filter((shop) => shop.name.toLowerCase().includes(searchTerm));
 
   function selectShop(shop: ShopType) {
-    setModalData({
-      type: "chosen-shop",
+    startViewTransition(() => {
+      setModalData({
+        type: "chosen-shop",
+      });
+      dispatch({ type: "chooseShop", payload: shop });
     });
-    dispatch({ type: "chooseShop", payload: shop });
   }
 
   return (
     <>
       {filteredShops.length > 0 ? (
         <ul>
-          {filteredShops.map((shop) => {
-            return (
-              <li
-                key={shop.name}
-                className="preffered-shop__list-item"
+          {filteredShops.map((shop) => (
+            <li
+              key={shop.name}
+              className="preffered-shop__list-item"
+            >
+              <button
+                type="button"
+                className="preffered-shop__list-item-btn"
+                onClick={() => selectShop(shop)}
               >
-                <button
-                  type="button"
-                  className="preffered-shop__list-item-btn"
-                  onClick={() => selectShop(shop)}
-                >
-                  <div className="preffered-shop__list-item-text-wrapper">
-                    <strong>{shop.name}</strong>
-                    <small>{shop.address}</small>
-                  </div>
-                  <ChevronRightSmall />
-                </button>
-              </li>
-            );
-          })}
+                <div className="preffered-shop__list-item-text-wrapper">
+                  <strong>{shop.name}</strong>
+                  <small>{shop.address}</small>
+                </div>
+                <ChevronRightSmall />
+              </button>
+            </li>
+          ))}
         </ul>
       ) : (
         <em className="preffered-shop__no-result-text">

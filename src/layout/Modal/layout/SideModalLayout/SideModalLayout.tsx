@@ -13,6 +13,8 @@ const Login = lazy(() => import("../../variants/Login/Login"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Types
 import {
   ModalChooseShopType,
@@ -97,6 +99,12 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
       break;
   }
 
+  function goBack() {
+    startViewTransition(() => {
+      setModalData({ type: "choose-shop" });
+    });
+  }
+
   return (
     <>
       {data && (
@@ -108,7 +116,8 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
                   variant="light"
                   shape="circle"
                   className="side-modal__go-back-btn"
-                  onClick={() => setModalData({ type: "choose-shop" })}
+                  // onClick={() => setModalData({ type: "choose-shop" })}
+                  onClick={goBack}
                 >
                   <ArrowLeftIcon />
                 </Btn>

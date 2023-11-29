@@ -8,6 +8,8 @@ import { PostalCodeInput } from "../../components/PostalCodeInput/PostalCodeInpu
 import { PostalCodeRememberCheckbox } from "../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
 import Btn from "../../../../components/Btn/Btn";
 import LocationBtn from "../../components/LocationBtn/LocationBtn";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Types
 import {
   ModalChooseShopType,
@@ -142,8 +144,10 @@ function Btns({ type, saveFunction, deleteFunction }: BtnsProps) {
   const { setModalData } = useModal();
 
   function showShopsList() {
-    setModalData({
-      type: "preffered-shop",
+    startViewTransition(() => {
+      setModalData({
+        type: "preffered-shop",
+      });
     });
   }
 

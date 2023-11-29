@@ -2,6 +2,8 @@
 import { HTMLProps, useRef, useState } from "react";
 // react-router-dom
 import { useParams } from "react-router-dom";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Types
 import { AdditionalInfo, ProductDataType } from "../../types/ProductDataType";
 import { TextVariants } from "../../../../types/colorsVariantsType";
@@ -75,14 +77,16 @@ function LongDescriptionSections({ data }: { data: AdditionalInfo }) {
   const { title, variant, header, description, additionalSections } = data;
 
   function handleShowMoreClick() {
-    setShowMore(!showMore);
+    startViewTransition(() => {
+      setShowMore(!showMore);
 
-    if (showMore && longDescriptionRef.current) {
-      const targetScrollPosition =
-        longDescriptionRef.current.getBoundingClientRect().top + window.scrollY - 90;
+      if (showMore && longDescriptionRef.current) {
+        const targetScrollPosition =
+          longDescriptionRef.current.getBoundingClientRect().top + window.scrollY - 90;
 
-      window.scrollTo({ top: targetScrollPosition, behavior: "smooth" });
-    }
+        window.scrollTo({ top: targetScrollPosition, behavior: "smooth" });
+      }
+    });
   }
 
   return (
