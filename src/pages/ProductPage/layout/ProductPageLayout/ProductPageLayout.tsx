@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 // react-router-dom
 import { useNavigate } from "react-router-dom";
-// Hooks
+// Custom Hooks
 import useFetch from "../../../../hooks/useFetch";
 import useProduct from "../../context/useProduct";
 // Layout
@@ -12,7 +12,7 @@ import ProductInformations from "../ProductInformations/ProductInformations";
 // Components
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 // Constants
 import { productLink } from "../../../../constants/links";
 // Style

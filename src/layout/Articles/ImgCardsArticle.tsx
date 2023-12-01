@@ -11,8 +11,8 @@ import Article from "../../compoundComponents/Article/Article";
 import CardsContainer from "../../compoundComponents/Card/CardsContainer";
 import Card from "../../compoundComponents/Card/Card";
 // Types
-import { BackgroundVariants } from "../../types/colorsVariantsType";
-import { BtnVariantsType } from "../../types/btnTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { BtnVariantsType } from "../../types/btnTypes";
 
 export type ImgCardsArticleType = {
   id: string;

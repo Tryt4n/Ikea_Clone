@@ -1,11 +1,12 @@
+// React
 import React from "react";
 // Custom Hooks
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
 // Types
-import { ListItemDescriptionPlacementTypes } from "../../../../types/collectionTypes";
-import { TextVariants } from "../../../../types/colorsVariantsType";
+import type { ListItemDescriptionPlacementTypes } from "../../../../types/collectionTypes";
+import type { TextVariants } from "../../../../types/colorsVariantsType";
 
 export type CollectionProductsListType = {
   products: ProductType[];

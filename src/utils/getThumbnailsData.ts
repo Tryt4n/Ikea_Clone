@@ -1,7 +1,7 @@
 // react-router-dom
 import { Params } from "react-router";
 // Types
-import { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
+import type { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
 // Constants
 import { productLink } from "../constants/links";
 

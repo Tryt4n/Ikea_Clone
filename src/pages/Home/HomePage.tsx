@@ -2,22 +2,22 @@ import React from "react";
 // Custom Hooks
 import useFetch from "../../hooks/useFetch";
 // Articles Variants
-import MainArticle, { MainArticleType } from "../../layout/Articles/MainArticle";
-import TextCardsArticle, { TextCardsArticleType } from "../../layout/Articles/TextCardsArticle";
-import CarouselSliderArticle, {
-  CarouselSliderArticleType,
-} from "../../layout/Articles/CarouselSliderArticle";
-import ImgCardsArticle, { ImgCardsArticleType } from "../../layout/Articles/ImgCardsArticle";
-import ImageCardsCollectionSlider, {
-  ImageCardsCollectionSliderType,
-} from "../../layout/Articles/ImagesCardsCollectionSlider";
-import InspirationImageGalleryArticle, {
-  InspirationImageGalleryArticleType,
-} from "../../layout/Articles/InspirationImageGalleryArticle";
+import MainArticle from "../../layout/Articles/MainArticle";
+import CarouselSliderArticle from "../../layout/Articles/CarouselSliderArticle";
+import ImgCardsArticle from "../../layout/Articles/ImgCardsArticle";
+import ImageCardsCollectionSlider from "../../layout/Articles/ImagesCardsCollectionSlider";
+import TextCardsArticle from "../../layout/Articles/TextCardsArticle";
+import InspirationImageGalleryArticle from "../../layout/Articles/InspirationImageGalleryArticle";
 // Components
 import PageLoadingSpinner from "../../components/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
 // Types
-import { ArticleType, ArticlesType } from "../../layout/Articles/types/ArticleTypes";
+import type { MainArticleType } from "../../layout/Articles/MainArticle";
+import type { CarouselSliderArticleType } from "../../layout/Articles/CarouselSliderArticle";
+import type { ImgCardsArticleType } from "../../layout/Articles/ImgCardsArticle";
+import type { ImageCardsCollectionSliderType } from "../../layout/Articles/ImagesCardsCollectionSlider";
+import type { TextCardsArticleType } from "../../layout/Articles/TextCardsArticle";
+import type { InspirationImageGalleryArticleType } from "../../layout/Articles/InspirationImageGalleryArticle";
+import type { ArticleType, ArticlesType } from "../../layout/Articles/types/ArticleTypes";
 // Style
 import "./index.scss";
 

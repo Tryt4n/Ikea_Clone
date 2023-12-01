@@ -6,8 +6,8 @@ import AddToWishListBtn from "../../components/AddToWishListBtn/AddToWishListBtn
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
 // Types
-import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
-import { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
 // Style
 import "./index.scss";
 

@@ -4,8 +4,8 @@ import { CSSProperties, HTMLProps, ReactNode } from "react";
 import { CollectionContextProvider } from "../Context/context";
 import useCollection from "../hooks/useContext";
 // Types
-import { ListItemDescriptionPlacementTypes } from "../../../types/collectionTypes";
-import { TextVariants } from "../../../types/colorsVariantsType";
+import type { ListItemDescriptionPlacementTypes } from "../../../types/collectionTypes";
+import type { TextVariants } from "../../../types/colorsVariantsType";
 // Utils
 import { addThousandSeparator } from "../../../utils/addThousandSeparator";
 // Icons

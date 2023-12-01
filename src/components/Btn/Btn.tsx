@@ -1,7 +1,7 @@
 // React
 import { ButtonHTMLAttributes, ReactNode } from "react";
 // Types
-import { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
+import type { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
 // Style
 import "./index.scss";
 

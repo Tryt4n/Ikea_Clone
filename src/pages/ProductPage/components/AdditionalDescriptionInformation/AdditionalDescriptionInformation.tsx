@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import { AdditionalInfo, ProductDataType } from "../../types/ProductDataType";
-import { TextVariants } from "../../../../types/colorsVariantsType";
+import type { AdditionalInfo, ProductDataType } from "../../types/ProductDataType";
+import type { TextVariants } from "../../../../types/colorsVariantsType";
 // Constants
 import { productLink } from "../../../../constants/links";
 // Style

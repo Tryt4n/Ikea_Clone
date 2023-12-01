@@ -1,14 +1,19 @@
 // React
 import { ChangeEvent, useState } from "react";
+// Custom Hooks
+import useApp from "../../../../hooks/useApp";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Icons
 import MinusIcon from "../../../../Icons/MinusIcon";
 import PlusIcon from "../../../../Icons/PlusIcon";
+// Types
+import type { ProductDataType } from "../../types/ProductDataType";
 // Style
 import "./index.scss";
 
-export default function BuyBlock() {
+export default function BuyBlock({ product }: { product: ProductDataType }) {
+  const { dispatch } = useApp();
   const [quantity, setQuantity] = useState(1);
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
@@ -24,6 +29,24 @@ export default function BuyBlock() {
 
       return Math.min(Math.max(newQuantity, 1), 99);
     });
+  }
+
+  function addToShoppingCart() {
+    dispatch({
+      type: "addToShoppingCart",
+      payload: {
+        quantity: quantity,
+        productNumber: product.productNumber,
+        collection: product.collection,
+        name: product.nameToDisplay,
+        variantName: product.variantName,
+        size: product.size,
+        price: product.price,
+        oldPrice: product.oldPriceTag,
+        images: product.images,
+      },
+    });
+    setQuantity(1);
   }
 
   return (
@@ -76,6 +99,7 @@ export default function BuyBlock() {
         variant="blue"
         type="submit"
         aria-live="polite"
+        onClick={addToShoppingCart}
       >
         Dodaj {quantity > 1 && `${quantity} szt. `}do koszyka
       </Btn>

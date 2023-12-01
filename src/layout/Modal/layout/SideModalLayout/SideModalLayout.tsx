@@ -16,7 +16,7 @@ import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/Loadin
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import {
+import type {
   ModalChooseShopType,
   ModalChosenShopType,
   ModalDataChooseColorType,

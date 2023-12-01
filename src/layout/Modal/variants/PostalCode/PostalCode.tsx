@@ -11,7 +11,7 @@ import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import {
+import type {
   ModalChooseShopType,
   ModalPostalCodeType,
 } from "../../../../pages/ProductPage/types/ModalTypes";

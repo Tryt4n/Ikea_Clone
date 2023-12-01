@@ -15,7 +15,7 @@ import Btn from "../../../../components/Btn/Btn";
 import PlayIcon from "../../../../Icons/PlayIcon";
 import PauseIcon from "../../../../Icons/PauseIcon";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 // Constants
 import { productLink } from "../../../../constants/links";
 // Styles

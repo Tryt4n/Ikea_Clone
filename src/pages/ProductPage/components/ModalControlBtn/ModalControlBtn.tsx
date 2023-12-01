@@ -1,7 +1,7 @@
+// React
+import { ButtonHTMLAttributes } from "react";
 // Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
-// Types
-import { ButtonHTMLAttributes } from "react";
 // Style
 import "./index.scss";
 

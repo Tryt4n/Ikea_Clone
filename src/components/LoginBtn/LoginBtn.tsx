@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from "react";
 // Custom Hooks
 import useModal from "../../hooks/useModal";
 // Types
-import { BtnShapesType } from "../../types/btnTypes";
+import type { BtnShapesType } from "../../types/btnTypes";
 // Components
 import Btn from "../Btn/Btn";
 // Icon

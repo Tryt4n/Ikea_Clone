@@ -1,10 +1,10 @@
-// Types
-import { CardHTMLElementsType } from "../../types/cardTypes";
-import { BackgroundVariants } from "../../types/colorsVariantsType";
 // Components
 import Article from "../../compoundComponents/Article/Article";
 import Card from "../../compoundComponents/Card/Card";
 import CardsContainer from "../../compoundComponents/Card/CardsContainer";
+// Types
+import type { CardHTMLElementsType } from "../../types/cardTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
 
 export type TextCardsArticleType = {
   id: string;

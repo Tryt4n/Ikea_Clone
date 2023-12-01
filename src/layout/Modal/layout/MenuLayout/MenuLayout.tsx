@@ -13,7 +13,7 @@ import Btn from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import {
+import type {
   ModalMenuType,
   ModalProductsMenuType,
   ModalRoomsMenuType,

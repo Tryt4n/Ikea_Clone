@@ -1,7 +1,7 @@
 // Components
 import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 // Style
 import "./index.scss";
 

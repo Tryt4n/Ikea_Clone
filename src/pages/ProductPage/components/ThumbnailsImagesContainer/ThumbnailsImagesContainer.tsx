@@ -4,7 +4,7 @@ import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 // Utils
 import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 // Constants

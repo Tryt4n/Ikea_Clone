@@ -1,5 +1,7 @@
 // React
 import { Dispatch, ReactNode, createContext, useEffect, useMemo, useReducer } from "react";
+// Types
+import type { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
 // Constants
 import { ShopType, shopsList } from "../constants/shopsList";
 
@@ -9,12 +11,22 @@ type AppContextType = {
   isDesktop: boolean;
 };
 
+export type ShoppingCartType = Pick<
+  ProductDataType,
+  "collection" | "productNumber" | "size" | "price" | "variantName" | "images"
+> & {
+  name: ProductDataType["nameToDisplay"];
+  oldPrice?: ProductDataType["oldPriceTag"];
+  quantity: number;
+};
+
 type ReducerStateType = {
   postalCode: string;
-  isErrorMessageVisible: boolean;
-  errorMessage: string;
+  isPostalCodeErrorMessageVisible: boolean;
+  postalCodeErrorMessage: string;
   rememberPostalCodeCheckboxStatus: boolean;
   chosenShop?: ShopType;
+  shoppingCart?: ShoppingCartType[];
 };
 
 type ReducerActionsType =
@@ -36,6 +48,13 @@ type ReducerActionsType =
   | {
       type: "chooseShop";
       payload: ShopType;
+    }
+  | {
+      type: "loadShoppingCart";
+    }
+  | {
+      type: "addToShoppingCart";
+      payload: ShoppingCartType;
     };
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -47,14 +66,14 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       return {
         ...state,
         postalCode: action.payload,
-        isErrorMessageVisible: false,
+        isPostalCodeErrorMessageVisible: false,
       };
 
     case "showErrorMessage":
       return {
         ...state,
-        isErrorMessageVisible: true,
-        errorMessage: action.payload,
+        isPostalCodeErrorMessageVisible: true,
+        postalCodeErrorMessage: action.payload,
       };
 
     case "togglePostalCodeCheckbox": {
@@ -84,17 +103,102 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    // case "addToShoppingCart": {
+    //   const shoppingCart = localStorage.getItem("shoppingCart") || [];
+    //   const newProduct = action.payload;
+
+    //   if (shoppingCart.length === 0) {
+    //     localStorage.setItem("shoppingCart", JSON.stringify([newProduct]));
+    //   }
+
+    //   if (shoppingCart.length !== 0 && state.shoppingCart) {
+    //     const oldShoppingCart = state.shoppingCart;
+    //     // const newShoppingCart = [...oldShoppingCart, newProduct];
+
+    //     //!
+    //     const existingProductIndex = state.shoppingCart.findIndex(
+    //       (product) => product.productNumber === newProduct.productNumber
+    //     );
+    //     if (existingProductIndex !== -1) {
+    //       const updatedShoppingCart = [...state.shoppingCart];
+    //       updatedShoppingCart[existingProductIndex].quantity += newProduct.quantity;
+    //       localStorage.setItem("shoppingCart", JSON.stringify(updatedShoppingCart));
+    //       // state.shoppingCart[existingProductIndex].quantity += newProduct.quantity
+    //     } else {
+    //       const newShoppingCart = [...oldShoppingCart, newProduct];
+    //       localStorage.setItem("shoppingCart", JSON.stringify(newShoppingCart));
+    //     }
+    //   }
+    //   //!
+
+    //   // localStorage.setItem("shoppingCart", JSON.stringify(newShoppingCart));
+    //   // }
+
+    //   return {
+    //     ...state,
+    //   };
+    // }
+
+    case "loadShoppingCart": {
+      const storage = localStorage.getItem("shoppingCart");
+      let shoppingCartValue: ShoppingCartType[];
+
+      if (storage) {
+        shoppingCartValue = JSON.parse(storage);
+        return { ...state, shoppingCart: shoppingCartValue };
+      }
+      // else {
+      // shoppingCartValue = state.shoppingCart;
+      // }
+
+      return { ...state };
+      // return {
+      //   ...state,
+      //   shoppingCart: shoppingCartValue,
+      // };
+    }
+
+    case "addToShoppingCart": {
+      const shoppingCart: ShoppingCartType[] = JSON.parse(
+        localStorage.getItem("shoppingCart") || "[]"
+      );
+      const newProduct = action.payload;
+
+      let updatedShoppingCart;
+
+      if (shoppingCart.length === 0) {
+        updatedShoppingCart = [newProduct];
+      } else {
+        const existingProductIndex = shoppingCart.findIndex(
+          (product) => product.productNumber === newProduct.productNumber
+        );
+
+        if (existingProductIndex !== -1) {
+          updatedShoppingCart = [...shoppingCart];
+          updatedShoppingCart[existingProductIndex].quantity += newProduct.quantity;
+        } else {
+          updatedShoppingCart = [...shoppingCart, newProduct];
+        }
+      }
+
+      localStorage.setItem("shoppingCart", JSON.stringify(updatedShoppingCart));
+
+      return {
+        ...state,
+        shoppingCart: updatedShoppingCart,
+      };
+    }
+
     default:
-      return state;
+      throw new Error("A case in reducer function has been specified that does not exist.");
   }
 }
 
 const initState = {
   postalCode: "",
-  isErrorMessageVisible: false,
-  errorMessage: "",
+  isPostalCodeErrorMessageVisible: false,
+  postalCodeErrorMessage: "",
   rememberPostalCodeCheckboxStatus: true,
-  chosenShop: undefined,
 };
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
@@ -118,7 +222,28 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     if (chosenShopStorage && chosenShop) {
       dispatch({ type: "chooseShop", payload: chosenShop });
     }
+
+    // const shoppingCart = localStorage.getItem("shoppingCart");
+    // if (shoppingCart) {
+    //   dispatch({ type: "addToShoppingCart", payload: JSON.parse(shoppingCart) });
+    // }
+    // const shoppingCart = localStorage.getItem("shoppingCart");
+    // if (shoppingCart) {
+    //   dispatch({ type: "loadShoppingCart" });
+    // }
+
+    //? Load ShoppingCart
+    dispatch({ type: "loadShoppingCart" });
   }, []);
+
+  //!
+  // useEffect(() => {
+  //   const shoppingCart = localStorage.getItem("shoppingCart");
+  //   if (shoppingCart) {
+  //     state.shoppingCart = JSON.parse(shoppingCart);
+  //   }
+  // }, [state]);
+  //!
 
   useEffect(() => {
     console.log(state);

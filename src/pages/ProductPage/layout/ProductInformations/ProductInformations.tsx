@@ -4,7 +4,7 @@ import InformationsList from "../../components/InformationsList/InformationsList
 import SustainableDevelopment from "../../components/SustainableDevelopment/SustainableDevelopment";
 import AdditionalDescriptionInformation from "../../components/AdditionalDescriptionInformation/AdditionalDescriptionInformation";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 
 export default function ProductInformations({ data }: { data: ProductDataType }) {
   const { description, productNumber, rating, additionalInfo, sustainableDevelopment } = data;

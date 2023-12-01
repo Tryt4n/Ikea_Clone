@@ -7,8 +7,8 @@ import "swiper/css/navigation";
 // Components
 import Article from "../../compoundComponents/Article/Article";
 // Types
-import { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
-import { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
 
 export type CarouselSliderArticleType = {
   id: "string";

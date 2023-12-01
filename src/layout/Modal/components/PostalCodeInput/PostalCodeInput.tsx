@@ -22,7 +22,7 @@ function InnerComponent(
   const { state } = useApp();
   const [inputTextValue, setInputTextValue] = useState("");
 
-  const { postalCode, isErrorMessageVisible, errorMessage } = state;
+  const { postalCode, isPostalCodeErrorMessageVisible, postalCodeErrorMessage } = state;
 
   useEffect(() => {
     if (postalCode !== "") {
@@ -58,32 +58,32 @@ function InnerComponent(
           autoComplete: "off",
           pattern: `\\d{2}-\\d{3}`,
           title: "Wprowadź poprawny kod pocztowy (np. 12-345)",
-          "aria-describedby": !errorMessage ? "postal-code-example" : undefined,
-          "aria-errormessage": errorMessage ? "postal-code-errormessage" : undefined,
-          "aria-invalid": isErrorMessageVisible,
+          "aria-describedby": !postalCodeErrorMessage ? "postal-code-example" : undefined,
+          "aria-errormessage": postalCodeErrorMessage ? "postal-code-errormessage" : undefined,
+          "aria-invalid": isPostalCodeErrorMessageVisible,
           value: inputTextValue,
           onChange: onInputChange,
           ...props,
         }}
       />
 
-      {!errorMessage && (
+      {!postalCodeErrorMessage && (
         <small
           id="postal-code-example"
           className="postal-code-input__example tx-gray"
-          aria-hidden={isErrorMessageVisible}
+          aria-hidden={isPostalCodeErrorMessageVisible}
         >
           np. 12-345
         </small>
       )}
 
-      {errorMessage && (
+      {postalCodeErrorMessage && (
         <small
           id="postal-code-errormessage"
           className="postal-code-input__errormessage"
-          aria-hidden={!isErrorMessageVisible}
+          aria-hidden={!isPostalCodeErrorMessageVisible}
         >
-          {errorMessage}
+          {postalCodeErrorMessage}
         </small>
       )}
     </div>

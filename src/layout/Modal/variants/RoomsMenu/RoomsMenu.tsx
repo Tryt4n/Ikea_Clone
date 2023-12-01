@@ -3,7 +3,7 @@ import ListItem from "../../../../components/ListItem/ListItem";
 // Constants
 import { roomsNavigationList } from "../../../../constants/navigationLists";
 // Types
-import { ModalRoomsMenuType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalRoomsMenuType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Style
 import "./index.scss";
 

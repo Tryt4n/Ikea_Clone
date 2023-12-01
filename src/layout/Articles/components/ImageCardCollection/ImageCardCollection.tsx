@@ -1,11 +1,11 @@
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
-// Types
-import { AspectRatioType } from "../../../../types/articleTypes";
 // Components
 import Article from "../../../../compoundComponents/Article/Article";
-import { ProductType } from "../CollectionProductsList/CollectionProductsList";
-import CollectionProductsList from "../CollectionProductsList/CollectionProductsList.1";
+import CollectionProductsList from "../CollectionProductsList/CollectionProductsList";
+// Types
+import type { AspectRatioType } from "../../../../types/articleTypes";
+import type { ProductType } from "../CollectionProductsList/CollectionProductsList";
 
 export type ImageCardCollectionType = {
   card: CardCollectionType;

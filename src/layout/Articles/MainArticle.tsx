@@ -1,11 +1,11 @@
 // Components
 import Article from "../../compoundComponents/Article/Article";
 import CollectionNameContainer from "../../compoundComponents/CollectionProducts/components/CollectionNameContainer";
-import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList.1";
+import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList";
 // Types
-import { ProductType } from "./components/CollectionProductsList/CollectionProductsList";
-import { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
-import { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { ProductType } from "./components/CollectionProductsList/CollectionProductsList";
+import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
 
 export type MainArticleType = {
   id: string;

@@ -3,7 +3,7 @@ import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from "
 // Components
 import { Modal } from "../layout/Modal/Modal";
 // Types
-import { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
+import type { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
 
 type ModalContextType = {
   modalID: string;

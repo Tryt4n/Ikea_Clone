@@ -3,12 +3,12 @@ import { HTMLProps, ReactNode } from "react";
 // Components
 import Btn, { BtnPropsType } from "../../components/Btn/Btn";
 // Types
-import { CardHTMLElementsType } from "../../types/cardTypes";
+import type { CardHTMLElementsType } from "../../types/cardTypes";
+import type { BackgroundVariants } from "../../types/colorsVariantsType";
 // Icons
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
 // Style
 import "./index.scss";
-import { BackgroundVariants } from "../../types/colorsVariantsType";
 
 type CardPropsType<T> = {
   children: React.ReactNode;

@@ -5,7 +5,7 @@ import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import ListItem from "../../../../components/ListItem/ListItem";
 // Types
-import {
+import type {
   ModalChooseShopType,
   ModalChosenShopType,
   ModalPostalCodeType,

@@ -1,8 +1,9 @@
+// React
 import React from "react";
 // Custom Hooks
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Types
-import { ModalDataChooseColorType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalDataChooseColorType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Utils
 import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
 

@@ -14,11 +14,11 @@ import Header from "../../components/Header/Header";
 import AdditionalInformation from "../../components/AdditionalInformation/AdditionalInformation";
 import GuaranteeInformation from "../../components/GuaranteeInformation/GuaranteeInformation";
 import SoftnessInformation from "../../components/SoftnessInformation/SoftnessInformation";
+import InformationBox from "../../../../components/InformationBox/InformationBox";
 // Types
-import { ProductDataType } from "../../types/ProductDataType";
+import type { ProductDataType } from "../../types/ProductDataType";
 // Style
 import "./index.scss";
-import InformationBox from "../../../../components/InformationBox/InformationBox";
 
 export default function BuyModule({ data }: { data: ProductDataType }) {
   const { width } = useWindowSize();
@@ -141,7 +141,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
 
       <PurchaseOptions />
 
-      <BuyBlock />
+      <BuyBlock product={data} />
 
       {forKidsBadge && (
         <InformationBox
