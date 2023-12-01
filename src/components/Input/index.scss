@@ -21,7 +21,7 @@
     padding-inline: func.rem(6);
     outline: none;
     border: func.rem(1) solid c.$text-gray;
-    border-radius: 0.25rem;
+    border-radius: v.$main-border-radius;
     font-size: 1rem;
     color: c.$text-gray;
     caret-color: c.$very-dark-blue;
@@ -87,7 +87,7 @@
     height: $_checkbox-size;
     background: transparent;
     border: func.rem(1) solid c.$medium-gray;
-    border-radius: 0.25rem;
+    border-radius: v.$main-border-radius;
     transition: v.$main-transition;
 
     &::before {

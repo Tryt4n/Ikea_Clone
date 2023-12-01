@@ -8,6 +8,8 @@ import NotFoundPage from "./pages/tasks/NotFoundPage/NotFoundPage";
 import HomePage from "./pages/Home/HomePage";
 import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
+import WishList from "./pages/WishList/WishList";
 
 export const routes = createBrowserRouter([
   {
@@ -38,6 +40,32 @@ export const routes = createBrowserRouter([
               {
                 path: ":collection/:product/:type/:productID",
                 element: <ProductPage />,
+              },
+            ],
+          },
+          {
+            path: "shoppingcart",
+            children: [
+              {
+                index: true,
+                element: <ShoppingCart />,
+              },
+              {
+                path: "*",
+                element: <Navigate to="/shoppingcart" />,
+              },
+            ],
+          },
+          {
+            path: "favourites",
+            children: [
+              {
+                index: true,
+                element: <WishList />,
+              },
+              {
+                path: "*",
+                element: <Navigate to="/favourites" />,
               },
             ],
           },

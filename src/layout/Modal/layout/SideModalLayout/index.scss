@@ -104,9 +104,10 @@
   margin-bottom: 1rem;
   padding: 1.25rem 1.5rem;
   border: func.rem(1) solid c.$gray;
-  border-radius: 0.25rem;
+  border-radius: v.$main-border-radius;
   font-weight: bold;
   transition: v.$main-transition;
+
   &:is(:last-child) {
     margin-bottom: 0;
   }

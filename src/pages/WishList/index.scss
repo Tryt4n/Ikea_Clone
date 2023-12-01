@@ -1,0 +1,54 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.wish-list {
+  $_block-spacing: func.rem(40);
+
+  margin-block: $_block-spacing;
+
+  &__header {
+    margin-bottom: 1.5rem;
+
+    & > h2 {
+      margin-bottom: 1rem;
+      font-size: func.rem(36);
+      line-height: 1.333;
+
+      @media screen and (width < b.$mobile-md) {
+        font-size: 1.5rem;
+        line-height: 1.45;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    padding-block: $_block-spacing;
+    @include flex(column, center, center);
+    text-align: center;
+
+    & > :not(:last-child) {
+      margin-bottom: 0.75em;
+    }
+
+    & > h3 {
+      font-size: 1.5rem;
+
+      @media screen and (width < b.$mobile-md) {
+        font-size: func.rem(18);
+      }
+    }
+
+    & > svg {
+      color: c.$text-gray;
+    }
+  }
+
+  &__btns-wrapper {
+    margin-top: 0.75rem;
+    @include flex();
+    gap: 0.5rem;
+  }
+}

@@ -19,11 +19,9 @@ import MagnifierIcon from "../../../../Icons/MagnifierIcon";
 import "./index.scss";
 
 export default function Navbar() {
-  const { width } = useWindowSize();
-  //!
-  const { isModalOpen } = useModal();
   const { isDesktop } = useApp();
-  //!
+  const { isModalOpen } = useModal();
+  const { width } = useWindowSize();
 
   const [navbarRef, inView] = useInView({
     triggerOnce: false,
@@ -95,12 +93,18 @@ export default function Navbar() {
               />
             </ListElement>
 
-            <ListElement as="link">
+            <ListElement
+              as="link"
+              href="/favourites"
+            >
               <HeartIcon />
               <span className="visually-hidden">Lista zakupowa</span>
             </ListElement>
 
-            <ListElement as="link">
+            <ListElement
+              as="link"
+              href="/shoppingcart"
+            >
               <ShoppingCartIcon />
               <span className="visually-hidden">Koszyk</span>
             </ListElement>
@@ -168,7 +172,7 @@ function ListElement({
   as,
   className,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-expect-error
   link = "#",
   container = "true",
   ...props
@@ -185,7 +189,7 @@ function ListElement({
         <>{children}</>
       ) : (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error
         <Element
           href={as === "link" ? link : undefined}
           className="btn-container__svg-wrapper"

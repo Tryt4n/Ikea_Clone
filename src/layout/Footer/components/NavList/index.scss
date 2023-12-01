@@ -19,15 +19,18 @@
       aspect-ratio: 1;
       border-radius: 50vw;
     }
+
     &:not(.icons-rounded) {
       width: 3rem;
       height: 2rem;
-      border-radius: 0.25rem;
+      border-radius: v.$main-border-radius;
+
       & svg {
         width: 100%;
         height: 100%;
       }
     }
+
     &:hover {
       border-color: c.$text-gray;
     }

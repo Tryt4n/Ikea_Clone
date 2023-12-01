@@ -49,7 +49,7 @@
     display: block;
     margin-block: 2.5rem;
     border: func.rem(1) solid;
-    border-radius: 0.25rem;
+    border-radius: v.$main-border-radius;
     color: c.$blue;
     font-weight: bold;
   }
