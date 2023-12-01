@@ -1,11 +1,11 @@
 export function startViewTransition(callback: () => void) {
   if (!document.startViewTransition) {
     callback();
+  } else {
+    document.startViewTransition(() => {
+      callback();
+    });
   }
-
-  document.startViewTransition(() => {
-    callback();
-  });
 }
 
 export function wait(duration: number) {
