@@ -6,11 +6,19 @@
 
 .shopping-cart {
   $_block-spacing: func.rem(40);
+  $padding-top: 2rem;
 
+  position: relative;
   min-height: 80svh;
+  @include flex(row, space-between);
+  gap: calc(100% / 12);
+
+  &__content-container {
+    flex-grow: 1;
+  }
 
   &__header {
-    margin-top: 2rem;
+    padding-top: $padding-top;
     @include flex(row, space-between, center);
     gap: 1rem;
 
@@ -62,5 +70,66 @@
       margin-inline: 0.75rem;
       color: c.$text-gray;
     }
+  }
+
+  &__delivery-container {
+    margin-top: $_block-spacing;
+
+    & > h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__delivery-boxes-wrapper {
+    @include flex(row, space-between, stretch);
+    gap: 1.25rem;
+
+    @media screen and (width < b.$mobile-md) {
+      flex-direction: column;
+    }
+  }
+
+  &__delivery-box {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    border: func.rem(1) solid c.$gray;
+    border-radius: v.$main-border-radius;
+    text-align: left;
+    cursor: pointer;
+    transition: v.$main-transition;
+
+    & svg {
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      border-color: c.$medium-gray;
+    }
+
+    &:has(> input:checked) {
+      border-color: transparent;
+      box-shadow: 0 0 0 0.125rem c.$blue-dark;
+    }
+  }
+
+  &__delivery-box-inner-wrapper {
+    min-height: 2.75rem;
+    @include flex(row, flex-start, center);
+    gap: 1rem;
+  }
+
+  &__product {
+    padding-block: 2rem;
+  }
+
+  &__aside {
+    position: sticky;
+    top: 0;
+    right: 0;
+    max-width: func.rem(520);
+    min-width: func.rem(255);
+    height: fit-content;
+    padding-top: $padding-top;
   }
 }
