@@ -1,0 +1,11 @@
+@use "../../../../base/functions" as func;
+
+.shopping-cart-menu {
+  position: sticky;
+  top: 0;
+  right: 0;
+  max-width: func.rem(520);
+  min-width: func.rem(255);
+  height: fit-content;
+  padding-top: 2rem;
+}

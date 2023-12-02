@@ -1,0 +1,17 @@
+@use "../../../../abstracts/mixins" as *;
+
+.shopping-cart-product-item {
+  padding-block: 2rem;
+  @include flex();
+  gap: 1.5rem;
+
+  &__img-wrapper {
+    @include flex(column, flex-start, center);
+    gap: 1rem;
+  }
+
+  & img {
+    height: 8.75rem;
+    max-width: 8.75rem;
+  }
+}

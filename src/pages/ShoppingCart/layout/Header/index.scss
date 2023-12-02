@@ -1,0 +1,19 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.shopping-cart-header {
+  padding-top: 2rem;
+  @include flex(row, space-between, center);
+  gap: 1rem;
+
+  & > h2 {
+    font-size: func.rem(36);
+    line-height: 1.333;
+
+    @media screen and (width < b.$mobile-md) {
+      font-size: 1.5rem;
+      line-height: 1.45;
+    }
+  }
+}

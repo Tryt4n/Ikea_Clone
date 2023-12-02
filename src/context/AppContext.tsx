@@ -13,9 +13,16 @@ type AppContextType = {
 
 export type ShoppingCartType = Pick<
   ProductDataType,
-  "collection" | "productNumber" | "size" | "price" | "variantName" | "images"
+  | "collection"
+  | "productNumber"
+  | "size"
+  | "price"
+  | "variantName"
+  | "variant"
+  | "images"
+  | "nameToDisplay"
+  | "name"
 > & {
-  name: ProductDataType["nameToDisplay"];
   oldPrice?: ProductDataType["oldPriceTag"];
   quantity: number;
 };
@@ -192,9 +199,9 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "loadAppData" });
   }, []);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   const contextValues = useMemo(
     () => ({

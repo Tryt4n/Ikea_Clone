@@ -1,0 +1,45 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.empty-cart {
+  $_block-spacing: func.rem(40);
+
+  margin-block: $_block-spacing;
+  @include flex(row, space-between);
+  border: func.rem(1) solid c.$gray;
+  border-radius: v.$main-border-radius;
+
+  &__inner-wrapper {
+    padding: 1.25rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+
+    & > h3 {
+      margin-bottom: 0.25rem;
+      font-size: v.$fs-sm;
+      color: c.$text-gray;
+    }
+  }
+
+  &__login-link {
+    color: c.$text-gray;
+    text-decoration: underline;
+    transition: v.$main-transition;
+
+    &:hover {
+      color: c.$black;
+    }
+  }
+
+  &__svg-wrapper {
+    border-left: func.rem(1) solid c.$gray;
+    @include center;
+
+    & > svg {
+      margin-inline: 0.75rem;
+      color: c.$text-gray;
+    }
+  }
+}
