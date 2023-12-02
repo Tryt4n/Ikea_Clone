@@ -122,6 +122,23 @@
     @include flex();
   }
 
+  & .shopping-cart-badge {
+    $_size: func.rem(19);
+    $_font-size: 0.65rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $_size;
+    height: $_size;
+    @include center;
+    background-color: c.$blue-dark;
+    border-radius: 50vw;
+    font-size: $_font-size;
+    line-height: $_font-size;
+    color: white;
+  }
+
   //? Grid Placement:
   .logo {
     grid-area: logo;

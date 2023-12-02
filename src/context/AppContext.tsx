@@ -50,11 +50,11 @@ type ReducerActionsType =
       payload: ShopType;
     }
   | {
-      type: "loadShoppingCart";
-    }
-  | {
       type: "addToShoppingCart";
       payload: ShoppingCartType;
+    }
+  | {
+      type: "loadAppData";
     };
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -103,61 +103,6 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
-    // case "addToShoppingCart": {
-    //   const shoppingCart = localStorage.getItem("shoppingCart") || [];
-    //   const newProduct = action.payload;
-
-    //   if (shoppingCart.length === 0) {
-    //     localStorage.setItem("shoppingCart", JSON.stringify([newProduct]));
-    //   }
-
-    //   if (shoppingCart.length !== 0 && state.shoppingCart) {
-    //     const oldShoppingCart = state.shoppingCart;
-    //     // const newShoppingCart = [...oldShoppingCart, newProduct];
-
-    //     //!
-    //     const existingProductIndex = state.shoppingCart.findIndex(
-    //       (product) => product.productNumber === newProduct.productNumber
-    //     );
-    //     if (existingProductIndex !== -1) {
-    //       const updatedShoppingCart = [...state.shoppingCart];
-    //       updatedShoppingCart[existingProductIndex].quantity += newProduct.quantity;
-    //       localStorage.setItem("shoppingCart", JSON.stringify(updatedShoppingCart));
-    //       // state.shoppingCart[existingProductIndex].quantity += newProduct.quantity
-    //     } else {
-    //       const newShoppingCart = [...oldShoppingCart, newProduct];
-    //       localStorage.setItem("shoppingCart", JSON.stringify(newShoppingCart));
-    //     }
-    //   }
-    //   //!
-
-    //   // localStorage.setItem("shoppingCart", JSON.stringify(newShoppingCart));
-    //   // }
-
-    //   return {
-    //     ...state,
-    //   };
-    // }
-
-    case "loadShoppingCart": {
-      const storage = localStorage.getItem("shoppingCart");
-      let shoppingCartValue: ShoppingCartType[];
-
-      if (storage) {
-        shoppingCartValue = JSON.parse(storage);
-        return { ...state, shoppingCart: shoppingCartValue };
-      }
-      // else {
-      // shoppingCartValue = state.shoppingCart;
-      // }
-
-      return { ...state };
-      // return {
-      //   ...state,
-      //   shoppingCart: shoppingCartValue,
-      // };
-    }
-
     case "addToShoppingCart": {
       const shoppingCart: ShoppingCartType[] = JSON.parse(
         localStorage.getItem("shoppingCart") || "[]"
@@ -189,6 +134,44 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    case "loadAppData": {
+      //? Postal Code
+      const postalCodeStorage = localStorage.getItem("postalCode");
+      let postalCodeValue = state.postalCode;
+      if (postalCodeStorage) {
+        postalCodeValue = postalCodeStorage;
+      }
+
+      //? Postal Code Checkbox
+      const postalCodeCheckboxStorage = localStorage.getItem("rememberPostalCodeCheckboxStatus");
+      let postalCodeCheckboxValue = state.rememberPostalCodeCheckboxStatus;
+      if (postalCodeCheckboxStorage) {
+        postalCodeCheckboxValue = postalCodeCheckboxStorage === "true";
+      }
+
+      //? Chosen Shop
+      const chosenShopStorage = localStorage.getItem("chosenShop");
+      let chosenShopValue: ShopType | undefined;
+      if (chosenShopStorage) {
+        chosenShopValue = shopsList.find((shop) => shop.name === chosenShopStorage);
+      }
+
+      //? Shopping Cart
+      const shoppingCartStorage = localStorage.getItem("shoppingCart");
+      let shoppingCartValue: ShoppingCartType[] = [];
+      if (shoppingCartStorage) {
+        shoppingCartValue = JSON.parse(shoppingCartStorage);
+      }
+
+      return {
+        ...state,
+        postalCode: postalCodeValue,
+        rememberPostalCodeCheckboxStatus: postalCodeCheckboxValue,
+        chosenShop: chosenShopValue,
+        shoppingCart: shoppingCartValue,
+      };
+    }
+
     default:
       throw new Error("A case in reducer function has been specified that does not exist.");
   }
@@ -206,44 +189,8 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   const isDesktop = !("ontouchstart" in window);
 
   useEffect(() => {
-    const postalCode = localStorage.getItem("postalCode");
-    if (postalCode) {
-      dispatch({ type: "setPostalCode", payload: postalCode });
-    }
-
-    const storageCheckboxStatus = localStorage.getItem("rememberPostalCodeCheckboxStatus");
-    const checkboxValue = storageCheckboxStatus === "true" ? true : false;
-    if (storageCheckboxStatus) {
-      dispatch({ type: "togglePostalCodeCheckbox", payload: checkboxValue });
-    }
-
-    const chosenShopStorage = localStorage.getItem("chosenShop");
-    const chosenShop = shopsList.find((shop) => shop.name === chosenShopStorage);
-    if (chosenShopStorage && chosenShop) {
-      dispatch({ type: "chooseShop", payload: chosenShop });
-    }
-
-    // const shoppingCart = localStorage.getItem("shoppingCart");
-    // if (shoppingCart) {
-    //   dispatch({ type: "addToShoppingCart", payload: JSON.parse(shoppingCart) });
-    // }
-    // const shoppingCart = localStorage.getItem("shoppingCart");
-    // if (shoppingCart) {
-    //   dispatch({ type: "loadShoppingCart" });
-    // }
-
-    //? Load ShoppingCart
-    dispatch({ type: "loadShoppingCart" });
+    dispatch({ type: "loadAppData" });
   }, []);
-
-  //!
-  // useEffect(() => {
-  //   const shoppingCart = localStorage.getItem("shoppingCart");
-  //   if (shoppingCart) {
-  //     state.shoppingCart = JSON.parse(shoppingCart);
-  //   }
-  // }, [state]);
-  //!
 
   useEffect(() => {
     console.log(state);

@@ -19,7 +19,7 @@ import MagnifierIcon from "../../../../Icons/MagnifierIcon";
 import "./index.scss";
 
 export default function Navbar() {
-  const { isDesktop } = useApp();
+  const { state, isDesktop } = useApp();
   const { isModalOpen } = useModal();
   const { width } = useWindowSize();
 
@@ -107,6 +107,17 @@ export default function Navbar() {
             >
               <ShoppingCartIcon />
               <span className="visually-hidden">Koszyk</span>
+              {state && state.shoppingCart && state.shoppingCart.length > 0 && (
+                <>
+                  <span className="visually-hidden">Ilość przedmiotów w koszyku:</span>
+                  <span
+                    className="shopping-cart-badge"
+                    aria-live="polite"
+                  >
+                    {state.shoppingCart.length}
+                  </span>
+                </>
+              )}
             </ListElement>
 
             {width < 1200 && (

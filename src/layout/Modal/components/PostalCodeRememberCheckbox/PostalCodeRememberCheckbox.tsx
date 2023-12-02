@@ -1,14 +1,5 @@
 // React
-import {
-  KeyboardEvent,
-  MouseEvent,
-  ForwardedRef,
-  HTMLProps,
-  forwardRef,
-  useState,
-  useEffect,
-  FormEvent,
-} from "react";
+import { KeyboardEvent, MouseEvent, ForwardedRef, HTMLProps, forwardRef, FormEvent } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 // Components
@@ -19,10 +10,12 @@ function InnerComponent(
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const { state, dispatch } = useApp();
-  const [checkboxStatus, setCheckboxStatus] = useState(true);
 
   function changeCheckboxStatus() {
-    dispatch({ type: "togglePostalCodeCheckbox", payload: !checkboxStatus });
+    dispatch({
+      type: "togglePostalCodeCheckbox",
+      payload: !state.rememberPostalCodeCheckboxStatus,
+    });
   }
 
   function inputOnChangeFunction(e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
@@ -40,12 +33,6 @@ function InnerComponent(
     }
   }
 
-  useEffect(() => {
-    if (state.rememberPostalCodeCheckboxStatus != null) {
-      setCheckboxStatus(state.rememberPostalCodeCheckboxStatus);
-    }
-  }, [state.rememberPostalCodeCheckboxStatus]);
-
   return (
     <Input
       type="checkbox"
@@ -56,7 +43,7 @@ function InnerComponent(
       }}
       inputProps={{
         ref: ref,
-        checked: checkboxStatus,
+        checked: state.rememberPostalCodeCheckboxStatus,
         onChange: inputOnChangeFunction,
         onKeyDown: inputOnKeyDownFunction,
         ...props,
