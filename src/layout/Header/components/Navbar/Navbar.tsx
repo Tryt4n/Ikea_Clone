@@ -58,6 +58,17 @@ export default function Navbar() {
     isModalOpen && !inView ? " slideUp" : ""
   }${!isDesktop ? " mobile" : ""}`;
 
+  function calculateShoppingCartItemsQuantity() {
+    if (!state.shoppingCart) return;
+
+    let value: number = 0;
+    state.shoppingCart.map((product) => {
+      value = value += product.quantity;
+    });
+
+    return value;
+  }
+
   return (
     <div
       className="main-layout navbar"
@@ -114,7 +125,7 @@ export default function Navbar() {
                     className="shopping-cart-badge"
                     aria-live="polite"
                   >
-                    {state.shoppingCart.length}
+                    {calculateShoppingCartItemsQuantity()}
                   </span>
                 </>
               )}

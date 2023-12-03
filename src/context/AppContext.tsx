@@ -23,8 +23,9 @@ export type ShoppingCartType = Pick<
   | "nameToDisplay"
   | "name"
 > & {
-  oldPrice?: ProductDataType["oldPriceTag"];
+  oldPrice?: Pick<ProductDataType["oldPriceTag"], "integer" | "decimal" | "variant">;
   quantity: number;
+  productLink: string;
 };
 
 type ReducerStateType = {

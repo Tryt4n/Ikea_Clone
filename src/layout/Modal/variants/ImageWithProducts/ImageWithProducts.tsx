@@ -1,5 +1,6 @@
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
+import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Compound Components
 import Article from "../../../../compoundComponents/Article/Article";
@@ -12,8 +13,9 @@ import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishL
 // Types
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 import type { ModalImageWithProductsType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ProductDataType } from "../../../../pages/ProductPage/types/ProductDataType";
 // Constants
-import { productLink } from "../../../../constants/links";
+import { productLink as imageLink } from "../../../../constants/links";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import InstagramIcon from "../../../../Icons/InstagramIcon";
@@ -32,9 +34,52 @@ type extendedProductType = ProductType & {
 
 export default function ImageWithProducts({ data }: { data: ModalImageWithProductsType }) {
   const { closeModal } = useModal();
+  const { dispatch } = useApp();
   const { width, height } = useWindowSize();
 
   const { productsData } = data;
+
+  function addToShoppingCart(productLink: string) {
+    const URL = `https://tryt4n.github.io/Ikea-data/server/${productLink}/data.json`;
+
+    fetch(URL)
+      .then((res) => res.json())
+      .then((fetchedData: ProductDataType) => {
+        const {
+          productNumber,
+          collection,
+          name,
+          nameToDisplay,
+          variant,
+          variantName,
+          size,
+          price,
+          oldPriceTag,
+          images,
+        } = fetchedData;
+
+        dispatch({
+          type: "addToShoppingCart",
+          payload: {
+            quantity: 1,
+            productNumber,
+            collection,
+            name,
+            nameToDisplay,
+            variant,
+            variantName,
+            size,
+            price,
+            oldPrice: oldPriceTag,
+            images,
+            productLink,
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
 
   return (
     <>
@@ -77,16 +122,32 @@ export default function ImageWithProducts({ data }: { data: ModalImageWithProduc
 
         <ul className="image-with-products-modal__products-list">
           {productsData.products.map((product: extendedProductType) => {
-            const mainImgSrc = `${productLink}/${product.imgSrc}_s5.jpg?f=xxs`;
-            const mainImgSrcSet = `${productLink}/${product.imgSrc}_s5.jpg?f=m 600w, ${productLink}/${product.imgSrc}_s5.jpg?f=xxs 300w, ${productLink}/${product.imgSrc}_s5.jpg?f=xxxs 160w, ${productLink}/${product.imgSrc}_s5.jpg?f=u 80w`;
-            const hoverImgSrc = `${productLink}/${product.imgHoverSrc}_s5.jpg?f=xxs`;
-            const hoverImgSrcSet = `${productLink}/${product.imgHoverSrc}_s5.jpg?f=m 600w, ${productLink}/${product.imgHoverSrc}_s5.jpg?f=xxs 300w, ${productLink}/${product.imgHoverSrc}_s5.jpg?f=xxxs 160w, ${productLink}/${product.imgHoverSrc}_s5.jpg?f=u 80w`;
+            const {
+              id,
+              productLink,
+              productHeading,
+              productSubHeading,
+              topSellerTag,
+              newPriceTag,
+              productPriceInteger,
+              productQuantity,
+              productSizeInMeters,
+              imgHoverSrc,
+              imgSrc,
+              productPriceDecimal,
+              rating,
+            } = product;
+
+            const mainImgSrc = `${imageLink}/${imgSrc}_s5.jpg?f=xxs`;
+            const mainImgSrcSet = `${imageLink}/${imgSrc}_s5.jpg?f=m 600w, ${imageLink}/${imgSrc}_s5.jpg?f=xxs 300w, ${imageLink}/${imgSrc}_s5.jpg?f=xxxs 160w, ${imageLink}/${imgSrc}_s5.jpg?f=u 80w`;
+            const hoverImgSrc = `${imageLink}/${imgHoverSrc}_s5.jpg?f=xxs`;
+            const hoverImgSrcSet = `${imageLink}/${imgHoverSrc}_s5.jpg?f=m 600w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=xxs 300w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=xxxs 160w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=u 80w`;
             const imgSizes = "(max-width: 400px) 80px, (max-width: 1450px) 160px, 300px";
 
             return (
-              <li key={product.id}>
+              <li key={id}>
                 <a
-                  href={product.productLink}
+                  href={productLink}
                   className="image-with-products-modal__product"
                 >
                   <div className="image-with-products-modal__product-img-container">
@@ -95,7 +156,7 @@ export default function ImageWithProducts({ data }: { data: ModalImageWithProduc
                         src={mainImgSrc}
                         srcSet={mainImgSrcSet}
                         sizes={imgSizes}
-                        alt={`${product.productHeading} ${product.productSubHeading}`}
+                        alt={`${productHeading} ${productSubHeading}`}
                         className="image-with-products-modal__thumbnail-img"
                       />
                       <img
@@ -107,45 +168,51 @@ export default function ImageWithProducts({ data }: { data: ModalImageWithProduc
                       />
                     </div>
 
-                    {product.topSellerTag && <strong className="top-seller">Top Seller</strong>}
+                    {topSellerTag && <strong className="top-seller">Top Seller</strong>}
                   </div>
 
                   <div className="image-with-products-modal__product-text-wrapper">
-                    {product.newPriceTag && (
+                    {newPriceTag && (
                       <em className="image-with-products-modal__product-new-price-tag">
                         Nowa niższa cena
                       </em>
                     )}
 
                     <strong className="image-with-products-modal__product-heading">
-                      {product.productHeading}
+                      {productHeading}
                     </strong>
                     <p className="image-with-products-modal__product-subheading">
-                      {product.productSubHeading}
+                      {productSubHeading}
                     </p>
 
                     <Collection.ListItemPrice
-                      price={product.productPriceInteger}
-                      priceDecimal={product.productPriceDecimal}
-                      quantity={product.productQuantity}
-                      sizeInMeters={product.productSizeInMeters}
+                      price={productPriceInteger}
+                      priceDecimal={productPriceDecimal}
+                      quantity={productQuantity}
+                      sizeInMeters={productSizeInMeters}
                     />
 
-                    {product.newPriceTag && (
+                    {newPriceTag && (
                       <Collection.ListItemLastPriceDescription
-                        lastPrice={product.newPriceTag.lastItemPriceInteger}
-                        lastPriceDecimal={product.newPriceTag.lastItemPriceDecimal}
+                        lastPrice={newPriceTag.lastItemPriceInteger}
+                        lastPriceDecimal={newPriceTag.lastItemPriceDecimal}
                         className="image-with-products-modal__product-last-price-tag"
                       />
                     )}
 
-                    {product.rating && <RatingBlock rating={product.rating} />}
+                    {rating && <RatingBlock rating={rating} />}
                   </div>
 
                   <div className="image-with-products-modal__product-btns-wrapper">
                     <Btn
                       variant="blue"
                       shape="circle"
+                      type="button"
+                      // onClick={() => addToShoppingCart(productLink)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addToShoppingCart(productLink);
+                      }}
                     >
                       <span className="visually-hidden">Dodaj produkt do koszyka</span>
                       <ShoppingCartAddIcon />

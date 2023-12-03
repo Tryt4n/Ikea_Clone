@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useProduct from "../../context/useProduct";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Icons
@@ -14,6 +15,8 @@ import "./index.scss";
 
 export default function BuyBlock({ product }: { product: ProductDataType }) {
   const { dispatch } = useApp();
+  const { path } = useProduct();
+
   const [quantity, setQuantity] = useState(1);
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
@@ -46,6 +49,7 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
         price: product.price,
         oldPrice: product.oldPriceTag,
         images: product.images,
+        productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
       },
     });
     setQuantity(1);

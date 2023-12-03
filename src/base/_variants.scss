@@ -1,4 +1,5 @@
 @use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
 
 .bg-light-gray {
   background-color: c.$grayish !important;
@@ -63,4 +64,8 @@
 
 .tx-green {
   color: c.$green !important;
+}
+
+.fs-sm {
+  font-size: v.$fs-sm;
 }

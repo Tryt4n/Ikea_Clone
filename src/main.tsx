@@ -11,11 +11,11 @@ import { ModalContextProvider } from "./context/ModalContext";
 import "./style.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AppContextProvider>
-      <ModalContextProvider>
-        <RouterProvider router={routes} />
-      </ModalContextProvider>
-    </AppContextProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AppContextProvider>
+    <ModalContextProvider>
+      <RouterProvider router={routes} />
+    </ModalContextProvider>
+  </AppContextProvider>
+  // </React.StrictMode>
 );
