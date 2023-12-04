@@ -54,4 +54,27 @@
   &__tag {
     font-size: func.rem(14);
   }
+
+  &__product-controls {
+    max-height: func.rem(40);
+    margin-top: 1.25rem;
+    @include flex();
+    gap: 1.25rem;
+
+    & button {
+      color: c.$text-gray;
+
+      &:last-of-type {
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+  &__quantity {
+    padding-inline: 0 !important;
+
+    & button {
+      scale: 0.8;
+    }
+  }
 }

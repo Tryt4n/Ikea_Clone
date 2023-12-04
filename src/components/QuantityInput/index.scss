@@ -1,0 +1,35 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.quantity-input {
+  max-height: func.rem(56);
+  width: func.rem(120);
+  @include flex(row, space-between, center);
+  border: func.rem(1) solid c.$medium-gray;
+  border-radius: 50vw;
+  padding: 0.5rem;
+  transition: v.$main-transition;
+
+  &:has(input:focus) {
+    border-color: transparent;
+    box-shadow: c.$very-dark-blue 0px 0px 0px func.rem(2);
+  }
+
+  & input {
+    border: none;
+    outline: none;
+    width: 3ch;
+    padding-inline: 0.25em;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+
+    @media screen and (width < b.$desktop) {
+      width: 100%;
+    }
+  }
+}

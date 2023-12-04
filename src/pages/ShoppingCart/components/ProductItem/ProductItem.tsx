@@ -1,5 +1,10 @@
+// React
+import { ChangeEvent } from "react";
+// Custom Hooks
+import useApp from "../../../../hooks/useApp";
 // Components
 import Tag from "../../../ProductPage/components/Tag/Tag";
+import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
 // Constants
 import { productLink as imageLink } from "../../../../constants/links";
 // Types
@@ -8,6 +13,8 @@ import type { ShoppingCartType } from "../../../../context/AppContext";
 import "./index.scss";
 
 export default function ProductItem({ product }: { product: ShoppingCartType }) {
+  const { dispatch } = useApp();
+
   const {
     collection,
     images,
@@ -33,6 +40,24 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
     } else {
       return result.toLocaleString("pl-PL");
     }
+  }
+
+  function changeQuantity(delta: -1 | 1) {
+    dispatch({
+      type: "changeProductQuantity",
+      payload: { value: delta === -1 ? "subtract" : "add", productNumber: productNumber },
+    });
+  }
+
+  function changeQuantityByInputValue(e: ChangeEvent<HTMLInputElement>) {
+    const inputValue = e.target.value;
+    const filteredValue = inputValue.replace(/\D/g, "");
+    const parsedValue = parseInt(filteredValue, 10) || 1;
+
+    dispatch({
+      type: "changeProductQuantity",
+      payload: { value: parsedValue, productNumber: productNumber },
+    });
   }
 
   return (
@@ -88,6 +113,30 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
               {oldPrice.decimal ? oldPrice.decimal : "-"}
             </p>
           )}
+
+          <form
+            className="shopping-cart-product-item__product-controls"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <QuantityInput
+              quantity={quantity}
+              onChangeFunction={changeQuantity}
+              inputFunction={changeQuantityByInputValue}
+              className="shopping-cart-product-item__quantity"
+            />
+            <button
+              type="button"
+              className="fs-sm"
+            >
+              Usuń produkt
+            </button>
+            <button
+              type="button"
+              className="fs-sm"
+            >
+              Przenieś do listy zakupów
+            </button>
+          </form>
         </div>
       </section>
     </li>

@@ -62,6 +62,13 @@ type ReducerActionsType =
       payload: ShoppingCartType;
     }
   | {
+      type: "changeProductQuantity";
+      payload: {
+        value: "add" | "subtract" | number;
+        productNumber: string;
+      };
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -140,6 +147,35 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         ...state,
         shoppingCart: updatedShoppingCart,
       };
+    }
+
+    case "changeProductQuantity": {
+      const shoppingCart: ShoppingCartType[] = JSON.parse(
+        localStorage.getItem("shoppingCart") || "[]"
+      );
+      const { value, productNumber } = action.payload;
+      const searchedProductIndex = shoppingCart.findIndex(
+        (product) => product.productNumber === productNumber
+      );
+
+      if (searchedProductIndex !== -1) {
+        const updatedShoppingCart = [...shoppingCart];
+
+        if (typeof value === "number") {
+          updatedShoppingCart[searchedProductIndex].quantity = value;
+        } else {
+          updatedShoppingCart[searchedProductIndex].quantity += value === "add" ? 1 : -1;
+        }
+
+        localStorage.setItem("shoppingCart", JSON.stringify(updatedShoppingCart));
+
+        return {
+          ...state,
+          shoppingCart: updatedShoppingCart,
+        };
+      }
+
+      return state;
     }
 
     case "loadAppData": {
