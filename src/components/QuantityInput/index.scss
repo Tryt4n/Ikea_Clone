@@ -7,6 +7,7 @@
 .quantity-input {
   max-height: func.rem(56);
   width: func.rem(120);
+  flex-shrink: 0;
   @include flex(row, space-between, center);
   border: func.rem(1) solid c.$medium-gray;
   border-radius: 50vw;

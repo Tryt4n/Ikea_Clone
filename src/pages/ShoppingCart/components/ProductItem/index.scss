@@ -63,6 +63,8 @@
 
     & button {
       color: c.$text-gray;
+      text-align: start;
+      text-wrap: balance;
 
       &:last-of-type {
         margin-left: 0.25rem;

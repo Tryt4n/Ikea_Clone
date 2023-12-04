@@ -1,3 +1,6 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
 
 .shopping-cart-menu {
@@ -6,6 +9,137 @@
   right: 0;
   max-width: func.rem(520);
   min-width: func.rem(255);
+  width: calc(100% / 3);
   height: fit-content;
   padding-top: 2rem;
+  color: c.$text-gray;
+
+  & > *:not(.club-info-discount) {
+    margin-bottom: 1em;
+  }
+
+  &__heading {
+    font-size: 1rem;
+  }
+
+  &__price-wrapper {
+    @include flex(row, space-between, center);
+
+    &--big {
+      font-weight: bold;
+
+      & > strong {
+        font-size: 1.5rem;
+        color: c.$black;
+      }
+    }
+  }
+
+  &__delivery-text-wrapper {
+    & > div {
+      @include flex(row, space-between, center);
+
+      & > span:last-of-type {
+        font-weight: bold;
+      }
+    }
+  }
+
+  & hr {
+    margin-top: 1em;
+    border-bottom: 0;
+    border-width: func.rem(2);
+    border-color: c.$black;
+    font-size: 1rem;
+  }
+
+  &__discount-code-container {
+    border-top: func.rem(1) solid c.$gray;
+    color: c.$black;
+    transition: v.$main-transition;
+    cursor: pointer;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &__discount-code-btn {
+    width: 100%;
+    min-height: 4.5rem;
+    @include flex(row, space-between, center);
+    gap: 1.5rem;
+
+    & > :not(.shopping-cart-menu__discount-code-inner-wrapper) > svg {
+      rotate: 90deg;
+    }
+  }
+
+  &__discount-code-inner-wrapper {
+    @include flex(row, space-between, center);
+    gap: 1rem;
+
+    & > h3 {
+      font-size: inherit;
+    }
+  }
+
+  &__discount-code-form-inner-wrapper {
+    @include flex(row, space-between, center);
+    gap: 1rem;
+
+    & > .text-input {
+      flex-grow: 1;
+    }
+  }
+
+  &__next-btn {
+    width: 100%;
+    padding: 2.5rem 1.5rem;
+    @include flex(row, space-between, center);
+    background-color: c.$blue-dark;
+    border-radius: v.$main-border-radius;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    outline-offset: 0.25em;
+    transition: v.$main-transition;
+
+    &:where(:hover, :focus-visible) {
+      background-color: c.$very-dark-blue;
+    }
+  }
+
+  &__next-btn-svg-wrapper {
+    height: 2.5rem;
+    width: 2.5rem;
+    @include center;
+    background-color: white;
+    color: c.$black;
+    border-radius: 50vw;
+  }
+
+  &__btn-wrapper {
+    margin-top: 2.5rem;
+    @include flex(row, flex-start, center);
+    gap: 1rem;
+    text-align: start;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    transition: v.$main-transition;
+
+    &:hover {
+      color: c.$black;
+    }
+
+    & > svg {
+      flex-shrink: 0;
+      color: c.$black;
+    }
+
+    &:last-of-type {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
