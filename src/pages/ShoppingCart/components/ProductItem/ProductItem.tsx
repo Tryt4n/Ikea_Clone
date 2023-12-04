@@ -5,6 +5,8 @@ import useApp from "../../../../hooks/useApp";
 // Components
 import Tag from "../../../ProductPage/components/Tag/Tag";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Constants
 import { productLink as imageLink } from "../../../../constants/links";
 // Types
@@ -43,10 +45,12 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
   }
 
   function changeQuantity(delta: -1 | 1) {
-    dispatch({
-      type: "changeProductQuantity",
-      payload: { value: delta === -1 ? "subtract" : "add", productNumber: productNumber },
-    });
+    startViewTransition(() =>
+      dispatch({
+        type: "changeProductQuantity",
+        payload: { value: delta === -1 ? "subtract" : "add", productNumber: productNumber },
+      })
+    );
   }
 
   function changeQuantityByInputValue(e: ChangeEvent<HTMLInputElement>) {
@@ -54,10 +58,21 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
     const filteredValue = inputValue.replace(/\D/g, "");
     const parsedValue = parseInt(filteredValue, 10) || 1;
 
-    dispatch({
-      type: "changeProductQuantity",
-      payload: { value: parsedValue, productNumber: productNumber },
-    });
+    startViewTransition(() =>
+      dispatch({
+        type: "changeProductQuantity",
+        payload: { value: parsedValue, productNumber: productNumber },
+      })
+    );
+  }
+
+  function removeProductFromShoppingCart() {
+    startViewTransition(() =>
+      dispatch({
+        type: "removeProductFromShoppingCart",
+        payload: productNumber,
+      })
+    );
   }
 
   return (
@@ -127,6 +142,7 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
             <button
               type="button"
               className="fs-sm"
+              onClick={removeProductFromShoppingCart}
             >
               Usuń produkt
             </button>

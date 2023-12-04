@@ -11,7 +11,8 @@ import "./index.scss";
 export default function ShoppingCart() {
   const { state } = useApp();
 
-  const heading = state.shoppingCart ? "Koszyk" : "Twój koszyk jest pusty";
+  const heading =
+    state.shoppingCart && state.shoppingCart.length > 0 ? "Koszyk" : "Twój koszyk jest pusty";
 
   return (
     <div className="shopping-cart">

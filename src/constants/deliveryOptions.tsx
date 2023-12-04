@@ -12,4 +12,4 @@ export const deliveryOptions = [
     text: "Opcje odbioru: Sklep, InPost, Punkt Odbioru",
     icon: <Shop2Icon />,
   },
-];
+] as const;

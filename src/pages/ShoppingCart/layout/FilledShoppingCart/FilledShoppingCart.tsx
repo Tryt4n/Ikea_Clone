@@ -10,6 +10,8 @@ export default function FilledShoppingCart() {
       <section className="shopping-cart-full">
         <h3>Jak chciałbyś otrzymać swoje zamówienie</h3>
         <DeliveryOptions />
+
+        <div id="info-message-container"></div>
       </section>
 
       <section>

@@ -69,6 +69,13 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "removeProductFromShoppingCart";
+      payload: string;
+    }
+  | {
+      type: "clearShoppingCart";
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -176,6 +183,38 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       }
 
       return state;
+    }
+
+    case "removeProductFromShoppingCart": {
+      const shoppingCart: ShoppingCartType[] = JSON.parse(
+        localStorage.getItem("shoppingCart") || "[]"
+      );
+      const productNumber = action.payload;
+      const searchedProductIndex = shoppingCart.findIndex(
+        (product) => product.productNumber === productNumber
+      );
+
+      if (searchedProductIndex !== -1) {
+        shoppingCart.splice(searchedProductIndex, 1);
+
+        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+
+        return {
+          ...state,
+          shoppingCart,
+        };
+      }
+
+      return state;
+    }
+
+    case "clearShoppingCart": {
+      localStorage.removeItem("shoppingCart");
+
+      return {
+        ...state,
+        shoppingCart: undefined,
+      };
     }
 
     case "loadAppData": {

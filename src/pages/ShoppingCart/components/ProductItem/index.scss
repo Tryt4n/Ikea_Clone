@@ -70,8 +70,8 @@
     }
   }
 
-  &__quantity {
-    padding-inline: 0 !important;
+  &__quantity:is(.quantity-input) {
+    padding-inline: 0;
 
     & button {
       scale: 0.8;
