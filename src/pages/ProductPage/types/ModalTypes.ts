@@ -78,6 +78,10 @@ export type ModalRoomsMenuType = {
   readonly type: "rooms-menu";
 };
 
+export type ShoppingCartAsideMenuInformationList = {
+  readonly type: "refund" | "data-encryption";
+};
+
 export type ModalDataType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -95,4 +99,5 @@ export type ModalDataType =
   | ModalLoginType
   | ModalMenuType
   | ModalProductsMenuType
-  | ModalRoomsMenuType;
+  | ModalRoomsMenuType
+  | ShoppingCartAsideMenuInformationList;

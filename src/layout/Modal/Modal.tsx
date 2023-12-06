@@ -7,11 +7,15 @@ import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
 import MenuLayout from "./layout/MenuLayout/MenuLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
+// Types
+import type { ModalDataType } from "../../pages/ProductPage/types/ModalTypes";
 
 type ModalPropsType = {
   onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;
   onKeyDownFunction: (e: React.KeyboardEvent<HTMLDialogElement>) => void;
 };
+
+export type ModalTypes = "side-modal" | "image-modal" | "image-with-products-modal" | "menu-modal";
 
 function InnerComponent(
   { onKeyDownFunction, onClickFunction }: ModalPropsType,
@@ -19,7 +23,7 @@ function InnerComponent(
 ) {
   const { modalID, modalData } = useModal();
 
-  const typeToClassMap: Record<string, string> = {
+  const typeToClassMap: Record<ModalDataType["type"], ModalTypes> = {
     "choose-color": "side-modal",
     "choose-size": "side-modal",
     "product-information": "side-modal",
@@ -32,6 +36,8 @@ function InnerComponent(
     "preffered-shop": "side-modal",
     "chosen-shop": "side-modal",
     "log-in": "side-modal",
+    refund: "side-modal",
+    "data-encryption": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -61,7 +67,9 @@ function InnerComponent(
           modalData.type === "choose-shop" ||
           modalData.type === "preffered-shop" ||
           modalData.type === "chosen-shop" ||
-          modalData.type === "log-in") && (
+          modalData.type === "log-in" ||
+          modalData.type === "refund" ||
+          modalData.type === "data-encryption") && (
           <>
             <SideModalLayout data={modalData} />
           </>

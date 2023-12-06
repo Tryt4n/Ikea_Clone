@@ -1,7 +1,4 @@
 @use "../../abstracts/mixins" as *;
-@use "../../abstracts/colors" as c;
-@use "../../abstracts/variables" as v;
-@use "../../base/functions" as func;
 @use "../../base/breakpoints" as b;
 
 .shopping-cart {
@@ -12,5 +9,9 @@
 
   &__content-container {
     flex-grow: 1;
+  }
+
+  @media screen and (width < b.$tablet) {
+    flex-direction: column;
   }
 }

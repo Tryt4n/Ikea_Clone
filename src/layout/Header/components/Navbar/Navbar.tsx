@@ -19,7 +19,7 @@ import MagnifierIcon from "../../../../Icons/MagnifierIcon";
 import "./index.scss";
 
 export default function Navbar() {
-  const { state, isDesktop } = useApp();
+  const { isDesktop } = useApp();
   const { isModalOpen } = useModal();
   const { width } = useWindowSize();
 
@@ -57,17 +57,6 @@ export default function Navbar() {
   }${!isModalOpen && !inView && !isScrolledToTop && scrollDirection === "down" ? " slideUp" : ""}${
     isModalOpen && !inView ? " slideUp" : ""
   }${!isDesktop ? " mobile" : ""}`;
-
-  function calculateShoppingCartItemsQuantity() {
-    if (!state.shoppingCart) return;
-
-    let value: number = 0;
-    state.shoppingCart.map((product) => {
-      value = value += product.quantity;
-    });
-
-    return value;
-  }
 
   return (
     <div
@@ -115,20 +104,9 @@ export default function Navbar() {
             <ListElement
               as="link"
               href="/shoppingcart"
+              className="navbar__shopping-cart"
             >
-              <ShoppingCartIcon />
-              <span className="visually-hidden">Koszyk</span>
-              {state && state.shoppingCart && state.shoppingCart.length > 0 && (
-                <>
-                  <span className="visually-hidden">Ilość przedmiotów w koszyku:</span>
-                  <span
-                    className="shopping-cart-badge"
-                    aria-live="polite"
-                  >
-                    {calculateShoppingCartItemsQuantity()}
-                  </span>
-                </>
-              )}
+              <ShoppingCart />
             </ListElement>
 
             {width < 1200 && (
@@ -221,5 +199,38 @@ function ListElement({
         </Element>
       )}
     </li>
+  );
+}
+
+function ShoppingCart() {
+  const { state } = useApp();
+
+  function calculateShoppingCartItemsQuantity() {
+    if (!state.shoppingCart) return;
+
+    let value: number = 0;
+    state.shoppingCart.map((product) => {
+      value = value += product.quantity;
+    });
+
+    return value;
+  }
+
+  return (
+    <>
+      <ShoppingCartIcon />
+      <span className="visually-hidden">Koszyk</span>
+      {state && state.shoppingCart && state.shoppingCart.length > 0 && (
+        <>
+          <span className="visually-hidden">Ilość przedmiotów w koszyku:</span>
+          <span
+            className="shopping-cart-badge"
+            aria-live="polite"
+          >
+            {calculateShoppingCartItemsQuantity()}
+          </span>
+        </>
+      )}
+    </>
   );
 }

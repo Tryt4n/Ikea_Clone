@@ -1,0 +1,36 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.additional-informations-modal {
+  $_header-height: 1.5rem;
+
+  margin-block: 0.75rem;
+  max-height: calc(100% - $_header-height);
+  height: 100%;
+  @include flex(column);
+
+  & > *:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  &__link {
+    display: inline-block;
+    font-weight: bold;
+    color: c.$text-gray;
+    text-decoration: underline;
+    transition: v.$main-transition;
+
+    &:hover {
+      color: c.$black;
+    }
+  }
+
+  &__btn {
+    margin-top: auto;
+    font-size: func.rem(14);
+    width: 100%;
+    min-height: 3.5rem;
+  }
+}

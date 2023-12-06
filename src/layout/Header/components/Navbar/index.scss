@@ -122,6 +122,10 @@
     @include flex();
   }
 
+  &__shopping-cart {
+    position: relative;
+  }
+
   & .shopping-cart-badge {
     $_size: func.rem(19);
     $_font-size: 0.65rem;

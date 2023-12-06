@@ -29,12 +29,14 @@ import type {
   ModalLoginType,
   ModalPostalCodeType,
   ModalPrefferedShopType,
+  ShoppingCartAsideMenuInformationList,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 // Style
 import "./index.scss";
+import AdditionalInformations from "../../variants/AdditionalInformations/AdditionalInformations";
 
 type SideModalLayoutType = {
   data:
@@ -49,16 +51,19 @@ type SideModalLayoutType = {
     | ModalChooseShopType
     | ModalPrefferedShopType
     | ModalChosenShopType
-    | ModalLoginType;
+    | ModalLoginType
+    | ShoppingCartAsideMenuInformationList;
 };
 
 export default function SideModalLayout({ data }: SideModalLayoutType) {
   const { setModalData, closeModal } = useModal();
   const { state } = useApp();
 
+  const { type } = data;
+
   let header = null;
 
-  switch (data.type) {
+  switch (type) {
     case "choose-size":
       header = "Wybierz rozmiar";
       break;
@@ -95,6 +100,12 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
     case "installment-purchase":
       header = "Na raty w IKEA";
       break;
+    case "refund":
+      header = "W zmianie zdania nie ma nic złego!";
+      break;
+    case "data-encryption":
+      header = "Ta strona jest bezpieczna";
+      break;
     default:
       break;
   }
@@ -111,7 +122,7 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
         <>
           <header className="side-modal__header">
             <div className="side-modal__btns-wrapper">
-              {data.type === "preffered-shop" && (
+              {type === "preffered-shop" && (
                 <Btn
                   variant="light"
                   shape="circle"
@@ -132,28 +143,30 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
                 <CloseIcon />
               </Btn>
             </div>
-            <h2
-              className={`side-modal__heading${data.type === "log-in" ? ` visually-hidden` : ""}`}
-            >
+            <h2 className={`side-modal__heading${type === "log-in" ? ` visually-hidden` : ""}`}>
               {header}
             </h2>
           </header>
 
           <div className="side-modal__content-wrapper scrollbar-style">
             <Suspense fallback={<LoadingSpinner />}>
-              {data.type === "choose-size" && <ChooseSize data={data} />}
+              {type === "choose-size" && <ChooseSize data={data} />}
 
-              {data.type === "choose-color" && <ChooseColor data={data} />}
+              {type === "choose-color" && <ChooseColor data={data} />}
 
-              {data.type === "choose-shop" && <PostalCode modalType={data.type} />}
+              {type === "choose-shop" && <PostalCode modalType={type} />}
 
-              {data.type === "postal-code" && <PostalCode modalType={data.type} />}
+              {type === "postal-code" && <PostalCode modalType={type} />}
 
-              {data.type === "preffered-shop" && <PrefferedShop />}
+              {type === "preffered-shop" && <PrefferedShop />}
 
-              {data.type === "chosen-shop" && <ChosenShop />}
+              {type === "chosen-shop" && <ChosenShop />}
 
-              {data.type === "log-in" && <Login />}
+              {type === "log-in" && <Login />}
+
+              {(type === "refund" || type === "data-encryption") && (
+                <AdditionalInformations type={type} />
+              )}
             </Suspense>
           </div>
         </>

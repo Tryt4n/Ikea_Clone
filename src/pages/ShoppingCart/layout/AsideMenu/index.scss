@@ -2,17 +2,28 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .shopping-cart-menu {
-  position: sticky;
-  top: 0;
-  right: 0;
-  max-width: func.rem(520);
-  min-width: func.rem(255);
-  width: calc(100% / 3);
-  height: fit-content;
+  // position: sticky;
+  // top: 0;
+  // right: 0;
+  // max-width: func.rem(520);
+  // min-width: func.rem(255);
+  // width: calc(100% / 3);
+  // height: fit-content;
   padding-top: 2rem;
   color: c.$text-gray;
+
+  @media screen and (width >= b.$tablet) {
+    position: sticky;
+    top: 0;
+    right: 0;
+    max-width: func.rem(520);
+    min-width: func.rem(255);
+    width: calc(100% / 3);
+    height: fit-content;
+  }
 
   & > *:not(.club-info-discount) {
     margin-bottom: 1em;
@@ -57,7 +68,6 @@
     border-top: func.rem(1) solid c.$gray;
     color: c.$black;
     transition: v.$main-transition;
-    cursor: pointer;
 
     &:hover {
       color: inherit;
@@ -84,9 +94,30 @@
     }
   }
 
+  &__discount-code-hidden-content-container {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: v.$main-transition;
+
+    & > * {
+      overflow: hidden;
+    }
+
+    &[aria-hidden="false"] {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__discount-code-label {
+    display: block;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+  }
+
   &__discount-code-form-inner-wrapper {
     @include flex(row, space-between, center);
     gap: 1rem;
+    padding-bottom: 1rem;
 
     & > .text-input {
       flex-grow: 1;
@@ -94,11 +125,9 @@
   }
 
   &__next-btn {
+    max-width: 100%;
     width: 100%;
-    padding: 2.5rem 1.5rem;
-    @include flex(row, space-between, center);
-    background-color: c.$blue-dark;
-    border-radius: v.$main-border-radius;
+    padding-block: 1rem;
     font-size: 1rem;
     font-weight: bold;
     color: white;
@@ -107,6 +136,12 @@
 
     &:where(:hover, :focus-visible) {
       background-color: c.$very-dark-blue;
+    }
+
+    @media screen and (width >= b.$tablet) {
+      padding: 2.5rem 1.5rem;
+      @include flex(row, space-between, center);
+      border-radius: v.$main-border-radius;
     }
   }
 
