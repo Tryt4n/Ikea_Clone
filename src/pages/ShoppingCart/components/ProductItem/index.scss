@@ -2,6 +2,7 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .shopping-cart-product-item {
   padding-block: 2rem;
@@ -24,6 +25,11 @@
   & img {
     height: 8.75rem;
     max-width: 8.75rem;
+
+    @media screen and (width < b.$mobile-md) {
+      height: 5.5rem;
+      max-width: 5.5rem;
+    }
   }
 
   &__product-number {
@@ -42,8 +48,11 @@
     @include flex(row, space-between);
 
     & > * {
-      font-size: 1rem;
       color: c.$text-gray;
+
+      @media screen and (width >= b.$mobile-md) {
+        font-size: 1rem;
+      }
     }
 
     & h3 {
@@ -66,7 +75,7 @@
       text-align: start;
       text-wrap: balance;
 
-      &:last-of-type {
+      &:last-of-type:not(.shopping-cart-product-item__menu-btn) {
         margin-left: 0.25rem;
       }
     }
@@ -78,5 +87,9 @@
     & button {
       scale: 0.8;
     }
+  }
+
+  &__menu-btn {
+    margin-left: auto;
   }
 }

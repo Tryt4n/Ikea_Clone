@@ -57,6 +57,11 @@
     position: sticky;
     top: 0;
     background-color: inherit;
+
+    & > * &-tag {
+      display: inline;
+      font-size: inherit;
+    }
   }
 
   &__btns-wrapper {

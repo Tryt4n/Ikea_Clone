@@ -23,6 +23,8 @@ function InnerComponent(
 ) {
   const { modalID, modalData } = useModal();
 
+  const type = modalData?.type;
+
   const typeToClassMap: Record<ModalDataType["type"], ModalTypes> = {
     "choose-color": "side-modal",
     "choose-size": "side-modal",
@@ -38,6 +40,7 @@ function InnerComponent(
     "log-in": "side-modal",
     refund: "side-modal",
     "data-encryption": "side-modal",
+    "next-step": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -45,7 +48,7 @@ function InnerComponent(
     "rooms-menu": "menu-modal",
   };
 
-  const modalClass = modalData ? typeToClassMap[modalData?.type] : undefined;
+  const modalClass = type ? typeToClassMap[type] : undefined;
 
   return (
     <dialog
@@ -56,37 +59,36 @@ function InnerComponent(
       onKeyDown={onKeyDownFunction}
     >
       {modalData &&
-        (((modalData.type === "choose-color" ||
-          modalData.type === "choose-size" ||
-          modalData.type === "product-information" ||
-          modalData.type === "items-included" ||
-          modalData.type === "dimensions" ||
-          modalData.type === "ratings" ||
-          modalData.type === "installment-purchase" ||
-          modalData.type === "postal-code" ||
-          modalData.type === "choose-shop" ||
-          modalData.type === "preffered-shop" ||
-          modalData.type === "chosen-shop" ||
-          modalData.type === "log-in" ||
-          modalData.type === "refund" ||
-          modalData.type === "data-encryption") && (
+        (((type === "choose-color" ||
+          type === "choose-size" ||
+          type === "product-information" ||
+          type === "items-included" ||
+          type === "dimensions" ||
+          type === "ratings" ||
+          type === "installment-purchase" ||
+          type === "postal-code" ||
+          type === "choose-shop" ||
+          type === "preffered-shop" ||
+          type === "chosen-shop" ||
+          type === "log-in" ||
+          type === "refund" ||
+          type === "data-encryption" ||
+          type === "next-step") && (
           <>
             <SideModalLayout data={modalData} />
           </>
         )) ||
-          (modalData.type === "image-preview" && (
+          (type === "image-preview" && (
             <>
               <ImagePreview data={modalData} />
             </>
           )) ||
-          (modalData.type === "image-with-products" && (
+          (type === "image-with-products" && (
             <>
               <ImageWithProducts data={modalData} />
             </>
           )) ||
-          ((modalData.type === "menu" ||
-            modalData.type === "products-menu" ||
-            modalData.type === "rooms-menu") && (
+          ((type === "menu" || type === "products-menu" || type === "rooms-menu") && (
             <>
               <MenuLayout data={modalData} />
             </>

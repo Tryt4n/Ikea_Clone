@@ -2,8 +2,6 @@
 import useApp from "../../../../hooks/useApp";
 // Components
 import ProductItem from "../ProductItem/ProductItem";
-// Style
-import "./index.scss";
 
 export default function ProductsList() {
   const { state } = useApp();

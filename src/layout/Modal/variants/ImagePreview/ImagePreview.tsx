@@ -18,7 +18,11 @@ import type { ModalDataImagePreviewType } from "../../../../pages/ProductPage/ty
 // Style
 import "./index.scss";
 
-export default function ImagePreview({ data }: { data: ModalDataImagePreviewType }) {
+export type ImagePreviewPropsType = {
+  data: ModalDataImagePreviewType;
+};
+
+export default function ImagePreview({ data }: ImagePreviewPropsType) {
   const { closeModal } = useModal();
 
   const { productData, index, path, displayedMainImg } = data;

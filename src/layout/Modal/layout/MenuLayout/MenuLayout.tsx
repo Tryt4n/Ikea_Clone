@@ -13,11 +13,7 @@ import Btn from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type {
-  ModalMenuType,
-  ModalProductsMenuType,
-  ModalRoomsMenuType,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+import type { MenuLayoutType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import IkeaLogo from "../../../../Icons/IkeaLogo";
@@ -25,11 +21,11 @@ import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 // Style
 import "./index.scss";
 
-type MenuLayoutType = {
-  data: ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
+export type MenuLayoutTypePropsType = {
+  data: MenuLayoutType;
 };
 
-export default function MenuLayout({ data }: MenuLayoutType) {
+export default function MenuLayout({ data }: MenuLayoutTypePropsType) {
   const { closeModal } = useModal();
   const { width } = useWindowSize();
 

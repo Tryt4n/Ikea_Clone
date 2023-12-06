@@ -1,5 +1,5 @@
 // React
-import { Suspense, lazy } from "react";
+import { ReactElement, Suspense, lazy } from "react";
 // Hooks
 import useModal from "../../../../hooks/useModal";
 import useApp from "../../../../hooks/useApp";
@@ -10,58 +10,33 @@ const PostalCode = lazy(() => import("../../variants/PostalCode/PostalCode"));
 const PrefferedShop = lazy(() => import("../../variants/PrefferedShop/PrefferedShop"));
 const ChosenShop = lazy(() => import("../../variants/ChosenShop/ChosenShop"));
 const Login = lazy(() => import("../../variants/Login/Login"));
+const AdditionalInformations = lazy(
+  () => import("../../variants/AdditionalInformations/AdditionalInformations")
+);
+const NextStep = lazy(() => import("../../variants/NextStep/NextStep"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
+import Tag from "../../../../pages/ProductPage/components/Tag/Tag";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type {
-  ModalChooseShopType,
-  ModalChosenShopType,
-  ModalDataChooseColorType,
-  ModalDataChooseSizeType,
-  ModalDataDimensionsType,
-  ModalDataInstallmentPurchaseType,
-  ModalDataItemsIncludedType,
-  ModalDataProductInformationType,
-  ModalDataRatingsType,
-  ModalLoginType,
-  ModalPostalCodeType,
-  ModalPrefferedShopType,
-  ShoppingCartAsideMenuInformationList,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+import type { SideModalLayoutType } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 // Style
 import "./index.scss";
-import AdditionalInformations from "../../variants/AdditionalInformations/AdditionalInformations";
 
-type SideModalLayoutType = {
-  data:
-    | ModalDataChooseSizeType
-    | ModalDataChooseColorType
-    | ModalDataProductInformationType
-    | ModalDataItemsIncludedType
-    | ModalDataDimensionsType
-    | ModalDataRatingsType
-    | ModalDataInstallmentPurchaseType
-    | ModalPostalCodeType
-    | ModalChooseShopType
-    | ModalPrefferedShopType
-    | ModalChosenShopType
-    | ModalLoginType
-    | ShoppingCartAsideMenuInformationList;
-};
+export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
-export default function SideModalLayout({ data }: SideModalLayoutType) {
+export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
   const { setModalData, closeModal } = useModal();
   const { state } = useApp();
 
   const { type } = data;
 
-  let header = null;
+  let header: string | ReactElement;
 
   switch (type) {
     case "choose-size":
@@ -80,7 +55,7 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
       header = "Wybierz swój preferowany sklep";
       break;
     case "chosen-shop":
-      header = state.chosenShop?.name;
+      header = state.chosenShop ? state.chosenShop.name : "";
       break;
     case "log-in":
       header = "Zaloguj się";
@@ -106,11 +81,25 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
     case "data-encryption":
       header = "Ta strona jest bezpieczna";
       break;
-    default:
+    case "next-step":
+      header = (
+        <>
+          <>Oszczędzaj 16,50 dzięki</>
+          &nbsp;
+          <Tag
+            variant="blue"
+            className="side-modal__header-tag"
+          >
+            Oferty dla Klubowiczów IKEA Family
+          </Tag>
+        </>
+      );
       break;
+    default:
+      throw new Error("A case has been defined that does not exist.");
   }
 
-  function goBack() {
+  function goBackToChooseShop() {
     startViewTransition(() => {
       setModalData({ type: "choose-shop" });
     });
@@ -127,7 +116,7 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
                   variant="light"
                   shape="circle"
                   className="side-modal__go-back-btn"
-                  onClick={goBack}
+                  onClick={goBackToChooseShop}
                 >
                   <ArrowLeftIcon />
                 </Btn>
@@ -167,6 +156,8 @@ export default function SideModalLayout({ data }: SideModalLayoutType) {
               {(type === "refund" || type === "data-encryption") && (
                 <AdditionalInformations type={type} />
               )}
+
+              {type === "next-step" && <NextStep />}
             </Suspense>
           </div>
         </>

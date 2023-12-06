@@ -32,7 +32,11 @@ type extendedProductType = ProductType & {
   };
 };
 
-export default function ImageWithProducts({ data }: { data: ModalImageWithProductsType }) {
+export type ImageWithProductsPropsType = {
+  data: ModalImageWithProductsType;
+};
+
+export default function ImageWithProducts({ data }: ImageWithProductsPropsType) {
   const { closeModal } = useModal();
   const { dispatch } = useApp();
   const { width, height } = useWindowSize();

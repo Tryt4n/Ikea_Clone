@@ -82,11 +82,13 @@ export type ShoppingCartAsideMenuInformationList = {
   readonly type: "refund" | "data-encryption";
 };
 
-export type ModalDataType =
+export type ShoppingCartNextStep = {
+  readonly type: "next-step";
+};
+
+export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
-  | ModalDataImagePreviewType
-  | ModalImageWithProductsType
   | ModalDataProductInformationType
   | ModalDataItemsIncludedType
   | ModalDataDimensionsType
@@ -97,7 +99,13 @@ export type ModalDataType =
   | ModalPrefferedShopType
   | ModalChosenShopType
   | ModalLoginType
-  | ModalMenuType
-  | ModalProductsMenuType
-  | ModalRoomsMenuType
-  | ShoppingCartAsideMenuInformationList;
+  | ShoppingCartAsideMenuInformationList
+  | ShoppingCartNextStep;
+
+export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
+
+export type ModalDataType =
+  | SideModalLayoutType
+  | MenuLayoutType
+  | ModalDataImagePreviewType
+  | ModalImageWithProductsType;

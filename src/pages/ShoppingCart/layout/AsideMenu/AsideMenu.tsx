@@ -136,13 +136,22 @@ function DiscountCodeFormAccordion() {
 }
 
 function GoNextStep() {
+  const { setIsModalOpen, setModalData } = useModal();
   const { width } = useWindowSize();
+
+  function openModal() {
+    setIsModalOpen(true);
+    setModalData({
+      type: "next-step",
+    });
+  }
 
   return (
     <Btn
       type="button"
       variant="blue"
       className="shopping-cart-menu__next-btn"
+      onClick={openModal}
     >
       <span>Dalej</span>
       {width >= 900 && (
