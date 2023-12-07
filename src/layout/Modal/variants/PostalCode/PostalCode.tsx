@@ -1,5 +1,5 @@
 // React
-import { FormEvent, useRef } from "react";
+import { FormEvent, RefObject, useRef } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
@@ -86,7 +86,7 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
 
 type FormProps = {
   type: PostalCodePropsType["modalType"];
-  postalCodeRef: React.RefObject<HTMLInputElement>;
+  postalCodeRef: RefObject<HTMLInputElement>;
   saveFunction: (e: FormEvent) => void;
 };
 

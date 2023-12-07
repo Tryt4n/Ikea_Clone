@@ -118,7 +118,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
   function goBack() {
     startViewTransition(() => {
-      if (type === "choose-shop") {
+      if (type === "preffered-shop") {
         setModalData({ type: "choose-shop" });
       } else if (type === "add-product-by-number") {
         setModalData({ type: "shopping-cart-control" });

@@ -28,6 +28,11 @@ export type ShoppingCartType = Pick<
   productLink: string;
 };
 
+export type FavouritesListType = {
+  name: string;
+  createdAt: Date;
+};
+
 type ReducerStateType = {
   postalCode: string;
   isPostalCodeErrorMessageVisible: boolean;
@@ -78,6 +83,10 @@ type ReducerActionsType =
     }
   | {
       type: "clearShoppingCart";
+    }
+  | {
+      type: "createNewList";
+      payload: FavouritesListType;
     }
   | {
       type: "loadAppData";
@@ -135,7 +144,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       );
       const newProduct = action.payload;
 
-      let updatedShoppingCart;
+      let updatedShoppingCart: ShoppingCartType[];
 
       if (shoppingCart.length === 0) {
         updatedShoppingCart = [newProduct];
@@ -227,6 +236,21 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    case "createNewList": {
+      const lists = JSON.parse(localStorage.getItem("lists") || "[]");
+
+      const newList = action.payload;
+
+      const updatedLists = [...lists, newList];
+
+      localStorage.setItem("lists", JSON.stringify(updatedLists));
+
+      return {
+        ...state,
+        lists: updatedLists,
+      };
+    }
+
     case "loadAppData": {
       //? Postal Code
       const postalCodeStorage = localStorage.getItem("postalCode");
@@ -256,12 +280,20 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         shoppingCartValue = JSON.parse(shoppingCartStorage);
       }
 
+      //? Lists
+      const listsStorage = localStorage.getItem("lists");
+      let listsValue;
+      if (listsStorage) {
+        listsValue = JSON.parse(listsStorage);
+      }
+
       return {
         ...state,
         postalCode: postalCodeValue,
         rememberPostalCodeCheckboxStatus: postalCodeCheckboxValue,
         chosenShop: chosenShopValue,
         shoppingCart: shoppingCartValue,
+        lists: listsValue,
       };
     }
 

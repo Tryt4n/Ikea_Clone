@@ -126,8 +126,16 @@ function DiscountCodeFormAccordion() {
                 "aria-hidden": true,
                 "aria-labelledby": "discount-code-label",
               }}
+              inputProps={{
+                tabIndex: !accordionOpen ? -1 : 0,
+              }}
             />
-            <Btn variant="white-with-border">Zastosuj</Btn>
+            <Btn
+              variant="white-with-border"
+              tabIndex={!accordionOpen ? -1 : 0}
+            >
+              Zastosuj
+            </Btn>
           </div>
         </div>
       </form>

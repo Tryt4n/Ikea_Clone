@@ -10,7 +10,7 @@ type InputPropsType = {
   id: string;
   label: string;
   labelProps?: HTMLProps<HTMLLabelElement>;
-  inputProps?: Omit<HTMLProps<HTMLInputElement>, "ref">;
+  inputProps?: HTMLProps<HTMLInputElement>;
 };
 
 export default function Input({ type, id, label, labelProps, inputProps }: InputPropsType) {
@@ -29,8 +29,10 @@ export default function Input({ type, id, label, labelProps, inputProps }: Input
         name={id}
         type={type}
         {...inputProps}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        ref={inputProps ? inputProps.ref : null}
       />
-
       {type === "checkbox" && (
         <div
           className="checkbox-input__checkbox"
