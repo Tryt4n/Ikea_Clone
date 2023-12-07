@@ -1,7 +1,8 @@
-import { Params } from "react-router-dom";
-import { ProductDataType } from "./ProductDataType";
-import { CardCollectionType } from "../../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
-import { DisplayedImgType } from "../context/ProductContext";
+import type { Params } from "react-router-dom";
+import type { ProductDataType } from "./ProductDataType";
+import type { CardCollectionType } from "../../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
+import type { DisplayedImgType } from "../context/ProductContext";
+import type { ShoppingCartType } from "../../../context/AppContext";
 
 export type ModalDataChooseSizeType = {
   readonly type: "choose-size";
@@ -35,10 +36,14 @@ export type ModalDataInstallmentPurchaseType = {
 
 export type ModalDataImagePreviewType = {
   readonly type: "image-preview";
-  productData: ProductDataType;
+  productData: {
+    images: ProductDataType["images"];
+    name: ProductDataType["name"];
+    variant: ProductDataType["variant"];
+  };
   index: number;
   path: Params<string>;
-  displayedMainImg: DisplayedImgType;
+  displayedMainImg?: DisplayedImgType;
 };
 
 export type ModalImageWithProductsType = {
@@ -87,11 +92,20 @@ export type ShoppingCartNextStep = {
 };
 
 export type ShoppingCartControlModal = {
-  readonly type: "product-control" | "shopping-cart-control";
+  readonly type: "shopping-cart-control";
+};
+
+export type ShoppingCartProductControlModal = {
+  readonly type: "product-control";
+  productNumber: ShoppingCartType["productNumber"];
 };
 
 export type AddProductByNumberModal = {
   readonly type: "add-product-by-number";
+};
+
+export type CreateListModal = {
+  readonly type: "create-list";
 };
 
 export type SideModalLayoutType =
@@ -110,7 +124,9 @@ export type SideModalLayoutType =
   | ShoppingCartAsideMenuInformationList
   | ShoppingCartNextStep
   | ShoppingCartControlModal
-  | AddProductByNumberModal;
+  | ShoppingCartProductControlModal
+  | AddProductByNumberModal
+  | CreateListModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

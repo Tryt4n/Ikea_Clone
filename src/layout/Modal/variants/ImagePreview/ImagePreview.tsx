@@ -60,7 +60,7 @@ export default function ImagePreview({ data }: ImagePreviewPropsType) {
         <Swiper {...swiperOptions}>
           {Object.keys(images).map((key, index) => {
             const imgUrl =
-              index > 0
+              index > 0 || !displayedMainImg
                 ? `${productLink}/${path.collection}-${name}-${variant}__${images[key]}`
                 : displayedMainImg.src;
             const imgSrc = `${imgUrl}?f=l`;

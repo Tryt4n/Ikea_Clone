@@ -2,6 +2,7 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useModal from "../../../../hooks/useModal";
 // Icons
 import ArrowRightIcon from "../../../../Icons/ArrowRightIcon";
 import HeartIcon from "../../../../Icons/HeartIcon";
@@ -11,13 +12,15 @@ import TrashIcon from "../../../../Icons/TrashIcon";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type { ShoppingCartControlModal } from "../../../../pages/ProductPage/types/ModalTypes";
+import type {
+  ShoppingCartControlModal,
+  ShoppingCartProductControlModal,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Style
 import "./index.scss";
-import useModal from "../../../../hooks/useModal";
 
 type ControlPropsType = {
-  type: ShoppingCartControlModal["type"];
+  type: ShoppingCartControlModal["type"] | ShoppingCartProductControlModal["type"];
 };
 
 export default function Control({ type }: ControlPropsType) {
@@ -77,6 +80,19 @@ function CartControl() {
 }
 
 function ProductControl() {
+  const { dispatch } = useApp();
+  const { modalData, setIsModalOpen } = useModal();
+
+  function removeProduct() {
+    if (modalData)
+      dispatch({
+        type: "removeProductFromShoppingCart",
+        payload: (modalData as ShoppingCartProductControlModal).productNumber,
+      });
+
+    setIsModalOpen(false);
+  }
+
   return (
     <>
       <ListItem>
@@ -84,7 +100,7 @@ function ProductControl() {
         Przenieś do listy zakupów
       </ListItem>
 
-      <ListItem>
+      <ListItem onClick={removeProduct}>
         <TrashIcon />
         Usuń produkt
       </ListItem>

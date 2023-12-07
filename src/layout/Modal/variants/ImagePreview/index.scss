@@ -2,6 +2,7 @@
 @use "../../../../abstracts/colors" as c;
 @use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
 
 .image-modal {
   width: calc(100dvw - 6rem);
@@ -12,21 +13,30 @@
   scale: 0;
   transition: v.$main-transition;
 
+  @media screen and (width < b.$tablet) {
+    width: 100dvh;
+    height: 100dvw;
+  }
+
   &.show {
     scale: 1;
   }
 
   &__header {
-    @include flex(row, flex-end, center);
     padding-top: 1rem;
     padding-inline: 1rem;
+    @include flex(row, flex-end, center);
   }
 
   &__img-wrapper {
     height: 100%;
     max-height: calc(100% - func.rem(56) - 2rem);
-    @include flex(row, center, center);
     padding-inline: func.rem(100);
+    @include flex(row, center, center);
+
+    @media screen and (width < b.$tablet) {
+      padding-inline: 1rem;
+    }
 
     & > * {
       height: 100%;

@@ -44,6 +44,7 @@ function InnerComponent(
     "product-control": "side-modal",
     "shopping-cart-control": "side-modal",
     "add-product-by-number": "side-modal",
+    "create-list": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -79,7 +80,8 @@ function InnerComponent(
           type === "next-step" ||
           type === "product-control" ||
           type === "shopping-cart-control" ||
-          type === "add-product-by-number") && (
+          type === "add-product-by-number" ||
+          type === "create-list") && (
           <>
             <SideModalLayout data={modalData} />
           </>

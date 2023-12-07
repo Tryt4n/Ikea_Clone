@@ -15,6 +15,10 @@ const AdditionalInformations = lazy(
 );
 const NextStep = lazy(() => import("../../variants/NextStep/NextStep"));
 const Control = lazy(() => import("../../variants/Control/Control"));
+const AddProductByNumber = lazy(
+  () => import("../../variants/AddProductByNumber/AddProductByNumber")
+);
+const CreateList = lazy(() => import("../../variants/CreateList/CreateList"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -28,7 +32,6 @@ import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 // Style
 import "./index.scss";
-import AddProductByNumber from "../../variants/AddProductByNumber/AddProductByNumber";
 
 export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
@@ -106,6 +109,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
         </>
       );
       break;
+    case "create-list":
+      header = "Nadaj swojej liście nazwę";
+      break;
     default:
       throw new Error("A case has been defined that does not exist.");
   }
@@ -179,6 +185,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               )}
 
               {type === "add-product-by-number" && <AddProductByNumber />}
+
+              {type === "create-list" && <CreateList />}
             </Suspense>
           </div>
         </>

@@ -41,7 +41,7 @@ export default function AsideMenu() {
 
       <FinalPrice price={totalPrice} />
 
-      <ClubInfoDiscount />
+      <ClubInfoDiscount price={calculatePrice ? calculatePrice : 0} />
 
       <DiscountCodeFormAccordion />
 

@@ -1,8 +1,11 @@
 // React
 import { ChangeEvent } from "react";
+// react-router-dom
+import { useParams } from "react-router-dom";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
+import useModal from "../../../../hooks/useModal";
 // Components
 import Tag from "../../../ProductPage/components/Tag/Tag";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
@@ -14,6 +17,7 @@ import { productLink as imageLink } from "../../../../constants/links";
 // Types
 import type { ShoppingCartType } from "../../../../context/AppContext";
 import type { TextVariants } from "../../../../types/colorsVariantsType";
+import type { ModalDataImagePreviewType } from "../../../ProductPage/types/ModalTypes";
 // Icons
 import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
 // Style
@@ -42,7 +46,10 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
   return (
     <li className="shopping-cart-product-item">
       <div className="shopping-cart-product-item__img-wrapper">
-        <ProductImgButton src={productImgSrc} />
+        <ProductImgButton
+          product={product}
+          src={productImgSrc}
+        />
 
         <small className="shopping-cart-product-item__product-number">
           <span className="visually-hidden">Numer produktu:</span>
@@ -77,9 +84,34 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
   );
 }
 
-function ProductImgButton({ src }: { src: string }) {
+type ProductImgButtonPropsType = {
+  product: ModalDataImagePreviewType["productData"];
+  src: string;
+};
+
+function ProductImgButton({ product, src }: ProductImgButtonPropsType) {
+  const { setIsModalOpen, setModalData } = useModal();
+  const params = useParams();
+
+  function openImagesPreview() {
+    setIsModalOpen(true);
+    setModalData({
+      type: "image-preview",
+      productData: {
+        images: product.images,
+        variant: product.variant,
+        name: product.name,
+      },
+      index: 0,
+      path: params,
+    });
+  }
+
   return (
-    <button>
+    <button
+      type="button"
+      onClick={openImagesPreview}
+    >
       <span className="visually-hidden">Naciśnij aby zobaczyć galerię zdjęć produktu</span>
       <img
         src={src}
@@ -109,10 +141,9 @@ function ProductHeader({
     const decimalValue = decimal ? decimal / 100 : 0;
     const value = integer + decimalValue;
     const result = value * multiplier;
+    const resultLocale = result.toLocaleString("pl-PL");
 
-    return Number.isInteger(result)
-      ? `${result.toLocaleString("pl-PL")},-`
-      : result.toLocaleString("pl-PL");
+    return Number.isInteger(result) ? `${resultLocale},-` : resultLocale;
   }
 
   return (
@@ -223,7 +254,7 @@ function ProductControls({ quantity, productNumber }: ProductControlsPropsType) 
 
       {width >= 460 && <BtnMoveToShippingList productNumber={productNumber} />}
 
-      {width < 460 && <BtnProductMenu />}
+      {width < 460 && <BtnProductMenu productNumber={productNumber} />}
     </form>
   );
 }
@@ -256,9 +287,7 @@ function BtnDeleteProduct({ productNumber }: BtnProductPropsType) {
 function BtnMoveToShippingList({ productNumber }: BtnProductPropsType) {
   //TODO add function
   function moveToShippingList() {
-    // startViewTransition(() => {
     console.log(productNumber);
-    // });
   }
 
   return (
@@ -272,8 +301,16 @@ function BtnMoveToShippingList({ productNumber }: BtnProductPropsType) {
   );
 }
 
-function BtnProductMenu() {
-  function openMenu() {}
+function BtnProductMenu({ productNumber }: BtnProductPropsType) {
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function openMenu() {
+    setIsModalOpen(true);
+    setModalData({
+      type: "product-control",
+      productNumber: productNumber,
+    });
+  }
 
   return (
     <Btn

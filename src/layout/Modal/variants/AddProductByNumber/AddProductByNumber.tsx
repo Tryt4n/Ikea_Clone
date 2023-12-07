@@ -47,7 +47,7 @@ export default function AddProductByNumber() {
       onSubmit={(e) => e.preventDefault()}
     >
       <Input
-        id=""
+        id="add-product-by-number"
         label="np.: 103.242.78"
         type="text"
         inputProps={{
