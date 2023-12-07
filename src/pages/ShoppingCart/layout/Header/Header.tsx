@@ -1,3 +1,5 @@
+// Custom Hooks
+import useModal from "../../../../hooks/useModal";
 // Components
 import Btn from "../../../../components/Btn/Btn";
 // Icons
@@ -6,7 +8,14 @@ import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
 import "./index.scss";
 
 export default function Header({ text }: { text: string }) {
-  function openModal() {}
+  const { setIsModalOpen, setModalData } = useModal();
+
+  function openModal() {
+    setIsModalOpen(true);
+    setModalData({
+      type: "shopping-cart-control",
+    });
+  }
 
   return (
     <header className="shopping-cart-header">
@@ -15,7 +24,6 @@ export default function Header({ text }: { text: string }) {
       <Btn
         shape="circle"
         variant="light"
-        //TODO ADD MODAL FUNCTIONALITY
         onClick={openModal}
       >
         <span className="visually-hidden">Otwórz menu koszyka</span>

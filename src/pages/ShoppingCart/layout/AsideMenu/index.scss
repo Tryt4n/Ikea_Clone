@@ -115,9 +115,10 @@
   }
 
   &__discount-code-form-inner-wrapper {
+    margin-inline: 0.25rem 0.5rem;
+    padding-bottom: 1rem;
     @include flex(row, space-between, center);
     gap: 1rem;
-    padding-bottom: 1rem;
 
     & > .text-input {
       flex-grow: 1;

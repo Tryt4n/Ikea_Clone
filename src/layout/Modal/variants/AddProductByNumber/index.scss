@@ -1,0 +1,15 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+
+.add-product-by-number {
+  &__inner-wrapper {
+    margin-top: 1rem;
+    @include flex();
+    gap: 1.25rem;
+
+    & > button {
+      flex-grow: 1;
+      font-size: func.rem(14);
+    }
+  }
+}

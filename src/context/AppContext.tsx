@@ -62,6 +62,10 @@ type ReducerActionsType =
       payload: ShoppingCartType;
     }
   | {
+      type: "addProductByNumber";
+      payload: ShoppingCartType["productNumber"];
+    }
+  | {
       type: "changeProductQuantity";
       payload: {
         value: "add" | "subtract" | number;
@@ -154,6 +158,12 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         ...state,
         shoppingCart: updatedShoppingCart,
       };
+    }
+
+    case "addProductByNumber": {
+      console.warn(`Should be added product with ${action.payload} number`);
+
+      return state;
     }
 
     case "changeProductQuantity": {

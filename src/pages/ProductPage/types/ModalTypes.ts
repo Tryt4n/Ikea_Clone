@@ -86,6 +86,14 @@ export type ShoppingCartNextStep = {
   readonly type: "next-step";
 };
 
+export type ShoppingCartControlModal = {
+  readonly type: "product-control" | "shopping-cart-control";
+};
+
+export type AddProductByNumberModal = {
+  readonly type: "add-product-by-number";
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -100,7 +108,9 @@ export type SideModalLayoutType =
   | ModalChosenShopType
   | ModalLoginType
   | ShoppingCartAsideMenuInformationList
-  | ShoppingCartNextStep;
+  | ShoppingCartNextStep
+  | ShoppingCartControlModal
+  | AddProductByNumberModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

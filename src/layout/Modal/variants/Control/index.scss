@@ -1,0 +1,19 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../base/functions" as func;
+
+.product-control {
+  margin-top: 1.25rem;
+
+  & > li > button {
+    min-height: 5.75rem;
+    width: 100%;
+    max-width: 100%;
+    padding-block: 1.5rem;
+    @include flex(row, flex-start, center);
+    gap: 1.25rem;
+    border-bottom: func.rem(1) solid c.$gray;
+    font-weight: bold;
+    color: c.$black;
+  }
+}

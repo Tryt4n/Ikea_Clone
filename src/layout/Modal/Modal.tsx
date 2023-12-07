@@ -41,6 +41,9 @@ function InnerComponent(
     refund: "side-modal",
     "data-encryption": "side-modal",
     "next-step": "side-modal",
+    "product-control": "side-modal",
+    "shopping-cart-control": "side-modal",
+    "add-product-by-number": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -73,7 +76,10 @@ function InnerComponent(
           type === "log-in" ||
           type === "refund" ||
           type === "data-encryption" ||
-          type === "next-step") && (
+          type === "next-step" ||
+          type === "product-control" ||
+          type === "shopping-cart-control" ||
+          type === "add-product-by-number") && (
           <>
             <SideModalLayout data={modalData} />
           </>

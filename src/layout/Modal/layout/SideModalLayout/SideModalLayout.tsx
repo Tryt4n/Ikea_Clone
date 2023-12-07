@@ -14,6 +14,7 @@ const AdditionalInformations = lazy(
   () => import("../../variants/AdditionalInformations/AdditionalInformations")
 );
 const NextStep = lazy(() => import("../../variants/NextStep/NextStep"));
+const Control = lazy(() => import("../../variants/Control/Control"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -27,6 +28,7 @@ import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 // Style
 import "./index.scss";
+import AddProductByNumber from "../../variants/AddProductByNumber/AddProductByNumber";
 
 export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
@@ -81,6 +83,15 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "data-encryption":
       header = "Ta strona jest bezpieczna";
       break;
+    case "product-control":
+      header = "Produkt";
+      break;
+    case "shopping-cart-control":
+      header = "Koszyk";
+      break;
+    case "add-product-by-number":
+      header = "Dodaj produkt, wpisując jego numer";
+      break;
     case "next-step":
       header = (
         <>
@@ -99,9 +110,13 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       throw new Error("A case has been defined that does not exist.");
   }
 
-  function goBackToChooseShop() {
+  function goBack() {
     startViewTransition(() => {
-      setModalData({ type: "choose-shop" });
+      if (type === "choose-shop") {
+        setModalData({ type: "choose-shop" });
+      } else if (type === "add-product-by-number") {
+        setModalData({ type: "shopping-cart-control" });
+      }
     });
   }
 
@@ -111,12 +126,12 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
         <>
           <header className="side-modal__header">
             <div className="side-modal__btns-wrapper">
-              {type === "preffered-shop" && (
+              {(type === "preffered-shop" || type === "add-product-by-number") && (
                 <Btn
                   variant="light"
                   shape="circle"
                   className="side-modal__go-back-btn"
-                  onClick={goBackToChooseShop}
+                  onClick={goBack}
                 >
                   <ArrowLeftIcon />
                 </Btn>
@@ -158,6 +173,12 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               )}
 
               {type === "next-step" && <NextStep />}
+
+              {(type === "product-control" || type === "shopping-cart-control") && (
+                <Control type={type} />
+              )}
+
+              {type === "add-product-by-number" && <AddProductByNumber />}
             </Suspense>
           </div>
         </>

@@ -20,8 +20,9 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
     const filteredValue = inputValue.replace(/\D/g, "");
+    const parsedValue = parseInt(filteredValue, 10) || 1;
 
-    setQuantity(filteredValue === "" ? 1 : parseInt(filteredValue, 10));
+    setQuantity(parsedValue);
   }
 
   function handleQuantityChange(delta: -1 | 1) {
