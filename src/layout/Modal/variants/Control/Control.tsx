@@ -9,10 +9,12 @@ import HeartIcon from "../../../../Icons/HeartIcon";
 import ShareIcon from "../../../../Icons/ShareIcon";
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
+import EditIcon from "../../../../Icons/EditIcon";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
 import type {
+  FavouriteListControlModal,
   ShoppingCartControlModal,
   ShoppingCartProductControlModal,
 } from "../../../../pages/ProductPage/types/ModalTypes";
@@ -20,15 +22,20 @@ import type {
 import "./index.scss";
 
 type ControlPropsType = {
-  type: ShoppingCartControlModal["type"] | ShoppingCartProductControlModal["type"];
+  type:
+    | ShoppingCartControlModal["type"]
+    | ShoppingCartProductControlModal["type"]
+    | FavouriteListControlModal["type"];
 };
 
 export default function Control({ type }: ControlPropsType) {
-  return (
-    <ul className="product-control">
-      {type === "shopping-cart-control" ? <CartControl /> : <ProductControl />}
-    </ul>
-  );
+  const controlComponentMap = {
+    "shopping-cart-control": <CartControl />,
+    "product-control": <ProductControl />,
+    "list-control": <ListControl />,
+  };
+
+  return <ul className="product-control">{controlComponentMap[type]}</ul>;
 }
 
 function CartControl() {
@@ -103,6 +110,38 @@ function ProductControl() {
       <ListItem onClick={removeProduct}>
         <TrashIcon />
         Usuń produkt
+      </ListItem>
+    </>
+  );
+}
+
+function ListControl() {
+  const { openModal, setModalData } = useModal();
+
+  function openChangeListNameModal() {
+    startViewTransition(() => {
+      openModal();
+      setModalData({
+        type: "change-list-name",
+      });
+    });
+  }
+
+  return (
+    <>
+      <ListItem onClick={openChangeListNameModal}>
+        <EditIcon />
+        Zmień nazwę listy
+      </ListItem>
+
+      <ListItem>
+        <ShareIcon />
+        Udostępnij
+      </ListItem>
+
+      <ListItem>
+        <TrashIcon />
+        Usuń swoją listę
       </ListItem>
     </>
   );

@@ -13,13 +13,14 @@ import pl from "date-fns/locale/pl";
 import HeartIcon from "../../Icons/HeartIcon";
 import TripleDotsMenuIcon from "../../Icons/TripleDotsMenuIcon";
 import ArrowRightIcon from "../../Icons/ArrowRightIcon";
+// Types
+import type { FavouritesListType } from "../../context/AppContext";
 // Style
 import "./index.scss";
 
 export default function FavouriteLists() {
   const { state } = useApp();
   const { openModal, setModalData } = useModal();
-  const { width } = useWindowSize();
 
   function openCreateListModal() {
     openModal();
@@ -50,40 +51,10 @@ export default function FavouriteLists() {
           </section>
 
           {state.favouriteLists && state.favouriteLists.length > 0 && (
-            <section className="favourite-list">
-              <div className="favourite-list__inner-wrapper">
-                <HeartIcon />
-                <p>Ta lista potrzebuje odrobiny miłości</p>
-              </div>
-
-              <div className="favourite-list__description">
-                <div>
-                  <h4 className="favourite-list__header">{state.favouriteLists[0].name}</h4>
-                  <time
-                    dateTime={state.favouriteLists[
-                      state.favouriteLists.length - 1
-                    ].createdAt.toString()}
-                    className="favourite-list__time"
-                  >
-                    Zaktualizowano&nbsp;
-                    {formatDistanceToNow(new Date(state.favouriteLists[0].createdAt), {
-                      addSuffix: true,
-                      locale: pl,
-                    })}
-                  </time>
-                </div>
-
-                <Btn>Zobacz</Btn>
-                <Btn
-                  shape="circle"
-                  variant="gray"
-                  className="favourite-list__btn-menu"
-                >
-                  <span className="visually-hidden">Otwórz menu listy</span>
-                  <TripleDotsMenuIcon />
-                </Btn>
-              </div>
-            </section>
+            <List
+              list={state.favouriteLists[0]}
+              isMainList
+            />
           )}
         </div>
       </article>
@@ -95,40 +66,7 @@ export default function FavouriteLists() {
             {state.favouriteLists.map((list, index) => {
               return (
                 <React.Fragment key={list.name + list.createdAt}>
-                  {index > 0 && (
-                    <li>
-                      <section className="favourite-list">
-                        <div className="favourite-list__inner-wrapper">
-                          <HeartIcon />
-                          {width >= 600 && <p>Ta lista potrzebuje odrobiny miłości</p>}
-                        </div>
-
-                        <div className="favourite-list__description">
-                          <div>
-                            <h4 className="favourite-list__header">{list.name}</h4>
-                            <time
-                              dateTime={list.createdAt.toString()}
-                              className="favourite-list__time"
-                            >
-                              Zaktualizowano&nbsp;
-                              {formatDistanceToNow(new Date(list.createdAt), {
-                                addSuffix: true,
-                                locale: pl,
-                              })}
-                            </time>
-                          </div>
-
-                          <Btn
-                            shape="circle"
-                            variant="gray"
-                          >
-                            <span className="visually-hidden">Przejdź do listy {list.name}</span>
-                            <ArrowRightIcon />
-                          </Btn>
-                        </div>
-                      </section>
-                    </li>
-                  )}
+                  {index > 0 && <List list={list} />}
                 </React.Fragment>
               );
             })}
@@ -136,5 +74,81 @@ export default function FavouriteLists() {
         </article>
       )}
     </>
+  );
+}
+
+type ListPropsType = {
+  list: FavouritesListType;
+  isMainList?: boolean;
+};
+
+function List({ list, isMainList = false }: ListPropsType) {
+  const { openModal, setModalData } = useModal();
+  const { width } = useWindowSize();
+
+  function openListControlMenu() {
+    openModal();
+    setModalData({
+      type: "list-control",
+    });
+  }
+
+  return (
+    <section className="favourite-list">
+      <a
+        href="#"
+        className="favourite-list__container-link"
+      >
+        <div className="favourite-list__inner-wrapper">
+          <HeartIcon />
+          {(isMainList || (!isMainList && width >= 600)) && (
+            <p>Ta lista potrzebuje odrobiny miłości</p>
+          )}
+        </div>
+
+        <div className="favourite-list__description">
+          <div>
+            <h4 className="favourite-list__header">{list.name}</h4>
+            <time
+              dateTime={list.createdAt.toString()}
+              className={`favourite-list__time${
+                !isMainList ? " favourite-list__time--break-word" : ""
+              }`}
+            >
+              Zaktualizowano&nbsp;
+              {formatDistanceToNow(new Date(list.createdAt), {
+                addSuffix: true,
+                locale: pl,
+              })}
+            </time>
+          </div>
+
+          {isMainList && (
+            <>
+              <Btn>Zobacz</Btn>
+              <Btn
+                shape="circle"
+                variant="gray"
+                className="favourite-list__btn-menu"
+                onClick={openListControlMenu}
+              >
+                <span className="visually-hidden">Otwórz menu listy</span>
+                <TripleDotsMenuIcon />
+              </Btn>
+            </>
+          )}
+
+          {!isMainList && width >= 900 && (
+            <Btn
+              shape="circle"
+              variant="gray"
+            >
+              <span className="visually-hidden">Przejdź do listy {list.name}</span>
+              <ArrowRightIcon />
+            </Btn>
+          )}
+        </div>
+      </a>
+    </section>
   );
 }

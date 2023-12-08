@@ -18,7 +18,7 @@ const Control = lazy(() => import("../../variants/Control/Control"));
 const AddProductByNumber = lazy(
   () => import("../../variants/AddProductByNumber/AddProductByNumber")
 );
-const CreateList = lazy(() => import("../../variants/CreateList/CreateList"));
+const NameList = lazy(() => import("../../variants/NameList/NameList"));
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -26,7 +26,12 @@ import Tag from "../../../../pages/ProductPage/components/Tag/Tag";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type { SideModalLayoutType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type {
+  AddProductByNumberModal,
+  ChangeListNameModal,
+  ModalPrefferedShopType,
+  SideModalLayoutType,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
@@ -36,7 +41,7 @@ import "./index.scss";
 export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
 export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
-  const { setModalData, closeModal, modalData } = useModal();
+  const { closeModal, modalData } = useModal();
   const { state } = useApp();
 
   const { type } = data;
@@ -119,18 +124,14 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "create-list":
       header = "Nadaj swojej liście nazwę";
       break;
+    case "list-control":
+      header = "Ustawienia";
+      break;
+    case "change-list-name":
+      header = "Zmień nazwę listy";
+      break;
     default:
       throw new Error("A case has been defined that does not exist.");
-  }
-
-  function goBack() {
-    startViewTransition(() => {
-      if (type === "preffered-shop") {
-        setModalData({ type: "choose-shop" });
-      } else if (type === "add-product-by-number") {
-        setModalData({ type: "shopping-cart-control" });
-      }
-    });
   }
 
   return (
@@ -139,16 +140,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
         <>
           <header className="side-modal__header">
             <div className="side-modal__btns-wrapper">
-              {(type === "preffered-shop" || type === "add-product-by-number") && (
-                <Btn
-                  variant="light"
-                  shape="circle"
-                  className="side-modal__go-back-btn"
-                  onClick={goBack}
-                >
-                  <ArrowLeftIcon />
-                </Btn>
-              )}
+              <GoBackBtn type={type} />
+
               <Btn
                 variant="light"
                 shape="circle"
@@ -160,6 +153,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
                 <CloseIcon />
               </Btn>
             </div>
+
             <h2 className={`side-modal__heading${type === "log-in" ? ` visually-hidden` : ""}`}>
               {header}
             </h2>
@@ -187,16 +181,59 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
               {type === "next-step" && <NextStep />}
 
-              {(type === "product-control" || type === "shopping-cart-control") && (
-                <Control type={type} />
-              )}
+              {(type === "product-control" ||
+                type === "shopping-cart-control" ||
+                type === "list-control") && <Control type={type} />}
 
               {type === "add-product-by-number" && <AddProductByNumber />}
 
-              {type === "create-list" && <CreateList />}
+              {(type === "create-list" || type === "change-list-name") && <NameList type={type} />}
             </Suspense>
           </div>
         </>
+      )}
+    </>
+  );
+}
+
+type GoBackFunctionType = (
+  | ModalPrefferedShopType
+  | AddProductByNumberModal
+  | ChangeListNameModal
+)["type"];
+
+function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
+  const { setModalData } = useModal();
+
+  function goBack(type: GoBackFunctionType) {
+    startViewTransition(() => {
+      switch (type) {
+        case "preffered-shop":
+          setModalData({ type: "choose-shop" });
+          break;
+        case "add-product-by-number":
+          setModalData({ type: "shopping-cart-control" });
+          break;
+        case "change-list-name":
+          setModalData({ type: "list-control" });
+          break;
+      }
+    });
+  }
+
+  return (
+    <>
+      {(type === "preffered-shop" ||
+        type === "add-product-by-number" ||
+        type === "change-list-name") && (
+        <Btn
+          variant="light"
+          shape="circle"
+          className="side-modal__go-back-btn"
+          onClick={() => goBack(type)}
+        >
+          <ArrowLeftIcon />
+        </Btn>
       )}
     </>
   );

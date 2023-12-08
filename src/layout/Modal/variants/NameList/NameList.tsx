@@ -6,10 +6,17 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import Input from "../../../../components/Input/Input";
 import Btn from "../../../../components/Btn/Btn";
+// Types
+import type {
+  ChangeListNameModal,
+  CreateListModal,
+} from "../../../../pages/ProductPage/types/ModalTypes";
 // Styles
 import "./index.scss";
 
-export default function CreateList() {
+type CreateTypePropsType = { type: CreateListModal["type"] | ChangeListNameModal["type"] };
+
+export default function NameList({ type }: CreateTypePropsType) {
   const { dispatch } = useApp();
   const { closeModal } = useModal();
 
@@ -63,7 +70,7 @@ export default function CreateList() {
         }}
       />
 
-      <Btn type="submit">Stwórz listę</Btn>
+      <Btn type="submit">{type === "create-list" ? "Stwórz listę" : "Zapisz"}</Btn>
     </form>
   );
 }

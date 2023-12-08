@@ -108,6 +108,14 @@ export type CreateListModal = {
   readonly type: "create-list";
 };
 
+export type ChangeListNameModal = {
+  readonly type: "change-list-name";
+};
+
+export type FavouriteListControlModal = {
+  readonly type: "list-control";
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -126,7 +134,9 @@ export type SideModalLayoutType =
   | ShoppingCartControlModal
   | ShoppingCartProductControlModal
   | AddProductByNumberModal
-  | CreateListModal;
+  | CreateListModal
+  | FavouriteListControlModal
+  | ChangeListNameModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 
