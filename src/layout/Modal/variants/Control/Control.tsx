@@ -81,7 +81,7 @@ function CartControl() {
 
 function ProductControl() {
   const { dispatch } = useApp();
-  const { modalData, setIsModalOpen } = useModal();
+  const { modalData, closeModal } = useModal();
 
   function removeProduct() {
     if (modalData)
@@ -90,7 +90,7 @@ function ProductControl() {
         payload: (modalData as ShoppingCartProductControlModal).productNumber,
       });
 
-    setIsModalOpen(false);
+    closeModal();
   }
 
   return (

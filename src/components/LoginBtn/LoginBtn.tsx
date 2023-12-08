@@ -23,10 +23,10 @@ export default function LoginBtn({
   shape = "oval",
   ...props
 }: LoginBtnPropsType) {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
 
-  function openModal() {
-    setIsModalOpen(true);
+  function openLoginModal() {
+    openModal();
     setModalData({
       type: "log-in",
     });
@@ -36,7 +36,7 @@ export default function LoginBtn({
     <Btn
       variant="light"
       shape={shape}
-      onClick={openModal}
+      onClick={openLoginModal}
       className={`login-btn${className ? ` ${className}` : undefined}`}
       {...props}
     >

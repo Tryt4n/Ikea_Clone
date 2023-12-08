@@ -40,6 +40,7 @@ type ReducerStateType = {
   rememberPostalCodeCheckboxStatus: boolean;
   chosenShop?: ShopType;
   shoppingCart?: ShoppingCartType[];
+  favouriteLists?: FavouritesListType[];
 };
 
 type ReducerActionsType =
@@ -237,17 +238,17 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "createNewList": {
-      const lists = JSON.parse(localStorage.getItem("lists") || "[]");
+      const lists = JSON.parse(localStorage.getItem("favouriteLists") || "[]");
 
       const newList = action.payload;
 
-      const updatedLists = [...lists, newList];
+      const updatedLists = [newList, ...lists];
 
-      localStorage.setItem("lists", JSON.stringify(updatedLists));
+      localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
 
       return {
         ...state,
-        lists: updatedLists,
+        favouriteLists: updatedLists,
       };
     }
 
@@ -281,7 +282,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       }
 
       //? Lists
-      const listsStorage = localStorage.getItem("lists");
+      const listsStorage = localStorage.getItem("favouriteLists");
       let listsValue;
       if (listsStorage) {
         listsValue = JSON.parse(listsStorage);
@@ -293,7 +294,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         rememberPostalCodeCheckboxStatus: postalCodeCheckboxValue,
         chosenShop: chosenShopValue,
         shoppingCart: shoppingCartValue,
-        lists: listsValue,
+        favouriteLists: listsValue,
       };
     }
 
@@ -317,9 +318,9 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "loadAppData" });
   }, []);
 
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const contextValues = useMemo(
     () => ({

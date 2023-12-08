@@ -144,11 +144,11 @@ function DiscountCodeFormAccordion() {
 }
 
 function GoNextStep() {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
   const { width } = useWindowSize();
 
-  function openModal() {
-    setIsModalOpen(true);
+  function openNexStepModal() {
+    openModal();
     setModalData({
       type: "next-step",
     });
@@ -159,7 +159,7 @@ function GoNextStep() {
       type="button"
       variant="blue"
       className="shopping-cart-menu__next-btn"
-      onClick={openModal}
+      onClick={openNexStepModal}
     >
       <span>Dalej</span>
       {width >= 900 && (
@@ -172,10 +172,10 @@ function GoNextStep() {
 }
 
 function AdditionalInformationsList() {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
 
-  function openModal(type: ShoppingCartAsideMenuInformationList["type"]) {
-    setIsModalOpen(true);
+  function openModalByType(type: ShoppingCartAsideMenuInformationList["type"]) {
+    openModal();
     setModalData({
       type: type,
     });
@@ -187,7 +187,7 @@ function AdditionalInformationsList() {
         <button
           type="button"
           className="shopping-cart-menu__btn-wrapper"
-          onClick={() => openModal("refund")}
+          onClick={() => openModalByType("refund")}
         >
           <ReturnIcon />
           <span>365 dni na zwrot gdy zmienisz zdanie</span>
@@ -197,7 +197,7 @@ function AdditionalInformationsList() {
         <button
           type="button"
           className="shopping-cart-menu__btn-wrapper"
-          onClick={() => openModal("data-encryption")}
+          onClick={() => openModalByType("data-encryption")}
         >
           <LockIcon />
           <span>

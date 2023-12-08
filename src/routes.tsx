@@ -9,7 +9,7 @@ import HomePage from "./pages/Home/HomePage";
 import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
-import WishList from "./pages/WishList/WishList";
+import FavouriteLists from "./pages/FavouriteLists/FavouriteLists";
 
 export const routes = createBrowserRouter([
   {
@@ -61,7 +61,7 @@ export const routes = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <WishList />,
+                element: <FavouriteLists />,
               },
               {
                 path: "*",

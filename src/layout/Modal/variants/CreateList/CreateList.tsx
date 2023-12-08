@@ -1,7 +1,8 @@
 // React
-import { ChangeEvent, MouseEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, MouseEvent, FormEvent, useRef, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useModal from "../../../../hooks/useModal";
 // Components
 import Input from "../../../../components/Input/Input";
 import Btn from "../../../../components/Btn/Btn";
@@ -10,6 +11,7 @@ import "./index.scss";
 
 export default function CreateList() {
   const { dispatch } = useApp();
+  const { closeModal } = useModal();
 
   const [inputValue, setInputValue] = useState("");
 
@@ -25,6 +27,8 @@ export default function CreateList() {
         createdAt: new Date(),
       },
     });
+
+    closeModal();
   }
 
   function onInputChange(e: ChangeEvent<HTMLInputElement>) {
@@ -36,10 +40,6 @@ export default function CreateList() {
 
     if (inputRef.current) inputRef.current.focus();
   }
-
-  useEffect(() => {
-    console.log(inputValue);
-  }, [inputValue]);
 
   return (
     <form

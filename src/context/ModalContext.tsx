@@ -7,9 +7,9 @@ import type { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
 
 type ModalContextType = {
   modalID: string;
+  openModal: () => void;
   closeModal: () => void;
   isModalOpen: boolean;
-  setIsModalOpen: (state: boolean) => void;
   modalData: ModalDataType | undefined;
   setModalData: (data: ModalDataType | undefined) => void;
 };
@@ -30,6 +30,10 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     setIsModalOpen(true);
 
     modalRef.current.classList.add("show");
+  }
+
+  function openModal() {
+    setIsModalOpen(true);
   }
 
   function closeModal() {
@@ -80,8 +84,8 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     () => ({
       modalID,
       closeModal,
+      openModal,
       isModalOpen,
-      setIsModalOpen,
       modalData,
       setModalData,
     }),

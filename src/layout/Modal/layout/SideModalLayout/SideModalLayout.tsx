@@ -36,12 +36,19 @@ import "./index.scss";
 export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
 export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
-  const { setModalData, closeModal } = useModal();
+  const { setModalData, closeModal, modalData } = useModal();
   const { state } = useApp();
 
   const { type } = data;
 
   let header: string | ReactElement;
+
+  const productControlHeader =
+    modalData && modalData.type === "product-control"
+      ? (state.shoppingCart || []).find((product) => {
+          return product.productNumber === modalData.productNumber;
+        })?.collection
+      : "";
 
   switch (type) {
     case "choose-size":
@@ -87,7 +94,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       header = "Ta strona jest bezpieczna";
       break;
     case "product-control":
-      header = "Produkt";
+      header = productControlHeader ? productControlHeader : "";
       break;
     case "shopping-cart-control":
       header = "Koszyk";

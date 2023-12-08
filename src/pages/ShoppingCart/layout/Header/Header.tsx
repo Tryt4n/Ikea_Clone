@@ -8,10 +8,10 @@ import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
 import "./index.scss";
 
 export default function Header({ text }: { text: string }) {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
 
-  function openModal() {
-    setIsModalOpen(true);
+  function openShoppingCartControlModal() {
+    openModal();
     setModalData({
       type: "shopping-cart-control",
     });
@@ -24,7 +24,7 @@ export default function Header({ text }: { text: string }) {
       <Btn
         shape="circle"
         variant="light"
-        onClick={openModal}
+        onClick={openShoppingCartControlModal}
       >
         <span className="visually-hidden">Otwórz menu koszyka</span>
         <TripleDotsMenuIcon />

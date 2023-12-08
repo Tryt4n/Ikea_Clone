@@ -90,11 +90,11 @@ type ProductImgButtonPropsType = {
 };
 
 function ProductImgButton({ product, src }: ProductImgButtonPropsType) {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
   const params = useParams();
 
   function openImagesPreview() {
-    setIsModalOpen(true);
+    openModal();
     setModalData({
       type: "image-preview",
       productData: {
@@ -302,10 +302,10 @@ function BtnMoveToShippingList({ productNumber }: BtnProductPropsType) {
 }
 
 function BtnProductMenu({ productNumber }: BtnProductPropsType) {
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
 
   function openMenu() {
-    setIsModalOpen(true);
+    openModal();
     setModalData({
       type: "product-control",
       productNumber: productNumber,

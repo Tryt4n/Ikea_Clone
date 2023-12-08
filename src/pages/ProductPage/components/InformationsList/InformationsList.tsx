@@ -44,11 +44,11 @@ type TypeInformationItemType =
   | ModalDataInstallmentPurchaseType["type"];
 
 function InformationItem({ heading, children }: { heading: string; children?: ReactNode }) {
-  const { modalID, setIsModalOpen, setModalData } = useModal();
+  const { modalID, openModal, setModalData } = useModal();
 
   let type: TypeInformationItemType;
-  function openModal() {
-    setIsModalOpen(true);
+  function openModalByType() {
+    openModal();
 
     switch (heading) {
       case "Informacje o produkcie":
@@ -83,7 +83,7 @@ function InformationItem({ heading, children }: { heading: string; children?: Re
         type="button"
         className="product-information__btn"
         aria-controls={modalID}
-        onClick={openModal}
+        onClick={openModalByType}
       >
         <div>
           <h4 className="product-information__heading">{heading}</h4>

@@ -22,11 +22,11 @@ import "./index.scss";
 
 export default function NavigationBar() {
   const { width } = useWindowSize();
-  const { setIsModalOpen, setModalData } = useModal();
+  const { openModal, setModalData } = useModal();
 
   const { state } = useApp();
 
-  function openModal({
+  function openModalByType({
     type,
   }:
     | ModalPostalCodeType
@@ -34,7 +34,7 @@ export default function NavigationBar() {
     | ModalChosenShopType
     | ModalProductsMenuType
     | ModalRoomsMenuType) {
-    setIsModalOpen(true);
+    openModal();
     setModalData({
       type: type,
     });
@@ -50,9 +50,9 @@ export default function NavigationBar() {
             {mainNavigationList.map((element) => {
               const onClickFunction =
                 element === "Produkty"
-                  ? () => openModal({ type: "products-menu" })
+                  ? () => openModalByType({ type: "products-menu" })
                   : element === "Pomieszczenia"
-                  ? () => openModal({ type: "rooms-menu" })
+                  ? () => openModalByType({ type: "rooms-menu" })
                   : undefined;
 
               return (
@@ -74,7 +74,7 @@ export default function NavigationBar() {
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
-          onClick={() => openModal({ type: "postal-code" })}
+          onClick={() => openModalByType({ type: "postal-code" })}
         >
           <TruckIcon />
           <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
@@ -83,7 +83,7 @@ export default function NavigationBar() {
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() =>
-            openModal(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
+            openModalByType(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
           }
         >
           <ShopIcon />
