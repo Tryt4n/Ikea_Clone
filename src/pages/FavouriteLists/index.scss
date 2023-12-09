@@ -36,6 +36,7 @@
     padding-block: $_block-spacing;
     @include flex(column, center, center);
     text-align: center;
+    grid-column: span 3;
 
     &:has(~ .favourite-list) {
       @media screen and (width >= b.$mobile-md) {

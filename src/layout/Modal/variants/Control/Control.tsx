@@ -127,6 +127,14 @@ function ListControl() {
     });
   }
 
+  function openDeleteListModal() {
+    startViewTransition(() => {
+      setModalData({
+        type: "delete-list-confirmation",
+      });
+    });
+  }
+
   return (
     <>
       <ListItem onClick={openChangeListNameModal}>
@@ -139,7 +147,7 @@ function ListControl() {
         Udostępnij
       </ListItem>
 
-      <ListItem>
+      <ListItem onClick={openDeleteListModal}>
         <TrashIcon />
         Usuń swoją listę
       </ListItem>

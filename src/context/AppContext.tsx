@@ -29,8 +29,9 @@ export type ShoppingCartType = Pick<
 };
 
 export type FavouritesListType = {
+  id: string;
   name: string;
-  createdAt: Date;
+  lastEdit: Date;
 };
 
 type ReducerStateType = {
@@ -41,6 +42,7 @@ type ReducerStateType = {
   chosenShop?: ShopType;
   shoppingCart?: ShoppingCartType[];
   favouriteLists?: FavouritesListType[];
+  editingList?: FavouritesListType;
 };
 
 type ReducerActionsType =
@@ -75,12 +77,12 @@ type ReducerActionsType =
       type: "changeProductQuantity";
       payload: {
         value: "add" | "subtract" | number;
-        productNumber: string;
+        productNumber: ShoppingCartType["productNumber"];
       };
     }
   | {
       type: "removeProductFromShoppingCart";
-      payload: string;
+      payload: ShoppingCartType["productNumber"];
     }
   | {
       type: "clearShoppingCart";
@@ -88,6 +90,18 @@ type ReducerActionsType =
   | {
       type: "createNewList";
       payload: FavouritesListType;
+    }
+  | {
+      type: "setEditingList";
+      payload: FavouritesListType;
+    }
+  | {
+      type: "changeListName";
+      payload: FavouritesListType;
+    }
+  | {
+      type: "deleteList";
+      payload: FavouritesListType["id"];
     }
   | {
       type: "loadAppData";
@@ -252,6 +266,48 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    case "setEditingList": {
+      return {
+        ...state,
+        editingList: action.payload,
+      };
+    }
+
+    case "changeListName": {
+      const editingList: FavouritesListType = {
+        ...action.payload,
+        lastEdit: new Date(),
+      };
+
+      if (!state.favouriteLists) return { ...state };
+
+      const listIndex = state.favouriteLists.findIndex((list) => list.id === editingList.id);
+
+      if (listIndex !== -1) {
+        const updatedLists = [...state.favouriteLists];
+        updatedLists[listIndex] = editingList;
+
+        localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
+
+        return {
+          ...state,
+          favouriteLists: updatedLists,
+          editingList: undefined,
+        };
+      }
+
+      return {
+        ...state,
+        editingList: undefined,
+      };
+    }
+
+    case "deleteList": {
+      return {
+        ...state,
+      };
+    }
+
     case "loadAppData": {
       //? Postal Code
       const postalCodeStorage = localStorage.getItem("postalCode");
@@ -318,9 +374,9 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "loadAppData" });
   }, []);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   const contextValues = useMemo(
     () => ({

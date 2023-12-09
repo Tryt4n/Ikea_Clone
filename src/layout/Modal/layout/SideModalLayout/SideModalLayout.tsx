@@ -19,6 +19,9 @@ const AddProductByNumber = lazy(
   () => import("../../variants/AddProductByNumber/AddProductByNumber")
 );
 const NameList = lazy(() => import("../../variants/NameList/NameList"));
+const DeleteListConfirmation = lazy(
+  () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation")
+);
 // Components
 import Btn from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -29,6 +32,7 @@ import { startViewTransition } from "../../../../utils/helpers";
 import type {
   AddProductByNumberModal,
   ChangeListNameModal,
+  DeleteListConfirmationModal,
   ModalPrefferedShopType,
   SideModalLayoutType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
@@ -130,6 +134,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "change-list-name":
       header = "Zmień nazwę listy";
       break;
+    case "delete-list-confirmation":
+      header = "Usuń swoją listę";
+      break;
     default:
       throw new Error("A case has been defined that does not exist.");
   }
@@ -188,6 +195,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               {type === "add-product-by-number" && <AddProductByNumber />}
 
               {(type === "create-list" || type === "change-list-name") && <NameList type={type} />}
+
+              {type === "delete-list-confirmation" && <DeleteListConfirmation />}
             </Suspense>
           </div>
         </>
@@ -200,6 +209,7 @@ type GoBackFunctionType = (
   | ModalPrefferedShopType
   | AddProductByNumberModal
   | ChangeListNameModal
+  | DeleteListConfirmationModal
 )["type"];
 
 function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
@@ -217,6 +227,9 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
         case "change-list-name":
           setModalData({ type: "list-control" });
           break;
+        case "delete-list-confirmation":
+          setModalData({ type: "list-control" });
+          break;
       }
     });
   }
@@ -225,7 +238,8 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
     <>
       {(type === "preffered-shop" ||
         type === "add-product-by-number" ||
-        type === "change-list-name") && (
+        type === "change-list-name" ||
+        type === "delete-list-confirmation") && (
         <Btn
           variant="light"
           shape="circle"

@@ -47,6 +47,7 @@ function InnerComponent(
     "create-list": "side-modal",
     "change-list-name": "side-modal",
     "list-control": "side-modal",
+    "delete-list-confirmation": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -85,7 +86,8 @@ function InnerComponent(
           type === "add-product-by-number" ||
           type === "create-list" ||
           type === "list-control" ||
-          type === "change-list-name") && (
+          type === "change-list-name" ||
+          type === "delete-list-confirmation") && (
           <>
             <SideModalLayout data={modalData} />
           </>

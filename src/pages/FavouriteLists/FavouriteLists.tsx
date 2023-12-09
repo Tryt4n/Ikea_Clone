@@ -65,7 +65,7 @@ export default function FavouriteLists() {
           <ul className="favourite-lists__list">
             {state.favouriteLists.map((list, index) => {
               return (
-                <React.Fragment key={list.name + list.createdAt}>
+                <React.Fragment key={list.name + list.lastEdit}>
                   {index > 0 && <List list={list} />}
                 </React.Fragment>
               );
@@ -83,10 +83,13 @@ type ListPropsType = {
 };
 
 function List({ list, isMainList = false }: ListPropsType) {
+  const { dispatch } = useApp();
   const { openModal, setModalData } = useModal();
   const { width } = useWindowSize();
 
   function openListControlMenu() {
+    dispatch({ type: "setEditingList", payload: list });
+
     openModal();
     setModalData({
       type: "list-control",
@@ -110,13 +113,13 @@ function List({ list, isMainList = false }: ListPropsType) {
           <div>
             <h4 className="favourite-list__header">{list.name}</h4>
             <time
-              dateTime={list.createdAt.toString()}
+              dateTime={list.lastEdit.toString()}
               className={`favourite-list__time${
                 !isMainList ? " favourite-list__time--break-word" : ""
               }`}
             >
               Zaktualizowano&nbsp;
-              {formatDistanceToNow(new Date(list.createdAt), {
+              {formatDistanceToNow(new Date(list.lastEdit), {
                 addSuffix: true,
                 locale: pl,
               })}

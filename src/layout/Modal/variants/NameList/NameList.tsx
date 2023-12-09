@@ -17,23 +17,37 @@ import "./index.scss";
 type CreateTypePropsType = { type: CreateListModal["type"] | ChangeListNameModal["type"] };
 
 export default function NameList({ type }: CreateTypePropsType) {
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
   const { closeModal } = useModal();
 
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    type === "change-list-name" && state.editingList ? state.editingList.name : ""
+  );
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   function onSubmit(e: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     e.preventDefault();
 
-    dispatch({
-      type: "createNewList",
-      payload: {
-        name: inputValue,
-        createdAt: new Date(),
-      },
-    });
+    if (type === "create-list") {
+      dispatch({
+        type: "createNewList",
+        payload: {
+          id: crypto.randomUUID(),
+          name: inputValue,
+          lastEdit: new Date(),
+        },
+      });
+    } else if (type === "change-list-name" && state.editingList) {
+      dispatch({
+        type: "changeListName",
+        payload: {
+          ...state.editingList,
+          name: inputValue,
+        },
+      });
+    }
 
     closeModal();
   }
