@@ -5,6 +5,9 @@ export type BtnVariantsType =
   | "blue"
   | "white-with-border"
   | "light-with-border"
-  | "dark-opaque";
+  | "dark-opaque"
+  | "warn";
 
 export type BtnShapesType = "oval" | "circle";
+
+export type BtnSizesType = "small" | "big";

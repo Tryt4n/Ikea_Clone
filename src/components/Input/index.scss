@@ -73,16 +73,22 @@
       opacity: 1;
     }
   }
+  &__input.accent:checked ~ .checkbox-input__checkbox {
+    background-color: c.$blue-dark;
+  }
 
   &__input:checked:focus ~ .checkbox-input__checkbox,
   &:hover .checkbox-input__input:is(:checked) ~ .checkbox-input__checkbox {
     background-color: c.$text-gray;
     color: c.$white;
   }
+  &__input.accent:checked:focus ~ .checkbox-input__checkbox,
+  &:hover .checkbox-input__input.accent:is(:checked) ~ .checkbox-input__checkbox {
+    background-color: c.$very-dark-blue;
+  }
 
   &__checkbox {
-    position: relative;
-    flex-shrink: 0;
+    position: absolute;
     width: $_checkbox-size;
     height: $_checkbox-size;
     background: transparent;
@@ -102,9 +108,10 @@
   }
 
   &__label {
-    padding-left: 1rem;
+    padding-left: 2.5rem;
     color: currentColor;
     cursor: inherit;
+    z-index: 10;
   }
 
   &:where(:hover, :focus-within) .checkbox-input__checkbox::before {

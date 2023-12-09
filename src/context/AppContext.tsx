@@ -303,8 +303,18 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "deleteList": {
+      const deletingList = action.payload;
+
+      if (!state.favouriteLists) return { ...state };
+
+      const updatedLists: FavouritesListType[] = state.favouriteLists.filter(
+        (list) => list.id !== deletingList
+      );
+
       return {
         ...state,
+        favouriteLists: updatedLists,
+        editingList: undefined,
       };
     }
 

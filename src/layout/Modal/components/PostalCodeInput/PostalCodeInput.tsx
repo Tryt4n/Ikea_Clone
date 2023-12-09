@@ -14,6 +14,7 @@ import useApp from "../../../../hooks/useApp";
 import Input from "../../../../components/Input/Input";
 // Styles
 import "./index.scss";
+import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
 function InnerComponent(
   { ...props }: HTMLProps<HTMLInputElement>,
@@ -78,13 +79,11 @@ function InnerComponent(
       )}
 
       {postalCodeErrorMessage && (
-        <small
+        <ErrorMessage
           id="postal-code-errormessage"
-          className="postal-code-input__errormessage"
-          aria-hidden={!isPostalCodeErrorMessageVisible}
-        >
-          {postalCodeErrorMessage}
-        </small>
+          errorMessage={postalCodeErrorMessage}
+          errorVisibility={!isPostalCodeErrorMessageVisible}
+        />
       )}
     </div>
   );

@@ -1,0 +1,40 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+
+.delete-list-confirmation-modal {
+  $_spacing: 1.5rem;
+
+  @include flex(column);
+  height: 100%;
+  max-height: 100%;
+
+  & > p {
+    margin-bottom: $_spacing;
+  }
+
+  &__form {
+    flex-grow: 1;
+    @include flex(column);
+
+    & > .checkbox-input {
+      // flex-grow: 1 !important;
+    }
+  }
+
+  &__input-wrapper {
+    flex-grow: 1;
+  }
+
+  &__error-message {
+    @include flex(row, flex-start, center);
+    color: c.$light-red;
+  }
+
+  &__btn {
+    margin-top: $_spacing;
+    width: 100%;
+    @include flex(row, center, center);
+    gap: 0.5rem;
+    outline-offset: 0.25em !important;
+  }
+}
