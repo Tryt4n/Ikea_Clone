@@ -22,7 +22,7 @@ import "./index.scss";
 
 export default function NavigationBar() {
   const { width } = useWindowSize();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   const { state } = useApp();
 
@@ -34,7 +34,6 @@ export default function NavigationBar() {
     | ModalChosenShopType
     | ModalProductsMenuType
     | ModalRoomsMenuType) {
-    openModal();
     setModalData({
       type: type,
     });

@@ -8,6 +8,7 @@ import InstagramIcon from "../../Icons/InstagramIcon";
 // Types
 import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
 import type { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { BtnSizesType } from "../../types/btnTypes";
 // Style
 import "./index.scss";
 
@@ -35,7 +36,8 @@ type ContainerBtnPropsType = {
   children: string;
   className?: string;
   variant?: ArticleBtnVariantsType;
-} & HTMLProps<HTMLAnchorElement>;
+  size?: BtnSizesType;
+} & Omit<HTMLProps<HTMLAnchorElement>, "size">;
 
 type LinkPropsType = {
   children?: ReactNode;
@@ -108,11 +110,17 @@ function Text({ children }: { children: ReactNode }) {
   return <p className="article__text">{children}</p>;
 }
 
-function ContainerBtn({ children, className, variant = "dark", ...props }: ContainerBtnPropsType) {
+function ContainerBtn({
+  children,
+  className,
+  variant = "dark",
+  size = "small",
+  ...props
+}: ContainerBtnPropsType) {
   return (
     <a
       {...props}
-      className={`btn btn--${variant} btn--oval${className ? ` ${className}` : ""}`}
+      className={`btn btn--${variant} btn--${size} btn--oval${className ? ` ${className}` : ""}`}
     >
       {children}
     </a>

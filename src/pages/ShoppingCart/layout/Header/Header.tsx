@@ -8,10 +8,9 @@ import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
 import "./index.scss";
 
 export default function Header({ text }: { text: string }) {
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openShoppingCartControlModal() {
-    openModal();
     setModalData({
       type: "shopping-cart-control",
     });

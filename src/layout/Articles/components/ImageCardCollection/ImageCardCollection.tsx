@@ -32,7 +32,7 @@ export default function ImageCardCollection({
   onHoverStatus,
   hideTooltips,
 }: ImageCardCollectionType) {
-  const { modalID, openModal, setModalData } = useModal();
+  const { modalID, setModalData } = useModal();
 
   const { id, img, instagramUser, products, addToWishlistIcon } = card;
 
@@ -52,7 +52,6 @@ export default function ImageCardCollection({
 
     if (isListItem) return;
 
-    openModal();
     setModalData({
       type: "image-with-products",
       productsData: card,

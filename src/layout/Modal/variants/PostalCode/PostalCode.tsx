@@ -25,7 +25,8 @@ type PostalCodePropsType = {
 };
 
 export default function PostalCode({ modalType }: PostalCodePropsType) {
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
+  const { closeModal } = useModal();
 
   const postalCodeRef = useRef<HTMLInputElement>(null);
 
@@ -35,7 +36,9 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
     const zipCodeValue = postalCodeRef.current?.value || "";
     const zipCodeRegex = /^\d{2}-\d{3}$/;
 
-    if (!zipCodeValue) {
+    if (zipCodeValue && state.postalCode === zipCodeValue) {
+      dispatchErrorMessage("Wprowadzona wartość jest taka sama");
+    } else if (!zipCodeValue) {
       dispatchErrorMessage("Wprowadź kod pocztowy");
     } else if (!zipCodeRegex.test(zipCodeValue)) {
       dispatchErrorMessage("Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.");
@@ -45,6 +48,7 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
         type: "setPostalCode",
         payload: zipCodeValue,
       });
+      closeModal();
     }
   }
 
@@ -57,6 +61,7 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
 
   function deletePostalCode() {
     dispatch({ type: "deletePostalCode" });
+    closeModal();
   }
 
   return (

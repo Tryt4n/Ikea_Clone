@@ -42,10 +42,9 @@ type DeliveryOptionPropsType = {
 
 function DeliveryOption({ item, checkedStatus, onChangeFunction }: DeliveryOptionPropsType) {
   const { state } = useApp();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openPostalCodeModal() {
-    openModal();
     setModalData({ type: "postal-code" });
   }
 

@@ -12,10 +12,10 @@ type HamburgerBtnType = {
 
 export default function HamburgerButton({ className }: HamburgerBtnType) {
   const { width } = useWindowSize();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openMenuModal() {
-    openModal(), setModalData({ type: "menu" });
+    setModalData({ type: "menu" });
   }
 
   return (

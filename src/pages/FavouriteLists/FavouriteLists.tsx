@@ -20,10 +20,9 @@ import "./index.scss";
 
 export default function FavouriteLists() {
   const { state } = useApp();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openCreateListModal() {
-    openModal();
     setModalData({ type: "create-list" });
   }
 
@@ -84,13 +83,12 @@ type ListPropsType = {
 
 function List({ list, isMainList = false }: ListPropsType) {
   const { dispatch } = useApp();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
   const { width } = useWindowSize();
 
   function openListControlMenu() {
     dispatch({ type: "setEditingList", payload: list });
 
-    openModal();
     setModalData({
       type: "list-control",
     });

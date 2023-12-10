@@ -15,10 +15,6 @@
   &__form {
     flex-grow: 1;
     @include flex(column);
-
-    & > .checkbox-input {
-      // flex-grow: 1 !important;
-    }
   }
 
   &__input-wrapper {

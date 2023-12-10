@@ -23,14 +23,13 @@ import "./index.scss";
 
 export default function ProductImageGallery({ data }: { data: ProductDataType }) {
   const { displayedMainImg, path } = useProduct();
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
   const { width } = useWindowSize();
   const [visibleImages, setVisibleImages] = useState(8);
 
   const { images, name, variant, topSeller, limitedEdition } = data;
 
   function openModalPreview(index: number) {
-    openModal();
     setModalData({
       type: "image-preview",
       productData: data,

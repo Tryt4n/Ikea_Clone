@@ -1,5 +1,14 @@
 // React
-import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from "react";
+import {
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+  createContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 // Components
 import { Modal } from "../layout/Modal/Modal";
 // Types
@@ -7,9 +16,7 @@ import type { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
 
 type ModalContextType = {
   modalID: string;
-  openModal: () => void;
   closeModal: () => void;
-  isModalOpen: boolean;
   modalData: ModalDataType | undefined;
   setModalData: (data: ModalDataType | undefined) => void;
 };
@@ -17,7 +24,6 @@ type ModalContextType = {
 export const ModalContext = createContext<ModalContextType | null>(null);
 
 export function ModalContextProvider({ children }: { children: ReactNode }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState<ModalDataType | undefined>();
 
   const modalRef = useRef<null | HTMLDialogElement>(null);
@@ -27,13 +33,8 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     if (!modalRef.current) return;
 
     modalRef.current.showModal();
-    setIsModalOpen(true);
 
     modalRef.current.classList.add("show");
-  }
-
-  function openModal() {
-    setIsModalOpen(true);
   }
 
   function closeModal() {
@@ -45,15 +46,15 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
       if (!modalRef.current) return;
 
       modalRef.current.close();
-      setIsModalOpen(false);
       setModalData(undefined);
     }, 325);
   }
 
-  function closeModalOnBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
-    if (!e.target) return;
+  function closeModalOnBackdropClick(e: MouseEvent<HTMLDialogElement>) {
+    if (e.currentTarget !== e.target) return;
 
     const dialogDimensions = (e.target as HTMLDialogElement).getBoundingClientRect();
+
     if (
       e.clientX < dialogDimensions.left ||
       e.clientX > dialogDimensions.right ||
@@ -64,32 +65,30 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function closeModalOnEscapeKey(e: React.KeyboardEvent<HTMLDialogElement>) {
-    if (e.key === "Escape" && isModalOpen) {
+  function closeModalOnEscapeKey(e: KeyboardEvent<HTMLDialogElement>) {
+    if (e.key === "Escape") {
       e.preventDefault();
       closeModal();
     }
   }
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (modalData && modalData.type !== undefined) {
       showModal();
     } else {
       closeModal();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalOpen]);
+  }, [modalData]);
 
   const contextValues = useMemo(
     () => ({
       modalID,
       closeModal,
-      openModal,
-      isModalOpen,
       modalData,
       setModalData,
     }),
-    [modalID, isModalOpen, modalData]
+    [modalID, modalData]
   );
 
   return (

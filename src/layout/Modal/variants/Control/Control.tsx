@@ -116,11 +116,10 @@ function ProductControl() {
 }
 
 function ListControl() {
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openChangeListNameModal() {
     startViewTransition(() => {
-      openModal();
       setModalData({
         type: "change-list-name",
       });

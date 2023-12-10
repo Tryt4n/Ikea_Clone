@@ -1,13 +1,5 @@
 // React
-import {
-  MouseEvent,
-  ForwardedRef,
-  HTMLProps,
-  forwardRef,
-  useState,
-  useEffect,
-  ChangeEvent,
-} from "react";
+import { ForwardedRef, HTMLProps, forwardRef, useState, useEffect, ChangeEvent } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 // Components
@@ -31,14 +23,6 @@ function InnerComponent(
     }
   }, [postalCode]);
 
-  function labelOnClickFunction(e: MouseEvent<HTMLLabelElement>) {
-    e.preventDefault();
-
-    if (ref && "current" in ref && ref.current) {
-      ref.current.focus();
-    }
-  }
-
   function onInputChange(e: ChangeEvent<HTMLInputElement>) {
     setInputTextValue(e.target.value);
   }
@@ -49,9 +33,6 @@ function InnerComponent(
         type="text"
         id="postal-code"
         label="Wprowadź kod pocztowy"
-        labelProps={{
-          onClick: labelOnClickFunction,
-        }}
         inputProps={{
           ref: ref,
           className: "postal-code-input__input",

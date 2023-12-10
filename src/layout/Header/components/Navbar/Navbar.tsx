@@ -20,7 +20,7 @@ import "./index.scss";
 
 export default function Navbar() {
   const { isDesktop } = useApp();
-  const { isModalOpen } = useModal();
+  const { modalData } = useModal();
   const { width } = useWindowSize();
 
   const [navbarRef, inView] = useInView({
@@ -53,10 +53,10 @@ export default function Navbar() {
   useEventListener<Event>("scroll", handleScroll);
 
   const navbarInnerClasses = `navbar__inner${!inView ? " scrolled" : ""}${
-    !isModalOpen && !inView && isScrolledToTop && scrollDirection !== "down" ? " slideDown" : ""
-  }${!isModalOpen && !inView && !isScrolledToTop && scrollDirection === "down" ? " slideUp" : ""}${
-    isModalOpen && !inView ? " slideUp" : ""
-  }${!isDesktop ? " mobile" : ""}`;
+    !modalData?.type && !inView && isScrolledToTop && scrollDirection !== "down" ? " slideDown" : ""
+  }${
+    !modalData?.type && !inView && !isScrolledToTop && scrollDirection === "down" ? " slideUp" : ""
+  }${modalData?.type && !inView ? " slideUp" : ""}${!isDesktop ? " mobile" : ""}`;
 
   return (
     <div

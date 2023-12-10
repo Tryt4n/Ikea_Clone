@@ -24,7 +24,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
   const { width } = useWindowSize();
   const { displayedMainImg, path } = useProduct();
 
-  const { modalID, openModal, setModalData } = useModal();
+  const { modalID, setModalData } = useModal();
 
   const {
     size,
@@ -43,7 +43,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
   } = data;
 
   function showSizesModal(data: ProductDataType) {
-    openModal();
     setModalData({
       type: "choose-size",
       productData: data,
@@ -52,7 +51,6 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
   }
 
   function showColorsModal(data: ProductDataType) {
-    openModal();
     setModalData({
       type: "choose-color",
       productData: data,

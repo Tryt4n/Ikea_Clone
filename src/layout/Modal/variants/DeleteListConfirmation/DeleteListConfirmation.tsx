@@ -55,11 +55,14 @@ export default function DeleteListConfirmation() {
   }
 
   function deleteList() {
-    if (!state.editingList) return;
+    const editingList = state.editingList;
+    if (!editingList) return;
 
     if (checkboxStatus) {
-      dispatch({ type: "deleteList", payload: state.editingList.id });
-      closeModal();
+      startViewTransition(() => {
+        dispatch({ type: "deleteList", payload: editingList.id });
+        closeModal();
+      });
     } else {
       setErrorMessageVisible(true);
     }

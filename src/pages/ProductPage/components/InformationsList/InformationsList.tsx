@@ -44,12 +44,11 @@ type TypeInformationItemType =
   | ModalDataInstallmentPurchaseType["type"];
 
 function InformationItem({ heading, children }: { heading: string; children?: ReactNode }) {
-  const { modalID, openModal, setModalData } = useModal();
+  const { modalID, setModalData } = useModal();
 
   let type: TypeInformationItemType;
-  function openModalByType() {
-    openModal();
 
+  function openModalByType() {
     switch (heading) {
       case "Informacje o produkcie":
         type = "product-information";

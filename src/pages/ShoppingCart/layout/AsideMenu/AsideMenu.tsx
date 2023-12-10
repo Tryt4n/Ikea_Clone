@@ -144,11 +144,10 @@ function DiscountCodeFormAccordion() {
 }
 
 function GoNextStep() {
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
   const { width } = useWindowSize();
 
   function openNexStepModal() {
-    openModal();
     setModalData({
       type: "next-step",
     });
@@ -172,10 +171,9 @@ function GoNextStep() {
 }
 
 function AdditionalInformationsList() {
-  const { openModal, setModalData } = useModal();
+  const { setModalData } = useModal();
 
   function openModalByType(type: ShoppingCartAsideMenuInformationList["type"]) {
-    openModal();
     setModalData({
       type: type,
     });
