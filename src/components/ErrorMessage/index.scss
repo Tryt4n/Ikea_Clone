@@ -2,6 +2,7 @@
 @use "../../abstracts/colors" as c;
 
 .error-message {
+  margin-block: 0.25rem;
   position: relative;
   @include flex();
   gap: 0.5em;

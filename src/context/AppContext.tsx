@@ -311,6 +311,8 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         (list) => list.id !== deletingList
       );
 
+      localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
+
       return {
         ...state,
         favouriteLists: updatedLists,

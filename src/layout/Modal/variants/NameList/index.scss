@@ -1,6 +1,4 @@
 @use "../../../../abstracts/mixins" as *;
-@use "../../../../base/functions" as func;
-@use "../../../../base/breakpoints" as b;
 
 .create-list-modal {
   @include flex(column, space-between);
@@ -9,10 +7,5 @@
 
   & button {
     width: 100%;
-
-    @media screen and (width >= b.$mobile-md) {
-      min-height: 3.5rem;
-      font-size: func.rem(14);
-    }
   }
 }

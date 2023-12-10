@@ -97,7 +97,8 @@ function List({ list, isMainList = false }: ListPropsType) {
   return (
     <section className="favourite-list">
       <a
-        href="#"
+        // href="#"
+        href={`/favourites/${list.id}`}
         className="favourite-list__container-link"
       >
         <div className="favourite-list__inner-wrapper">

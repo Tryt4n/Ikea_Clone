@@ -10,6 +10,7 @@ import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import FavouriteLists from "./pages/FavouriteLists/FavouriteLists";
+import ListPage from "./pages/ListPage/ListPage";
 
 export const routes = createBrowserRouter([
   {
@@ -64,7 +65,11 @@ export const routes = createBrowserRouter([
                 element: <FavouriteLists />,
               },
               {
-                path: "*",
+                path: ":listId",
+                element: <ListPage />,
+              },
+              {
+                path: ":listId/*",
                 element: <Navigate to="/favourites" />,
               },
             ],

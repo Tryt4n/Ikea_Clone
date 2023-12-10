@@ -15,6 +15,7 @@ import type {
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Styles
 import "./index.scss";
+import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
 type CreateTypePropsType = { type: CreateListModal["type"] | ChangeListNameModal["type"] };
 
@@ -25,11 +26,19 @@ export default function NameList({ type }: CreateTypePropsType) {
   const [inputValue, setInputValue] = useState(
     type === "change-list-name" && state.editingList ? state.editingList.name : ""
   );
+  const [errorMessageVisibility, setErrorMessageVisibility] = useState(false);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   function onSubmit(e: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     e.preventDefault();
+
+    const isNameExist = checkIsNameAlreadyExist();
+
+    if (isNameExist) {
+      setErrorMessageVisibility(true);
+      return;
+    }
 
     startViewTransition(() => {
       if (type === "create-list") {
@@ -57,6 +66,13 @@ export default function NameList({ type }: CreateTypePropsType) {
 
   function onInputChange(e: ChangeEvent<HTMLInputElement>) {
     setInputValue(e.target.value);
+    setErrorMessageVisibility(false);
+  }
+
+  function checkIsNameAlreadyExist() {
+    if (!state.favouriteLists) return false;
+
+    return state.favouriteLists.some((list) => list.name === inputValue);
   }
 
   return (
@@ -64,21 +80,35 @@ export default function NameList({ type }: CreateTypePropsType) {
       className="create-list-modal"
       onSubmit={onSubmit}
     >
-      <Input
-        id="new-list-name"
-        label="Wprowadź nazwę listy"
-        type="text"
-        inputProps={{
-          ref: inputRef,
-          className: "",
-          autoComplete: "off",
-          required: true,
-          value: inputValue,
-          onChange: onInputChange,
-        }}
-      />
+      <div>
+        <Input
+          id="new-list-name"
+          label="Wprowadź nazwę listy"
+          type="text"
+          inputProps={{
+            ref: inputRef,
+            className: "",
+            autoComplete: "off",
+            required: true,
+            value: inputValue,
+            "aria-errormessage": "list-error-message",
+            "aria-invalid": errorMessageVisibility,
+            onChange: onInputChange,
+          }}
+        />
+        <ErrorMessage
+          id="list-error-message"
+          errorMessage="Taka nazwa już istnieje"
+          errorVisibility={!errorMessageVisibility}
+        />
+      </div>
 
-      <Btn type="submit">{type === "create-list" ? "Stwórz listę" : "Zapisz"}</Btn>
+      <Btn
+        type="submit"
+        size="big"
+      >
+        {type === "create-list" ? "Stwórz listę" : "Zapisz"}
+      </Btn>
     </form>
   );
 }
