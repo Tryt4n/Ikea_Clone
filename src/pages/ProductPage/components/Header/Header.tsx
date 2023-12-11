@@ -54,8 +54,10 @@ export default function Header({ data }: { data: ProductDataType }) {
   }
 
   function openSelectListModal() {
-    console.log("select list");
-    setModalData({ type: "select-list" });
+    setModalData({
+      type: "select-list",
+      product: product,
+    });
   }
 
   return (

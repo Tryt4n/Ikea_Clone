@@ -106,6 +106,7 @@ export type AddProductByNumberModal = {
 
 export type CreateListModal = {
   readonly type: "create-list";
+  product?: ShoppingCartType;
 };
 
 export type ChangeListNameModal = {
@@ -122,6 +123,7 @@ export type DeleteListConfirmationModal = {
 
 export type SelectListModal = {
   readonly type: "select-list";
+  product: ShoppingCartType;
 };
 
 export type SideModalLayoutType =

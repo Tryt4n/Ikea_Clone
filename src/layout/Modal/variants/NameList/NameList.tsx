@@ -12,16 +12,19 @@ import Btn from "../../../../components/Btn/Btn";
 import type {
   ChangeListNameModal,
   CreateListModal,
+  SelectListModal,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Styles
 import "./index.scss";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
-type CreateTypePropsType = { type: CreateListModal["type"] | ChangeListNameModal["type"] };
+type CreateTypePropsType = {
+  type: CreateListModal["type"] | ChangeListNameModal["type"] | SelectListModal["type"];
+};
 
 export default function NameList({ type }: CreateTypePropsType) {
   const { state, dispatch } = useApp();
-  const { closeModal } = useModal();
+  const { modalData, closeModal } = useModal();
 
   const [inputValue, setInputValue] = useState(
     type === "change-list-name" && state.editingList ? state.editingList.name : ""
@@ -48,6 +51,10 @@ export default function NameList({ type }: CreateTypePropsType) {
             id: crypto.randomUUID(),
             name: inputValue,
             lastEdit: new Date(),
+            products:
+              modalData?.type === "create-list" && modalData.product
+                ? [modalData.product]
+                : undefined,
           },
         });
       } else if (type === "change-list-name" && state.editingList) {
@@ -90,6 +97,7 @@ export default function NameList({ type }: CreateTypePropsType) {
             className: "",
             autoComplete: "off",
             required: true,
+            maxLength: 50,
             value: inputValue,
             "aria-errormessage": "list-error-message",
             "aria-invalid": errorMessageVisibility,

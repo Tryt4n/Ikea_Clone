@@ -108,7 +108,7 @@ type ReducerActionsType =
       type: "addToList";
       payload: {
         product: ShoppingCartType;
-        list?: FavouritesListType["id"];
+        listId?: FavouritesListType["id"];
       };
     }
   | {
@@ -334,7 +334,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const favouriteLists = localStorage.getItem("favouriteLists");
 
       const addedProduct = action.payload.product;
-      const list = action.payload.list;
+      const listId = action.payload.listId;
 
       if (!favouriteLists) {
         const newList: FavouritesListType = {
@@ -352,8 +352,24 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         };
       }
 
-      if (favouriteLists && list) {
-        console.log(list);
+      if (listId && state.favouriteLists) {
+        const listIndex = state.favouriteLists.findIndex((list) => list.id === listId);
+
+        const lists = state.favouriteLists;
+        const updatingList = lists[listIndex].products;
+
+        if (lists[listIndex].products && updatingList) {
+          lists[listIndex].products = [addedProduct, ...updatingList];
+        } else {
+          lists[listIndex].products = [addedProduct];
+        }
+
+        localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+        return {
+          ...state,
+          favouriteLists: lists,
+        };
       }
 
       return state;
