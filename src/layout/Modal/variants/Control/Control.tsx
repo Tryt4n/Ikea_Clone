@@ -10,6 +10,7 @@ import ShareIcon from "../../../../Icons/ShareIcon";
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
 import EditIcon from "../../../../Icons/EditIcon";
+import PrinterIcon from "../../../../Icons/PrinterIcon";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
@@ -118,6 +119,9 @@ function ProductControl() {
 function ListControl() {
   const { setModalData } = useModal();
 
+  const { pathname } = location;
+  const isListPage = pathname.startsWith("/favourites/");
+
   function openChangeListNameModal() {
     startViewTransition(() => {
       setModalData({
@@ -145,6 +149,13 @@ function ListControl() {
         <ShareIcon />
         Udostępnij
       </ListItem>
+
+      {isListPage && (
+        <ListItem>
+          <PrinterIcon />
+          Drukuj listę zakupów
+        </ListItem>
+      )}
 
       <ListItem onClick={openDeleteListModal}>
         <TrashIcon />

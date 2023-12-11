@@ -1,0 +1,41 @@
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+
+.list-page {
+  $_main-block-spacing: 2.5rem;
+
+  margin-block: $_main-block-spacing;
+
+  &__header {
+    margin-block: $_main-block-spacing;
+    font-size: func.rem(36);
+    text-align: center;
+  }
+
+  &__btns-container {
+    margin-bottom: $_main-block-spacing;
+    @include flex(row, flex-end, center);
+    gap: 0.5rem;
+  }
+
+  &__btn-menu {
+    rotate: 90deg;
+  }
+
+  &__text-wrapper {
+    @include flex(column, center, center);
+
+    & > strong {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    & > p {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  & button[role="link"] {
+    margin-inline: auto;
+  }
+}
