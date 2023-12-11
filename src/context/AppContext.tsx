@@ -32,6 +32,7 @@ export type FavouritesListType = {
   id: string;
   name: string;
   lastEdit: Date;
+  products?: ShoppingCartType[];
 };
 
 type ReducerStateType = {
@@ -102,6 +103,13 @@ type ReducerActionsType =
   | {
       type: "deleteList";
       payload: FavouritesListType["id"];
+    }
+  | {
+      type: "addToList";
+      payload: {
+        product: ShoppingCartType;
+        list?: FavouritesListType["id"];
+      };
     }
   | {
       type: "loadAppData";
@@ -252,7 +260,9 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "createNewList": {
-      const lists = JSON.parse(localStorage.getItem("favouriteLists") || "[]");
+      const lists: FavouritesListType[] = JSON.parse(
+        localStorage.getItem("favouriteLists") || "[]"
+      );
 
       const newList = action.payload;
 
@@ -318,6 +328,35 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         favouriteLists: updatedLists,
         editingList: undefined,
       };
+    }
+
+    case "addToList": {
+      const favouriteLists = localStorage.getItem("favouriteLists");
+
+      const addedProduct = action.payload.product;
+      const list = action.payload.list;
+
+      if (!favouriteLists) {
+        const newList: FavouritesListType = {
+          id: crypto.randomUUID(),
+          lastEdit: new Date(),
+          name: "Moja lista",
+          products: [addedProduct],
+        };
+
+        localStorage.setItem("favouriteLists", JSON.stringify([newList]));
+
+        return {
+          ...state,
+          favouriteLists: [newList],
+        };
+      }
+
+      if (favouriteLists && list) {
+        console.log(list);
+      }
+
+      return state;
     }
 
     case "loadAppData": {

@@ -1,0 +1,52 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.select-list-modal {
+  @include flex(column);
+  height: 100%;
+  max-height: 100%;
+
+  &__list-item {
+    width: 100%;
+    padding-block: 1.25rem;
+    border-bottom: func.rem(1) solid c.$gray;
+    @include flex(row, flex-start, center);
+    gap: 1rem;
+
+    &:hover {
+      & strong {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+      }
+      & svg {
+        // fill: red;
+      }
+    }
+  }
+
+  &__list-item-img {
+    width: 3rem;
+    aspect-ratio: 1;
+  }
+
+  &__list-text-wrapper {
+    @include flex(column, flex-start, flex-start);
+    flex-grow: 1;
+    text-align: left;
+
+    & > strong {
+      color: c.$black;
+    }
+
+    & > time {
+      color: c.$text-gray;
+    }
+  }
+
+  &__create-new-list-btn {
+    width: 100%;
+    margin-top: auto;
+  }
+}

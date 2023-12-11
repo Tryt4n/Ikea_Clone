@@ -120,6 +120,10 @@ export type DeleteListConfirmationModal = {
   readonly type: "delete-list-confirmation";
 };
 
+export type SelectListModal = {
+  readonly type: "select-list";
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -141,7 +145,8 @@ export type SideModalLayoutType =
   | CreateListModal
   | FavouriteListControlModal
   | ChangeListNameModal
-  | DeleteListConfirmationModal;
+  | DeleteListConfirmationModal
+  | SelectListModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 
