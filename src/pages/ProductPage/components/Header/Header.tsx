@@ -60,6 +60,13 @@ export default function Header({ data }: { data: ProductDataType }) {
     });
   }
 
+  const isProductAlreadyInAnyList =
+    state.favouriteLists &&
+    state.favouriteLists.some(
+      (list) =>
+        list.products && list.products.some((product) => product.productNumber === productNumber)
+    );
+
   return (
     <header className="product-header">
       <h3>
@@ -79,6 +86,7 @@ export default function Header({ data }: { data: ProductDataType }) {
       <AddToWishListBtn
         variant="light"
         onClick={addProductToList}
+        active={isProductAlreadyInAnyList}
       />
     </header>
   );

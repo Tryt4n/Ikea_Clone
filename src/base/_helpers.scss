@@ -124,6 +124,9 @@
 .scrollbar-style::-webkit-scrollbar {
   width: v.$scrollbar-width;
 }
+.scrollbar-style--thin::-webkit-scrollbar {
+  width: 0.45em;
+}
 .scrollbar-style::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 100vw;

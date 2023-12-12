@@ -42,46 +42,44 @@ export default function SelectList() {
         list.products.some((product) => product.productNumber === modalData.product.productNumber)
     );
 
+  const Element = isProductAlreadyInAnyList ? "form" : "div";
+
   return (
-    <div className="select-list-modal">
+    <Element className="select-list-modal">
       {state.favouriteLists && (
         <ul className="select-list-modal__list">
           {state.favouriteLists.map((list) => (
             <List
               key={list.id}
               list={list}
+              isProductAlreadyInAnyList={isProductAlreadyInAnyList}
             />
           ))}
         </ul>
       )}
 
       <div className="select-list-modal__btns-wrapper">
-        {isProductAlreadyInAnyList && <Btn size="big">Aktualizuj</Btn>}
         <Btn
           size="big"
+          type="button"
           variant={isProductAlreadyInAnyList ? "white-with-border" : "dark"}
           onClick={createNewList}
         >
           Stwórz listę
         </Btn>
       </div>
-    </div>
+    </Element>
   );
 }
 
-function List({ list }: { list: FavouritesListType }) {
-  const { state, dispatch } = useApp();
-  const { modalData, closeModal } = useModal();
+type ListPropsType = {
+  list: FavouritesListType;
+  isProductAlreadyInAnyList?: boolean;
+};
 
-  const isProductAlreadyInAnyList =
-    modalData &&
-    modalData.type === "select-list" &&
-    state.favouriteLists &&
-    state.favouriteLists.some(
-      (list) =>
-        list.products &&
-        list.products.some((product) => product.productNumber === modalData.product.productNumber)
-    );
+function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
+  const { dispatch } = useApp();
+  const { modalData } = useModal();
 
   const isProductAlreadyInCurrentList =
     modalData &&
@@ -90,23 +88,20 @@ function List({ list }: { list: FavouritesListType }) {
     list.products.some((product) => product.productNumber === modalData.product.productNumber);
 
   function handleListActions() {
-    isProductAlreadyInCurrentList ? removeFromList() : addToList();
-    !isProductAlreadyInAnyList && closeModal();
+    startViewTransition(() => {
+      isProductAlreadyInCurrentList ? removeFromList() : addToList();
+    });
   }
 
   function addToList() {
     if (modalData?.type === "select-list") {
-      startViewTransition(() => {
-        dispatch({
-          type: "addToList",
-          payload: {
-            product: modalData.product,
-            listId: list.id,
-          },
-        });
+      dispatch({
+        type: "addToList",
+        payload: {
+          product: modalData.product,
+          listId: list.id,
+        },
       });
-
-      // closeModal();
     }
   }
 
@@ -119,8 +114,6 @@ function List({ list }: { list: FavouritesListType }) {
           listId: list.id,
         },
       });
-
-      // closeModal();
     }
   }
 
@@ -134,6 +127,7 @@ function List({ list }: { list: FavouritesListType }) {
       <button
         className="select-list-modal__list-item"
         onClick={handleListActions}
+        type="button"
       >
         <div className="select-list-modal__list-wrapper">
           {list.products && list.products.length > 0 && (
@@ -175,7 +169,8 @@ function List({ list }: { list: FavouritesListType }) {
               } listy "${list.name}"`}
               inputProps={{
                 checked: isProductAlreadyInCurrentList,
-                onChange: removeFromList,
+                onChange: handleListActions,
+                tabIndex: -1,
               }}
               labelProps={{
                 className: "visually-hidden",

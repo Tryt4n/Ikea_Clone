@@ -171,7 +171,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
             </h2>
           </header>
 
-          <div className="side-modal__content-wrapper scrollbar-style">
+          <div className="side-modal__content-wrapper scrollbar-style scrollbar-style--thin">
             <Suspense fallback={<LoadingSpinner />}>
               {type === "choose-size" && <ChooseSize data={data} />}
 
