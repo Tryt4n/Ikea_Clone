@@ -33,6 +33,7 @@ import { startViewTransition } from "../../../../utils/helpers";
 import type {
   AddProductByNumberModal,
   ChangeListNameModal,
+  CreateListModal,
   DeleteListConfirmationModal,
   ModalPrefferedShopType,
   SideModalLayoutType,
@@ -216,10 +217,11 @@ type GoBackFunctionType = (
   | AddProductByNumberModal
   | ChangeListNameModal
   | DeleteListConfirmationModal
+  | CreateListModal
 )["type"];
 
 function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
-  const { setModalData } = useModal();
+  const { modalData, setModalData } = useModal();
 
   function goBack(type: GoBackFunctionType) {
     startViewTransition(() => {
@@ -236,25 +238,34 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
         case "delete-list-confirmation":
           setModalData({ type: "list-control" });
           break;
+        case "create-list":
+          if (modalData && modalData.type === "create-list" && modalData.product) {
+            setModalData({ type: "select-list", product: modalData.product });
+          }
+          break;
       }
     });
   }
 
   return (
     <>
-      {(type === "preffered-shop" ||
+      {type === "preffered-shop" ||
         type === "add-product-by-number" ||
         type === "change-list-name" ||
-        type === "delete-list-confirmation") && (
-        <Btn
-          variant="light"
-          shape="circle"
-          className="side-modal__go-back-btn"
-          onClick={() => goBack(type)}
-        >
-          <ArrowLeftIcon />
-        </Btn>
-      )}
+        type === "delete-list-confirmation" ||
+        (type === "create-list" &&
+          modalData &&
+          modalData.type === "create-list" &&
+          modalData.product && (
+            <Btn
+              variant="light"
+              shape="circle"
+              className="side-modal__go-back-btn"
+              onClick={() => goBack(type)}
+            >
+              <ArrowLeftIcon />
+            </Btn>
+          ))}
     </>
   );
 }

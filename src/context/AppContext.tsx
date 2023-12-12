@@ -112,6 +112,13 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "deleteProductFromList";
+      payload: {
+        productNumber: ShoppingCartType["productNumber"];
+        listId: FavouritesListType["id"];
+      };
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -333,6 +340,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "addToList": {
       const favouriteLists = localStorage.getItem("favouriteLists");
 
+      const lists = state.favouriteLists;
       const addedProduct = action.payload.product;
       const listId = action.payload.listId;
 
@@ -352,10 +360,9 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         };
       }
 
-      if (listId && state.favouriteLists) {
-        const listIndex = state.favouriteLists.findIndex((list) => list.id === listId);
+      if (listId && lists) {
+        const listIndex = lists.findIndex((list) => list.id === listId);
 
-        const lists = state.favouriteLists;
         const updatingList = lists[listIndex].products;
 
         if (lists[listIndex].products && updatingList) {
@@ -365,6 +372,33 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         }
 
         localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+        return {
+          ...state,
+          favouriteLists: lists,
+        };
+      }
+
+      return state;
+    }
+
+    case "deleteProductFromList": {
+      const lists = state.favouriteLists;
+      const listId = action.payload.listId;
+      const productNumber = action.payload.productNumber;
+
+      if (lists) {
+        const listIndex = lists.findIndex((list) => list.id === listId);
+
+        const updatingList = lists[listIndex].products?.filter(
+          (product) => product.productNumber !== productNumber
+        );
+
+        if (lists[listIndex].products) {
+          lists[listIndex].products = updatingList;
+
+          localStorage.setItem("favouriteLists", JSON.stringify(lists));
+        }
 
         return {
           ...state,
