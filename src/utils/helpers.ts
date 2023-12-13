@@ -1,5 +1,7 @@
 export function startViewTransition(callback: () => void) {
-  if (!document.startViewTransition) {
+  const prefersMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!document.startViewTransition || prefersMotion.matches) {
     callback();
   } else {
     document.startViewTransition(() => {

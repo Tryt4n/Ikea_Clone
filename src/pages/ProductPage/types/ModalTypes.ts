@@ -97,7 +97,7 @@ export type ShoppingCartControlModal = {
 
 export type ShoppingCartProductControlModal = {
   readonly type: "product-control";
-  productNumber: ShoppingCartType["productNumber"];
+  product: ShoppingCartType;
 };
 
 export type AddProductByNumberModal = {
@@ -124,6 +124,8 @@ export type DeleteListConfirmationModal = {
 export type SelectListModal = {
   readonly type: "select-list";
   product: ShoppingCartType;
+  isProductAlreadyInAnyList?: boolean;
+  previousModal?: ModalDataType;
 };
 
 export type SideModalLayoutType =

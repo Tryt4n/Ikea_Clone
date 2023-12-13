@@ -56,7 +56,7 @@ export default function FavouriteList({ list, isMainList = false }: ListPropsTyp
 
         <div className="favourite-list__description">
           <div>
-            <h4 className="favourite-list__header">{list.name}</h4>
+            <h3 className="favourite-list__header">{list.name}</h3>
             <time
               dateTime={list.lastEdit.toString()}
               className={`favourite-list__time${

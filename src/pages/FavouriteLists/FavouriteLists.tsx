@@ -1,5 +1,3 @@
-// React
-import React from "react";
 // Custom Hooks
 import useApp from "../../hooks/useApp";
 import useModal from "../../hooks/useModal";
@@ -57,10 +55,12 @@ function OtherLists() {
           <h2 className="visually-hidden">Twoje listy</h2>
           <ul className="favourite-lists__list">
             {state.favouriteLists.map((list, index) => {
+              if (index === 0) return null;
+
               return (
-                <React.Fragment key={list.name + list.lastEdit}>
+                <li key={list.name + list.lastEdit}>
                   {index > 0 && <FavouriteList list={list} />}
-                </React.Fragment>
+                </li>
               );
             })}
           </ul>

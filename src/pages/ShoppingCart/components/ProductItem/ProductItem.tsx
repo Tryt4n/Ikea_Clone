@@ -77,7 +77,7 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
 
         <ProductControls
           quantity={quantity}
-          productNumber={productNumber}
+          product={product}
         />
       </section>
     </li>
@@ -208,12 +208,14 @@ function ProductDescription({
 
 type ProductControlsPropsType = {
   quantity: ShoppingCartType["quantity"];
-  productNumber: ShoppingCartType["productNumber"];
+  product: ShoppingCartType;
 };
 
-function ProductControls({ quantity, productNumber }: ProductControlsPropsType) {
+function ProductControls({ quantity, product }: ProductControlsPropsType) {
   const { dispatch } = useApp();
   const { width } = useWindowSize();
+
+  const productNumber = product.productNumber;
 
   function changeQuantity(delta: -1 | 1) {
     startViewTransition(() =>
@@ -249,25 +251,25 @@ function ProductControls({ quantity, productNumber }: ProductControlsPropsType) 
         className="shopping-cart-product-item__quantity"
       />
 
-      {width >= 375 && <BtnDeleteProduct productNumber={productNumber} />}
+      {width >= 375 && <BtnDeleteProduct product={product} />}
 
-      {width >= 460 && <BtnMoveToShippingList productNumber={productNumber} />}
+      {width >= 460 && <BtnMoveToShippingList product={product} />}
 
-      {width < 460 && <BtnProductMenu productNumber={productNumber} />}
+      {width < 460 && <BtnProductMenu product={product} />}
     </form>
   );
 }
 
-type BtnProductPropsType = { productNumber: ShoppingCartType["productNumber"] };
+type BtnProductPropsType = { product: ShoppingCartType };
 
-function BtnDeleteProduct({ productNumber }: BtnProductPropsType) {
+function BtnDeleteProduct({ product }: BtnProductPropsType) {
   const { dispatch } = useApp();
 
   function removeProductFromShoppingCart() {
     startViewTransition(() =>
       dispatch({
         type: "removeProductFromShoppingCart",
-        payload: productNumber,
+        payload: product.productNumber,
       })
     );
   }
@@ -283,30 +285,34 @@ function BtnDeleteProduct({ productNumber }: BtnProductPropsType) {
   );
 }
 
-function BtnMoveToShippingList({ productNumber }: BtnProductPropsType) {
-  //TODO add function
-  function moveToShippingList() {
-    console.log(productNumber);
+function BtnMoveToShippingList({ product }: BtnProductPropsType) {
+  const { setModalData } = useModal();
+
+  function addToShoppingList() {
+    setModalData({
+      type: "select-list",
+      product: product,
+    });
   }
 
   return (
     <button
       type="button"
       className="fs-sm"
-      onClick={moveToShippingList}
+      onClick={addToShoppingList}
     >
       Przenieś do listy zakupów
     </button>
   );
 }
 
-function BtnProductMenu({ productNumber }: BtnProductPropsType) {
+function BtnProductMenu({ product }: BtnProductPropsType) {
   const { setModalData } = useModal();
 
   function openMenu() {
     setModalData({
       type: "product-control",
-      productNumber: productNumber,
+      product: product,
     });
   }
 

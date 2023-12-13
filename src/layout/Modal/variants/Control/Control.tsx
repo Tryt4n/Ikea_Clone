@@ -89,13 +89,24 @@ function CartControl() {
 
 function ProductControl() {
   const { dispatch } = useApp();
-  const { modalData, closeModal } = useModal();
+  const { modalData, closeModal, setModalData } = useModal();
+
+  function addToShoppingList() {
+    if (modalData && modalData.type === "product-control") {
+      startViewTransition(() => {
+        setModalData({
+          type: "select-list",
+          product: modalData.product,
+        });
+      });
+    }
+  }
 
   function removeProduct() {
     if (modalData)
       dispatch({
         type: "removeProductFromShoppingCart",
-        payload: (modalData as ShoppingCartProductControlModal).productNumber,
+        payload: (modalData as ShoppingCartProductControlModal).product.productNumber,
       });
 
     closeModal();
@@ -103,7 +114,7 @@ function ProductControl() {
 
   return (
     <>
-      <ListItem>
+      <ListItem onClick={addToShoppingList}>
         <ArrowRightIcon />
         Przenieś do listy zakupów
       </ListItem>

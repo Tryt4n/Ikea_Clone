@@ -14,6 +14,7 @@ import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishL
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 import type { ModalImageWithProductsType } from "../../../../pages/ProductPage/types/ModalTypes";
 import type { ProductDataType } from "../../../../pages/ProductPage/types/ProductDataType";
+import type { ShoppingCartType } from "../../../../context/AppContext";
 // Constants
 import { productLink as imageLink } from "../../../../constants/links";
 // Icons
@@ -37,52 +38,95 @@ export type ImageWithProductsPropsType = {
 };
 
 export default function ImageWithProducts({ data }: ImageWithProductsPropsType) {
-  const { closeModal } = useModal();
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
+  const { modalData, setModalData, closeModal } = useModal();
   const { width, height } = useWindowSize();
 
   const { productsData } = data;
 
-  function addToShoppingCart(productLink: string) {
+  async function fetchedData(productLink: string): Promise<ShoppingCartType | null> {
     const URL = `https://tryt4n.github.io/Ikea-data/server/${productLink}/data.json`;
 
-    fetch(URL)
-      .then((res) => res.json())
-      .then((fetchedData: ProductDataType) => {
-        const {
-          productNumber,
-          collection,
-          name,
-          nameToDisplay,
-          variant,
-          variantName,
-          size,
-          price,
-          oldPriceTag,
-          images,
-        } = fetchedData;
+    try {
+      const response = await fetch(URL);
+      const fetchedData: ProductDataType = await response.json();
 
-        dispatch({
-          type: "addToShoppingCart",
-          payload: {
-            quantity: 1,
-            productNumber,
-            collection,
-            name,
-            nameToDisplay,
-            variant,
-            variantName,
-            size,
-            price,
-            oldPrice: oldPriceTag,
-            images,
-            productLink,
-          },
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
+      const {
+        productNumber,
+        collection,
+        name,
+        nameToDisplay,
+        variant,
+        variantName,
+        size,
+        price,
+        oldPriceTag,
+        images,
+      } = fetchedData;
+
+      const product = {
+        quantity: 1,
+        productNumber,
+        collection,
+        name,
+        nameToDisplay,
+        variant,
+        variantName,
+        size,
+        price,
+        oldPrice: oldPriceTag,
+        images,
+        productLink,
+      };
+
+      return product;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null;
+    }
+  }
+
+  async function addToShoppingCart(productLink: string) {
+    const product = await fetchedData(productLink);
+
+    if (product) {
+      dispatch({
+        type: "addToShoppingCart",
+        payload: product,
       });
+    }
+  }
+
+  async function addToShoppingList(productLink: string) {
+    const product = await fetchedData(productLink);
+
+    if (product) {
+      setModalData({
+        type: "select-list",
+        product: product,
+        previousModal: modalData,
+      });
+    }
+  }
+
+  function checkIsProductAlreadyInAnyList(productLink: string) {
+    const regex = /(\d+)$/;
+    const matchResult = productLink.match(regex);
+
+    if (matchResult === null) return false;
+    const productNumber = matchResult[0];
+
+    const isProductAlreadyInAnyList =
+      state.favouriteLists &&
+      state.favouriteLists.some(
+        (list) =>
+          list.products &&
+          list.products.some(
+            (product) => product.productNumber.replace(/\./g, "") === productNumber
+          )
+      );
+
+    return isProductAlreadyInAnyList ? isProductAlreadyInAnyList : false;
   }
 
   return (
@@ -212,7 +256,6 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
                       variant="blue"
                       shape="circle"
                       type="button"
-                      // onClick={() => addToShoppingCart(productLink)}
                       onClick={(e) => {
                         e.preventDefault();
                         addToShoppingCart(productLink);
@@ -221,7 +264,14 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
                       <span className="visually-hidden">Dodaj produkt do koszyka</span>
                       <ShoppingCartAddIcon />
                     </Btn>
-                    <AddToWishListBtn variant="light-with-border" />
+                    <AddToWishListBtn
+                      variant="light-with-border"
+                      active={checkIsProductAlreadyInAnyList(productLink)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addToShoppingList(productLink);
+                      }}
+                    />
                   </div>
                 </a>
               </li>

@@ -39,6 +39,10 @@
     & > p {
       color: inherit;
     }
+
+    & svg {
+      width: max-content;
+    }
   }
 
   &__description {

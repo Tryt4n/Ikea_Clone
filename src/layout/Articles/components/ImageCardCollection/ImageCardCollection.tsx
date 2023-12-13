@@ -34,7 +34,7 @@ export default function ImageCardCollection({
 }: ImageCardCollectionType) {
   const { modalID, setModalData } = useModal();
 
-  const { id, img, instagramUser, products, addToWishlistIcon } = card;
+  const { id, img, instagramUser, products } = card;
 
   function checkIfIsListItem(element: HTMLElement) {
     if (element.tagName === "LI" || element.tagName === "BUTTON") {
@@ -75,7 +75,6 @@ export default function ImageCardCollection({
         {instagramUser && (
           <Article.InstagramBadge nickVisible={false}>{instagramUser}</Article.InstagramBadge>
         )}
-        {addToWishlistIcon && <Article.WishListBadge />}
 
         <CollectionProductsList
           products={products}

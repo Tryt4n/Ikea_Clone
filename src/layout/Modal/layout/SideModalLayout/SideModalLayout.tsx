@@ -1,5 +1,5 @@
 // React
-import { ReactElement, Suspense, lazy } from "react";
+import { ReactElement, Suspense, lazy, useEffect } from "react";
 // Hooks
 import useModal from "../../../../hooks/useModal";
 import useApp from "../../../../hooks/useApp";
@@ -36,6 +36,7 @@ import type {
   CreateListModal,
   DeleteListConfirmationModal,
   ModalPrefferedShopType,
+  SelectListModal,
   SideModalLayoutType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
@@ -57,7 +58,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
   const productControlHeader =
     modalData && modalData.type === "product-control"
       ? (state.shoppingCart || []).find((product) => {
-          return product.productNumber === modalData.productNumber;
+          return product.productNumber === modalData.product.productNumber;
         })?.collection
       : "";
 
@@ -218,10 +219,15 @@ type GoBackFunctionType = (
   | ChangeListNameModal
   | DeleteListConfirmationModal
   | CreateListModal
+  | SelectListModal
 )["type"];
 
 function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
   const { modalData, setModalData } = useModal();
+
+  useEffect(() => {
+    console.log(modalData);
+  }, [modalData]);
 
   function goBack(type: GoBackFunctionType) {
     startViewTransition(() => {
@@ -243,6 +249,16 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
             setModalData({ type: "select-list", product: modalData.product });
           }
           break;
+        case "select-list":
+          if (
+            modalData &&
+            modalData.type === "select-list" &&
+            modalData.previousModal &&
+            modalData.previousModal.type === "image-with-products"
+          ) {
+            setModalData(modalData.previousModal);
+          }
+          break;
       }
     });
   }
@@ -256,7 +272,12 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
         (type === "create-list" &&
           modalData &&
           modalData.type === "create-list" &&
-          modalData.product && (
+          modalData.product) ||
+        (type === "select-list" &&
+          modalData &&
+          modalData.type === "select-list" &&
+          modalData.previousModal &&
+          modalData.previousModal.type === "image-with-products" && (
             <Btn
               variant="light"
               shape="circle"
