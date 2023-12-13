@@ -2,6 +2,8 @@
 @use "../../abstracts/colors" as c;
 
 .favourite-list {
+  $_gap: 0.5rem;
+
   &__container-link {
     padding: 0.75rem;
     @include flex(column);
@@ -26,7 +28,7 @@
     aspect-ratio: 4/3;
     flex-grow: 1;
     @include flex(column, center, center);
-    gap: 0.5rem;
+    gap: $_gap;
     background-color: c.$white;
     color: #767676;
     text-align: center;
@@ -45,10 +47,65 @@
     }
   }
 
+  &__inner-list-grid_1 {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+
+    & > :first-child {
+      width: 66%;
+    }
+  }
+
+  &__inner-list-grid_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: $_gap;
+
+    & > :first-child {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+
+    & > :nth-child(2) {
+      position: relative;
+      grid-column: span 2;
+      grid-row: span 4;
+      @include flex();
+    }
+  }
+  &__inner-list-grid_3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $_gap;
+
+    & > :first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  &__product-image {
+    padding: 0.75rem;
+    @include flex(row, center, center);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
+    & > span {
+      font-weight: bold;
+      letter-spacing: 0.1em;
+    }
+  }
+
   &__description {
     padding: 0.5rem 0.75rem;
     @include flex(row, stretch, center);
-    gap: 0.5rem;
+    gap: $_gap;
 
     & > :first-child {
       flex-grow: 1;
