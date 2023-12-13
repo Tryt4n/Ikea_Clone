@@ -1,5 +1,6 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../base/breakpoints" as b;
 
 .favourite-list {
   $_gap: 0.5rem;
@@ -103,6 +104,7 @@
   }
 
   &__description {
+    flex-grow: 1;
     padding: 0.5rem 0.75rem;
     @include flex(row, stretch, center);
     gap: $_gap;
@@ -121,6 +123,15 @@
 
     &--break-word {
       word-break: break-all;
+    }
+  }
+
+  &__btns-wrapper {
+    @include flex(row, flex-start, flex-end);
+
+    @media screen and (width < b.$mobile-sm) {
+      flex-direction: column-reverse;
+      gap: 0.5rem;
     }
   }
 

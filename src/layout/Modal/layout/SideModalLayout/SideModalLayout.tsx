@@ -1,5 +1,5 @@
 // React
-import { ReactElement, Suspense, lazy, useEffect } from "react";
+import { ReactElement, Suspense, lazy } from "react";
 // Hooks
 import useModal from "../../../../hooks/useModal";
 import useApp from "../../../../hooks/useApp";
@@ -224,10 +224,6 @@ type GoBackFunctionType = (
 
 function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
   const { modalData, setModalData } = useModal();
-
-  useEffect(() => {
-    console.log(modalData);
-  }, [modalData]);
 
   function goBack(type: GoBackFunctionType) {
     startViewTransition(() => {
