@@ -75,6 +75,7 @@ function ImagesListWithProducts({ products }: { products: ShoppingCartType[] }) 
                     <img
                       src={imgSrc}
                       alt={`${collection}-${nameToDisplay} ${variantName}`}
+                      loading="lazy"
                     />
                   )}
                 </div>

@@ -1,4 +1,5 @@
 @use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
 @use "../../base/functions" as func;
 
 .list-page {
@@ -11,6 +12,23 @@
     font-size: func.rem(36);
     text-align: center;
   }
+
+  //!
+  &__btns-options-container {
+    margin-top: $_main-block-spacing;
+    @include flex(row, space-between, center);
+    gap: 1rem;
+
+    @media screen and (max-width: func.rem(750)) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__btns-list-control {
+    @include flex(row, flex-start, center);
+    gap: 0.5rem;
+  }
+  //!
 
   &__btns-container {
     margin-bottom: $_main-block-spacing;

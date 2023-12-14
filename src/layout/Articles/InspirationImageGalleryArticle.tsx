@@ -2,8 +2,10 @@
 import Article from "../../compoundComponents/Article/Article";
 import BtnsControl from "../../components/BtnsControl/BtnsControl";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
+// Const
+import { btnsControlList } from "../../constants/btnsControlList";
 //Types
-import { ImageCardsCollectionSliderType } from "./ImagesCardsCollectionSlider";
+import type { ImageCardsCollectionSliderType } from "./ImagesCardsCollectionSlider";
 
 export type InspirationImageGalleryArticleType = ImageCardsCollectionSliderType;
 
@@ -16,7 +18,7 @@ export default function InspirationImageGalleryArticle({
     <Article>
       <Article.Header>{article.header}</Article.Header>
 
-      <BtnsControl />
+      <BtnsControl buttonsList={btnsControlList} />
 
       <ImageGallery
         data={article.cards}

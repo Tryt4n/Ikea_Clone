@@ -2,16 +2,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 // Components
 import Btn from "../Btn/Btn";
-// Const
-import { btnsControlList } from "../../constants/btnsControlList";
 // Style
 import "./index.scss";
 
 type BtnsControlPropsType = {
+  buttonsList: string[];
   onClickFunction?: () => void;
+  className?: string;
 };
 
-export default function BtnsControl({ onClickFunction }: BtnsControlPropsType) {
+export default function BtnsControl({
+  buttonsList,
+  onClickFunction,
+  className,
+}: BtnsControlPropsType) {
   const [pressedBtn, setPressedBtn] = useState("Wszystkie");
   const [canScrollBackward, setCanScrollBackward] = useState(false);
   const [canScrollForward, setCanScrollForward] = useState(true);
@@ -60,7 +64,7 @@ export default function BtnsControl({ onClickFunction }: BtnsControlPropsType) {
   }, []);
 
   function btnPressed(index: number) {
-    setPressedBtn(btnsControlList[index]);
+    setPressedBtn(buttonsList[index]);
 
     if (onClickFunction) {
       onClickFunction();
@@ -68,7 +72,7 @@ export default function BtnsControl({ onClickFunction }: BtnsControlPropsType) {
   }
 
   return (
-    <div className="btns-control">
+    <div className={`btns-control${className ? ` ${className}` : ""}`}>
       <Btn
         variant="light"
         shape="circle"
@@ -94,7 +98,7 @@ export default function BtnsControl({ onClickFunction }: BtnsControlPropsType) {
         ref={btnsWrapperRef}
         className="btns-control__container"
       >
-        {btnsControlList.map((btn, index) => {
+        {buttonsList.map((btn, index) => {
           return (
             <Btn
               key={btn}

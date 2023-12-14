@@ -7,11 +7,15 @@ import useApp from "../../hooks/useApp";
 import useModal from "../../hooks/useModal";
 // Components
 import Btn from "../../components/Btn/Btn";
+import Switch from "./components/Switch/Switch";
 // Icons
 import EditIcon from "../../Icons/EditIcon";
 import TripleDotsMenuIcon from "../../Icons/TripleDotsMenuIcon";
+import ShareIcon from "../../Icons/ShareIcon";
+import PrinterIcon from "../../Icons/PrinterIcon";
 // Style
 import "./index.scss";
+import BtnsControl from "../../components/BtnsControl/BtnsControl";
 
 export default function ListPage() {
   const { state, dispatch } = useApp();
@@ -51,43 +55,91 @@ export default function ListPage() {
     }
   }, [list, navigate]);
 
+  const buttonsList = [
+    "Sortuj",
+    "Ostatnio dodane",
+    "Nazwa",
+    "Cena - od najniższej",
+    "Cena - od najwyższej",
+  ];
+
   return (
     <article className="list-page">
       <h2 className="list-page__header">{list?.name}</h2>
 
-      <div className="list-page__btns-container">
-        <Btn
-          shape="circle"
-          variant="light"
-          onClick={openNameEditModal}
-        >
-          <span className="visually-hidden">Edytuj listę</span>
-          <EditIcon />
-        </Btn>
+      {list?.products && list.products.length > 0 ? (
+        <>
+          <Switch />
 
-        <Btn
-          shape="circle"
-          variant="light"
-          className="list-page__btn-menu"
-          onClick={openListControlMenu}
-        >
-          <span className="visually-hidden">Otwórz menu listy</span>
-          <TripleDotsMenuIcon />
-        </Btn>
-      </div>
+          <div className="list-page__btns-options-container">
+            <BtnsControl
+              className="list-page__btns-control"
+              buttonsList={buttonsList}
+            />
 
-      <div className="list-page__text-wrapper">
-        <strong>Ta lista potrzebuje odrobiny miłości</strong>
-        <p>Zaznacz wszystkie produkty, które chcesz dodać do tej listy.</p>
-      </div>
+            <div className="list-page__btns-list-control">
+              <Btn
+                shape="circle"
+                variant="light"
+              >
+                <span className="visually-hidden">Udostępnij</span>
+                <ShareIcon />
+              </Btn>
+              <Btn
+                shape="circle"
+                variant="light"
+              >
+                <span className="visually-hidden">Drukuj listę</span>
+                <PrinterIcon />
+              </Btn>
+              <Btn
+                shape="circle"
+                variant="light"
+                className="list-page__btn-menu"
+              >
+                <span className="visually-hidden">Otwórz menu listy</span>
+                <TripleDotsMenuIcon />
+              </Btn>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="list-page__btns-container">
+            <Btn
+              shape="circle"
+              variant="light"
+              onClick={openNameEditModal}
+            >
+              <span className="visually-hidden">Edytuj listę</span>
+              <EditIcon />
+            </Btn>
 
-      <Btn
-        role="link"
-        aria-label="Przejdź do strony głównej"
-        onClick={() => navigate("/")}
-      >
-        Odkrywaj więcej
-      </Btn>
+            <Btn
+              shape="circle"
+              variant="light"
+              className="list-page__btn-menu"
+              onClick={openListControlMenu}
+            >
+              <span className="visually-hidden">Otwórz menu listy</span>
+              <TripleDotsMenuIcon />
+            </Btn>
+          </div>
+
+          <div className="list-page__text-wrapper">
+            <strong>Ta lista potrzebuje odrobiny miłości</strong>
+            <p>Zaznacz wszystkie produkty, które chcesz dodać do tej listy.</p>
+          </div>
+
+          <Btn
+            role="link"
+            aria-label="Przejdź do strony głównej"
+            onClick={() => navigate("/")}
+          >
+            Odkrywaj więcej
+          </Btn>
+        </>
+      )}
     </article>
   );
 }

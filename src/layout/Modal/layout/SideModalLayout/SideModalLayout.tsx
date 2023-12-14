@@ -261,7 +261,7 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
 
   return (
     <>
-      {type === "preffered-shop" ||
+      {(type === "preffered-shop" ||
         type === "add-product-by-number" ||
         type === "change-list-name" ||
         type === "delete-list-confirmation" ||
@@ -273,16 +273,16 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
           modalData &&
           modalData.type === "select-list" &&
           modalData.previousModal &&
-          modalData.previousModal.type === "image-with-products" && (
-            <Btn
-              variant="light"
-              shape="circle"
-              className="side-modal__go-back-btn"
-              onClick={() => goBack(type)}
-            >
-              <ArrowLeftIcon />
-            </Btn>
-          ))}
+          modalData.previousModal.type === "image-with-products")) && (
+        <Btn
+          variant="light"
+          shape="circle"
+          className="side-modal__go-back-btn"
+          onClick={() => goBack(type)}
+        >
+          <ArrowLeftIcon />
+        </Btn>
+      )}
     </>
   );
 }
