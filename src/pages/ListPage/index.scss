@@ -14,7 +14,6 @@
     text-align: center;
   }
 
-  //!
   &__btns-options-container {
     $_gap: 1rem;
     $_btn-size: func.rem(40);
@@ -43,9 +42,7 @@
     gap: 0.5rem;
     flex-shrink: 0;
   }
-  //!
 
-  //////!
   &__btns-control-container {
     flex-grow: 1;
     max-width: 100%;
@@ -61,7 +58,6 @@
       gap: 0.5rem;
     }
   }
-  //////!
 
   &__btns-container {
     margin-bottom: $_main-block-spacing;
@@ -75,6 +71,7 @@
 
   &__text-wrapper {
     @include flex(column, center, center);
+    text-align: center;
 
     & > strong {
       margin-bottom: 1rem;

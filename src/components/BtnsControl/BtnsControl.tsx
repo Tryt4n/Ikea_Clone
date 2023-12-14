@@ -1,5 +1,7 @@
 // React
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+// Custom Hooks
+import useWindowSize from "../../hooks/useWindowSize";
 // Components
 import Btn from "../Btn/Btn";
 // Style
@@ -10,10 +12,23 @@ type BtnsControlPropsType = {
 };
 
 export default function BtnsControl({ children }: BtnsControlPropsType) {
+  const { width } = useWindowSize();
+
   const [canScrollBackward, setCanScrollBackward] = useState(false);
-  const [canScrollForward, setCanScrollForward] = useState(true);
+  const [canScrollForward, setCanScrollForward] = useState(false);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const btnsEndAndBeginning = useCallback(() => {
+    const container = containerRef.current;
+
+    if (!container) return { isBeginning: false, isEnd: false };
+
+    const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
+    const isBeginning = container.scrollLeft === 0;
+
+    return { isEnd, isBeginning };
+  }, []);
 
   function handleScroll(direction: "prev" | "next") {
     if (!containerRef.current) return;
@@ -21,8 +36,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
     const container = containerRef.current;
     const additionalSpacing = 150;
 
-    const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
-    const isBeginning = container.scrollLeft === 0;
+    const { isEnd, isBeginning } = btnsEndAndBeginning();
 
     setCanScrollBackward(!isBeginning);
     setCanScrollForward(!isEnd);
@@ -40,26 +54,30 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
   useEffect(() => {
     const container = containerRef.current;
 
-    function handleResize() {
-      if (container) {
-        const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
-        const isBeginning = container.scrollLeft === 0;
+    function handleStatesOnScrolling() {
+      const { isEnd, isBeginning } = btnsEndAndBeginning();
 
-        setCanScrollBackward(!isBeginning);
-        setCanScrollForward(!isEnd);
-      }
+      setCanScrollBackward(!isBeginning);
+      setCanScrollForward(!isEnd);
     }
 
     if (container) {
-      container.addEventListener("scroll", handleResize);
+      container.addEventListener("scroll", handleStatesOnScrolling);
     }
 
     return () => {
       if (container) {
-        container.removeEventListener("scroll", handleResize);
+        container.removeEventListener("scroll", handleStatesOnScrolling);
       }
     };
-  }, []);
+  }, [btnsEndAndBeginning]);
+
+  useEffect(() => {
+    const { isEnd, isBeginning } = btnsEndAndBeginning();
+
+    isEnd ? setCanScrollForward(false) : setCanScrollForward(true);
+    isBeginning ? setCanScrollBackward(false) : setCanScrollBackward(true);
+  }, [width, btnsEndAndBeginning]);
 
   return (
     <div className="btns-control">

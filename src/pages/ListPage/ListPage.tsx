@@ -1,5 +1,5 @@
 // React
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 // react-router-dom
 import { useNavigate, useParams } from "react-router-dom";
 // Custom Hooks
@@ -23,8 +23,29 @@ export default function ListPage() {
   const params = useParams();
   const navigate = useNavigate();
 
-  const list =
-    state.favouriteLists && state.favouriteLists.find((list) => list.id === params.listId);
+  const findListById = useCallback(() => {
+    return state.favouriteLists?.find((list) => list.id === params.listId);
+  }, [state.favouriteLists, params]);
+
+  //? Check if list exists in state and if not, navigate to lists page
+  useEffect(() => {
+    async function checkIfListExists() {
+      const checkedList = findListById();
+      return checkedList ? true : false;
+    }
+
+    const checkingList = async () => {
+      const listExists = await checkIfListExists();
+
+      if (state.favouriteLists && listExists === false) {
+        navigate("/favourites");
+      }
+    };
+
+    checkingList();
+  }, [state.favouriteLists, params, navigate, findListById]);
+
+  const list = findListById();
 
   function openNameEditModal() {
     if (!list) return;
@@ -49,17 +70,11 @@ export default function ListPage() {
     });
   }
 
-  useEffect(() => {
-    if (!list) {
-      navigate("/favourites");
-    }
-  }, [list, navigate]);
-
   return (
     <article className="list-page">
       <h2 className="list-page__header">{list?.name}</h2>
 
-      {list?.products && list.products.length > 0 ? (
+      {list && list.products && list.products.length > 0 ? (
         <>
           <Switch />
 
