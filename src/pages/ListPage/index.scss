@@ -1,6 +1,7 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .list-page {
   $_main-block-spacing: 2.5rem;
@@ -15,11 +16,24 @@
 
   //!
   &__btns-options-container {
+    $_gap: 1rem;
+    $_btn-size: func.rem(40);
+    $_btns-gap: 0.5rem;
+    $_btns-quantity: 3;
+
     margin-top: $_main-block-spacing;
     @include flex(row, space-between, center);
-    gap: 1rem;
+    gap: $_gap;
 
-    @media screen and (max-width: func.rem(750)) {
+    @media screen and (width >= b.$mobile-md) {
+      & > .btns-control {
+        max-width: calc(
+          100% - (($_btns-quantity * $_btn-size) + (($_btns-quantity - 1) * $_btns-gap) + $_gap)
+        );
+      }
+    }
+
+    @media screen and (width < b.$mobile-md) {
       flex-direction: column-reverse;
     }
   }
@@ -27,8 +41,27 @@
   &__btns-list-control {
     @include flex(row, flex-start, center);
     gap: 0.5rem;
+    flex-shrink: 0;
   }
   //!
+
+  //////!
+  &__btns-control-container {
+    flex-grow: 1;
+    max-width: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > * {
+      @include flex(row, flex-start, center);
+      gap: 0.5rem;
+    }
+  }
+  //////!
 
   &__btns-container {
     margin-bottom: $_main-block-spacing;

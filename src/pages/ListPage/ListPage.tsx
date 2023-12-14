@@ -8,6 +8,7 @@ import useModal from "../../hooks/useModal";
 // Components
 import Btn from "../../components/Btn/Btn";
 import Switch from "./components/Switch/Switch";
+import BtnsControl from "../../components/BtnsControl/BtnsControl";
 // Icons
 import EditIcon from "../../Icons/EditIcon";
 import TripleDotsMenuIcon from "../../Icons/TripleDotsMenuIcon";
@@ -15,7 +16,6 @@ import ShareIcon from "../../Icons/ShareIcon";
 import PrinterIcon from "../../Icons/PrinterIcon";
 // Style
 import "./index.scss";
-import BtnsControl from "../../components/BtnsControl/BtnsControl";
 
 export default function ListPage() {
   const { state, dispatch } = useApp();
@@ -55,14 +55,6 @@ export default function ListPage() {
     }
   }, [list, navigate]);
 
-  const buttonsList = [
-    "Sortuj",
-    "Ostatnio dodane",
-    "Nazwa",
-    "Cena - od najniższej",
-    "Cena - od najwyższej",
-  ];
-
   return (
     <article className="list-page">
       <h2 className="list-page__header">{list?.name}</h2>
@@ -72,10 +64,38 @@ export default function ListPage() {
           <Switch />
 
           <div className="list-page__btns-options-container">
-            <BtnsControl
-              className="list-page__btns-control"
-              buttonsList={buttonsList}
-            />
+            <BtnsControl>
+              <Btn
+                variant="gray"
+                className=""
+              >
+                Sortuj
+              </Btn>
+              <Btn
+                variant="gray"
+                className=""
+              >
+                Ostatnio dodane
+              </Btn>
+              <Btn
+                variant="gray"
+                className=""
+              >
+                Nazwa
+              </Btn>
+              <Btn
+                variant="gray"
+                className=""
+              >
+                Cena - od najniższej
+              </Btn>
+              <Btn
+                variant="gray"
+                className=""
+              >
+                Cena - od najwyższej
+              </Btn>
+            </BtnsControl>
 
             <div className="list-page__btns-list-control">
               <Btn

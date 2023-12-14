@@ -93,8 +93,12 @@ function EmptyList({ isMainList }: { isMainList: boolean }) {
 
   return (
     <div className="favourite-list__inner-wrapper">
-      <HeartIcon />
-      {(isMainList || (!isMainList && width >= 600)) && <p>Ta lista potrzebuje odrobiny miłości</p>}
+      <div>
+        <HeartIcon />
+        {(isMainList || (!isMainList && width >= 600)) && (
+          <p>Ta lista potrzebuje odrobiny miłości</p>
+        )}
+      </div>
     </div>
   );
 }

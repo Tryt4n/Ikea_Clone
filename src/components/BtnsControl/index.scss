@@ -1,12 +1,13 @@
 @use "../../abstracts/mixins" as *;
-@use "../../base/functions" as func;
 
 .btns-control {
   position: relative;
+  max-width: 100%;
 
-  &__container {
-    @include flex();
-    gap: func.rem(12);
+  &__inner-wrapper {
+    padding: 0.25rem;
+    @include flex(row, flex-start, center);
+    gap: 0.5rem;
     overflow: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -14,14 +15,9 @@
       display: none;
     }
 
-    & > * {
-      flex-shrink: 0;
-      outline-offset: 0 !important;
-      border: func.rem(1) solid transparent;
-
-      &:disabled {
-        cursor: default;
-      }
+    & button {
+      outline-offset: initial !important;
+      text-wrap: nowrap;
     }
   }
 
@@ -33,11 +29,6 @@
     height: 2rem;
     min-height: auto;
     translate: 0 -50%;
-    outline-offset: 0 !important;
-    &:hover {
-      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-      background-color: white;
-    }
 
     & svg {
       width: 1.5rem;

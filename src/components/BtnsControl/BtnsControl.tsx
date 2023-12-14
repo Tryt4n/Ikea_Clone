@@ -1,48 +1,47 @@
 // React
-import { useCallback, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 // Components
 import Btn from "../Btn/Btn";
 // Style
 import "./index.scss";
 
 type BtnsControlPropsType = {
-  buttonsList: string[];
-  onClickFunction?: () => void;
-  className?: string;
+  children: ReactNode;
 };
 
-export default function BtnsControl({
-  buttonsList,
-  onClickFunction,
-  className,
-}: BtnsControlPropsType) {
-  const [pressedBtn, setPressedBtn] = useState("Wszystkie");
+export default function BtnsControl({ children }: BtnsControlPropsType) {
   const [canScrollBackward, setCanScrollBackward] = useState(false);
   const [canScrollForward, setCanScrollForward] = useState(true);
 
-  const btnsWrapperRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const handleScroll = useCallback((direction: "prev" | "next") => {
-    if (btnsWrapperRef.current) {
-      const container = btnsWrapperRef.current;
-      const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
-      const isBeginning = container.scrollLeft === 0;
+  function handleScroll(direction: "prev" | "next") {
+    if (!containerRef.current) return;
 
-      setCanScrollBackward(!isBeginning);
-      setCanScrollForward(!isEnd);
+    const container = containerRef.current;
+    const additionalSpacing = 150;
 
-      const scrollAmount = direction === "prev" ? -container.clientWidth : container.clientWidth;
-      container.scrollTo({
-        left: container.scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  }, []);
+    const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
+    const isBeginning = container.scrollLeft === 0;
+
+    setCanScrollBackward(!isBeginning);
+    setCanScrollForward(!isEnd);
+
+    const scrollAmount =
+      direction === "prev"
+        ? -container.clientWidth + additionalSpacing
+        : container.clientWidth - additionalSpacing;
+    container.scrollTo({
+      left: container.scrollLeft + scrollAmount,
+      behavior: "smooth",
+    });
+  }
 
   useEffect(() => {
+    const container = containerRef.current;
+
     function handleResize() {
-      if (btnsWrapperRef.current) {
-        const container = btnsWrapperRef.current;
+      if (container) {
         const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
         const isBeginning = container.scrollLeft === 0;
 
@@ -51,28 +50,19 @@ export default function BtnsControl({
       }
     }
 
-    if (btnsWrapperRef.current) {
-      btnsWrapperRef.current.addEventListener("scroll", handleResize);
+    if (container) {
+      container.addEventListener("scroll", handleResize);
     }
 
     return () => {
-      if (btnsWrapperRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        btnsWrapperRef.current.removeEventListener("scroll", handleResize);
+      if (container) {
+        container.removeEventListener("scroll", handleResize);
       }
     };
   }, []);
 
-  function btnPressed(index: number) {
-    setPressedBtn(buttonsList[index]);
-
-    if (onClickFunction) {
-      onClickFunction();
-    }
-  }
-
   return (
-    <div className={`btns-control${className ? ` ${className}` : ""}`}>
+    <div className="btns-control">
       <Btn
         variant="light"
         shape="circle"
@@ -95,22 +85,10 @@ export default function BtnsControl({
       </Btn>
 
       <div
-        ref={btnsWrapperRef}
-        className="btns-control__container"
+        className="btns-control__inner-wrapper"
+        ref={containerRef}
       >
-        {buttonsList.map((btn, index) => {
-          return (
-            <Btn
-              key={btn}
-              variant="gray"
-              aria-pressed={btn === pressedBtn}
-              disabled={btn === pressedBtn}
-              onClick={() => btnPressed(index)}
-            >
-              {btn}
-            </Btn>
-          );
-        })}
+        {children}
       </div>
 
       <Btn

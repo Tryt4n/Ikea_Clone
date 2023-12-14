@@ -1,7 +1,12 @@
+// React
+import { useState } from "react";
 // Components
 import Article from "../../compoundComponents/Article/Article";
-import BtnsControl from "../../components/BtnsControl/BtnsControl";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
+import BtnsControl from "../../components/BtnsControl/BtnsControl";
+import Btn from "../../components/Btn/Btn";
+// Helpers
+import { startViewTransition } from "../../utils/helpers";
 // Const
 import { btnsControlList } from "../../constants/btnsControlList";
 //Types
@@ -14,11 +19,31 @@ export default function InspirationImageGalleryArticle({
 }: {
   article: InspirationImageGalleryArticleType;
 }) {
+  const [pressedBtn, setPressedBtn] = useState("Wszystkie");
+
+  function handleBtnClick(index: number) {
+    startViewTransition(() => {
+      setPressedBtn(btnsControlList[index]);
+    });
+  }
+
   return (
     <Article>
       <Article.Header>{article.header}</Article.Header>
 
-      <BtnsControl buttonsList={btnsControlList} />
+      <BtnsControl>
+        {btnsControlList.map((btn, index) => (
+          <Btn
+            key={btn}
+            variant="gray"
+            aria-pressed={btn === pressedBtn}
+            disabled={btn === pressedBtn}
+            onClick={() => handleBtnClick(index)}
+          >
+            {btn}
+          </Btn>
+        ))}
+      </BtnsControl>
 
       <ImageGallery
         data={article.cards}

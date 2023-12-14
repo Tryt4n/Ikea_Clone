@@ -4,6 +4,8 @@
 
 .favourite-list {
   $_gap: 0.5rem;
+  height: 100%;
+  max-height: 100%;
 
   &__container-link {
     padding: 0.75rem;
@@ -25,26 +27,16 @@
   }
 
   &__inner-wrapper {
-    padding: 0.25rem;
-    aspect-ratio: 4/3;
-    flex-grow: 1;
-    @include flex(column, center, center);
-    gap: $_gap;
-    background-color: c.$white;
-    color: #767676;
-    text-align: center;
-    text-wrap: pretty;
+    @include flex(row, center);
+    background-color: white;
 
-    & > * {
+    & > :first-child {
       width: 66%;
-    }
-
-    & > p {
-      color: inherit;
-    }
-
-    & svg {
-      width: max-content;
+      aspect-ratio: 1;
+      @include flex(column, center, center);
+      gap: $_gap;
+      text-align: center;
+      padding: 0.25rem;
     }
   }
 
