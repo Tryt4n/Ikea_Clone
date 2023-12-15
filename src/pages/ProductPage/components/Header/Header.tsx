@@ -5,6 +5,7 @@ import useModal from "../../../../hooks/useModal";
 import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
+import type { ShoppingCartType } from "../../../../context/AppContext";
 // Style
 import "./index.scss";
 
@@ -23,9 +24,10 @@ export default function Header({ data }: { data: ProductDataType }) {
     productNumber,
     variant,
     oldPriceTag,
+    newTag,
   } = data;
 
-  const product = {
+  const product: ShoppingCartType = {
     collection: collection,
     images: images,
     name: name,
@@ -38,6 +40,8 @@ export default function Header({ data }: { data: ProductDataType }) {
     oldPrice: oldPriceTag,
     quantity: 1,
     productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(/\./g, "")}`,
+    newTag: newTag,
+    addedDate: new Date(),
   };
 
   function addProductToList() {

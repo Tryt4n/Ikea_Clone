@@ -128,6 +128,10 @@ export type SelectListModal = {
   previousModal?: ModalDataType;
 };
 
+export type ListSortingModal = {
+  readonly type: "list-sorting";
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -150,7 +154,8 @@ export type SideModalLayoutType =
   | FavouriteListControlModal
   | ChangeListNameModal
   | DeleteListConfirmationModal
-  | SelectListModal;
+  | SelectListModal
+  | ListSortingModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

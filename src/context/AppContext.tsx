@@ -22,10 +22,12 @@ export type ShoppingCartType = Pick<
   | "images"
   | "nameToDisplay"
   | "name"
+  | "newTag"
 > & {
   oldPrice?: Pick<ProductDataType["oldPriceTag"], "integer" | "decimal" | "variant">;
   quantity: number;
   productLink: string;
+  addedDate: Date;
 };
 
 export type FavouritesListType = {

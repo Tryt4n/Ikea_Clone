@@ -62,9 +62,10 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         price,
         oldPriceTag,
         images,
+        newTag,
       } = fetchedData;
 
-      const product = {
+      const product: ShoppingCartType = {
         quantity: 1,
         productNumber,
         collection,
@@ -77,6 +78,8 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         oldPrice: oldPriceTag,
         images,
         productLink,
+        newTag,
+        addedDate: new Date(),
       };
 
       return product;

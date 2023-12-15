@@ -2,20 +2,20 @@
 import { useNavigate } from "react-router-dom";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
 // Components
 import { Btn } from "../../../../components/Btn/Btn";
 // Icons
 import EditIcon from "../../../../Icons/EditIcon";
 import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
-// Types
-import type { FavouritesListType } from "../../../../context/AppContext";
 // Style
 import "./index.scss";
 
-export default function EmptyList({ list }: { list: FavouritesListType }) {
+export default function EmptyList() {
   const { dispatch } = useApp();
   const { setModalData } = useModal();
+  const { list } = useList();
   const navigate = useNavigate();
 
   function openNameEditModal() {

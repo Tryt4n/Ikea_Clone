@@ -23,6 +23,7 @@ const DeleteListConfirmation = lazy(
   () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation")
 );
 const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
+const ListSorting = lazy(() => import("../../variants/ListSorting/ListSorting"));
 // Components
 import { Btn } from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -143,6 +144,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "select-list":
       header = "Zapisz na swojej liście";
       break;
+    case "list-sorting":
+      header = <span className="visually-hidden">Zaznacz opcję sortowania</span>;
+      break;
     default:
       throw new Error("A case has been defined that does not exist.");
   }
@@ -205,6 +209,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               {type === "delete-list-confirmation" && <DeleteListConfirmation />}
 
               {type === "select-list" && <SelectList />}
+
+              {type === "list-sorting" && <ListSorting />}
             </Suspense>
           </div>
         </>

@@ -49,6 +49,8 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
         oldPrice: product.oldPriceTag,
         images: product.images,
         productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
+        newTag: product.newTag,
+        addedDate: new Date(),
       },
     });
     setQuantity(1);
