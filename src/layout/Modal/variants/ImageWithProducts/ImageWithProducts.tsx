@@ -7,7 +7,7 @@ import Article from "../../../../compoundComponents/Article/Article";
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
 import CollectionProductsList from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
 import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
 // Types

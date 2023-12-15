@@ -1,12 +1,14 @@
-// Components
+//React
 import { useMemo, useState } from "react";
+// Custom Hooks
 import useWindowSize from "../../hooks/useWindowSize";
+// Components
 import ImageCardCollection, {
   CardCollectionType,
 } from "../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
+import { Btn } from "../Btn/Btn";
 // Style
 import "./index.scss";
-import Btn from "../Btn/Btn";
 
 type ImageGalleryPropsType = {
   data: CardCollectionType[];

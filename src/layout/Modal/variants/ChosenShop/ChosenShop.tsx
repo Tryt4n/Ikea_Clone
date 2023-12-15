@@ -5,7 +5,7 @@ import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 // Components
 import InformationBox from "../../../../components/InformationBox/InformationBox";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import pl from "date-fns/locale/pl";
 // Components
-import Btn from "../Btn/Btn";
+import { Btn } from "../Btn/Btn";
 // Constants
 import { productLink } from "../../constants/links";
 // Types

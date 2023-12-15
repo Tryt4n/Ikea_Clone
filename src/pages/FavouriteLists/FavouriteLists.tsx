@@ -3,7 +3,7 @@ import useApp from "../../hooks/useApp";
 import useModal from "../../hooks/useModal";
 // Components
 import FavouriteList from "../../components/FavouriteList/FavouriteList";
-import Btn from "../../components/Btn/Btn";
+import { Btn } from "../../components/Btn/Btn";
 // Icons
 import HeartIcon from "../../Icons/HeartIcon";
 // Style

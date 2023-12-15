@@ -1,7 +1,7 @@
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Types
 import type { ShoppingCartAsideMenuInformationList } from "../../../../pages/ProductPage/types/ModalTypes";
 // Style

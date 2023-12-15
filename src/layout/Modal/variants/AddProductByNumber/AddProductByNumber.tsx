@@ -5,7 +5,7 @@ import useApp from "../../../../hooks/useApp";
 // Components
 import Input from "../../../../components/Input/Input";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Types
 import type { ShoppingCartType } from "../../../../context/AppContext";
 // Style

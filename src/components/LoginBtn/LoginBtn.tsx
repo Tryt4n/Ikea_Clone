@@ -5,7 +5,7 @@ import useModal from "../../hooks/useModal";
 // Types
 import type { BtnShapesType } from "../../types/btnTypes";
 // Components
-import Btn from "../Btn/Btn";
+import { Btn } from "../Btn/Btn";
 // Icon
 import AvatarIcon from "../../Icons/AvatarIcon";
 // Style

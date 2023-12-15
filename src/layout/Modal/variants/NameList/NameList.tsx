@@ -7,7 +7,7 @@ import useModal from "../../../../hooks/useModal";
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
 import Input from "../../../../components/Input/Input";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Types
 import type {
   ChangeListNameModal,

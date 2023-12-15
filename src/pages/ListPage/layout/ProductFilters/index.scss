@@ -1,0 +1,26 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.product-filters {
+  $_gap: 1rem;
+  $_btn-size: func.rem(40);
+  $_btns-gap: 0.5rem;
+  $_btns-quantity: 3;
+
+  margin-top: 2.5rem;
+  @include flex(row, space-between, center);
+  gap: $_gap;
+
+  @media screen and (width >= b.$mobile-md) {
+    & > .btns-control {
+      max-width: calc(
+        100% - (($_btns-quantity * $_btn-size) + (($_btns-quantity - 1) * $_btns-gap) + $_gap)
+      );
+    }
+  }
+
+  @media screen and (width < b.$mobile-md) {
+    flex-direction: column-reverse;
+  }
+}

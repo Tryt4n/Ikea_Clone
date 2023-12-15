@@ -9,7 +9,7 @@ const ProductsMenu = lazy(() => import("../../variants/ProductsMenu/ProductsMenu
 const RoomsMenu = lazy(() => import("../../variants/RoomsMenu/RoomsMenu"));
 // Components
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types

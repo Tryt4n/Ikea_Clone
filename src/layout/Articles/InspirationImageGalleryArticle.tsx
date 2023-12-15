@@ -4,7 +4,7 @@ import { useState } from "react";
 import Article from "../../compoundComponents/Article/Article";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
 import BtnsControl from "../../components/BtnsControl/BtnsControl";
-import Btn from "../../components/Btn/Btn";
+import { Btn } from "../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../utils/helpers";
 // Const

@@ -1,4 +1,8 @@
-import Btn, { BtnPropsType } from "../Btn/Btn";
+// Components
+import { Btn } from "../Btn/Btn";
+// Types
+import type { BtnPropsType } from "../Btn/Btn";
+// Icons
 import HeartIcon from "../../Icons/HeartIcon";
 
 type AddToWishListBtnPropsType = {

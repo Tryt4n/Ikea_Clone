@@ -6,7 +6,7 @@ import useModal from "../../../../hooks/useModal";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 import Input from "../../../../components/Input/Input";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 // Icons

@@ -2,7 +2,7 @@
 import useModal from "../../../../hooks/useModal";
 // Components
 import ListItem from "../../../../components/ListItem/ListItem";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants

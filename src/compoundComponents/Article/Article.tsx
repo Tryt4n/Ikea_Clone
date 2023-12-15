@@ -1,12 +1,13 @@
 // React
 import { HTMLProps, ReactNode, createElement } from "react";
 // Components
-import Btn, { BtnPropsType } from "../../components/Btn/Btn";
+import { Btn } from "../../components/Btn/Btn";
 import AddToWishListBtn from "../../components/AddToWishListBtn/AddToWishListBtn";
 // Icons
 import InstagramIcon from "../../Icons/InstagramIcon";
 // Types
 import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
+import type { BtnPropsType } from "../../components/Btn/Btn";
 import type { BackgroundVariants } from "../../types/colorsVariantsType";
 import type { BtnSizesType } from "../../types/btnTypes";
 // Style

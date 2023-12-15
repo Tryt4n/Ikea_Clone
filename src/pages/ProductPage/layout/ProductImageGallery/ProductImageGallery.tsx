@@ -10,7 +10,7 @@ import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Icons
 import PlayIcon from "../../../../Icons/PlayIcon";
 import PauseIcon from "../../../../Icons/PauseIcon";

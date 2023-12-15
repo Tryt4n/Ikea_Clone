@@ -3,7 +3,7 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 // Custom Hooks
 import useWindowSize from "../../hooks/useWindowSize";
 // Components
-import Btn from "../Btn/Btn";
+import { Btn } from "../Btn/Btn";
 // Style
 import "./index.scss";
 

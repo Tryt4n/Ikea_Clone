@@ -1,5 +1,5 @@
 // React
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from "react";
 // Types
 import type { BtnShapesType, BtnSizesType, BtnVariantsType } from "../../types/btnTypes";
 // Style
@@ -13,22 +13,21 @@ export type BtnPropsType = {
   size?: BtnSizesType;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Btn({
-  children,
-  className,
-  variant = "dark",
-  shape = "oval",
-  size = "small",
-  ...props
-}: BtnPropsType) {
+function InnerBtn(
+  { children, className, variant = "dark", shape = "oval", size = "small", ...props }: BtnPropsType,
+  ref: ForwardedRef<HTMLButtonElement>
+) {
   return (
     <button
       className={`btn btn--${variant} btn--${size} btn--${shape}${
         className ? ` ${className}` : ""
       }`}
       {...props}
+      ref={ref}
     >
       {children}
     </button>
   );
 }
+
+export const Btn = forwardRef(InnerBtn);

@@ -24,7 +24,7 @@ const DeleteListConfirmation = lazy(
 );
 const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
 // Components
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
 import Tag from "../../../../pages/ProductPage/components/Tag/Tag";
 // Helpers

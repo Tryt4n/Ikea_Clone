@@ -1,6 +1,6 @@
-@use "../../../../abstracts/mixins" as *;
-@use "../../../../abstracts/colors" as c;
-@use "../../../../base//breakpoints" as b;
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base//breakpoints" as b;
 
 .switch-wrapper {
   width: max-content;

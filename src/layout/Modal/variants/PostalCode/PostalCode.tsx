@@ -6,7 +6,7 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import { PostalCodeInput } from "../../components/PostalCodeInput/PostalCodeInput";
 import { PostalCodeRememberCheckbox } from "../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";

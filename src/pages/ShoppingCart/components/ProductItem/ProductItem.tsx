@@ -9,7 +9,7 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import Tag from "../../../ProductPage/components/Tag/Tag";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants

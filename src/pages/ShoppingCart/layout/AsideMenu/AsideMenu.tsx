@@ -7,7 +7,7 @@ import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import ClubInfoDiscount from "../../../../components/ClubInfoDiscount/ClubInfoDiscount";
 import Input from "../../../../components/Input/Input";
-import Btn from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/Btn/Btn";
 // Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 import DiscountIcon from "../../../../Icons/DiscountIcon";

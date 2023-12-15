@@ -1,7 +1,7 @@
 // React
 import { ChangeEvent } from "react";
 // Components
-import Btn from "../Btn/Btn";
+import { Btn } from "../Btn/Btn";
 // Icons
 import MinusIcon from "../../Icons/MinusIcon";
 import PlusIcon from "../../Icons/PlusIcon";
