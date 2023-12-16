@@ -2,7 +2,7 @@ import type { Params } from "react-router-dom";
 import type { ProductDataType } from "./ProductDataType";
 import type { CardCollectionType } from "../../../layout/Articles/components/ImageCardCollection/ImageCardCollection";
 import type { DisplayedImgType } from "../context/ProductContext";
-import type { ShoppingCartType } from "../../../context/AppContext";
+import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext";
 
 export type ModalDataChooseSizeType = {
   readonly type: "choose-size";
@@ -109,6 +109,11 @@ export type CreateListModal = {
   product?: ShoppingCartType;
 };
 
+export type CreateListModalWithProducts = {
+  readonly type: "create-list-with-products";
+  products: ShoppingCartType[];
+};
+
 export type ChangeListNameModal = {
   readonly type: "change-list-name";
 };
@@ -132,6 +137,11 @@ export type ListSortingModal = {
   readonly type: "list-sorting";
 };
 
+export type MoveToOtherListModal = {
+  readonly type: "move-to-other-list";
+  list: FavouritesListType;
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -151,11 +161,13 @@ export type SideModalLayoutType =
   | ShoppingCartProductControlModal
   | AddProductByNumberModal
   | CreateListModal
+  | CreateListModalWithProducts
   | FavouriteListControlModal
   | ChangeListNameModal
   | DeleteListConfirmationModal
   | SelectListModal
-  | ListSortingModal;
+  | ListSortingModal
+  | MoveToOtherListModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

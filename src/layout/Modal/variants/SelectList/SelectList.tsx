@@ -23,14 +23,39 @@ export default function SelectList() {
   const { state } = useApp();
   const { modalData, setModalData } = useModal();
 
+  // function createNewList() {
+  //   startViewTransition(() => {
+  //     setModalData({
+  //       type: "create-list",
+  //       product: modalData && modalData.type === "select-list" ? modalData.product : undefined,
+  //     });
+  //   });
+  // }
+
+  //!
   function createNewList() {
     startViewTransition(() => {
-      setModalData({
-        type: "create-list",
-        product: modalData && modalData.type === "select-list" ? modalData.product : undefined,
-      });
+      if (modalData && modalData.type === "select-list") {
+        setModalData({
+          type: "create-list",
+          product: modalData.product,
+        });
+      }
+
+      if (
+        modalData &&
+        modalData.type === "move-to-other-list" &&
+        state.editingList &&
+        state.editingList.products
+      ) {
+        setModalData({
+          type: "create-list-with-products",
+          products: state.editingList.products,
+        });
+      }
     });
   }
+  //!
 
   const isProductAlreadyInAnyList =
     modalData &&
@@ -46,6 +71,12 @@ export default function SelectList() {
 
   return (
     <Element className="select-list-modal">
+      {modalData && modalData.type === "move-to-other-list" && (
+        <p className="select-list-modal__other-list-text">
+          Wybierz listę, na którą chcesz przenieść te produkty.
+        </p>
+      )}
+
       {state.favouriteLists && (
         <ul className="select-list-modal__list">
           {state.favouriteLists.map((list) => (
@@ -65,7 +96,7 @@ export default function SelectList() {
           variant={isProductAlreadyInAnyList ? "white-with-border" : "dark"}
           onClick={createNewList}
         >
-          Stwórz listę
+          {modalData?.type === "move-to-other-list" ? "Utwórz nową listę" : "Stwórz listę"}
         </Btn>
       </div>
     </Element>
@@ -78,8 +109,8 @@ type ListPropsType = {
 };
 
 function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
-  const { dispatch } = useApp();
-  const { modalData } = useModal();
+  const { state, dispatch } = useApp();
+  const { modalData, closeModal } = useModal();
 
   const isProductAlreadyInCurrentList =
     modalData &&
@@ -89,7 +120,18 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
 
   function handleListActions() {
     startViewTransition(() => {
-      isProductAlreadyInCurrentList ? removeFromList() : addToList();
+      if (modalData && modalData.type === "move-to-other-list" && state.editingList) {
+        dispatch({
+          type: "moveProductsToOtherList",
+          payload: { originalListId: state.editingList.id, sourceListId: list.id },
+        });
+
+        closeModal();
+      }
+
+      if (modalData?.type === "select-list") {
+        isProductAlreadyInCurrentList ? removeFromList() : addToList();
+      }
     });
   }
 
@@ -123,62 +165,76 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
     `${productLink}/${firstListProduct.collection}-${firstListProduct.name}-${firstListProduct.variant}__${firstListProduct.images.main}`;
 
   return (
-    <li>
-      <button
-        className="select-list-modal__list-item"
-        onClick={handleListActions}
-        type="button"
-      >
-        <div className="select-list-modal__list-wrapper">
-          {list.products && list.products.length > 0 && (
-            <img
-              alt="Jeden z produktów na liście"
-              src={imgSrc}
-              loading="lazy"
-              className="select-list-modal__list-item-img"
-            />
-          )}
+    <>
+      {modalData &&
+        (modalData.type === "select-list" ||
+          (modalData.type === "move-to-other-list" && list.id !== state.editingList?.id)) && (
+          <li>
+            <button
+              className="select-list-modal__list-item"
+              onClick={handleListActions}
+              type="button"
+            >
+              <div className="select-list-modal__list-wrapper">
+                {list.products && list.products.length > 0 && (
+                  <img
+                    alt="Jeden z produktów na liście"
+                    src={imgSrc}
+                    loading="lazy"
+                    className="select-list-modal__list-item-img"
+                  />
+                )}
 
-          {list.products && list.products.length === 0 && isProductAlreadyInAnyList && (
-            <div className="select-list-modal__list-item-img">
-              <NoImageIcon />
-            </div>
-          )}
+                {modalData &&
+                  modalData.type !== "move-to-other-list" &&
+                  list.products &&
+                  list.products.length === 0 &&
+                  isProductAlreadyInAnyList && (
+                    <div className="select-list-modal__list-item-img">
+                      <NoImageIcon />
+                    </div>
+                  )}
 
-          <div className="select-list-modal__list-text-wrapper">
-            <strong>{list.name}</strong>
-            <time dateTime={list.lastEdit.toString()}>
-              Zaktualizowano&nbsp;
-              {formatDistanceToNow(new Date(list.lastEdit), {
-                addSuffix: true,
-                locale: pl,
-              })}
-            </time>
-          </div>
-        </div>
+                <div className="select-list-modal__list-text-wrapper">
+                  <strong>{list.name}</strong>
+                  <time dateTime={list.lastEdit.toString()}>
+                    Zaktualizowano&nbsp;
+                    {formatDistanceToNow(new Date(list.lastEdit), {
+                      addSuffix: true,
+                      locale: pl,
+                    })}
+                  </time>
+                </div>
+              </div>
 
-        {!isProductAlreadyInAnyList ? (
-          <HeartIcon className={isProductAlreadyInAnyList ? "active" : undefined} />
-        ) : (
-          <div className="select-list-modal__input-wrapper">
-            <Input
-              type="checkbox"
-              id={list.id}
-              label={`Naciśnij aby ${
-                isProductAlreadyInCurrentList ? "usunąć produkt z" : "dodać produkt do"
-              } listy "${list.name}"`}
-              inputProps={{
-                checked: isProductAlreadyInCurrentList,
-                onChange: handleListActions,
-                tabIndex: -1,
-              }}
-              labelProps={{
-                className: "visually-hidden",
-              }}
-            />
-          </div>
+              {modalData && modalData.type !== "move-to-other-list" && (
+                <>
+                  {!isProductAlreadyInAnyList ? (
+                    <HeartIcon className={isProductAlreadyInAnyList ? "active" : undefined} />
+                  ) : (
+                    <div className="select-list-modal__input-wrapper">
+                      <Input
+                        type="checkbox"
+                        id={list.id}
+                        label={`Naciśnij aby ${
+                          isProductAlreadyInCurrentList ? "usunąć produkt z" : "dodać produkt do"
+                        } listy "${list.name}"`}
+                        inputProps={{
+                          checked: isProductAlreadyInCurrentList,
+                          onChange: handleListActions,
+                          tabIndex: -1,
+                        }}
+                        labelProps={{
+                          className: "visually-hidden",
+                        }}
+                      />
+                    </div>
+                  )}
+                </>
+              )}
+            </button>
+          </li>
         )}
-      </button>
-    </li>
+    </>
   );
 }

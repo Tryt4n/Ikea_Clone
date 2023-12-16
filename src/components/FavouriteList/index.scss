@@ -120,6 +120,7 @@
 
   &__btns-wrapper {
     @include flex(row, flex-start, flex-end);
+    gap: 0.25rem;
 
     @media screen and (width < b.$mobile-sm) {
       flex-direction: column-reverse;

@@ -1,3 +1,6 @@
+// date-fns
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import pl from "date-fns/locale/pl";
 // Custom Hooks
 import useList from "../../context/useList";
 // Styles
@@ -26,6 +29,22 @@ export default function ProductsGrid() {
                   {product.price.integer},{product.price.decimal}
                 </strong>
               </section>
+
+              {/* //! */}
+              <time dateTime={product.addedDate.toString()}>
+                <br />
+                <strong>
+                  Zaktualizowano&nbsp;
+                  {formatDistanceToNow(new Date(product.addedDate), {
+                    addSuffix: true,
+                    locale: pl,
+                  })}
+                </strong>
+              </time>
+              <br />
+              <br />
+              <hr />
+              {/* //! */}
             </li>
           ))}
         </ul>

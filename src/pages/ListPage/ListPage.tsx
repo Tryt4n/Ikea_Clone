@@ -53,7 +53,7 @@ function InnerComponent() {
     };
 
     checkingList();
-  }, [findListById, list, listDispatch, navigate, state.favouriteLists]);
+  }, [findListById, list, listDispatch, navigate, state]);
 
   return (
     <>

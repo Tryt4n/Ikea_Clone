@@ -12,14 +12,14 @@ import { Btn } from "../../../../components/Btn/Btn";
 import type {
   ChangeListNameModal,
   CreateListModal,
-  SelectListModal,
+  CreateListModalWithProducts,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Styles
 import "./index.scss";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
 type CreateTypePropsType = {
-  type: CreateListModal["type"] | ChangeListNameModal["type"] | SelectListModal["type"];
+  type: CreateListModal["type"] | ChangeListNameModal["type"] | CreateListModalWithProducts["type"];
 };
 
 export default function NameList({ type }: CreateTypePropsType) {
@@ -52,12 +52,29 @@ export default function NameList({ type }: CreateTypePropsType) {
             name: inputValue,
             lastEdit: new Date(),
             products:
+              // modalData?.type === "create-list" && modalData.product
               modalData?.type === "create-list" && modalData.product
                 ? [modalData.product]
                 : undefined,
           },
         });
-      } else if (type === "change-list-name" && state.editingList) {
+        //!
+      } else if (type === "create-list-with-products") {
+        dispatch({
+          type: "createNewList",
+          payload: {
+            id: crypto.randomUUID(),
+            name: inputValue,
+            lastEdit: new Date(),
+            products:
+              modalData?.type === "create-list-with-products" && modalData.products
+                ? modalData.products
+                : undefined,
+          },
+        });
+      }
+      //!
+      else if (type === "change-list-name" && state.editingList) {
         dispatch({
           type: "changeListName",
           payload: {
@@ -115,7 +132,8 @@ export default function NameList({ type }: CreateTypePropsType) {
         type="submit"
         size="big"
       >
-        {type === "create-list" ? "Stwórz listę" : "Zapisz"}
+        {/* {type === "create-list" ? "Stwórz listę" : "Zapisz"} */}
+        {type === ("create-list" || "create-list-with-products") ? "Stwórz listę" : "Zapisz"}
       </Btn>
     </form>
   );

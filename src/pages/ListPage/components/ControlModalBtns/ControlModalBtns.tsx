@@ -1,3 +1,7 @@
+// Custom Hooks
+import useApp from "../../../../hooks/useApp";
+import useModal from "../../../../hooks/useModal";
+import useList from "../../context/useList";
 // Components
 import { Btn } from "../../../../components/Btn/Btn";
 // Icons
@@ -8,6 +12,18 @@ import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
 import "./index.scss";
 
 export default function ControlModalBtns() {
+  const { dispatch } = useApp();
+  const { setModalData } = useModal();
+  const { listState } = useList();
+
+  function openListMenuModal() {
+    if (!listState) return;
+
+    dispatch({ type: "setEditingList", payload: listState });
+
+    setModalData({ type: "list-control" });
+  }
+
   return (
     <div className="control-modal-btns">
       <Btn
@@ -27,6 +43,7 @@ export default function ControlModalBtns() {
       <Btn
         shape="circle"
         variant="light"
+        onClick={openListMenuModal}
       >
         <span className="visually-hidden">Otwórz menu listy</span>
         <TripleDotsMenuIcon />

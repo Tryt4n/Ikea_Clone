@@ -19,6 +19,7 @@ import type {
   ShoppingCartControlModal,
   ShoppingCartProductControlModal,
 } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { FavouritesListType } from "../../../../context/AppContext";
 // Style
 import "./index.scss";
 
@@ -128,10 +129,11 @@ function ProductControl() {
 }
 
 function ListControl() {
+  const { state } = useApp();
   const { setModalData } = useModal();
 
   const { pathname } = location;
-  const isListPage = pathname.startsWith("/favourites/");
+  const isListPage = /^\/favourites\/[a-zA-Z0-9-]+\/?$/.test(pathname);
 
   function openChangeListNameModal() {
     startViewTransition(() => {
@@ -149,6 +151,18 @@ function ListControl() {
     });
   }
 
+  function openMoveToOtherListModal() {
+    if (!state.editingList) return;
+
+    const list: FavouritesListType = state.editingList;
+    startViewTransition(() => {
+      setModalData({
+        type: "move-to-other-list",
+        list: list,
+      });
+    });
+  }
+
   return (
     <>
       <ListItem onClick={openChangeListNameModal}>
@@ -156,12 +170,21 @@ function ListControl() {
         Zmień nazwę listy
       </ListItem>
 
+      {state.editingList?.products?.length &&
+        state.favouriteLists &&
+        state.favouriteLists?.length > 1 && (
+          <ListItem onClick={openMoveToOtherListModal}>
+            <ArrowRightIcon />
+            Przenieś do innej listy
+          </ListItem>
+        )}
+
       <ListItem>
         <ShareIcon />
         Udostępnij
       </ListItem>
 
-      {isListPage && (
+      {state.editingList?.products?.length && isListPage && (
         <ListItem>
           <PrinterIcon />
           Drukuj listę zakupów

@@ -121,6 +121,13 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "moveProductsToOtherList";
+      payload: {
+        originalListId: FavouritesListType["id"];
+        sourceListId: FavouritesListType["id"];
+      };
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -454,6 +461,38 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         chosenShop: chosenShopValue,
         shoppingCart: shoppingCartValue,
         favouriteLists: listsValue,
+      };
+    }
+
+    case "moveProductsToOtherList": {
+      if (!state.favouriteLists) return { ...state };
+
+      const lists = state.favouriteLists;
+      const originalListId = action.payload.originalListId;
+      const newListId = action.payload.sourceListId;
+
+      const originalListIndex = lists.findIndex((list) => list.id === originalListId);
+      const newListIndex = lists.findIndex((list) => list.id === newListId);
+
+      const newListProducts = lists[originalListIndex].products;
+      const originalListProducts = lists[originalListIndex].products;
+
+      if (newListProducts && originalListProducts) {
+        const uniqueProducts = originalListProducts.filter((product) => {
+          return !newListProducts.some(
+            (newProduct) => newProduct.productNumber === product.productNumber
+          );
+        });
+
+        lists[newListIndex].products = [...newListProducts, ...uniqueProducts];
+        lists[originalListIndex].products = undefined;
+      }
+
+      localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+      return {
+        ...state,
+        favouriteLists: lists,
       };
     }
 

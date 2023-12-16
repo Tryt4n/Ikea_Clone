@@ -34,19 +34,38 @@ export type ReducerActionsType =
 
 function listReducer(list: ReducerStateType, action: ReducerActionsType) {
   switch (action.type) {
+    //!
     case "initList": {
       const initializedList = action.payload;
 
       if (!initializedList?.products) return initializedList;
+      const updatedProducts = initializedList.products.sort(
+        (a, b) => new Date(a.addedDate).getTime() - new Date(b.addedDate).getTime()
+      );
 
       const updatedList = {
         ...initializedList,
-        products: initializedList.products.reverse(),
+        // products: initializedList.products.reverse(),
+        products: updatedProducts,
         listSorting: "oldest",
       };
 
       return updatedList;
     }
+    //!
+    // case "initList": {
+    //   const initializedList = action.payload;
+
+    //   if (!initializedList?.products) return initializedList;
+
+    //   const updatedList = {
+    //     ...initializedList,
+    //     products: initializedList.products.reverse(),
+    //     listSorting: "oldest",
+    //   };
+
+    //   return updatedList;
+    // }
 
     case "sortByName": {
       if (!list?.products) return list;

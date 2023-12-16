@@ -45,11 +45,13 @@ function InnerComponent(
     "shopping-cart-control": "side-modal",
     "add-product-by-number": "side-modal",
     "create-list": "side-modal",
+    "create-list-with-products": "side-modal",
     "change-list-name": "side-modal",
     "list-control": "side-modal",
     "delete-list-confirmation": "side-modal",
     "select-list": "side-modal",
     "list-sorting": "side-modal",
+    "move-to-other-list": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -87,11 +89,13 @@ function InnerComponent(
           type === "shopping-cart-control" ||
           type === "add-product-by-number" ||
           type === "create-list" ||
+          type === "create-list-with-products" ||
           type === "list-control" ||
           type === "change-list-name" ||
           type === "delete-list-confirmation" ||
           type === "select-list" ||
-          type === "list-sorting") && (
+          type === "list-sorting" ||
+          type === "move-to-other-list") && (
           <>
             <SideModalLayout data={modalData} />
           </>

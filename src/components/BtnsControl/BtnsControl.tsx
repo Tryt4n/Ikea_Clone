@@ -21,10 +21,12 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
 
   const btnsEndAndBeginning = useCallback(() => {
     const container = containerRef.current;
+    const spacingSafeGuard = 5;
 
     if (!container) return { isBeginning: false, isEnd: false };
 
-    const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
+    const isEnd =
+      container.scrollLeft + container.clientWidth + spacingSafeGuard >= container.scrollWidth;
     const isBeginning = container.scrollLeft === 0;
 
     return { isEnd, isBeginning };
@@ -90,16 +92,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
         disabled={!canScrollBackward}
       >
         <span className="visually-hidden">Przewiń do tyłu</span>
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="m8.4004 12.0007 5.785 5.7857 1.4143-1.4141-4.3711-4.3716 4.3711-4.3717-1.4143-1.4142-5.785 5.7859z"
-          ></path>
-        </svg>
+        <ArrowLeft />
       </Btn>
 
       <div
@@ -118,17 +111,38 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
         disabled={!canScrollForward}
       >
         <span className="visually-hidden">Przewiń do przodu</span>
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="m15.5996 12.0007-5.785 5.7857-1.4143-1.4141 4.3711-4.3716L8.4003 7.629l1.4143-1.4142 5.785 5.7859z"
-          ></path>
-        </svg>
+        <ArrowRight />
       </Btn>
     </div>
+  );
+}
+
+function ArrowLeft() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="m8.4004 12.0007 5.785 5.7857 1.4143-1.4141-4.3711-4.3716 4.3711-4.3717-1.4143-1.4142-5.785 5.7859z"
+      ></path>
+    </svg>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="m15.5996 12.0007-5.785 5.7857-1.4143-1.4141 4.3711-4.3716L8.4003 7.629l1.4143-1.4142 5.785 5.7859z"
+      ></path>
+    </svg>
   );
 }
