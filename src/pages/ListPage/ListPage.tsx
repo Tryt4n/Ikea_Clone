@@ -23,7 +23,7 @@ export default function ListPage() {
 
 function InnerComponent() {
   const { state } = useApp();
-  const { setList, list: newList } = useList();
+  const { listState, listDispatch } = useList();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -44,11 +44,7 @@ function InnerComponent() {
       const listExists = await checkIfListExists();
 
       if (list) {
-        console.log(list);
-        setList({
-          ...list,
-          products: list.products && list.products.reverse(),
-        });
+        listDispatch({ type: "initList", payload: list });
       }
 
       if (state.favouriteLists && listExists === false) {
@@ -57,15 +53,19 @@ function InnerComponent() {
     };
 
     checkingList();
-  }, [state.favouriteLists, params, navigate, findListById, list, setList]);
+  }, [findListById, list, listDispatch, navigate, state.favouriteLists]);
 
   return (
     <>
-      {newList && (
+      {listState && (
         <article className="list-page">
-          <h2 className="list-page__header">{newList.name}</h2>
+          <h2 className="list-page__header">{listState.name}</h2>
 
-          {newList.products && newList.products.length > 0 ? <ListWithProducts /> : <EmptyList />}
+          {listState.products && listState.products.length > 0 ? (
+            <ListWithProducts />
+          ) : (
+            <EmptyList />
+          )}
         </article>
       )}
     </>

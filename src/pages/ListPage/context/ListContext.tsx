@@ -1,42 +1,99 @@
 // React
-import { Dispatch, ReactNode, createContext, useReducer, useState } from "react";
+import { Dispatch, ReactNode, createContext, useReducer } from "react";
+// Helpers
+import { getPrice } from "../../../utils/helpers";
 // Types
 import type { FavouritesListType } from "../../../context/AppContext";
 
 type ListContextType = {
-  list?: FavouritesListType;
-  setList: (list: FavouritesListType) => void;
-  list2?: ReducerStateType;
-  list2Dispatch: Dispatch<ReducerActionsType>;
+  listState: ReducerStateType;
+  listDispatch: Dispatch<ReducerActionsType>;
 };
 
-type ReducerStateType = FavouritesListType | undefined;
+export type SortingTypes = "oldest" | "recent" | "name" | "priceAscending" | "priceDescending";
 
-type ReducerActionsType =
+type ExtendedFavouriteListType = FavouritesListType & { listSorting?: SortingTypes };
+type ReducerStateType = ExtendedFavouriteListType | undefined;
+
+export type ReducerActionsType =
   | {
-      type: "sortByOldest";
-      list: FavouritesListType;
+      type: "initList";
+      payload: FavouritesListType;
     }
   | {
-      type: "sortByNewest" | "sortByName" | "sortByPriceAscending" | "sortByPriceDescending";
+      type: "sortByName";
+    }
+  | {
+      type: "sortByDate";
+      payload: "recent" | "oldest";
+    }
+  | {
+      type: "sortByPrice";
+      payload: "priceAscending" | "priceDescending";
     };
 
 function listReducer(list: ReducerStateType, action: ReducerActionsType) {
   switch (action.type) {
-    case "sortByNewest":
-      return list;
+    case "initList": {
+      const initializedList = action.payload;
 
-    case "sortByOldest":
-      return list;
+      if (!initializedList?.products) return initializedList;
 
-    case "sortByName":
-      return list;
+      const updatedList = {
+        ...initializedList,
+        products: initializedList.products.reverse(),
+        listSorting: "oldest",
+      };
 
-    case "sortByPriceAscending":
-      return list;
+      return updatedList;
+    }
 
-    case "sortByPriceDescending":
-      return list;
+    case "sortByName": {
+      if (!list?.products) return list;
+
+      const updatedList = {
+        ...list,
+        products: [...list.products].sort((a, b) => a.collection.localeCompare(b.collection)),
+        listSorting: "name",
+      };
+
+      return updatedList;
+    }
+
+    case "sortByDate": {
+      if (!list?.products) return list;
+
+      const time = action.payload;
+      const updatedList = {
+        ...list,
+        products: [...list.products].sort(
+          (a, b) =>
+            new Date(time === "recent" ? b.addedDate : a.addedDate).getTime() -
+            new Date(time === "recent" ? a.addedDate : b.addedDate).getTime()
+        ),
+        listSorting: time,
+      };
+
+      return updatedList;
+    }
+
+    case "sortByPrice": {
+      if (!list?.products) return list;
+      const order = action.payload;
+
+      const sortedProducts = [...list.products].sort((a, b) => {
+        const priceA = getPrice(a);
+        const priceB = getPrice(b);
+
+        return order === "priceAscending" ? priceA - priceB : priceB - priceA;
+      });
+
+      return {
+        ...list,
+        products: sortedProducts,
+        listSorting: order,
+      };
+    }
 
     default:
       throw new Error("A case in reducer function has been specified that does not exist.");
@@ -45,16 +102,13 @@ function listReducer(list: ReducerStateType, action: ReducerActionsType) {
 
 export const ListContext = createContext<ListContextType | null>(null);
 
-const initialState: FavouritesListType | undefined = undefined;
-
 export function ListContextProvider({ children }: { children: ReactNode }) {
-  const [list, setList] = useState<FavouritesListType>();
+  const [listState, listDispatch] = useReducer(listReducer, undefined);
 
-  const [list2, list2Dispatch] = useReducer(listReducer, initialState);
+  const contextValue = {
+    listState,
+    listDispatch,
+  };
 
-  return (
-    <ListContext.Provider value={{ list, setList, list2, list2Dispatch }}>
-      {children}
-    </ListContext.Provider>
-  );
+  return <ListContext.Provider value={contextValue}>{children}</ListContext.Provider>;
 }

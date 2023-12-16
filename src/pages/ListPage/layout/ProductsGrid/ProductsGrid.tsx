@@ -4,7 +4,7 @@ import useList from "../../context/useList";
 import "./index.scss";
 
 export default function ProductsGrid() {
-  const { list } = useList();
+  const { listState: list } = useList();
 
   return (
     <>

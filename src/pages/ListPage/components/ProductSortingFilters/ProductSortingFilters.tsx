@@ -1,5 +1,3 @@
-// React
-import { useState } from "react";
 // Custom Hooks
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
@@ -9,67 +7,39 @@ import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type { ShoppingCartType } from "../../../../context/AppContext";
+import type { ReducerActionsType, SortingTypes } from "../../context/ListContext";
 
-const btns = ["date", "name", "priceAscending", "priceDescending"] as const;
+type SortingButtonProps = {
+  variant: SortingTypes;
+  dispatchAction: ReducerActionsType;
+  children: string;
+};
+
+function SortingButton({ variant, dispatchAction, children }: SortingButtonProps) {
+  const { listState, listDispatch } = useList();
+
+  return (
+    <>
+      {listState && (
+        <Btn
+          variant={listState.listSorting === variant ? "light-with-border" : "gray"}
+          onClick={() =>
+            startViewTransition(() => {
+              listState.listSorting === variant
+                ? listDispatch({ type: "sortByDate", payload: "oldest" })
+                : listDispatch(dispatchAction);
+            })
+          }
+        >
+          {children}
+        </Btn>
+      )}
+    </>
+  );
+}
 
 export default function ProductSortingFilters() {
   const { setModalData } = useModal();
-  const { list, setList } = useList();
-  const [activeBtn, setActiveBtn] = useState<(typeof btns)[number] | undefined>();
-
-  function sortListByDate(time: "recent" | "oldest") {
-    setSortedList((a, b) => {
-      return (
-        new Date(time === "recent" ? b.addedDate : a.addedDate).getTime() -
-        new Date(time === "recent" ? a.addedDate : b.addedDate).getTime()
-      );
-    });
-    setActiveBtn("date");
-  }
-
-  function sortListByName() {
-    setSortedList((a, b) => {
-      return a.collection.localeCompare(b.collection);
-    });
-    setActiveBtn("name");
-  }
-
-  function sortListByPrice(order: "ascending" | "descending") {
-    setSortedList((a, b) => {
-      const integerA = a.price.integer;
-      const decimalA = a.price.decimal ? a.price.decimal : 0;
-      const priceA = integerA + parseFloat(`0.${decimalA}`);
-      const integerB = b.price.integer;
-      const decimalB = b.price.decimal ? b.price.decimal : 0;
-      const priceB = integerB + parseFloat(`0.${decimalB}`);
-
-      if (order === "ascending") {
-        return priceA - priceB;
-      } else {
-        return priceB - priceA;
-      }
-    });
-    setActiveBtn(order === "ascending" ? "priceAscending" : "priceDescending");
-  }
-
-  function resetFilters() {
-    sortListByDate("oldest");
-    setActiveBtn(undefined);
-  }
-
-  function setSortedList(comparator: (a: ShoppingCartType, b: ShoppingCartType) => number) {
-    if (!list?.products) return;
-
-    const sortedList = list.products.sort(comparator);
-
-    startViewTransition(() => {
-      setList({
-        ...list,
-        products: sortedList,
-      });
-    });
-  }
 
   function openSortingOptionsModal() {
     setModalData({ type: "list-sorting" });
@@ -84,37 +54,33 @@ export default function ProductSortingFilters() {
         Sortuj
       </Btn>
 
-      <Btn
-        variant={activeBtn === "date" ? "light-with-border" : "gray"}
-        onClick={() => (activeBtn === "date" ? resetFilters() : sortListByDate("recent"))}
+      <SortingButton
+        variant="recent"
+        dispatchAction={{ type: "sortByDate", payload: "recent" }}
       >
         Ostatnio dodane
-      </Btn>
+      </SortingButton>
 
-      <Btn
-        variant={activeBtn === "name" ? "light-with-border" : "gray"}
-        onClick={activeBtn === "name" ? resetFilters : sortListByName}
+      <SortingButton
+        variant="name"
+        dispatchAction={{ type: "sortByName" }}
       >
         Nazwa
-      </Btn>
+      </SortingButton>
 
-      <Btn
-        variant={activeBtn === "priceAscending" ? "light-with-border" : "gray"}
-        onClick={() =>
-          activeBtn === "priceAscending" ? resetFilters() : sortListByPrice("ascending")
-        }
+      <SortingButton
+        variant="priceAscending"
+        dispatchAction={{ type: "sortByPrice", payload: "priceAscending" }}
       >
         Cena - od najniższej
-      </Btn>
+      </SortingButton>
 
-      <Btn
-        variant={activeBtn === "priceDescending" ? "light-with-border" : "gray"}
-        onClick={() =>
-          activeBtn === "priceDescending" ? resetFilters() : sortListByPrice("descending")
-        }
+      <SortingButton
+        variant="priceDescending"
+        dispatchAction={{ type: "sortByPrice", payload: "priceDescending" }}
       >
         Cena - od najwyższej
-      </Btn>
+      </SortingButton>
     </BtnsControl>
   );
 }

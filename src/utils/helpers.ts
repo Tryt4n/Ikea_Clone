@@ -1,3 +1,5 @@
+import type { ShoppingCartType } from "../context/AppContext";
+
 export function startViewTransition(callback: () => void) {
   const prefersMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -8,6 +10,11 @@ export function startViewTransition(callback: () => void) {
       callback();
     });
   }
+}
+
+export function getPrice(product: ShoppingCartType) {
+  const { integer, decimal } = product.price;
+  return integer + parseFloat(`0.${decimal || 0}`);
 }
 
 export function wait(duration: number) {

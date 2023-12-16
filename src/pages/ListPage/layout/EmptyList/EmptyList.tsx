@@ -15,7 +15,7 @@ import "./index.scss";
 export default function EmptyList() {
   const { dispatch } = useApp();
   const { setModalData } = useModal();
-  const { list } = useList();
+  const { listState: list } = useList();
   const navigate = useNavigate();
 
   function openNameEditModal() {
