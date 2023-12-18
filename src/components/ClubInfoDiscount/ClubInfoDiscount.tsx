@@ -1,5 +1,5 @@
 // Components
-import Tag from "../../pages/ProductPage/components/Tag/Tag";
+import Tag from "../Tag/Tag";
 // Icons
 import AvatarIcon from "../../Icons/AvatarIcon";
 // Style

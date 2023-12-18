@@ -1,0 +1,38 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.products-grid {
+  $_spacing: 2.5rem;
+
+  margin-block: $_spacing;
+  display: grid;
+  gap: $_spacing;
+
+  @media screen and (width >= b.$mobile-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (width >= b.$tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (width >= b.$desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.join-family {
+  @include flex(column);
+  gap: 1rem;
+
+  & h3 {
+    font-size: 1.5rem;
+
+    @media screen and (width < b.$mobile-md) {
+      font-size: func.rem(18);
+    }
+  }
+}

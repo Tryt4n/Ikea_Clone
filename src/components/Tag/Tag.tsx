@@ -1,7 +1,7 @@
 // Components
-import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../compoundComponents/CollectionProducts/components/Collection";
 // Types
-import { TextVariants } from "../../../../types/colorsVariantsType";
+import { TextVariants } from "../../types/colorsVariantsType";
 // Style
 import "./index.scss";
 

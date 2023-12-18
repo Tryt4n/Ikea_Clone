@@ -27,7 +27,7 @@ const ListSorting = lazy(() => import("../../variants/ListSorting/ListSorting"))
 // Components
 import { Btn } from "../../../../components/Btn/Btn";
 import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
-import Tag from "../../../../pages/ProductPage/components/Tag/Tag";
+import Tag from "../../../../components/Tag/Tag";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types

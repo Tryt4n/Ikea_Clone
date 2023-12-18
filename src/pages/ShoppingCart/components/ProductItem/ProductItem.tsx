@@ -7,13 +7,15 @@ import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import useModal from "../../../../hooks/useModal";
 // Components
-import Tag from "../../../ProductPage/components/Tag/Tag";
+import Tag from "../../../../components/Tag/Tag";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants
 import { productLink as imageLink } from "../../../../constants/links";
+// Utils
+import { calculatePrice } from "../../../../utils/calculatePrice";
 // Types
 import type { ShoppingCartType } from "../../../../context/AppContext";
 import type { TextVariants } from "../../../../types/colorsVariantsType";
@@ -136,15 +138,6 @@ function ProductHeader({
   price,
   quantity,
 }: ProductHeaderPropsType) {
-  function calculatePrice(multiplier: number, integer: number, decimal?: number) {
-    const decimalValue = decimal ? decimal / 100 : 0;
-    const value = integer + decimalValue;
-    const result = value * multiplier;
-    const resultLocale = result.toLocaleString("pl-PL");
-
-    return Number.isInteger(result) ? `${resultLocale},-` : resultLocale;
-  }
-
   return (
     <header className="shopping-cart-product-item__header-wrapper">
       <div>

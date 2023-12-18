@@ -9,7 +9,7 @@ import ModalControlBtn from "../../components/ModalControlBtn/ModalControlBtn";
 import ThumbnailsImagesContainer from "../../components/ThumbnailsImagesContainer/ThumbnailsImagesContainer";
 import PurchaseOptions from "../../components/PurchaseOptions/PurchaseOptions";
 import BuyBlock from "../../components/BuyBlock/BuyBlock";
-import Tag from "../../components/Tag/Tag";
+import Tag from "../../../../components/Tag/Tag";
 import Header from "../../components/Header/Header";
 import AdditionalInformation from "../../components/AdditionalInformation/AdditionalInformation";
 import GuaranteeInformation from "../../components/GuaranteeInformation/GuaranteeInformation";
