@@ -23,16 +23,6 @@ export default function SelectList() {
   const { state } = useApp();
   const { modalData, setModalData } = useModal();
 
-  // function createNewList() {
-  //   startViewTransition(() => {
-  //     setModalData({
-  //       type: "create-list",
-  //       product: modalData && modalData.type === "select-list" ? modalData.product : undefined,
-  //     });
-  //   });
-  // }
-
-  //!
   function createNewList() {
     startViewTransition(() => {
       if (modalData && modalData.type === "select-list") {
@@ -55,7 +45,6 @@ export default function SelectList() {
       }
     });
   }
-  //!
 
   const isProductAlreadyInAnyList =
     modalData &&

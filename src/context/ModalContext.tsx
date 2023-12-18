@@ -81,13 +81,6 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalData]);
 
-  //!
-  useEffect(() => {
-    if (!modalData) return;
-    console.log(modalData.type);
-  }, [modalData]);
-  //!
-
   const contextValues = useMemo(
     () => ({
       modalID,

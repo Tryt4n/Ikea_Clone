@@ -14,6 +14,7 @@ import type {
   CreateListModal,
   CreateListModalWithProducts,
 } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { FavouritesListType } from "../../../../context/AppContext";
 // Styles
 import "./index.scss";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
@@ -44,37 +45,32 @@ export default function NameList({ type }: CreateTypePropsType) {
     }
 
     startViewTransition(() => {
-      if (type === "create-list") {
-        dispatch({
-          type: "createNewList",
-          payload: {
-            id: crypto.randomUUID(),
-            name: inputValue,
-            lastEdit: new Date(),
-            products:
-              // modalData?.type === "create-list" && modalData.product
-              modalData?.type === "create-list" && modalData.product
-                ? [modalData.product]
-                : undefined,
-          },
-        });
-        //!
-      } else if (type === "create-list-with-products") {
-        dispatch({
-          type: "createNewList",
-          payload: {
-            id: crypto.randomUUID(),
-            name: inputValue,
-            lastEdit: new Date(),
-            products:
-              modalData?.type === "create-list-with-products" && modalData.products
-                ? modalData.products
-                : undefined,
-          },
-        });
+      const list: FavouritesListType = {
+        id: crypto.randomUUID(),
+        name: inputValue,
+        lastEdit: new Date(),
+        products: undefined,
+      };
+
+      if (type === "create-list" && modalData) {
+        list.products =
+          modalData.type === "create-list" && modalData.product ? [modalData.product] : undefined;
+      } else if (type === "create-list-with-products" && modalData) {
+        list.products =
+          modalData.type === "create-list-with-products" && modalData.products
+            ? modalData.products
+            : undefined;
       }
-      //!
-      else if (type === "change-list-name" && state.editingList) {
+
+      if (type === "create-list" || type === "create-list-with-products") {
+        dispatch({
+          type: "createNewList",
+          payload: {
+            list,
+            oldListId: type === "create-list-with-products" ? state.editingList?.id : undefined,
+          },
+        });
+      } else if (type === "change-list-name" && state.editingList) {
         dispatch({
           type: "changeListName",
           payload: {
@@ -132,7 +128,6 @@ export default function NameList({ type }: CreateTypePropsType) {
         type="submit"
         size="big"
       >
-        {/* {type === "create-list" ? "Stwórz listę" : "Zapisz"} */}
         {type === ("create-list" || "create-list-with-products") ? "Stwórz listę" : "Zapisz"}
       </Btn>
     </form>
