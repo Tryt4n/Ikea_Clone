@@ -211,7 +211,6 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
               {type === "add-product-by-number" && <AddProductByNumber />}
 
-              {/* {(type === "create-list" || type === "change-list-name") && <NameList type={type} />} */}
               {(type === "create-list" ||
                 type === "create-list-with-products" ||
                 type === "change-list-name") && <NameList type={type} />}

@@ -81,9 +81,7 @@ function CartControl() {
             Udostępnij
           </ListItem>
         </>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </>
   );
 }
@@ -171,25 +169,25 @@ function ListControl() {
       </ListItem>
 
       {state.editingList?.products?.length &&
-        state.favouriteLists &&
-        state.favouriteLists?.length > 1 && (
-          <ListItem onClick={openMoveToOtherListModal}>
-            <ArrowRightIcon />
-            Przenieś do innej listy
-          </ListItem>
-        )}
+      state.favouriteLists &&
+      state.favouriteLists?.length > 1 ? (
+        <ListItem onClick={openMoveToOtherListModal}>
+          <ArrowRightIcon />
+          Przenieś do innej listy
+        </ListItem>
+      ) : null}
 
       <ListItem>
         <ShareIcon />
         Udostępnij
       </ListItem>
 
-      {state.editingList?.products?.length && isListPage && (
+      {state.editingList?.products?.length && isListPage ? (
         <ListItem>
           <PrinterIcon />
           Drukuj listę zakupów
         </ListItem>
-      )}
+      ) : null}
 
       <ListItem onClick={openDeleteListModal}>
         <TrashIcon />

@@ -45,7 +45,7 @@ export default function Header({ data }: { data: ProductDataType }) {
   };
 
   function addProductToList() {
-    if (!state.favouriteLists) {
+    if (!state.favouriteLists || state.favouriteLists.length === 0) {
       dispatch({
         type: "addToList",
         payload: {

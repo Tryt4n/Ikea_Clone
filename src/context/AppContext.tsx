@@ -138,7 +138,13 @@ type ReducerActionsType =
 
 export const AppContext = createContext<AppContextType | null>(null);
 
+function sortLists(lists: FavouritesListType[]) {
+  return lists.sort((a, b) => compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)));
+}
+
 function reducer(state: ReducerStateType, action: ReducerActionsType) {
+  const favouriteListsStorage = localStorage.getItem("favouriteLists");
+
   switch (action.type) {
     case "setPostalCode":
       localStorage.setItem("postalCode", action.payload);
@@ -281,16 +287,14 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "createNewList": {
-      const lists: FavouritesListType[] = JSON.parse(
-        localStorage.getItem("favouriteLists") || "[]"
-      );
+      if (!favouriteListsStorage) return state;
 
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const newList = action.payload.list;
       const oldListId = action.payload.oldListId;
 
       if (oldListId) {
         const oldListIndex = lists.findIndex((list) => list.id === oldListId);
-
         const oldList = lists[oldListIndex];
 
         newList.products =
@@ -306,6 +310,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       const updatedLists = [newList, ...lists];
 
+      sortLists(updatedLists);
       localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
 
       return {
@@ -315,26 +320,33 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "setEditingList": {
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+      const editingList = lists.find((list) => list.id === action.payload.id);
+
       return {
         ...state,
-        editingList: action.payload,
+        editingList: editingList,
       };
     }
 
     case "changeListName": {
+      if (!favouriteListsStorage) return state;
+
       const editingList: FavouritesListType = {
         ...action.payload,
         lastEdit: new Date(),
       };
 
-      if (!state.favouriteLists) return { ...state };
-
-      const listIndex = state.favouriteLists.findIndex((list) => list.id === editingList.id);
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+      const listIndex = lists.findIndex((list) => list.id === editingList.id);
 
       if (listIndex !== -1) {
-        const updatedLists = [...state.favouriteLists];
+        const updatedLists = lists;
         updatedLists[listIndex] = editingList;
 
+        sortLists(updatedLists);
         localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
 
         return {
@@ -351,14 +363,14 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "deleteList": {
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const deletingList = action.payload;
 
-      if (!state.favouriteLists) return { ...state };
+      const updatedLists = lists.filter((list) => list.id !== deletingList);
 
-      const updatedLists: FavouritesListType[] = state.favouriteLists.filter(
-        (list) => list.id !== deletingList
-      );
-
+      sortLists(updatedLists);
       localStorage.setItem("favouriteLists", JSON.stringify(updatedLists));
 
       return {
@@ -369,13 +381,13 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "addToList": {
-      const favouriteLists = localStorage.getItem("favouriteLists");
+      if (!favouriteListsStorage) return state;
 
-      const lists = state.favouriteLists;
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const addedProduct = action.payload.product;
       const listId = action.payload.listId;
 
-      if (!favouriteLists) {
+      if (!favouriteListsStorage || lists.length === 0) {
         const newList: FavouritesListType = {
           id: crypto.randomUUID(),
           lastEdit: new Date(),
@@ -391,9 +403,8 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         };
       }
 
-      if (listId && lists) {
-        const listIndex = lists.findIndex((list) => list.id === listId);
-
+      if (listId && favouriteListsStorage) {
+        const listIndex = lists.findIndex((list: FavouritesListType) => list.id === listId);
         const updatingList = lists[listIndex].products;
 
         if (lists[listIndex].products && updatingList) {
@@ -404,6 +415,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
         lists[listIndex].lastEdit = new Date();
 
+        sortLists(lists);
         localStorage.setItem("favouriteLists", JSON.stringify(lists));
 
         return {
@@ -416,11 +428,13 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "deleteProductFromList": {
-      const lists = state.favouriteLists;
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const listId = action.payload.listId;
       const productNumber = action.payload.productNumber;
 
-      if (lists) {
+      if (lists.length > 0) {
         const listIndex = lists.findIndex((list) => list.id === listId);
 
         const updatingList = lists[listIndex].products?.filter(
@@ -431,6 +445,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
           lists[listIndex].products = updatingList;
           lists[listIndex].lastEdit = new Date();
 
+          sortLists(lists);
           localStorage.setItem("favouriteLists", JSON.stringify(lists));
         }
 
@@ -444,9 +459,9 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "moveProductsToOtherList": {
-      if (!state.favouriteLists) return { ...state };
+      if (!favouriteListsStorage) return state;
 
-      const lists = state.favouriteLists;
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const originalListId = action.payload.originalListId;
       const newListId = action.payload.sourceListId;
 
@@ -478,6 +493,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       lists[newListIndex].lastEdit = new Date();
       lists[originalListIndex].lastEdit = new Date();
 
+      sortLists(lists);
       localStorage.setItem("favouriteLists", JSON.stringify(lists));
 
       return {
@@ -516,11 +532,10 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       }
 
       //? Lists
-      const listsStorage = localStorage.getItem("favouriteLists");
       let listsValue: FavouritesListType[] = [];
-      if (listsStorage) {
-        listsValue = JSON.parse(listsStorage);
-        listsValue.sort((a, b) => compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)));
+      if (favouriteListsStorage) {
+        listsValue = JSON.parse(favouriteListsStorage);
+        sortLists(listsValue);
       }
 
       return {

@@ -102,8 +102,16 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
 
   async function addToShoppingList(productLink: string) {
     const product = await fetchedData(productLink);
+    console.log(state.favouriteLists?.length);
 
-    if (product) {
+    if ((!state.favouriteLists || state.favouriteLists.length === 0) && product) {
+      dispatch({
+        type: "addToList",
+        payload: {
+          product: product,
+        },
+      });
+    } else if (product) {
       setModalData({
         type: "select-list",
         product: product,
@@ -111,6 +119,17 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
       });
     }
   }
+  // async function addToShoppingList(productLink: string) {
+  //   const product = await fetchedData(productLink);
+
+  //   if (product) {
+  //     setModalData({
+  //       type: "select-list",
+  //       product: product,
+  //       previousModal: modalData,
+  //     });
+  //   }
+  // }
 
   function checkIsProductAlreadyInAnyList(productLink: string) {
     const regex = /(\d+)$/;

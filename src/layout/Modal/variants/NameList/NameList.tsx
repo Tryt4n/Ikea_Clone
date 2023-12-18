@@ -54,12 +54,10 @@ export default function NameList({ type }: CreateTypePropsType) {
 
       if (type === "create-list" && modalData) {
         list.products =
-          modalData.type === "create-list" && modalData.product ? [modalData.product] : undefined;
+          modalData.type === type && modalData.product ? [modalData.product] : undefined;
       } else if (type === "create-list-with-products" && modalData) {
         list.products =
-          modalData.type === "create-list-with-products" && modalData.products
-            ? modalData.products
-            : undefined;
+          modalData.type === type && modalData.products ? modalData.products : undefined;
       }
 
       if (type === "create-list" || type === "create-list-with-products") {
