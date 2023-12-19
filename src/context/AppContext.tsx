@@ -25,6 +25,7 @@ export type ShoppingCartType = Pick<
   | "nameToDisplay"
   | "name"
   | "newTag"
+  | "rating"
 > & {
   oldPrice?: Pick<ProductDataType["oldPriceTag"], "integer" | "decimal" | "variant">;
   quantity: number;
@@ -381,9 +382,9 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "addToList": {
-      if (!favouriteListsStorage) return state;
-
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+      const lists: FavouritesListType[] = JSON.parse(
+        localStorage.getItem("favouriteLists") || "[]"
+      );
       const addedProduct = action.payload.product;
       const listId = action.payload.listId;
 

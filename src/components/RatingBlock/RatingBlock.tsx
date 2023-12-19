@@ -9,7 +9,12 @@ type RatingType = {
   quantity: number;
 };
 
-export default function RatingBlock({ rating }: { rating: RatingType }) {
+type RatingBlockType = {
+  rating: RatingType;
+  longVersion?: boolean;
+};
+
+export default function RatingBlock({ rating, longVersion }: RatingBlockType) {
   return (
     <div className="product-ratings">
       <strong className="visually-hidden">Ocena: {rating.rate}</strong>
@@ -33,7 +38,10 @@ export default function RatingBlock({ rating }: { rating: RatingType }) {
       </span>
       <span className="product-ratings__text">
         <span aria-hidden="true">(</span>
-        <span className="product-ratings__rate">{rating?.quantity}</span>
+        <span className="product-ratings__rate">
+          {rating?.quantity}
+          {longVersion ? " recenzji" : ""}
+        </span>
         <span aria-hidden="true">)</span>
       </span>
     </div>

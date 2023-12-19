@@ -1,0 +1,22 @@
+@use "../../../../abstracts/mixins" as *;
+
+.list-product {
+  &__header-wrapper {
+    margin-top: 3rem;
+  }
+
+  &__img-wrapper {
+    margin-bottom: 1.25rem;
+    @include center;
+    aspect-ratio: 1;
+  }
+
+  &__header {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &__price {
+    font-size: 1.75rem;
+  }
+}

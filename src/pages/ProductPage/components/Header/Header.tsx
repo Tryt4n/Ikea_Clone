@@ -25,27 +25,30 @@ export default function Header({ data }: { data: ProductDataType }) {
     variant,
     oldPriceTag,
     newTag,
+    rating,
   } = data;
 
   const product: ShoppingCartType = {
-    collection: collection,
-    images: images,
-    name: name,
-    nameToDisplay: nameToDisplay,
-    price: price,
-    productNumber: productNumber,
-    size: size,
-    variant: variant,
-    variantName: variantName,
+    collection,
+    images,
+    name,
+    nameToDisplay,
+    price,
+    productNumber,
+    size,
+    variant,
+    variantName,
     oldPrice: oldPriceTag,
     quantity: 1,
     productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(/\./g, "")}`,
-    newTag: newTag,
+    newTag,
     addedDate: new Date(),
+    rating: rating,
   };
 
   function addProductToList() {
     if (!state.favouriteLists || state.favouriteLists.length === 0) {
+      // if (!state.favouriteLists) {
       dispatch({
         type: "addToList",
         payload: {

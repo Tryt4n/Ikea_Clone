@@ -63,6 +63,7 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         oldPriceTag,
         images,
         newTag,
+        rating,
       } = fetchedData;
 
       const product: ShoppingCartType = {
@@ -80,6 +81,7 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         productLink,
         newTag,
         addedDate: new Date(),
+        rating: rating,
       };
 
       return product;
@@ -119,17 +121,6 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
       });
     }
   }
-  // async function addToShoppingList(productLink: string) {
-  //   const product = await fetchedData(productLink);
-
-  //   if (product) {
-  //     setModalData({
-  //       type: "select-list",
-  //       product: product,
-  //       previousModal: modalData,
-  //     });
-  //   }
-  // }
 
   function checkIsProductAlreadyInAnyList(productLink: string) {
     const regex = /(\d+)$/;
