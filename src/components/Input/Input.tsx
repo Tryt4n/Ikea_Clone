@@ -9,13 +9,21 @@ type InputPropsType = {
   type: InputTypes;
   id: string;
   label: string;
+  className?: string;
   labelProps?: HTMLProps<HTMLLabelElement>;
   inputProps?: HTMLProps<HTMLInputElement>;
 };
 
-export default function Input({ type, id, label, labelProps, inputProps }: InputPropsType) {
+export default function Input({
+  type,
+  id,
+  label,
+  className,
+  labelProps,
+  inputProps,
+}: InputPropsType) {
   return (
-    <div className={`${type}-input`}>
+    <div className={`${type}-input${className ? ` ${className}` : ""}`}>
       <Label
         htmlFor={id}
         type={type}

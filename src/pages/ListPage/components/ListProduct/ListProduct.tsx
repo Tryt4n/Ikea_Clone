@@ -3,6 +3,9 @@ import { useState } from "react";
 // Components
 import Input from "../../../../components/Input/Input";
 import Tag from "../../../../components/Tag/Tag";
+import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
+import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
+import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
 import { calculatePrice } from "../../../../utils/calculatePrice";
 // Utils
@@ -11,7 +14,9 @@ import { productLink as startOfLink } from "../../../../constants/links";
 import type { ShoppingCartType } from "../../../../context/AppContext";
 // Style
 import "./index.scss";
-import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
+// Icons
+import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
+import TrashIcon from "../../../../Icons/TrashIcon";
 
 export default function ListProduct({ product }: { product: ShoppingCartType }) {
   const {
@@ -43,16 +48,6 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
       <section className="">
         <h3 className="visually-hidden">{collection}</h3>
 
-        <Input
-          id={productNumber}
-          label="Wybierz aby dodać do listy zarządzania produktami"
-          type="checkbox"
-          labelProps={{
-            className: "visually-hidden",
-          }}
-          inputProps={{}}
-        />
-
         <Header
           collection={collection}
           imgAlt={imgAlt}
@@ -61,6 +56,17 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           newTag={newTag}
           oldPrice={oldPrice}
           productLink={productLink}
+        />
+
+        <Input
+          id={productNumber}
+          label="Wybierz aby dodać do listy zarządzania produktami"
+          type="checkbox"
+          className="list-product__checkbox-wrapper"
+          labelProps={{
+            className: "visually-hidden",
+          }}
+          inputProps={{}}
         />
 
         <Description
@@ -77,11 +83,18 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           longVersion
         />
 
-        {/* //TODO Rating */}
+        {/* //TODO Add functions */}
+        <QuantityInput
+          className="list-product__quantity-input-wrapper"
+          quantity={quantity}
+          onChangeFunction={() => console.log("change")}
+          inputFunction={() => console.log("input function")}
+          small
+        />
 
-        {/* //TODO Quantity Input */}
+        <BtnsControl />
 
-        {/* //TODO Add to cart and delete btns */}
+        <MoreOptionsList />
       </section>
     </li>
   );
@@ -149,6 +162,10 @@ function Description({
   price,
   oldPrice,
 }: DescriptionType) {
+  const totalPrice = calculatePrice(1, price.integer, price.decimal).split(",");
+  const totalPriceInteger = totalPrice[0];
+  const totalPriceDecimal = totalPrice[1];
+
   return (
     <>
       <p>
@@ -165,7 +182,10 @@ function Description({
       )}
 
       <strong className="list-product__price">
-        {calculatePrice(1, price.integer, price.decimal)}
+        {totalPriceInteger}
+        <sup>
+          <small>,{totalPriceDecimal}</small>
+        </sup>
       </strong>
 
       {oldPrice && (
@@ -175,5 +195,43 @@ function Description({
         </p>
       )}
     </>
+  );
+}
+
+function BtnsControl() {
+  return (
+    <div className="list-product__btns-wrapper">
+      <Btn
+        shape="circle"
+        variant="blue"
+      >
+        <span className="visually-hidden">Dodaj do koszyka</span>
+        <ShoppingCartAddIcon />
+      </Btn>
+
+      <Btn
+        shape="circle"
+        variant="light"
+      >
+        <span className="visually-hidden">Usuń produkt z tej listy</span>
+        <TrashIcon />
+      </Btn>
+    </div>
+  );
+}
+
+function MoreOptionsList() {
+  return (
+    <ul className="list-product__more-options-list">
+      <li>
+        <button className="list-product__more-options-btn">Sprawdź opcje dostawy i odbioru</button>
+      </li>
+      <li>
+        <button className="list-product__more-options-btn">Pokaż dołączone elementy</button>
+      </li>
+      <li>
+        <button className="list-product__more-options-btn">Więcej opcji</button>
+      </li>
+    </ul>
   );
 }

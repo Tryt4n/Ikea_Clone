@@ -13,6 +13,7 @@ type QuantityInputPropsType = {
   inputFunction: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeFunction: (delta: 1 | -1) => void;
   className?: string;
+  small?: boolean;
 };
 
 export default function QuantityInput({
@@ -20,9 +21,14 @@ export default function QuantityInput({
   inputFunction,
   onChangeFunction,
   className,
+  small,
 }: QuantityInputPropsType) {
   return (
-    <div className={`quantity-input${className ? ` ${className}` : ""}`}>
+    <div
+      className={`quantity-input${small ? ` quantity-input--small` : ""}${
+        className ? ` ${className}` : ""
+      }`}
+    >
       <Btn
         variant="light"
         shape="circle"

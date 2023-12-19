@@ -241,7 +241,7 @@ function ProductControls({ quantity, product }: ProductControlsPropsType) {
         quantity={quantity}
         onChangeFunction={changeQuantity}
         inputFunction={changeQuantityByInputValue}
-        className="shopping-cart-product-item__quantity"
+        small
       />
 
       {width >= 375 && <BtnDeleteProduct product={product} />}

@@ -81,14 +81,6 @@
     }
   }
 
-  &__quantity:is(.quantity-input) {
-    padding-inline: 0;
-
-    & button {
-      scale: 0.8;
-    }
-  }
-
   &__menu-btn {
     margin-left: auto;
   }

@@ -33,4 +33,13 @@
       width: 100%;
     }
   }
+
+  &--small {
+    max-height: 2.5rem;
+    padding-inline: 0;
+
+    & button {
+      scale: 0.8;
+    }
+  }
 }
