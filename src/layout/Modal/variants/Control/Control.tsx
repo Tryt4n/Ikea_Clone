@@ -3,6 +3,8 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+// Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 // Icons
 import ArrowRightIcon from "../../../../Icons/ArrowRightIcon";
 import HeartIcon from "../../../../Icons/HeartIcon";
@@ -11,11 +13,11 @@ import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
 import EditIcon from "../../../../Icons/EditIcon";
 import PrinterIcon from "../../../../Icons/PrinterIcon";
-// Helpers
-import { startViewTransition } from "../../../../utils/helpers";
+import MagnifierIcon from "../../../../Icons/MagnifierIcon";
 // Types
 import type {
   FavouriteListControlModal,
+  MoreOptionsForProductInListModal,
   ShoppingCartControlModal,
   ShoppingCartProductControlModal,
 } from "../../../../pages/ProductPage/types/ModalTypes";
@@ -27,7 +29,8 @@ type ControlPropsType = {
   type:
     | ShoppingCartControlModal["type"]
     | ShoppingCartProductControlModal["type"]
-    | FavouriteListControlModal["type"];
+    | FavouriteListControlModal["type"]
+    | MoreOptionsForProductInListModal["type"];
 };
 
 export default function Control({ type }: ControlPropsType) {
@@ -35,6 +38,7 @@ export default function Control({ type }: ControlPropsType) {
     "shopping-cart-control": <CartControl />,
     "product-control": <ProductControl />,
     "list-control": <ListControl />,
+    "more-options-for-product-in-list": <ProductInListControl />,
   };
 
   return <ul className="product-control">{controlComponentMap[type]}</ul>;
@@ -193,6 +197,59 @@ function ListControl() {
         <TrashIcon />
         Usuń swoją listę
       </ListItem>
+    </>
+  );
+}
+
+function ProductInListControl() {
+  const { dispatch } = useApp();
+  const { modalData, setModalData, closeModal } = useModal();
+  const { pathname } = location;
+  const listId = pathname.split("/favourites/")[1];
+
+  function moveProductToOtherList() {
+    if (modalData && modalData.type === "more-options-for-product-in-list") {
+      startViewTransition(() => {
+        setModalData({
+          type: "move-product-from-one-list-to-another",
+          payload: {
+            product: modalData.product,
+            originalListId: listId,
+          },
+        });
+      });
+    }
+  }
+
+  function removeProduct() {
+    if (modalData && modalData.type === "more-options-for-product-in-list") {
+      dispatch({
+        type: "deleteProductFromList",
+        payload: { listId: listId, productNumber: modalData.product.productNumber },
+      });
+
+      closeModal();
+    }
+  }
+
+  return (
+    <>
+      <ListItem onClick={moveProductToOtherList}>
+        <ArrowRightIcon />
+        Przenieś do innej listy
+      </ListItem>
+
+      <ListItem onClick={removeProduct}>
+        <TrashIcon />
+        Usuń z listy
+      </ListItem>
+
+      {modalData && modalData.type === "more-options-for-product-in-list" && (
+        <ListItem>
+          <MagnifierIcon />
+          Produkt podobny do {modalData.product.collection}
+        </ListItem>
+      )}
     </>
   );
 }

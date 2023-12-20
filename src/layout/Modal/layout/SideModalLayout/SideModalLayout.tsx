@@ -37,6 +37,7 @@ import type {
   CreateListModal,
   DeleteListConfirmationModal,
   ModalPrefferedShopType,
+  MoveProductFromOneListToAnotherModal,
   MoveToOtherListModal,
   SelectListModal,
   SideModalLayoutType,
@@ -63,6 +64,13 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
           return product.productNumber === modalData.product.productNumber;
         })?.collection
       : "";
+
+  const moreOptionsForProductInListHeader =
+    modalData && modalData.type === "more-options-for-product-in-list"
+      ? `Więcej możliwości dla ${modalData.product.collection}`
+      : "";
+
+  const moveToOtherListHeader = "Przenieś do innej listy";
 
   switch (type) {
     case "choose-size":
@@ -152,7 +160,13 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       header = <span className="visually-hidden">Zaznacz opcję sortowania</span>;
       break;
     case "move-to-other-list":
-      header = "Przenieś do innej listy";
+      header = moveToOtherListHeader;
+      break;
+    case "move-product-from-one-list-to-another":
+      header = moveToOtherListHeader;
+      break;
+    case "more-options-for-product-in-list":
+      header = moreOptionsForProductInListHeader;
       break;
     default:
       throw new Error("A case has been defined that does not exist.");
@@ -207,7 +221,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
               {(type === "product-control" ||
                 type === "shopping-cart-control" ||
-                type === "list-control") && <Control type={type} />}
+                type === "list-control" ||
+                type === "more-options-for-product-in-list") && <Control type={type} />}
 
               {type === "add-product-by-number" && <AddProductByNumber />}
 
@@ -217,7 +232,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
               {type === "delete-list-confirmation" && <DeleteListConfirmation />}
 
-              {(type === "select-list" || type === "move-to-other-list") && <SelectList />}
+              {(type === "select-list" ||
+                type === "move-to-other-list" ||
+                type === "move-product-from-one-list-to-another") && <SelectList />}
 
               {type === "list-sorting" && <ListSorting />}
             </Suspense>
@@ -236,6 +253,7 @@ type GoBackFunctionType = (
   | CreateListModal
   | SelectListModal
   | MoveToOtherListModal
+  | MoveProductFromOneListToAnotherModal
 )["type"];
 
 function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
@@ -273,6 +291,15 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
           break;
         case "move-to-other-list":
           setModalData({ type: "list-control" });
+          break;
+        case "move-product-from-one-list-to-another":
+          if (modalData && modalData.type === "move-product-from-one-list-to-another") {
+            setModalData({
+              type: "more-options-for-product-in-list",
+              product: modalData.payload.product,
+            });
+          }
+          break;
       }
     });
   }
@@ -284,6 +311,7 @@ function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
         type === "change-list-name" ||
         type === "delete-list-confirmation" ||
         type === "move-to-other-list" ||
+        type === "move-product-from-one-list-to-another" ||
         (type === "create-list" &&
           modalData &&
           modalData.type === "create-list" &&

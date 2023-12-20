@@ -68,10 +68,6 @@ export const routes = createBrowserRouter([
                 path: ":listId",
                 element: <ListPage />,
               },
-              {
-                path: ":listId/*",
-                element: <Navigate to="/favourites" />,
-              },
             ],
           },
           { path: "*", element: <NotFoundPage /> },

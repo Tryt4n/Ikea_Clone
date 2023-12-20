@@ -60,11 +60,17 @@ export default function SelectList() {
 
   return (
     <Element className="select-list-modal">
-      {modalData && modalData.type === "move-to-other-list" && (
-        <p className="select-list-modal__other-list-text">
-          Wybierz listę, na którą chcesz przenieść te produkty.
-        </p>
-      )}
+      {modalData &&
+        (modalData.type === "move-to-other-list" ||
+          modalData.type === "move-product-from-one-list-to-another") && (
+          <p className="select-list-modal__other-list-text">
+            Wybierz listę, na którą chcesz przenieść{" "}
+            {modalData.type === "move-product-from-one-list-to-another"
+              ? "ten produkt"
+              : "te produkty"}
+            .
+          </p>
+        )}
 
       {state.favouriteLists && (
         <ul className="select-list-modal__list">
@@ -109,17 +115,39 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
 
   function handleListActions() {
     startViewTransition(() => {
-      if (modalData && modalData.type === "move-to-other-list" && state.editingList) {
-        dispatch({
-          type: "moveProductsToOtherList",
-          payload: { originalListId: state.editingList.id, sourceListId: list.id },
-        });
+      if (modalData) {
+        switch (modalData.type) {
+          case "move-to-other-list":
+            if (!state.editingList) break;
 
-        closeModal();
-      }
+            dispatch({
+              type: "moveProductsToOtherList",
+              payload: { originalListId: state.editingList.id, sourceListId: list.id },
+            });
 
-      if (modalData?.type === "select-list") {
-        isProductAlreadyInCurrentList ? removeFromList() : addToList();
+            closeModal();
+            break;
+
+          case "select-list":
+            isProductAlreadyInCurrentList ? removeFromList() : addToList();
+            break;
+
+          case "move-product-from-one-list-to-another":
+            dispatch({
+              type: "moveProductFromOneListToAnother",
+              payload: {
+                product: modalData.payload.product,
+                originalListId: modalData.payload.originalListId,
+                listWhereProductIsMovedID: list.id,
+              },
+            });
+
+            closeModal();
+            break;
+
+          default:
+            break;
+        }
       }
     });
   }
@@ -157,7 +185,9 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
     <>
       {modalData &&
         (modalData.type === "select-list" ||
-          (modalData.type === "move-to-other-list" && list.id !== state.editingList?.id)) && (
+          ((modalData.type === "move-to-other-list" ||
+            modalData.type === "move-product-from-one-list-to-another") &&
+            list.id !== state.editingList?.id)) && (
           <li>
             <button
               className="select-list-modal__list-item"

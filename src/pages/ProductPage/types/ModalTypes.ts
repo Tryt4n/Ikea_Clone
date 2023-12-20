@@ -142,6 +142,19 @@ export type MoveToOtherListModal = {
   list: FavouritesListType;
 };
 
+export type MoreOptionsForProductInListModal = {
+  readonly type: "more-options-for-product-in-list";
+  product: ShoppingCartType;
+};
+
+export type MoveProductFromOneListToAnotherModal = {
+  readonly type: "move-product-from-one-list-to-another";
+  payload: {
+    product: ShoppingCartType;
+    originalListId: FavouritesListType["id"];
+  };
+};
+
 export type SideModalLayoutType =
   | ModalDataChooseSizeType
   | ModalDataChooseColorType
@@ -167,7 +180,9 @@ export type SideModalLayoutType =
   | DeleteListConfirmationModal
   | SelectListModal
   | ListSortingModal
-  | MoveToOtherListModal;
+  | MoveToOtherListModal
+  | MoreOptionsForProductInListModal
+  | MoveProductFromOneListToAnotherModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

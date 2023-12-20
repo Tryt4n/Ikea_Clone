@@ -134,6 +134,14 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "moveProductFromOneListToAnother";
+      payload: {
+        product: ShoppingCartType;
+        originalListId: FavouritesListType["id"];
+        listWhereProductIsMovedID: FavouritesListType["id"];
+      };
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -501,6 +509,48 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         ...state,
         favouriteLists: lists,
       };
+    }
+
+    case "moveProductFromOneListToAnother": {
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+
+      const product = { ...action.payload.product, addedDate: new Date() };
+      const originalListId = action.payload.originalListId;
+      const listWhereProductIsMovedID = action.payload.listWhereProductIsMovedID;
+
+      const originalListIndex = lists.findIndex((list) => list.id === originalListId);
+      const listWhereProductIsMovedIndex = lists.findIndex(
+        (list) => list.id === listWhereProductIsMovedID
+      );
+
+      const originalListProducts = lists[originalListIndex].products;
+      const listWhereProductIsMovedProducts = lists[listWhereProductIsMovedIndex].products;
+
+      if (originalListProducts && listWhereProductIsMovedProducts) {
+        lists[originalListIndex].products = originalListProducts.filter(
+          (p) => p.productNumber !== product.productNumber
+        );
+
+        lists[listWhereProductIsMovedIndex].products = [
+          ...listWhereProductIsMovedProducts,
+          product,
+        ];
+
+        lists[originalListIndex].lastEdit = new Date();
+        lists[listWhereProductIsMovedIndex].lastEdit = new Date();
+
+        sortLists(lists);
+        localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+        return {
+          ...state,
+          favouriteLists: lists,
+        };
+      }
+
+      return state;
     }
 
     case "loadAppData": {

@@ -52,6 +52,8 @@ function InnerComponent(
     "select-list": "side-modal",
     "list-sorting": "side-modal",
     "move-to-other-list": "side-modal",
+    "more-options-for-product-in-list": "side-modal",
+    "move-product-from-one-list-to-another": "side-modal",
     "image-preview": "image-modal",
     "image-with-products": "image-with-products-modal",
     menu: "menu-modal",
@@ -95,7 +97,9 @@ function InnerComponent(
           type === "delete-list-confirmation" ||
           type === "select-list" ||
           type === "list-sorting" ||
-          type === "move-to-other-list") && (
+          type === "move-to-other-list" ||
+          type === "more-options-for-product-in-list" ||
+          type === "move-product-from-one-list-to-another") && (
           <>
             <SideModalLayout data={modalData} />
           </>

@@ -22,7 +22,7 @@ export default function ListPage() {
 }
 
 function InnerComponent() {
-  const { state } = useApp();
+  const { state, dispatch } = useApp();
   const { listState, listDispatch } = useList();
   const params = useParams();
   const navigate = useNavigate();
@@ -54,6 +54,12 @@ function InnerComponent() {
 
     checkingList();
   }, [findListById, list, listDispatch, navigate, state]);
+
+  useEffect(() => {
+    if (list) {
+      dispatch({ type: "setEditingList", payload: list });
+    }
+  }, [list, dispatch]);
 
   return (
     <>

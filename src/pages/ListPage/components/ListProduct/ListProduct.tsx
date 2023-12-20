@@ -1,5 +1,7 @@
 // React
 import { useState } from "react";
+// Custom Hooks
+import useModal from "../../../../hooks/useModal";
 // Components
 import Input from "../../../../components/Input/Input";
 import Tag from "../../../../components/Tag/Tag";
@@ -94,7 +96,7 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
 
         <BtnsControl />
 
-        <MoreOptionsList />
+        <MoreOptionsList product={product} />
       </section>
     </li>
   );
@@ -125,13 +127,15 @@ function Header({
     <header className="list-product__header-wrapper">
       <a href={productLink.toLowerCase()}>
         <figure>
-          <div className="list-product__img-wrapper">
+          <div
+            className="list-product__img-wrapper"
+            onMouseEnter={() => setImgSrc(imgHover)}
+            onMouseLeave={() => setImgSrc(imgMain)}
+          >
             <img
               src={imgSrc}
               alt={imgAlt}
               loading="lazy"
-              onMouseEnter={() => setImgSrc(imgHover)}
-              onMouseLeave={() => setImgSrc(imgMain)}
             />
           </div>
 
@@ -220,7 +224,13 @@ function BtnsControl() {
   );
 }
 
-function MoreOptionsList() {
+function MoreOptionsList({ product }: { product: ShoppingCartType }) {
+  const { setModalData } = useModal();
+
+  function openMoreOptionsModal() {
+    setModalData({ type: "more-options-for-product-in-list", product: product });
+  }
+
   return (
     <ul className="list-product__more-options-list">
       <li>
@@ -230,7 +240,12 @@ function MoreOptionsList() {
         <button className="list-product__more-options-btn">Pokaż dołączone elementy</button>
       </li>
       <li>
-        <button className="list-product__more-options-btn">Więcej opcji</button>
+        <button
+          className="list-product__more-options-btn"
+          onClick={openMoreOptionsModal}
+        >
+          Więcej opcji
+        </button>
       </li>
     </ul>
   );
