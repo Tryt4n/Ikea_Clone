@@ -39,6 +39,7 @@ function listReducer(list: ReducerStateType, action: ReducerActionsType) {
       const initializedList = action.payload;
 
       if (!initializedList?.products) return initializedList;
+
       const updatedProducts = initializedList.products.sort(
         (a, b) => new Date(a.addedDate).getTime() - new Date(b.addedDate).getTime()
       );

@@ -1,5 +1,5 @@
 // React
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 // react-router-dom
 import { useNavigate, useParams } from "react-router-dom";
 // Context
@@ -26,12 +26,37 @@ function InnerComponent() {
   const { listState, listDispatch } = useList();
   const params = useParams();
   const navigate = useNavigate();
+  const listStateRef = useRef(listState); //? useRef to avoid invoking an infinity loop
 
   const findListById = useCallback(() => {
     return state.favouriteLists?.find((list) => list.id === params.listId);
   }, [state.favouriteLists, params]);
 
-  const list = findListById();
+  const sortList = useCallback(() => {
+    const currentListState = listStateRef.current;
+
+    if (currentListState && currentListState.listSorting) {
+      const { listSorting } = currentListState;
+
+      switch (listSorting) {
+        case "name":
+          listDispatch({ type: "sortByName" });
+          break;
+
+        case "priceAscending":
+        case "priceDescending":
+          listDispatch({ type: "sortByPrice", payload: listSorting });
+          break;
+
+        case "recent":
+        case "oldest":
+          listDispatch({ type: "sortByDate", payload: listSorting });
+          break;
+      }
+    }
+  }, [listDispatch]);
+
+  const list = findListById(); //? search for list
 
   //? Check if list exists in state and if not, navigate to "/favourites"
   useEffect(() => {
@@ -45,6 +70,8 @@ function InnerComponent() {
 
       if (list) {
         listDispatch({ type: "initList", payload: list });
+
+        sortList();
       }
 
       if (state.favouriteLists && listExists === false) {
@@ -53,14 +80,19 @@ function InnerComponent() {
     };
 
     checkingList();
-  }, [findListById, list, listDispatch, navigate, state]);
+  }, [findListById, list, listDispatch, navigate, state, sortList]);
 
+  //? Set editingList in AppContext
   useEffect(() => {
     if (list) {
       dispatch({ type: "setEditingList", payload: list });
-      console.log(list);
     }
   }, [list, dispatch]);
+
+  //? Update listStateRef
+  useEffect(() => {
+    listStateRef.current = listState;
+  }, [listState]);
 
   return (
     <>
