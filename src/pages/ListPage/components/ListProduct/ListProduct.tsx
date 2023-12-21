@@ -1,7 +1,8 @@
 // React
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
 // Components
 import Input from "../../../../components/Input/Input";
@@ -10,6 +11,7 @@ import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
 import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/Btn/Btn";
 // Helpers
+import { startViewTransition } from "../../../../utils/helpers";
 import { calculatePrice } from "../../../../utils/calculatePrice";
 // Utils
 import { productLink as startOfLink } from "../../../../constants/links";
@@ -20,7 +22,6 @@ import "./index.scss";
 // Icons
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
-import { startViewTransition } from "../../../../utils/helpers";
 
 export default function ListProduct({ product }: { product: ShoppingCartType }) {
   const {
@@ -87,13 +88,9 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           longVersion
         />
 
-        {/* //TODO Add functions */}
-        <QuantityInput
-          className="list-product__quantity-input-wrapper"
-          quantity={quantity}
-          onChangeFunction={() => console.log("change")}
-          inputFunction={() => console.log("input function")}
-          small
+        <QuantityBlock
+          productNumber={productNumber}
+          quantity={product.quantity}
         />
 
         <BtnsControl product={product} />
@@ -168,7 +165,7 @@ function Description({
   price,
   oldPrice,
 }: DescriptionType) {
-  const totalPrice = calculatePrice(1, price.integer, price.decimal).split(",");
+  const totalPrice = calculatePrice(quantity, price.integer, price.decimal).split(",");
   const totalPriceInteger = totalPrice[0];
   const totalPriceDecimal = totalPrice[1];
 
@@ -204,10 +201,58 @@ function Description({
   );
 }
 
+function QuantityBlock({
+  productNumber,
+  quantity,
+}: {
+  productNumber: ShoppingCartType["productNumber"];
+  quantity: ShoppingCartType["quantity"];
+}) {
+  const { dispatch } = useApp();
+  const { listId } = useList();
+
+  function changeQuantity(delta: -1 | 1) {
+    startViewTransition(() =>
+      dispatch({
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: listId,
+          value: delta === -1 ? "subtract" : "add",
+          productNumber: productNumber,
+        },
+      })
+    );
+  }
+
+  function changeQuantityByInputValue(e: ChangeEvent<HTMLInputElement>) {
+    const inputValue = e.target.value;
+    const filteredValue = inputValue.replace(/\D/g, "");
+    const parsedValue = parseInt(filteredValue, 10) || 1;
+
+    startViewTransition(() =>
+      dispatch({
+        type: "changeProductQuantityOnList",
+        payload: { listId: listId, value: parsedValue, productNumber: productNumber },
+      })
+    );
+  }
+
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <QuantityInput
+        className="list-product__quantity-input-wrapper"
+        quantity={quantity}
+        onChangeFunction={changeQuantity}
+        inputFunction={changeQuantityByInputValue}
+        small
+      />
+    </form>
+  );
+}
+
 function BtnsControl({ product }: { product: ShoppingCartType }) {
   const { dispatch } = useApp();
-  const { pathname } = location;
-  const listId = pathname.split("/favourites/")[1];
+  const { listId } = useList();
 
   function addToShoppingCart() {
     dispatch({ type: "addToShoppingCart", payload: product });

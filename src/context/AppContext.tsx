@@ -142,6 +142,14 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "changeProductQuantityOnList";
+      payload: {
+        listId: FavouritesListType["id"];
+        productNumber: ShoppingCartType["productNumber"];
+        value: "add" | "subtract" | number;
+      };
+    }
+  | {
       type: "loadAppData";
     };
 
@@ -567,6 +575,39 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       return state;
     }
 
+    case "changeProductQuantityOnList": {
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+      const { listId, productNumber, value } = action.payload;
+
+      const listIndex = lists.findIndex((list) => list.id === listId);
+      const currentList = lists[listIndex];
+      const searchedProductIndex = currentList.products?.findIndex(
+        (product) => product.productNumber === productNumber
+      );
+
+      if (currentList.products && searchedProductIndex && searchedProductIndex !== -1) {
+        if (typeof value === "number") {
+          currentList.products[searchedProductIndex].quantity = value;
+        } else {
+          currentList.products[searchedProductIndex].quantity += value === "add" ? 1 : -1;
+        }
+
+        currentList.lastEdit = new Date();
+
+        sortLists(lists);
+        localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+        return {
+          ...state,
+          favouriteLists: lists,
+        };
+      }
+
+      return state;
+    }
+
     case "loadAppData": {
       //? Postal Code
       const postalCodeStorage = localStorage.getItem("postalCode");
@@ -612,6 +653,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         favouriteLists: listsValue,
       };
     }
+
     default:
       throw new Error("A case in reducer function has been specified that does not exist.");
   }

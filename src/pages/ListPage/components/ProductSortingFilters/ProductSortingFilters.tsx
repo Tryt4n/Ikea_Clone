@@ -9,35 +9,6 @@ import { startViewTransition } from "../../../../utils/helpers";
 // Types
 import type { ReducerActionsType, SortingTypes } from "../../context/ListContext";
 
-type SortingButtonProps = {
-  variant: SortingTypes;
-  dispatchAction: ReducerActionsType;
-  children: string;
-};
-
-function SortingButton({ variant, dispatchAction, children }: SortingButtonProps) {
-  const { listState, listDispatch } = useList();
-
-  return (
-    <>
-      {listState && (
-        <Btn
-          variant={listState.listSorting === variant ? "light-with-border" : "gray"}
-          onClick={() =>
-            startViewTransition(() => {
-              listState.listSorting === variant
-                ? listDispatch({ type: "sortByDate", payload: "oldest" })
-                : listDispatch(dispatchAction);
-            })
-          }
-        >
-          {children}
-        </Btn>
-      )}
-    </>
-  );
-}
-
 export default function ProductSortingFilters() {
   const { setModalData } = useModal();
 
@@ -82,5 +53,34 @@ export default function ProductSortingFilters() {
         Cena - od najwyższej
       </SortingButton>
     </BtnsControl>
+  );
+}
+
+type SortingButtonProps = {
+  variant: SortingTypes;
+  dispatchAction: ReducerActionsType;
+  children: string;
+};
+
+function SortingButton({ variant, dispatchAction, children }: SortingButtonProps) {
+  const { listState, listDispatch } = useList();
+
+  return (
+    <>
+      {listState && (
+        <Btn
+          variant={listState.listSorting === variant ? "light-with-border" : "gray"}
+          onClick={() =>
+            startViewTransition(() => {
+              listState.listSorting === variant
+                ? listDispatch({ type: "sortByDate", payload: "oldest" })
+                : listDispatch(dispatchAction);
+            })
+          }
+        >
+          {children}
+        </Btn>
+      )}
+    </>
   );
 }

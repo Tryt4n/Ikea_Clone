@@ -33,7 +33,7 @@ function InnerComponent() {
 
   const list = findListById();
 
-  //? Check if list exists in state and if not, navigate to lists page
+  //? Check if list exists in state and if not, navigate to "/favourites"
   useEffect(() => {
     async function checkIfListExists() {
       const checkedList = findListById();
@@ -58,6 +58,7 @@ function InnerComponent() {
   useEffect(() => {
     if (list) {
       dispatch({ type: "setEditingList", payload: list });
+      console.log(list);
     }
   }, [list, dispatch]);
 

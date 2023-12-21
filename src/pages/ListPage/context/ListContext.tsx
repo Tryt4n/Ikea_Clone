@@ -1,5 +1,5 @@
 // React
-import { Dispatch, ReactNode, createContext, useReducer } from "react";
+import { Dispatch, ReactNode, createContext, useMemo, useReducer, useState } from "react";
 // Helpers
 import { getPrice } from "../../../utils/helpers";
 // Types
@@ -8,6 +8,7 @@ import type { FavouritesListType } from "../../../context/AppContext";
 type ListContextType = {
   listState: ReducerStateType;
   listDispatch: Dispatch<ReducerActionsType>;
+  listId: string;
 };
 
 export type SortingTypes = "oldest" | "recent" | "name" | "priceAscending" | "priceDescending";
@@ -34,7 +35,6 @@ export type ReducerActionsType =
 
 function listReducer(list: ReducerStateType, action: ReducerActionsType) {
   switch (action.type) {
-    //!
     case "initList": {
       const initializedList = action.payload;
 
@@ -45,27 +45,12 @@ function listReducer(list: ReducerStateType, action: ReducerActionsType) {
 
       const updatedList = {
         ...initializedList,
-        // products: initializedList.products.reverse(),
         products: updatedProducts,
         listSorting: "oldest",
       };
 
       return updatedList;
     }
-    //!
-    // case "initList": {
-    //   const initializedList = action.payload;
-
-    //   if (!initializedList?.products) return initializedList;
-
-    //   const updatedList = {
-    //     ...initializedList,
-    //     products: initializedList.products.reverse(),
-    //     listSorting: "oldest",
-    //   };
-
-    //   return updatedList;
-    // }
 
     case "sortByName": {
       if (!list?.products) return list;
@@ -123,11 +108,16 @@ export const ListContext = createContext<ListContextType | null>(null);
 
 export function ListContextProvider({ children }: { children: ReactNode }) {
   const [listState, listDispatch] = useReducer(listReducer, undefined);
+  const [listId] = useState(location.pathname.split("/favourites/")[1]);
 
-  const contextValue = {
-    listState,
-    listDispatch,
-  };
+  const contextValue = useMemo(
+    () => ({
+      listState,
+      listDispatch,
+      listId,
+    }),
+    [listState, listId]
+  );
 
   return <ListContext.Provider value={contextValue}>{children}</ListContext.Provider>;
 }
