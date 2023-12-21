@@ -25,23 +25,31 @@ export default function SelectList() {
 
   function createNewList() {
     startViewTransition(() => {
-      if (modalData && modalData.type === "select-list") {
-        setModalData({
-          type: "create-list",
-          product: modalData.product,
-        });
-      }
+      if (modalData) {
+        switch (modalData.type) {
+          case "select-list":
+            setModalData({
+              type: "create-list",
+              product: modalData.product,
+            });
+            break;
 
-      if (
-        modalData &&
-        modalData.type === "move-to-other-list" &&
-        state.editingList &&
-        state.editingList.products
-      ) {
-        setModalData({
-          type: "create-list-with-products",
-          products: state.editingList.products,
-        });
+          case "move-to-other-list":
+            if (state.editingList && state.editingList.products) {
+              setModalData({
+                type: "create-list-with-products",
+                products: state.editingList.products,
+              });
+            }
+            break;
+
+          case "move-product-from-one-list-to-another":
+            setModalData({
+              type: "create-list-with-products",
+              products: [modalData.payload.product],
+            });
+            break;
+        }
       }
     });
   }

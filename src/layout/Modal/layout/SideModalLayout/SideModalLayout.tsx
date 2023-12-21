@@ -70,8 +70,6 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       ? `Więcej możliwości dla ${modalData.product.collection}`
       : "";
 
-  const moveToOtherListHeader = "Przenieś do innej listy";
-
   switch (type) {
     case "choose-size":
       header = "Wybierz rozmiar";
@@ -160,10 +158,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       header = <span className="visually-hidden">Zaznacz opcję sortowania</span>;
       break;
     case "move-to-other-list":
-      header = moveToOtherListHeader;
-      break;
     case "move-product-from-one-list-to-another":
-      header = moveToOtherListHeader;
+      header = "Przenieś do innej listy";
       break;
     case "more-options-for-product-in-list":
       header = moreOptionsForProductInListHeader;

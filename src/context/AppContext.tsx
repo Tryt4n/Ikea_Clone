@@ -306,12 +306,21 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         const oldListIndex = lists.findIndex((list) => list.id === oldListId);
         const oldList = lists[oldListIndex];
 
-        newList.products =
-          oldList.products &&
-          oldList.products.map((product) => {
-            return { ...product, addedDate: new Date() };
-          });
-        oldList.products = undefined;
+        if (oldList.products && newList.products) {
+          const newProducts = newList.products;
+
+          oldList.products = oldList.products.filter(
+            (oldProduct) =>
+              !newProducts.some(
+                (newProduct) => newProduct.productNumber === oldProduct.productNumber
+              )
+          );
+
+          newList.products = newList.products.map((product) => ({
+            ...product,
+            addedDate: new Date(),
+          }));
+        }
 
         oldList.lastEdit = new Date();
         newList.lastEdit = new Date();
@@ -526,9 +535,14 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       );
 
       const originalListProducts = lists[originalListIndex].products;
-      const listWhereProductIsMovedProducts = lists[listWhereProductIsMovedIndex].products;
+      let listWhereProductIsMovedProducts = lists[listWhereProductIsMovedIndex].products;
 
-      if (originalListProducts && listWhereProductIsMovedProducts) {
+      if (!listWhereProductIsMovedProducts) {
+        listWhereProductIsMovedProducts = [];
+        lists[listWhereProductIsMovedIndex].products = listWhereProductIsMovedProducts;
+      }
+
+      if (originalListProducts) {
         lists[originalListIndex].products = originalListProducts.filter(
           (p) => p.productNumber !== product.productNumber
         );

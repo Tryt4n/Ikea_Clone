@@ -1,6 +1,7 @@
 // React
 import { useState } from "react";
 // Custom Hooks
+import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 // Components
 import Input from "../../../../components/Input/Input";
@@ -19,6 +20,7 @@ import "./index.scss";
 // Icons
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
+import { startViewTransition } from "../../../../utils/helpers";
 
 export default function ListProduct({ product }: { product: ShoppingCartType }) {
   const {
@@ -94,7 +96,7 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           small
         />
 
-        <BtnsControl />
+        <BtnsControl product={product} />
 
         <MoreOptionsList product={product} />
       </section>
@@ -202,12 +204,30 @@ function Description({
   );
 }
 
-function BtnsControl() {
+function BtnsControl({ product }: { product: ShoppingCartType }) {
+  const { dispatch } = useApp();
+  const { pathname } = location;
+  const listId = pathname.split("/favourites/")[1];
+
+  function addToShoppingCart() {
+    dispatch({ type: "addToShoppingCart", payload: product });
+  }
+
+  function deleteFromList() {
+    startViewTransition(() => {
+      dispatch({
+        type: "deleteProductFromList",
+        payload: { listId: listId, productNumber: product.productNumber },
+      });
+    });
+  }
+
   return (
     <div className="list-product__btns-wrapper">
       <Btn
         shape="circle"
         variant="blue"
+        onClick={addToShoppingCart}
       >
         <span className="visually-hidden">Dodaj do koszyka</span>
         <ShoppingCartAddIcon />
@@ -216,6 +236,7 @@ function BtnsControl() {
       <Btn
         shape="circle"
         variant="light"
+        onClick={deleteFromList}
       >
         <span className="visually-hidden">Usuń produkt z tej listy</span>
         <TrashIcon />
