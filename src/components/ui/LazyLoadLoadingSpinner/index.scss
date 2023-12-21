@@ -1,0 +1,27 @@
+@use "../../../abstracts/mixins" as *;
+
+.loading-spinner-wrapper {
+  width: 100%;
+  height: 100%;
+  @include center;
+}
+
+.loading-spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid hsla(0, 0%, 0%, 0.3);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

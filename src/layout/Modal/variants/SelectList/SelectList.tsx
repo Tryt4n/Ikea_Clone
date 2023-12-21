@@ -7,8 +7,8 @@ import pl from "date-fns/locale/pl";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
-import Input from "../../../../components/Input/Input";
+import { Btn } from "../../../../components/ui/Btn/Btn";
+import Input from "../../../../components/features/Input/Input";
 // Icons
 import HeartIcon from "../../../../Icons/HeartIcon";
 import NoImageIcon from "../../../../Icons/NoImageIcon";

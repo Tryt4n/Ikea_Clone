@@ -1,9 +1,9 @@
 // React
 import { HTMLProps, ReactNode } from "react";
 // Components
-import { Btn } from "../../components/Btn/Btn";
+import { Btn } from "../../components/ui/Btn/Btn";
 // Types
-import type { BtnPropsType } from "../../components/Btn/Btn";
+import type { BtnPropsType } from "../../components/ui/Btn/Btn";
 import type { CardHTMLElementsType } from "../../types/cardTypes";
 import type { BackgroundVariants } from "../../types/colorsVariantsType";
 // Icons

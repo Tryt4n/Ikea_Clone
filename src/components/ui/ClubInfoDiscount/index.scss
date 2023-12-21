@@ -1,0 +1,43 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.club-info-discount {
+  margin-block: 2.5rem;
+  border: func.rem(1) solid c.$gray;
+  border-radius: v.$main-border-radius;
+  @include flex(row, space-between, stretch);
+  cursor: pointer;
+
+  &:hover {
+    & .club-info-discount__text-wrapper strong {
+      text-decoration: underline;
+    }
+
+    & svg {
+      color: c.$black;
+    }
+  }
+
+  &__text-wrapper {
+    padding: 1.25rem 1.5rem;
+    @include flex(column);
+    font-size: 1rem;
+    color: c.$black;
+
+    & > * {
+      display: inline-block;
+    }
+  }
+
+  &__icon-wrapper {
+    @include center;
+    border-left: 1px solid c.$gray;
+
+    & > svg {
+      margin-inline: 0.75rem;
+      transition: v.$main-transition;
+    }
+  }
+}

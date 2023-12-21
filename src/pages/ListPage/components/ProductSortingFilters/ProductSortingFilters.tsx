@@ -2,8 +2,8 @@
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
 // Components
-import BtnsControl from "../../../../components/BtnsControl/BtnsControl";
-import { Btn } from "../../../../components/Btn/Btn";
+import BtnsControl from "../../../../components/features/BtnsControl/BtnsControl";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types

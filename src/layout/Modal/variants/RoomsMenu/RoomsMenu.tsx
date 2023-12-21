@@ -1,5 +1,5 @@
 // Components
-import ListItem from "../../../../components/ListItem/ListItem";
+import ListItem from "../../../../components/ui/ListItem/ListItem";
 // Constants
 import { roomsNavigationList } from "../../../../constants/navigationLists";
 // Types

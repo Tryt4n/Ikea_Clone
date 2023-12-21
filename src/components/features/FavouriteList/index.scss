@@ -1,0 +1,134 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../base/breakpoints" as b;
+
+.favourite-list {
+  $_gap: 0.5rem;
+  height: 100%;
+  max-height: 100%;
+
+  &__container-link {
+    padding: 0.75rem;
+    @include flex(column);
+    gap: 0.75rem;
+    background-color: c.$grayish;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:hover .favourite-list__header {
+      text-decoration: underline;
+    }
+  }
+
+  &__inner-wrapper {
+    @include flex(row, center);
+    background-color: white;
+
+    & > :first-child {
+      width: 66%;
+      aspect-ratio: 1;
+      @include flex(column, center, center);
+      gap: $_gap;
+      text-align: center;
+      padding: 0.25rem;
+    }
+  }
+
+  &__inner-list-grid_1 {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+
+    & > :first-child {
+      width: 66%;
+    }
+  }
+
+  &__inner-list-grid_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: $_gap;
+
+    & > :first-child {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+
+    & > :nth-child(2) {
+      position: relative;
+      grid-column: span 2;
+      grid-row: span 4;
+      @include flex();
+    }
+  }
+  &__inner-list-grid_3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $_gap;
+
+    & > :first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  &__product-image {
+    padding: 0.75rem;
+    @include flex(row, center, center);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
+    & > span {
+      font-weight: bold;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  &__description {
+    flex-grow: 1;
+    padding: 0.5rem 0.75rem;
+    @include flex(row, stretch, center);
+    gap: $_gap;
+
+    & > :first-child {
+      flex-grow: 1;
+    }
+  }
+
+  &__header {
+    font-size: 1rem;
+  }
+
+  &__time {
+    color: c.$text-gray;
+
+    &--break-word {
+      word-break: break-all;
+    }
+  }
+
+  &__btns-wrapper {
+    @include flex(row, flex-start, flex-end);
+    gap: 0.25rem;
+
+    @media screen and (width < b.$mobile-sm) {
+      flex-direction: column-reverse;
+      gap: 0.5rem;
+    }
+  }
+
+  &__btn-menu {
+    rotate: 90deg;
+  }
+}

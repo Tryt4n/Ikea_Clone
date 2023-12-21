@@ -6,7 +6,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 import Navbar from "./components/Navbar/Navbar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 // Components
-import HamburgerButton from "../../components/HamburgerBtn/HamburgerButton";
+import HamburgerButton from "../../components/ui/HamburgerBtn/HamburgerButton";
 // Icons
 import PhoneIcon from "../../Icons/PhoneIcon";
 import TruckIcon from "../../Icons/TruckIcon";

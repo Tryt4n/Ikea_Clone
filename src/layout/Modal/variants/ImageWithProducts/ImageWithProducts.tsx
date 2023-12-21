@@ -7,9 +7,9 @@ import Article from "../../../../compoundComponents/Article/Article";
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
 import CollectionProductsList from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
-import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
-import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
+import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
+import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Types
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 import type { ModalImageWithProductsType } from "../../../../pages/ProductPage/types/ModalTypes";

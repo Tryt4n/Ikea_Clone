@@ -5,7 +5,7 @@ import { ProductProvider } from "./context/ProductContext";
 // Layout
 const ProductPageLayout = lazy(() => import("./layout/ProductPageLayout/ProductPageLayout"));
 // Components
-import PageLoadingSpinner from "../../components/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
+import PageLoadingSpinner from "../../components/ui/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
 
 export default function ProductPage() {
   return (

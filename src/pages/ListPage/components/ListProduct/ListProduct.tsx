@@ -5,11 +5,11 @@ import useApp from "../../../../hooks/useApp";
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
 // Components
-import Input from "../../../../components/Input/Input";
-import Tag from "../../../../components/Tag/Tag";
-import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
-import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import { Btn } from "../../../../components/Btn/Btn";
+import Input from "../../../../components/features/Input/Input";
+import Tag from "../../../../components/ui/Tag/Tag";
+import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
+import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 import { calculatePrice } from "../../../../utils/calculatePrice";

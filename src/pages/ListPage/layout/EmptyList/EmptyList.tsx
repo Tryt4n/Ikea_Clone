@@ -5,7 +5,7 @@ import useApp from "../../../../hooks/useApp";
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
 import EditIcon from "../../../../Icons/EditIcon";
 import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";

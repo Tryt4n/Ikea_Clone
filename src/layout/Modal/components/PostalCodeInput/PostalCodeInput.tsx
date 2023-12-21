@@ -3,10 +3,10 @@ import { ForwardedRef, HTMLProps, forwardRef, useState, useEffect, ChangeEvent }
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 // Components
-import Input from "../../../../components/Input/Input";
+import Input from "../../../../components/features/Input/Input";
+import ErrorMessage from "../../../../components/ui/ErrorMessage/ErrorMessage";
 // Styles
 import "./index.scss";
-import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
 function InnerComponent(
   { ...props }: HTMLProps<HTMLInputElement>,

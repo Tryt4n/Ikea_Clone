@@ -1,0 +1,20 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.change-country {
+  @include flex(row, flex-start, center);
+  gap: 0.5rem;
+  padding-block: 0.46rem;
+  padding-inline: 1rem 1.5rem;
+  border: func.rem(1) solid c.$black;
+  border-radius: 9999px;
+  font-weight: bold;
+  font-size: v.$fs-sm;
+  text-decoration: none;
+  outline-offset: 0;
+  &:hover {
+    text-decoration: none;
+  }
+}

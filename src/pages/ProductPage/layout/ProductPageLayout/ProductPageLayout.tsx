@@ -10,7 +10,7 @@ import ProductImageGallery from "../ProductImageGallery/ProductImageGallery";
 import BuyModule from "../BuyModule/BuyModule";
 import ProductInformations from "../ProductInformations/ProductInformations";
 // Components
-import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
 // Constants

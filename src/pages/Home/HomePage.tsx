@@ -9,7 +9,7 @@ import ImageCardsCollectionSlider from "../../layout/Articles/ImagesCardsCollect
 import TextCardsArticle from "../../layout/Articles/TextCardsArticle";
 import InspirationImageGalleryArticle from "../../layout/Articles/InspirationImageGalleryArticle";
 // Components
-import PageLoadingSpinner from "../../components/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
+import PageLoadingSpinner from "../../components/ui/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
 // Types
 import type { MainArticleType } from "../../layout/Articles/MainArticle";
 import type { CarouselSliderArticleType } from "../../layout/Articles/CarouselSliderArticle";

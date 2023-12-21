@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 // Hooks
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Accordions
-import AccordionContainer from "../../../../components/Accordions/AccordionContainer/AccordionContainer";
-import AccordionElement from "../../../../components/Accordions/AccordionElement/AccordionElement";
+import AccordionContainer from "../../../../components/features/Accordions/AccordionContainer/AccordionContainer";
+import AccordionElement from "../../../../components/features/Accordions/AccordionElement/AccordionElement";
 // Context
-import { AccordionContextProvider } from "../../../../components/Accordions/context/AccordionContext";
-import useAccordion from "../../../../components/Accordions/context/useAccordion";
+import { AccordionContextProvider } from "../../../../components/features/Accordions/context/AccordionContext";
+import useAccordion from "../../../../components/features/Accordions/context/useAccordion";
 // Constants
 import { footerLists } from "../../../../constants/footerLists";
 // Style

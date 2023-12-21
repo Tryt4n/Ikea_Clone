@@ -7,9 +7,9 @@ import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import useModal from "../../../../hooks/useModal";
 // Components
-import Tag from "../../../../components/Tag/Tag";
-import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import { Btn } from "../../../../components/Btn/Btn";
+import Tag from "../../../../components/ui/Tag/Tag";
+import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants

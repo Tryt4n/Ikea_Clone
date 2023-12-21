@@ -3,7 +3,7 @@ import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useList from "../../context/useList";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
 import PrinterIcon from "../../../../Icons/PrinterIcon";
 import ShareIcon from "../../../../Icons/ShareIcon";

@@ -1,0 +1,22 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../base//breakpoints" as b;
+
+.switch-wrapper {
+  width: max-content;
+  margin-inline: auto;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  @include flex(row, center, center);
+  gap: 0.5rem;
+  background-color: c.$grayish;
+
+  @media screen and (width >= b.$mobile-md) {
+    & > button {
+      padding-inline: 2rem;
+    }
+  }
+  & > button:disabled {
+    box-shadow: 0 4px 16px #0000001a;
+  }
+}

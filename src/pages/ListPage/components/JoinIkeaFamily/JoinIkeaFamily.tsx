@@ -1,5 +1,5 @@
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Style
 import "./index.scss";
 

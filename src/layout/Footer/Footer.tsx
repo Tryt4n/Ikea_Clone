@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { FeatureSection } from "./components/FeatureSection/FeatureSection";
 import { FooterAccordions } from "./components/FooterAccordions/FooterAccordions";
 import { NavList } from "./components/NavList/NavList";
-import ChangeCountry from "../../components/ChangeCountryBtn/ChangeCountry";
+import ChangeCountry from "../../components/ui/ChangeCountryBtn/ChangeCountry";
 import SubList from "./components/SubList/SubList";
 // Constants
 import { footerLinksList, footerPaymentsList } from "../../constants/footerLists";

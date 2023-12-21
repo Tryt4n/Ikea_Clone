@@ -4,8 +4,8 @@ import { ChangeEvent, useState } from "react";
 import useApp from "../../../../hooks/useApp";
 import useProduct from "../../context/useProduct";
 // Components
-import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import { Btn } from "../../../../components/Btn/Btn";
+import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
 // Style

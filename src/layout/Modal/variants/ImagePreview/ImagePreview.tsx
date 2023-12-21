@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Constants
 import { productLink } from "../../../../constants/links";
 // Icons

@@ -2,8 +2,8 @@
 import useApp from "../../hooks/useApp";
 import useModal from "../../hooks/useModal";
 // Components
-import FavouriteList from "../../components/FavouriteList/FavouriteList";
-import { Btn } from "../../components/Btn/Btn";
+import FavouriteList from "../../components/features/FavouriteList/FavouriteList";
+import { Btn } from "../../components/ui/Btn/Btn";
 // Icons
 import HeartIcon from "../../Icons/HeartIcon";
 // Style

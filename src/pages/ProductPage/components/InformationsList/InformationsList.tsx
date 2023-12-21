@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
 // Components
-import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
+import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
 // Icons
 import ArrowRightIcon from "../../../../Icons/ArrowRightIcon";
 // Type

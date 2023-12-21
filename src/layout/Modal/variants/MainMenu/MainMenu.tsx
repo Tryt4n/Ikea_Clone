@@ -1,8 +1,8 @@
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
 // Components
-import ListItem from "../../../../components/ListItem/ListItem";
-import { Btn } from "../../../../components/Btn/Btn";
+import ListItem from "../../../../components/ui/ListItem/ListItem";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Constants

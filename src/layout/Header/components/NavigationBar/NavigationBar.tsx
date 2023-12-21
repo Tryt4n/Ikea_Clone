@@ -3,7 +3,7 @@ import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import ListItem from "../../../../components/ListItem/ListItem";
+import ListItem from "../../../../components/ui/ListItem/ListItem";
 // Types
 import type {
   ModalChooseShopType,

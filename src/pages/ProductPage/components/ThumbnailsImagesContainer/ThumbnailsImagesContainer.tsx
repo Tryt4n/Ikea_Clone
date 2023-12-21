@@ -2,7 +2,7 @@
 import useProduct from "../../../../pages/ProductPage/context/useProduct";
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
 // Utils

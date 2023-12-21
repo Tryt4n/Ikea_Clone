@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from "react";
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 // Components
-import Input from "../../../../components/Input/Input";
+import Input from "../../../../components/features/Input/Input";
 import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Constants
 import { ShopType, shopsList } from "../../../../constants/shopsList";

@@ -1,0 +1,27 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+
+.error-message {
+  margin-block: 0.25rem;
+  position: relative;
+  @include flex();
+  gap: 0.5em;
+  color: c.$light-red;
+
+  &[aria-hidden="true"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    height: 1rem;
+    width: 1rem;
+    background-color: c.$light-red;
+    background-image: url("data:image/svg+xml;utf8,<svg width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27><path d=%27M12.9482 13.1025h-2.0035v-6h2l.0035 6zm-2.25 2.75c0-.6903.5597-1.25 1.25-1.25.6904 0 1.25.5597 1.25 1.25 0 .6904-.5596 1.25-1.25 1.25-.6903 0-1.25-.5596-1.25-1.25z%27 /></svg>");
+    background-position: center;
+    border-radius: 50vw;
+  }
+}

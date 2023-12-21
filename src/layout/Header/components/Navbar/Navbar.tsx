@@ -8,8 +8,8 @@ import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import useEventListener from "../../../../hooks/useEventListener";
 // Components
-import HamburgerButton from "../../../../components/HamburgerBtn/HamburgerButton";
-import LoginBtn from "../../../../components/LoginBtn/LoginBtn";
+import HamburgerButton from "../../../../components/ui/HamburgerBtn/HamburgerButton";
+import LoginBtn from "../../../../components/ui/LoginBtn/LoginBtn";
 // Icons
 import IkeaLogo from "../../../../Icons/IkeaLogo";
 import HeartIcon from "../../../../Icons/HeartIcon";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Switch from "../../../../components/Switch/Switch";
+import Switch from "../../../../components/features/Switch/Switch";
 
 const switchTypes = ["buy-online", "shopping-list"] as const;
 

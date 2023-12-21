@@ -3,9 +3,9 @@ import { ChangeEvent, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 // Components
-import Input from "../../../../components/Input/Input";
-import QuantityInput from "../../../../components/QuantityInput/QuantityInput";
-import { Btn } from "../../../../components/Btn/Btn";
+import Input from "../../../../components/features/Input/Input";
+import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Types
 import type { ShoppingCartType } from "../../../../context/AppContext";
 // Style

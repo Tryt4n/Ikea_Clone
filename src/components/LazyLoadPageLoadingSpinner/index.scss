@@ -1,9 +1,0 @@
-@use "../../abstracts/mixins" as *;
-@use "../../abstracts/colors" as c;
-
-.page-loading-spinner {
-  min-height: 50dvh;
-  margin-block: 3rem;
-  @include flex(column, center, center);
-  text-align: center;
-}

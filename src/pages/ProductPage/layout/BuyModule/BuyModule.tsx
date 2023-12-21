@@ -4,17 +4,17 @@ import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
 // Components
 import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
-import RatingBlock from "../../../../components/RatingBlock/RatingBlock";
+import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
 import ModalControlBtn from "../../components/ModalControlBtn/ModalControlBtn";
 import ThumbnailsImagesContainer from "../../components/ThumbnailsImagesContainer/ThumbnailsImagesContainer";
 import PurchaseOptions from "../../components/PurchaseOptions/PurchaseOptions";
 import BuyBlock from "../../components/BuyBlock/BuyBlock";
-import Tag from "../../../../components/Tag/Tag";
+import Tag from "../../../../components/ui/Tag/Tag";
 import Header from "../../components/Header/Header";
 import AdditionalInformation from "../../components/AdditionalInformation/AdditionalInformation";
 import GuaranteeInformation from "../../components/GuaranteeInformation/GuaranteeInformation";
 import SoftnessInformation from "../../components/SoftnessInformation/SoftnessInformation";
-import InformationBox from "../../../../components/InformationBox/InformationBox";
+import InformationBox from "../../../../components/ui/InformationBox/InformationBox";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
 // Style

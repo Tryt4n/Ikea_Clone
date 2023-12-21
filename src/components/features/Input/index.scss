@@ -1,0 +1,131 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.text-input,
+.search-input {
+  @include flex(column);
+
+  &__label {
+    color: c.$text-gray;
+    cursor: pointer;
+  }
+
+  &__input {
+    $_box-shadow-thickness: 0.125rem;
+    $_box-shadow-size: 0px 0px 0px $_box-shadow-thickness;
+
+    height: 3rem;
+    margin-block: 0.25em;
+    padding-inline: func.rem(6);
+    outline: none;
+    border: func.rem(1) solid c.$text-gray;
+    border-radius: v.$main-border-radius;
+    font-size: 1rem;
+    color: c.$text-gray;
+    caret-color: c.$very-dark-blue;
+    transition: v.$main-transition;
+
+    &:not([aria-invalid="true"]):hover {
+      border-color: transparent;
+      box-shadow: c.$black $_box-shadow-size;
+    }
+
+    &:not([aria-invalid="true"]):focus-visible {
+      border-color: transparent;
+      box-shadow: c.$very-dark-blue $_box-shadow-size;
+    }
+
+    &[aria-invalid="true"] {
+      border-color: c.$light-red;
+
+      &:focus-visible {
+        border-color: transparent;
+        box-shadow: c.$light-red $_box-shadow-size;
+      }
+    }
+  }
+}
+
+.checkbox-input {
+  $_checkbox-size: 1.5rem;
+
+  position: relative;
+  @include flex(row-reverse, flex-end, flex-start);
+  margin-block: 1rem;
+  color: c.$text-gray;
+  cursor: pointer;
+
+  &__input {
+    position: absolute;
+    width: $_checkbox-size;
+    height: $_checkbox-size;
+    cursor: inherit;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &__input:checked ~ .checkbox-input__checkbox {
+    background-color: c.$black;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+  &__input.accent:checked ~ .checkbox-input__checkbox {
+    background-color: c.$blue-dark;
+  }
+
+  &__input:checked:focus ~ .checkbox-input__checkbox,
+  &:hover .checkbox-input__input:is(:checked) ~ .checkbox-input__checkbox {
+    background-color: c.$text-gray;
+    color: c.$white;
+  }
+  &__input.accent:checked:focus ~ .checkbox-input__checkbox,
+  &:hover .checkbox-input__input.accent:is(:checked) ~ .checkbox-input__checkbox {
+    background-color: c.$very-dark-blue;
+  }
+
+  &__checkbox {
+    position: absolute;
+    width: $_checkbox-size;
+    height: $_checkbox-size;
+    background: transparent;
+    border: func.rem(1) solid c.$medium-gray;
+    border-radius: v.$main-border-radius;
+    transition: v.$main-transition;
+
+    &::before {
+      content: "\2714";
+      position: absolute;
+      inset: 0;
+      @include center;
+      color: c.$white;
+      opacity: 0;
+      transition: v.$main-transition;
+    }
+  }
+
+  &__label {
+    padding-left: 2.5rem;
+    color: currentColor;
+    cursor: inherit;
+    z-index: 10;
+  }
+
+  &:where(:hover, :focus-within) .checkbox-input__checkbox::before {
+    opacity: 1;
+    color: c.$gray;
+  }
+
+  &:where(:hover, :focus-visible)
+    > .checkbox-input__input:not(:checked)
+    ~ .checkbox-input__checkbox {
+    border-color: c.$black;
+  }
+
+  &:focus-within .checkbox-input__checkbox {
+    border-color: c.$black;
+  }
+}

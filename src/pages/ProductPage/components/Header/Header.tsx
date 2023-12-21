@@ -2,7 +2,7 @@
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 // Components
-import AddToWishListBtn from "../../../../components/AddToWishListBtn/AddToWishListBtn";
+import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Types
 import type { ProductDataType } from "../../types/ProductDataType";
 import type { ShoppingCartType } from "../../../../context/AppContext";

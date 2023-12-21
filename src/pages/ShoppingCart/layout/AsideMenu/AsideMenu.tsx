@@ -5,9 +5,9 @@ import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import ClubInfoDiscount from "../../../../components/ClubInfoDiscount/ClubInfoDiscount";
-import Input from "../../../../components/Input/Input";
-import { Btn } from "../../../../components/Btn/Btn";
+import ClubInfoDiscount from "../../../../components/ui/ClubInfoDiscount/ClubInfoDiscount";
+import Input from "../../../../components/features/Input/Input";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 import DiscountIcon from "../../../../Icons/DiscountIcon";
@@ -132,6 +132,7 @@ function DiscountCodeFormAccordion() {
             />
             <Btn
               variant="white-with-border"
+              type="button"
               tabIndex={!accordionOpen ? -1 : 0}
             >
               Zastosuj

@@ -3,7 +3,7 @@ import { KeyboardEvent, MouseEvent, ForwardedRef, HTMLProps, forwardRef, FormEve
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 // Components
-import Input from "../../../../components/Input/Input";
+import Input from "../../../../components/features/Input/Input";
 
 function InnerComponent(
   { ...props }: HTMLProps<HTMLInputElement>,

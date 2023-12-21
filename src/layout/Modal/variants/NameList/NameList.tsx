@@ -6,8 +6,9 @@ import useModal from "../../../../hooks/useModal";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
-import Input from "../../../../components/Input/Input";
-import { Btn } from "../../../../components/Btn/Btn";
+import Input from "../../../../components/features/Input/Input";
+import { Btn } from "../../../../components/ui/Btn/Btn";
+import ErrorMessage from "../../../../components/ui/ErrorMessage/ErrorMessage";
 // Types
 import type {
   ChangeListNameModal,
@@ -17,7 +18,6 @@ import type {
 import type { FavouritesListType } from "../../../../context/AppContext";
 // Styles
 import "./index.scss";
-import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 
 type CreateTypePropsType = {
   type: CreateListModal["type"] | ChangeListNameModal["type"] | CreateListModalWithProducts["type"];

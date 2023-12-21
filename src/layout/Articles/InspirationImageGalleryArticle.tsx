@@ -2,9 +2,9 @@
 import { useState } from "react";
 // Components
 import Article from "../../compoundComponents/Article/Article";
-import ImageGallery from "../../components/ImageGallery/ImageGallery";
-import BtnsControl from "../../components/BtnsControl/BtnsControl";
-import { Btn } from "../../components/Btn/Btn";
+import ImageGallery from "../../components/features/ImageGallery/ImageGallery";
+import BtnsControl from "../../components/features/BtnsControl/BtnsControl";
+import { Btn } from "../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../utils/helpers";
 // Const

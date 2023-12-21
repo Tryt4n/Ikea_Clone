@@ -6,9 +6,9 @@ import useModal from "../../../../hooks/useModal";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
-import { Btn } from "../../../../components/Btn/Btn";
-import Input from "../../../../components/Input/Input";
-import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
+import { Btn } from "../../../../components/ui/Btn/Btn";
+import Input from "../../../../components/features/Input/Input";
+import ErrorMessage from "../../../../components/ui/ErrorMessage/ErrorMessage";
 // Icons
 import WarningIcon from "../../../../Icons/WarningIcon";
 // Style

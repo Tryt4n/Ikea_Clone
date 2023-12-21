@@ -8,8 +8,8 @@ const MainMenu = lazy(() => import("../../variants/MainMenu/MainMenu"));
 const ProductsMenu = lazy(() => import("../../variants/ProductsMenu/ProductsMenu"));
 const RoomsMenu = lazy(() => import("../../variants/RoomsMenu/RoomsMenu"));
 // Components
-import LoadingSpinner from "../../../../components/LazyLoadLoadingSpinner/LoadingSpinner";
-import { Btn } from "../../../../components/Btn/Btn";
+import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types

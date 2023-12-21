@@ -1,6 +1,6 @@
 // Components
-import ListItem from "../../../../components/ListItem/ListItem";
-import { Btn } from "../../../../components/Btn/Btn";
+import ListItem from "../../../../components/ui/ListItem/ListItem";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
 import ChevronRightIcon from "../../../../Icons/ChevronRightIcon";
 import DiscountIcon from "../../../../Icons/DiscountIcon";
