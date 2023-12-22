@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
+import useToast from "../../../../hooks/useToast";
 import useProduct from "../../context/useProduct";
 // Components
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
@@ -13,6 +14,7 @@ import "./index.scss";
 
 export default function BuyBlock({ product }: { product: ProductDataType }) {
   const { dispatch } = useApp();
+  const { setToastData } = useToast();
   const { path } = useProduct();
 
   const [quantity, setQuantity] = useState(1);
@@ -33,28 +35,49 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
     });
   }
 
+  const {
+    productNumber,
+    collection,
+    name,
+    nameToDisplay,
+    variant,
+    variantName,
+    size,
+    price,
+    oldPriceTag,
+    images,
+    newTag,
+    rating,
+  } = product;
+
   function addToShoppingCart() {
     dispatch({
       type: "addToShoppingCart",
       payload: {
         quantity: quantity,
-        productNumber: product.productNumber,
-        collection: product.collection,
-        name: product.name,
-        nameToDisplay: product.nameToDisplay,
-        variant: product.variant,
-        variantName: product.variantName,
-        size: product.size,
-        price: product.price,
-        oldPrice: product.oldPriceTag,
-        images: product.images,
+        productNumber: productNumber,
+        collection: collection,
+        name: name,
+        nameToDisplay: nameToDisplay,
+        variant: variant,
+        variantName: variantName,
+        size: size,
+        price: price,
+        oldPrice: oldPriceTag,
+        images: images,
         productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
-        newTag: product.newTag,
+        newTag: newTag,
         addedDate: new Date(),
-        rating: product.rating,
+        rating: rating,
       },
     });
     setQuantity(1);
+
+    setToastData({
+      open: true,
+      text: `${collection} dodano do koszyka.`,
+      link: "/shoppingcart",
+    });
   }
 
   return (

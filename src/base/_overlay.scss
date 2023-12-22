@@ -3,8 +3,8 @@
 @use "../abstracts/variables" as v;
 @use "../abstracts/colors" as c;
 
-html:has(dialog[open]),
-html:has(dialog[open]) {
+html:has(dialog:not(.toast-notification)[open]),
+html:has(dialog:not(.toast-notification)[open]) {
   overflow-y: hidden;
 
   @media screen and (width >= b.$tablet-lg) and (height > b.$mobile-lg) and (hover: hover) {

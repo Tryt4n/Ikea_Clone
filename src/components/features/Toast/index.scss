@@ -1,0 +1,45 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+
+.toast-notification {
+  position: fixed;
+  top: 2rem;
+  right: 0;
+  max-width: func.rem(360);
+  width: func.rem(360);
+  margin-right: 1.4rem;
+  padding-block: 1rem;
+  padding-inline: 1.5rem 0.5rem;
+  border: func.rem(1) solid c.$medium-gray;
+  border-radius: v.$main-border-radius;
+  @include flex(row, center, center);
+  gap: 1.5rem;
+  background-color: c.$black;
+  color: white;
+  opacity: 0;
+  isolation: isolate;
+  z-index: 9999;
+  animation: show 500ms ease-in-out forwards;
+
+  & > p {
+    flex-grow: 1;
+    color: inherit;
+  }
+
+  & > a {
+    color: c.$blue;
+    font-weight: bold;
+  }
+
+  & > button > svg {
+    scale: 0.75;
+  }
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}

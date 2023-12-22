@@ -1,5 +1,6 @@
 // Custom Hooks
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Compound Components
@@ -40,6 +41,7 @@ export type ImageWithProductsPropsType = {
 export default function ImageWithProducts({ data }: ImageWithProductsPropsType) {
   const { state, dispatch } = useApp();
   const { modalData, setModalData, closeModal } = useModal();
+  const { setToastData } = useToast();
   const { width, height } = useWindowSize();
 
   const { productsData } = data;
@@ -100,6 +102,12 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         payload: product,
       });
     }
+
+    setToastData({
+      open: true,
+      text: `${product?.collection} dodano do koszyka.`,
+      link: "/shoppingcart",
+    });
   }
 
   async function addToShoppingList(productLink: string) {

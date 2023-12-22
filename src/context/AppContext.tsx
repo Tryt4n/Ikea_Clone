@@ -152,9 +152,6 @@ type ReducerActionsType =
   | {
       type: "loadAppData";
     };
-
-export const AppContext = createContext<AppContextType | null>(null);
-
 function sortLists(lists: FavouritesListType[]) {
   return lists.sort((a, b) => compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)));
 }
@@ -665,6 +662,8 @@ const initState = {
   postalCodeErrorMessage: "",
   rememberPostalCodeCheckboxStatus: true,
 };
+
+export const AppContext = createContext<AppContextType | null>(null);
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initState);
