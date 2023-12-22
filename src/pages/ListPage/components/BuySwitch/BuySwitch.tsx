@@ -1,13 +1,15 @@
-import { useState } from "react";
+// Custom Hooks
+import useList from "../../context/useList";
+// Components
 import Switch from "../../../../components/features/Switch/Switch";
-
-const switchTypes = ["buy-online", "shopping-list"] as const;
+// Utils
+import { listDisplays } from "../../context/utils";
 
 export default function BuySwitch() {
-  const [selected, setSelected] = useState<(typeof switchTypes)[number]>("buy-online");
+  const { selectedDisplay, setSelectedDisplay } = useList();
 
-  function handleButtonClick(value: (typeof switchTypes)[number]) {
-    setSelected(value);
+  function handleButtonClick(value: (typeof listDisplays)[number]) {
+    setSelectedDisplay(value);
   }
 
   return (
@@ -16,14 +18,14 @@ export default function BuySwitch() {
         variant: "light",
       }}
       firstPropertyProps={{
-        disabled: selected === "buy-online",
+        disabled: selectedDisplay === "buy-online",
         onClick: () => handleButtonClick("buy-online"),
-        variant: selected === "buy-online" ? "light" : "gray",
+        variant: selectedDisplay === "buy-online" ? "light" : "gray",
         children: "Kup przez internet",
       }}
       secondPropertyProps={{
-        variant: selected === "shopping-list" ? "light" : "gray",
-        disabled: selected === "shopping-list",
+        variant: selectedDisplay === "shopping-list" ? "light" : "gray",
+        disabled: selectedDisplay === "shopping-list",
         onClick: () => handleButtonClick("shopping-list"),
         children: "Lista zakupów",
       }}

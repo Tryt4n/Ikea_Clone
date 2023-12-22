@@ -133,10 +133,6 @@ export type SelectListModal = {
   previousModal?: ModalDataType;
 };
 
-export type ListSortingModal = {
-  readonly type: "list-sorting";
-};
-
 export type MoveToOtherListModal = {
   readonly type: "move-to-other-list";
   list: FavouritesListType;
@@ -179,7 +175,6 @@ export type SideModalLayoutType =
   | ChangeListNameModal
   | DeleteListConfirmationModal
   | SelectListModal
-  | ListSortingModal
   | MoveToOtherListModal
   | MoreOptionsForProductInListModal
   | MoveProductFromOneListToAnotherModal;

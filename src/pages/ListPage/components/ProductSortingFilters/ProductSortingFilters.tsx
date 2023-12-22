@@ -1,6 +1,5 @@
 // Custom Hooks
 import useList from "../../context/useList";
-import useModal from "../../../../hooks/useModal";
 // Components
 import BtnsControl from "../../../../components/features/BtnsControl/BtnsControl";
 import { Btn } from "../../../../components/ui/Btn/Btn";
@@ -10,20 +9,9 @@ import { startViewTransition } from "../../../../utils/helpers";
 import type { ReducerActionsType, SortingTypes } from "../../context/ListContext";
 
 export default function ProductSortingFilters() {
-  const { setModalData } = useModal();
-
-  function openSortingOptionsModal() {
-    setModalData({ type: "list-sorting" });
-  }
-
   return (
     <BtnsControl>
-      <Btn
-        variant="gray"
-        onClick={openSortingOptionsModal}
-      >
-        Sortuj
-      </Btn>
+      <Btn variant="gray">Sortuj</Btn>
 
       <SortingButton
         variant="recent"

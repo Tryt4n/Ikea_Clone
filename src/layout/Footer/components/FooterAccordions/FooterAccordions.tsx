@@ -26,7 +26,7 @@ function Accordions() {
         <AccordionElement
           key={index}
           label={list.name}
-          index={index}
+          id={index.toString()}
         >
           <InnerLists
             list={list}

@@ -2,6 +2,8 @@
 import { Dispatch, ReactNode, createContext, useMemo, useReducer, useState } from "react";
 // Helpers
 import { getPrice } from "../../../utils/helpers";
+// Utils
+import { listDisplays } from "./utils";
 // Types
 import type { FavouritesListType } from "../../../context/AppContext";
 
@@ -9,6 +11,8 @@ type ListContextType = {
   listState: ReducerStateType;
   listDispatch: Dispatch<ReducerActionsType>;
   listId: string;
+  selectedDisplay: (typeof listDisplays)[number];
+  setSelectedDisplay: (value: (typeof listDisplays)[number]) => void;
 };
 
 export type SortingTypes = "oldest" | "recent" | "name" | "priceAscending" | "priceDescending";
@@ -109,6 +113,10 @@ export const ListContext = createContext<ListContextType | null>(null);
 
 export function ListContextProvider({ children }: { children: ReactNode }) {
   const [listState, listDispatch] = useReducer(listReducer, undefined);
+
+  const [selectedDisplay, setSelectedDisplay] = useState<"buy-online" | "shopping-list">(
+    "buy-online"
+  );
   const [listId] = useState(location.pathname.split("/favourites/")[1]);
 
   const contextValue = useMemo(
@@ -116,8 +124,10 @@ export function ListContextProvider({ children }: { children: ReactNode }) {
       listState,
       listDispatch,
       listId,
+      selectedDisplay,
+      setSelectedDisplay,
     }),
-    [listState, listId]
+    [listState, listId, selectedDisplay]
   );
 
   return <ListContext.Provider value={contextValue}>{children}</ListContext.Provider>;

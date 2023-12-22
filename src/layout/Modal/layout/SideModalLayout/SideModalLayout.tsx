@@ -23,7 +23,6 @@ const DeleteListConfirmation = lazy(
   () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation")
 );
 const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
-const ListSorting = lazy(() => import("../../variants/ListSorting/ListSorting"));
 // Components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -142,9 +141,6 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "select-list":
       header = "Zapisz na swojej liście";
       break;
-    case "list-sorting":
-      header = <span className="visually-hidden">Zaznacz opcję sortowania</span>;
-      break;
     case "move-to-other-list":
     case "move-product-from-one-list-to-another":
       header = "Przenieś do innej listy";
@@ -219,8 +215,6 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               {(type === "select-list" ||
                 type === "move-to-other-list" ||
                 type === "move-product-from-one-list-to-another") && <SelectList />}
-
-              {type === "list-sorting" && <ListSorting />}
             </Suspense>
           </div>
         </>

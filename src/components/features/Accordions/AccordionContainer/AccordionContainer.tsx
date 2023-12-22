@@ -8,7 +8,7 @@ import AccordionElement from "../AccordionElement/AccordionElement";
 import "../index.scss";
 
 interface AccordionContainerPropsType {
-  children: ReactElement<typeof AccordionElement>[];
+  children: ReactElement<typeof AccordionElement>[] | ReactElement<typeof AccordionElement>;
 }
 
 export default function AccordionContainer({ children }: AccordionContainerPropsType) {

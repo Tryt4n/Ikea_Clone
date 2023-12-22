@@ -50,7 +50,6 @@ function InnerComponent(
     "list-control": "side-modal",
     "delete-list-confirmation": "side-modal",
     "select-list": "side-modal",
-    "list-sorting": "side-modal",
     "move-to-other-list": "side-modal",
     "more-options-for-product-in-list": "side-modal",
     "move-product-from-one-list-to-another": "side-modal",
@@ -96,7 +95,6 @@ function InnerComponent(
           type === "change-list-name" ||
           type === "delete-list-confirmation" ||
           type === "select-list" ||
-          type === "list-sorting" ||
           type === "move-to-other-list" ||
           type === "more-options-for-product-in-list" ||
           type === "move-product-from-one-list-to-another") && (

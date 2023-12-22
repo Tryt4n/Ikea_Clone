@@ -2,7 +2,7 @@ import { ReactNode, createContext, useState } from "react";
 
 type AccordionContextType = {
   openedAccordion?: string;
-  toggleAccordion: (index: number) => void;
+  toggleAccordion: (id: string) => void;
 };
 
 export const AccordionContext = createContext<AccordionContextType | null>(null);
@@ -10,9 +10,9 @@ export const AccordionContext = createContext<AccordionContextType | null>(null)
 export function AccordionContextProvider({ children }: { children: ReactNode }) {
   const [openedAccordion, setOpenedAccordion] = useState<undefined | string>();
 
-  function toggleAccordion(index: number) {
-    if (openedAccordion !== `${index}`) {
-      setOpenedAccordion(`${index}`);
+  function toggleAccordion(id: string) {
+    if (openedAccordion !== id) {
+      setOpenedAccordion(id);
     } else {
       setOpenedAccordion(undefined);
     }
