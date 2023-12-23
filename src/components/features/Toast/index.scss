@@ -2,6 +2,7 @@
 @use "../../../abstracts/colors" as c;
 @use "../../../abstracts/variables" as v;
 @use "../../../base/functions" as func;
+@use "../../../base/breakpoints" as b;
 
 .toast-notification {
   position: fixed;
@@ -28,13 +29,32 @@
     color: inherit;
   }
 
-  & > a {
+  &__text-accent {
     color: c.$blue;
     font-weight: bold;
   }
 
   & > button > svg {
     scale: 0.75;
+  }
+
+  &--left {
+    right: auto;
+    left: 0;
+    margin-left: 1.4rem;
+    margin-right: 0;
+  }
+
+  @media screen and (width < b.$mobile-md) {
+    top: 1rem;
+    margin-right: 0;
+    margin-left: 0;
+    left: 50%;
+    translate: -50%;
+  }
+
+  @media screen and (width < func.rem(400)) {
+    width: max(func.rem(310), 100vw - 2rem);
   }
 }
 

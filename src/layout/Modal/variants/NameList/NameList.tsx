@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useRef, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
@@ -26,6 +27,7 @@ type CreateTypePropsType = {
 export default function NameList({ type }: CreateTypePropsType) {
   const { state, dispatch } = useApp();
   const { modalData, closeModal } = useModal();
+  const { setToastData } = useToast();
 
   const [inputValue, setInputValue] = useState(
     type === "change-list-name" && state.editingList ? state.editingList.name : ""
@@ -68,6 +70,11 @@ export default function NameList({ type }: CreateTypePropsType) {
             oldListId: type === "create-list-with-products" ? state.editingList?.id : undefined,
           },
         });
+
+        setToastData({
+          open: true,
+          text: `Pomyślnie utworzono listę ${list.name}.`,
+        });
       } else if (type === "change-list-name" && state.editingList) {
         dispatch({
           type: "changeListName",
@@ -75,6 +82,11 @@ export default function NameList({ type }: CreateTypePropsType) {
             ...state.editingList,
             name: inputValue,
           },
+        });
+
+        setToastData({
+          open: true,
+          text: `Pomyślnie zmieniono nazwę listy na ${inputValue}.`,
         });
       }
     });

@@ -3,6 +3,7 @@ import { FormEvent, RefObject, useRef } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Components
 import { PostalCodeInput } from "../../components/PostalCodeInput/PostalCodeInput";
 import { PostalCodeRememberCheckbox } from "../../components/PostalCodeRememberCheckbox/PostalCodeRememberCheckbox";
@@ -27,6 +28,7 @@ type PostalCodePropsType = {
 export default function PostalCode({ modalType }: PostalCodePropsType) {
   const { state, dispatch } = useApp();
   const { closeModal } = useModal();
+  const { setToastData } = useToast();
 
   const postalCodeRef = useRef<HTMLInputElement>(null);
 
@@ -49,6 +51,11 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
         payload: zipCodeValue,
       });
       closeModal();
+
+      setToastData({
+        open: true,
+        text: `Wybrany przez ciebie kod pocztowy to: ${zipCodeValue}`,
+      });
     }
   }
 
@@ -161,6 +168,7 @@ function Btns({ type, saveFunction, deleteFunction }: BtnsProps) {
       <Btn onClick={saveFunction}>
         {type === "postal-code" ? "Zapisz" : "Znajdź preferowany sklep"}
       </Btn>
+
       {(type === "choose-shop" || (type === "postal-code" && state.postalCode)) && (
         <Btn
           variant="white-with-border"

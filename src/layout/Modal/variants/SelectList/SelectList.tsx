@@ -1,6 +1,7 @@
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // date-fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import pl from "date-fns/locale/pl";
@@ -114,6 +115,7 @@ type ListPropsType = {
 function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
   const { state, dispatch } = useApp();
   const { modalData, closeModal } = useModal();
+  const { setToastData } = useToast();
 
   const isProductAlreadyInCurrentList =
     modalData &&
@@ -134,6 +136,11 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
             });
 
             closeModal();
+
+            setToastData({
+              open: true,
+              text: `Pomyślnie przeniesiono produkty z listy ${state.editingList.name} na listę ${list.name}.`,
+            });
             break;
 
           case "select-list":
@@ -151,6 +158,11 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
             });
 
             closeModal();
+
+            setToastData({
+              open: true,
+              text: `Pomyślnie przeniesiono ${modalData.payload.product.collection} na listę ${list.name}.`,
+            });
             break;
 
           default:
@@ -169,6 +181,13 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
           listId: list.id,
         },
       });
+
+      setToastData({
+        open: true,
+        text: `${modalData.product.collection} został zapisany na liście ${list.name}`,
+        link: `/favourites/${list.id}`,
+        alignLeft: true,
+      });
     }
   }
 
@@ -180,6 +199,12 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
           productNumber: modalData.product.productNumber,
           listId: list.id,
         },
+      });
+
+      setToastData({
+        open: true,
+        text: `${modalData.product.collection} został usunięty z listy ${list.name}`,
+        alignLeft: true,
       });
     }
   }

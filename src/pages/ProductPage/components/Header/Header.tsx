@@ -1,6 +1,7 @@
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Components
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Types
@@ -12,6 +13,7 @@ import "./index.scss";
 export default function Header({ data }: { data: ProductDataType }) {
   const { state, dispatch } = useApp();
   const { setModalData } = useModal();
+  const { setToastData } = useToast();
 
   const {
     collection,
@@ -48,12 +50,20 @@ export default function Header({ data }: { data: ProductDataType }) {
 
   function addProductToList() {
     if (!state.favouriteLists || state.favouriteLists.length === 0) {
-      // if (!state.favouriteLists) {
+      const newListId = crypto.randomUUID();
+
       dispatch({
         type: "addToList",
         payload: {
           product: product,
+          listId: newListId,
         },
+      });
+
+      setToastData({
+        open: true,
+        text: `${product.collection} został zapisany na liście Moja lista.`,
+        link: `/favourites/${newListId}`,
       });
     } else {
       openSelectListModal();

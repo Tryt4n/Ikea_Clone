@@ -4,8 +4,9 @@ import { ChangeEvent } from "react";
 import { useParams } from "react-router-dom";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
-import useWindowSize from "../../../../hooks/useWindowSize";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
+import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
 import Tag from "../../../../components/ui/Tag/Tag";
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
@@ -256,9 +257,19 @@ function ProductControls({ quantity, product }: ProductControlsPropsType) {
 type BtnProductPropsType = { product: ShoppingCartType };
 
 function BtnDeleteProduct({ product }: BtnProductPropsType) {
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
+  const { setToastData } = useToast();
 
   function removeProductFromShoppingCart() {
+    setToastData({
+      open: true,
+      text: `Usunięto produkt ${product.collection} z koszyka.`,
+      prevState: () =>
+        startViewTransition(() => {
+          dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+        }),
+    });
+
     startViewTransition(() =>
       dispatch({
         type: "removeProductFromShoppingCart",

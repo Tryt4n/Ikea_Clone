@@ -3,6 +3,7 @@ import { KeyboardEvent, FormEvent, MouseEvent, useRef, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Components
@@ -17,6 +18,7 @@ import "./index.scss";
 export default function DeleteListConfirmation() {
   const { state, dispatch } = useApp();
   const { closeModal } = useModal();
+  const { setToastData } = useToast();
 
   const [checkboxStatus, setCheckboxStatus] = useState(false);
   const [isErrorMessageVisible, setErrorMessageVisible] = useState(false);
@@ -59,6 +61,11 @@ export default function DeleteListConfirmation() {
     if (!editingList) return;
 
     if (checkboxStatus) {
+      setToastData({
+        open: true,
+        text: `Pomyślnie usunięto ${editingList.name}.`,
+      });
+
       startViewTransition(() => {
         dispatch({ type: "deleteList", payload: editingList.id });
         closeModal();

@@ -8,7 +8,9 @@ import { startViewTransition } from "../utils/helpers";
 type ToastDataType = {
   open: boolean;
   text: string;
-  link: string;
+  link?: string;
+  alignLeft?: boolean;
+  prevState?: () => void;
 };
 
 type ToastContextType = {
@@ -22,7 +24,6 @@ export const ToastContext = createContext<ToastContextType | null>(null);
 const initToast = {
   open: false,
   text: "",
-  link: "#",
 };
 
 export function ToastContextProvider({ children }: { children: ReactNode }) {

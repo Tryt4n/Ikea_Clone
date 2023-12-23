@@ -22,6 +22,7 @@ import "./index.scss";
 // Icons
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
+import useToast from "../../../../hooks/useToast";
 
 export default function ListProduct({ product }: { product: ShoppingCartType }) {
   const {
@@ -252,13 +253,29 @@ function QuantityBlock({
 
 function BtnsControl({ product }: { product: ShoppingCartType }) {
   const { dispatch } = useApp();
+  const { setToastData } = useToast();
   const { listId } = useList();
 
   function addToShoppingCart() {
     dispatch({ type: "addToShoppingCart", payload: product });
+
+    setToastData({
+      open: true,
+      text: `${product.collection} dodano do koszyka.`,
+      link: "/shoppingcart",
+    });
   }
 
   function deleteFromList() {
+    setToastData({
+      open: true,
+      text: `Usunięto ${product.collection} z twojej listy.`,
+      prevState: () =>
+        startViewTransition(() => {
+          dispatch({ type: "addToList", payload: { listId: listId, product: product } });
+        }),
+    });
+
     startViewTransition(() => {
       dispatch({
         type: "deleteProductFromList",

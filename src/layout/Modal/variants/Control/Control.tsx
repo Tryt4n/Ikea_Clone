@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Icons
@@ -46,7 +47,8 @@ export default function Control({ type }: ControlPropsType) {
 
 function CartControl() {
   const { state, dispatch } = useApp();
-  const { setModalData } = useModal();
+  const { setModalData, closeModal } = useModal();
+  const { setToastData } = useToast();
 
   const productsQuantity = state.shoppingCart?.length;
 
@@ -57,7 +59,20 @@ function CartControl() {
   }
 
   function clearShoppingCart() {
-    dispatch({ type: "clearShoppingCart" });
+    setToastData({
+      open: true,
+      text: `Liczba usuniętych artykułów: ${productsQuantity}`,
+      prevState: () =>
+        startViewTransition(() => {
+          dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+        }),
+    });
+
+    startViewTransition(() => {
+      dispatch({ type: "clearShoppingCart" });
+    });
+
+    closeModal();
   }
 
   return (
@@ -91,8 +106,9 @@ function CartControl() {
 }
 
 function ProductControl() {
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
   const { modalData, closeModal, setModalData } = useModal();
+  const { setToastData } = useToast();
 
   function addToShoppingList() {
     if (modalData && modalData.type === "product-control") {
@@ -106,13 +122,23 @@ function ProductControl() {
   }
 
   function removeProduct() {
-    if (modalData)
-      dispatch({
-        type: "removeProductFromShoppingCart",
-        payload: (modalData as ShoppingCartProductControlModal).product.productNumber,
+    if (modalData && modalData.type === "product-control") {
+      setToastData({
+        open: true,
+        text: `${modalData.product.collection} został usunięty z twojego koszyka.`,
+        prevState: () =>
+          startViewTransition(() => {
+            dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+          }),
       });
 
-    closeModal();
+      dispatch({
+        type: "removeProductFromShoppingCart",
+        payload: modalData.product.productNumber,
+      });
+
+      closeModal();
+    }
   }
 
   return (
@@ -204,6 +230,8 @@ function ListControl() {
 function ProductInListControl() {
   const { dispatch } = useApp();
   const { modalData, setModalData, closeModal } = useModal();
+  const { setToastData } = useToast();
+
   const { pathname } = location;
   const listId = pathname.split("/favourites/")[1];
 
@@ -223,9 +251,23 @@ function ProductInListControl() {
 
   function removeProduct() {
     if (modalData && modalData.type === "more-options-for-product-in-list") {
-      dispatch({
-        type: "deleteProductFromList",
-        payload: { listId: listId, productNumber: modalData.product.productNumber },
+      setToastData({
+        open: true,
+        text: `Usunięto ${modalData.product.collection} z twojej listy.`,
+        prevState: () =>
+          startViewTransition(() => {
+            dispatch({
+              type: "addToList",
+              payload: { listId: listId, product: modalData.product },
+            });
+          }),
+      });
+
+      startViewTransition(() => {
+        dispatch({
+          type: "deleteProductFromList",
+          payload: { listId: listId, productNumber: modalData.product.productNumber },
+        });
       });
 
       closeModal();

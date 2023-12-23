@@ -76,6 +76,10 @@ type ReducerActionsType =
       payload: ShoppingCartType;
     }
   | {
+      type: "restoreShoppingCart";
+      payload: ShoppingCartType[];
+    }
+  | {
       type: "addProductByNumber";
       payload: ShoppingCartType["productNumber"];
     }
@@ -230,6 +234,17 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       return {
         ...state,
         shoppingCart: updatedShoppingCart,
+      };
+    }
+
+    case "restoreShoppingCart": {
+      const oldShoppingCart = action.payload;
+
+      localStorage.setItem("shoppingCart", JSON.stringify(oldShoppingCart));
+
+      return {
+        ...state,
+        shoppingCart: oldShoppingCart,
       };
     }
 
@@ -412,7 +427,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       if (!favouriteListsStorage || lists.length === 0) {
         const newList: FavouritesListType = {
-          id: crypto.randomUUID(),
+          id: listId || crypto.randomUUID(),
           lastEdit: new Date(),
           name: "Moja lista",
           products: [addedProduct],

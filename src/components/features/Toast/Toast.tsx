@@ -11,8 +11,7 @@ import "./index.scss";
 
 export default function Toast() {
   const { toastData, closeToast } = useToast();
-
-  const { open, text, link } = toastData;
+  const { open, text, link, alignLeft, prevState } = toastData;
 
   useEffect(() => {
     let timer: number;
@@ -28,15 +27,41 @@ export default function Toast() {
     };
   }, [closeToast, open]);
 
+  function restore() {
+    if (prevState) {
+      prevState();
+
+      closeToast();
+    }
+  }
+
   return (
     <>
       {open && (
         <dialog
-          className="toast-notification"
+          className={`toast-notification${alignLeft ? " toast-notification--left" : ""}`}
           open={open}
         >
           <p>{text}</p>
-          <a href={link}>Pokaż</a>
+
+          {link && (
+            <a
+              className="toast-notification__text-accent"
+              href={link}
+            >
+              Pokaż
+            </a>
+          )}
+
+          {prevState && (
+            <button
+              className="toast-notification__text-accent"
+              onClick={restore}
+            >
+              Cofnij
+            </button>
+          )}
+
           <Btn
             shape="circle"
             onClick={closeToast}

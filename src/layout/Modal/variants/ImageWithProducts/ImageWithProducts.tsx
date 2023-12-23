@@ -112,14 +112,23 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
 
   async function addToShoppingList(productLink: string) {
     const product = await fetchedData(productLink);
-    console.log(state.favouriteLists?.length);
 
     if ((!state.favouriteLists || state.favouriteLists.length === 0) && product) {
+      const newListId = crypto.randomUUID();
+      console.log("newListId", newListId);
+
       dispatch({
         type: "addToList",
         payload: {
           product: product,
+          listId: newListId,
         },
+      });
+
+      setToastData({
+        open: true,
+        text: `${product.collection} został zapisany na liście Moja lista.`,
+        link: `/favourites/${newListId}`,
       });
     } else if (product) {
       setModalData({
