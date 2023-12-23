@@ -47,7 +47,7 @@ export default function Control({ type }: ControlPropsType) {
 
 function CartControl() {
   const { state, dispatch } = useApp();
-  const { setModalData, closeModal } = useModal();
+  const { modalData, setModalData, closeModal } = useModal();
   const { setToastData } = useToast();
 
   const productsQuantity = state.shoppingCart?.length;
@@ -56,6 +56,20 @@ function CartControl() {
     startViewTransition(() => {
       setModalData({ type: "add-product-by-number" });
     });
+  }
+
+  function moveAllProductsToList() {
+    const products = state.shoppingCart;
+
+    if (products && products.length > 0) {
+      startViewTransition(() => {
+        setModalData({
+          type: "select-list-with-products",
+          products: products,
+          previousModal: modalData,
+        });
+      });
+    }
   }
 
   function clearShoppingCart() {
@@ -84,7 +98,7 @@ function CartControl() {
 
       {productsQuantity && productsQuantity > 0 ? (
         <>
-          <ListItem>
+          <ListItem onClick={moveAllProductsToList}>
             <HeartIcon />
             Dodaj ({productsQuantity}) {productsQuantity === 1 ? "produkt" : "produktów"} do listy
             zakupowej
@@ -198,15 +212,12 @@ function ListControl() {
         Zmień nazwę listy
       </ListItem>
 
-      {state.editingList?.products?.length &&
-      state.favouriteLists &&
-      state.favouriteLists?.length > 1 ? (
+      {state.editingList?.products?.length && state.favouriteLists ? (
         <ListItem onClick={openMoveToOtherListModal}>
           <ArrowRightIcon />
           Przenieś do innej listy
         </ListItem>
       ) : null}
-
       <ListItem>
         <ShareIcon />
         Udostępnij

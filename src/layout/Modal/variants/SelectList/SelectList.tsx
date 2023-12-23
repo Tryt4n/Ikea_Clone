@@ -50,6 +50,13 @@ export default function SelectList() {
               products: [modalData.payload.product],
             });
             break;
+
+          case "select-list-with-products":
+            setModalData({
+              type: "create-list-with-products",
+              products: modalData.products,
+            });
+            break;
         }
       }
     });
@@ -71,7 +78,8 @@ export default function SelectList() {
     <Element className="select-list-modal">
       {modalData &&
         (modalData.type === "move-to-other-list" ||
-          modalData.type === "move-product-from-one-list-to-another") && (
+          modalData.type === "move-product-from-one-list-to-another" ||
+          modalData.type === "select-list-with-products") && (
           <p className="select-list-modal__other-list-text">
             Wybierz listę, na którą chcesz przenieść{" "}
             {modalData.type === "move-product-from-one-list-to-another"
@@ -121,7 +129,9 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
     modalData &&
     modalData.type === "select-list" &&
     list.products &&
-    list.products.some((product) => product.productNumber === modalData.product.productNumber);
+    list.products.some(
+      (product) => modalData.product && product.productNumber === modalData.product.productNumber
+    );
 
   function handleListActions() {
     startViewTransition(() => {
@@ -165,6 +175,23 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
             });
             break;
 
+          case "select-list-with-products":
+            dispatch({
+              type: "addProductsToList",
+              payload: {
+                products: modalData.products,
+                listId: list.id,
+              },
+            });
+
+            closeModal();
+
+            setToastData({
+              open: true,
+              text: `Produkty (${modalData.products.length}) zostały zapisane na liście ${list.name}.`,
+            });
+            break;
+
           default:
             break;
         }
@@ -188,6 +215,10 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
         link: `/favourites/${list.id}`,
         alignLeft: true,
       });
+    }
+
+    if (modalData?.type === "select-list" && modalData.products) {
+      console.log(modalData);
     }
   }
 
@@ -219,7 +250,8 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
       {modalData &&
         (modalData.type === "select-list" ||
           ((modalData.type === "move-to-other-list" ||
-            modalData.type === "move-product-from-one-list-to-another") &&
+            modalData.type === "move-product-from-one-list-to-another" ||
+            modalData.type === "select-list-with-products") &&
             list.id !== state.editingList?.id)) && (
           <li>
             <button

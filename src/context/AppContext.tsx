@@ -124,6 +124,13 @@ type ReducerActionsType =
       };
     }
   | {
+      type: "addProductsToList";
+      payload: {
+        products: ShoppingCartType[];
+        listId: FavouritesListType["id"];
+      };
+    }
+  | {
       type: "deleteProductFromList";
       payload: {
         productNumber: ShoppingCartType["productNumber"];
@@ -422,6 +429,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const lists: FavouritesListType[] = JSON.parse(
         localStorage.getItem("favouriteLists") || "[]"
       );
+
       const addedProduct = action.payload.product;
       const listId = action.payload.listId;
 
@@ -463,6 +471,44 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       }
 
       return state;
+    }
+
+    case "addProductsToList": {
+      if (!favouriteListsStorage) return state;
+
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
+      const listId = action.payload.listId;
+      const listIndex = lists.findIndex((list: FavouritesListType) => list.id === listId);
+
+      const products = action.payload.products;
+      const updatedList = { ...lists[listIndex] };
+
+      const newProducts = products
+        .filter(
+          (product) =>
+            updatedList.products &&
+            !updatedList.products.some(
+              (existingProduct) => existingProduct.productNumber === product.productNumber
+            )
+        )
+        .map((product) => ({
+          ...product,
+          addedDate: new Date(),
+        }));
+
+      updatedList.products = [...(updatedList.products || []), ...newProducts];
+      updatedList.lastEdit = new Date();
+
+      lists[listIndex] = updatedList;
+
+      sortLists(lists);
+      localStorage.setItem("favouriteLists", JSON.stringify(lists));
+
+      return {
+        ...state,
+        shoppingCart: products,
+        favouriteLists: lists,
+      };
     }
 
     case "deleteProductFromList": {
@@ -599,7 +645,11 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         (product) => product.productNumber === productNumber
       );
 
-      if (currentList.products && searchedProductIndex && searchedProductIndex !== -1) {
+      if (
+        currentList.products &&
+        searchedProductIndex !== undefined &&
+        searchedProductIndex !== -1
+      ) {
         if (typeof value === "number") {
           currentList.products[searchedProductIndex].quantity = value;
         } else {

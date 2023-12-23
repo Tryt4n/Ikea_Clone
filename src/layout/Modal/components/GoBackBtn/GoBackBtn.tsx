@@ -14,6 +14,7 @@ import type {
   MoveProductFromOneListToAnotherModal,
   MoveToOtherListModal,
   SelectListModal,
+  SelectListWithMultipleProducts,
   SideModalLayoutType,
 } from "../../../../pages/ProductPage/types/ModalTypes";
 // Icons
@@ -26,6 +27,7 @@ type GoBackFunctionType = (
   | DeleteListConfirmationModal
   | CreateListModal
   | SelectListModal
+  | SelectListWithMultipleProducts
   | MoveToOtherListModal
   | MoveProductFromOneListToAnotherModal
 )["type"];
@@ -39,35 +41,48 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
         case "preffered-shop":
           setModalData({ type: "choose-shop" });
           break;
+
         case "add-product-by-number":
           setModalData({ type: "shopping-cart-control" });
           break;
+
         case "change-list-name":
           setModalData({ type: "list-control" });
           break;
+
         case "delete-list-confirmation":
           setModalData({ type: "list-control" });
           break;
+
         case "create-list":
-          if (modalData && modalData.type === "create-list" && modalData.product) {
+          if (modalData && modalData.type === type && modalData.product) {
             setModalData({ type: "select-list", product: modalData.product });
           }
           break;
+
         case "select-list":
           if (
             modalData &&
-            modalData.type === "select-list" &&
+            modalData.type === type &&
             modalData.previousModal &&
             modalData.previousModal.type === "image-with-products"
           ) {
             setModalData(modalData.previousModal);
           }
           break;
+
+        case "select-list-with-products":
+          if (modalData && modalData.type === type && modalData.previousModal) {
+            setModalData(modalData.previousModal);
+          }
+          break;
+
         case "move-to-other-list":
           setModalData({ type: "list-control" });
           break;
+
         case "move-product-from-one-list-to-another":
-          if (modalData && modalData.type === "move-product-from-one-list-to-another") {
+          if (modalData && modalData.type === type) {
             setModalData({
               type: "more-options-for-product-in-list",
               product: modalData.payload.product,
@@ -86,15 +101,16 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
         type === "delete-list-confirmation" ||
         type === "move-to-other-list" ||
         type === "move-product-from-one-list-to-another" ||
-        (type === "create-list" &&
-          modalData &&
-          modalData.type === "create-list" &&
-          modalData.product) ||
+        (type === "create-list" && modalData && modalData.type === type && modalData.product) ||
         (type === "select-list" &&
           modalData &&
-          modalData.type === "select-list" &&
+          modalData.type === type &&
           modalData.previousModal &&
-          modalData.previousModal.type === "image-with-products")) && (
+          modalData.previousModal.type === "image-with-products") ||
+        (type === "select-list-with-products" &&
+          modalData &&
+          modalData.type === type &&
+          modalData.previousModal)) && (
         <Btn
           variant="light"
           shape="circle"

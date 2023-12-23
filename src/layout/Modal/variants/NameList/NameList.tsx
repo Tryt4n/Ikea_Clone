@@ -73,7 +73,13 @@ export default function NameList({ type }: CreateTypePropsType) {
 
         setToastData({
           open: true,
-          text: `Pomyślnie utworzono listę ${list.name}.`,
+          text: `Pomyślnie utworzono listę ${list.name}${
+            type === "create-list-with-products" &&
+            modalData &&
+            modalData.type === "create-list-with-products"
+              ? ` dla (${modalData.products.length}) artykułów`
+              : ""
+          }.`,
         });
       } else if (type === "change-list-name" && state.editingList) {
         dispatch({

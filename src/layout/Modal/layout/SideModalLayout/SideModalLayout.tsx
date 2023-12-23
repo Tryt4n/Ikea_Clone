@@ -143,6 +143,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
       break;
     case "move-to-other-list":
     case "move-product-from-one-list-to-another":
+    case "select-list-with-products":
       header = "Przenieś do innej listy";
       break;
     case "more-options-for-product-in-list":
@@ -214,7 +215,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
               {(type === "select-list" ||
                 type === "move-to-other-list" ||
-                type === "move-product-from-one-list-to-another") && <SelectList />}
+                type === "move-product-from-one-list-to-another" ||
+                type === "select-list-with-products") && <SelectList />}
             </Suspense>
           </div>
         </>

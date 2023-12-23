@@ -129,7 +129,14 @@ export type DeleteListConfirmationModal = {
 export type SelectListModal = {
   readonly type: "select-list";
   product: ShoppingCartType;
+  products?: ShoppingCartType[];
   isProductAlreadyInAnyList?: boolean;
+  previousModal?: ModalDataType;
+};
+
+export type SelectListWithMultipleProducts = {
+  readonly type: "select-list-with-products";
+  products: ShoppingCartType[];
   previousModal?: ModalDataType;
 };
 
@@ -175,6 +182,7 @@ export type SideModalLayoutType =
   | ChangeListNameModal
   | DeleteListConfirmationModal
   | SelectListModal
+  | SelectListWithMultipleProducts
   | MoveToOtherListModal
   | MoreOptionsForProductInListModal
   | MoveProductFromOneListToAnotherModal;
