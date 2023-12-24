@@ -1,5 +1,3 @@
-// react-router-dom
-import { ScrollRestoration } from "react-router-dom";
 // Custom Hooks
 import useApp from "../../hooks/useApp";
 import useModal from "../../hooks/useModal";
@@ -15,13 +13,11 @@ export default function FavouriteLists() {
   const { state } = useApp();
 
   return (
-    <div>
-      <ScrollRestoration />
-
+    <>
       <MainList />
 
       {state.favouriteLists && state.favouriteLists.length > 1 && <OtherLists />}
-    </div>
+    </>
   );
 }
 

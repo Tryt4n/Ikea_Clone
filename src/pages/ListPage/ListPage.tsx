@@ -1,7 +1,7 @@
 // React
 import { useCallback, useEffect, useRef } from "react";
 // react-router-dom
-import { ScrollRestoration, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // Context
 import { ListContextProvider } from "./context/ListContext";
 // Custom Hooks
@@ -98,8 +98,6 @@ function InnerComponent() {
     <>
       {listState && (
         <article className="list-page">
-          <ScrollRestoration />
-
           <h2 className="list-page__header">{listState.name}</h2>
 
           {listState.products && listState.products.length > 0 ? (
