@@ -483,20 +483,27 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const products = action.payload.products;
       const updatedList = { ...lists[listIndex] };
 
-      const newProducts = products
-        .filter(
-          (product) =>
-            updatedList.products &&
-            !updatedList.products.some(
-              (existingProduct) => existingProduct.productNumber === product.productNumber
-            )
-        )
-        .map((product) => ({
-          ...product,
-          addedDate: new Date(),
-        }));
+      updatedList.products = updatedList.products || [];
 
-      updatedList.products = [...(updatedList.products || []), ...newProducts];
+      products.forEach((product) => {
+        if (updatedList.products) {
+          const existingProductIndex = updatedList.products.findIndex(
+            (existingProduct) => existingProduct.productNumber === product.productNumber
+          );
+
+          if (existingProductIndex !== -1) {
+            // Increase the quantity of the existing product
+            updatedList.products[existingProductIndex].quantity += product.quantity;
+          } else {
+            // Add the new product
+            updatedList.products.push({
+              ...product,
+              addedDate: new Date(),
+            });
+          }
+        }
+      });
+
       updatedList.lastEdit = new Date();
 
       lists[listIndex] = updatedList;
@@ -556,21 +563,26 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const originalListProducts = lists[originalListIndex].products;
 
       if (originalListProducts) {
-        const uniqueProducts = originalListProducts
-          .filter((product) => {
-            return !newListProducts?.some(
-              (newProduct) => newProduct.productNumber === product.productNumber
-            );
-          })
-          .map((product) => {
-            return { ...product, addedDate: new Date() };
-          });
+        originalListProducts.forEach((product) => {
+          const existingProductIndex = newListProducts?.findIndex(
+            (newProduct) => newProduct.productNumber === product.productNumber
+          );
 
-        if (newListProducts) {
-          lists[newListIndex].products = [...uniqueProducts, ...newListProducts];
-        } else {
-          lists[newListIndex].products = uniqueProducts;
-        }
+          if (existingProductIndex && existingProductIndex !== -1 && newListProducts) {
+            // Increase the quantity of the existing product and update the addedDate
+            newListProducts[existingProductIndex].quantity += product.quantity;
+            newListProducts[existingProductIndex].addedDate = new Date();
+          } else {
+            // Add the new product
+            const newProduct = { ...product, addedDate: new Date() };
+            if (newListProducts) {
+              newListProducts.push(newProduct);
+            } else {
+              lists[newListIndex].products = [newProduct];
+            }
+          }
+        });
+
         lists[originalListIndex].products = undefined;
       }
 
@@ -613,10 +625,18 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
           (p) => p.productNumber !== product.productNumber
         );
 
-        lists[listWhereProductIsMovedIndex].products = [
-          ...listWhereProductIsMovedProducts,
-          product,
-        ];
+        const existingProductIndex = listWhereProductIsMovedProducts.findIndex(
+          (existingProduct) => existingProduct.productNumber === product.productNumber
+        );
+
+        if (existingProductIndex !== -1) {
+          // Increase the quantity of the existing product and update the addedDate
+          listWhereProductIsMovedProducts[existingProductIndex].quantity += product.quantity;
+          listWhereProductIsMovedProducts[existingProductIndex].addedDate = new Date();
+        } else {
+          // Add the new product
+          listWhereProductIsMovedProducts.push(product);
+        }
 
         lists[originalListIndex].lastEdit = new Date();
         lists[listWhereProductIsMovedIndex].lastEdit = new Date();
@@ -721,7 +741,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
   }
 }
 
-const initState = {
+const initState: ReducerStateType = {
   postalCode: "",
   isPostalCodeErrorMessageVisible: false,
   postalCodeErrorMessage: "",
