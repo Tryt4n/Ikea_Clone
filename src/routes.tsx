@@ -6,7 +6,6 @@ import { RootLayout } from "./layout/RootLayout";
 import ErrorPage from "./pages/tasks/ErrorPage";
 import NotFoundPage from "./pages/tasks/NotFoundPage/NotFoundPage";
 import HomePage from "./pages/Home/HomePage";
-import CollectionPage from "./pages/Collection/CollectionPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import FavouriteLists from "./pages/FavouriteLists/FavouriteLists";
@@ -23,16 +22,6 @@ export const routes = createBrowserRouter([
           {
             index: true,
             element: <HomePage />,
-          },
-          {
-            path: "collection",
-            children: [
-              { index: true, element: <Navigate to="/" /> },
-              {
-                path: ":collectionId",
-                element: <CollectionPage />,
-              },
-            ],
           },
           {
             path: "products",

@@ -216,10 +216,6 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
         alignLeft: true,
       });
     }
-
-    if (modalData?.type === "select-list" && modalData.products) {
-      console.log(modalData);
-    }
   }
 
   function removeFromList() {

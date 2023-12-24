@@ -20,6 +20,7 @@ import type { InspirationImageGalleryArticleType } from "../../layout/Articles/I
 import type { ArticleType, ArticlesType } from "../../layout/Articles/types/ArticleTypes";
 // Style
 import "./index.scss";
+import { ScrollRestoration } from "react-router-dom";
 
 function componentMapper(article: ArticleType) {
   const { variant, content } = article;
@@ -64,6 +65,7 @@ export default function HomePage() {
         </div>
       ) : (
         <div className="articles">
+          <ScrollRestoration />
           {(homePageArticles as ArticlesType).articles.map((article) => (
             <React.Fragment key={article.id}>{componentMapper(article)}</React.Fragment>
           ))}

@@ -569,11 +569,11 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
           );
 
           if (existingProductIndex && existingProductIndex !== -1 && newListProducts) {
-            // Increase the quantity of the existing product and update the addedDate
+            //? Increase the quantity of the existing product and update the addedDate
             newListProducts[existingProductIndex].quantity += product.quantity;
             newListProducts[existingProductIndex].addedDate = new Date();
           } else {
-            // Add the new product
+            //? Add the new product
             const newProduct = { ...product, addedDate: new Date() };
             if (newListProducts) {
               newListProducts.push(newProduct);
@@ -630,11 +630,11 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         );
 
         if (existingProductIndex !== -1) {
-          // Increase the quantity of the existing product and update the addedDate
+          //? Increase the quantity of the existing product and update the addedDate
           listWhereProductIsMovedProducts[existingProductIndex].quantity += product.quantity;
           listWhereProductIsMovedProducts[existingProductIndex].addedDate = new Date();
         } else {
-          // Add the new product
+          //? Add the new product
           listWhereProductIsMovedProducts.push(product);
         }
 

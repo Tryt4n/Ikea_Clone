@@ -1,5 +1,5 @@
 // React
-import React, { HTMLProps, ReactNode, useState } from "react";
+import { AnchorHTMLAttributes, ReactNode, useState } from "react";
 // Intersection Observer
 import { useInView } from "react-intersection-observer";
 // Custom Hooks
@@ -148,6 +148,10 @@ function SearchBar() {
   );
 }
 
+function ListElement(props: ButtonProps | LinkProps) {
+  return props.as === "link" ? <LinkElement {...props} /> : <ButtonElement {...props} />;
+}
+
 type ButtonProps = {
   children: ReactNode;
   as?: "button";
@@ -155,49 +159,40 @@ type ButtonProps = {
   container?: "true" | "false";
 };
 
-type LinkProps = {
-  children: ReactNode;
-  as: "link";
-  className?: string;
-  link?: string;
-  container?: "true" | "false";
-};
-
-type ListElementPropsType =
-  | (ButtonProps & HTMLProps<HTMLButtonElement>)
-  | (LinkProps & HTMLProps<HTMLAnchorElement>);
-
-function ListElement({
-  children,
-  as,
-  className,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  link = "#",
-  container = "true",
-  ...props
-}: ListElementPropsType) {
-  const Element = !as ? React.Fragment : as === "button" ? "button" : "a";
-
+function ButtonElement({ children, className, container = "true" }: ButtonProps) {
   return (
     <li
       className={`${container === "true" ? "btn-container" : ""}${
         className ? ` ${className}` : ""
       }`}
     >
-      {Element === React.Fragment ? (
-        <>{children}</>
-      ) : (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        <Element
-          href={as === "link" ? link : undefined}
-          className="btn-container__svg-wrapper"
-          {...props}
-        >
-          {children}
-        </Element>
-      )}
+      {children}
+    </li>
+  );
+}
+
+type LinkProps = {
+  children: ReactNode;
+  as: "link";
+  className?: string;
+  link?: string;
+  container?: "true" | "false";
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
+
+function LinkElement({ children, className, link = "#", container = "true", ...props }: LinkProps) {
+  return (
+    <li
+      className={`${container === "true" ? "btn-container" : ""}${
+        className ? ` ${className}` : ""
+      }`}
+    >
+      <a
+        href={link}
+        className="btn-container__svg-wrapper"
+        {...props}
+      >
+        {children}
+      </a>
     </li>
   );
 }

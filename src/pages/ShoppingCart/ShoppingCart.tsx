@@ -1,3 +1,5 @@
+// react-router-dom
+import { ScrollRestoration } from "react-router-dom";
 // Custom Hooks
 import useApp from "../../hooks/useApp";
 // Layout
@@ -16,6 +18,8 @@ export default function ShoppingCart() {
 
   return (
     <div className="shopping-cart">
+      <ScrollRestoration />
+
       <article className="shopping-cart__content-container">
         <Header text={heading} />
 

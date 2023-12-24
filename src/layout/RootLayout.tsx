@@ -1,5 +1,3 @@
-// Router
-import { ScrollRestoration } from "react-router-dom";
 // Layout
 import Header from "./Header/Header";
 import Main from "./Main/Main";
@@ -10,11 +8,7 @@ export function RootLayout() {
     <>
       <Header />
 
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <Main>
-        <ScrollRestoration />
-      </Main>
+      <Main />
 
       <Footer />
     </>

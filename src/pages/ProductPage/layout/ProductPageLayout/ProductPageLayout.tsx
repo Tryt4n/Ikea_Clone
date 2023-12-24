@@ -1,7 +1,7 @@
 // React
 import { useEffect } from "react";
 // react-router-dom
-import { useNavigate } from "react-router-dom";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
 // Custom Hooks
 import useFetch from "../../../../hooks/useFetch";
 import useProduct from "../../context/useProduct";
@@ -59,6 +59,8 @@ export default function ProductPageLayout() {
         <>
           {data && (
             <article className="product">
+              <ScrollRestoration />
+
               <h2 className="visually-hidden">Strona produktu</h2>
 
               <div className="product__wrapper">
