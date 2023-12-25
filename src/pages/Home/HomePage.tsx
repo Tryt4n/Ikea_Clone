@@ -28,29 +28,6 @@ import type {
 // Style
 import "./index.scss";
 
-// function componentMapper(article: ArticleType) {
-//   const { variant, content } = article;
-
-//   switch (variant) {
-//     case "main-article":
-//       return <MainArticle article={content as MainArticleType} />;
-//     case "carousel-slider-article":
-//       return <CarouselSliderArticle article={content as CarouselSliderArticleType} />;
-//     case "image-cards-article":
-//       return <ImgCardsArticle article={content as ImgCardsArticleType} />;
-//     case "image-cards-collection-slider":
-//       return <ImageCardsCollectionSlider article={content as ImageCardsCollectionSliderType} />;
-//     case "text-cards-article":
-//       return <TextCardsArticle article={content as TextCardsArticleType} />;
-//     case "images-gallery":
-//       return (
-//         <InspirationImageGalleryArticle article={content as InspirationImageGalleryArticleType} />
-//       );
-//     default:
-//       return null;
-//   }
-// }
-
 const componentMap = {
   "main-article": (content: ArticleContentsTypes) => (
     <MainArticle article={content as MainArticleType} />

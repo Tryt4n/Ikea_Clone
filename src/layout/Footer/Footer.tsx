@@ -17,7 +17,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="page footer">
+    <footer className="footer">
       <div className="page-container">
         <h2 className="visually-hidden">Stopka</h2>
         <div className="main-layout footer__features-container">

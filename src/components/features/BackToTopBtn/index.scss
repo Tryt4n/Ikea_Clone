@@ -1,0 +1,79 @@
+@use "../../../abstracts/mixins" as *;
+@use "../../../abstracts/colors" as c;
+@use "../../../abstracts/variables" as v;
+@use "../../../base/functions" as func;
+@use "../../../base/breakpoints" as b;
+
+.back-to-top-btn {
+  $_btn-size: 2.5rem;
+
+  &__btn {
+    height: $_btn-size;
+    border-radius: 50vw;
+    @include flex(row, center, center);
+    transition: v.$main-transition;
+  }
+
+  @media screen and (width >= b.$mobile-md) {
+    &__btn {
+      position: fixed;
+      left: 2.5rem;
+      bottom: 2.5rem;
+      z-index: 1000;
+      padding-inline: 0.5rem;
+
+      &--hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      & > svg {
+        rotate: -90deg;
+        color: currentColor;
+      }
+    }
+
+    &__text-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-right: 0.5rem;
+      transition: v.$main-transition;
+
+      &--hidden {
+        grid-template-columns: 0fr;
+        padding-right: 0;
+      }
+    }
+  }
+
+  @media screen and (width >= func.rem(1700)) {
+    &__btn {
+      left: auto;
+      translate: calc((v.$grid-colum-width-on-desktop / 2) - ($_btn-size / 2));
+    }
+  }
+
+  &__text {
+    overflow: hidden;
+    text-indent: 0.5rem;
+    text-wrap: nowrap;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+
+  @media screen and (width < b.$mobile-md) {
+    padding: 1rem;
+    border-top: func.rem(1) solid c.$grayish;
+
+    & svg {
+      display: none;
+      visibility: hidden;
+    }
+
+    &__btn {
+      margin-inline: auto;
+      @include center;
+      padding-inline: 1rem;
+    }
+  }
+}
