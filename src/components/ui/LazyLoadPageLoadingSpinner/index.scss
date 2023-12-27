@@ -1,9 +1,19 @@
 @use "../../../abstracts/mixins" as *;
 @use "../../../abstracts/colors" as c;
+@use "../../../base/breakpoints" as b;
 
 .page-loading-spinner {
-  min-height: 50dvh;
-  margin-block: 3rem;
-  @include flex(column, center, center);
-  text-align: center;
+  height: 100vh;
+  max-height: 100vh;
+
+  &__spinner-wrapper {
+    min-height: 75dvh;
+    margin-block: 3rem;
+    @include flex(column, center, center);
+    text-align: center;
+
+    @media screen and (width < b.$mobile-lg) {
+      min-height: 50dvh;
+    }
+  }
 }

@@ -49,7 +49,6 @@ export default function BackToTopBtn() {
 
     window.scrollTo({
       top: 0,
-      // behavior: "smooth",
       behavior: prefersReducedMotion ? "instant" : "smooth",
     });
   }
@@ -67,7 +66,7 @@ export default function BackToTopBtn() {
           onMouseEnter={width >= 600 ? () => setIsExpanded(true) : undefined}
           onMouseLeave={width >= 600 ? () => setIsExpanded(false) : undefined}
           onClick={scrollToTop}
-          aria-hidden={!isVisible}
+          aria-hidden={width >= 600 ? !isVisible : undefined}
         >
           <ChevronRightIcon />
 
