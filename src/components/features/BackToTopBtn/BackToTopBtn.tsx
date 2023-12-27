@@ -26,13 +26,9 @@ export default function BackToTopBtn() {
     if (footer) {
       ref(footer);
     }
-  }, [ref]);
 
-  useEffect(() => {
     setFooterInView(inView);
-  }, [inView]);
 
-  useEffect(() => {
     const checkScroll = () => {
       if (window.scrollY >= window.innerHeight) {
         setIsVisible(true);
@@ -46,12 +42,15 @@ export default function BackToTopBtn() {
     return () => {
       window.removeEventListener("scroll", checkScroll);
     };
-  }, []);
+  }, [ref, inView]);
 
   function scrollToTop() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      // behavior: "smooth",
+      behavior: prefersReducedMotion ? "instant" : "smooth",
     });
   }
 
