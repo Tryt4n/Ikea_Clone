@@ -5,7 +5,7 @@ import { getPrice } from "../../../utils/helpers";
 // Utils
 import { listDisplays } from "./utils";
 // Types
-import type { FavouritesListType } from "../../../context/AppContext";
+import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext";
 
 type ListContextType = {
   listState: ReducerStateType;
@@ -13,6 +13,8 @@ type ListContextType = {
   listId: string;
   selectedDisplay: (typeof listDisplays)[number];
   setSelectedDisplay: (value: (typeof listDisplays)[number]) => void;
+  managedProducts: ShoppingCartType[];
+  setManagedProducts: Dispatch<React.SetStateAction<ShoppingCartType[]>>;
 };
 
 export type SortingTypes = "oldest" | "recent" | "name" | "priceAscending" | "priceDescending";
@@ -117,6 +119,7 @@ export function ListContextProvider({ children }: { children: ReactNode }) {
   const [selectedDisplay, setSelectedDisplay] = useState<"buy-online" | "shopping-list">(
     "buy-online"
   );
+  const [managedProducts, setManagedProducts] = useState<ShoppingCartType[]>([]);
   const [listId] = useState(location.pathname.split("/favourites/")[1]);
 
   const contextValue = useMemo(
@@ -126,8 +129,10 @@ export function ListContextProvider({ children }: { children: ReactNode }) {
       listId,
       selectedDisplay,
       setSelectedDisplay,
+      managedProducts,
+      setManagedProducts,
     }),
-    [listState, listId, selectedDisplay]
+    [listState, listId, selectedDisplay, managedProducts, setManagedProducts]
   );
 
   return <ListContext.Provider value={contextValue}>{children}</ListContext.Provider>;

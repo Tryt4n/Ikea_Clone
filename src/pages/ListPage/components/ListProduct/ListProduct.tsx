@@ -1,9 +1,10 @@
 // React
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Components
 import Input from "../../../../components/features/Input/Input";
 import Tag from "../../../../components/ui/Tag/Tag";
@@ -17,14 +18,16 @@ import { calculatePrice } from "../../../../utils/calculatePrice";
 import { productLink as startOfLink } from "../../../../constants/links";
 // Types
 import type { ShoppingCartType } from "../../../../context/AppContext";
-// Style
-import "./index.scss";
 // Icons
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";
-import useToast from "../../../../hooks/useToast";
+// Style
+import "./index.scss";
 
 export default function ListProduct({ product }: { product: ShoppingCartType }) {
+  const { managedProducts, setManagedProducts } = useList();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const {
     collection,
     nameToDisplay,
@@ -43,15 +46,33 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
   } = product;
 
   const imgSrc = `${startOfLink}/${collection}-${name}-${variant}__`;
-  const imgAlt = `${collection} ${nameToDisplay} ${variantName} ${size}`;
+  const imgAlt = `${collection} ${nameToDisplay} ${variantName} ${
+    size !== "universal" ? size : ""
+  }`;
   const mainImgSrc = `${imgSrc}${images.main}`;
   const hoverImgSrc = `${imgSrc}${
     images.imgHover || images.imgHover || images.hover || images.imageHover
   }`;
 
+  function handleManagedProducts(product: ShoppingCartType) {
+    const isProductAlreadyInList = managedProducts.some(
+      (item) => item.productNumber === product.productNumber
+    );
+
+    startViewTransition(() => {
+      if (isProductAlreadyInList) {
+        setManagedProducts((prev) =>
+          prev.filter((item) => item.productNumber !== product.productNumber)
+        );
+      } else {
+        setManagedProducts((prev) => [...prev, product]);
+      }
+    });
+  }
+
   return (
     <li className="list-product">
-      <section className="">
+      <section>
         <h3 className="visually-hidden">{collection}</h3>
 
         <Header
@@ -68,11 +89,17 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           id={productNumber}
           label="Wybierz aby dodać do listy zarządzania produktami"
           type="checkbox"
-          className="list-product__checkbox-wrapper"
+          className={`list-product__checkbox-wrapper${
+            managedProducts.length === 0 ? " list-product__checkbox-wrapper--hidden" : ""
+          }`}
           labelProps={{
             className: "visually-hidden",
           }}
-          inputProps={{}}
+          inputProps={{
+            ref: inputRef,
+            onChange: () => handleManagedProducts(product),
+            checked: managedProducts.some((item) => item.productNumber === product.productNumber),
+          }}
         />
 
         <Description
@@ -123,14 +150,20 @@ function Header({
 }: HeaderType) {
   const [imgSrc, setImgSrc] = useState(imgMain);
 
+  function setImg(img: HeaderType["imgHover"]) {
+    if (!imgHover) return;
+
+    setImgSrc(img);
+  }
+
   return (
     <header className="list-product__header-wrapper">
       <a href={productLink.toLowerCase()}>
         <figure>
           <div
             className="list-product__img-wrapper"
-            onMouseEnter={() => setImgSrc(imgHover)}
-            onMouseLeave={() => setImgSrc(imgMain)}
+            onMouseEnter={() => setImg(imgHover)}
+            onMouseLeave={() => setImg(imgMain)}
           >
             <img
               src={imgSrc}

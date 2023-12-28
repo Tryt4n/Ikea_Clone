@@ -1,0 +1,33 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+
+.manage-products {
+  margin-block: 2.5rem;
+  padding-block: 1rem;
+  border-block: func.rem(1) solid c.$gray;
+  @include flex(row, flex-end, center);
+  gap: 1.5rem;
+
+  &__list {
+    padding-left: 2rem;
+    @include flex(row, center, center);
+    gap: 1rem;
+    overflow: auto;
+  }
+
+  &__list-item {
+    flex-shrink: 0;
+
+    & > img {
+      width: 4rem;
+      aspect-ratio: 1;
+    }
+  }
+
+  &__btns-control {
+    @include flex(row, flex-start, center);
+    gap: 0.5rem;
+  }
+}

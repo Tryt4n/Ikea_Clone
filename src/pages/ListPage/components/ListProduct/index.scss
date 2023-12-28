@@ -38,17 +38,19 @@
     border-radius: v.$main-border-radius;
     transition: v.$main-transition;
 
-    @media (hover: hover) {
-      visibility: hidden;
-      opacity: 0;
-    }
-
     &:focus-within {
       outline-color: c.$black;
     }
+
+    &--hidden {
+      @media (hover: hover) {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
   }
 
-  &:where(:hover, :focus-within) &__checkbox-wrapper {
+  &:where(:hover, :focus-within) &__checkbox-wrapper--hidden {
     @media (hover: hover) {
       opacity: 1;
       visibility: visible;
