@@ -1,0 +1,43 @@
+@use "../../../../abstracts/mixins" as *;
+@use "../../../../abstracts/colors" as c;
+@use "../../../../abstracts/variables" as v;
+@use "../../../../base/functions" as func;
+@use "../../../../base/breakpoints" as b;
+
+.list-products-summary {
+  margin-block: 2.5rem;
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+    gap: 2rem;
+    margin-block: 1.25rem;
+
+    & > span {
+      color: c.$text-gray;
+    }
+
+    & > strong {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+
+      & > sup {
+        line-height: v.$fs-sm;
+      }
+    }
+
+    & > em {
+      font-size: 1rem;
+      font-style: normal;
+    }
+  }
+
+  &__btn {
+    margin-left: auto;
+    @include flex(row, center, center);
+    gap: 0.5rem;
+
+    @media screen and (width < b.$mobile-md) {
+      margin-inline: auto;
+    }
+  }
+}

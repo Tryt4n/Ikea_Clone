@@ -1,6 +1,4 @@
-@use "../../../../abstracts/mixins" as *;
 @use "../../../../abstracts/colors" as c;
-@use "../../../../abstracts/variables" as v;
 @use "../../../../base/functions" as func;
 @use "../../../../base/breakpoints" as b;
 
@@ -8,6 +6,7 @@
   $_spacing: 2.5rem;
 
   margin-block: $_spacing;
+  border-bottom: func.rem(1) solid c.$gray;
   display: grid;
   gap: $_spacing;
 
