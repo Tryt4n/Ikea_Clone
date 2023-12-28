@@ -266,16 +266,16 @@ function ProductInListControl() {
         prevState: () =>
           startViewTransition(() => {
             dispatch({
-              type: "addToList",
-              payload: { listId: listId, product: modalData.products[0] },
+              type: "addProductsToList",
+              payload: { listId: listId, products: [modalData.products[0]] },
             });
           }),
       });
 
       startViewTransition(() => {
         dispatch({
-          type: "deleteProductFromList",
-          payload: { listId: listId, productNumber: modalData.products[0].productNumber },
+          type: "deleteProductsFromList",
+          payload: { listId: listId, productNumbers: [modalData.products[0].productNumber] },
         });
       });
 

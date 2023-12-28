@@ -1,6 +1,7 @@
 // Custom Hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
+import useToast from "../../../../hooks/useToast";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Utils
@@ -59,8 +60,9 @@ function ProductsList({ products }: { products: ShoppingCartType[] }) {
 }
 
 function BtnsControl({ products }: { products: ShoppingCartType[] }) {
-  const { state } = useApp();
-  const { modalData, setModalData } = useModal();
+  const { state, dispatch } = useApp();
+  const { modalData, setModalData, closeModal } = useModal();
+  const { setToastData } = useToast();
 
   function openSelectListModal() {
     startViewTransition(() => {
@@ -76,7 +78,39 @@ function BtnsControl({ products }: { products: ShoppingCartType[] }) {
   }
 
   function deleteProductsFromList() {
-    console.log(products);
+    setToastData({
+      open: true,
+      text:
+        products.length > 1
+          ? `Usunięto (${products.length}) artykuły z twojej listy.`
+          : `${products[0].collection} został usunięty z twojej listy.`,
+      prevState: () =>
+        startViewTransition(() => {
+          if (!state.editingList) return;
+
+          dispatch({
+            type: "addProductsToList",
+            payload: {
+              listId: state.editingList.id,
+              products: [...products],
+            },
+          });
+        }),
+    });
+
+    startViewTransition(() => {
+      if (!state.editingList) return;
+
+      dispatch({
+        type: "deleteProductsFromList",
+        payload: {
+          listId: state.editingList.id,
+          productNumbers: [...products.map((product) => product.productNumber)],
+        },
+      });
+    });
+
+    closeModal();
   }
 
   return (

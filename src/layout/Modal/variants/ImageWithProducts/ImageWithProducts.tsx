@@ -117,9 +117,9 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
       const newListId = crypto.randomUUID();
 
       dispatch({
-        type: "addToList",
+        type: "addProductsToList",
         payload: {
-          product: product,
+          products: [product],
           listId: newListId,
         },
       });

@@ -305,14 +305,14 @@ function BtnsControl({ product }: { product: ShoppingCartType }) {
       text: `Usunięto ${product.collection} z twojej listy.`,
       prevState: () =>
         startViewTransition(() => {
-          dispatch({ type: "addToList", payload: { listId: listId, product: product } });
+          dispatch({ type: "addProductsToList", payload: { listId: listId, products: [product] } });
         }),
     });
 
     startViewTransition(() => {
       dispatch({
-        type: "deleteProductFromList",
-        payload: { listId: listId, productNumber: product.productNumber },
+        type: "deleteProductsFromList",
+        payload: { listId: listId, productNumbers: [product.productNumber] },
       });
     });
   }

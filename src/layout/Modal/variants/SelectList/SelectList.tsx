@@ -210,9 +210,9 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
   function addToList() {
     if (modalData?.type === "select-list") {
       dispatch({
-        type: "addToList",
+        type: "addProductsToList",
         payload: {
-          product: modalData.product,
+          products: [modalData.product],
           listId: list.id,
         },
       });
@@ -229,9 +229,9 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
   function removeFromList() {
     if (modalData?.type === "select-list") {
       dispatch({
-        type: "deleteProductFromList",
+        type: "deleteProductsFromList",
         payload: {
-          productNumber: modalData.product.productNumber,
+          productNumbers: [modalData.product.productNumber],
           listId: list.id,
         },
       });

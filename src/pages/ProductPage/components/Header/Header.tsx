@@ -53,10 +53,10 @@ export default function Header({ data }: { data: ProductDataType }) {
       const newListId = crypto.randomUUID();
 
       dispatch({
-        type: "addToList",
+        type: "addProductsToList",
         payload: {
-          product: product,
           listId: newListId,
+          products: [product],
         },
       });
 

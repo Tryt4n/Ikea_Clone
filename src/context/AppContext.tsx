@@ -117,13 +117,6 @@ type ReducerActionsType =
       payload: FavouritesListType["id"];
     }
   | {
-      type: "addToList";
-      payload: {
-        product: ShoppingCartType;
-        listId?: FavouritesListType["id"];
-      };
-    }
-  | {
       type: "addProductsToList";
       payload: {
         products: ShoppingCartType[];
@@ -131,9 +124,9 @@ type ReducerActionsType =
       };
     }
   | {
-      type: "deleteProductFromList";
+      type: "deleteProductsFromList";
       payload: {
-        productNumber: ShoppingCartType["productNumber"];
+        productNumbers: ShoppingCartType["productNumber"][];
         listId: FavouritesListType["id"];
       };
     }
@@ -418,20 +411,19 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
-    case "addToList": {
-      const lists: FavouritesListType[] = JSON.parse(
-        localStorage.getItem("favouriteLists") || "[]"
-      );
+    case "addProductsToList": {
+      if (!favouriteListsStorage) return state;
 
-      const addedProduct = action.payload.product;
+      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const listId = action.payload.listId;
+      const listIndex = lists.findIndex((list: FavouritesListType) => list.id === listId);
 
       if (!favouriteListsStorage || lists.length === 0) {
         const newList: FavouritesListType = {
           id: listId || crypto.randomUUID(),
           lastEdit: new Date(),
           name: "Moja lista",
-          products: [addedProduct],
+          products: [action.payload.products[0]],
         };
 
         localStorage.setItem("favouriteLists", JSON.stringify([newList]));
@@ -441,37 +433,6 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
           favouriteLists: [newList],
         };
       }
-
-      if (listId && favouriteListsStorage) {
-        const listIndex = lists.findIndex((list: FavouritesListType) => list.id === listId);
-        const updatingList = lists[listIndex].products;
-
-        if (lists[listIndex].products && updatingList) {
-          lists[listIndex].products = [addedProduct, ...updatingList];
-        } else {
-          lists[listIndex].products = [addedProduct];
-        }
-
-        lists[listIndex].lastEdit = new Date();
-
-        sortLists(lists);
-        localStorage.setItem("favouriteLists", JSON.stringify(lists));
-
-        return {
-          ...state,
-          favouriteLists: lists,
-        };
-      }
-
-      return state;
-    }
-
-    case "addProductsToList": {
-      if (!favouriteListsStorage) return state;
-
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
-      const listId = action.payload.listId;
-      const listIndex = lists.findIndex((list: FavouritesListType) => list.id === listId);
 
       const products = action.payload.products;
       const updatedList = { ...lists[listIndex] };
@@ -485,10 +446,10 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
           );
 
           if (existingProductIndex !== -1) {
-            // Increase the quantity of the existing product
+            //? Increase the quantity of the existing product
             updatedList.products[existingProductIndex].quantity += product.quantity;
           } else {
-            // Add the new product
+            //? Add the new product
             updatedList.products.push({
               ...product,
               addedDate: new Date(),
@@ -511,19 +472,20 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
-    case "deleteProductFromList": {
+    case "deleteProductsFromList": {
       if (!favouriteListsStorage) return state;
 
       const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
       const listId = action.payload.listId;
-      const productNumber = action.payload.productNumber;
+      const productNumbers = action.payload.productNumbers;
 
       if (lists.length > 0) {
         const listIndex = lists.findIndex((list) => list.id === listId);
 
-        const updatingList = lists[listIndex].products?.filter(
-          (product) => product.productNumber !== productNumber
-        );
+        let updatingList = lists[listIndex].products;
+        productNumbers.forEach((productNumber) => {
+          updatingList = updatingList?.filter((product) => product.productNumber !== productNumber);
+        });
 
         if (lists[listIndex].products) {
           lists[listIndex].products = updatingList;
@@ -709,10 +671,6 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     dispatch({ type: "loadAppData" });
   }, []);
-
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
 
   const contextValues = useMemo(
     () => ({
