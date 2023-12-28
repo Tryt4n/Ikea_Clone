@@ -115,7 +115,6 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
 
     if ((!state.favouriteLists || state.favouriteLists.length === 0) && product) {
       const newListId = crypto.randomUUID();
-      console.log("newListId", newListId);
 
       dispatch({
         type: "addToList",

@@ -251,10 +251,8 @@ function ProductInListControl() {
       startViewTransition(() => {
         setModalData({
           type: "move-product-from-one-list-to-another",
-          payload: {
-            product: modalData.product,
-            originalListId: listId,
-          },
+          products: [modalData.products[0]],
+          originalListId: listId,
         });
       });
     }
@@ -264,12 +262,12 @@ function ProductInListControl() {
     if (modalData && modalData.type === "more-options-for-product-in-list") {
       setToastData({
         open: true,
-        text: `Usunięto ${modalData.product.collection} z twojej listy.`,
+        text: `Usunięto ${modalData.products[0].collection} z twojej listy.`,
         prevState: () =>
           startViewTransition(() => {
             dispatch({
               type: "addToList",
-              payload: { listId: listId, product: modalData.product },
+              payload: { listId: listId, product: modalData.products[0] },
             });
           }),
       });
@@ -277,7 +275,7 @@ function ProductInListControl() {
       startViewTransition(() => {
         dispatch({
           type: "deleteProductFromList",
-          payload: { listId: listId, productNumber: modalData.product.productNumber },
+          payload: { listId: listId, productNumber: modalData.products[0].productNumber },
         });
       });
 
@@ -300,7 +298,7 @@ function ProductInListControl() {
       {modalData && modalData.type === "more-options-for-product-in-list" && (
         <ListItem>
           <MagnifierIcon />
-          Produkt podobny do {modalData.product.collection}
+          Produkt podobny do {modalData.products[0].collection}
         </ListItem>
       )}
     </>

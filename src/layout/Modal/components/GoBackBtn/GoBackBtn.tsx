@@ -11,7 +11,7 @@ import type {
   CreateListModal,
   DeleteListConfirmationModal,
   ModalPrefferedShopType,
-  MoveProductFromOneListToAnotherModal,
+  MoveProductsFromOneListToAnotherModal,
   MoveToOtherListModal,
   SelectListModal,
   SelectListWithMultipleProducts,
@@ -29,7 +29,7 @@ type GoBackFunctionType = (
   | SelectListModal
   | SelectListWithMultipleProducts
   | MoveToOtherListModal
-  | MoveProductFromOneListToAnotherModal
+  | MoveProductsFromOneListToAnotherModal
 )["type"];
 
 export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
@@ -83,10 +83,17 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
 
         case "move-product-from-one-list-to-another":
           if (modalData && modalData.type === type) {
-            setModalData({
-              type: "more-options-for-product-in-list",
-              product: modalData.payload.product,
-            });
+            if (modalData.products.length > 1) {
+              setModalData({
+                type: "manage-products-in-list",
+                products: modalData.products,
+              });
+            } else {
+              setModalData({
+                type: "more-options-for-product-in-list",
+                products: [modalData.products[0]],
+              });
+            }
           }
           break;
       }

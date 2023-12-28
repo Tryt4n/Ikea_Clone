@@ -147,15 +147,23 @@ export type MoveToOtherListModal = {
 
 export type MoreOptionsForProductInListModal = {
   readonly type: "more-options-for-product-in-list";
-  product: ShoppingCartType;
+  // product: ShoppingCartType;
+  products: ShoppingCartType[];
 };
 
-export type MoveProductFromOneListToAnotherModal = {
+export type MoveProductsFromOneListToAnotherModal = {
   readonly type: "move-product-from-one-list-to-another";
-  payload: {
-    product: ShoppingCartType;
-    originalListId: FavouritesListType["id"];
-  };
+  // payload: {
+  // product: ShoppingCartType;
+  products: ShoppingCartType[];
+  originalListId: FavouritesListType["id"];
+  // };
+  previousModal?: ModalDataType;
+};
+
+export type ManageProductsInListModal = {
+  readonly type: "manage-products-in-list";
+  products: ShoppingCartType[];
 };
 
 export type SideModalLayoutType =
@@ -185,7 +193,8 @@ export type SideModalLayoutType =
   | SelectListWithMultipleProducts
   | MoveToOtherListModal
   | MoreOptionsForProductInListModal
-  | MoveProductFromOneListToAnotherModal;
+  | MoveProductsFromOneListToAnotherModal
+  | ManageProductsInListModal;
 
 export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
 

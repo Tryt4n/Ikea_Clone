@@ -344,7 +344,7 @@ function MoreOptionsList({ product }: { product: ShoppingCartType }) {
   const { setModalData } = useModal();
 
   function openMoreOptionsModal() {
-    setModalData({ type: "more-options-for-product-in-list", product: product });
+    setModalData({ type: "more-options-for-product-in-list", products: [product] });
   }
 
   return (

@@ -47,7 +47,7 @@ export default function SelectList() {
           case "move-product-from-one-list-to-another":
             setModalData({
               type: "create-list-with-products",
-              products: [modalData.payload.product],
+              products: modalData.products,
             });
             break;
 
@@ -138,11 +138,15 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
       if (modalData) {
         switch (modalData.type) {
           case "move-to-other-list":
-            if (!state.editingList) break;
+            if (!state.editingList || !list.products) break;
 
             dispatch({
-              type: "moveProductsToOtherList",
-              payload: { originalListId: state.editingList.id, sourceListId: list.id },
+              type: "moveProductsFromOneListToAnother",
+              payload: {
+                products: list.products,
+                listWhereProductIsMovedID: list.id,
+                originalListId: state.editingList.id,
+              },
             });
 
             closeModal();
@@ -159,10 +163,10 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
 
           case "move-product-from-one-list-to-another":
             dispatch({
-              type: "moveProductFromOneListToAnother",
+              type: "moveProductsFromOneListToAnother",
               payload: {
-                product: modalData.payload.product,
-                originalListId: modalData.payload.originalListId,
+                products: modalData.products,
+                originalListId: modalData.originalListId,
                 listWhereProductIsMovedID: list.id,
               },
             });
@@ -171,7 +175,11 @@ function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
 
             setToastData({
               open: true,
-              text: `Pomyślnie przeniesiono ${modalData.payload.product.collection} na listę ${list.name}.`,
+              text:
+                modalData.products.length > 1
+                  ? `Artykuły w ilości: (${modalData.products.length}) zostały przeniesione na listę ${list.name}.`
+                  : `Pomyślnie przeniesiono ${modalData.products[0].collection} na listę ${list.name}.`,
+              link: `/favourites/${list.id}`,
             });
             break;
 

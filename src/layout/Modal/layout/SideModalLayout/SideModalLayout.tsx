@@ -23,6 +23,9 @@ const DeleteListConfirmation = lazy(
   () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation")
 );
 const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
+const ManageProductsInList = lazy(
+  () => import("../../variants/ManageProductsInList/ManageProductsInList")
+);
 // Components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -54,7 +57,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
 
   const moreOptionsForProductInListHeader =
     modalData && modalData.type === "more-options-for-product-in-list"
-      ? `Więcej możliwości dla ${modalData.product.collection}`
+      ? `Więcej możliwości dla ${modalData.products[0].collection}`
       : "";
 
   switch (type) {
@@ -149,6 +152,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
     case "more-options-for-product-in-list":
       header = moreOptionsForProductInListHeader;
       break;
+    case "manage-products-in-list":
+      header = "Zarządzaj swoimi wyborami";
+      break;
     default:
       throw new Error("A case has been defined that does not exist.");
   }
@@ -217,6 +223,8 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
                 type === "move-to-other-list" ||
                 type === "move-product-from-one-list-to-another" ||
                 type === "select-list-with-products") && <SelectList />}
+
+              {type === "manage-products-in-list" && <ManageProductsInList />}
             </Suspense>
           </div>
         </>

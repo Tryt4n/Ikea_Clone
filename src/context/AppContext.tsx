@@ -138,16 +138,9 @@ type ReducerActionsType =
       };
     }
   | {
-      type: "moveProductsToOtherList";
+      type: "moveProductsFromOneListToAnother";
       payload: {
-        originalListId: FavouritesListType["id"];
-        sourceListId: FavouritesListType["id"];
-      };
-    }
-  | {
-      type: "moveProductFromOneListToAnother";
-      payload: {
-        product: ShoppingCartType;
+        products: ShoppingCartType[];
         originalListId: FavouritesListType["id"];
         listWhereProductIsMovedID: FavouritesListType["id"];
       };
@@ -549,61 +542,15 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       return state;
     }
 
-    case "moveProductsToOtherList": {
-      if (!favouriteListsStorage) return state;
-
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
-      const originalListId = action.payload.originalListId;
-      const newListId = action.payload.sourceListId;
-
-      const originalListIndex = lists.findIndex((list) => list.id === originalListId);
-      const newListIndex = lists.findIndex((list) => list.id === newListId);
-
-      const newListProducts = lists[newListIndex].products;
-      const originalListProducts = lists[originalListIndex].products;
-
-      if (originalListProducts) {
-        originalListProducts.forEach((product) => {
-          const existingProductIndex = newListProducts?.findIndex(
-            (newProduct) => newProduct.productNumber === product.productNumber
-          );
-
-          if (existingProductIndex && existingProductIndex !== -1 && newListProducts) {
-            //? Increase the quantity of the existing product and update the addedDate
-            newListProducts[existingProductIndex].quantity += product.quantity;
-            newListProducts[existingProductIndex].addedDate = new Date();
-          } else {
-            //? Add the new product
-            const newProduct = { ...product, addedDate: new Date() };
-            if (newListProducts) {
-              newListProducts.push(newProduct);
-            } else {
-              lists[newListIndex].products = [newProduct];
-            }
-          }
-        });
-
-        lists[originalListIndex].products = undefined;
-      }
-
-      lists[newListIndex].lastEdit = new Date();
-      lists[originalListIndex].lastEdit = new Date();
-
-      sortLists(lists);
-      localStorage.setItem("favouriteLists", JSON.stringify(lists));
-
-      return {
-        ...state,
-        favouriteLists: lists,
-      };
-    }
-
-    case "moveProductFromOneListToAnother": {
+    case "moveProductsFromOneListToAnother": {
       if (!favouriteListsStorage) return state;
 
       const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage);
 
-      const product = { ...action.payload.product, addedDate: new Date() };
+      const products = action.payload.products.map((product) => ({
+        ...product,
+        addedDate: new Date(),
+      }));
       const originalListId = action.payload.originalListId;
       const listWhereProductIsMovedID = action.payload.listWhereProductIsMovedID;
 
@@ -612,7 +559,7 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
         (list) => list.id === listWhereProductIsMovedID
       );
 
-      const originalListProducts = lists[originalListIndex].products;
+      let originalListProducts = lists[originalListIndex].products;
       let listWhereProductIsMovedProducts = lists[listWhereProductIsMovedIndex].products;
 
       if (!listWhereProductIsMovedProducts) {
@@ -621,23 +568,28 @@ function reducer(state: ReducerStateType, action: ReducerActionsType) {
       }
 
       if (originalListProducts) {
-        lists[originalListIndex].products = originalListProducts.filter(
-          (p) => p.productNumber !== product.productNumber
-        );
+        products.forEach((product) => {
+          if (!originalListProducts || !listWhereProductIsMovedProducts) return;
 
-        const existingProductIndex = listWhereProductIsMovedProducts.findIndex(
-          (existingProduct) => existingProduct.productNumber === product.productNumber
-        );
+          originalListProducts = originalListProducts.filter(
+            (p) => p.productNumber !== product.productNumber
+          );
 
-        if (existingProductIndex !== -1) {
-          //? Increase the quantity of the existing product and update the addedDate
-          listWhereProductIsMovedProducts[existingProductIndex].quantity += product.quantity;
-          listWhereProductIsMovedProducts[existingProductIndex].addedDate = new Date();
-        } else {
-          //? Add the new product
-          listWhereProductIsMovedProducts.push(product);
-        }
+          const existingProductIndex = listWhereProductIsMovedProducts.findIndex(
+            (existingProduct) => existingProduct.productNumber === product.productNumber
+          );
 
+          if (existingProductIndex !== -1) {
+            //? Increase the quantity of the existing product and update the addedDate
+            listWhereProductIsMovedProducts[existingProductIndex].quantity += product.quantity;
+            listWhereProductIsMovedProducts[existingProductIndex].addedDate = new Date();
+          } else {
+            //? Add the new product
+            listWhereProductIsMovedProducts.push(product);
+          }
+        });
+
+        lists[originalListIndex].products = originalListProducts;
         lists[originalListIndex].lastEdit = new Date();
         lists[listWhereProductIsMovedIndex].lastEdit = new Date();
 
