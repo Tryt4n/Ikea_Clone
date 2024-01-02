@@ -1,209 +1,42 @@
-// React
-import { HTMLProps, ReactNode, createElement } from "react";
-// Components
-import { Btn } from "../../components/ui/Btn/Btn";
-import AddToWishListBtn from "../../components/ui/AddToWishListBtn/AddToWishListBtn";
-// Icons
-import InstagramIcon from "../../Icons/InstagramIcon";
-// Types
-import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
-import type { BtnPropsType } from "../../components/ui/Btn/Btn";
-import type { BackgroundVariants } from "../../types/colorsVariantsType";
-import type { BtnSizesType } from "../../types/btnTypes";
-// Style
+// Importing necessary types from React
+import type { ReactNode } from "react";
+// Importing the components to be used in the Article component
+import { Body } from "./components/ArticleBody/Body";
+import { Section } from "./components/ArticleSection/Section";
+import { ImgContainer } from "./components/ArticleImgContainer/ImgContainer";
+import { TextContainer } from "./components/ArticleTextContainer/TextContainer";
+import { Header, SubHeader } from "./components/ArticleHeader/Header";
+import { Text } from "./components/ArticleText/Text";
+import { ContainerBtn } from "./components/ArticleContainerBtn/ContainerBtn";
+import { Link } from "./components/ArticleLink/Link";
+import { Img } from "./components/ArticleImg/Img";
+import { InstagramBadge } from "./components/ArticleInstagramBadge/InstagramBadge";
+import { WishListBadge } from "./components/ArticleWishListBadge/WishListBadge";
+import { Slide } from "./components/ArticleSlide/Slide";
+import { SlideBtn } from "./components/ArticleSlideBtn/SlideBtn";
+// Importing styles
 import "./index.scss";
 
-type BodyPropsType = {
-  children: ReactNode;
-  className?: string;
-} & HTMLProps<HTMLDivElement>;
-
-type SectionPropsType = BodyPropsType;
-
-type ImgContainerPropsType = BodyPropsType;
-
-type TextContainerPropsType = {
-  children: ReactNode;
-  variant?: BackgroundVariants;
-};
-
-type HeaderPropsType = {
-  children: ReactNode;
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  className?: string;
-} & HTMLProps<HTMLHeadingElement>;
-
-type ContainerBtnPropsType = {
-  children: string;
-  className?: string;
-  variant?: ArticleBtnVariantsType;
-  size?: BtnSizesType;
-} & Omit<HTMLProps<HTMLAnchorElement>, "size">;
-
-type LinkPropsType = {
-  children?: ReactNode;
-} & HTMLProps<HTMLAnchorElement>;
-
-type ImgPropsType = {
-  aspectRatio?: AspectRatioType;
-  aspectRatioMobile?: AspectRatioType;
-} & HTMLProps<HTMLImageElement>;
-
-type InstagramBadgeType = {
-  children: string;
-  nickVisible?: boolean;
-};
-
-interface SlidePropsType extends BodyPropsType {
-  variant?: BackgroundVariants;
-}
-
+/**
+ * Article component
+ *
+ * This component is a container for an article element.
+ * It accepts a children prop which should be a ReactNode.
+ * It also has several subcomponents, which are the imported components.
+ *
+ * @param children - The React elements to be rendered inside the Article component.
+ *
+ * @returns An article element containing the passed React elements.
+ */
 export default function Article({ children }: { children: ReactNode }) {
   return <article>{children}</article>;
 }
 
-function Body({ children, className }: BodyPropsType) {
-  return <div className={`article${className ? ` ${className}` : ""}`}>{children}</div>;
-}
-
-function Section({ children, className, ...props }: SectionPropsType) {
-  return (
-    <section
-      className={`article__section${className ? ` ${className}` : ""}`}
-      {...props}
-    >
-      {children}
-    </section>
-  );
-}
-
-function ImgContainer({ children, className, ...props }: ImgContainerPropsType) {
-  return (
-    <div
-      className={`article__img-container${className ? ` ${className}` : ""}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
-
-function TextContainer({ children, variant }: TextContainerPropsType) {
-  return (
-    <div className={`article__text-container${variant ? ` bg-${variant}` : ""}`}>{children}</div>
-  );
-}
-
-function Header({ children, className, headingLevel, ...props }: HeaderPropsType) {
-  const Element = headingLevel ? `h${headingLevel}` : "h2";
-  return createElement(
-    Element,
-    { ...props, className: `article__heading${className ? ` ${className}` : ""}` },
-    children
-  );
-}
-
-function SubHeader({ children }: { children: string }) {
-  return <p className="article__subheading">{children}</p>;
-}
-
-function Text({ children }: { children: ReactNode }) {
-  return <p className="article__text">{children}</p>;
-}
-
-function ContainerBtn({
-  children,
-  className,
-  variant = "dark",
-  size = "small",
-  ...props
-}: ContainerBtnPropsType) {
-  return (
-    <a
-      {...props}
-      className={`btn btn--${variant} btn--${size} btn--oval${className ? ` ${className}` : ""}`}
-    >
-      {children}
-    </a>
-  );
-}
-
-function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
-  return <a {...props}>{children}</a>;
-}
-
-function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType) {
-  const formattedAspectRatio = aspectRatio.replace("/", "-");
-  const formattedAspectRatioMobile = aspectRatioMobile ? aspectRatioMobile.replace("/", "-") : "";
-  const imgClassNames = `aspect-ratio-${formattedAspectRatio}${
-    formattedAspectRatioMobile ? ` mobile-aspect-ratio-${formattedAspectRatioMobile}` : ""
-  }`;
-
-  return (
-    <img
-      {...props}
-      loading="lazy"
-      className={imgClassNames}
-    />
-  );
-}
-
-function InstagramBadge({ children, nickVisible = true }: InstagramBadgeType) {
-  return (
-    <div
-      className="article__instagram-badge"
-      aria-label="Użytkownik Instagram"
-    >
-      <InstagramIcon />
-      <div
-        className={`article__instagram-nickname${
-          !nickVisible ? ` article__instagram-nickname--hide` : ""
-        }`}
-      >
-        <span>{children}</span>
-      </div>
-    </div>
-  );
-}
-
-function WishListBadge() {
-  return (
-    <AddToWishListBtn
-      className="article__wishlist-badge"
-      variant="dark-opaque"
-    />
-  );
-}
-
-function Slide({ children, variant, className, ...props }: SlidePropsType) {
-  return (
-    <div
-      className={`article__slide${variant ? ` bg-${variant}` : ""}${
-        className ? ` ${className}` : ""
-      }`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
-
-function SlideBtn(props: BtnPropsType) {
-  return (
-    <Btn
-      {...props}
-      className="article__slide-btn"
-      aria-hidden="true"
-      tabIndex={-1}
-    />
-  );
-}
-
+// Assigning the imported components as subcomponents of the Article component
 Article.Header = Header;
 Article.SubHeader = SubHeader;
 Article.Body = Body;
 Article.Section = Section;
-
 Article.ImgContainer = ImgContainer;
 Article.TextContainer = TextContainer;
 Article.Text = Text;
@@ -212,6 +45,5 @@ Article.Link = Link;
 Article.Img = Img;
 Article.InstagramBadge = InstagramBadge;
 Article.WishListBadge = WishListBadge;
-
 Article.Slide = Slide;
 Article.SlideBtn = SlideBtn;

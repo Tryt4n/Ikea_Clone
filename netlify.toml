@@ -1,4 +1,16 @@
+# Netlify configuration file
+
+# Redirects configuration
+# This configuration allows the use of client-side routing with react-router-dom on the Netlify platform.
+# It redirects all requests to the index.html file, which is the entry point of the React application.
+# This allows react-router-dom to handle all routing.
 [[redirects]]
+  # The "from" field specifies the path to redirect from.
+  # The "/*" value means all paths.
   from = "/*"
+  # The "to" field specifies the path to redirect to.
+  # The "/index.html" value means the index.html file.
   to = "/index.html"
+  # The "status" field specifies the HTTP status code to use for the redirect.
+  # The "200" value means the HTTP 200 OK status code, which indicates that the request has succeeded.
   status = 200

@@ -31,8 +31,6 @@ export default function ProductPageLayout() {
         src: `${productLink}/${path.collection}-${data.name}-${data.variant}__${data.images.main}`,
         variant: data.variant,
       });
-
-      console.log("changed");
     }
 
     if (isError) {
