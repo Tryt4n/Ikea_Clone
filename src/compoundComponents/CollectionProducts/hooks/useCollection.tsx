@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CollectionContext } from "../Context/context";
+import { CollectionContext } from "../context/CollectionProductsContext";
 
 export default function useCollection() {
   const collection = useContext(CollectionContext);

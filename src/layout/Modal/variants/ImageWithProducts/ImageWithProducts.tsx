@@ -5,7 +5,7 @@ import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Compound Components
 import Article from "../../../../compoundComponents/Article/Article";
-import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 import CollectionProductsList from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 // Components
 import { Btn } from "../../../../components/ui/Btn/Btn";

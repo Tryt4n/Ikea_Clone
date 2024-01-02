@@ -1,45 +1,46 @@
-// React
-import { HTMLProps, ReactNode } from "react";
-// Components
-import { Btn } from "../../components/ui/Btn/Btn";
-// Types
-import type { BtnPropsType } from "../../components/ui/Btn/Btn";
+// Import types
+import type { AnchorHTMLAttributes, HTMLProps, ReactNode } from "react";
 import type { CardHTMLElementsType } from "../../types/cardTypes";
 import type { BackgroundVariants } from "../../types/colorsVariantsType";
-// Icons
-import ArrowRightIcon from "../../Icons/ArrowRightIcon";
+// Import child components
+import { CardImg } from "./components/CardImg/CardImg";
+import { TextContainer } from "./components/CardTextContainer/TextContainer";
+import { Heading } from "./components/CardHeading/Heading";
+import { Text } from "./components/CardText/Text";
+import { CardBtn } from "./components/CardBtn/CardBtn";
 // Style
 import "./index.scss";
 
+// Define the type for the Card props
 type CardPropsType<T> = {
-  children: React.ReactNode;
-  className?: string;
-  as?: CardHTMLElementsType;
-  variant?: BackgroundVariants;
+  children: ReactNode; // The elements that this component will wrap around
+  className?: string; // Optional string that will be added to the className prop of the component
+  as?: CardHTMLElementsType; // Optional string that determines the HTML element that the component will render as, defaults to "div"
+  variant?: BackgroundVariants; // Optional string that determines the background color of the component, defaults to "primary"
 } & (T extends "div"
   ? HTMLProps<HTMLDivElement>
   : T extends "a"
-  ? HTMLProps<HTMLAnchorElement>
+  ? AnchorHTMLAttributes<HTMLAnchorElement>
   : T extends "section"
   ? HTMLProps<HTMLElement>
-  : never);
+  : never); // This allows the component to accept all properties that the specified HTML element would accept
 
-type ImgPropsType = {
-  aspectRatio?: "1/1" | "3/4";
-} & HTMLProps<HTMLImageElement>;
-
-type TextContainerPropsType = {
-  children: ReactNode;
-  className?: string;
-} & HTMLProps<HTMLDivElement>;
-
-type HeadingPropsType = {
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-} & HTMLProps<HTMLHeadingElement>;
-
-type TextPropsType = HTMLProps<HTMLParagraphElement>;
-
-type CardBtnPropsType = Omit<BtnPropsType, "children" | "shape">;
+/**
+ * Card component
+ *
+ * This component wraps around its `children` and applies a CSS class to itself.
+ * If `className` is provided, it will also apply the provided class.
+ * If `as` is provided, it will render as the provided HTML element type.
+ * If `variant` is provided, it will apply a background variant class.
+ *
+ * @param children - The elements that this component will wrap around.
+ * @param as - Optional string that determines the HTML element type of the component, defaults to "div".
+ * @param variant - Optional string that determines the background variant of the component.
+ * @param className - Optional string that determines the class of the component.
+ * @param props - Any additional props to pass to the HTML element component.
+ *
+ * @returns An HTML element component with the specified type, a "card" class, a background variant class if variant is provided, the provided className if it exists, and the provided children.
+ */
 
 export default function Card<T extends "div" | "a">({
   children,
@@ -48,57 +49,19 @@ export default function Card<T extends "div" | "a">({
   className,
   ...props
 }: CardPropsType<T>) {
-  const Element = as === "div" ? "div" : as === "link" ? "a" : "section";
+  const Element = as === "div" ? "div" : as === "link" ? "a" : "section"; // Determine the HTML element type
 
   return (
     <Element
-      {...(props as React.HTMLProps<HTMLDivElement> & React.HTMLProps<HTMLAnchorElement>)}
-      className={`card bg-${variant}${className ? ` ${className}` : ""}`}
+      {...(props as HTMLProps<HTMLDivElement> & HTMLProps<HTMLAnchorElement>)} // Spread the rest of the props
+      className={`card bg-${variant}${className ? ` ${className}` : ""}`} // Set the class to "card", a background variant class if variant is provided, and the provided className if it exists
     >
       {children}
     </Element>
   );
 }
 
-function CardImg({ aspectRatio = "1/1", ...props }: ImgPropsType) {
-  return (
-    <img
-      {...props}
-      className={aspectRatio === "3/4" ? "aspect-ratio-3-4" : undefined}
-      loading="lazy"
-    />
-  );
-}
-
-function TextContainer({ children, className }: TextContainerPropsType) {
-  return <div className={`card__text-wrapper${className ? ` ${className}` : ""}`}>{children}</div>;
-}
-
-function Heading({ children, headingLevel, ...props }: HeadingPropsType) {
-  const Element = headingLevel ? `h${headingLevel}` : "h2";
-
-  return <Element {...props}>{children}</Element>;
-}
-
-function Text({ children }: TextPropsType) {
-  return <p>{children}</p>;
-}
-
-function CardBtn(props: CardBtnPropsType) {
-  return (
-    <Btn
-      variant="light"
-      shape="circle"
-      {...props}
-      aria-hidden="true"
-      tabIndex={-1}
-      className="card__btn"
-    >
-      <ArrowRightIcon />
-    </Btn>
-  );
-}
-
+// Define child components
 Card.Img = CardImg;
 Card.TextContainer = TextContainer;
 Card.Heading = Heading;

@@ -1,6 +1,6 @@
 // Components
 import Article from "../../compoundComponents/Article/Article";
-import CollectionNameContainer from "../../compoundComponents/CollectionProducts/components/CollectionNameContainer";
+import CollectionNameContainer from "../../compoundComponents/CollectionProducts/layout/CollectionNameContainer";
 import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList";
 // Types
 import type { ProductType } from "./components/CollectionProductsList/CollectionProductsList";

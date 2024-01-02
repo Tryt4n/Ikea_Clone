@@ -1,5 +1,5 @@
 // Components
-import Collection from "../../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../../compoundComponents/CollectionProducts/layout/Collection";
 // Types
 import type { TextVariants } from "../../../types/colorsVariantsType";
 // Style

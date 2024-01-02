@@ -3,7 +3,7 @@ import React from "react";
 // Custom Hooks
 import useWindowSize from "../../../../hooks/useWindowSize";
 // Components
-import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 // Types
 import type { ListItemDescriptionPlacementTypes } from "../../../../types/collectionTypes";
 import type { TextVariants } from "../../../../types/colorsVariantsType";

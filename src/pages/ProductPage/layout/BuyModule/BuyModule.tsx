@@ -3,7 +3,7 @@ import useWindowSize from "../../../../hooks/useWindowSize";
 import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
 // Components
-import Collection from "../../../../compoundComponents/CollectionProducts/components/Collection";
+import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
 import ModalControlBtn from "../../components/ModalControlBtn/ModalControlBtn";
 import ThumbnailsImagesContainer from "../../components/ThumbnailsImagesContainer/ThumbnailsImagesContainer";
