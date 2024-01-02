@@ -147,17 +147,13 @@ export type MoveToOtherListModal = {
 
 export type MoreOptionsForProductInListModal = {
   readonly type: "more-options-for-product-in-list";
-  // product: ShoppingCartType;
   products: ShoppingCartType[];
 };
 
 export type MoveProductsFromOneListToAnotherModal = {
   readonly type: "move-product-from-one-list-to-another";
-  // payload: {
-  // product: ShoppingCartType;
   products: ShoppingCartType[];
   originalListId: FavouritesListType["id"];
-  // };
   previousModal?: ModalDataType;
 };
 

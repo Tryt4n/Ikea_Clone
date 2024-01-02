@@ -78,7 +78,10 @@ export default function Footer() {
               <NavList list={footerPaymentsList} />
             </nav>
           </div>
-          <ChangeCountry className="footer__change-country" />
+          <ChangeCountry
+            href="#"
+            className="footer__change-country"
+          />
         </div>
 
         <div className="main-layout footer__sub-list-container">

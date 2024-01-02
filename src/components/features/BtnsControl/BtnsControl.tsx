@@ -1,24 +1,32 @@
-// React
+// Import React dependencies
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-// Custom Hooks
+// Import custom hooks
 import useWindowSize from "../../../hooks/useWindowSize";
-// Components
+// Import components
 import { Btn } from "../../ui/Btn/Btn";
-// Style
+// Import styles
 import "./index.scss";
 
-type BtnsControlPropsType = {
-  children: ReactNode;
-};
+/**
+ * BtnsControl Component
+ *
+ * This component displays a control with buttons for scrolling children left and right.
+ *
+ * @param children - Children of the BtnsControl component.
+ *
+ * @returns A div element with a class of "btns-control", containing two buttons for scrolling children left and right, and a div for containing children.
+ */
+export default function BtnsControl({ children }: { children: ReactNode }) {
+  const { width } = useWindowSize(); // Get the window width
 
-export default function BtnsControl({ children }: BtnsControlPropsType) {
-  const { width } = useWindowSize();
-
+  // Initialize state for the ability to scroll children backwards and forwards
   const [canScrollBackward, setCanScrollBackward] = useState(false);
   const [canScrollForward, setCanScrollForward] = useState(false);
 
+  // Initialize ref for the children container
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // Define a function to check if children are at the beginning or end of scrolling
   const btnsEndAndBeginning = useCallback(() => {
     const container = containerRef.current;
     const spacingSafeGuard = 5;
@@ -32,6 +40,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
     return { isEnd, isBeginning };
   }, []);
 
+  // Define a function to scroll children
   function handleScroll(direction: "prev" | "next") {
     if (!containerRef.current) return;
 
@@ -53,6 +62,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
     });
   }
 
+  // Use effect to update scrolling state when the container is scrolled
   useEffect(() => {
     const container = containerRef.current;
 
@@ -74,6 +84,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
     };
   }, [btnsEndAndBeginning]);
 
+  // Use effect to update scrolling state when the window width changes
   useEffect(() => {
     const { isEnd, isBeginning } = btnsEndAndBeginning();
 
@@ -117,6 +128,7 @@ export default function BtnsControl({ children }: BtnsControlPropsType) {
   );
 }
 
+// Arrow left icon with size only used in this component
 function ArrowLeft() {
   return (
     <svg
@@ -132,6 +144,7 @@ function ArrowLeft() {
   );
 }
 
+// Arrow right icon with size only used in this component
 function ArrowRight() {
   return (
     <svg

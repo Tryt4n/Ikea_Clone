@@ -41,7 +41,10 @@ export default function AsideMenu() {
 
       <FinalPrice price={totalPrice} />
 
-      <ClubInfoDiscount price={calculatePrice ? calculatePrice : 0} />
+      <ClubInfoDiscount
+        href="#"
+        price={calculatePrice ? calculatePrice : 0}
+      />
 
       <DiscountCodeFormAccordion />
 

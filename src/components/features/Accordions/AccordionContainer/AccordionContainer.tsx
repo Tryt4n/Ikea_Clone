@@ -1,15 +1,26 @@
-// React
+// Import React dependencies
 import { ReactElement } from "react";
-// Context
+// Import context
 import { AccordionContextProvider } from "../context/AccordionContext";
-// Components
+// Import components
 import AccordionElement from "../AccordionElement/AccordionElement";
-// Style
+// Import styles
 import "../index.scss";
 
+// Define the type for the AccordionContainer props
 interface AccordionContainerPropsType {
-  children: ReactElement<typeof AccordionElement>[] | ReactElement<typeof AccordionElement>;
+  children: ReactElement<typeof AccordionElement>[] | ReactElement<typeof AccordionElement>; // The children of the AccordionContainer, which should be one or more AccordionElement components
 }
+
+/**
+ * AccordionContainer component
+ *
+ * This component provides an AccordionContextProvider and a list container for AccordionElement components.
+ *
+ * @param children - The children of the AccordionContainer, which should be one or more AccordionElement components.
+ *
+ * @returns An AccordionContextProvider component containing a ul element with a "accordions-container" class and the specified children.
+ */
 
 export default function AccordionContainer({ children }: AccordionContainerPropsType) {
   return (

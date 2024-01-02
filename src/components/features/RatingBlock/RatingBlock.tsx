@@ -1,19 +1,31 @@
-// Icons
+// Import icons
 import RatingStarIcon from "../../../Icons/RatingStarIcon";
 import RatingStarHalfIcon from "../../../Icons/RatingStarHalfIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+// Defining the type for the rating
 type RatingType = {
-  rate: number;
-  quantity: number;
+  rate: number; // The rating score
+  quantity: number; // The number of ratings
 };
 
+// Defining the type for the RatingBlock props
 type RatingBlockType = {
-  rating: RatingType;
-  longVersion?: boolean;
+  rating: RatingType; // The rating
+  longVersion?: boolean; // A flag indicating if the long version of the rating should be displayed
 };
 
+/**
+ * RatingBlock Component
+ *
+ * This component displays a rating block with stars and the number of ratings.
+ *
+ * @param rating - The rating.
+ * @param longVersion - A flag indicating if the long version of the rating should be displayed.
+ *
+ * @returns A div element with a class of "product-ratings", containing a strong element with a class of "visually-hidden" and the rating score, a span element with a class of "visually-hidden" and the text "Liczba ocen:" for accessibility, a span element with a class of "product-ratings__wrapper" and the rating stars, and a span element with a class of "product-ratings__text" and the number of ratings for visual effect.
+ */
 export default function RatingBlock({ rating, longVersion }: RatingBlockType) {
   return (
     <div className="product-ratings">

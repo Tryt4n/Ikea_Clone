@@ -1,21 +1,35 @@
-// React
+// Import React dependencies
 import { ChangeEvent, useId } from "react";
-// Components
+// Import components
 import { Btn } from "../../ui/Btn/Btn";
-// Icons
+// Import icons
 import MinusIcon from "../../../Icons/MinusIcon";
 import PlusIcon from "../../../Icons/PlusIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+// Defining the type for the QuantityInput props
 type QuantityInputPropsType = {
-  quantity: number;
-  inputFunction: (e: ChangeEvent<HTMLInputElement>) => void;
-  onChangeFunction: (delta: 1 | -1) => void;
-  className?: string;
-  small?: boolean;
+  quantity: number; // The current quantity
+  inputFunction: (e: ChangeEvent<HTMLInputElement>) => void; // The function to handle input changes
+  onChangeFunction: (delta: 1 | -1) => void; // The function to handle quantity changes
+  className?: string; // The class name for the QuantityInput component
+  small?: boolean; // A flag indicating if the QuantityInput component should be small
 };
 
+/**
+ * QuantityInput Component
+ *
+ * This component displays a quantity input with plus and minus buttons.
+ *
+ * @param quantity - The current quantity.
+ * @param inputFunction - The function to handle input changes.
+ * @param onChangeFunction - The function to handle quantity changes.
+ * @param className - The class name for the QuantityInput component.
+ * @param small - A flag indicating if the QuantityInput component should be small.
+ *
+ * @returns A div element with a class of "quantity-input" and "quantity-input--small" if the small flag is true, and the class name if provided, containing a Btn component for decreasing the quantity, a div with a label and input for the quantity, and a Btn component for increasing the quantity.
+ */
 export default function QuantityInput({
   quantity,
   inputFunction,
@@ -23,7 +37,7 @@ export default function QuantityInput({
   className,
   small,
 }: QuantityInputPropsType) {
-  const id = useId();
+  const id = useId(); // Generate a unique id
 
   return (
     <div
@@ -41,6 +55,7 @@ export default function QuantityInput({
         <MinusIcon />
         <span className="visually-hidden">Naciśnij aby zmniejszyć ilość</span>
       </Btn>
+
       <div>
         <label
           htmlFor={`product-quantity${id}`}
@@ -60,6 +75,7 @@ export default function QuantityInput({
           onFocus={(e) => e.target.select()}
         />
       </div>
+
       <Btn
         variant="light"
         shape="circle"

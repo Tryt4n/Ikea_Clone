@@ -6,6 +6,8 @@ import useToast from "../../../../hooks/useToast";
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
 import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
+// Constants
+import { getClubDiscount } from "../../../../constants/clubDiscount";
 // Style
 import "./index.scss";
 
@@ -15,7 +17,7 @@ export default function ListProductsSummary() {
   const { setToastData } = useToast();
 
   function calculateDiscount(price: number) {
-    const savingsMath = price - Math.round(price * 0.035 * 2) / 2;
+    const savingsMath = getClubDiscount(price);
     const formattedSavings = savingsMath.toLocaleString("pl-PL");
 
     const finalPrice = Number.isInteger(savingsMath)
