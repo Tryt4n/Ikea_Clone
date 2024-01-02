@@ -10,6 +10,7 @@ import useList from "./context/useList";
 // Layout
 import EmptyList from "./layout/EmptyList/EmptyList";
 import ListWithProducts from "./layout/ListWithProducts/ListWithProducts";
+import PageLoadingSpinner from "../../components/ui/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
 // Style
 import "./index.scss";
 
@@ -96,17 +97,21 @@ function InnerComponent() {
 
   return (
     <>
-      {listState && (
-        <article className="list-page">
-          <h2 className="list-page__header">{listState.name}</h2>
+      <article className="list-page">
+        {listState ? (
+          <>
+            <h2 className="list-page__header">{listState.name}</h2>
 
-          {listState.products && listState.products.length > 0 ? (
-            <ListWithProducts />
-          ) : (
-            <EmptyList />
-          )}
-        </article>
-      )}
+            {listState.products && listState.products.length > 0 ? (
+              <ListWithProducts />
+            ) : (
+              <EmptyList />
+            )}
+          </>
+        ) : (
+          <PageLoadingSpinner />
+        )}
+      </article>
     </>
   );
 }
