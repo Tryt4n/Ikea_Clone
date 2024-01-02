@@ -53,23 +53,25 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
   function addToShoppingCart() {
     dispatch({
       type: "addToShoppingCart",
-      payload: {
-        quantity: quantity,
-        productNumber: productNumber,
-        collection: collection,
-        name: name,
-        nameToDisplay: nameToDisplay,
-        variant: variant,
-        variantName: variantName,
-        size: size,
-        price: price,
-        oldPrice: oldPriceTag,
-        images: images,
-        productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
-        newTag: newTag,
-        addedDate: new Date(),
-        rating: rating,
-      },
+      payload: [
+        {
+          quantity: quantity,
+          productNumber: productNumber,
+          collection: collection,
+          name: name,
+          nameToDisplay: nameToDisplay,
+          variant: variant,
+          variantName: variantName,
+          size: size,
+          price: price,
+          oldPrice: oldPriceTag,
+          images: images,
+          productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
+          newTag: newTag,
+          addedDate: new Date(),
+          rating: rating,
+        },
+      ],
     });
     setQuantity(1);
 

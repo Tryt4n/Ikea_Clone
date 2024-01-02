@@ -290,7 +290,7 @@ function BtnsControl({ product }: { product: ShoppingCartType }) {
   const { listId } = useList();
 
   function addToShoppingCart() {
-    dispatch({ type: "addToShoppingCart", payload: product });
+    dispatch({ type: "addToShoppingCart", payload: [product] });
 
     setToastData({
       open: true,

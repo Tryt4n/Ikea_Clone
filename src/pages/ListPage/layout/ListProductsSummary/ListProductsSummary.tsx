@@ -1,6 +1,7 @@
 // Custom Hooks
-// import useApp from "../../../../hooks/useApp";
+import useApp from "../../../../hooks/useApp";
 import useList from "../../context/useList";
+import useToast from "../../../../hooks/useToast";
 // Components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Icons
@@ -9,8 +10,9 @@ import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
 import "./index.scss";
 
 export default function ListProductsSummary() {
-  // const {dispatch} = useApp()
+  const { dispatch } = useApp();
   const { listState } = useList();
+  const { setToastData } = useToast();
 
   function calculateDiscount(price: number) {
     const savingsMath = price - Math.round(price * 0.035 * 2) / 2;
@@ -48,6 +50,22 @@ export default function ListProductsSummary() {
     Number(`${totalPriceInteger}.${totalPriceDecimal}`)
   );
 
+  function addProductsToShoppingCart() {
+    if (listState?.products) {
+      const productsNames = listState.products.map((product) => product.collection);
+
+      dispatch({ type: "addToShoppingCart", payload: listState?.products });
+
+      setToastData({
+        open: true,
+        text: `${
+          productsNames.length > 1 ? productsNames.join(", ") : productsNames[0]
+        } dodano to koszyka.`,
+        link: "/shoppingcart",
+      });
+    }
+  }
+
   return (
     <section className="list-products-summary">
       <h3 className="visually-hidden">Podsumowanie</h3>
@@ -71,7 +89,7 @@ export default function ListProductsSummary() {
         variant="blue"
         size="big"
         className="list-products-summary__btn"
-        // onClick={addProductsToShoppingCart}
+        onClick={addProductsToShoppingCart}
       >
         <ShoppingCartAddIcon />
         Dodaj wszystko do koszyka

@@ -99,7 +99,7 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
     if (product) {
       dispatch({
         type: "addToShoppingCart",
-        payload: product,
+        payload: [product],
       });
     }
 
