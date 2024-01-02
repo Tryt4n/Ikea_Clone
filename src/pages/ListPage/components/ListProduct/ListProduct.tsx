@@ -156,9 +156,11 @@ function Header({
     setImgSrc(img);
   }
 
+  const link = productLink.toLowerCase().replace("ä", "a").replace("å", "a");
+
   return (
     <header className="list-product__header-wrapper">
-      <a href={productLink.toLowerCase()}>
+      <a href={link}>
         <figure>
           <div
             className="list-product__img-wrapper"

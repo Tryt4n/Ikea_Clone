@@ -13,11 +13,11 @@ export default function FavouriteLists() {
   const { state } = useApp();
 
   return (
-    <>
+    <div style={{ minHeight: "90vh" }}>
       <MainList />
 
       {state.favouriteLists && state.favouriteLists.length > 1 && <OtherLists />}
-    </>
+    </div>
   );
 }
 

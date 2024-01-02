@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type FetchReturnType<T> = {
   data: T | undefined;
@@ -11,13 +11,15 @@ export default function useFetch<T>(URL: string, options: RequestInit = {}): Fet
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  const optionsRef = useRef(options);
+
   useEffect(() => {
     setData(undefined);
     setIsError(false);
     setIsLoading(true);
     const controller = new AbortController();
 
-    fetch(URL, { signal: controller.signal, ...options })
+    fetch(URL, { signal: controller.signal, ...optionsRef.current })
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -37,7 +39,6 @@ export default function useFetch<T>(URL: string, options: RequestInit = {}): Fet
       });
 
     return () => controller.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL]);
 
   return { data, isLoading, isError };

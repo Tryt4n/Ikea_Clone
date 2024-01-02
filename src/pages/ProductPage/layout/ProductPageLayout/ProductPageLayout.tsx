@@ -31,13 +31,14 @@ export default function ProductPageLayout() {
         src: `${productLink}/${path.collection}-${data.name}-${data.variant}__${data.images.main}`,
         variant: data.variant,
       });
+
+      console.log("changed");
     }
 
     if (isError) {
       navigate("/");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, isError, navigate, path.collection, setDisplayedMainImg]);
 
   return (
     <>

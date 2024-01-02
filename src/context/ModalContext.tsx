@@ -78,7 +78,6 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
     } else {
       closeModal();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalData]);
 
   const contextValues = useMemo(
