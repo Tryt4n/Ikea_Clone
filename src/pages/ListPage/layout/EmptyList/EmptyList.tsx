@@ -1,49 +1,54 @@
-// react-router-dom
+// Import dependencies from react-router-dom
 import { useNavigate } from "react-router-dom";
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
 import useList from "../../context/useList";
 import useModal from "../../../../hooks/useModal";
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Icons
+// Import icons
 import EditIcon from "../../../../Icons/EditIcon";
 import TripleDotsMenuIcon from "../../../../Icons/TripleDotsMenuIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+/**
+ * EmptyList is a functional component that uses the useApp, useList, and useModal custom hooks to manage the application state, list state, and modal state respectively.
+ * It defines a navigate function using the useNavigate hook from react-router-dom.
+ * It defines two functions openNameEditModal and openListControlMenu to open the name edit modal and list control menu respectively.
+ * It renders a div with two buttons to open the name edit modal and list control menu, a text wrapper with a strong tag and a paragraph, and a button to navigate to the home page.
+ *
+ * @returns {JSX.Element} A div with two buttons to open the name edit modal and list control menu, a text wrapper with a strong tag and a paragraph, and a button to navigate to the home page.
+ */
+
 export default function EmptyList() {
-  const { dispatch } = useApp();
-  const { setModalData } = useModal();
-  const { listState: list } = useList();
-  const navigate = useNavigate();
+  const { dispatch } = useApp(); // Destructure the dispatch variable from the useApp custom hook.
+  const { setModalData } = useModal(); // Destructure the setModalData variable from the useModal custom hook.
+  const { listState: list } = useList(); // Destructure the listState variable from the useList custom hook.
+  const navigate = useNavigate(); // Define a navigate function using the useNavigate hook from react-router-dom.
 
+  // Define functions to open the name edit modal menu.
   function openNameEditModal() {
-    if (!list) return;
-
-    dispatch({
-      type: "setEditingList",
-      payload: list,
-    });
-
-    setModalData({
-      type: "change-list-name",
-    });
-  }
-
-  function openListControlMenu() {
-    if (!list) return;
+    if (!list) return; // if there is no list, return
 
     dispatch({ type: "setEditingList", payload: list });
 
-    setModalData({
-      type: "list-control",
-    });
+    setModalData({ type: "change-list-name" });
+  }
+
+  // Define functions to open the list control menu.
+  function openListControlMenu() {
+    if (!list) return; // if there is no list, return
+
+    dispatch({ type: "setEditingList", payload: list });
+
+    setModalData({ type: "list-control" });
   }
 
   return (
     <div className="empty-list">
       <div className="empty-list__btns-container">
+        {/* Button to open the name edit modal menu. */}
         <Btn
           shape="circle"
           variant="light"
@@ -53,6 +58,7 @@ export default function EmptyList() {
           <EditIcon />
         </Btn>
 
+        {/* Button to open the list control menu. */}
         <Btn
           shape="circle"
           variant="light"
@@ -69,6 +75,7 @@ export default function EmptyList() {
         <p>Zaznacz wszystkie produkty, które chcesz dodać do tej listy.</p>
       </div>
 
+      {/* Button to navigate to the home page. */}
       <Btn
         role="link"
         aria-label="Przejdź do strony głównej"

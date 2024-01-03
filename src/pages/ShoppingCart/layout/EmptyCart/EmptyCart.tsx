@@ -1,5 +1,14 @@
+// Import icons
 import AvatarIcon from "../../../../Icons/AvatarIcon";
+// Import styles
 import "./index.scss";
+
+/**
+ * EmptyCart is a functional component that renders a section containing a prompt for the user to join or log in.
+ * It includes a heading, a link for the user to join or log in, and an AvatarIcon component.
+ *
+ * @returns {JSX.Element} A section containing a prompt for the user to join or log in, and an AvatarIcon component.
+ */
 
 export default function EmptyCart() {
   return (

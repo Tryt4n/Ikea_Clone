@@ -33,7 +33,7 @@ export default function ErrorMessage({
       aria-hidden={errorVisibility}
       {...props}
     >
-      {errorMessage} // Render the error message
+      {errorMessage}
     </small>
   );
 }

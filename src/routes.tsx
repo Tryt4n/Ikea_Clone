@@ -3,7 +3,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 // Import the main layout
 import { RootLayout } from "./layout/RootLayout";
 // Import pages
-import ErrorPage from "./pages/tasks/ErrorPage";
+import ErrorPage from "./pages/tasks/ErrorPage/ErrorPage";
 import NotFoundPage from "./pages/tasks/NotFoundPage/NotFoundPage";
 import HomePage from "./pages/Home/HomePage";
 import ProductPage from "./pages/ProductPage/ProductPage";

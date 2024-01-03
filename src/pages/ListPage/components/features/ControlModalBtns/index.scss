@@ -1,0 +1,11 @@
+@use "../../../../../abstracts/mixins" as *;
+
+.control-modal-btns {
+  @include flex(row, flex-start, center);
+  gap: 0.5rem;
+  flex-shrink: 0;
+
+  & > button:last-of-type svg {
+    rotate: 90deg;
+  }
+}

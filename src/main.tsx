@@ -1,5 +1,5 @@
 // Importing React dependencies
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
 
 // Importing Router dependencies
@@ -26,13 +26,13 @@ import "./style.scss";
  */
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AppContextProvider>
-      <ToastContextProvider>
-        <ModalContextProvider>
-          <RouterProvider router={routes} />
-        </ModalContextProvider>
-      </ToastContextProvider>
-    </AppContextProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AppContextProvider>
+    <ToastContextProvider>
+      <ModalContextProvider>
+        <RouterProvider router={routes} />
+      </ModalContextProvider>
+    </ToastContextProvider>
+  </AppContextProvider>
+  // </React.StrictMode>
 );
