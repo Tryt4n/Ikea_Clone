@@ -1,19 +1,28 @@
-// React
+// Import React dependencies
 import { useCallback, useEffect, useRef } from "react";
-// react-router-dom
+// Import React Router dependencies
 import { useNavigate, useParams } from "react-router-dom";
-// Context
+// Import Context Provider
 import { ListContextProvider } from "./context/ListContext";
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../hooks/useApp";
 import useList from "./context/useList";
-// Layout
+// Import components
 import EmptyList from "./layout/EmptyList/EmptyList";
 import ListWithProducts from "./layout/ListWithProducts/ListWithProducts";
 import PageLoadingSpinner from "../../components/ui/LazyLoadPageLoadingSpinner/PageLoadingSpinner";
-// Style
+// Import styles
 import "./index.scss";
 
+/**
+ * ListPage is a functional component that renders the list page of the application.
+ *
+ * It uses the ListContextProvider to provide list context to its children.
+ *
+ * The component renders an InnerComponent, which is defined below.
+ *
+ * @returns {JSX.Element} A ListContextProvider with an InnerComponent as its child.
+ */
 export default function ListPage() {
   return (
     <ListContextProvider>
@@ -22,17 +31,31 @@ export default function ListPage() {
   );
 }
 
+/**
+ * InnerComponent is a functional component that renders the inner part of the list page.
+ *
+ * It uses several hooks to get and manipulate state, including useApp, useList, useParams, and useNavigate.
+ *
+ * The component defines several functions and effects to handle list sorting and navigation.
+ *
+ * It renders an article element with a header and either a ListWithProducts or EmptyList component, depending on whether there are any products in the list.
+ * If the list state is not yet available, it renders a PageLoadingSpinner.
+ *
+ * @returns {JSX.Element} An article element with a header and either a ListWithProducts or EmptyList component, or a PageLoadingSpinner.
+ */
 function InnerComponent() {
   const { state, dispatch } = useApp();
   const { listState, listDispatch } = useList();
   const params = useParams();
   const navigate = useNavigate();
-  const listStateRef = useRef(listState); //? useRef to avoid invoking an infinity loop
+  const listStateRef = useRef(listState); // useRef to avoid invoking an infinity loop
 
+  // Function to find a list by its ID
   const findListById = useCallback(() => {
     return state.favouriteLists?.find((list) => list.id === params.listId);
   }, [state.favouriteLists, params]);
 
+  // Function to sort the list based on the current list sorting state
   const sortList = useCallback(() => {
     const currentListState = listStateRef.current;
 
@@ -57,9 +80,9 @@ function InnerComponent() {
     }
   }, [listDispatch]);
 
-  const list = findListById(); //? search for list
+  const list = findListById(); // Search for list
 
-  //? Check if list exists in state and if not, navigate to "/favourites"
+  // Effect to check if the list exists in the state and navigate to "/favourites" if it does not
   useEffect(() => {
     async function checkIfListExists() {
       const checkedList = findListById();
@@ -83,14 +106,14 @@ function InnerComponent() {
     checkingList();
   }, [findListById, list, listDispatch, navigate, state, sortList]);
 
-  //? Set editingList in AppContext
+  // Effect to set the editingList in the AppContext
   useEffect(() => {
     if (list) {
       dispatch({ type: "setEditingList", payload: list });
     }
   }, [list, dispatch]);
 
-  //? Update listStateRef
+  // Effect to update listStateRef when listState changes
   useEffect(() => {
     listStateRef.current = listState;
   }, [listState]);

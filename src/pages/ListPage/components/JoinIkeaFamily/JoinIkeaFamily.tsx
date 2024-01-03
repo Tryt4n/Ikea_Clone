@@ -1,7 +1,15 @@
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Style
+// Import styles
 import "./index.scss";
+
+/**
+ * JoinIkeaFamily is a component that renders a section inviting the user to join the IKEA Family.
+ *
+ * It displays a title, a paragraph of text, and a button. The button is rendered using the Btn component.
+ *
+ * @returns A li element with a section containing a title, a paragraph of text, and a button.
+ */
 
 export default function JoinIkeaFamily() {
   return (

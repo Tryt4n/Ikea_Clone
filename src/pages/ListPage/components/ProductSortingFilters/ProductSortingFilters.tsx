@@ -1,18 +1,25 @@
-// Custom Hooks
-import useList from "../../context/useList";
-// Components
+// Import components
 import BtnsControl from "../../../../components/features/BtnsControl/BtnsControl";
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Helpers
-import { startViewTransition } from "../../../../utils/helpers";
-// Types
-import type { ReducerActionsType, SortingTypes } from "../../context/ListContext";
+import { SortingButton } from "../SortingButton/SortingButton";
+
+/**
+ * ProductSortingFilters is a component that renders a set of sorting buttons for a product list.
+ *
+ * It uses the BtnsControl component to group the buttons together, and the Btn and SortingButton components to render the buttons.
+ *
+ * The sorting buttons include options to sort by recent additions, name, price ascending, and price descending.
+ *
+ * @returns A `BtnsControl` component with the sorting buttons.
+ */
 
 export default function ProductSortingFilters() {
   return (
+    // BtnsControl component groups the buttons together
     <BtnsControl>
       <Btn variant="gray">Sortuj</Btn>
 
+      {/* Sort by recent additions */}
       <SortingButton
         variant="recent"
         dispatchAction={{ type: "sortByDate", payload: "recent" }}
@@ -20,6 +27,7 @@ export default function ProductSortingFilters() {
         Ostatnio dodane
       </SortingButton>
 
+      {/* Sort by name */}
       <SortingButton
         variant="name"
         dispatchAction={{ type: "sortByName" }}
@@ -27,6 +35,7 @@ export default function ProductSortingFilters() {
         Nazwa
       </SortingButton>
 
+      {/* Sort by price ascending */}
       <SortingButton
         variant="priceAscending"
         dispatchAction={{ type: "sortByPrice", payload: "priceAscending" }}
@@ -34,6 +43,7 @@ export default function ProductSortingFilters() {
         Cena - od najniższej
       </SortingButton>
 
+      {/* Sort by price descending */}
       <SortingButton
         variant="priceDescending"
         dispatchAction={{ type: "sortByPrice", payload: "priceDescending" }}
@@ -41,34 +51,5 @@ export default function ProductSortingFilters() {
         Cena - od najwyższej
       </SortingButton>
     </BtnsControl>
-  );
-}
-
-type SortingButtonProps = {
-  variant: SortingTypes;
-  dispatchAction: ReducerActionsType;
-  children: string;
-};
-
-function SortingButton({ variant, dispatchAction, children }: SortingButtonProps) {
-  const { listState, listDispatch } = useList();
-
-  return (
-    <>
-      {listState && (
-        <Btn
-          variant={listState.listSorting === variant ? "light-with-border" : "gray"}
-          onClick={() =>
-            startViewTransition(() => {
-              listState.listSorting === variant
-                ? listDispatch({ type: "sortByDate", payload: "oldest" })
-                : listDispatch(dispatchAction);
-            })
-          }
-        >
-          {children}
-        </Btn>
-      )}
-    </>
   );
 }
