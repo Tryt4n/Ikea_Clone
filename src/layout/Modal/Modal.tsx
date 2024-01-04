@@ -8,7 +8,7 @@ import MenuLayout from "./layout/MenuLayout/MenuLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
 // Types
-import type { ModalDataType } from "../../pages/ProductPage/types/ModalTypes";
+import type { ModalDataType } from "./types/ModalTypes";
 
 type ModalPropsType = {
   onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;

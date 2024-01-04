@@ -15,7 +15,7 @@ import type {
   ChangeListNameModal,
   CreateListModal,
   CreateListModalWithProducts,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+} from "../../types/ModalTypes";
 import type { FavouritesListType } from "../../../../context/AppContext";
 // Styles
 import "./index.scss";

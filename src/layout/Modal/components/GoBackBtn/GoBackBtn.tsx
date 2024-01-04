@@ -16,7 +16,7 @@ import type {
   SelectListModal,
   SelectListWithMultipleProducts,
   SideModalLayoutType,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+} from "../../types/ModalTypes";
 // Icons
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 

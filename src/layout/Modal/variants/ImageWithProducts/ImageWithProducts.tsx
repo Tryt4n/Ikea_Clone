@@ -13,7 +13,7 @@ import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Types
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
-import type { ModalImageWithProductsType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalImageWithProductsType } from "../../types/ModalTypes";
 import type { ProductDataType } from "../../../../pages/ProductPage/types/ProductDataType";
 import type { ShoppingCartType } from "../../../../context/AppContext";
 // Constants

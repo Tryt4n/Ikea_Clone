@@ -1,34 +1,47 @@
-// React
-import { useRef, useState } from "react";
-// SwiperJS
+// Import react dependencies
+import { useState } from "react";
+// Import SwiperJS dependencies
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Keyboard, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-// Custom Hooks
+// Import custom hooks
 import useProduct from "../../context/useProduct";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
-// Components
-import { Btn } from "../../../../components/ui/Btn/Btn";
-// Icons
-import PlayIcon from "../../../../Icons/PlayIcon";
-import PauseIcon from "../../../../Icons/PauseIcon";
-// Types
+// Import inner components
+import { Video } from "./InnerComponents/Video/Video";
+import { Image } from "./InnerComponents/Image/Image";
+import { ShowMoreImagesBtn } from "./InnerComponents/ShowMoreImagesBtn/ShowMoreImagesBtn";
+// Import types
 import type { ProductDataType } from "../../types/ProductDataType";
-// Constants
+// Import constants
 import { productLink } from "../../../../constants/links";
-// Styles
+// Import styles
 import "./index.scss";
 
+/**
+ * ProductImageGallery Component
+ *
+ * This is a React functional component. It displays a gallery of product images and videos. The gallery uses the SwiperJS library for a responsive and accessible carousel slider. The number of visible images in the gallery is controlled by the `visibleImages` state. The component also includes a button to show more images, which is displayed only if there are more than 8 images and the viewport width is greater than or equal to 900px.
+ *
+ * @param {Object} props.data - An object that contains the data for the product.
+ *
+ * @example
+ * <ProductImageGallery data={productData} />
+ *
+ * @returns A JSX element that consists of a `SwiperContainer` component (which is either a `Swiper` element from SwiperJS library or a `section` depending on the viewport width), and a `ShowMoreImagesBtn` component if there are more than 8 images and the viewport width is greater than or equal to 900px. Inside the `SwiperContainer`, it maps over the `images` object and renders a `SwiperItem` component (which is either a `SwiperSlide` element from SwiperJS library or a `div` depending on the viewport width) for each image or video.
+ */
+
 export default function ProductImageGallery({ data }: { data: ProductDataType }) {
-  const { displayedMainImg, path } = useProduct();
-  const { setModalData } = useModal();
-  const { width } = useWindowSize();
-  const [visibleImages, setVisibleImages] = useState(8);
+  const { displayedMainImg, path } = useProduct(); // Get the displayed main image and the path from the useProduct custom hook
+  const { setModalData } = useModal(); // Get the setModalData function from the useModal custom hook
+  const { width } = useWindowSize(); // Get the current window size from the useWindowSize custom hook
+  const [visibleImages, setVisibleImages] = useState(8); // Set the initial number of visible images to 8
 
-  const { images, name, variant, topSeller, limitedEdition } = data;
+  const { images, name, variant, topSeller, limitedEdition } = data; // Destructure the data object
 
+  // Open the modal with the image preview
   function openModalPreview(index: number) {
     setModalData({
       type: "image-preview",
@@ -39,36 +52,41 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
     });
   }
 
-  const SwiperContainer = width < 900 ? Swiper : "section";
-  const SwiperItem = width < 900 ? SwiperSlide : "div";
+  const SwiperContainer = width < 900 ? Swiper : "section"; // If the viewport width is less than 900px, use the Swiper element from SwiperJS library. Otherwise, use a section element.
+  const SwiperItem = width < 900 ? SwiperSlide : "div"; // If the viewport width is less than 900px, use the SwiperSlide element from SwiperJS library. Otherwise, use a div element.
   const swiperContainerOptions = {
     className: `product-image-gallery${
       width < 900 ? " mySwiper-product-mobile-carousel-slider" : ""
-    }`,
-    pagination: width < 900 ? true : undefined,
-    loop: width < 900 ? true : undefined,
+    }`, // Set the class name of the SwiperContainer element
+    pagination: width < 900 ? true : undefined, // Set pagination only when SwiperJS is used
+    loop: width < 900 ? true : undefined, // Set loop only when SwiperJS is used
     keyboard:
       width < 900
         ? {
             enabled: true,
           }
-        : undefined,
-    modules: width < 900 ? [Pagination, Keyboard, A11y] : undefined,
+        : undefined, // Set keyboard navigation only when SwiperJS element is used
+    modules: width < 900 ? [Pagination, Keyboard, A11y] : undefined, // Set modules only when SwiperJS is used
   };
 
   return (
+    // Spread the swiperContainerOptions object
     <SwiperContainer {...swiperContainerOptions}>
+      {/* Set heading for accessibility and SEO purposes */}
       <h3 className="visually-hidden">Galeria</h3>
+
+      {/* Map over the images object and render a SwiperItem component for each image or video */}
       {Object.keys(images).map((key, index) => {
+        // If SwiperJS is used or the index is less than the number of visible images, render the image or video
         if (width < 900 || index < visibleImages) {
           const imgUrl =
             index > 0
               ? `${productLink}/${path.collection}-${name}-${variant}__${images[key]}`
-              : displayedMainImg.src;
-          const imgSrc = `${imgUrl}?f=s`;
-          const imgSrcSet = `${imgUrl}?f=xl 750w, ${imgUrl}?f=l 700w, ${imgUrl}?f=m 600w, ${imgUrl}?f=s 500w, ${imgUrl}?f=xs 400w, ${imgUrl}?f=xxs 300w, ${imgUrl}?f=xxxs 160w`;
+              : displayedMainImg.src; // If the index is greater than 0, set the base image URL to the URL of the image. Otherwise, set the base image URL to the URL of the displayed main image.
+          const imgSrc = `${imgUrl}?f=s`; // Set the image source
+          const imgSrcSet = `${imgUrl}?f=xl 750w, ${imgUrl}?f=l 700w, ${imgUrl}?f=m 600w, ${imgUrl}?f=s 500w, ${imgUrl}?f=xs 400w, ${imgUrl}?f=xxs 300w, ${imgUrl}?f=xxxs 160w`; // Set the image source set
 
-          const InnerElement = key === "video" ? "div" : "button";
+          const InnerElement = key === "video" ? "div" : "button"; // If the image is a video, use a div element. Otherwise, use a button element.
 
           return (
             <SwiperItem
@@ -79,20 +97,23 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
                 className="product-image-gallery__btn"
                 onClick={
                   width >= 900 && key !== "video" ? () => openModalPreview(index) : undefined
-                }
+                } // If SwiperJs is not used and the image is not a video, open the modal with the image preview when the button is clicked
               >
+                {/* If product is a top seller and is not limited edition set the top seller label for the first image */}
                 {!limitedEdition && topSeller && index === 0 && (
                   <strong className="top-seller">Top Seller</strong>
                 )}
 
+                {/* If product is limited edition set the limited edition label for the first image */}
                 {limitedEdition && index === 0 && (
                   <strong className="limited-edition">Kolekcja limitowana</strong>
                 )}
 
+                {/* If the image is a video, render the Video component. Otherwise, render the Image component. */}
                 {key === "video" ? (
                   <Video
-                    src={images[key]}
-                    openModal={() => openModalPreview(index)}
+                    src={images[key]} // Set the video source
+                    openModal={() => openModalPreview(index)} // Open the modal with the video preview when the video is clicked
                   />
                 ) : (
                   <Image
@@ -108,121 +129,14 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
         }
       })}
 
+      {/* // If the viewport width is greater than or equal to 900px and there are more than value in visibleImages, render the ShowMoreImagesBtn component */}
       {width >= 900 && Object.keys(images).length > 8 && (
         <ShowMoreImagesBtn
           images={images}
           visibleImages={visibleImages}
-          setVisibleImages={setVisibleImages}
+          setVisibleImages={setVisibleImages} // Increase the number of visible images when the button is clicked
         />
       )}
     </SwiperContainer>
-  );
-}
-
-function Video({ src, openModal }: { src: string; openModal: () => void }) {
-  const [videoControl, setVideoControl] = useState({
-    isFirstPlayback: true,
-    isPlaying: false,
-  });
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const { width } = useWindowSize();
-
-  function handleVideoPlayPause() {
-    if (!videoRef.current) return;
-
-    if (videoControl.isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
-    setVideoControl((prevState) => ({
-      isFirstPlayback: false,
-      isPlaying: !prevState.isPlaying,
-    }));
-  }
-
-  return (
-    <>
-      <video
-        ref={videoRef}
-        src={src}
-        playsInline
-        loop
-        poster={src.replace("mp4?imwidth=800", "jpg?=f=m")}
-        muted
-      />
-      <button
-        className="product-image-gallery__video-preview-btn"
-        onClick={width >= 900 ? () => openModal() : undefined}
-      >
-        <span className="visually-hidden">Naciśnij aby powiększyć wideo</span>
-      </button>
-
-      <button
-        className={`product-image-gallery__video-btn-control${
-          videoControl.isFirstPlayback ? ` firstPlayback` : ""
-        }`}
-        onClick={width >= 900 ? handleVideoPlayPause : undefined}
-        onTouchStart={width < 900 ? handleVideoPlayPause : undefined}
-      >
-        <span className="visually-hidden">
-          {videoControl.isPlaying ? "Zatrzymaj" : "Odtwórz"} wideo
-        </span>
-        {videoControl.isPlaying ? <PauseIcon /> : <PlayIcon />}
-      </button>
-    </>
-  );
-}
-
-function Image({ imgSrc, imgSrcSet }: { imgSrc: string; imgSrcSet: string }) {
-  const imgSizes =
-    "(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px";
-
-  return (
-    <>
-      <img
-        src={imgSrc}
-        srcSet={imgSrcSet}
-        sizes={imgSizes}
-        alt=""
-        loading="lazy"
-      />
-      <span className="visually-hidden">Naciśnij aby powiększyć</span>
-    </>
-  );
-}
-
-type ShowMoreImagesBtnPropsType = {
-  images: ProductDataType["images"];
-  visibleImages: number;
-  setVisibleImages: React.Dispatch<React.SetStateAction<number>>;
-};
-
-function ShowMoreImagesBtn({
-  images,
-  visibleImages,
-  setVisibleImages,
-}: ShowMoreImagesBtnPropsType) {
-  function handleShowMoreClick() {
-    if (visibleImages === Object.keys(images).length) {
-      setVisibleImages(8);
-    } else {
-      setVisibleImages((prevVisibleImages) =>
-        Math.min(prevVisibleImages + 8, Object.keys(images).length)
-      );
-    }
-  }
-
-  return (
-    <div className="product-image-gallery__btn-wrapper">
-      <Btn
-        variant="light-with-border"
-        className="product-image-gallery__show-more-btn"
-        onClick={handleShowMoreClick}
-      >
-        {visibleImages === Object.keys(images).length ? "Pokaż mniej" : "Pokaż więcej zdjęć"}
-      </Btn>
-    </div>
   );
 }

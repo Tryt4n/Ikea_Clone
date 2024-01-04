@@ -1,40 +1,41 @@
-// React
-import { useState } from "react";
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useWindowSize from "../../../../hooks/useWindowSize";
-// Components
+// Import components
 import ClubInfoDiscount from "../../../../components/ui/ClubInfoDiscount/ClubInfoDiscount";
-import Input from "../../../../components/features/Input/Input";
-import { Btn } from "../../../../components/ui/Btn/Btn";
-// Icons
-import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
-import DiscountIcon from "../../../../Icons/DiscountIcon";
-import ArrowRightIcon from "../../../../Icons/ArrowRightIcon";
-import ReturnIcon from "../../../../Icons/ReturnIcon";
-import LockIcon from "../../../../Icons/LockIcon";
-// Types
-import type { ShoppingCartAsideMenuInformationList } from "../../../ProductPage/types/ModalTypes";
-// Style
+import { Summary } from "../../components/ui/AsideMenuSummary/Summary";
+import { FinalPrice } from "../../components/ui/AsideMenuFinalPrice/FinalPrice";
+import { DiscountCodeFormAccordion } from "../../components/ui/AsideMenuDiscountCodeFormAccordion/DiscountCodeFormAccordion";
+import { GoNextStep } from "../../components/ui/AsideMenuGoNextStep/GoNextStep";
+import { AdditionalInformationsList } from "../../components/ui/AsideMenuAdditionalInformationList/AdditionalInformationList";
+// Import styles
 import "./index.scss";
 
+/**
+ * AsideMenu is a functional component that renders an aside menu.
+ * The menu includes a summary of the order, the final price, a form for entering a discount code, a button for proceeding to the next step, and a list of additional information.
+ * The total price of the order is calculated from the shopping cart in the application state.
+ *
+ * @returns {JSX.Element} An aside element that includes the order summary, final price, discount code form, next step button, and additional information list
+ */
+
 export default function AsideMenu() {
-  const { state } = useApp();
+  const { state } = useApp(); // useApp hook is used to access the application state
 
+  // Calculate the total price of the order from the shopping cart
   const calculatePrice = state.shoppingCart?.reduce((accumulator, product) => {
-    const decimalValue = product.price.decimal ? product.price.decimal / 100 : 0;
-    const value = product.price.integer + decimalValue;
-    const result = value * product.quantity;
+    const decimalValue = product.price.decimal ? product.price.decimal / 100 : 0; // If the product price has a decimal value, divide it by 100
+    const value = product.price.integer + decimalValue; // Add the integer and decimal values
+    const result = value * product.quantity; // Multiply the price by the quantity of the product
 
-    return accumulator + result;
-  }, 0);
+    return accumulator + result; // Add the result to the accumulator
+  }, 0); // The initial value of the accumulator is 0
 
-  const totalPrice = calculatePrice ? calculatePrice.toLocaleString() : "-";
+  const totalPrice = calculatePrice ? calculatePrice.toLocaleString() : "-"; // Format the total price as a string
 
   return (
     <aside className="shopping-cart-menu">
       <h2 className="shopping-cart-menu__heading">Podsumowanie</h2>
+
       <Summary price={totalPrice} />
 
       <hr />
@@ -43,7 +44,7 @@ export default function AsideMenu() {
 
       <ClubInfoDiscount
         href="#"
-        price={calculatePrice ? calculatePrice : 0}
+        price={calculatePrice ? calculatePrice : 0} // if the price is not calculated, set it to 0
       />
 
       <DiscountCodeFormAccordion />
@@ -52,162 +53,5 @@ export default function AsideMenu() {
 
       <AdditionalInformationsList />
     </aside>
-  );
-}
-
-function Summary({ price }: { price: string }) {
-  return (
-    <>
-      <div className="shopping-cart-menu__price-wrapper">
-        <span>Wartość produktów</span>
-        <strong>{price}</strong>
-      </div>
-
-      <div className="shopping-cart-menu__delivery-text-wrapper">
-        <div>
-          <span>Dostawa</span>
-          <span>-</span>
-        </div>
-        <small>Koszt dostawy poznasz na dalszym etapie zamówienia</small>
-      </div>
-    </>
-  );
-}
-
-function FinalPrice({ price }: { price: string }) {
-  return (
-    <div className="shopping-cart-menu__price-wrapper shopping-cart-menu__price-wrapper--big">
-      <p>Wartość produktów</p>
-      <strong>{price}</strong>
-    </div>
-  );
-}
-
-function DiscountCodeFormAccordion() {
-  const [accordionOpen, setAccordionOpen] = useState(false);
-
-  return (
-    <section className="shopping-cart-menu__discount-code-container">
-      <button
-        type="button"
-        className="shopping-cart-menu__discount-code-btn"
-        onClick={() => setAccordionOpen(!accordionOpen)}
-      >
-        <div className="shopping-cart-menu__discount-code-inner-wrapper">
-          <DiscountIcon />
-          <h3>Masz kod rabatowy?</h3>
-        </div>
-        <div>
-          <ChevronRightSmall />
-        </div>
-      </button>
-
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="shopping-cart-menu__discount-code-hidden-content-container"
-        aria-hidden={!accordionOpen}
-      >
-        <div>
-          <p
-            id="discount-code-label"
-            className="shopping-cart-menu__discount-code-label"
-          >
-            W jednym zamówieniu można użyć tylko jednego kuponu/kodu. Wpisz kod bez spacji między
-            znakami i zwróć uwagę na wielkość liter. Masz kartę upominkową? Możesz ją wykorzystać na
-            dalszym etapie.
-          </p>
-
-          <div className="shopping-cart-menu__discount-code-form-inner-wrapper">
-            <Input
-              id="discount-code"
-              type="text"
-              label="W jednym zamówieniu można użyć tylko jednego kuponu/kodu. Wpisz kod bez spacji między
-            znakami i zwróć uwagę na wielkość liter. Masz kartę upominkową? Możesz ją wykorzystać na
-            dalszym etapie."
-              labelProps={{
-                className: "visually-hidden",
-                "aria-hidden": true,
-                "aria-labelledby": "discount-code-label",
-              }}
-              inputProps={{
-                tabIndex: !accordionOpen ? -1 : 0,
-              }}
-            />
-            <Btn
-              variant="white-with-border"
-              type="button"
-              tabIndex={!accordionOpen ? -1 : 0}
-            >
-              Zastosuj
-            </Btn>
-          </div>
-        </div>
-      </form>
-    </section>
-  );
-}
-
-function GoNextStep() {
-  const { setModalData } = useModal();
-  const { width } = useWindowSize();
-
-  function openNexStepModal() {
-    setModalData({
-      type: "next-step",
-    });
-  }
-
-  return (
-    <Btn
-      type="button"
-      variant="blue"
-      className="shopping-cart-menu__next-btn"
-      onClick={openNexStepModal}
-    >
-      <span>Dalej</span>
-      {width >= 900 && (
-        <span className="shopping-cart-menu__next-btn-svg-wrapper">
-          <ArrowRightIcon />
-        </span>
-      )}
-    </Btn>
-  );
-}
-
-function AdditionalInformationsList() {
-  const { setModalData } = useModal();
-
-  function openModalByType(type: ShoppingCartAsideMenuInformationList["type"]) {
-    setModalData({
-      type: type,
-    });
-  }
-
-  return (
-    <ul>
-      <li>
-        <button
-          type="button"
-          className="shopping-cart-menu__btn-wrapper"
-          onClick={() => openModalByType("refund")}
-        >
-          <ReturnIcon />
-          <span>365 dni na zwrot gdy zmienisz zdanie</span>
-        </button>
-      </li>
-      <li>
-        <button
-          type="button"
-          className="shopping-cart-menu__btn-wrapper"
-          onClick={() => openModalByType("data-encryption")}
-        >
-          <LockIcon />
-          <span>
-            Bezpieczne zakupy z technologią szyfrowania danych SSL oraz zabezpieczenia transakcji 3D
-            Secure
-          </span>
-        </button>
-      </li>
-    </ul>
   );
 }

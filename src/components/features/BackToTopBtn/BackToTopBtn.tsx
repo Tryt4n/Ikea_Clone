@@ -65,7 +65,7 @@ export default function BackToTopBtn() {
 
     window.scrollTo({
       top: 0,
-      behavior: prefersReducedMotion ? "instant" : "smooth", // If the user prefers reduced motion, scroll instantly
+      behavior: prefersReducedMotion ? "auto" : "smooth", // If the user prefers reduced motion, scroll to the top without animation
     });
   }
 

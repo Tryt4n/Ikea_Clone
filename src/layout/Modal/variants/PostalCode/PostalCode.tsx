@@ -12,10 +12,7 @@ import LocationBtn from "../../components/LocationBtn/LocationBtn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type {
-  ModalChooseShopType,
-  ModalPostalCodeType,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalChooseShopType, ModalPostalCodeType } from "../../types/ModalTypes";
 // Icons
 import OpenNewWindowIcon from "../../../../Icons/OpenNewWindowIcon";
 // Style

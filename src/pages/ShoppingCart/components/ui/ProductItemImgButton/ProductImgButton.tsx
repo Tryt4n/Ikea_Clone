@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 // Import custom hooks
 import useModal from "../../../../../hooks/useModal";
 // Import types
-import type { ModalDataImagePreviewType } from "../../../../ProductPage/types/ModalTypes";
+import type { ModalDataImagePreviewType } from "../../../../../layout/Modal/types/ModalTypes";
 
 // Define the ProductImgButtonPropsType props type.
 type ProductImgButtonPropsType = {

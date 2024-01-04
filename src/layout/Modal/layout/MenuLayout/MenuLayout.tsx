@@ -13,7 +13,7 @@ import { Btn } from "../../../../components/ui/Btn/Btn";
 // Helpers
 import { startViewTransition } from "../../../../utils/helpers";
 // Types
-import type { MenuLayoutType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { MenuLayoutType } from "../../types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import IkeaLogo from "../../../../Icons/IkeaLogo";

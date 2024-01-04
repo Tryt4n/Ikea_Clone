@@ -1,20 +1,34 @@
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useToast from "../../../../hooks/useToast";
-// Components
+// Import components
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
-// Types
+// Import types
 import type { ProductDataType } from "../../types/ProductDataType";
 import type { ShoppingCartType } from "../../../../context/AppContext";
-// Style
+// Import styles
 import "./index.scss";
 
-export default function Header({ data }: { data: ProductDataType }) {
-  const { state, dispatch } = useApp();
-  const { setModalData } = useModal();
-  const { setToastData } = useToast();
+/**
+ * Header Component
+ *
+ * This is a React functional component. It displays the header for a product page, including the product name, variant, size, and an "Add to Wishlist" button.
+ *
+ * @param {ProductDataType} data - The product data to be displayed in the header.
+ *
+ * @example
+ * <Header data={productData} />
+ *
+ * @returns A JSX element that consists of a `header` with the class name `product-header`. Inside this `header`, it renders a `h3` element that displays the product name, variant, and size, and an `AddToWishListBtn` component that allows users to add the product to their wishlist.
+ */
 
+export default function Header({ data }: { data: ProductDataType }) {
+  const { state, dispatch } = useApp(); // Access the global app state and dispatch function.
+  const { setModalData } = useModal(); // Access the setModalData function to manage modal data.
+  const { setToastData } = useToast(); // Access the setToastData function to manage toast notifications.
+
+  // Destructure the product data.
   const {
     collection,
     nameToDisplay,
@@ -30,6 +44,7 @@ export default function Header({ data }: { data: ProductDataType }) {
     rating,
   } = data;
 
+  // Construct the product data for the shopping cart.
   const product: ShoppingCartType = {
     collection,
     images,
@@ -42,15 +57,17 @@ export default function Header({ data }: { data: ProductDataType }) {
     variantName,
     oldPrice: oldPriceTag,
     quantity: 1,
-    productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(/\./g, "")}`,
+    productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(/\./g, "")}`, // Replace all dots in the `productNumber` with empty strings.
     newTag,
     addedDate: new Date(),
     rating: rating,
   };
 
+  // Function to add the product to the wishlist.
   function addProductToList() {
     if (!state.favouriteLists || state.favouriteLists.length === 0) {
-      const newListId = crypto.randomUUID();
+      // If there are no lists, create a new list.
+      const newListId = crypto.randomUUID(); // Generate a random UUID for the new list.
 
       dispatch({
         type: "addProductsToList",
@@ -60,16 +77,18 @@ export default function Header({ data }: { data: ProductDataType }) {
         },
       });
 
+      // Show a toast notification that the product has been added to the wishlist.
       setToastData({
         open: true,
         text: `${product.collection} został zapisany na liście Moja lista.`,
         link: `/favourites/${newListId}`,
       });
     } else {
-      openSelectListModal();
+      openSelectListModal(); // Else open the modal for selecting a wishlist.
     }
   }
 
+  // Function to open the modal for selecting a wishlist.
   function openSelectListModal() {
     setModalData({
       type: "select-list",
@@ -77,6 +96,7 @@ export default function Header({ data }: { data: ProductDataType }) {
     });
   }
 
+  // Check if the product is already in any wishlist.
   const isProductAlreadyInAnyList =
     state.favouriteLists &&
     state.favouriteLists.some(
@@ -91,10 +111,10 @@ export default function Header({ data }: { data: ProductDataType }) {
         <span>
           {" "}
           {nameToDisplay}, {variantName}
+          {/* Display the size if it is not "universal". */}
           {size !== "universal" && (
             <>
-              , &nbsp;
-              <button>{size}</button>
+              , &nbsp;<button>{size}</button>
             </>
           )}
         </span>
@@ -103,7 +123,7 @@ export default function Header({ data }: { data: ProductDataType }) {
       <AddToWishListBtn
         variant="light"
         onClick={addProductToList}
-        active={isProductAlreadyInAnyList}
+        active={isProductAlreadyInAnyList} // Set the button to active if the product is already in any wishlist. Visually icon is filled instead of outlined.
       />
     </header>
   );

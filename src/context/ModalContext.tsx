@@ -12,7 +12,7 @@ import {
 // Components
 import { Modal } from "../layout/Modal/Modal";
 // Types
-import type { ModalDataType } from "../pages/ProductPage/types/ModalTypes";
+import type { ModalDataType } from "../layout/Modal/types/ModalTypes";
 
 type ModalContextType = {
   modalID: string;

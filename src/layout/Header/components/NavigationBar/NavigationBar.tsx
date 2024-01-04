@@ -11,7 +11,7 @@ import type {
   ModalPostalCodeType,
   ModalProductsMenuType,
   ModalRoomsMenuType,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+} from "../../../Modal/types/ModalTypes";
 // Constants
 import { mainNavigationList } from "../../../../constants/navigationLists";
 // Icons

@@ -14,7 +14,7 @@ import { productLink } from "../../../../constants/links";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 // Types
-import type { ModalDataImagePreviewType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalDataImagePreviewType } from "../../types/ModalTypes";
 // Style
 import "./index.scss";
 

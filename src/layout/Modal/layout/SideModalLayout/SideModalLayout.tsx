@@ -32,7 +32,7 @@ import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/Loa
 import Tag from "../../../../components/ui/Tag/Tag";
 import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
 // Types
-import type { SideModalLayoutType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { SideModalLayoutType } from "../../types/ModalTypes";
 // Icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 // Style

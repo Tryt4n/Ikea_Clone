@@ -6,7 +6,7 @@ import {
   secondaryProductsNavigationList,
 } from "../../../../constants/navigationLists";
 // Types
-import type { ModalProductsMenuType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalProductsMenuType } from "../../types/ModalTypes";
 // Style
 import "./index.scss";
 

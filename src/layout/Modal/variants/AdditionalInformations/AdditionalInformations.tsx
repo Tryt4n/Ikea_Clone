@@ -3,7 +3,7 @@ import useModal from "../../../../hooks/useModal";
 // Components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Types
-import type { ShoppingCartAsideMenuInformationList } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ShoppingCartAsideMenuInformationList } from "../../types/ModalTypes";
 // Style
 import "./index.scss";
 

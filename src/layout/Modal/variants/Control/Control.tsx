@@ -21,7 +21,7 @@ import type {
   MoreOptionsForProductInListModal,
   ShoppingCartControlModal,
   ShoppingCartProductControlModal,
-} from "../../../../pages/ProductPage/types/ModalTypes";
+} from "../../types/ModalTypes";
 import type { FavouritesListType } from "../../../../context/AppContext";
 // Style
 import "./index.scss";

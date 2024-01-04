@@ -1,7 +1,7 @@
 // Hooks
 import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
 // Types
-import type { ModalDataChooseSizeType } from "../../../../pages/ProductPage/types/ModalTypes";
+import type { ModalDataChooseSizeType } from "../../types/ModalTypes";
 
 export default function ChooseSize({ data }: { data: ModalDataChooseSizeType }) {
   const { path } = data;

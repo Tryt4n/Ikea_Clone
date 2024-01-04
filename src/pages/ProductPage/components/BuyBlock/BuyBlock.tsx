@@ -1,40 +1,57 @@
-// React
+// Import react dependencies
 import { ChangeEvent, useState } from "react";
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
 import useToast from "../../../../hooks/useToast";
 import useProduct from "../../context/useProduct";
-// Components
+// Import components
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Types
+// Import types
 import type { ProductDataType } from "../../types/ProductDataType";
-// Style
+// Import styles
 import "./index.scss";
 
+/**
+ * BuyBlock Component
+ *
+ * This is a React functional component. It displays a form that allows users to select a quantity of a product and add it to the shopping cart.
+ *
+ * @param {ProductDataType} product - The product data to be displayed and added to the shopping cart.
+ *
+ * @example
+ * <BuyBlock product={productData} />
+ *
+ * @returns JSX element that consists of a form with a QuantityInput component and a submit button. The QuantityInput allows users to select a quantity, and the submit button adds the selected quantity of the product to the shopping cart.
+ */
+
 export default function BuyBlock({ product }: { product: ProductDataType }) {
-  const { dispatch } = useApp();
-  const { setToastData } = useToast();
-  const { path } = useProduct();
+  const { dispatch } = useApp(); // Access the dispatch function from the global app state.
+  const { setToastData } = useToast(); // Access the setToastData function to manage toast notifications.
+  const { path } = useProduct(); // Access the product context.
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1); // State for the selected quantity of the product.
 
+  // Function to handle changes in the quantity input.
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
-    const filteredValue = inputValue.replace(/\D/g, "");
-    const parsedValue = parseInt(filteredValue, 10) || 1;
+    const filteredValue = inputValue.replace(/\D/g, ""); // Remove non-digit characters.
+    const parsedValue = parseInt(filteredValue, 10) || 1; // Parse the filtered value to an integer, default to 1 if parsing fails.
 
-    setQuantity(parsedValue);
+    setQuantity(parsedValue); // Update the quantity state.
   }
 
+  // Function to handle changes in the quantity via the QuantityInput component.
   function handleQuantityChange(delta: -1 | 1) {
     setQuantity((prevQuantity) => {
-      const newQuantity = prevQuantity + delta;
+      const newQuantity = prevQuantity + delta; // Calculate the new quantity.
 
+      // Ensure the new quantity is within the range [1, 99].
       return Math.min(Math.max(newQuantity, 1), 99);
     });
   }
 
+  // Destructure the product data.
   const {
     productNumber,
     collection,
@@ -50,6 +67,7 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
     rating,
   } = product;
 
+  // Function to add the product to the shopping cart.
   function addToShoppingCart() {
     dispatch({
       type: "addToShoppingCart",
@@ -73,8 +91,9 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
         },
       ],
     });
-    setQuantity(1);
+    setQuantity(1); // Reset the quantity state.
 
+    // Show a toast notification that the product has been added to the shopping cart.
     setToastData({
       open: true,
       text: `${collection} dodano do koszyka.`,
@@ -82,22 +101,23 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
     });
   }
 
+  // Render the component.
   return (
     <form
       className="buy-block"
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={(e) => e.preventDefault()} // Prevent the default form submission behavior.
     >
       <QuantityInput
         quantity={quantity}
-        inputFunction={handleInputChange}
-        onChangeFunction={handleQuantityChange}
+        inputFunction={handleInputChange} // Handle changes in the quantity input.
+        onChangeFunction={handleQuantityChange} // Handle changes in the quantity via the buttons in QuantityInput component.
       />
 
       <Btn
         variant="blue"
         type="submit"
-        aria-live="polite"
-        onClick={addToShoppingCart}
+        aria-live="polite" // Announce changes in the button text to screen readers.
+        onClick={addToShoppingCart} // Add the product to the shopping cart when the button is clicked.
       >
         Dodaj {quantity > 1 && `${quantity} szt. `}do koszyka
       </Btn>
