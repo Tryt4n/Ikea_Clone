@@ -15,7 +15,7 @@ type ListItemPropsType = {
  *
  * This component displays a list item with content that can be either a link or a button.
  *
- * @param as - The HTML element to use for the list item content.
+ * @param as - The HTML element to use for the list item content. Defaults to "a".
  * @param link - The href for the "a" element.
  * @param children - The content of the list item.
  * @param className - Optional additional CSS classes.

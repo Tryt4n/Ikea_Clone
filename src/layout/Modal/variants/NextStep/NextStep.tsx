@@ -1,7 +1,14 @@
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Styles
+// Import styles
 import "./index.scss";
+
+/**
+ * `NextStep` is a React component that displays a list of benefits and two buttons for the user to continue with an IKEA Family card or as a guest.
+ * It uses the `Btn` component to create the buttons.
+ *
+ * @returns {JSX.Element} The rendered `NextStep` component.
+ */
 
 export default function NextStep() {
   return (

@@ -5,7 +5,7 @@ import { getPrice } from "../../../utils/helpers";
 // Import constants
 import { listDisplays } from "./constants";
 // Import types
-import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext";
+import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext/AppContext";
 
 // Define the type for the ListContext
 type ListContextType = {

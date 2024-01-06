@@ -8,7 +8,7 @@ import { startViewTransition } from "../../../../../utils/helpers";
 // Import components
 import QuantityInput from "../../../../../components/features/QuantityInput/QuantityInput";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
 
 /**
  * QuantityBlock is a functional component that receives a productNumber and quantity as props.

@@ -3,9 +3,9 @@ import { Dispatch, ReactNode, createContext, useEffect, useMemo, useReducer } fr
 // date-fns
 import compareDesc from "date-fns/compareDesc";
 // Types
-import type { ProductDataType } from "../pages/ProductPage/types/ProductDataType";
+import type { ProductDataType } from "../../pages/ProductPage/types/ProductDataType";
 // Constants
-import { ShopType, shopsList } from "../constants/shopsList";
+import { ShopType, shopsList } from "../../constants/shopsList";
 
 type AppContextType = {
   state: ReducerStateType;
@@ -40,7 +40,7 @@ export type FavouritesListType = {
   products?: ShoppingCartType[];
 };
 
-type ReducerStateType = {
+export type ReducerStateType = {
   postalCode: string;
   isPostalCodeErrorMessageVisible: boolean;
   postalCodeErrorMessage: string;

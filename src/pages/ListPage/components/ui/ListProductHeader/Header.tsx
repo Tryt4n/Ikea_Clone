@@ -3,7 +3,7 @@ import { useState } from "react";
 // Import components
 import Tag from "../../../../../components/ui/Tag/Tag";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
 
 // Define types for the component props
 type HeaderType = {

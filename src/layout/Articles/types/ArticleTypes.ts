@@ -1,4 +1,4 @@
-// Types
+// Import types
 import type { CarouselSliderArticleType } from "../CarouselSliderArticle";
 import type { ImageCardsCollectionSliderType } from "../ImagesCardsCollectionSlider";
 import type { ImgCardsArticleType } from "../ImgCardsArticle";

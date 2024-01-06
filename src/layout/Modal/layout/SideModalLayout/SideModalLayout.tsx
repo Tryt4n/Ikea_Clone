@@ -1,9 +1,10 @@
-// React
-import { ReactElement, Suspense, lazy } from "react";
-// Hooks
+// Import react dependencies
+// import { Suspense, lazy, type ReactElement } from "react";
+import { Suspense, lazy } from "react";
+// Import custom hooks
 import useModal from "../../../../hooks/useModal";
 import useApp from "../../../../hooks/useApp";
-// Modal Variants
+// Import modal variants inner components by lazy loading
 const ChooseSize = lazy(() => import("../../variants/ChooseSize/ChooseSize"));
 const ChooseColor = lazy(() => import("../../variants/ChooseColor/ChooseColor"));
 const PostalCode = lazy(() => import("../../variants/PostalCode/PostalCode"));
@@ -26,145 +27,49 @@ const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
 const ManageProductsInList = lazy(
   () => import("../../variants/ManageProductsInList/ManageProductsInList")
 );
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
-import Tag from "../../../../components/ui/Tag/Tag";
+// import Tag from "../../../../components/ui/Tag/Tag";
 import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
-// Types
+// Import utility functions
+import { getHeader } from "./utils/getHeader";
+// Import types
 import type { SideModalLayoutType } from "../../types/ModalTypes";
-// Icons
+// Import icons
 import CloseIcon from "../../../../Icons/CloseIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+// Define the prop types for component
 export type SideModalLayoutTypeProps = { data: SideModalLayoutType };
 
+/**
+ * `SideModalLayout` is a React component that renders a side modal with different content based on the `type` prop.
+ * It uses several inner components (`ChooseSize`, `ChooseColor`, `PostalCode`, `PrefferedShop`, `ChosenShop`, `Login`, `AdditionalInformations`, `NextStep`, `Control`, `AddProductByNumber`, `NameList`, `DeleteListConfirmation`, `SelectList`, `ManageProductsInList`) to provide different modal content. Content is lazy loaded using the `Suspense` component for better performance. While the content is loading, a `LoadingSpinner` component is rendered.
+ *
+ * @component
+ * @param {string} props.data.type - The type of the modal. It can be one of the following: "choose-size", "choose-color", "choose-shop", "postal-code", "preffered-shop", "chosen-shop", "log-in", "refund", "data-encryption", "next-step", "product-control", "shopping-cart-control", "list-control", "more-options-for-product-in-list", "add-product-by-number", "create-list", "create-list-with-products", "change-list-name", "delete-list-confirmation", "select-list", "move-to-other-list", "move-product-from-one-list-to-another", "select-list-with-products", "manage-products-in-list".
+ * @returns {JSX.Element} The rendered `SideModalLayout` component.
+ */
+
 export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
-  const { closeModal, modalData } = useModal();
-  const { state } = useApp();
+  const { state } = useApp(); // Get state from useApp custom hook
+  const { modalData, closeModal } = useModal(); // Get modalData and closeModal from useModal custom hook
 
-  const { type } = data;
+  const { type } = data; // Get the type of the modal
 
-  let header: string | ReactElement;
+  // Get the header for the modal using the getHeader utility function
+  const header = modalData ? getHeader(type, modalData as SideModalLayoutType, state) : "";
 
-  const productControlHeader =
-    modalData && modalData.type === "product-control"
-      ? (state.shoppingCart || []).find((product) => {
-          return product.productNumber === modalData.product.productNumber;
-        })?.collection
-      : "";
-
-  const moreOptionsForProductInListHeader =
-    modalData && modalData.type === "more-options-for-product-in-list"
-      ? `Więcej możliwości dla ${modalData.products[0].collection}`
-      : "";
-
-  switch (type) {
-    case "choose-size":
-      header = "Wybierz rozmiar";
-      break;
-    case "choose-color":
-      header = "Wybierz kolor";
-      break;
-    case "choose-shop":
-      header = "Znajdź swój preferowany sklep";
-      break;
-    case "postal-code":
-      header = "Użyj swojej lokalizacji";
-      break;
-    case "preffered-shop":
-      header = "Wybierz swój preferowany sklep";
-      break;
-    case "chosen-shop":
-      header = state.chosenShop ? state.chosenShop.name : "";
-      break;
-    case "log-in":
-      header = "Zaloguj się";
-      break;
-    case "product-information":
-      header = "Informacje o produkcie";
-      break;
-    case "items-included":
-      header = "Elementu w zestawie";
-      break;
-    case "dimensions":
-      header = "Wymiary";
-      break;
-    case "ratings":
-      header = "Opinie";
-      break;
-    case "installment-purchase":
-      header = "Na raty w IKEA";
-      break;
-    case "refund":
-      header = "W zmianie zdania nie ma nic złego!";
-      break;
-    case "data-encryption":
-      header = "Ta strona jest bezpieczna";
-      break;
-    case "product-control":
-      header = productControlHeader ? productControlHeader : "";
-      break;
-    case "shopping-cart-control":
-      header = "Koszyk";
-      break;
-    case "add-product-by-number":
-      header = "Dodaj produkt, wpisując jego numer";
-      break;
-    case "next-step":
-      header = (
-        <>
-          <>Oszczędzaj 16,50 dzięki</>
-          &nbsp;
-          <Tag
-            variant="blue"
-            className="side-modal__header-tag"
-          >
-            Oferty dla Klubowiczów IKEA Family
-          </Tag>
-        </>
-      );
-      break;
-    case "create-list":
-      header = "Nadaj swojej liście nazwę";
-      break;
-    case "create-list-with-products":
-      header = "Nadaj swojej liście nazwę";
-      break;
-    case "list-control":
-      header = "Ustawienia";
-      break;
-    case "change-list-name":
-      header = "Zmień nazwę listy";
-      break;
-    case "delete-list-confirmation":
-      header = "Usuń swoją listę";
-      break;
-    case "select-list":
-      header = "Zapisz na swojej liście";
-      break;
-    case "move-to-other-list":
-    case "move-product-from-one-list-to-another":
-    case "select-list-with-products":
-      header = "Przenieś do innej listy";
-      break;
-    case "more-options-for-product-in-list":
-      header = moreOptionsForProductInListHeader;
-      break;
-    case "manage-products-in-list":
-      header = "Zarządzaj swoimi wyborami";
-      break;
-    default:
-      throw new Error("A case has been defined that does not exist.");
-  }
-
+  // Render the side modal with the appropriate header and content based on the type prop
   return (
     <>
       {data && (
         <>
           <header className="side-modal__header">
             <div className="side-modal__btns-wrapper">
+              {/* Render button with arrow back icon in some cases specified in the component */}
               <GoBackBtn type={type} />
 
               <Btn
@@ -172,20 +77,25 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
                 shape="circle"
                 className="side-modal__close-btn"
                 type="button"
-                onClick={closeModal}
+                onClick={closeModal} // Close the modal on click
               >
+                {/* Text is visually hidden but it is still available for screen readers and SEO purposes */}
                 <span className="visually-hidden">Zamknij</span>
                 <CloseIcon />
               </Btn>
             </div>
 
-            <h2 className={`side-modal__heading${type === "log-in" ? ` visually-hidden` : ""}`}>
+            <h2
+              className={`side-modal__heading${type === "log-in" ? ` visually-hidden` : ""}`} // Hide visually the heading for the "log-in" type but keep it available for screen readers and SEO purposes
+            >
               {header}
             </h2>
           </header>
 
           <div className="side-modal__content-wrapper scrollbar-style scrollbar-style--thin">
-            <Suspense fallback={<LoadingSpinner />}>
+            <Suspense
+              fallback={<LoadingSpinner />} // Render a loading spinner while the content is loading
+            >
               {type === "choose-size" && <ChooseSize data={data} />}
 
               {type === "choose-color" && <ChooseColor data={data} />}

@@ -1,15 +1,38 @@
-// React
+/**
+ * Footer.tsx
+ *
+ * This file contains the definition of the Footer component. This component serves as the footer
+ * for the application and is responsible for rendering various sections including feature sections,
+ * accordions, navigation lists, and a sub-list.
+ *
+ * The Footer component uses the `useMemo` hook from React to compute the current year for the copyright notice.
+ *
+ * The component uses several child components, including `FeatureSection`, `FooterAccordions`, `NavList`, `ChangeCountry`, and `SubList`.
+ *
+ * The `footerLinksList` and `footerPaymentsList` constants from the `footerLists` module are used to provide the data for the navigation lists.
+ */
+
+// Import react dependencies
 import { useMemo } from "react";
-// Components
+// Import components
 import { FeatureSection } from "./components/FeatureSection/FeatureSection";
 import { FooterAccordions } from "./components/FooterAccordions/FooterAccordions";
 import { NavList } from "./components/NavList/NavList";
 import ChangeCountry from "../../components/ui/ChangeCountryBtn/ChangeCountry";
 import SubList from "./components/SubList/SubList";
-// Constants
+// Import constants
 import { footerLinksList, footerPaymentsList } from "../../constants/footerLists";
-// Style
+// Import styles
 import "./index.scss";
+
+/**
+ * Footer
+ *
+ * Component that serves as the footer for the application. It renders various sections including feature sections,
+ * accordions, navigation lists, and a sub-list.
+ *
+ * @returns {JSX.Element} The Footer component.
+ */
 
 export default function Footer() {
   const date = useMemo(() => {
@@ -19,8 +42,11 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="page-container">
+        {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
         <h2 className="visually-hidden">Stopka</h2>
+
         <div className="main-layout footer__features-container">
+          {/* The `FeatureSection` compound component is used to render the feature sections */}
           <FeatureSection>
             <FeatureSection.Header>Klub IKEA Family</FeatureSection.Header>
             <FeatureSection.Body>
@@ -45,39 +71,47 @@ export default function Footer() {
           className="main-layout footer__accordions-container"
           aria-labelledby="main-nav-footer"
         >
+          {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
           <h3
             id="main-nav-footer"
             className="visually-hidden"
           >
             Główna Nawigacja Stópki
           </h3>
+
           <FooterAccordions />
         </nav>
 
         <div className="main-layout footer__icons-links-container">
           <div className="footer__icons-links-inner-container">
             <nav aria-labelledby="socials">
+              {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
               <h3
                 id="socials"
                 className="visually-hidden"
               >
                 Sociale
               </h3>
+
               <NavList
                 list={footerLinksList}
                 iconsRounded
               />
             </nav>
+
             <nav aria-labelledby="payments">
+              {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
               <h3
                 id="payments"
                 className="visually-hidden"
               >
                 Systemy Płatności
               </h3>
+
               <NavList list={footerPaymentsList} />
             </nav>
           </div>
+
           <ChangeCountry
             href="#"
             className="footer__change-country"

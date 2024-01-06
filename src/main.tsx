@@ -7,9 +7,9 @@ import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes";
 
 // Importing Context providers
-import { AppContextProvider } from "./context/AppContext";
-import { ToastContextProvider } from "./context/ToastContext";
-import { ModalContextProvider } from "./context/ModalContext";
+import { AppContextProvider } from "./context/AppContext/AppContext";
+import { ToastContextProvider } from "./context/ToastContext/ToastContext";
+import { ModalContextProvider } from "./context/ModalContext/ModalContext";
 
 // Importing global styles
 import "./style.scss";

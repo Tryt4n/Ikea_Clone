@@ -15,7 +15,7 @@ import { startViewTransition } from "../../../../../utils/helpers";
 // Import constants
 import { productLink as startOfLink } from "../../../../../constants/links";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
 // Import styles
 import "./index.scss";
 

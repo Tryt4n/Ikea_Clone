@@ -1,57 +1,70 @@
-// Custom Hooks
+// Import custom hooks
 import useModal from "../../../../hooks/useModal";
-import useToast from "../../../../hooks/useToast";
-import useApp from "../../../../hooks/useApp";
 import useWindowSize from "../../../../hooks/useWindowSize";
-// Compound Components
+// Import compound components
 import Article from "../../../../compoundComponents/Article/Article";
-import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 import CollectionProductsList from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
-import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
-// Types
+import { ProductItem } from "./InnerComponents/ProductItem/ProductItem";
+// Import types
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 import type { ModalImageWithProductsType } from "../../types/ModalTypes";
 import type { ProductDataType } from "../../../../pages/ProductPage/types/ProductDataType";
-import type { ShoppingCartType } from "../../../../context/AppContext";
-// Constants
-import { productLink as imageLink } from "../../../../constants/links";
-// Icons
+import type { ShoppingCartType } from "../../../../context/AppContext/AppContext";
+// Import icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import InstagramIcon from "../../../../Icons/InstagramIcon";
-import ShoppingCartAddIcon from "../../../../Icons/ShoppingCartAddIcon";
-// Style
+// Import styles
 import "./index.scss";
 
-type extendedProductType = ProductType & {
-  imgSrc?: string;
-  imgHoverSrc?: string;
-  rating?: {
-    rate: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-    quantity: number;
-  };
-};
-
+// Define the props type for the component
 export type ImageWithProductsPropsType = {
   data: ModalImageWithProductsType;
 };
 
+// Define the props type for the product
+export type extendedProductType = ProductType & {
+  // The type of the product
+  imgSrc?: string; // The image source
+  imgHoverSrc?: string; // The image source for the hover state
+  rating?: {
+    rate: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+    quantity: number;
+  }; // The rating
+};
+
+/**
+ * ImageWithProducts is a React component that displays a modal with an image and a list of products.
+ * Each product has a link to its own page, an image, a title, a subtitle, a price, and buttons to add the product to the shopping cart or wishlist.
+ * The component uses several custom hooks for managing modal state, toast notifications, app state, and window size.
+ * It also fetches product data from a remote server when a product is added to the shopping cart or wishlist.
+ *
+ * @param {ModalImageWithProductsType} props.data - The data for the modal and the products to display.
+ *
+ * @example
+ * <ImageWithProducts data={data} />
+ */
+
 export default function ImageWithProducts({ data }: ImageWithProductsPropsType) {
-  const { state, dispatch } = useApp();
-  const { modalData, setModalData, closeModal } = useModal();
-  const { setToastData } = useToast();
-  const { width, height } = useWindowSize();
+  const { closeModal } = useModal(); // Get the closeModal from the useModal custom hook
+  const { width, height } = useWindowSize(); // Get the window size from the useWindowSize custom hook
 
-  const { productsData } = data;
+  const { productsData } = data; // Get the products data from the props
 
+  /**
+   * Fetches product data from a remote server.
+   *
+   * @async
+   * @param {string} productLink - The link to the product page.
+   * @returns {Promise<ShoppingCartType|null>} The fetched product data or null if an error occurred.
+   */
   async function fetchedData(productLink: string): Promise<ShoppingCartType | null> {
     const URL = `https://tryt4n.github.io/Ikea-data/server/${productLink}/data.json`;
 
     try {
-      const response = await fetch(URL);
-      const fetchedData: ProductDataType = await response.json();
+      const response = await fetch(URL); // Fetch the data
+      const fetchedData: ProductDataType = await response.json(); // Convert the response to JSON
 
       const {
         productNumber,
@@ -66,7 +79,7 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         images,
         newTag,
         rating,
-      } = fetchedData;
+      } = fetchedData; // Destructure the fetched data
 
       const product: ShoppingCartType = {
         quantity: 1,
@@ -84,228 +97,76 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
         newTag,
         addedDate: new Date(),
         rating: rating,
-      };
+      }; // Create a product object
 
-      return product;
+      return product; // Return the product object
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error); // Log the error
       return null;
     }
-  }
-
-  async function addToShoppingCart(productLink: string) {
-    const product = await fetchedData(productLink);
-
-    if (product) {
-      dispatch({
-        type: "addToShoppingCart",
-        payload: [product],
-      });
-    }
-
-    setToastData({
-      open: true,
-      text: `${product?.collection} dodano do koszyka.`,
-      link: "/shoppingcart",
-    });
-  }
-
-  async function addToShoppingList(productLink: string) {
-    const product = await fetchedData(productLink);
-
-    if ((!state.favouriteLists || state.favouriteLists.length === 0) && product) {
-      const newListId = crypto.randomUUID();
-
-      dispatch({
-        type: "addProductsToList",
-        payload: {
-          products: [product],
-          listId: newListId,
-        },
-      });
-
-      setToastData({
-        open: true,
-        text: `${product.collection} został zapisany na liście Moja lista.`,
-        link: `/favourites/${newListId}`,
-      });
-    } else if (product) {
-      setModalData({
-        type: "select-list",
-        product: product,
-        previousModal: modalData,
-      });
-    }
-  }
-
-  function checkIsProductAlreadyInAnyList(productLink: string) {
-    const regex = /(\d+)$/;
-    const matchResult = productLink.match(regex);
-
-    if (matchResult === null) return false;
-    const productNumber = matchResult[0];
-
-    const isProductAlreadyInAnyList =
-      state.favouriteLists &&
-      state.favouriteLists.some(
-        (list) =>
-          list.products &&
-          list.products.some(
-            (product) => product.productNumber.replace(/\./g, "") === productNumber
-          )
-      );
-
-    return isProductAlreadyInAnyList ? isProductAlreadyInAnyList : false;
   }
 
   return (
     <>
       <header className="image-with-products-modal__header">
         <h2 className="image-with-products-modal__heading">Wasze wnętrza</h2>
+
         <Btn
           variant="light"
           shape="circle"
           type="button"
-          onClick={closeModal}
+          onClick={closeModal} // Close the modal
         >
           <span className="visually-hidden">Zamknij</span>
           <CloseIcon />
         </Btn>
       </header>
 
-      {(width < 1000 || height < 700) && productsData.instagramUser && (
-        <div className="image-with-products-modal__instagram-nick-mobile">
-          <InstagramIcon />
-          <span>{productsData.instagramUser}</span>
-        </div>
-      )}
+      {
+        // If the window width is less than 1000px or the height is less than 700px and the instagram user exists, display the instagram user
+        (width < 1000 || height < 700) && productsData.instagramUser && (
+          <div className="image-with-products-modal__instagram-nick-mobile">
+            <InstagramIcon />
+            <span>{productsData.instagramUser}</span>
+          </div>
+        )
+      }
 
       <div className="image-with-products-modal__main-content">
-        {width >= 1000 && height >= 700 && (
-          <Article.ImgContainer className="image-with-products-modal__img-inner-wrapper">
-            <Article.Img
-              src={productsData.img.imgSrc}
-              srcSet={productsData.img.imgSrcSet}
-              alt={productsData.img.imgAlt}
-              aspectRatio={productsData.img.imgAspectRatio}
-              sizes="(min-width: 900px) 50vw, (max-width: 900px) 100vw, 100vw"
-            />
-            <CollectionProductsList products={productsData.products} />
-            {productsData.instagramUser && (
-              <Article.InstagramBadge>{productsData.instagramUser}</Article.InstagramBadge>
-            )}
-          </Article.ImgContainer>
-        )}
+        {
+          // If the window width is less than 1000px or the height is less than 700px, display the image with products
+          width >= 1000 && height >= 700 && (
+            <Article.ImgContainer className="image-with-products-modal__img-inner-wrapper">
+              <Article.Img
+                src={productsData.img.imgSrc}
+                srcSet={productsData.img.imgSrcSet}
+                alt={productsData.img.imgAlt}
+                aspectRatio={productsData.img.imgAspectRatio}
+                sizes="(min-width: 900px) 50vw, (max-width: 900px) 100vw, 100vw"
+              />
+              <CollectionProductsList products={productsData.products} />
+
+              {
+                // If the instagram user exists, display the instagram user
+                productsData.instagramUser && (
+                  <Article.InstagramBadge>{productsData.instagramUser}</Article.InstagramBadge>
+                )
+              }
+            </Article.ImgContainer>
+          )
+        }
 
         <ul className="image-with-products-modal__products-list">
-          {productsData.products.map((product: extendedProductType) => {
-            const {
-              id,
-              productLink,
-              productHeading,
-              productSubHeading,
-              topSellerTag,
-              newPriceTag,
-              productPriceInteger,
-              productQuantity,
-              productSizeInMeters,
-              imgHoverSrc,
-              imgSrc,
-              productPriceDecimal,
-              rating,
-            } = product;
-
-            const mainImgSrc = `${imageLink}/${imgSrc}_s5.jpg?f=xxs`;
-            const mainImgSrcSet = `${imageLink}/${imgSrc}_s5.jpg?f=m 600w, ${imageLink}/${imgSrc}_s5.jpg?f=xxs 300w, ${imageLink}/${imgSrc}_s5.jpg?f=xxxs 160w, ${imageLink}/${imgSrc}_s5.jpg?f=u 80w`;
-            const hoverImgSrc = `${imageLink}/${imgHoverSrc}_s5.jpg?f=xxs`;
-            const hoverImgSrcSet = `${imageLink}/${imgHoverSrc}_s5.jpg?f=m 600w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=xxs 300w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=xxxs 160w, ${imageLink}/${imgHoverSrc}_s5.jpg?f=u 80w`;
-            const imgSizes = "(max-width: 400px) 80px, (max-width: 1450px) 160px, 300px";
-
-            return (
-              <li key={id}>
-                <a
-                  href={productLink}
-                  className="image-with-products-modal__product"
-                >
-                  <div className="image-with-products-modal__product-img-container">
-                    <div className="image-with-products-modal__thumbnail-wrapper">
-                      <img
-                        src={mainImgSrc}
-                        srcSet={mainImgSrcSet}
-                        sizes={imgSizes}
-                        alt={`${productHeading} ${productSubHeading}`}
-                        className="image-with-products-modal__thumbnail-img"
-                      />
-                      <img
-                        src={hoverImgSrc}
-                        srcSet={hoverImgSrcSet}
-                        sizes={imgSizes}
-                        alt="Zdjęcie produktu pokazujące jego wykorzystanie"
-                        className="image-with-products-modal__thumbnail-img-hover"
-                      />
-                    </div>
-
-                    {topSellerTag && <strong className="top-seller">Top Seller</strong>}
-                  </div>
-
-                  <div className="image-with-products-modal__product-text-wrapper">
-                    {newPriceTag && (
-                      <em className="image-with-products-modal__product-new-price-tag">
-                        Nowa niższa cena
-                      </em>
-                    )}
-
-                    <strong className="image-with-products-modal__product-heading">
-                      {productHeading}
-                    </strong>
-                    <p className="image-with-products-modal__product-subheading">
-                      {productSubHeading}
-                    </p>
-
-                    <Collection.ListItemPrice
-                      price={productPriceInteger}
-                      priceDecimal={productPriceDecimal}
-                      quantity={productQuantity}
-                      sizeInMeters={productSizeInMeters}
-                    />
-
-                    {newPriceTag && (
-                      <Collection.ListItemLastPriceDescription
-                        lastPrice={newPriceTag.lastItemPriceInteger}
-                        lastPriceDecimal={newPriceTag.lastItemPriceDecimal}
-                        className="image-with-products-modal__product-last-price-tag"
-                      />
-                    )}
-
-                    {rating && <RatingBlock rating={rating} />}
-                  </div>
-
-                  <div className="image-with-products-modal__product-btns-wrapper">
-                    <Btn
-                      variant="blue"
-                      shape="circle"
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        addToShoppingCart(productLink);
-                      }}
-                    >
-                      <span className="visually-hidden">Dodaj produkt do koszyka</span>
-                      <ShoppingCartAddIcon />
-                    </Btn>
-                    <AddToWishListBtn
-                      variant="light-with-border"
-                      active={checkIsProductAlreadyInAnyList(productLink)}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        addToShoppingList(productLink);
-                      }}
-                    />
-                  </div>
-                </a>
-              </li>
-            );
-          })}
+          {
+            // Map through the products data and display each product
+            productsData.products.map((product: extendedProductType) => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                fetchedData={fetchedData}
+              />
+            ))
+          }
         </ul>
       </div>
     </>

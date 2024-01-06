@@ -1,57 +1,91 @@
-// React
-import { AnchorHTMLAttributes, ReactNode, useState } from "react";
-// Intersection Observer
+/**
+ * Navbar.tsx
+ *
+ * This file contains the definition of the Navbar component. This component serves as the navigation bar
+ * for the application and is responsible for rendering the navigation links, search bar, and other UI elements.
+ *
+ * The Navbar component uses several custom hooks to manage its state and behavior, including `useApp`, `useModal`, `useWindowSize`, and `useEventListener`.
+ * It also uses the `useInView` hook from `react-intersection-observer` to determine whether the navbar is in view.
+ *
+ * The component uses several child components, including `HamburgerButton`, `LoginBtn`, `SearchBar`, `ListElement`, and `ShoppingCart`.
+ * It also uses several icons, including `IkeaLogo`, `HeartIcon`, and `MagnifierIcon`.
+ */
+
+// Import react dependencies
+import { useState } from "react";
+// Import react-intersection-observer hook
 import { useInView } from "react-intersection-observer";
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import useEventListener from "../../../../hooks/useEventListener";
-// Components
+// Import components
 import HamburgerButton from "../../../../components/ui/HamburgerBtn/HamburgerButton";
 import LoginBtn from "../../../../components/ui/LoginBtn/LoginBtn";
-// Icons
+import { SearchBar } from "./InnerComponents/SearchBar/SearchBar";
+import { ListElement } from "./InnerComponents/ListElement/LinkElement";
+import { ShoppingCart } from "./InnerComponents/ShoppingCart/ShoppingCart";
+// Import icons
 import IkeaLogo from "../../../../Icons/IkeaLogo";
 import HeartIcon from "../../../../Icons/HeartIcon";
-import ShoppingCartIcon from "../../../../Icons/ShoppingCartIcon";
 import MagnifierIcon from "../../../../Icons/MagnifierIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+/**
+ * Navbar
+ *
+ * Component that serves as the navigation bar for the application. It renders the navigation links, search bar, and other UI elements.
+ *
+ * The component uses several custom hooks to manage its state and behavior, including `useApp`, `useModal`, `useWindowSize`, and `useEventListener`.
+ * It also uses the `useInView` hook from `react-intersection-observer` to determine whether the navbar is in view.
+ *
+ * The `handleScroll` function is used to handle the scroll event and update the state of the component accordingly.
+ *
+ * @returns {JSX.Element} The Navbar component.
+ */
+
 export default function Navbar() {
-  const { isDesktop } = useApp();
-  const { modalData } = useModal();
-  const { width } = useWindowSize();
+  const { isDesktop } = useApp(); // Get the `isDesktop` property from the application context
+  const { modalData } = useModal(); // Get the modal data from the modal context
+  const { width } = useWindowSize(); // Get the window size from the window size context
 
   const [navbarRef, inView] = useInView({
     triggerOnce: false,
-  });
+  }); // Get the navbar reference and whether the navbar is in view from the `useInView` hook
 
-  const [isScrolledToTop, setIsScrolledToTop] = useState(true);
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState("none");
+  const [isScrolledToTop, setIsScrolledToTop] = useState(true); // State to determine whether the navbar is scrolled to the top of the page
+  const [prevScrollY, setPrevScrollY] = useState(0); // State to store the previous scroll position
+  const [scrollDirection, setScrollDirection] = useState("none"); // State to store the scroll direction
 
   function handleScroll() {
-    if (!isDesktop) return;
+    if (!isDesktop) return; // If the device is not a desktop, return
 
-    const currentScrollY = window.scrollY;
-    const isTop = currentScrollY === 0;
+    const currentScrollY = window.scrollY; // Get the current scroll position
+    const isTop = currentScrollY === 0; // Determine whether the navbar is at the top of the page
+
+    // If the navbar is not at the top of the page and the user is scrolling up, set the `isScrolledToTop` state to `true` to hide the navbar and the `scrollDirection` state to "up" to indicate that the user is scrolling up the page
     if (!isTop && currentScrollY < prevScrollY) {
       setIsScrolledToTop(true);
     } else {
+      // Otherwise, set the `isScrolledToTop` state to `false` to show the navbar and the `scrollDirection` state to "down" to indicate that the user is scrolling down the page
       setIsScrolledToTop(false);
     }
-    setPrevScrollY(currentScrollY);
+    setPrevScrollY(currentScrollY); // Set the previous scroll position to the current scroll position
 
+    // If the user is scrolling down the page, set the `scrollDirection` state to "down" to indicate that the user is scrolling down the page
     if (currentScrollY > prevScrollY) {
       setScrollDirection("down");
     } else if (currentScrollY < prevScrollY) {
+      // Otherwise, set the `scrollDirection` state to "up" to indicate that the user is scrolling up the page
       setScrollDirection("up");
     }
   }
 
-  useEventListener<Event>("scroll", handleScroll);
+  useEventListener<Event>("scroll", handleScroll); // Add a scroll event listener to the window to handle the scroll event and update the state of the component accordingly
 
+  // Define the classes for the navbar
   const navbarInnerClasses = `navbar__inner${!inView ? " scrolled" : ""}${
     !modalData?.type && !inView && isScrolledToTop && scrollDirection !== "down" ? " slideDown" : ""
   }${
@@ -61,7 +95,7 @@ export default function Navbar() {
   return (
     <div
       className="main-layout navbar"
-      ref={navbarRef}
+      ref={navbarRef} // Set the reference for the navbar
     >
       <div className={navbarInnerClasses}>
         <div className="navbar__inner-container">
@@ -71,13 +105,16 @@ export default function Navbar() {
               aria-label="Idź na stronę główną."
             >
               <IkeaLogo />
+              {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Strona głowna</span>
             </a>
           </div>
 
+          {/* If the navbar is in view or the window width is greater than or equal to 700px, render the search bar */}
           {(inView || width >= 700) && <SearchBar />}
 
           <ul className="navbar__icons-list icons">
+            {/* // If the navbar is not in view and the window width is less than 700px, render the search bar icons instead of full size searchbar */}
             {!inView && width < 700 && (
               <ListElement as="button">
                 <MagnifierIcon />
@@ -88,8 +125,8 @@ export default function Navbar() {
             <ListElement className={`${width >= 1200 ? "self-align" : ""}`}>
               <LoginBtn
                 className="btn-container__svg-wrapper"
-                shape={width < 1200 ? "circle" : "oval"}
-                short={width < 1200}
+                shape={width < 1200 ? "circle" : "oval"} // If the window width is less than 1200px, render the login button with a circular shape
+                short={width < 1200} // If the window width is less than 1200px, render the login button with a short width
               />
             </ListElement>
 
@@ -98,6 +135,7 @@ export default function Navbar() {
               href="/favourites"
             >
               <HeartIcon />
+              {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Lista zakupowa</span>
             </ListElement>
 
@@ -109,6 +147,7 @@ export default function Navbar() {
               <ShoppingCart />
             </ListElement>
 
+            {/* If the window width is less than 1200px, render the hamburger button */}
             {width < 1200 && (
               <ListElement container="false">
                 <HamburgerButton />
@@ -118,114 +157,5 @@ export default function Navbar() {
         </div>
       </div>
     </div>
-  );
-}
-
-function SearchBar() {
-  return (
-    <form
-      className="navbar__searchbar-wrapper searchbar"
-      autoComplete="off"
-      onSubmit={(e) => e.preventDefault()}
-    >
-      <label
-        htmlFor="search-product"
-        className="visually-hidden"
-      >
-        Czego szukasz?
-      </label>
-      <div className="navbar__searchbar-icon">
-        <MagnifierIcon />
-      </div>
-      <input
-        type="search"
-        name="search-product"
-        id="search-product"
-        className="navbar__searchbar"
-        placeholder="Czego szukasz?"
-      />
-    </form>
-  );
-}
-
-function ListElement(props: ButtonProps | LinkProps) {
-  return props.as === "link" ? <LinkElement {...props} /> : <ButtonElement {...props} />;
-}
-
-type ButtonProps = {
-  children: ReactNode;
-  as?: "button";
-  className?: string;
-  container?: "true" | "false";
-};
-
-function ButtonElement({ children, className, container = "true" }: ButtonProps) {
-  return (
-    <li
-      className={`${container === "true" ? "btn-container" : ""}${
-        className ? ` ${className}` : ""
-      }`}
-    >
-      {children}
-    </li>
-  );
-}
-
-type LinkProps = {
-  children: ReactNode;
-  as: "link";
-  className?: string;
-  link?: string;
-  container?: "true" | "false";
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
-
-function LinkElement({ children, className, link = "#", container = "true", ...props }: LinkProps) {
-  return (
-    <li
-      className={`${container === "true" ? "btn-container" : ""}${
-        className ? ` ${className}` : ""
-      }`}
-    >
-      <a
-        href={link}
-        className="btn-container__svg-wrapper"
-        {...props}
-      >
-        {children}
-      </a>
-    </li>
-  );
-}
-
-function ShoppingCart() {
-  const { state } = useApp();
-
-  function calculateShoppingCartItemsQuantity() {
-    if (!state.shoppingCart) return;
-
-    let value: number = 0;
-    state.shoppingCart.map((product) => {
-      value = value += product.quantity;
-    });
-
-    return value;
-  }
-
-  return (
-    <>
-      <ShoppingCartIcon />
-      <span className="visually-hidden">Koszyk</span>
-      {state && state.shoppingCart && state.shoppingCart.length > 0 && (
-        <>
-          <span className="visually-hidden">Ilość przedmiotów w koszyku:</span>
-          <span
-            className="shopping-cart-badge"
-            aria-live="polite"
-          >
-            {calculateShoppingCartItemsQuantity()}
-          </span>
-        </>
-      )}
-    </>
   );
 }

@@ -2,7 +2,7 @@ import type { Params } from "react-router-dom";
 import type { ProductDataType } from "../../../pages/ProductPage/types/ProductDataType";
 import type { CardCollectionType } from "../../Articles/components/ImageCardCollection/ImageCardCollection";
 import type { DisplayedImgType } from "../../../pages/ProductPage/context/ProductContext";
-import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext";
+import type { FavouritesListType, ShoppingCartType } from "../../../context/AppContext/AppContext";
 
 export type ModalDataChooseSizeType = {
   readonly type: "choose-size";

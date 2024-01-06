@@ -1,10 +1,10 @@
-// Custom Hooks
+// Import custom hooks
 import useApp from "../../../../hooks/useApp";
 import useModal from "../../../../hooks/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize";
-// Components
+// Import components
 import ListItem from "../../../../components/ui/ListItem/ListItem";
-// Types
+// Import types
 import type {
   ModalChooseShopType,
   ModalChosenShopType,
@@ -12,20 +12,37 @@ import type {
   ModalProductsMenuType,
   ModalRoomsMenuType,
 } from "../../../Modal/types/ModalTypes";
-// Constants
+// Import constants
 import { mainNavigationList } from "../../../../constants/navigationLists";
-// Icons
+// Import icons
 import ShopIcon from "../../../../Icons/ShopIcon";
 import TruckIcon from "../../../../Icons/TruckIcon";
-// Style
+// Import styles
 import "./index.scss";
 
+/**
+ * NavigationBar
+ *
+ * Component that serves as the navigation bar for the application. It renders the main navigation items and buttons for postal code and shop selection.
+ *
+ * The component uses custom hooks for application state (`useApp`), modal management (`useModal`), and window size (`useWindowSize`).
+ * It also uses the `ListItem` component to render each navigation item.
+ *
+ * @returns {JSX.Element} The NavigationBar component.
+ */
+
 export default function NavigationBar() {
-  const { width } = useWindowSize();
-  const { setModalData } = useModal();
+  const { state } = useApp(); // Get the application state from the `useApp` custom hook
+  const { setModalData } = useModal(); // Get the `setModalData` function from the `useModal` custom hook
+  const { width } = useWindowSize(); // Get window width from the `useWindowSize` custom hook
 
-  const { state } = useApp();
-
+  /**
+   * openModalByType
+   *
+   * Function to open a modal of a specific type. It uses the `setModalData` function from the `useModal` hook to set the modal data.
+   *
+   * @param {ModalPostalCodeType | ModalChooseShopType | ModalChosenShopType | ModalProductsMenuType | ModalRoomsMenuType} type - The type of the modal to open.
+   */
   function openModalByType({
     type,
   }:
@@ -41,26 +58,28 @@ export default function NavigationBar() {
 
   return (
     <div className="page-container navigation-bar">
+      {/* Render the list of navigation items only on bigger screens (>= 1200px) */}
       {width >= 1200 && (
         <nav className="navigation-bar__nav">
+          {/* Add a visually hidden heading for screen readers and SEO */}
           <h2 className="visually-hidden">Główna Nawigacja</h2>
 
           <ul>
+            {/* Render each navigation item using the `ListItem` component */}
             {mainNavigationList.map((element) => {
               const onClickFunction =
                 element === "Produkty"
                   ? () => openModalByType({ type: "products-menu" })
                   : element === "Pomieszczenia"
                   ? () => openModalByType({ type: "rooms-menu" })
-                  : undefined;
+                  : undefined; // If the navigation item is "Produkty" or "Pomieszczenia", set the `onClickFunction` to open the corresponding modal
 
               return (
                 <ListItem
                   key={element}
-                  className=""
                   link="#"
-                  as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"}
-                  onClickFunction={onClickFunction}
+                  as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"} // If the navigation item is "Produkty" or "Pomieszczenia", render it as a button
+                  onClickFunction={onClickFunction} // If the navigation item is "Produkty" or "Pomieszczenia", set the `onClickFunction` to open the corresponding modal
                 >
                   {element}
                 </ListItem>
@@ -70,12 +89,14 @@ export default function NavigationBar() {
         </nav>
       )}
 
+      {/* Render the postal code and shop selection buttons */}
       <div className="navigation-bar__btns-container">
         <button
           className="navigation-bar__btn-wrapper"
-          onClick={() => openModalByType({ type: "postal-code" })}
+          onClick={() => openModalByType({ type: "postal-code" })} // Open the postal code modal on click
         >
           <TruckIcon />
+          {/* If the postal code is set, render it, otherwise render a placeholder */}
           <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
         </button>
 
@@ -83,9 +104,10 @@ export default function NavigationBar() {
           className="navigation-bar__btn-wrapper"
           onClick={() =>
             openModalByType(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
-          }
+          } // If the shop is chosen, open the chosen shop modal, otherwise open the choose shop modal
         >
           <ShopIcon />
+          {/* If the shop is chosen, render its name, otherwise render a placeholder */}
           <span>{state.chosenShop ? state.chosenShop.name.split("IKEA") : "Wybierz sklep"}</span>
         </button>
       </div>

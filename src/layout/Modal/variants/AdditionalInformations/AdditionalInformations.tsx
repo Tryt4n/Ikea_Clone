@@ -1,11 +1,22 @@
-// Custom Hooks
+// Import custom hooks
 import useModal from "../../../../hooks/useModal";
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Types
+// Import types
 import type { ShoppingCartAsideMenuInformationList } from "../../types/ModalTypes";
-// Style
+// Import styles
 import "./index.scss";
+
+/**
+ * AdditionalInformations is a React component that renders additional information about a refund or a security certificate.
+ * The information includes a text, a link, and a close button.
+ * The component uses the useModal custom hook.
+ *
+ * @param {"refund" | "data-encryption"} props.type - The type of the information.
+ *
+ * @example
+ * <AdditionalInformations type="refund" />
+ */
 
 export default function AdditionalInformations({ type }: ShoppingCartAsideMenuInformationList) {
   const { closeModal } = useModal();
@@ -48,7 +59,7 @@ export default function AdditionalInformations({ type }: ShoppingCartAsideMenuIn
 
       <Btn
         className="additional-informations-modal__btn"
-        onClick={closeModal}
+        onClick={closeModal} // The function to call when the close button is clicked.
       >
         Zamknij
       </Btn>

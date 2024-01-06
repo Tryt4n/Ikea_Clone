@@ -1,7 +1,7 @@
 // Import helper functions
 import { calculatePrice } from "../../../../../utils/calculatePrice";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
 
 // Define types for the component props
 type DescriptionType = {

@@ -1,76 +1,58 @@
-// React
-import { forwardRef, ForwardedRef } from "react";
-// Context
+// Import react dependencies
+import { forwardRef, type ForwardedRef } from "react";
+// Import Modal Context
 import useModal from "../../hooks/useModal";
-// Modal
+// Import Modals components
 import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
 import MenuLayout from "./layout/MenuLayout/MenuLayout";
 import ImagePreview from "./variants/ImagePreview/ImagePreview";
 import ImageWithProducts from "./variants/ImageWithProducts/ImageWithProducts";
-// Types
-import type { ModalDataType } from "./types/ModalTypes";
+// Import utilities
+import { typeToClassMap } from "./utils/modalMapper";
 
+// Define the prop types for component
 type ModalPropsType = {
-  onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void;
-  onKeyDownFunction: (e: React.KeyboardEvent<HTMLDialogElement>) => void;
+  onClickFunction: (e: React.MouseEvent<HTMLDialogElement>) => void; // The function that handles the click event on the modal
+  onKeyDownFunction: (e: React.KeyboardEvent<HTMLDialogElement>) => void; // The function that handles the key down event on the modal
 };
 
+// Define the modal types
 export type ModalTypes = "side-modal" | "image-modal" | "image-with-products-modal" | "menu-modal";
+
+// Export the Modal component with the forwardRef function
+
+/**
+ * `Modal` is a React component that renders a modal based on the modal data from the `useModal` hook.
+ * It uses several inner components (`SideModalLayout`, `ImagePreview`, `ImageWithProducts`, `MenuLayout`) to provide different modal content.
+ *
+ * @component
+ * @param {(e: React.MouseEvent<HTMLDialogElement>) => void} props.onClickFunction - The function that handles the click event on the modal.
+ * @param {(e: React.KeyboardEvent<HTMLDialogElement>) => void} props.onKeyDownFunction - The function that handles the key down event on the modal.
+ * @param {ForwardedRef<HTMLDialogElement>} ref - The ref that is forwarded to the dialog element.
+ * @returns {JSX.Element} The rendered `InnerComponent` component.
+ */
+
+export const Modal = forwardRef(InnerComponent);
 
 function InnerComponent(
   { onKeyDownFunction, onClickFunction }: ModalPropsType,
-  ref: ForwardedRef<HTMLDialogElement>
+  ref: ForwardedRef<HTMLDialogElement> // Forward the ref to the dialog element
 ) {
-  const { modalID, modalData } = useModal();
+  const { modalID, modalData } = useModal(); // Get modalID and modalData from useModal custom hook
 
-  const type = modalData?.type;
+  const type = modalData?.type; // Get the type of the modal
 
-  const typeToClassMap: Record<ModalDataType["type"], ModalTypes> = {
-    "choose-color": "side-modal",
-    "choose-size": "side-modal",
-    "product-information": "side-modal",
-    "items-included": "side-modal",
-    dimensions: "side-modal",
-    ratings: "side-modal",
-    "installment-purchase": "side-modal",
-    "postal-code": "side-modal",
-    "choose-shop": "side-modal",
-    "preffered-shop": "side-modal",
-    "chosen-shop": "side-modal",
-    "log-in": "side-modal",
-    refund: "side-modal",
-    "data-encryption": "side-modal",
-    "next-step": "side-modal",
-    "product-control": "side-modal",
-    "shopping-cart-control": "side-modal",
-    "add-product-by-number": "side-modal",
-    "create-list": "side-modal",
-    "create-list-with-products": "side-modal",
-    "change-list-name": "side-modal",
-    "list-control": "side-modal",
-    "delete-list-confirmation": "side-modal",
-    "select-list": "side-modal",
-    "select-list-with-products": "side-modal",
-    "move-to-other-list": "side-modal",
-    "more-options-for-product-in-list": "side-modal",
-    "move-product-from-one-list-to-another": "side-modal",
-    "manage-products-in-list": "side-modal",
-    "image-preview": "image-modal",
-    "image-with-products": "image-with-products-modal",
-    menu: "menu-modal",
-    "products-menu": "menu-modal",
-    "rooms-menu": "menu-modal",
-  };
-
+  // Get the modal class based on the type
   const modalClass = type ? typeToClassMap[type] : undefined;
 
+  // Render the modal based on the type
   return (
     <dialog
-      ref={ref}
-      id={modalID}
+      ref={ref} // Forward the ref to the dialog element
+      id={modalID} // Set the id of the dialog element
       className={modalClass}
-      onClick={onClickFunction}
-      onKeyDown={onKeyDownFunction}
+      onClick={onClickFunction} // The function to call when the modal is clicked
+      onKeyDown={onKeyDownFunction} // The function to call when a key is pressed on the modal
     >
       {modalData &&
         (((type === "choose-color" ||
@@ -124,5 +106,3 @@ function InnerComponent(
     </dialog>
   );
 }
-
-export const Modal = forwardRef(InnerComponent);

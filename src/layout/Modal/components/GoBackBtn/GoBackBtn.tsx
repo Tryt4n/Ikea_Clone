@@ -1,10 +1,10 @@
-// Custom Hooks
+// Import custom hooks
 import useModal from "../../../../hooks/useModal";
-// Components
+// Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
-// Helpers
+// Import helpers functions
 import { startViewTransition } from "../../../../utils/helpers";
-// Types
+// Import types
 import type {
   AddProductByNumberModal,
   ChangeListNameModal,
@@ -17,9 +17,10 @@ import type {
   SelectListWithMultipleProducts,
   SideModalLayoutType,
 } from "../../types/ModalTypes";
-// Icons
+// Import icons
 import ArrowLeftIcon from "../../../../Icons/ArrowLeftIcon";
 
+// Define GoBackFunctionType type
 type GoBackFunctionType = (
   | ModalPrefferedShopType
   | AddProductByNumberModal
@@ -32,9 +33,24 @@ type GoBackFunctionType = (
   | MoveProductsFromOneListToAnotherModal
 )["type"];
 
-export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
-  const { modalData, setModalData } = useModal();
+/**
+ * GoBackBtn is a React component that renders a button which allows the user to go back to the previous state in the modal.
+ * The button is only rendered under certain conditions based on the type of the modal.
+ *
+ * @param {SideModalLayoutType["type"]} props.type - The type of the modal.
+ *
+ * @example
+ * <GoBackBtn type={modalType} />
+ */
 
+export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
+  const { modalData, setModalData } = useModal(); // Use the useModal custom hook to get the current modal data and the function to set the modal data.
+
+  /**
+   * goBack is a function that sets the modal data to go back to the previous state based on the type of the modal.
+   *
+   * @param {GoBackFunctionType} type - The type of the modal.
+   */
   function goBack(type: GoBackFunctionType) {
     startViewTransition(() => {
       switch (type) {
@@ -55,12 +71,14 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
           break;
 
         case "create-list":
+          // If the modalData exists and the type of the modalData is the same as the type of the modal and the product exists, set the modal data to select-list.
           if (modalData && modalData.type === type && modalData.product) {
             setModalData({ type: "select-list", product: modalData.product });
           }
           break;
 
         case "select-list":
+          // If the modalData exists and the type of the modalData is the same as the type of the modal and the previousModal exists and the type of the previousModal is image-with-products, set the modal data to image-with-products.
           if (
             modalData &&
             modalData.type === type &&
@@ -72,6 +90,7 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
           break;
 
         case "select-list-with-products":
+          // If the modalData exists and the type of the modalData is the same as the type of the modal and the previousModal exists, set the modal data to the previousModal.
           if (modalData && modalData.type === type && modalData.previousModal) {
             setModalData(modalData.previousModal);
           }
@@ -82,6 +101,7 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
           break;
 
         case "move-product-from-one-list-to-another":
+          // If the modalData exists and the type of the modalData is the same as the type of the modal and the products array exists and the length of the products array is greater than 1, set the modal data to manage-products-in-list.
           if (modalData && modalData.type === type) {
             if (modalData.products.length > 1) {
               setModalData({
@@ -89,6 +109,7 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
                 products: modalData.products,
               });
             } else {
+              // Otherwise, set the modal data to more-options-for-product-in-list.
               setModalData({
                 type: "more-options-for-product-in-list",
                 products: [modalData.products[0]],
@@ -102,6 +123,7 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
 
   return (
     <>
+      {/* The button is only rendered under certain conditions based on the type of the modal. */}
       {(type === "preffered-shop" ||
         type === "add-product-by-number" ||
         type === "change-list-name" ||
@@ -122,7 +144,7 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
           variant="light"
           shape="circle"
           className="side-modal__go-back-btn"
-          onClick={() => goBack(type)}
+          onClick={() => goBack(type)} // When the button is clicked, the goBack function is called with the type of the modal.
         >
           <ArrowLeftIcon />
         </Btn>
