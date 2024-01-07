@@ -10,7 +10,7 @@ import pl from "date-fns/locale/pl";
 // Import components
 import { Btn } from "../../../../ui/Btn/Btn";
 // Import types
-import type { FavouritesListType } from "../../../../../context/AppContext/AppContext";
+import type { FavouritesListType } from "../../../../../context/AppContext/types/FavouritesListType";
 // Import icons
 import TripleDotsMenuIcon from "../../../../../Icons/TripleDotsMenuIcon";
 import ArrowRightIcon from "../../../../../Icons/ArrowRightIcon";

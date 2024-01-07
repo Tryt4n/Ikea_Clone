@@ -7,7 +7,7 @@ import { startViewTransition } from "../../../../utils/helpers";
 // Import utilities
 import { productLink } from "../../../../constants/links";
 // Import types
-import type { ShoppingCartType } from "../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../context/AppContext/types/ShoppingCartType";
 // Import icons
 import ArrowRightIcon from "../../../../Icons/ArrowRightIcon";
 import TrashIcon from "../../../../Icons/TrashIcon";

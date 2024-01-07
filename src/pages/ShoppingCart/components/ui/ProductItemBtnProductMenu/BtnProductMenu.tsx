@@ -3,7 +3,7 @@ import useModal from "../../../../../hooks/useModal";
 // Import components
 import { Btn } from "../../../../../components/ui/Btn/Btn";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 // Import icons
 import TripleDotsMenuIcon from "../../../../../Icons/TripleDotsMenuIcon";
 

@@ -11,7 +11,7 @@ import { BtnProductMenu } from "../ProductItemBtnProductMenu/BtnProductMenu";
 // Import helpers functions
 import { startViewTransition } from "../../../../../utils/helpers";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 
 // Define the ProductControlsPropsType props type.
 type ProductControlsPropsType = {

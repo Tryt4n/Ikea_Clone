@@ -1,4 +1,5 @@
-import type { ShoppingCartType } from "../context/AppContext/AppContext";
+// Import types
+import type { ShoppingCartType } from "../context/AppContext/types/ShoppingCartType";
 
 /**
  * startViewTransition function

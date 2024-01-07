@@ -6,7 +6,7 @@ import { ProductImgButton } from "../../ui/ProductItemImgButton/ProductImgButton
 // Import constants
 import { productLink as imageLink } from "../../../../../constants/links";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 // Import styles
 import "./index.scss";
 

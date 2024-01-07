@@ -12,7 +12,7 @@ import { startViewTransition } from "../../../../../../utils/helpers";
 // Import constants
 import { productLink } from "../../../../../../constants/links";
 // Import types
-import type { FavouritesListType } from "../../../../../../context/AppContext/AppContext";
+import type { FavouritesListType } from "../../../../../../context/AppContext/types/FavouritesListType";
 // Import icons
 import NoImageIcon from "../../../../../../Icons/NoImageIcon";
 import HeartIcon from "../../../../../../Icons/HeartIcon";

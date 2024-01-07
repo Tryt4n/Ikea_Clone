@@ -12,7 +12,7 @@ import { Btn } from "../../../../../../components/ui/Btn/Btn";
 import { productLink as imageLink } from "../../../../../../constants/links";
 // Import types
 import type { extendedProductType } from "../../ImageWithProducts";
-import type { ShoppingCartType } from "../../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../../context/AppContext/types/ShoppingCartType";
 // Import icons
 import ShoppingCartAddIcon from "../../../../../../Icons/ShoppingCartAddIcon";
 

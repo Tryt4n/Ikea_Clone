@@ -7,7 +7,7 @@ import Input from "../../../../components/features/Input/Input";
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Import types
-import type { ShoppingCartType } from "../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../context/AppContext/types/ShoppingCartType";
 // Import styles
 import "./index.scss";
 

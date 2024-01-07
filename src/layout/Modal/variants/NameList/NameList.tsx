@@ -16,7 +16,7 @@ import type {
   CreateListModal,
   CreateListModalWithProducts,
 } from "../../types/ModalTypes";
-import type { FavouritesListType } from "../../../../context/AppContext/AppContext";
+import type { FavouritesListType } from "../../../../context/AppContext/types/FavouritesListType";
 // Import styles
 import "./index.scss";
 

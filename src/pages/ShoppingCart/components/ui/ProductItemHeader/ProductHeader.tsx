@@ -3,7 +3,7 @@ import Tag from "../../../../../components/ui/Tag/Tag";
 // Import helpers functions
 import { calculatePrice } from "../../../../../utils/calculatePrice";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 import type { TextVariants } from "../../../../../types/colorsVariantsType";
 
 // Define the ProductHeaderPropsType props type.

@@ -1,5 +1,5 @@
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 
 // Define the ProductDescriptionPropsType props type.
 type ProductDescriptionPropsType = {

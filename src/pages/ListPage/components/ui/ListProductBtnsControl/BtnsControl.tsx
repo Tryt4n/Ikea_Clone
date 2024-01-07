@@ -7,7 +7,7 @@ import { startViewTransition } from "../../../../../utils/helpers";
 // Import components
 import { Btn } from "../../../../../components/ui/Btn/Btn";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 // Import icons
 import ShoppingCartAddIcon from "../../../../../Icons/ShoppingCartAddIcon";
 import TrashIcon from "../../../../../Icons/TrashIcon";

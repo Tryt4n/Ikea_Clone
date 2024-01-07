@@ -11,7 +11,7 @@ import { ProductItem } from "./InnerComponents/ProductItem/ProductItem";
 import type { ProductType } from "../../../../layout/Articles/components/CollectionProductsList/CollectionProductsList";
 import type { ModalImageWithProductsType } from "../../types/ModalTypes";
 import type { ProductDataType } from "../../../../pages/ProductPage/types/ProductDataType";
-import type { ShoppingCartType } from "../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../context/AppContext/types/ShoppingCartType";
 // Import icons
 import CloseIcon from "../../../../Icons/CloseIcon";
 import InstagramIcon from "../../../../Icons/InstagramIcon";

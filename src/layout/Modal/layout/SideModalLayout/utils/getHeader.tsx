@@ -2,7 +2,7 @@
 import Tag from "../../../../../components/ui/Tag/Tag";
 // Import types
 import type { ReactElement } from "react";
-import type { ReducerStateType } from "../../../../../context/AppContext/AppContext";
+import type { ReducerStateType } from "../../../../../context/AppContext/types/ReducerTypes";
 import type { SideModalLayoutType } from "../../../types/ModalTypes";
 
 /**

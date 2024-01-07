@@ -3,7 +3,7 @@ import React from "react";
 // Import constants
 import { productLink } from "../../../../../constants/links";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 
 /**
  * ImagesListWithProducts Component

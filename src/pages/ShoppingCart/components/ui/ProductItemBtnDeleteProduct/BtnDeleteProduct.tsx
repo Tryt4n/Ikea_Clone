@@ -4,7 +4,7 @@ import useToast from "../../../../../hooks/useToast";
 // Import helpers functions
 import { startViewTransition } from "../../../../../utils/helpers";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 
 /**
  * BtnDeleteProduct is a functional component that takes in a product as a prop.

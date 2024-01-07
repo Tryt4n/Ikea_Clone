@@ -5,7 +5,7 @@ import { EmptyList } from "./components/EmptyList/EmptyList";
 import { ImagesListWithProducts } from "./components/ImagesListWithProducts/ImagesListWithProducts";
 import { ListDescription } from "./components/ListDescription/ListDescription";
 // Import types
-import type { FavouritesListType } from "../../../context/AppContext/AppContext";
+import type { FavouritesListType } from "../../../context/AppContext/types/FavouritesListType";
 // Import styles
 import "./index.scss";
 

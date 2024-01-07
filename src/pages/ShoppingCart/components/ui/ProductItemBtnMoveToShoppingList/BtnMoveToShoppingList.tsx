@@ -1,7 +1,7 @@
 // Import custom hooks
 import useModal from "../../../../../hooks/useModal";
 // Import types
-import type { ShoppingCartType } from "../../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 
 /**
  * BtnMoveToShoppingList is a functional component that takes in a product as a prop.

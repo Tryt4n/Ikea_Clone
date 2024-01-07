@@ -6,7 +6,7 @@ import useToast from "../../../../hooks/useToast";
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Import types
 import type { ProductDataType } from "../../types/ProductDataType";
-import type { ShoppingCartType } from "../../../../context/AppContext/AppContext";
+import type { ShoppingCartType } from "../../../../context/AppContext/types/ShoppingCartType";
 // Import styles
 import "./index.scss";
 

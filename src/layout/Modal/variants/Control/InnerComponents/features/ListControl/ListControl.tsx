@@ -12,7 +12,7 @@ import PrinterIcon from "../../../../../../../Icons/PrinterIcon";
 import ShareIcon from "../../../../../../../Icons/ShareIcon";
 import TrashIcon from "../../../../../../../Icons/TrashIcon";
 // Import types
-import type { FavouritesListType } from "../../../../../../../context/AppContext/AppContext";
+import type { FavouritesListType } from "../../../../../../../context/AppContext/types/FavouritesListType";
 
 /**
  * `ListControl` is a React component that provides controls for a list.
