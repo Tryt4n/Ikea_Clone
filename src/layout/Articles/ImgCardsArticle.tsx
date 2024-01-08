@@ -1,3 +1,5 @@
+// Import react dependencies
+import { useEffect, useState } from "react";
 // Import SwiperJS dependencies
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
@@ -53,17 +55,24 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
 
   const { breakOnMobile } = article; // Destructure the breakOnMobile property from the article object
 
+  const [swiperKey, setSwiperKey] = useState(0); // Create a state for the key of the Swiper component
+
+  // Every time the width changes re-render the component by incrementing the key state, because the Swiper component is not re-rendered when its props change and it needs to be re-rendered to apply the new configuration
+  useEffect(() => {
+    setSwiperKey((prevKey) => prevKey + 1);
+  }, [width]);
+
   return (
     <Article key={article.id}>
       <Article.Header>{article.header}</Article.Header>
 
       <CardsContainer breakOnMobile={breakOnMobile}>
         <Swiper
+          key={swiperKey} // Set the key to the key state so that the component is re-rendered when the key state changes
           // The swiper slider configuration. It changes depending on the window width and the breakOnMobile property.
           slidesPerView={breakOnMobile ? 0 : 1} // If breakOnMobile is true, set slides per view to 0 (disable), otherwise set it to 1
           slidesPerGroup={breakOnMobile ? 0 : 1} // If breakOnMobile is true, set slides per group to 0 (disable), otherwise set it to 1
           spaceBetween={breakOnMobile ? 0 : 20} // If breakOnMobile is true, set space between slides to 0 (disable), otherwise set it to 20px
-          freeMode={breakOnMobile ? width >= 600 : width < 900} // If breakOnMobile is true, set freeMode to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
           navigation={breakOnMobile ? width >= 600 : width < 900} // If breakOnMobile is true, set navigation to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
           scrollbar={breakOnMobile ? width >= 600 && { hide: true } : width < 900 && { hide: true }} // If breakOnMobile is true, set scrollbar to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
           keyboard={

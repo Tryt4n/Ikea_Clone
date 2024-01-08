@@ -6,6 +6,9 @@
 
 .cards-container {
   @include flex(row);
+  & > *:first-child {
+    max-width: 100%;
+  }
 
   &:has(> section) {
     gap: func.rem(1);
@@ -17,19 +20,22 @@
 
     @media screen and (width >= b.$tablet) {
       & > * {
-        min-width: calc(25% - 0.75px);
+        max-width: calc(25% - 0.75px);
+        width: 100%;
       }
     }
 
     @media screen and (b.$mobile-md <= width < b.$tablet) {
       & > * {
-        min-width: calc(50% - 0.5px);
+        max-width: calc(50% - 0.5px);
+        width: 100%;
       }
     }
 
     @media screen and (width < b.$mobile-md) {
       & > * {
-        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
       }
     }
   }
