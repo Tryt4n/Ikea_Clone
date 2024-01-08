@@ -50,7 +50,7 @@ export function ListControl() {
     });
   }
 
-  // Open the modal for moving the all products from list to another list
+  // Open the modal for moving all products from list to another list
   function openMoveToOtherListModal() {
     if (!state.editingList) return; // Return if there is no editing list
 
@@ -73,7 +73,12 @@ export function ListControl() {
       {
         // If the list is not empty and list exist render element
         state.editingList?.products?.length && state.favouriteLists ? (
-          <ListItem onClick={openMoveToOtherListModal}>
+          // <ListItem onClick={openMoveToOtherListModal}>
+          <ListItem
+            onClick={() => {
+              openMoveToOtherListModal();
+            }}
+          >
             <ArrowRightIcon />
             Przenieś do innej listy
           </ListItem>

@@ -52,14 +52,14 @@ function InnerComponent(
       <Input
         type="text"
         id="postal-code"
-        label="Enter postal code"
+        label="Wprowadź kod pocztowy"
         inputProps={{
           ref: ref, // The ref that is forwarded to the input field.
           className: "postal-code-input__input",
           required: true, // The input field is required.
           autoComplete: "off", // Disable autocomplete to prevent the browser from suggesting values based on earlier submitted values.
           pattern: `\\d{2}-\\d{3}`, // The pattern for the postal code.
-          title: "Enter a valid postal code (e.g. 12-345)", // The title of the input field for error info in case the postal code is invalid.
+          title: "Wprowadź poprawny kod pocztowy (np. 12-345)", // The title of the input field for error info in case the postal code is invalid.
           "aria-describedby": !postalCodeErrorMessage ? "postal-code-example" : undefined, // The id of the element that describes the input field.
           "aria-errormessage": postalCodeErrorMessage ? "postal-code-errormessage" : undefined, // The id of the element that describes the error message.
           "aria-invalid": isPostalCodeErrorMessageVisible, // The state for the visibility of the error message.
@@ -76,7 +76,7 @@ function InnerComponent(
           className="postal-code-input__example tx-gray"
           aria-hidden={isPostalCodeErrorMessageVisible}
         >
-          e.g. 12-345
+          np. 12-345
         </small>
       )}
 

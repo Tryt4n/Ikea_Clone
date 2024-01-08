@@ -57,8 +57,11 @@ import type { ShopType } from "../../../constants/shopsList";
  * console.log(newState); // Outputs: { lists: [{ id: 1, name: "List 1" }], editingList: null, isEditing: false }
  */
 export function reducer(state: ReducerStateType, action: ReducerActionsType) {
-  const shoppingCart: ShoppingCartType[] = JSON.parse(localStorage.getItem("shoppingCart") || "[]"); // Get shopping cart from localStorage (if it exists) or set it to an empty array
-  const favouriteListsStorage = localStorage.getItem("favouriteLists"); // Get favourite lists from localStorage
+  const shoppingCart: ShoppingCartType[] = getJSONFromLocalStorage("shoppingCart", []); // Get shopping cart from localStorage (if it exists) or set it to an empty array
+  const favouriteListsStorage: FavouritesListType[] = getJSONFromLocalStorage(
+    "favouriteLists",
+    undefined
+  ); // Get favourite lists from localStorage
 
   // Switch based on the action type
   switch (action.type) {
@@ -178,7 +181,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "createNewList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const newList = action.payload.list; // Get new list from action payload
       const oldListId = action.payload.oldListId; // Get old list ID from action payload
 
@@ -208,7 +211,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "setEditingList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const editingList = getEditingList(lists, action.payload.id); // Find the list that is being edited
 
       return {
@@ -225,7 +228,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
         lastEdit: new Date(), // Set the last edit date to the current date
       };
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const updatedLists = updateEditingList(lists, editingList); // Update the list that is being edited
 
       // If the list exists, update it
@@ -247,7 +250,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "deleteList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const deletingList = action.payload; // Get the list ID from action payload
 
       const updatedLists = deleteList(lists, deletingList); // Remove the list from the lists
@@ -265,7 +268,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "addProductsToList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const listId = action.payload.listId; // Get the list ID from action payload
       const listIndex = searchForIndex(lists, listId, "id"); // Find the list that the products are being added to
 
@@ -297,7 +300,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "deleteProductsFromList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const listId = action.payload.listId; // Get the list ID from action payload
       const productNumbers = action.payload.productNumbers; // Get product numbers from action payload
 
@@ -334,7 +337,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "moveProductsFromOneListToAnother": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
 
       const products = action.payload.products.map((product) => ({
         ...product,
@@ -402,7 +405,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "changeProductQuantityOnList": {
       if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
 
-      const lists: FavouritesListType[] = JSON.parse(favouriteListsStorage); // Get lists from localStorage
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const { listId, productNumber, value } = action.payload; // Get list ID, product number and value from action payload
 
       const listIndex = searchForIndex(lists, listId, "id"); // Find the list that the product is being changed on
@@ -471,6 +474,26 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
         chosenShop: chosenShopValue, // Save chosen shop to state
         shoppingCart: shoppingCartValue, // Save shopping cart to state
         favouriteLists: listsValue, // Save lists to state
+      };
+    }
+
+    case "restoreList": {
+      if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
+
+      const oldList = action.payload; // Get old list from action payload
+      const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
+
+      const listToUpdate = getEditingList(lists, oldList.id); // Find the list that is being edited
+
+      if (listToUpdate) {
+        Object.assign(listToUpdate, oldList); // Update the list
+
+        saveFavoriteListsToLocalStorage(lists); // Save all lists back to localStorage
+      }
+
+      return {
+        ...state,
+        favouriteLists: lists, // Save old list to state
       };
     }
 

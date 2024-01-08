@@ -110,5 +110,9 @@ export type ReducerActionsType =
       };
     }
   | {
+      type: "restoreList";
+      payload: FavouritesListType;
+    }
+  | {
       type: "loadAppData";
     };

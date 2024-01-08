@@ -24,7 +24,7 @@ import TrashIcon from "../../../../../Icons/TrashIcon";
  */
 
 export function BtnsControl({ product }: { product: ShoppingCartType }) {
-  const { dispatch } = useApp(); // Destructure dispatch from the useApp hook.
+  const { state, dispatch } = useApp(); // Destructure state and dispatch from the useApp hook.
   const { setToastData } = useToast(); // Destructure setToastData from the useToast hook.
   const { listId } = useList(); // Destructure listId from the useList hook.
 
@@ -39,14 +39,17 @@ export function BtnsControl({ product }: { product: ShoppingCartType }) {
     });
   }
 
-  // deleteFromList is a function that dispatches an action to delete the product from the list and sets the toast data to notify the user of the action.
+  // deleteFromList is a function that dispatches an action to delete the product from the list and sets the toast data to notify the user of the action and restore the previous state if the user wants to undo the action.
   function deleteFromList() {
     setToastData({
       open: true,
       text: `Usunięto ${product.collection} z twojej listy.`,
       prevState: () =>
         startViewTransition(() => {
-          dispatch({ type: "addProductsToList", payload: { listId: listId, products: [product] } });
+          dispatch({
+            type: "restoreList",
+            payload: state.editingList!,
+          }); // Restore the list to its previous state
         }),
     });
 

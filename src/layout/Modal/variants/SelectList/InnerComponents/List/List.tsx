@@ -65,7 +65,7 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
             dispatch({
               type: "moveProductsFromOneListToAnother",
               payload: {
-                products: list.products, // Move all products from the current list
+                products: state.editingList.products!, // Move all products from the currently editing list
                 listWhereProductIsMovedID: list.id, // To the list where the product is moved
                 originalListId: state.editingList.id, // From the original list
               },

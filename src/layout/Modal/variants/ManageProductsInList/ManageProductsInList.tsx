@@ -119,17 +119,13 @@ function BtnsControl({ products }: { products: ShoppingCartType[] }) {
         products.length > 1
           ? `Usunięto (${products.length}) artykuły z twojej listy.` // If the number of products is greater than 1, display a message with the number of products.
           : `${products[0].collection} został usunięty z twojej listy.`, // Otherwise, display a message with the name of the product.
-      // If the user clicks on the "Cofnij" button, add the products back to the list.
+      // If the user clicks on the "Cofnij" button in the toast, restore the previous state.
       prevState: () =>
         startViewTransition(() => {
           if (!state.editingList) return;
-
           dispatch({
-            type: "addProductsToList",
-            payload: {
-              listId: state.editingList.id,
-              products: [...products],
-            },
+            type: "restoreList",
+            payload: state.editingList,
           });
         }),
     });
@@ -142,7 +138,7 @@ function BtnsControl({ products }: { products: ShoppingCartType[] }) {
         payload: {
           listId: state.editingList.id,
           productNumbers: [...products.map((product) => product.productNumber)],
-        },
+        }, // Pass the list id and the product numbers to delete the products from the list.
       });
     });
 
