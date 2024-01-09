@@ -15,6 +15,7 @@ module.exports = {
     "eslint:recommended", // The recommended configuration of ESLint rules
     "plugin:@typescript-eslint/recommended", // The recommended configuration of TypeScript-specific rules from the @typescript-eslint plugin
     "plugin:react-hooks/recommended", // The recommended configuration of rules related to React Hooks from the react-hooks plugin
+    "plugin:prettier/recommended", // The recommended configuration of rules from the prettier plugin //! This should be the last configuration in the "extends" array so it gets the chance to override other configurations
   ],
 
   // The "ignorePatterns" option specifies a list of file and directory names that ESLint should ignore
@@ -24,11 +25,14 @@ module.exports = {
   parser: "@typescript-eslint/parser", // The parser from the @typescript-eslint plugin that converts TypeScript code into an abstract syntax tree that ESLint can understand
 
   // The "plugins" option specifies a list of plugins that ESLint should use
-  plugins: ["react-refresh"],
+  plugins: ["react-refresh", "@typescript-eslint", "prettier"],
 
   // The "rules" option specifies a list of rules that ESLint should enforce
   rules: {
     // The "react-refresh/only-export-components" rule warns when a file exports non-component values
-    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
   },
 };

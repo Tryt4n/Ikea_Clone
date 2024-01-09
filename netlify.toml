@@ -20,4 +20,4 @@
   # Define the path or paths for which you want to allow cross-origin requests
   for = "/*"
     [headers.values]
-    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Origin = "https://translate.google./*"
