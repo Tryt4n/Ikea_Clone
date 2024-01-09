@@ -14,3 +14,10 @@
   # The "status" field specifies the HTTP status code to use for the redirect.
   # The "200" value means the HTTP 200 OK status code, which indicates that the request has succeeded.
   status = 200
+
+# Headers configuration
+[[headers]]
+  # Define the path or paths for which you want to allow cross-origin requests
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
