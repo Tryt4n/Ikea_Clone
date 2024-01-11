@@ -5,7 +5,7 @@ import AddToWishListBtn from "./AddToWishListBtn";
 
 describe("AddToWishListBtn", () => {
   it("should render correctly", () => {
-    // Arrange
+    // Act
     render(<AddToWishListBtn />);
     const button = screen.getByRole("button");
 
@@ -14,7 +14,7 @@ describe("AddToWishListBtn", () => {
   });
 
   it('should render a Btn component with a "circle" shape', () => {
-    // Arrange
+    // Act
     render(<AddToWishListBtn />);
 
     // Assert
@@ -22,7 +22,7 @@ describe("AddToWishListBtn", () => {
   });
 
   it('should render a visually hidden "Dodaj do ulubionych" label', () => {
-    // Arrange
+    // Act
     render(<AddToWishListBtn />);
 
     // Assert
@@ -32,7 +32,7 @@ describe("AddToWishListBtn", () => {
   });
 
   it("should render a HeartIcon component with no active state specified", () => {
-    // Arrange
+    // Act
     render(<AddToWishListBtn />);
     const svg = document.querySelector("svg");
 
@@ -44,7 +44,7 @@ describe("AddToWishListBtn", () => {
   });
 
   it("should render a HeartIcon component with the specified active state", () => {
-    // Arrange
+    // Act
     render(<AddToWishListBtn active={true} />);
     const svg = document.querySelector("svg");
 

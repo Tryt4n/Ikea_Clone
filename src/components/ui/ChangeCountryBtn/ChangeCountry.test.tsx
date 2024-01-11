@@ -6,7 +6,7 @@ import ChangeCountry from "./ChangeCountry";
 
 describe("ChangeCountryBtn", () => {
   it('should render an anchor element with class "change-country"', () => {
-    // Arrange
+    // Act
     render(<ChangeCountry href="https://example.com" />);
     const anchorElement = screen.getByRole("link");
 
@@ -15,7 +15,7 @@ describe("ChangeCountryBtn", () => {
   });
 
   it('should render a GlobeIcon and a "Zmień kraj" label inside the anchor element', () => {
-    // Arrange
+    // Act
     render(<ChangeCountry />);
     const svg = document.querySelector("svg");
     const label = screen.getByText(/zmień kraj/i);
@@ -28,11 +28,12 @@ describe("ChangeCountryBtn", () => {
   it("should pass any additional props to the anchor element", async () => {
     // Arrange
     const onClick = vi.fn();
-    render(<ChangeCountry href="https://example.com" onClick={onClick} />);
-    const anchorElement = screen.getByRole("link", { name: /zmień kraj/i });
     const user = userEvent.setup();
 
     // Act
+    render(<ChangeCountry href="https://example.com" onClick={onClick} />);
+    const anchorElement = screen.getByRole("link", { name: /zmień kraj/i });
+
     await user.click(anchorElement);
 
     // Assert

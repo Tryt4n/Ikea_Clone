@@ -6,9 +6,13 @@ import useModal from "../../../../hooks/useModal/useModal";
 import useApp from "../../../../hooks/useApp/useApp";
 // Import modal variants inner components by lazy loading
 const ChooseSize = lazy(() => import("../../variants/ChooseSize/ChooseSize"));
-const ChooseColor = lazy(() => import("../../variants/ChooseColor/ChooseColor"));
+const ChooseColor = lazy(
+  () => import("../../variants/ChooseColor/ChooseColor")
+);
 const PostalCode = lazy(() => import("../../variants/PostalCode/PostalCode"));
-const PrefferedShop = lazy(() => import("../../variants/PrefferedShop/PrefferedShop"));
+const PrefferedShop = lazy(
+  () => import("../../variants/PrefferedShop/PrefferedShop")
+);
 const ChosenShop = lazy(() => import("../../variants/ChosenShop/ChosenShop"));
 const Login = lazy(() => import("../../variants/Login/Login"));
 const AdditionalInformations = lazy(
@@ -60,7 +64,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
   const { type } = data; // Get the type of the modal
 
   // Get the header for the modal using the getHeader utility function
-  const header = modalData ? getHeader(type, modalData as SideModalLayoutType, state) : "";
+  const header = modalData
+    ? getHeader(type, modalData as SideModalLayoutType, state)
+    : "";
 
   // Render the side modal with the appropriate header and content based on the type prop
   return (
@@ -86,7 +92,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
             </div>
 
             <h2
-              className={`side-modal__heading${type === "log-in" ? ` visually-hidden` : ""}`} // Hide visually the heading for the "log-in" type but keep it available for screen readers and SEO purposes
+              className={`side-modal__heading${
+                type === "log-in" ? ` visually-hidden` : ""
+              }`} // Hide visually the heading for the "log-in" type but keep it available for screen readers and SEO purposes
             >
               {header}
             </h2>
@@ -119,7 +127,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
               {(type === "product-control" ||
                 type === "shopping-cart-control" ||
                 type === "list-control" ||
-                type === "more-options-for-product-in-list") && <Control type={type} />}
+                type === "more-options-for-product-in-list") && (
+                <Control type={type} />
+              )}
 
               {type === "add-product-by-number" && <AddProductByNumber />}
 
@@ -127,7 +137,9 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
                 type === "create-list-with-products" ||
                 type === "change-list-name") && <NameList type={type} />}
 
-              {type === "delete-list-confirmation" && <DeleteListConfirmation />}
+              {type === "delete-list-confirmation" && (
+                <DeleteListConfirmation />
+              )}
 
               {(type === "select-list" ||
                 type === "move-to-other-list" ||

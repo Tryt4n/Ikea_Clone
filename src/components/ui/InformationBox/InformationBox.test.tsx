@@ -33,6 +33,8 @@ describe("InformationBox", () => {
     const heading = "Heading";
     const information = "This is some information";
     const as = "section";
+
+    // Act
     render(
       <InformationBox heading={heading} information={information} as={as} />
     );
@@ -49,6 +51,8 @@ describe("InformationBox", () => {
     const headingLevel = 5;
     const information = "This is some information";
     const heading = "Heading";
+
+    // Act
     render(
       <InformationBox
         heading={heading}

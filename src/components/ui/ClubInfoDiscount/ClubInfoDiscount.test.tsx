@@ -8,8 +8,9 @@ describe("ClubInfoDiscount", () => {
     // Arrange
     const price = 100;
     const href = "https://example.com";
-    render(<ClubInfoDiscount price={price} href={href} />);
 
+    // Act
+    render(<ClubInfoDiscount price={price} href={href} />);
     const anchorElement = screen.getByRole("link", {
       name: /Oferty dla Klubowiczów IKEA Family/i,
     });
@@ -22,8 +23,9 @@ describe("ClubInfoDiscount", () => {
   it("should render a text with information about the savings available to IKEA Family Club members", () => {
     // Arrange
     const price = 100;
-    render(<ClubInfoDiscount price={price} href="https://example.com" />);
 
+    // Act
+    render(<ClubInfoDiscount price={price} href="https://example.com" />);
     const savingsText = screen.getByText(
       /Dołącz lub zaloguj się i zaoszczędź/i
     );
