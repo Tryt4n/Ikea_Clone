@@ -22,6 +22,8 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
   // Initialize state for the ability to scroll children backwards and forwards
   const [canScrollBackward, setCanScrollBackward] = useState(false);
   const [canScrollForward, setCanScrollForward] = useState(false);
+  // const [canScrollBackward, setCanScrollBackward] = useState(false);
+  // const [canScrollForward, setCanScrollForward] = useState(false);
 
   // Initialize ref for the children container
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -34,7 +36,8 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
     if (!container) return { isBeginning: false, isEnd: false };
 
     const isEnd =
-      container.scrollLeft + container.clientWidth + spacingSafeGuard >= container.scrollWidth;
+      container.scrollLeft + container.clientWidth + spacingSafeGuard >=
+      container.scrollWidth;
     const isBeginning = container.scrollLeft === 0;
 
     return { isEnd, isBeginning };
@@ -101,15 +104,13 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
         onClick={() => handleScroll("prev")}
         aria-hidden={!canScrollBackward}
         disabled={!canScrollBackward}
+        data-testid="prev-btn"
       >
         <span className="visually-hidden">Przewiń do tyłu</span>
         <ArrowLeft />
       </Btn>
 
-      <div
-        className="btns-control__inner-wrapper"
-        ref={containerRef}
-      >
+      <div className="btns-control__inner-wrapper" ref={containerRef}>
         {children}
       </div>
 
@@ -120,6 +121,7 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
         onClick={() => handleScroll("next")}
         aria-hidden={!canScrollForward}
         disabled={!canScrollForward}
+        data-testid="next-btn"
       >
         <span className="visually-hidden">Przewiń do przodu</span>
         <ArrowRight />
@@ -131,10 +133,7 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
 // Arrow left icon with size only used in this component
 function ArrowLeft() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -147,10 +146,7 @@ function ArrowLeft() {
 // Arrow right icon with size only used in this component
 function ArrowRight() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

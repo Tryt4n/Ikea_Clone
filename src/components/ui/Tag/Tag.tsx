@@ -8,7 +8,7 @@ import "./index.scss";
 // Define the type for the Tag props
 type TagPropsType = {
   children: string; // The content of the tag
-  variant: TextVariants; // The variant of the tag
+  variant?: TextVariants; // The variant of the tag
   className?: string; // Optional additional CSS classes
 };
 
@@ -23,7 +23,11 @@ type TagPropsType = {
  *
  * @returns A Collection.ListItemTag element with the specified variant and content, and any additional CSS classes.
  */
-export default function Tag({ children, variant, className }: TagPropsType) {
+export default function Tag({
+  children,
+  variant = "black",
+  className,
+}: TagPropsType) {
   return (
     <Collection.ListItemTag
       variant={variant} // Set the variant

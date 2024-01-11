@@ -26,15 +26,15 @@ type ListPropsType = {
  * @returns A section element with a class of "favourite-list", containing a link to the list of favourite items, and either an ImagesListWithProducts component if there are products in the list, or an EmptyList component if the list is empty.
  */
 
-export default function FavouriteList({ list, isMainList = false }: ListPropsType) {
+export default function FavouriteList({
+  list,
+  isMainList = false,
+}: ListPropsType) {
   const { id, products } = list;
 
   return (
     <section className="favourite-list">
-      <Link
-        to={`/favourites/${id}`}
-        className="favourite-list__container-link"
-      >
+      <Link to={`/favourites/${id}`} className="favourite-list__container-link">
         {/* If there are products in the list, display the ImagesListWithProducts component, otherwise display the EmptyList component */}
         {products && products.length > 0 ? (
           <ImagesListWithProducts products={products} />
@@ -42,10 +42,7 @@ export default function FavouriteList({ list, isMainList = false }: ListPropsTyp
           <EmptyList isMainList={isMainList} />
         )}
 
-        <ListDescription
-          list={list}
-          isMainList={isMainList}
-        />
+        <ListDescription list={list} isMainList={isMainList} />
       </Link>
     </section>
   );
