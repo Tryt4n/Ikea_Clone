@@ -61,7 +61,9 @@ export default function BackToTopBtn() {
    * This function scrolls the page to the top.
    */
   function scrollToTop() {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     window.scrollTo({
       top: 0,
@@ -73,6 +75,14 @@ export default function BackToTopBtn() {
   const btnClasses = `${
     width < 600 ? "btn--light" : `${footerInView ? "btn--dark" : "btn--gray"}`
   } back-to-top-btn__btn${isVisible ? "" : " back-to-top-btn__btn--hidden"}`;
+
+  const textWrapperClasses = `back-to-top-btn__text-wrapper${
+    width >= 600
+      ? isExpanded
+        ? ""
+        : " back-to-top-btn__text-wrapper--hidden"
+      : ""
+  }`;
 
   return (
     <div className={width >= 600 ? "page-container" : ""}>
@@ -87,11 +97,7 @@ export default function BackToTopBtn() {
         >
           <ChevronRightIcon />
 
-          <div
-            className={`back-to-top-btn__text-wrapper${
-              isExpanded ? "" : " back-to-top-btn__text-wrapper--hidden"
-            }`}
-          >
+          <div className={textWrapperClasses}>
             <small className="back-to-top-btn__text">Powrót do góry</small>
           </div>
         </button>
