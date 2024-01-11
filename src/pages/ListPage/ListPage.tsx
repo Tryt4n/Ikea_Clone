@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // Import Context Provider
 import { ListContextProvider } from "./context/ListContext";
 // Import custom hooks
-import useApp from "../../hooks/useApp";
+import useApp from "../../hooks/useApp/useApp";
 import useList from "./context/useList";
 // Import components
 import EmptyList from "./layout/EmptyList/EmptyList";

@@ -1,7 +1,7 @@
 // Import react dependencies
 import { useRef, useState } from "react";
 // Import custom hooks
-import useWindowSize from "../../../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../../../hooks/useWindowSize/useWindowSize";
 // Import icons
 import PauseIcon from "../../../../../../Icons/PauseIcon";
 import PlayIcon from "../../../../../../Icons/PlayIcon";

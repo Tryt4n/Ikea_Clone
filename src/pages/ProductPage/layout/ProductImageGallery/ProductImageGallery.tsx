@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 // Import custom hooks
 import useProduct from "../../context/useProduct";
-import useModal from "../../../../hooks/useModal";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useModal from "../../../../hooks/useModal/useModal";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import inner components
 import { Video } from "./InnerComponents/Video/Video";
 import { Image } from "./InnerComponents/Image/Image";

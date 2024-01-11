@@ -1,5 +1,5 @@
 // Import custom hooks
-import useModal from "../../../../../hooks/useModal";
+import useModal from "../../../../../hooks/useModal/useModal";
 // Import types
 import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 

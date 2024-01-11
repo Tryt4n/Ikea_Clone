@@ -1,7 +1,7 @@
 // React
 import { ButtonHTMLAttributes } from "react";
 // Custom Hooks
-import useModal from "../../../hooks/useModal";
+import useModal from "../../../hooks/useModal/useModal";
 // Types
 import type { BtnShapesType } from "../../../types/btnTypes";
 // Components

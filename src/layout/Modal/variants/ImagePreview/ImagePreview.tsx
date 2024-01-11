@@ -6,7 +6,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/zoom";
 import "swiper/css/navigation";
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Import constants

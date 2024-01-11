@@ -1,6 +1,6 @@
 // Import custom hooks
-import useApp from "../../../../../../../hooks/useApp";
-import useModal from "../../../../../../../hooks/useModal";
+import useApp from "../../../../../../../hooks/useApp/useApp";
+import useModal from "../../../../../../../hooks/useModal/useModal";
 // Import components
 import { ListItem } from "../../ui/ListItem/ListItem";
 // Import helpers functions

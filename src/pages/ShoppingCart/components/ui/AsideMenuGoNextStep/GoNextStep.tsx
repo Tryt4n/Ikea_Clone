@@ -1,6 +1,6 @@
 // Import custom hooks
-import useModal from "../../../../../hooks/useModal";
-import useWindowSize from "../../../../../hooks/useWindowSize";
+import useModal from "../../../../../hooks/useModal/useModal";
+import useWindowSize from "../../../../../hooks/useWindowSize/useWindowSize";
 // Import components
 import { Btn } from "../../../../../components/ui/Btn/Btn";
 // Import icons

@@ -1,6 +1,6 @@
 // Import Context
 import { useContext } from "react";
-import { ModalContext } from "../context/ModalContext/ModalContext";
+import { ModalContext } from "../../context/ModalContext/ModalContext";
 
 /**
  * Custom React Hook that provides access to the ModalContext.

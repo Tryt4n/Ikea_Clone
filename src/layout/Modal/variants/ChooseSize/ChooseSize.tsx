@@ -1,5 +1,5 @@
 // Import custom hooks
-import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
+import useCurrentProductPath from "../../../../hooks/useCurrentProductPath/useCurrentProductPath";
 // Import types
 import type { ModalDataChooseSizeType } from "../../types/ModalTypes";
 

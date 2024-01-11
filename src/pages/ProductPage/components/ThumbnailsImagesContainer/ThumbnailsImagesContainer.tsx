@@ -1,6 +1,6 @@
 // Import custom hooks
 import useProduct from "../../../../pages/ProductPage/context/useProduct";
-import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
+import useCurrentProductPath from "../../../../hooks/useCurrentProductPath/useCurrentProductPath";
 // Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Import types

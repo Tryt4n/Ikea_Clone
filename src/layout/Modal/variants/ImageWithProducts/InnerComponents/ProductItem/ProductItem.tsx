@@ -1,7 +1,7 @@
 // Custom Hooks
-import useApp from "../../../../../../hooks/useApp";
-import useModal from "../../../../../../hooks/useModal";
-import useToast from "../../../../../../hooks/useToast";
+import useApp from "../../../../../../hooks/useApp/useApp";
+import useModal from "../../../../../../hooks/useModal/useModal";
+import useToast from "../../../../../../hooks/useToast/useToast";
 // Import compound components
 import Collection from "../../../../../../compoundComponents/CollectionProducts/layout/Collection";
 // Import components

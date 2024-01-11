@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Import custom hooks
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize/useWindowSize";
 // Import components
 import Article from "../../compoundComponents/Article/Article";
 import CardsContainer from "../../compoundComponents/Card/CardsContainer";

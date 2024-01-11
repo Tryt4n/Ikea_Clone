@@ -1,7 +1,7 @@
 // Import react dependencies
 import { ChangeEvent } from "react";
 // Import custom hooks
-import useApp from "../../../../../hooks/useApp";
+import useApp from "../../../../../hooks/useApp/useApp";
 import useList from "../../../context/useList";
 // Import helper function
 import { startViewTransition } from "../../../../../utils/helpers";

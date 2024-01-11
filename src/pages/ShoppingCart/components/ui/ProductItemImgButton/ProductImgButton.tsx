@@ -1,7 +1,7 @@
 // Import react router dependencies
 import { useParams } from "react-router-dom";
 // Import custom hooks
-import useModal from "../../../../../hooks/useModal";
+import useModal from "../../../../../hooks/useModal/useModal";
 // Import types
 import type { ModalDataImagePreviewType } from "../../../../../layout/Modal/types/ModalTypes";
 

@@ -35,10 +35,14 @@ export default function InformationBox({
   // Use the 'as' prop to determine the type of the container element
   const Container = as;
   // Use the 'headingLevel' prop to determine the type of the heading element
+  // const Heading = `h${headingLevel}` as const;
   const Heading = `h${headingLevel}` as const;
 
   return (
-    <Container className={`information-box${className ? ` ${className}` : ""}`}>
+    <Container
+      className={`information-box${className ? ` ${className}` : ""}`}
+      data-testid="information-box-container"
+    >
       <InfoIcon />
       <div>
         {heading && <Heading>{heading}</Heading>}

@@ -15,7 +15,10 @@ type FetchReturnType<T> = {
  * @param options - Optional. An object containing any custom settings that you want to apply to the request.
  * @returns {Object} An object with 'data', 'isLoading', and 'isError' properties.
  */
-export default function useFetch<T>(URL: string, options: RequestInit = {}): FetchReturnType<T> {
+export default function useFetch<T>(
+  URL: string,
+  options: RequestInit = {}
+): FetchReturnType<T> {
   // Initialize state variables
   const [data, setData] = useState<T | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);

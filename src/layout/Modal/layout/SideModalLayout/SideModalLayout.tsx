@@ -2,8 +2,8 @@
 // import { Suspense, lazy, type ReactElement } from "react";
 import { Suspense, lazy } from "react";
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
-import useApp from "../../../../hooks/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useApp from "../../../../hooks/useApp/useApp";
 // Import modal variants inner components by lazy loading
 const ChooseSize = lazy(() => import("../../variants/ChooseSize/ChooseSize"));
 const ChooseColor = lazy(() => import("../../variants/ChooseColor/ChooseColor"));

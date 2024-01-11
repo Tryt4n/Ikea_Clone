@@ -16,10 +16,10 @@ import { useState } from "react";
 // Import react-intersection-observer hook
 import { useInView } from "react-intersection-observer";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useWindowSize from "../../../../hooks/useWindowSize";
-import useEventListener from "../../../../hooks/useEventListener";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
+import useEventListener from "../../../../hooks/useEventListener/useEventListener";
 // Import components
 import HamburgerButton from "../../../../components/ui/HamburgerBtn/HamburgerButton";
 import LoginBtn from "../../../../components/ui/LoginBtn/LoginBtn";

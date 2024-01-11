@@ -1,5 +1,5 @@
 // Import custom hooks
-import useApp from "../../../../../../hooks/useApp";
+import useApp from "../../../../../../hooks/useApp/useApp";
 // Import icons
 import ShoppingCartIcon from "../../../../../../Icons/ShoppingCartIcon";
 

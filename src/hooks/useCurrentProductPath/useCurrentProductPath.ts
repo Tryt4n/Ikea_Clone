@@ -22,6 +22,19 @@ import type { Params } from "react-router-dom";
  */
 
 export default function useCurrentProductPath(path: Params<string>) {
+  // If the path object is empty or missing any of the required properties, return an empty string
+  if (
+    !path ||
+    typeof path !== "object" ||
+    Object.keys(path).length === 0 ||
+    !path.collection ||
+    !path.product ||
+    !path.type ||
+    !path.productID
+  ) {
+    return "";
+  }
+
   const location = `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`;
 
   return location;

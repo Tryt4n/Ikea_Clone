@@ -1,7 +1,7 @@
 // Import react dependencies
 import React from "react";
 // Import custom hooks
-import useCurrentProductPath from "../../../../hooks/useCurrentProductPath";
+import useCurrentProductPath from "../../../../hooks/useCurrentProductPath/useCurrentProductPath";
 // Import types
 import type { ModalDataChooseColorType } from "../../types/ModalTypes";
 // Import utils functions

@@ -1,7 +1,7 @@
 // Import React dependencies
 import { useEffect } from "react";
 // Import custom hooks
-import useToast from "../../../hooks/useToast";
+import useToast from "../../../hooks/useToast/useToast";
 // Import components
 import { Btn } from "../../ui/Btn/Btn";
 // Import icons

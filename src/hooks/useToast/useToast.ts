@@ -1,6 +1,6 @@
 // Import Context
 import { useContext } from "react";
-import { ToastContext } from "../context/ToastContext/ToastContext";
+import { ToastContext } from "../../context/ToastContext/ToastContext";
 
 /**
  * Custom React Hook that provides access to the ToastContext.

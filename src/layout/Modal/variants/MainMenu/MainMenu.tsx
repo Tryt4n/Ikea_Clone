@@ -1,5 +1,5 @@
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import ListItem from "../../../../components/ui/ListItem/ListItem";
 import { Btn } from "../../../../components/ui/Btn/Btn";

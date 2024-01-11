@@ -1,8 +1,8 @@
 // Import react dependencies
 import { ChangeEvent, useState } from "react";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useToast from "../../../../hooks/useToast";
+import useApp from "../../../../hooks/useApp/useApp";
+import useToast from "../../../../hooks/useToast/useToast";
 import useProduct from "../../context/useProduct";
 // Import components
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";

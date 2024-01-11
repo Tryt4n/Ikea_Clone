@@ -1,7 +1,7 @@
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import components
 import ListItem from "../../../../components/ui/ListItem/ListItem";
 // Import types

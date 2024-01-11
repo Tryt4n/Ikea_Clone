@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // Import react-intersection-observer for detecting when an element is in view
 import { useInView } from "react-intersection-observer";
 // Import custom hooks
-import useWindowSize from "../../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize/useWindowSize";
 // Import icons
 import ChevronRightIcon from "../../../Icons/ChevronRightIcon";
 // Import styles

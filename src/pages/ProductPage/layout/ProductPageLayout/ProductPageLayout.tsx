@@ -3,7 +3,7 @@ import { useEffect } from "react";
 // Import react-router-dom dependencies
 import { useNavigate } from "react-router-dom";
 // Import custom hooks
-import useFetch from "../../../../hooks/useFetch";
+import useFetch from "../../../../hooks/useFetch/useFetch";
 import useProduct from "../../context/useProduct";
 // Import layout components
 import ProductImageGallery from "../ProductImageGallery/ProductImageGallery";

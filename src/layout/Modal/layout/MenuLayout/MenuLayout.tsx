@@ -1,8 +1,8 @@
 // Import react dependencies
 import { type ReactNode, Suspense, lazy } from "react";
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useModal from "../../../../hooks/useModal/useModal";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import lazy modal variants
 const MainMenu = lazy(() => import("../../variants/MainMenu/MainMenu"));
 const ProductsMenu = lazy(() => import("../../variants/ProductsMenu/ProductsMenu"));

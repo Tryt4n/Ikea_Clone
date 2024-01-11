@@ -1,7 +1,7 @@
 // Import react intersection observer hook
 import { useInView } from "react-intersection-observer";
 // Import custom hooks
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize/useWindowSize";
 // Import layout components
 import Navbar from "./components/Navbar/Navbar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";

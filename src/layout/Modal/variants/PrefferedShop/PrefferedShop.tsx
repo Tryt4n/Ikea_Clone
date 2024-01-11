@@ -1,8 +1,8 @@
 // Import react dependencies
 import { useState, type ChangeEvent } from "react";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import Input from "../../../../components/features/Input/Input";
 import LocationBtn from "../../components/LocationBtn/LocationBtn";

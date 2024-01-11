@@ -1,5 +1,5 @@
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
+import useApp from "../../../../hooks/useApp/useApp";
 // Import layout components
 import FavouriteList from "../../../../components/features/FavouriteList/FavouriteList";
 // Import components

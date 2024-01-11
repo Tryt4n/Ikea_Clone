@@ -1,5 +1,5 @@
 // Import custom hooks
-import useApp from "../../hooks/useApp";
+import useApp from "../../hooks/useApp/useApp";
 // Import layout components
 import Header from "./layout/Header/Header";
 import EmptyCart from "./layout/EmptyCart/EmptyCart";

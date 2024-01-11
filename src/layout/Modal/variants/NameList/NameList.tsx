@@ -1,9 +1,9 @@
 // Import react dependencies
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useToast from "../../../../hooks/useToast";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useToast from "../../../../hooks/useToast/useToast";
 // Import helpers functions
 import { startViewTransition } from "../../../../utils/helpers";
 // Import components

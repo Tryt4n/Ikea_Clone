@@ -1,6 +1,6 @@
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import helpers functions
 import { startViewTransition } from "../../../../utils/helpers";
 // Import components

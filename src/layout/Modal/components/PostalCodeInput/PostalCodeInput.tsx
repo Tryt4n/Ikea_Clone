@@ -8,7 +8,7 @@ import {
   type InputHTMLAttributes,
 } from "react";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
+import useApp from "../../../../hooks/useApp/useApp";
 // Import components
 import Input from "../../../../components/features/Input/Input";
 import ErrorMessage from "../../../../components/ui/ErrorMessage/ErrorMessage";

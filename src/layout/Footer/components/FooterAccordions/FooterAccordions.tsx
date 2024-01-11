@@ -15,7 +15,7 @@
 // Import react dependencies
 import type { ReactNode } from "react";
 // Import custom hooks
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import accordion components
 import AccordionContainer from "../../../../components/features/Accordions/AccordionContainer/AccordionContainer";
 import AccordionElement from "../../../../components/features/Accordions/AccordionElement/AccordionElement";

@@ -1,8 +1,8 @@
 // Import react dependencies
 import { ChangeEvent } from "react";
 // Import custom hooks
-import useApp from "../../../../../hooks/useApp";
-import useWindowSize from "../../../../../hooks/useWindowSize";
+import useApp from "../../../../../hooks/useApp/useApp";
+import useWindowSize from "../../../../../hooks/useWindowSize/useWindowSize";
 // Import components
 import QuantityInput from "../../../../../components/features/QuantityInput/QuantityInput";
 import { BtnDeleteProduct } from "../ProductItemBtnDeleteProduct/BtnDeleteProduct";

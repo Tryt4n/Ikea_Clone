@@ -1,7 +1,7 @@
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
+import useApp from "../../../../hooks/useApp/useApp";
 import useList from "../../context/useList";
-import useToast from "../../../../hooks/useToast";
+import useToast from "../../../../hooks/useToast/useToast";
 // Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";
 // Import icons

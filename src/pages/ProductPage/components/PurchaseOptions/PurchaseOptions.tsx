@@ -1,5 +1,5 @@
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 import ShopIcon from "../../../../Icons/ShopIcon";

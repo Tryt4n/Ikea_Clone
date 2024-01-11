@@ -3,7 +3,7 @@ import React from "react";
 // Import React Router dependencies
 import { ScrollRestoration } from "react-router-dom";
 // Import custom hook
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch/useFetch";
 // Import utils
 import { componentMapper } from "./utils/componentMapper";
 // Import components

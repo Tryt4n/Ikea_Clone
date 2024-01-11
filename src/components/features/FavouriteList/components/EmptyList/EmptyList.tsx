@@ -1,5 +1,5 @@
 // Import custom hooks
-import useWindowSize from "../../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../../hooks/useWindowSize/useWindowSize";
 // Import icons
 import HeartIcon from "../../../../../Icons/HeartIcon";
 

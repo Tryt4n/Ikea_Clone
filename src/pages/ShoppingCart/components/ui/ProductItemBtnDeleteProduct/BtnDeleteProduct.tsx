@@ -1,6 +1,6 @@
 // Import custom hooks
-import useApp from "../../../../../hooks/useApp";
-import useToast from "../../../../../hooks/useToast";
+import useApp from "../../../../../hooks/useApp/useApp";
+import useToast from "../../../../../hooks/useToast/useToast";
 // Import helpers functions
 import { startViewTransition } from "../../../../../utils/helpers";
 // Import types

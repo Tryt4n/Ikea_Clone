@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useEventListener from "./useEventListener";
+import useEventListener from "../useEventListener/useEventListener";
 
 /**
  * Hook useWindowSize
@@ -22,6 +22,6 @@ export default function useWindowSize() {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   });
 
-  // Return the current window size
-  return windowSize;
+  // Make the hook immutable by freezing the returned object
+  return Object.freeze(windowSize);
 }

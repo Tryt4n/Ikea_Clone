@@ -1,9 +1,9 @@
 // Import react dependencies
 import { useRef, type FormEvent } from "react";
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useToast from "../../../../hooks/useToast";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useToast from "../../../../hooks/useToast/useToast";
 // Import inner components
 import { Form } from "./InnerComponents/Form/Form";
 import { Btns } from "./InnerComponents/Btns/Btns";

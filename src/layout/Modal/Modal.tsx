@@ -1,7 +1,7 @@
 // Import react dependencies
 import { forwardRef, type ForwardedRef } from "react";
 // Import Modal Context
-import useModal from "../../hooks/useModal";
+import useModal from "../../hooks/useModal/useModal";
 // Import Modals components
 import SideModalLayout from "./layout/SideModalLayout/SideModalLayout";
 import MenuLayout from "./layout/MenuLayout/MenuLayout";
@@ -17,7 +17,11 @@ type ModalPropsType = {
 };
 
 // Define the modal types
-export type ModalTypes = "side-modal" | "image-modal" | "image-with-products-modal" | "menu-modal";
+export type ModalTypes =
+  | "side-modal"
+  | "image-modal"
+  | "image-with-products-modal"
+  | "menu-modal";
 
 // Export the Modal component with the forwardRef function
 
@@ -53,6 +57,7 @@ function InnerComponent(
       className={modalClass}
       onClick={onClickFunction} // The function to call when the modal is clicked
       onKeyDown={onKeyDownFunction} // The function to call when a key is pressed on the modal
+      data-testid="modal" // Set the data-testid attribute for testing because JSDOM does not support the dialog element
     >
       {modalData &&
         (((type === "choose-color" ||
@@ -98,7 +103,9 @@ function InnerComponent(
               <ImageWithProducts data={modalData} />
             </>
           )) ||
-          ((type === "menu" || type === "products-menu" || type === "rooms-menu") && (
+          ((type === "menu" ||
+            type === "products-menu" ||
+            type === "rooms-menu") && (
             <>
               <MenuLayout data={modalData} />
             </>

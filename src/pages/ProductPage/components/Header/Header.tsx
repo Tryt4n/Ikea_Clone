@@ -1,7 +1,7 @@
 // Import custom hooks
-import useApp from "../../../../hooks/useApp";
-import useModal from "../../../../hooks/useModal";
-import useToast from "../../../../hooks/useToast";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import useToast from "../../../../hooks/useToast/useToast";
 // Import components
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
 // Import types

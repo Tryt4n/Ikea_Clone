@@ -1,7 +1,7 @@
 // Import react dependencies
 import React from "react";
 // Import custom hooks
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import components
 import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 // Import types

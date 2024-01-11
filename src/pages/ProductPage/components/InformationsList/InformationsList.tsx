@@ -1,7 +1,7 @@
 // Import react dependencies
 import type { ReactNode } from "react";
 // Import custom hooks
-import useModal from "../../../../hooks/useModal";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
 // Import icons

@@ -1,7 +1,7 @@
 // Import React dependencies
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 // Import custom hooks
-import useWindowSize from "../../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize/useWindowSize";
 // Import components
 import { Btn } from "../../ui/Btn/Btn";
 // Import styles

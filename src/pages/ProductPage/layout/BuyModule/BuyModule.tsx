@@ -1,7 +1,7 @@
 // Import custom hooks
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 import useProduct from "../../context/useProduct";
-import useModal from "../../../../hooks/useModal";
+import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";
 import RatingBlock from "../../../../components/features/RatingBlock/RatingBlock";
