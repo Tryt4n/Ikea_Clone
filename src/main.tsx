@@ -1,38 +1,23 @@
+/**
+ * @file This is the main entry point for the React application.
+ * It imports necessary React dependencies, global styles, and the main App component.
+ * It then uses ReactDOM to render the App component into the root div element.
+ */
+
 // Importing React dependencies
-// import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 
-// Importing Router dependencies
-import { RouterProvider } from "react-router-dom";
-import { routes } from "./routes";
-
-// Importing Context providers
-import { AppContextProvider } from "./context/AppContext/AppContext";
-import { ToastContextProvider } from "./context/ToastContext/ToastContext";
-import { ModalContextProvider } from "./context/ModalContext/ModalContext";
+// Importing the main App component
+import App from "./App";
 
 // Importing global styles
 import "./style.scss";
 
-/**
- * Main entry point of the application
- *
- * This script is responsible for rendering the root component of the React application.
- * It wraps the application with necessary context providers and the router provider.
- *
- * The application is rendered in strict mode, which can highlight potential problems in an application.
- *
- * The root component is rendered into a DOM element with the id of "root".
- */
-
+// Using ReactDOM to render the App component into the root div element
+// Add type assertion to avoid TS error, because we know that the root element exists
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <React.StrictMode>
-  <AppContextProvider>
-    <ToastContextProvider>
-      <ModalContextProvider>
-        <RouterProvider router={routes} />
-      </ModalContextProvider>
-    </ToastContextProvider>
-  </AppContextProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
