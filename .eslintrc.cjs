@@ -15,6 +15,7 @@ module.exports = {
     "eslint:recommended", // The recommended configuration of ESLint rules
     "plugin:@typescript-eslint/recommended", // The recommended configuration of TypeScript-specific rules from the @typescript-eslint plugin
     "plugin:react-hooks/recommended", // The recommended configuration of rules related to React Hooks from the react-hooks plugin
+    "plugin:jest-dom/recommended", // The recommended configuration of rules related to jest-dom from the jest-dom plugin
     "plugin:prettier/recommended", // The recommended configuration of rules from the prettier plugin //! This should be the last configuration in the "extends" array so it gets the chance to override other configurations
   ],
 
