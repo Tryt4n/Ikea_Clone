@@ -47,6 +47,5 @@ describe("LoginBtn", () => {
     expect(modal).toBeInTheDocument();
     expect(modal).toHaveClass("side-modal show");
     expect(modalHeader).toBeInTheDocument();
-    screen.debug();
   });
 });

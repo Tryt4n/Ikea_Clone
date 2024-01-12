@@ -57,7 +57,6 @@ describe("ListItem", () => {
     );
 
     // Assert
-    screen.debug();
     expect(screen.getByText(content).tagName).toBe("BUTTON");
     expect(screen.queryByText(content)).not.toHaveAttribute("href");
   });
