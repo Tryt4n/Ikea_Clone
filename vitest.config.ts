@@ -16,6 +16,7 @@ export default defineConfig({
         "**/constants/**",
         "src/Icons/**",
         "src/main.tsx",
+        "src/setup-test/**",
       ],
       thresholds: {
         branches: 80,
