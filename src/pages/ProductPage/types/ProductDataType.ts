@@ -20,7 +20,7 @@ export type ProductDataType = {
     quantity?: number;
     sizeInMeters?: number;
   };
-  newTag: {
+  newTag?: {
     variant: TextVariants;
   };
   variants: string[];
@@ -40,7 +40,7 @@ export type ProductDataType = {
   limitedEdition?: boolean;
   forKidsBadge?: boolean;
   guarantee?: number;
-  softnessIndex: SoftnessIndexType;
+  softnessIndex?: SoftnessIndexType;
   thumbnails: Record<string, string>;
   images: Record<string, string>;
   additionalInformation?: string;
