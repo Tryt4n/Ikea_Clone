@@ -28,6 +28,7 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
   // Initialize ref for the children container
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  /* v8 ignore start */ //! Can't be tested with JSDOM because it doesn't support scrolling
   // Define a function to check if children are at the beginning or end of scrolling
   const btnsEndAndBeginning = useCallback(() => {
     const container = containerRef.current;
@@ -94,6 +95,7 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
     isEnd ? setCanScrollForward(false) : setCanScrollForward(true);
     isBeginning ? setCanScrollBackward(false) : setCanScrollBackward(true);
   }, [width, btnsEndAndBeginning]);
+  /* v8 ignore end */
 
   return (
     <div className="btns-control">
