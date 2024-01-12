@@ -8,8 +8,10 @@ import AccordionElement from "../AccordionElement/AccordionElement";
 import "../index.scss";
 
 // Define the type for the AccordionContainer props
-interface AccordionContainerPropsType {
-  children: ReactElement<typeof AccordionElement>[] | ReactElement<typeof AccordionElement>; // The children of the AccordionContainer, which should be one or more AccordionElement components
+export interface AccordionContainerPropsType {
+  children:
+    | ReactElement<typeof AccordionElement>[]
+    | ReactElement<typeof AccordionElement>; // The children of the AccordionContainer, which should be one or more AccordionElement components
 }
 
 /**
@@ -22,7 +24,9 @@ interface AccordionContainerPropsType {
  * @returns An AccordionContextProvider component containing a ul element with a "accordions-container" class and the specified children.
  */
 
-export default function AccordionContainer({ children }: AccordionContainerPropsType) {
+export default function AccordionContainer({
+  children,
+}: AccordionContainerPropsType) {
   return (
     <AccordionContextProvider>
       <ul className="accordions-container">{children}</ul>
