@@ -16,7 +16,7 @@ export function EmptyList({ isMainList }: { isMainList: boolean }) {
   const { width } = useWindowSize();
 
   return (
-    <div className="favourite-list__inner-wrapper">
+    <div className="favourite-list__inner-wrapper" data-testid="empty-list">
       <div>
         <HeartIcon />
         {(isMainList || (!isMainList && width >= 600)) && (
