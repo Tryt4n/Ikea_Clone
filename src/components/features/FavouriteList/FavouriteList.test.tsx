@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../../../setup-test/test-utils";
 import FavouriteList from "./FavouriteList";
-import { exampleList } from "../../../constants/test-constants/exampleList";
+import { exampleList } from "../../../setup-test/test-constants/exampleList";
 
 describe("FavouriteList", () => {
   it("should render a component with products", () => {

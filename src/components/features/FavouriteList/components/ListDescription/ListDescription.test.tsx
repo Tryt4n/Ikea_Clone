@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../../../../../setup-test/test-utils";
 import { ListDescription } from "./ListDescription";
-import { exampleList as list } from "../../../../../constants/test-constants/exampleList";
+import { exampleList as list } from "../../../../../setup-test/test-constants/exampleList";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import pl from "date-fns/locale/pl";
 import userEvent from "@testing-library/user-event";
