@@ -33,7 +33,7 @@ export default function FavouriteList({
   const { id, products } = list;
 
   return (
-    <section className="favourite-list">
+    <section className="favourite-list" data-testid="favourite-list">
       <Link to={`/favourites/${id}`} className="favourite-list__container-link">
         {/* If there are products in the list, display the ImagesListWithProducts component, otherwise display the EmptyList component */}
         {products && products.length > 0 ? (
