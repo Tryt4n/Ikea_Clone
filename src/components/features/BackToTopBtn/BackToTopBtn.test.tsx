@@ -5,17 +5,11 @@ import BackToTopBtn from "./BackToTopBtn";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "../../../hooks/useWindowSize/useWindowSize";
 
-// Mock the useInView hook
-vi.mock("react-intersection-observer");
 // Mock the useWindowSize hook
 vi.mock("../../../hooks/useWindowSize/useWindowSize");
 
 describe("BackToTopBtn", () => {
   beforeEach(() => {
-    (useInView as unknown as ReturnType<typeof vi.fn>).mockReturnValue([
-      vi.fn(),
-      false,
-    ]);
     window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
 
     // Mock the useWindowSize hook to return a large window width
@@ -119,7 +113,61 @@ describe("BackToTopBtn", () => {
       behavior: "smooth",
     });
     expect(button).toHaveAttribute("aria-hidden", "true");
-    screen.debug();
+  });
+
+  it(`calls scrollToTop function when it is visible and clicked with "smooth" or "auto" scroll behavior based on user preferences`, async () => {
+    // Arrange component visibility state
+    const windowHeight = 1000;
+    window.innerHeight = windowHeight;
+    const userPrefersReducedMotion = true; // Set the user prefers reduced motion to true
+    window.matchMedia = vi.fn().mockImplementation(() => {
+      return {
+        matches: userPrefersReducedMotion,
+        addListener: vi.fn(), // mock function
+        removeListener: vi.fn(), // mock function
+      };
+    });
+    const user = userEvent.setup();
+
+    // Act
+    render(<BackToTopBtn />);
+
+    // Assert that the button is not visible
+    let button = screen.getByRole("button", { hidden: true });
+    expect(button).toHaveAttribute("aria-hidden", "true");
+
+    // Act scroll the page to make the button visible
+    fireEvent.scroll(window, { target: { scrollY: windowHeight } });
+
+    // Assert that the button is visible
+    expect(button).toBeVisible();
+    expect(button).toHaveAttribute("aria-hidden", "false");
+
+    // Act click the button
+    button = screen.getByRole("button");
+    await user.click(button);
+
+    // Update window.scrollY to simulate scrolling to the top
+    Object.defineProperty(window, "scrollY", { value: 0, writable: true });
+
+    // Update useInView mock to simulate that the button is out of view
+    (useInView as unknown as ReturnType<typeof vi.fn>).mockReturnValue([
+      vi.fn(),
+      false,
+    ]);
+
+    // Simulate a scroll event to trigger a re-render
+    fireEvent.scroll(window);
+
+    // Re-assign the button after re-render
+    button = screen.getByRole("button", { hidden: true });
+
+    // Assert that the button is again not visible and the scrollTo function was called
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      behavior: userPrefersReducedMotion ? "auto" : "smooth",
+    });
+    expect(button).toHaveAttribute("aria-hidden", "true");
   });
 
   it("should be expanded when is hovered", async () => {
@@ -152,7 +200,6 @@ describe("BackToTopBtn", () => {
 
     // Assert that the text is hidden
     expect(textWrapper).toHaveClass(textWrapperHiddenClass);
-    screen.debug();
   });
 
   it("renders the BackToTopBtn component and checks if it is displayed statically below 600px", () => {
@@ -172,7 +219,6 @@ describe("BackToTopBtn", () => {
     expect(button).not.toHaveAttribute("aria-hidden", "true");
     expect(button).not.toHaveAttribute("aria-hidden", "false");
 
-    screen.debug();
     expect(textWrapper).not.toHaveClass(
       "back-to-top-btn__text-wrapper--hidden"
     );
