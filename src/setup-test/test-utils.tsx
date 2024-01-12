@@ -4,12 +4,15 @@ import { render, RenderOptions } from "@testing-library/react";
 import { AppContextProvider } from "../context/AppContext/AppContext";
 import { ToastContextProvider } from "../context/ToastContext/ToastContext";
 import { ModalContextProvider } from "../context/ModalContext/ModalContext";
+import { MemoryRouter } from "react-router-dom";
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <AppContextProvider>
       <ToastContextProvider>
-        <ModalContextProvider>{children}</ModalContextProvider>
+        <ModalContextProvider>
+          <MemoryRouter>{children}</MemoryRouter>
+        </ModalContextProvider>
       </ToastContextProvider>
     </AppContextProvider>
   );
