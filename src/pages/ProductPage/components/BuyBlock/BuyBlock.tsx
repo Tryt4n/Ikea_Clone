@@ -7,6 +7,8 @@ import useProduct from "../../context/useProduct";
 // Import components
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/ui/Btn/Btn";
+// Import utility functions
+import { startViewTransition } from "../../../../utils/helpers";
 // Import types
 import type { ProductDataType } from "../../types/ProductDataType";
 // Import styles
@@ -94,10 +96,12 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
     setQuantity(1); // Reset the quantity state.
 
     // Show a toast notification that the product has been added to the shopping cart.
-    setToastData({
-      open: true,
-      text: `${collection} dodano do koszyka.`,
-      link: "/shoppingcart",
+    startViewTransition(() => {
+      setToastData({
+        open: true,
+        text: `${collection} dodano do koszyka.`,
+        link: "/shoppingcart",
+      });
     });
   }
 
