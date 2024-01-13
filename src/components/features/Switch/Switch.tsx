@@ -8,7 +8,7 @@ import type { BtnPropsType } from "../../ui/Btn/Btn";
 import "./index.scss";
 
 // Defining the type for the Switch props
-type SwitchType = {
+export type SwitchType = {
   firstPropertyProps: BtnPropsType & { ref?: ForwardedRef<HTMLButtonElement> }; // The props for the first button
   secondPropertyProps: BtnPropsType & { ref?: ForwardedRef<HTMLButtonElement> }; // The props for the second button
   props?: Omit<BtnPropsType, "children">; // The common props for both buttons
@@ -25,20 +25,16 @@ type SwitchType = {
  *
  * @returns A div element with a class of "switch-wrapper", containing two Btn components, the common props, and their respective props.
  */
-export default function Switch({ firstPropertyProps, secondPropertyProps, props }: SwitchType) {
+export default function Switch({
+  firstPropertyProps,
+  secondPropertyProps,
+  props,
+}: SwitchType) {
   return (
     <div className="switch-wrapper">
-      <Btn
-        size="big"
-        {...props}
-        {...firstPropertyProps}
-      />
+      <Btn size="big" {...props} {...firstPropertyProps} />
 
-      <Btn
-        size="big"
-        {...props}
-        {...secondPropertyProps}
-      />
+      <Btn size="big" {...props} {...secondPropertyProps} />
     </div>
   );
 }
