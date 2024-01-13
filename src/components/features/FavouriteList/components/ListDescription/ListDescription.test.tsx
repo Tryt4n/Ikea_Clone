@@ -59,8 +59,7 @@ describe("ListDescription", () => {
 
     // Act
     render(<ListDescription list={list} isMainList={false} />);
-
-    const buttonElement = screen.getByRole("button", { hidden: true });
+    const buttonElement = screen.getByRole("button");
 
     // Assert
     expect(buttonElement).toBeInTheDocument();
@@ -80,9 +79,7 @@ describe("ListDescription", () => {
     render(<ListDescription list={list} isMainList={false} />);
 
     // Assert
-    expect(
-      screen.queryByRole("button", { hidden: true })
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it("should open the list control menu when the menu button is clicked", async () => {
@@ -96,7 +93,6 @@ describe("ListDescription", () => {
 
     await user.click(button);
 
-    screen.debug();
     // Assert
     expect(modal).toBeInTheDocument();
     expect(modal).toHaveClass("side-modal show");
