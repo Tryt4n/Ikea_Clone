@@ -8,14 +8,20 @@
  */
 
 // Import react dependencies
-import { type ReactNode, createContext, useMemo, useState } from "react";
+import {
+  type ReactNode,
+  createContext,
+  useMemo,
+  useState,
+  useEffect,
+} from "react";
 // Import Toast component
 import Toast from "../../components/features/Toast/Toast";
 // Import helpers functions
 import { startViewTransition } from "../../utils/helpers";
 
 // Define toast data type
-type ToastDataType = {
+export type ToastDataType = {
   open: boolean;
   text: string;
   link?: string;
@@ -34,7 +40,7 @@ type ToastContextType = {
 export const ToastContext = createContext<ToastContextType | null>(null);
 
 // Initial state for the toast
-const initToast = {
+const initToast: ToastDataType = {
   open: false,
   text: "",
 };
@@ -43,6 +49,7 @@ const initToast = {
  * ToastContextProvider
  *
  * Component providing the toast context. Contains logic for opening and closing the toast.
+ * The toast is closed after 7.5 seconds after being opened.
  *
  * @param {ReactNode} children - The children of the component, which have access to the toast context.
  */
@@ -61,6 +68,22 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
     });
   }
 
+  // Use an effect to close the toast after 7.5 seconds if it's open
+  useEffect(() => {
+    let timer: number;
+
+    if (initToast) {
+      timer = setTimeout(() => {
+        closeToast();
+      }, 7500);
+    }
+
+    // Clear the timeout if the toast is closed
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [closeToast, initToast]);
+
   // Create context values object to be passed to the provider
   const contextValue = useMemo(() => {
     return {
@@ -74,7 +97,7 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={contextValue}>
       {children}
       {/* Render the toast component */}
-      <Toast />
+      <Toast toastData={toastData} closeToast={closeToast} />
     </ToastContext.Provider>
   );
 }
