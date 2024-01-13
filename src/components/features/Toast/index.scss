@@ -23,6 +23,18 @@
   isolation: isolate;
   z-index: 9999;
   animation: show 500ms ease-in-out forwards;
+  opacity: 0;
+  visibility: hidden;
+
+  &[open] {
+    transition: v.$main-transition;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & > button {
+    transition: none !important;
+  }
 
   & > p {
     flex-grow: 1;
