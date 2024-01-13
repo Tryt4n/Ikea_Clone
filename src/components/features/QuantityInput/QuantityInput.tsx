@@ -44,6 +44,7 @@ export default function QuantityInput({
       className={`quantity-input${small ? ` quantity-input--small` : ""}${
         className ? ` ${className}` : ""
       }`}
+      data-testid="quantity-input"
     >
       <Btn
         variant="light"
@@ -57,10 +58,7 @@ export default function QuantityInput({
       </Btn>
 
       <div>
-        <label
-          htmlFor={`product-quantity${id}`}
-          className="visually-hidden"
-        >
+        <label htmlFor={`product-quantity${id}`} className="visually-hidden">
           Wpisz liczbę lub zmień jej wartość za pomocą znaku plus i minus.
         </label>
         <input

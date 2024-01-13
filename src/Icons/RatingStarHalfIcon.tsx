@@ -5,6 +5,7 @@ export default function RatingStarHalfIcon() {
       width="24"
       height="24"
       aria-hidden="true"
+      data-testid="rating-star-half-icon"
     >
       <path d="M12 6v10.2818L8.1373 18l.4252-4.2391L5.75 10.5836l4.1255-.9018L12 6z"></path>
       <path
