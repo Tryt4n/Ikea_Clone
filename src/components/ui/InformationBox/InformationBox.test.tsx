@@ -15,6 +15,21 @@ describe("InformationBox", () => {
     expect(screen.getByText(information)).toBeInTheDocument();
   });
 
+  it("should render and information box with additional class if provided", () => {
+    // Arrange
+    const information = "This is some information";
+    const additionalClass = "additional-class";
+
+    // Act
+    render(
+      <InformationBox information={information} className={additionalClass} />
+    );
+    const containerElement = screen.getByTestId("information-box-container");
+
+    // Assert
+    expect(containerElement).toHaveClass(additionalClass);
+  });
+
   it("should render an information box with an optional heading and the provided information text", () => {
     // Arrange
     const heading = "Heading";
