@@ -27,16 +27,18 @@ type SlidePropsType = {
  * @returns A div element with the class of "article__slide" and optionally "bg-{variant}" and additional CSS classes, containing the passed React elements.
  */
 
-export function Slide({ children, variant, className, ...props }: SlidePropsType) {
+export function Slide({
+  children,
+  variant,
+  className,
+  ...props
+}: SlidePropsType) {
   const styles = `article__slide${variant ? ` bg-${variant}` : ""}${
     className ? ` ${className}` : ""
   }`;
 
   return (
-    <div
-      className={styles}
-      {...props}
-    >
+    <div className={styles} {...props} data-testid="article-slide">
       {children}
     </div>
   );

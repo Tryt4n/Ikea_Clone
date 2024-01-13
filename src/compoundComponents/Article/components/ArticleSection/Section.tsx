@@ -27,6 +27,7 @@ export function Section({ children, className, ...props }: SectionPropsType) {
     <section
       className={`article__section${className ? ` ${className}` : ""}`}
       {...props}
+      data-testid="article-section"
     >
       {children}
     </section>

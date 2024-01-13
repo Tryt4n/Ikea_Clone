@@ -14,6 +14,7 @@ export function WishListBadge() {
     <AddToWishListBtn
       className="article__wishlist-badge"
       variant="dark-opaque"
+      data-testid="article-wishlist-badge"
     />
   );
 }

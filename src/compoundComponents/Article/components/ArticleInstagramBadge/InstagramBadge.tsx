@@ -22,17 +22,18 @@ type InstagramBadgeType = {
  * @returns A div element with the class of "article__instagram-badge", containing an InstagramIcon component and a div element with the class of "article__instagram-nickname" (and optionally "article__instagram-nickname--hide"), which contains a span element with the passed string.
  */
 
-export function InstagramBadge({ children, nickVisible = true }: InstagramBadgeType) {
+export function InstagramBadge({
+  children,
+  nickVisible = true,
+}: InstagramBadgeType) {
   return (
-    <div
-      className="article__instagram-badge"
-      aria-label="Użytkownik Instagram"
-    >
+    <div className="article__instagram-badge" aria-label="Użytkownik Instagram">
       <InstagramIcon />
       <div
         className={`article__instagram-nickname${
           !nickVisible ? ` article__instagram-nickname--hide` : ""
         }`}
+        data-testid="article-instagram-nickname"
       >
         <span>{children}</span>
       </div>

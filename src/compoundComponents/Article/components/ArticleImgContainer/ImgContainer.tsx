@@ -22,11 +22,16 @@ type ImgContainerPropsType = {
  *
  * @returns A div element with the class of "article__img-container" and any additional CSS classes passed through the className prop, containing the passed children.
  */
-export function ImgContainer({ children, className, ...props }: ImgContainerPropsType) {
+export function ImgContainer({
+  children,
+  className,
+  ...props
+}: ImgContainerPropsType) {
   return (
     <div
       className={`article__img-container${className ? ` ${className}` : ""}`}
       {...props}
+      data-testid="article-img-container"
     >
       {children}
     </div>
