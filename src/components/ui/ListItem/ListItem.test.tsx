@@ -17,6 +17,21 @@ describe("ListItem", () => {
     expect(screen.getByText(content).tagName).toBe("A");
   });
 
+  it("should render a list item with additional class if provided", () => {
+    // Arrange
+    const content = "Test Content";
+    const additionalClass = "test-class";
+
+    // Act
+    render(<ListItem className={additionalClass}>{content}</ListItem>);
+
+    const listItemElement = screen.getByText(content).parentElement;
+
+    // Assert
+    expect(listItemElement).toBeInTheDocument();
+    expect(listItemElement).toHaveClass(additionalClass);
+  });
+
   it("should render a link element if 'as' prop is set to 'a'", () => {
     // Arrange
     const content = "Test Content";
