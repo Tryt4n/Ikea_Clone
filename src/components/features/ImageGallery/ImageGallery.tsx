@@ -26,7 +26,10 @@ type ImageGalleryPropsType = {
  *
  * @returns A div element with a class of "images-gallery", containing a div with a class of "images-gallery__container" and ImageCardCollection components for each image card, and a div with a class of "images-gallery__btn-wrapper" and a button for showing more images.
  */
-export default function ImageGallery({ data, onHoverStatus }: ImageGalleryPropsType) {
+export default function ImageGallery({
+  data,
+  onHoverStatus,
+}: ImageGalleryPropsType) {
   const [countOfVisibleImages, setCountOfVisibleImages] = useState(6); // State for the count of visible images
 
   const { width } = useWindowSize(); // Get the window width
@@ -49,8 +52,11 @@ export default function ImageGallery({ data, onHoverStatus }: ImageGalleryPropsT
   }
 
   return (
-    <div className="images-gallery">
-      <div className="images-gallery__container">
+    <div className="images-gallery" data-testid="images-gallery">
+      <div
+        className="images-gallery__container"
+        data-testid="images-gallery-container"
+      >
         {shuffledData.map((card, index) => {
           if (index > countOfVisibleImages - 1) return;
 
@@ -70,7 +76,7 @@ export default function ImageGallery({ data, onHoverStatus }: ImageGalleryPropsT
           onClick={showMoreImages}
           disabled={countOfVisibleImages >= shuffledData.length}
         >
-          Pokaż 6 kolejnych inspiracji
+          Pokaż {countOfVisibleImages} kolejnych inspiracji
         </Btn>
       </div>
     </div>
