@@ -85,7 +85,7 @@ describe("ListDescription", () => {
     ).not.toBeInTheDocument();
   });
 
-  it.only("should open the list control menu when the menu button is clicked", async () => {
+  it("should open the list control menu when the menu button is clicked", async () => {
     // Arrange
     const user = userEvent.setup();
 
