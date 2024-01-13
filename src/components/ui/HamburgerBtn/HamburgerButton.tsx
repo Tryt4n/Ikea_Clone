@@ -43,9 +43,7 @@ export default function HamburgerButton({ className }: HamburgerBtnType) {
         </div>
 
         {/* // Render the "Menu" label, hidden if the window width is less than 1200px */}
-        <span className={width < 1200 ? "visually-hidden" : undefined}>
-          Menu
-        </span>
+        <span className={width < 1200 ? "visually-hidden" : ""}>Menu</span>
       </button>
     </div>
   );
