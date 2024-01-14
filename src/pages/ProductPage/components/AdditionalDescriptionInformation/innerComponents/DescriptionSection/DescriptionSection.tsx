@@ -21,10 +21,7 @@ export function DescriptionSection({ data }: { data: AdditionalInfo }) {
 
   return (
     <div className="additional-info__section-container">
-      <Header
-        title={title}
-        variant={variant}
-      />
+      <Header title={title} variant={variant} />
 
       <div className="additional-info__text-container">
         <h4 className="additional-info__heading">{header}</h4>

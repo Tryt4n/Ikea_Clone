@@ -37,7 +37,11 @@ export function Description({
   price,
   oldPrice,
 }: DescriptionType) {
-  const totalPrice = calculatePrice(quantity, price.integer, price.decimal).split(","); // The calculatePrice function returns a string with the total price, e.g. "123,45". We split it into two parts: the integer part and the decimal part.
+  const totalPrice = calculatePrice(
+    quantity,
+    price.integer,
+    price.decimal,
+  ).split(","); // The calculatePrice function returns a string with the total price, e.g. "123,45". We split it into two parts: the integer part and the decimal part.
   const totalPriceInteger = totalPrice[0]; // The integer part of the total price.
   const totalPriceDecimal = totalPrice[1]; // The decimal part of the total price.
 

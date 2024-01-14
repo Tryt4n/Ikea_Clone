@@ -19,18 +19,25 @@ import type { ProductDataType } from "../../types/ProductDataType";
  * @returns A JSX element that consists of a `section` with the class name `product-summary`. Inside this `section`, it renders a `h3` element that is visually hidden for accessibility and SEO purposes, the `Summary` component with the `description` and `productNumber` props from the `data` prop, the `InformationsList` component with the `rating` prop from the `data` prop, the `SustainableDevelopment` component if the `sustainableDevelopment` property of the `data` prop is truthy, and the `AdditionalDescriptionInformation` component with the `infoData` prop from the `data` prop if the `additionalInfo` property of the `data` prop is truthy.
  */
 
-export default function ProductInformations({ data }: { data: ProductDataType }) {
-  const { description, productNumber, rating, additionalInfo, sustainableDevelopment } = data; // Destructure the data prop
+export default function ProductInformations({
+  data,
+}: {
+  data: ProductDataType;
+}) {
+  const {
+    description,
+    productNumber,
+    rating,
+    additionalInfo,
+    sustainableDevelopment,
+  } = data; // Destructure the data prop
 
   return (
     <section className="product-summary">
       {/* Hide the heading for accessibility and SEO purposes */}
       <h3 className="visually-hidden">Dodatkowe informacje</h3>
 
-      <Summary
-        description={description}
-        productNumber={productNumber}
-      />
+      <Summary description={description} productNumber={productNumber} />
 
       <InformationsList rating={rating} />
 
@@ -38,7 +45,9 @@ export default function ProductInformations({ data }: { data: ProductDataType })
       {sustainableDevelopment && <SustainableDevelopment />}
 
       {/* Render the AdditionalDescriptionInformation component if the additionalInfo property of the data prop is truthy */}
-      {additionalInfo && <AdditionalDescriptionInformation infoData={additionalInfo} />}
+      {additionalInfo && (
+        <AdditionalDescriptionInformation infoData={additionalInfo} />
+      )}
     </section>
   );
 }

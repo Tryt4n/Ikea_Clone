@@ -21,7 +21,10 @@ import { NavList } from "./components/NavList/NavList";
 import ChangeCountry from "../../components/ui/ChangeCountryBtn/ChangeCountry";
 import SubList from "./components/SubList/SubList";
 // Import constants
-import { footerLinksList, footerPaymentsList } from "../../constants/footerLists";
+import {
+  footerLinksList,
+  footerPaymentsList,
+} from "../../constants/footerLists";
 // Import styles
 import "./index.scss";
 
@@ -50,18 +53,18 @@ export default function Footer() {
           <FeatureSection>
             <FeatureSection.Header>Klub IKEA Family</FeatureSection.Header>
             <FeatureSection.Body>
-              Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki specjalnym ofertom i
-              inspiracjom, które czekają na ciebie w IKEA Family. Dołącz do Klubu i poczuj się jak w
-              domu.
+              Spełnij marzenie o stylowych i funkcjonalnych wnętrzach dzięki
+              specjalnym ofertom i inspiracjom, które czekają na ciebie w IKEA
+              Family. Dołącz do Klubu i poczuj się jak w domu.
             </FeatureSection.Body>
             <FeatureSection.Footer />
           </FeatureSection>
           <FeatureSection>
             <FeatureSection.Header>IKEA Business Network</FeatureSection.Header>
             <FeatureSection.Body>
-              Poznaj korzyści dedykowane dla małych i dużych przedsiębiorców, dzięki którym
-              stworzysz jeszcze lepsze miejsce pracy dla siebie i innych. Dołącz do Klubu IKEA
-              Business Network.
+              Poznaj korzyści dedykowane dla małych i dużych przedsiębiorców,
+              dzięki którym stworzysz jeszcze lepsze miejsce pracy dla siebie i
+              innych. Dołącz do Klubu IKEA Business Network.
             </FeatureSection.Body>
             <FeatureSection.Footer />
           </FeatureSection>
@@ -72,10 +75,7 @@ export default function Footer() {
           aria-labelledby="main-nav-footer"
         >
           {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
-          <h3
-            id="main-nav-footer"
-            className="visually-hidden"
-          >
+          <h3 id="main-nav-footer" className="visually-hidden">
             Główna Nawigacja Stópki
           </h3>
 
@@ -86,25 +86,16 @@ export default function Footer() {
           <div className="footer__icons-links-inner-container">
             <nav aria-labelledby="socials">
               {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
-              <h3
-                id="socials"
-                className="visually-hidden"
-              >
+              <h3 id="socials" className="visually-hidden">
                 Sociale
               </h3>
 
-              <NavList
-                list={footerLinksList}
-                iconsRounded
-              />
+              <NavList list={footerLinksList} iconsRounded />
             </nav>
 
             <nav aria-labelledby="payments">
               {/* The `visually-hidden` class is used to hide the heading from the screen readers and SEO */}
-              <h3
-                id="payments"
-                className="visually-hidden"
-              >
+              <h3 id="payments" className="visually-hidden">
                 Systemy Płatności
               </h3>
 
@@ -112,14 +103,13 @@ export default function Footer() {
             </nav>
           </div>
 
-          <ChangeCountry
-            href="#"
-            className="footer__change-country"
-          />
+          <ChangeCountry href="#" className="footer__change-country" />
         </div>
 
         <div className="main-layout footer__sub-list-container">
-          <small className="footer__copyright">&copy; Inter IKEA Systems B.V 1999-{date}</small>
+          <small className="footer__copyright">
+            &copy; Inter IKEA Systems B.V 1999-{date}
+          </small>
           <SubList />
         </div>
       </div>

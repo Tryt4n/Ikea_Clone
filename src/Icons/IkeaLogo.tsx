@@ -1,19 +1,8 @@
 export default function IkeaLogo() {
   return (
-    <svg
-      width="100"
-      height="40"
-      viewBox="0 0 100 40"
-      aria-label="Logo"
-    >
-      <g
-        fill="none"
-        fillRule="evenodd"
-      >
-        <path
-          fill="#0058AB"
-          d="M99.986 40H0V0h100v40z"
-        />
+    <svg width="100" height="40" viewBox="0 0 100 40" aria-label="Logo">
+      <g fill="none" fillRule="evenodd">
+        <path fill="#0058AB" d="M99.986 40H0V0h100v40z" />
         <path
           d="M2 20c0 9.833 20.116 18 48.007 18S98 29.833 98 20 77.884 2 50.007 2C22.131 2 2 10.167 2 20z"
           fill="#FBD914"

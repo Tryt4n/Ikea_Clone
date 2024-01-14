@@ -2,7 +2,13 @@
 import { useEffect, useState } from "react";
 // Import SwiperJS dependencies
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
+import {
+  Scrollbar,
+  Navigation,
+  Keyboard,
+  FreeMode,
+  A11y,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
@@ -50,7 +56,11 @@ type ImgCard = {
  * <ImgCardsArticle article={article} />
  */
 
-export default function ImgCardsArticle({ article }: { article: ImgCardsArticleType }) {
+export default function ImgCardsArticle({
+  article,
+}: {
+  article: ImgCardsArticleType;
+}) {
   const { width } = useWindowSize(); // Get the width of the window from useWindowSize custom hook
 
   const { breakOnMobile } = article; // Destructure the breakOnMobile property from the article object
@@ -74,7 +84,11 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
           slidesPerGroup={breakOnMobile ? 0 : 1} // If breakOnMobile is true, set slides per group to 0 (disable), otherwise set it to 1
           spaceBetween={breakOnMobile ? 0 : 20} // If breakOnMobile is true, set space between slides to 0 (disable), otherwise set it to 20px
           navigation={breakOnMobile ? width >= 600 : width < 900} // If breakOnMobile is true, set navigation to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
-          scrollbar={breakOnMobile ? width >= 600 && { hide: true } : width < 900 && { hide: true }} // If breakOnMobile is true, set scrollbar to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
+          scrollbar={
+            breakOnMobile
+              ? width >= 600 && { hide: true }
+              : width < 900 && { hide: true }
+          } // If breakOnMobile is true, set scrollbar to true if width is greater than or equal to 600px, otherwise set it to false if width is less than 900px
           keyboard={
             breakOnMobile
               ? width >= 600 && {
@@ -90,8 +104,8 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
                 ? [Navigation, Scrollbar, Keyboard, FreeMode, A11y]
                 : undefined
               : width < 900
-              ? [Navigation, Scrollbar, Keyboard, FreeMode, A11y]
-              : undefined
+                ? [Navigation, Scrollbar, Keyboard, FreeMode, A11y]
+                : undefined
           } // If breakOnMobile is true, set modules to an array of SwiperJS modules if width is greater than or equal to 600px, otherwise set it to undefined if width is less than 900px
           breakpoints={{
             600: {
@@ -113,11 +127,7 @@ export default function ImgCardsArticle({ article }: { article: ImgCardsArticleT
 
             return (
               <SwiperSlide key={id}>
-                <Card
-                  as="link"
-                  href={link}
-                  variant={variant}
-                >
+                <Card as="link" href={link} variant={variant}>
                   <Card.Img
                     src={img.imgSrc}
                     srcSet={img.imgSrcSet}

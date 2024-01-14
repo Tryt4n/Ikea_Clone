@@ -14,7 +14,11 @@ import type { ModalDataChooseSizeType } from "../../types/ModalTypes";
  * <ChooseSize data={data} />
  */
 
-export default function ChooseSize({ data }: { data: ModalDataChooseSizeType }) {
+export default function ChooseSize({
+  data,
+}: {
+  data: ModalDataChooseSizeType;
+}) {
   const { path } = data; // Destructure the path property from the data object.
 
   const location = useCurrentProductPath(path); // Use the useCurrentProductPath custom hook to get the current product path.
@@ -36,7 +40,9 @@ export default function ChooseSize({ data }: { data: ModalDataChooseSizeType }) 
               key={index}
               href={Element === "a" ? href : undefined} // Set href only if the Element is an `a` element.
               className="variant-item"
-              aria-label={Element === "div" ? "Obecnie wybrany rozmiar" : undefined} // Set aria-label only if the variant is currently selected.
+              aria-label={
+                Element === "div" ? "Obecnie wybrany rozmiar" : undefined
+              } // Set aria-label only if the variant is currently selected.
             >
               {productVariant}
             </Element>

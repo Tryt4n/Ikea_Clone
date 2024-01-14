@@ -19,7 +19,11 @@ type HeadingPropsType = {
  * @returns A heading component with the specified level, and the provided children.
  */
 
-export function Heading({ children, headingLevel, ...props }: HeadingPropsType) {
+export function Heading({
+  children,
+  headingLevel,
+  ...props
+}: HeadingPropsType) {
   const Element = headingLevel ? `h${headingLevel}` : "h2"; // Determine the heading level
 
   return <Element {...props}>{children}</Element>; // Render the heading with the specified level and children

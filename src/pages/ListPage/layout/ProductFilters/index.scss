@@ -15,7 +15,11 @@
   @media screen and (width >= b.$mobile-md) {
     & > .btns-control {
       max-width: calc(
-        100% - (($_btns-quantity * $_btn-size) + (($_btns-quantity - 1) * $_btns-gap) + $_gap)
+        100% -
+          (
+            ($_btns-quantity * $_btn-size) +
+              (($_btns-quantity - 1) * $_btns-gap) + $_gap
+          )
       );
     }
   }

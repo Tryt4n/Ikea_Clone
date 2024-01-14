@@ -39,10 +39,7 @@ export function ProductHeader({
       <div>
         {/* If a variant is provided, render a Tag component with the variant and a custom class. */}
         {variant && (
-          <Tag
-            variant={variant}
-            className="shopping-cart-product-item__tag"
-          >
+          <Tag variant={variant} className="shopping-cart-product-item__tag">
             Nowa niższa cena
           </Tag>
         )}

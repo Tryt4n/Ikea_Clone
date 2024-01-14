@@ -1,11 +1,6 @@
 export default function DiscountIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
       <path d="M11 16h2V8h-2v8zm4.25-2.75c.6904 0 1.25-.5596 1.25-1.25s-.5596-1.25-1.25-1.25S14 11.3096 14 12s.5596 1.25 1.25 1.25zM10 12c0 .6904-.5596 1.25-1.25 1.25S7.5 12.6904 7.5 12s.5596-1.25 1.25-1.25S10 11.3096 10 12z"></path>
       <path
         fillRule="evenodd"

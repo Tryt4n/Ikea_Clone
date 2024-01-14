@@ -41,7 +41,7 @@ describe("ListItem", () => {
     render(
       <ListItem as="a" link={link}>
         {content}
-      </ListItem>
+      </ListItem>,
     );
 
     // Assert
@@ -68,7 +68,7 @@ describe("ListItem", () => {
     render(
       <ListItem as="button" link={link}>
         {content}
-      </ListItem>
+      </ListItem>,
     );
 
     // Assert
@@ -85,7 +85,7 @@ describe("ListItem", () => {
     render(
       <ListItem as="button" onClickFunction={clickHandler}>
         {content}
-      </ListItem>
+      </ListItem>,
     );
     const button = screen.getByRole("button", { name: content });
 

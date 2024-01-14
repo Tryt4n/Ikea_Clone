@@ -1,5 +1,11 @@
 // Import react dependencies
-import { useRef, useState, type KeyboardEvent, type FormEvent, type MouseEvent } from "react";
+import {
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type FormEvent,
+  type MouseEvent,
+} from "react";
 // Import custom hooks
 import useApp from "../../../../hooks/useApp/useApp";
 import useModal from "../../../../hooks/useModal/useModal";
@@ -52,7 +58,9 @@ export default function DeleteListConfirmation() {
   }
 
   // Handle the change of the checkbox.
-  function inputOnChangeFunction(e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
+  function inputOnChangeFunction(
+    e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>,
+  ) {
     e.preventDefault();
     changeCheckboxStatus();
   }
@@ -93,8 +101,8 @@ export default function DeleteListConfirmation() {
   return (
     <div className="delete-list-confirmation-modal">
       <p>
-        Usunie to wszystkie informacje i treści związane z tą listą. Bez obaw, pozostałe listy
-        pozostaną nietknięte.
+        Usunie to wszystkie informacje i treści związane z tą listą. Bez obaw,
+        pozostałe listy pozostaną nietknięte.
       </p>
 
       <form

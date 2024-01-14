@@ -61,7 +61,10 @@ export function ProductItem({ product, fetchedData }: ProductItemPropsType) {
     const product = await fetchedData(productLink); // Fetch the product data
 
     // If the product exists and there are no lists, dispatch the addProductsToList action with the product and a new list id as the payload
-    if ((!state.favouriteLists || state.favouriteLists.length === 0) && product) {
+    if (
+      (!state.favouriteLists || state.favouriteLists.length === 0) &&
+      product
+    ) {
       const newListId = crypto.randomUUID(); // Create a new list id
 
       dispatch({
@@ -103,8 +106,9 @@ export function ProductItem({ product, fetchedData }: ProductItemPropsType) {
         (list) =>
           list.products &&
           list.products.some(
-            (product) => product.productNumber.replace(/\./g, "") === productNumber
-          )
+            (product) =>
+              product.productNumber.replace(/\./g, "") === productNumber,
+          ),
       );
 
     return isProductAlreadyInAnyList ? isProductAlreadyInAnyList : false; // Return the result
@@ -166,12 +170,18 @@ export function ProductItem({ product, fetchedData }: ProductItemPropsType) {
           {
             // If the product has a new price tag, display the new price tag
             newPriceTag && (
-              <em className="image-with-products-modal__product-new-price-tag">Nowa niższa cena</em>
+              <em className="image-with-products-modal__product-new-price-tag">
+                Nowa niższa cena
+              </em>
             )
           }
 
-          <strong className="image-with-products-modal__product-heading">{productHeading}</strong>
-          <p className="image-with-products-modal__product-subheading">{productSubHeading}</p>
+          <strong className="image-with-products-modal__product-heading">
+            {productHeading}
+          </strong>
+          <p className="image-with-products-modal__product-subheading">
+            {productSubHeading}
+          </p>
 
           <Collection.ListItemPrice
             price={productPriceInteger}

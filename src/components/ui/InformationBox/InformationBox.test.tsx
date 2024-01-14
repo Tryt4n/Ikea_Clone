@@ -22,7 +22,7 @@ describe("InformationBox", () => {
 
     // Act
     render(
-      <InformationBox information={information} className={additionalClass} />
+      <InformationBox information={information} className={additionalClass} />,
     );
     const containerElement = screen.getByTestId("information-box-container");
 
@@ -51,7 +51,7 @@ describe("InformationBox", () => {
 
     // Act
     render(
-      <InformationBox heading={heading} information={information} as={as} />
+      <InformationBox heading={heading} information={information} as={as} />,
     );
 
     // Assert
@@ -73,12 +73,12 @@ describe("InformationBox", () => {
         heading={heading}
         headingLevel={headingLevel}
         information={information}
-      />
+      />,
     );
 
     // Assert
     expect(
-      screen.getByRole("heading", { level: headingLevel })
+      screen.getByRole("heading", { level: headingLevel }),
     ).toBeInTheDocument();
     expect(screen.getByText(information)).toBeInTheDocument();
   });

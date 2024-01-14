@@ -7,11 +7,7 @@ export default function BlikIcon() {
       fill="none"
       aria-hidden="true"
     >
-      <rect
-        width="34"
-        height="24"
-        fill="white"
-      />
+      <rect width="34" height="24" fill="white" />
       <g clipPath="url(#clip0_88849_760)">
         <path
           d="M29.3044 4H5.38313C4.06696 4 3 5.06696 3 6.38313V16.7106C3 18.0268 4.06696 19.0938 5.38313 19.0938H29.3044C30.6205 19.0938 31.6875 18.0268 31.6875 16.7106V6.38313C31.6875 5.06696 30.6205 4 29.3044 4Z"
@@ -59,14 +55,8 @@ export default function BlikIcon() {
           gradientTransform="translate(10.3434 5.62469) scale(5.68594)"
         >
           <stop stopColor="#FF0000" />
-          <stop
-            offset="0.49"
-            stopColor="#E83E49"
-          />
-          <stop
-            offset="1"
-            stopColor="#FF00FF"
-          />
+          <stop offset="0.49" stopColor="#E83E49" />
+          <stop offset="1" stopColor="#FF00FF" />
         </radialGradient>
         <clipPath id="clip0_88849_760">
           <rect

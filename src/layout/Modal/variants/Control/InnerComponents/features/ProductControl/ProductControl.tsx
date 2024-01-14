@@ -46,7 +46,10 @@ export function ProductControl() {
         text: `${modalData.product.collection} został usunięty z twojego koszyka.`,
         prevState: () =>
           startViewTransition(() => {
-            dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+            dispatch({
+              type: "restoreShoppingCart",
+              payload: state.shoppingCart!,
+            });
           }), // Restore the shopping cart to the previous state on button click in the toast notification
       });
 

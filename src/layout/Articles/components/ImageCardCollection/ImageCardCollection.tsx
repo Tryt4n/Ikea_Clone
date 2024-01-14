@@ -74,7 +74,9 @@ export default function ImageCardCollection({
 
   // Define function to open the modal with the image and products
   function openImageModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const isListItem = !hideTooltips ? checkIfIsListItem(e.target as HTMLElement) : false; // Check if the click was on a list item or a button
+    const isListItem = !hideTooltips
+      ? checkIfIsListItem(e.target as HTMLElement)
+      : false; // Check if the click was on a list item or a button
 
     if (isListItem) return; // If the click was on a list item or a button, return
 
@@ -102,7 +104,9 @@ export default function ImageCardCollection({
 
         {/* Render the Instagram badge if the Instagram user is provided */}
         {instagramUser && (
-          <Article.InstagramBadge nickVisible={false}>{instagramUser}</Article.InstagramBadge>
+          <Article.InstagramBadge nickVisible={false}>
+            {instagramUser}
+          </Article.InstagramBadge>
         )}
 
         <CollectionProductsList

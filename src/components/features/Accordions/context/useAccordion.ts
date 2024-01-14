@@ -21,7 +21,9 @@ export default function useAccordion() {
   const accordion = useContext(AccordionContext);
 
   if (accordion == null) {
-    throw new Error("useAccordion must be used within AccordionContextProvider");
+    throw new Error(
+      "useAccordion must be used within AccordionContextProvider",
+    );
   }
 
   return accordion;

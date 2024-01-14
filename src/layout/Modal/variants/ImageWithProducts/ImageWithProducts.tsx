@@ -46,7 +46,9 @@ export type extendedProductType = ProductType & {
  * <ImageWithProducts data={data} />
  */
 
-export default function ImageWithProducts({ data }: ImageWithProductsPropsType) {
+export default function ImageWithProducts({
+  data,
+}: ImageWithProductsPropsType) {
   const { closeModal } = useModal(); // Get the closeModal from the useModal custom hook
   const { width, height } = useWindowSize(); // Get the window size from the useWindowSize custom hook
 
@@ -59,7 +61,9 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
    * @param {string} productLink - The link to the product page.
    * @returns {Promise<ShoppingCartType|null>} The fetched product data or null if an error occurred.
    */
-  async function fetchedData(productLink: string): Promise<ShoppingCartType | null> {
+  async function fetchedData(
+    productLink: string,
+  ): Promise<ShoppingCartType | null> {
     const URL = `https://tryt4n.github.io/Ikea-data/server/${productLink}/data.json`;
 
     try {
@@ -149,7 +153,9 @@ export default function ImageWithProducts({ data }: ImageWithProductsPropsType) 
               {
                 // If the instagram user exists, display the instagram user
                 productsData.instagramUser && (
-                  <Article.InstagramBadge>{productsData.instagramUser}</Article.InstagramBadge>
+                  <Article.InstagramBadge>
+                    {productsData.instagramUser}
+                  </Article.InstagramBadge>
                 )
               }
             </Article.ImgContainer>

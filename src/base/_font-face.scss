@@ -1,8 +1,10 @@
 @font-face {
   font-family: "Noto IKEA";
   font-display: swap;
-  src: url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.eot"),
+  src:
+    url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.eot"),
     url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.woff2") format("woff2"),
     url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.woff") format("woff"),
-    url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.ttf") format("truetype");
+    url("./assets/fonts/2b9a54453c1a3cbc651c0788ade94e4a.ttf")
+      format("truetype");
 }

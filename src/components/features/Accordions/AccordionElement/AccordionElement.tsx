@@ -45,7 +45,10 @@ export default function AccordionElement({
   const [hasBeenToggled, setHasBeenToggled] = useState(false);
 
   // Define a memoized version of the toggleAccordion function that only changes when the id or toggleAccordion function changes
-  const memoizedToggleAccordion = useCallback(() => toggleAccordion(id), [id, toggleAccordion]);
+  const memoizedToggleAccordion = useCallback(
+    () => toggleAccordion(id),
+    [id, toggleAccordion],
+  );
 
   // Use an effect to open the accordion by default if it hasn't been toggled yet
   useEffect(() => {

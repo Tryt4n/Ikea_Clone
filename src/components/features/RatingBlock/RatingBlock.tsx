@@ -36,15 +36,13 @@ export default function RatingBlock({ rating, longVersion }: RatingBlockType) {
           const currentRate = rating?.rate || 0;
           if (index < Math.floor(currentRate)) {
             return <RatingStarIcon key={`star-${index}`} />;
-          } else if (index === Math.floor(currentRate) && currentRate % 1 !== 0) {
+          } else if (
+            index === Math.floor(currentRate) &&
+            currentRate % 1 !== 0
+          ) {
             return <RatingStarHalfIcon key={`star-half-${index}`} />;
           } else {
-            return (
-              <RatingStarIcon
-                key={`star-empty-${index}`}
-                isEmpty
-              />
-            );
+            return <RatingStarIcon key={`star-empty-${index}`} isEmpty />;
           }
         })}
       </span>

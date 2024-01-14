@@ -61,7 +61,7 @@ export default function Header({ data }: { data: ProductDataType }) {
     quantity: 1,
     productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(
       /\./g,
-      ""
+      "",
     )}`, // Replace all dots in the `productNumber` with empty strings.
     newTag,
     addedDate: new Date(),
@@ -97,10 +97,7 @@ export default function Header({ data }: { data: ProductDataType }) {
 
   // Function to open the modal for selecting a wishlist.
   function openSelectListModal() {
-    setModalData({
-      type: "select-list",
-      product: product,
-    });
+    setModalData({ type: "select-list", product: product });
   }
 
   // Check if the product is already in any wishlist.
@@ -109,7 +106,9 @@ export default function Header({ data }: { data: ProductDataType }) {
     state.favouriteLists.some(
       (list) =>
         list.products &&
-        list.products.some((product) => product.productNumber === productNumber)
+        list.products.some(
+          (product) => product.productNumber === productNumber,
+        ),
     );
 
   return (

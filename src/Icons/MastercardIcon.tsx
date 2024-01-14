@@ -7,14 +7,8 @@ export default function MastercardIcon() {
       fill="none"
       aria-hidden="true"
     >
-      <path
-        fill="#fff"
-        d="M0 0h34v24H0z"
-      />
-      <path
-        d="M20.826 5.752h-7.65v12.495h7.65V5.752z"
-        fill="#FF5F00"
-      />
+      <path fill="#fff" d="M0 0h34v24H0z" />
+      <path d="M20.826 5.752h-7.65v12.495h7.65V5.752z" fill="#FF5F00" />
       <path
         d="M13.964 12a7.933 7.933 0 013.035-6.246 7.946 7.946 0 100 12.494A7.933 7.933 0 0113.964 12z"
         fill="#EB001B"

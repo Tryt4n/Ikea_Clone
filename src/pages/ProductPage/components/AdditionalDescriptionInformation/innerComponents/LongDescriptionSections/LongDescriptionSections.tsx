@@ -37,15 +37,22 @@ export function LongDescriptionSections({ data }: { data: AdditionalInfo }) {
       // If the additional sections are visible and the long description section exists, scroll to the top of the long description section.
       if (showMore && longDescriptionRef.current) {
         const targetScrollPosition =
-          longDescriptionRef.current.getBoundingClientRect().top + window.scrollY - 90;
+          longDescriptionRef.current.getBoundingClientRect().top +
+          window.scrollY -
+          90;
 
         // Check if the user has reduced motion enabled.
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
         // If the user has reduced motion enabled, set the behavior to "auto". Otherwise, set it to "smooth".
         const scrollBehavior = prefersReducedMotion ? "auto" : "smooth";
 
-        window.scrollTo({ top: targetScrollPosition, behavior: scrollBehavior });
+        window.scrollTo({
+          top: targetScrollPosition,
+          behavior: scrollBehavior,
+        });
       }
     });
   }
@@ -56,16 +63,9 @@ export function LongDescriptionSections({ data }: { data: AdditionalInfo }) {
       className={`additional-info__long-content-container${showMore ? " showMore" : ""}`} // Add the class name "showMore" if the additional sections are visible.
     >
       <div className="additional-info__long-content-wrapper">
-        <Header
-          title={title}
-          variant={variant}
-          id="long-section-header"
-        />
+        <Header title={title} variant={variant} id="long-section-header" />
 
-        <LongDescriptionMainSection
-          header={header}
-          description={description}
-        />
+        <LongDescriptionMainSection header={header} description={description} />
 
         {/* Render a LongDescriptionSection component for each additional section. */}
         {additionalSections &&

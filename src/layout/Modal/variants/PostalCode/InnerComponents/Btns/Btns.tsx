@@ -49,7 +49,8 @@ export function Btns({ type, saveFunction, deleteFunction }: BtnsProps) {
         }
       </Btn>
 
-      {(type === "choose-shop" || (type === "postal-code" && state.postalCode)) && (
+      {(type === "choose-shop" ||
+        (type === "postal-code" && state.postalCode)) && (
         <Btn
           variant="white-with-border"
           onClick={type === "postal-code" ? deleteFunction : showShopsList} // Handle the click based on the type

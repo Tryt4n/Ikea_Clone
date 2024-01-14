@@ -38,7 +38,10 @@ export const ProductContext = createContext<ProductContextType | null>(null);
  * )
  */
 export function ProductProvider({ children }: { children: ReactElement }) {
-  const [displayedMainImg, setDisplayedMainImg] = useState({ src: "", variant: "" }); // Initialize the state for the displayed main image
+  const [displayedMainImg, setDisplayedMainImg] = useState({
+    src: "",
+    variant: "",
+  }); // Initialize the state for the displayed main image
   const path = useParams(); // Get the path parameters from the useParams hook
 
   const URL = `https://tryt4n.github.io/Ikea-data/server/products/${path.collection}/${path.product}/${path.type}/${path.productID}/data.json`; // Construct the URL for the product data from the path parameters
@@ -51,5 +54,9 @@ export function ProductProvider({ children }: { children: ReactElement }) {
     URL,
   };
 
-  return <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>;
+  return (
+    <ProductContext.Provider value={contextValue}>
+      {children}
+    </ProductContext.Provider>
+  );
 }

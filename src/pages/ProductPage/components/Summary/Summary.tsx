@@ -22,7 +22,10 @@ type SummaryPropsType = {
  * @returns A JSX element that consists of a `div` with the class name `product-summary__description-container`. Inside this `div`, it renders a `p` element that displays the `description` prop, and a `small` element that contains two `span` elements. The first `span` displays the text "Numer artykułu", and the second `span` displays the `productNumber` prop.
  */
 
-export default function Summary({ description, productNumber }: SummaryPropsType) {
+export default function Summary({
+  description,
+  productNumber,
+}: SummaryPropsType) {
   return (
     <div className="product-summary__description-container">
       <p className="product-summary__description">{description}</p>

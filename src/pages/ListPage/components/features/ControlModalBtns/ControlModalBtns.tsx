@@ -39,25 +39,15 @@ export default function ControlModalBtns() {
 
   return (
     <div className="control-modal-btns">
-      <Btn
-        shape="circle"
-        variant="light"
-      >
+      <Btn shape="circle" variant="light">
         <span className="visually-hidden">Udostępnij</span>
         <ShareIcon />
       </Btn>
-      <Btn
-        shape="circle"
-        variant="light"
-      >
+      <Btn shape="circle" variant="light">
         <span className="visually-hidden">Drukuj listę</span>
         <PrinterIcon />
       </Btn>
-      <Btn
-        shape="circle"
-        variant="light"
-        onClick={openListMenuModal}
-      >
+      <Btn shape="circle" variant="light" onClick={openListMenuModal}>
         <span className="visually-hidden">Otwórz menu listy</span>
         <TripleDotsMenuIcon />
       </Btn>

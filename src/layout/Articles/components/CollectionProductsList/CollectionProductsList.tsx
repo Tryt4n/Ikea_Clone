@@ -147,7 +147,9 @@ export default function CollectionProductsList({
               >
                 {/* If product has a new tag, render the tag */}
                 {newTag && (
-                  <Collection.ListItemTag variant={newTag.variant}>Nowość</Collection.ListItemTag>
+                  <Collection.ListItemTag variant={newTag.variant}>
+                    Nowość
+                  </Collection.ListItemTag>
                 )}
 
                 {/* If product has a top seller tag, render the tag */}
@@ -166,8 +168,12 @@ export default function CollectionProductsList({
 
                 {/* Render the product heading and subheading */}
                 <Collection.ListItemHeadingContainer>
-                  <Collection.ListItemHeading>{productHeading} </Collection.ListItemHeading>
-                  <Collection.ListItemSubHeading>{productSubHeading}</Collection.ListItemSubHeading>
+                  <Collection.ListItemHeading>
+                    {productHeading}{" "}
+                  </Collection.ListItemHeading>
+                  <Collection.ListItemSubHeading>
+                    {productSubHeading}
+                  </Collection.ListItemSubHeading>
                 </Collection.ListItemHeadingContainer>
 
                 {/* Render the product price and quantity */}

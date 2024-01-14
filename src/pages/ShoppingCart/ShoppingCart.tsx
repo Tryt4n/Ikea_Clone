@@ -24,7 +24,9 @@ export default function ShoppingCart() {
 
   // Determine the heading text based on whether the shopping cart is empty or not.
   const heading =
-    state.shoppingCart && state.shoppingCart.length > 0 ? "Koszyk" : "Twój koszyk jest pusty";
+    state.shoppingCart && state.shoppingCart.length > 0
+      ? "Koszyk"
+      : "Twój koszyk jest pusty";
 
   return (
     <div className="shopping-cart">

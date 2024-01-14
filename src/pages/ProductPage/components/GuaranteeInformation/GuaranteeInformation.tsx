@@ -14,7 +14,11 @@ import "./index.scss";
  * @returns A JSX element that consists of a `div` with the class name `guarantee-information`. Inside this `div`, it renders two `span` elements. The first `span` displays the badge and the second `span` displays a text indicating the guarantee period.
  */
 
-export default function GuaranteeInformation({ guarantee }: { guarantee: number }) {
+export default function GuaranteeInformation({
+  guarantee,
+}: {
+  guarantee: number;
+}) {
   return (
     <div className="guarantee-information">
       {/* Display visual badge, hidden for screen readers */}

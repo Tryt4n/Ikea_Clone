@@ -25,7 +25,7 @@ describe("Switch", () => {
         firstPropertyProps={firstPropertyProps}
         secondPropertyProps={secondPropertyProps}
         props={props}
-      />
+      />,
     );
 
     const firstBtn = screen.getByRole("button", { name: firstBtnText });

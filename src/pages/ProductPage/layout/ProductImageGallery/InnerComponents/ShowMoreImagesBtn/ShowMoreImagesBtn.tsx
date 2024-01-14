@@ -38,7 +38,7 @@ export function ShowMoreImagesBtn({
       setVisibleImages(8);
     } else {
       setVisibleImages((prevVisibleImages) =>
-        Math.min(prevVisibleImages + 8, Object.keys(images).length)
+        Math.min(prevVisibleImages + 8, Object.keys(images).length),
       );
     }
   }
@@ -50,7 +50,9 @@ export function ShowMoreImagesBtn({
         className="product-image-gallery__show-more-btn"
         onClick={handleShowMoreClick}
       >
-        {visibleImages === Object.keys(images).length ? "Pokaż mniej" : "Pokaż więcej zdjęć"}
+        {visibleImages === Object.keys(images).length
+          ? "Pokaż mniej"
+          : "Pokaż więcej zdjęć"}
       </Btn>
     </div>
   );

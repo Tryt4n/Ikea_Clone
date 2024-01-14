@@ -26,14 +26,22 @@ type ImgPropsType = {
  * @returns An image element with the class of "aspect-ratio-{aspectRatio}" and optionally "mobile-aspect-ratio-{aspectRatioMobile}", and the "loading" attribute set to "lazy".
  */
 
-export function Img({ aspectRatio = "16/9", aspectRatioMobile, ...props }: ImgPropsType) {
+export function Img({
+  aspectRatio = "16/9",
+  aspectRatioMobile,
+  ...props
+}: ImgPropsType) {
   // The aspect ratios are formatted by replacing "/" with "-"
   const formattedAspectRatio = aspectRatio.replace("/", "-");
-  const formattedAspectRatioMobile = aspectRatioMobile ? aspectRatioMobile.replace("/", "-") : "";
+  const formattedAspectRatioMobile = aspectRatioMobile
+    ? aspectRatioMobile.replace("/", "-")
+    : "";
 
   // The imgClassNames variable is set to the formatted aspect ratio classes
   const imgClassNames = `aspect-ratio-${formattedAspectRatio}${
-    formattedAspectRatioMobile ? ` mobile-aspect-ratio-${formattedAspectRatioMobile}` : ""
+    formattedAspectRatioMobile
+      ? ` mobile-aspect-ratio-${formattedAspectRatioMobile}`
+      : ""
   }`;
 
   return (

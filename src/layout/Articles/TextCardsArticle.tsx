@@ -44,7 +44,11 @@ type CardType = {
  * @returns {JSX.Element} The TextCardsArticle component.
  */
 
-export default function TextCardsArticle({ article }: { article: TextCardsArticleType }) {
+export default function TextCardsArticle({
+  article,
+}: {
+  article: TextCardsArticleType;
+}) {
   return (
     <Article>
       {/* Render the header if provided */}
@@ -65,7 +69,9 @@ export default function TextCardsArticle({ article }: { article: TextCardsArticl
                 {/* Render the icon if provided */}
                 {icon && <div dangerouslySetInnerHTML={{ __html: icon }} />}
 
-                <Card.Heading headingLevel={article.header ? 3 : 2}>{heading}</Card.Heading>
+                <Card.Heading headingLevel={article.header ? 3 : 2}>
+                  {heading}
+                </Card.Heading>
 
                 <Card.Text>{text}</Card.Text>
 

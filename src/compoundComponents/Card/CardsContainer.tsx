@@ -25,6 +25,8 @@ export default function CardsContainer({
   breakOnMobile = false,
 }: CardContainerPropsType) {
   return (
-    <div className={`cards-container${breakOnMobile ? ` breakOnMobile` : ""}`}>{children}</div>
+    <div className={`cards-container${breakOnMobile ? ` breakOnMobile` : ""}`}>
+      {children}
+    </div>
   );
 }

@@ -25,7 +25,11 @@ export type ButtonProps = {
  * @returns {JSX.Element} The ButtonElement component.
  */
 
-export function ButtonElement({ children, className, container = "true" }: ButtonProps) {
+export function ButtonElement({
+  children,
+  className,
+  container = "true",
+}: ButtonProps) {
   return (
     <li
       className={`${container === "true" ? "btn-container" : ""}${

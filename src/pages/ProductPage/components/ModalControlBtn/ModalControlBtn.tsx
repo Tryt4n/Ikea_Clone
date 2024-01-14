@@ -33,10 +33,7 @@ export default function ModalControlBtn({
   ...props // Destructure the props object to get the standard button attributes
 }: ModalControlBtnPropsType) {
   return (
-    <button
-      className="modal-control-btn"
-      {...props}
-    >
+    <button className="modal-control-btn" {...props}>
       <div className="modal-control-btn__text-wrapper">
         <span>Wybierz {chooseText}</span>
         <span aria-label={`Aktualnie wybrany ${chooseText}`}>{variant}</span>

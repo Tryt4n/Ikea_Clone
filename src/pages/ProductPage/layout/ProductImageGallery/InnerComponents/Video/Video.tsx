@@ -20,7 +20,13 @@ import PlayIcon from "../../../../../../Icons/PlayIcon";
  * @returns A JSX fragment that consists of a `video` element with the `ref`, `src`, `playsInline`, `loop`, `poster`, and `muted` attributes, a `button` element to open the video in a modal, and a `button` element to play/pause the video. The `onClick` and `onTouchStart` events of the play/pause button call the `handleVideoPlayPause` function, which plays or pauses the video and updates the `videoControl` state.
  */
 
-export function Video({ src, openModal }: { src: string; openModal: () => void }) {
+export function Video({
+  src,
+  openModal,
+}: {
+  src: string;
+  openModal: () => void;
+}) {
   const [videoControl, setVideoControl] = useState({
     isFirstPlayback: true,
     isPlaying: false,

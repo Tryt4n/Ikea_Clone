@@ -20,7 +20,11 @@ type ListItemTagPropsType = {
  * @returns An em element with the specified text, a "collection-list__item-tag" class, and optionally a variant and a CSS class.
  */
 
-export function ListItemTag({ children, className, variant }: ListItemTagPropsType) {
+export function ListItemTag({
+  children,
+  className,
+  variant,
+}: ListItemTagPropsType) {
   const emClasses = `collection-list__item-tag${variant ? ` tx-${variant}` : ""}${
     className ? ` ${className}` : ""
   }`; // Define the CSS classes of the em element

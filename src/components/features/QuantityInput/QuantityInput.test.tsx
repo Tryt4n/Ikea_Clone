@@ -17,7 +17,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const container = screen.getByTestId("quantity-input");
     const minusBtn = screen.getByRole("button", {
@@ -52,7 +52,7 @@ describe("QuantityInput", () => {
         onChangeFunction={onChangeFunction}
         className={additionalClasses}
         small={true}
-      />
+      />,
     );
     const container = screen.getByTestId("quantity-input");
 
@@ -73,12 +73,12 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
 
     // Assert
     expect(
-      screen.getByRole("button", { name: "Naciśnij aby zmniejszyć ilość" })
+      screen.getByRole("button", { name: "Naciśnij aby zmniejszyć ilość" }),
     ).toBeDisabled();
   });
 
@@ -94,12 +94,12 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
 
     // Assert
     expect(
-      screen.getByRole("button", { name: "Naciśnij aby zwiększyć ilość" })
+      screen.getByRole("button", { name: "Naciśnij aby zwiększyć ilość" }),
     ).toBeDisabled();
   });
 
@@ -116,7 +116,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const textInput = screen.getByRole("textbox", {
       name: "Wpisz liczbę lub zmień jej wartość za pomocą znaku plus i minus.",
@@ -140,7 +140,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const plusBtn = screen.getByRole("button", {
       name: "Naciśnij aby zwiększyć ilość",
@@ -164,7 +164,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const minusBtn = screen.getByRole("button", {
       name: "Naciśnij aby zmniejszyć ilość",
@@ -188,7 +188,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const plusBtn = screen.getByRole("button", {
       name: "Naciśnij aby zwiększyć ilość",
@@ -212,7 +212,7 @@ describe("QuantityInput", () => {
         quantity={quantity}
         inputFunction={inputFunction}
         onChangeFunction={onChangeFunction}
-      />
+      />,
     );
     const minusBtn = screen.getByRole("button", {
       name: "Naciśnij aby zmniejszyć ilość",

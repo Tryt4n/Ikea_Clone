@@ -29,7 +29,9 @@ export function ListItemLastPriceDescription({
   const formattedLastPrice = addThousandSeparator(lastPrice); // Format the last price with a thousand separator
 
   return (
-    <p className={`collection-list__last-price-text-wrapper${className ? ` ${className}` : ""}`}>
+    <p
+      className={`collection-list__last-price-text-wrapper${className ? ` ${className}` : ""}`}
+    >
       Najniższa cena z 30 dni przed obniżką:
       <small>
         &nbsp;

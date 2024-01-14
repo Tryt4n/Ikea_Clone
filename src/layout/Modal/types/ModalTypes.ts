@@ -194,7 +194,10 @@ export type SideModalLayoutType =
   | MoveProductsFromOneListToAnotherModal
   | ManageProductsInListModal;
 
-export type MenuLayoutType = ModalMenuType | ModalProductsMenuType | ModalRoomsMenuType;
+export type MenuLayoutType =
+  | ModalMenuType
+  | ModalProductsMenuType
+  | ModalRoomsMenuType;
 
 export type ModalDataType =
   | SideModalLayoutType

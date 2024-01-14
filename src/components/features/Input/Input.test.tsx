@@ -50,7 +50,12 @@ describe("Input", () => {
 
     // Act
     render(
-      <Input type={type} id="input" label="Label" className={additionalClass} />
+      <Input
+        type={type}
+        id="input"
+        label="Label"
+        className={additionalClass}
+      />,
     );
     const inputElement = screen.getByRole("textbox");
     const containerElement = inputElement.parentElement;
@@ -79,7 +84,7 @@ describe("Input", () => {
         id="input"
         label="Label"
         inputProps={additionalProps}
-      />
+      />,
     );
     const inputElement = screen.getByRole("textbox");
 
@@ -88,7 +93,7 @@ describe("Input", () => {
     // Assert
     expect(inputElement).toHaveClass(`${type}-input__input`);
     expect(inputElement).toHaveClass(additionalProps.className);
-    expect(inputElement).toHaveAttribute("value", additionalProps.value);
+    expect(inputElement).toHaveValue(additionalProps.value);
     expect(onChangeMock).toHaveBeenCalled();
   });
 
@@ -106,7 +111,7 @@ describe("Input", () => {
         id="input"
         label="Label"
         labelProps={additionalProps}
-      />
+      />,
     );
     const labelElement = screen.getByText("Label");
 

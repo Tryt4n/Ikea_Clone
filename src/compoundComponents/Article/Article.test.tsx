@@ -51,7 +51,7 @@ describe("Article", () => {
           </Article.Slide>
           <Article.SlideBtn>{slideBtnText}</Article.SlideBtn>
         </Article.Body>
-      </Article>
+      </Article>,
     );
 
     const articleElement = screen.getByRole("article");
@@ -111,7 +111,7 @@ describe("Article", () => {
 
     expect(badgeElement).toBeInTheDocument();
     expect(nicknameWrapper).not.toHaveClass(
-      "article__instagram-nickname--hide"
+      "article__instagram-nickname--hide",
     );
   });
 
@@ -182,7 +182,7 @@ describe("Article", () => {
           </Article.Slide>
           <Article.SlideBtn>{slideBtnText}</Article.SlideBtn>
         </Article.Body>
-      </Article>
+      </Article>,
     );
 
     const articleElement = screen.getByRole("article");

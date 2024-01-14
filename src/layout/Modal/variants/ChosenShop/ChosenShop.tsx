@@ -39,7 +39,7 @@ export default function ChosenShop() {
   // Calculate the opening hours of the shop.
   function calculateOpeningHours(
     openingHours: Record<string, string>,
-    nonStandardOpeningHours: Record<string, string>
+    nonStandardOpeningHours: Record<string, string>,
   ): string {
     const today = new Date();
     const dayOfWeek = today.toLocaleDateString("en-US", { weekday: "long" }); // Get the day of the week.
@@ -47,7 +47,8 @@ export default function ChosenShop() {
 
     if (hours === "Zamknięte") {
       // If regular hours indicate that the shop is closed, check non-standard hours
-      const nonStandardHours = nonStandardOpeningHours[today.toLocaleDateString("en-US")]; // Get the non-standard hours for today.
+      const nonStandardHours =
+        nonStandardOpeningHours[today.toLocaleDateString("en-US")]; // Get the non-standard hours for today.
       if (nonStandardHours) {
         return `Czynne do ${nonStandardHours.split(" - ")[1]}`; // If non-standard hours are available, return the closing time.
       } else {
@@ -76,7 +77,7 @@ export default function ChosenShop() {
         <strong>
           {calculateOpeningHours(
             chosenShop!.openingHoursPerDay,
-            chosenShop!.nonStandardOpeningHours
+            chosenShop!.nonStandardOpeningHours,
           )}
         </strong>
         <p>{chosenShop!.address}</p>
@@ -88,7 +89,9 @@ export default function ChosenShop() {
       </section>
 
       <section>
-        <h3 className="chosen-shop__subheading">Niestandardowe godziny otwarcia</h3>
+        <h3 className="chosen-shop__subheading">
+          Niestandardowe godziny otwarcia
+        </h3>
         <Hours hoursObject={chosenShop!.nonStandardOpeningHours} />
       </section>
 

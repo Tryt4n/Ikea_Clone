@@ -1,6 +1,12 @@
 // Import SwiperJS dependencies
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
+import {
+  Scrollbar,
+  Navigation,
+  Keyboard,
+  FreeMode,
+  A11y,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";

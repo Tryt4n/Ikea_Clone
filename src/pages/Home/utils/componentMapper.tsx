@@ -11,7 +11,9 @@ import ImgCardsArticle, {
 import InspirationImageGalleryArticle, {
   type InspirationImageGalleryArticleType,
 } from "../../../layout/Articles/InspirationImageGalleryArticle";
-import MainArticle, { type MainArticleType } from "../../../layout/Articles/MainArticle";
+import MainArticle, {
+  type MainArticleType,
+} from "../../../layout/Articles/MainArticle";
 import TextCardsArticle, {
   type TextCardsArticleType,
 } from "../../../layout/Articles/TextCardsArticle";
@@ -38,13 +40,17 @@ const componentMap = {
     <ImgCardsArticle article={content as ImgCardsArticleType} />
   ),
   "image-cards-collection-slider": (content: ArticleContentsTypes) => (
-    <ImageCardsCollectionSlider article={content as ImageCardsCollectionSliderType} />
+    <ImageCardsCollectionSlider
+      article={content as ImageCardsCollectionSliderType}
+    />
   ),
   "text-cards-article": (content: ArticleContentsTypes) => (
     <TextCardsArticle article={content as TextCardsArticleType} />
   ),
   "images-gallery": (content: ArticleContentsTypes) => (
-    <InspirationImageGalleryArticle article={content as InspirationImageGalleryArticleType} />
+    <InspirationImageGalleryArticle
+      article={content as InspirationImageGalleryArticleType}
+    />
   ),
 };
 

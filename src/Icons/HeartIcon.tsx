@@ -1,4 +1,10 @@
-export default function HeartIcon({ className, active }: { className?: string; active?: boolean }) {
+export default function HeartIcon({
+  className,
+  active,
+}: {
+  className?: string;
+  active?: boolean;
+}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

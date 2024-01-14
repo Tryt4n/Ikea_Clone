@@ -26,7 +26,7 @@ describe("ListDescription", () => {
       `Zaktualizowano ${formatDistanceToNow(new Date(list.lastEdit), {
         addSuffix: true,
         locale: pl,
-      })}`
+      })}`,
     );
     expect(timeElement).toHaveAttribute("datetime", list.lastEdit.toString());
     expect(timeElement).toHaveClass("favourite-list__time--break-word");

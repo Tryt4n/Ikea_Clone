@@ -31,7 +31,10 @@ type ProductControlsPropsType = {
  * @returns {JSX.Element} A form containing a QuantityInput component and one or more button components.
  */
 
-export function ProductControls({ quantity, product }: ProductControlsPropsType) {
+export function ProductControls({
+  quantity,
+  product,
+}: ProductControlsPropsType) {
   const { dispatch } = useApp(); // Get the dispatch function using the useApp custom hook.
   const { width } = useWindowSize(); // Get the window size using the useWindowSize custom hook.
 
@@ -44,8 +47,11 @@ export function ProductControls({ quantity, product }: ProductControlsPropsType)
     startViewTransition(() =>
       dispatch({
         type: "changeProductQuantity",
-        payload: { value: delta === -1 ? "subtract" : "add", productNumber: productNumber }, // If delta is -1, subtract 1 from the product quantity. If delta is 1, add 1 to the product quantity.
-      })
+        payload: {
+          value: delta === -1 ? "subtract" : "add",
+          productNumber: productNumber,
+        }, // If delta is -1, subtract 1 from the product quantity. If delta is 1, add 1 to the product quantity.
+      }),
     );
   }
 
@@ -61,7 +67,7 @@ export function ProductControls({ quantity, product }: ProductControlsPropsType)
       dispatch({
         type: "changeProductQuantity",
         payload: { value: parsedValue, productNumber: productNumber }, // Set the product quantity to the parsed value.
-      })
+      }),
     );
   }
 

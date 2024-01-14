@@ -23,7 +23,9 @@ export default function AsideMenu() {
 
   // Calculate the total price of the order from the shopping cart
   const calculatePrice = state.shoppingCart?.reduce((accumulator, product) => {
-    const decimalValue = product.price.decimal ? product.price.decimal / 100 : 0; // If the product price has a decimal value, divide it by 100
+    const decimalValue = product.price.decimal
+      ? product.price.decimal / 100
+      : 0; // If the product price has a decimal value, divide it by 100
     const value = product.price.integer + decimalValue; // Add the integer and decimal values
     const result = value * product.quantity; // Multiply the price by the quantity of the product
 

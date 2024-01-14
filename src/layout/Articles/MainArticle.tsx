@@ -4,7 +4,10 @@ import CollectionNameContainer from "../../compoundComponents/CollectionProducts
 import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList";
 // Import types
 import type { ProductType } from "./components/CollectionProductsList/CollectionProductsList";
-import type { ArticleBtnVariantsType, AspectRatioType } from "../../types/articleTypes";
+import type {
+  ArticleBtnVariantsType,
+  AspectRatioType,
+} from "../../types/articleTypes";
 import type { BackgroundVariants } from "../../types/colorsVariantsType";
 
 // Main article type
@@ -50,7 +53,9 @@ export default function MainArticle({ article }: { article: MainArticleType }) {
     <Article key={article.id}>
       {/* The header of the article. It can be visually hidden. */}
       {article.header && (
-        <Article.Header className={article.headerSrOnly ? "visually-hidden" : undefined}>
+        <Article.Header
+          className={article.headerSrOnly ? "visually-hidden" : undefined}
+        >
           {article.header}
         </Article.Header>
       )}
@@ -65,12 +70,20 @@ export default function MainArticle({ article }: { article: MainArticleType }) {
             srcSet={article.imgSrcSet}
             sizes={article.imgSizes}
             alt={article.imgAlt}
-            aspectRatio={article.imgAspectRatio ? article.imgAspectRatio : "16/9"}
-            aspectRatioMobile={article.imgAspectRatioMobile ? article.imgAspectRatioMobile : "16/9"}
+            aspectRatio={
+              article.imgAspectRatio ? article.imgAspectRatio : "16/9"
+            }
+            aspectRatioMobile={
+              article.imgAspectRatioMobile
+                ? article.imgAspectRatioMobile
+                : "16/9"
+            }
           />
 
           {/* The list of products in the article. */}
-          {article.products && <CollectionProductsList products={article.products} />}
+          {article.products && (
+            <CollectionProductsList products={article.products} />
+          )}
 
           {/* The collection name container in the article. It contains the name and the link of the collection, and a flag indicating if the collection is new. */}
           {article.collection && (

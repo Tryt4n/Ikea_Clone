@@ -53,20 +53,11 @@ export default function Input({
 }: ComponentPropsType) {
   return (
     <div className={`${type}-input${className ? ` ${className}` : ""}`}>
-      <Label
-        htmlFor={id}
-        type={type}
-        {...labelProps}
-      >
+      <Label htmlFor={id} type={type} {...labelProps}>
         {label}
       </Label>
 
-      <CustomInput
-        id={id}
-        name={id}
-        type={type}
-        {...inputProps}
-      />
+      <CustomInput id={id} name={id} type={type} {...inputProps} />
       {type === "checkbox" && (
         <div
           className="checkbox-input__checkbox"
@@ -128,7 +119,7 @@ type CustomInputPropsType<T> = {
  */
 function InnerInput<T>(
   { type, className, ...props }: CustomInputPropsType<T>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <input

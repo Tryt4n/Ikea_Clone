@@ -25,7 +25,7 @@ import Input from "../../../../components/features/Input/Input";
  */
 function InnerComponent(
   { ...props }: InputHTMLAttributes<HTMLInputElement>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { state, dispatch } = useApp(); // Use the useApp custom hook to get and set the current state of the app.
 
@@ -44,7 +44,9 @@ function InnerComponent(
    *
    * @param {FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>} e - The event that triggers the function.
    */
-  function inputOnChangeFunction(e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>) {
+  function inputOnChangeFunction(
+    e: FormEvent<HTMLInputElement> | MouseEvent<HTMLLabelElement>,
+  ) {
     e.preventDefault(); // Prevent the default action of the event.
     changeCheckboxStatus();
   }

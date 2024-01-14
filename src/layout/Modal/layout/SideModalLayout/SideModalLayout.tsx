@@ -7,29 +7,29 @@ import useApp from "../../../../hooks/useApp/useApp";
 // Import modal variants inner components by lazy loading
 const ChooseSize = lazy(() => import("../../variants/ChooseSize/ChooseSize"));
 const ChooseColor = lazy(
-  () => import("../../variants/ChooseColor/ChooseColor")
+  () => import("../../variants/ChooseColor/ChooseColor"),
 );
 const PostalCode = lazy(() => import("../../variants/PostalCode/PostalCode"));
 const PrefferedShop = lazy(
-  () => import("../../variants/PrefferedShop/PrefferedShop")
+  () => import("../../variants/PrefferedShop/PrefferedShop"),
 );
 const ChosenShop = lazy(() => import("../../variants/ChosenShop/ChosenShop"));
 const Login = lazy(() => import("../../variants/Login/Login"));
 const AdditionalInformations = lazy(
-  () => import("../../variants/AdditionalInformations/AdditionalInformations")
+  () => import("../../variants/AdditionalInformations/AdditionalInformations"),
 );
 const NextStep = lazy(() => import("../../variants/NextStep/NextStep"));
 const Control = lazy(() => import("../../variants/Control/Control"));
 const AddProductByNumber = lazy(
-  () => import("../../variants/AddProductByNumber/AddProductByNumber")
+  () => import("../../variants/AddProductByNumber/AddProductByNumber"),
 );
 const NameList = lazy(() => import("../../variants/NameList/NameList"));
 const DeleteListConfirmation = lazy(
-  () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation")
+  () => import("../../variants/DeleteListConfirmation/DeleteListConfirmation"),
 );
 const SelectList = lazy(() => import("../../variants/SelectList/SelectList"));
 const ManageProductsInList = lazy(
-  () => import("../../variants/ManageProductsInList/ManageProductsInList")
+  () => import("../../variants/ManageProductsInList/ManageProductsInList"),
 );
 // Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";

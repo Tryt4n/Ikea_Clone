@@ -10,7 +10,7 @@ describe("ErrorMessage", () => {
         id="error"
         errorMessage="Error message"
         errorVisibility={true}
-      />
+      />,
     );
     const errorMessageElement = getByText("Error message");
 

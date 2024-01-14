@@ -24,6 +24,10 @@ type TextContainerPropsType = {
  */
 export function TextContainer({ children, variant }: TextContainerPropsType) {
   return (
-    <div className={`article__text-container${variant ? ` bg-${variant}` : ""}`}>{children}</div>
+    <div
+      className={`article__text-container${variant ? ` bg-${variant}` : ""}`}
+    >
+      {children}
+    </div>
   );
 }

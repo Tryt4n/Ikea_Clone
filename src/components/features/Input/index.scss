@@ -83,7 +83,9 @@
     color: c.$white;
   }
   &__input.accent:checked:focus ~ .checkbox-input__checkbox,
-  &:hover .checkbox-input__input.accent:is(:checked) ~ .checkbox-input__checkbox {
+  &:hover
+    .checkbox-input__input.accent:is(:checked)
+    ~ .checkbox-input__checkbox {
     background-color: c.$very-dark-blue;
   }
 

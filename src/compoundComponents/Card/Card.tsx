@@ -20,10 +20,10 @@ type CardPropsType<T> = {
 } & (T extends "div"
   ? HTMLProps<HTMLDivElement>
   : T extends "a"
-  ? AnchorHTMLAttributes<HTMLAnchorElement>
-  : T extends "section"
-  ? HTMLProps<HTMLElement>
-  : never); // This allows the component to accept all properties that the specified HTML element would accept
+    ? AnchorHTMLAttributes<HTMLAnchorElement>
+    : T extends "section"
+      ? HTMLProps<HTMLElement>
+      : never); // This allows the component to accept all properties that the specified HTML element would accept
 
 /**
  * Card component

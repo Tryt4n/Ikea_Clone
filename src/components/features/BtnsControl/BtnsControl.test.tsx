@@ -10,7 +10,7 @@ describe("BtnsControl", () => {
       <BtnsControl>
         <div>Child 1</div>
         <div>Child 2</div>
-      </BtnsControl>
+      </BtnsControl>,
     );
     const prevBtn = screen.getByTestId("prev-btn");
     const nextBtn = screen.getByTestId("next-btn");

@@ -70,7 +70,10 @@ export function ProductInListControl() {
       startViewTransition(() => {
         dispatch({
           type: "deleteProductsFromList",
-          payload: { listId: listId, productNumbers: [modalData.products[0].productNumber] },
+          payload: {
+            listId: listId,
+            productNumbers: [modalData.products[0].productNumber],
+          },
         });
       });
 

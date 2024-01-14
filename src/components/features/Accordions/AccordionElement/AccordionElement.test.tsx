@@ -11,7 +11,7 @@ import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 
 describe("AccordionElement", () => {
   const contextWrapper = (
-    children: AccordionContainerPropsType["children"]
+    children: AccordionContainerPropsType["children"],
   ) => <AccordionContainer children={children} />;
 
   it('should render an li element with class "accordion"', () => {
@@ -20,8 +20,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id">
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const accordionElement = screen.getByRole("listitem");
 
@@ -43,8 +43,8 @@ describe("AccordionElement", () => {
           className={customClass}
         >
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const accordionElement = screen.getByRole("listitem");
 
@@ -62,8 +62,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id={id}>
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const buttonElement = screen.getByRole("button");
 
@@ -71,7 +71,7 @@ describe("AccordionElement", () => {
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveAttribute(
       "aria-controls",
-      `accordion-${id + 1}-content`
+      `accordion-${id + 1}-content`,
     );
     expect(buttonElement).toHaveAttribute("aria-expanded", "false");
   });
@@ -85,8 +85,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label={labelText} id="test-id">
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const headingElement = screen.getByRole("heading", { level: 3 });
 
@@ -101,8 +101,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id">
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const iconElement = document.querySelector("svg");
     const iconString = renderToString(<ChevronRightIcon />); // Render ChevronRightIcon to a string
@@ -118,8 +118,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id" chevronSmall>
           Test Content
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const iconElement = document.querySelector("svg");
     const iconString = renderToString(<ChevronRightSmall />); // Render ChevronRightSmall to a string
@@ -138,8 +138,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id">
           <span>{childrenText}</span>
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const spanElement = screen.getByText(childrenText);
     const childrenWrapper = spanElement.parentNode;
@@ -160,10 +160,10 @@ describe("AccordionElement", () => {
       render(
         <AccordionElement label="Test Label" id="test-id">
           Test Content
-        </AccordionElement>
+        </AccordionElement>,
       );
     }).toThrowError(
-      "useAccordion must be used within AccordionContextProvider"
+      "useAccordion must be used within AccordionContextProvider",
     );
 
     consoleErrorSpy.mockRestore();
@@ -178,8 +178,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id" defaultOpened>
           <span>{childrenText}</span>
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const spanElement = screen.getByText(childrenText);
     const childrenWrapper = spanElement.parentNode;
@@ -201,8 +201,8 @@ describe("AccordionElement", () => {
       contextWrapper(
         <AccordionElement label="Test Label" id="test-id">
           <span>{childrenText}</span>
-        </AccordionElement>
-      )
+        </AccordionElement>,
+      ),
     );
     const spanElement = screen.getByText(childrenText);
     const childrenWrapper = spanElement.parentNode;

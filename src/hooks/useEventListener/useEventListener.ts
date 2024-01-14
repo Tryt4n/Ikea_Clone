@@ -12,7 +12,7 @@ type EventCallback<T> = (e: T) => void;
 export default function useEventListener<T>(
   eventType: string,
   callback: EventCallback<T>,
-  element: HTMLElement | (Window & typeof globalThis) = window
+  element: HTMLElement | (Window & typeof globalThis) = window,
 ) {
   // Use useRef to store the current callback function
   const callbackRef = useRef<EventCallback<T>>(callback);

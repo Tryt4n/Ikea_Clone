@@ -64,11 +64,7 @@ export function Header({
             onMouseEnter={() => setImg(imgHover)}
             onMouseLeave={() => setImg(imgMain)}
           >
-            <img
-              src={imgSrc}
-              alt={imgAlt}
-              loading="lazy"
-            />
+            <img src={imgSrc} alt={imgAlt} loading="lazy" />
           </div>
 
           {/* If the newTag prop exist, the component renders the newTag. */}

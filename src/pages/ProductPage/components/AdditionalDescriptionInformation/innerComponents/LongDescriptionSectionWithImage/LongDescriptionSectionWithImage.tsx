@@ -17,7 +17,11 @@ import type { AdditionalInfo } from "../../../../types/ProductDataType";
  * @returns A JSX element that consists of a `div` with the class name `additional-info__long-section-container`. Inside this `div`, it renders the `ImgContainer` component with the `backgroundImage` prop from the `data` prop, and the `LongDescriptionSections` component with the `data` prop.
  */
 
-export function LongDescriptionSectionWithImage({ data }: { data: AdditionalInfo }) {
+export function LongDescriptionSectionWithImage({
+  data,
+}: {
+  data: AdditionalInfo;
+}) {
   return (
     <div className="additional-info__long-section-container">
       <ImgContainer img={data.backgroundImage!} />

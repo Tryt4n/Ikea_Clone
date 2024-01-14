@@ -13,7 +13,11 @@ import type { ButtonProps } from "../ButtonElement/ButtonElement";
  * @returns {JSX.Element} The ListElement component.
  */
 export function ListElement(props: ButtonProps | LinkProps) {
-  return props.as === "link" ? <LinkElement {...props} /> : <ButtonElement {...props} />;
+  return props.as === "link" ? (
+    <LinkElement {...props} />
+  ) : (
+    <ButtonElement {...props} />
+  );
 }
 
 // Define types for LinkElement props
@@ -47,11 +51,7 @@ export function LinkElement({
         className ? ` ${className}` : ""
       }`}
     >
-      <a
-        href={link}
-        className="btn-container__svg-wrapper"
-        {...props}
-      >
+      <a href={link} className="btn-container__svg-wrapper" {...props}>
         {children}
       </a>
     </li>

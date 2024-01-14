@@ -21,7 +21,10 @@ type AddToWishListBtnPropsType = {
  * @returns A Btn component with a "circle" shape, a visually hidden "Dodaj do ulubionych" label, and a HeartIcon with the specified active state.
  */
 
-export default function AddToWishListBtn({ active, ...props }: AddToWishListBtnPropsType) {
+export default function AddToWishListBtn({
+  active,
+  ...props
+}: AddToWishListBtnPropsType) {
   return (
     <Btn
       {...props} // Spread the rest of the props

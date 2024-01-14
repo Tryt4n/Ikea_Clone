@@ -20,7 +20,11 @@ import "./index.scss";
  * @returns {JSX.Element} The rendered `ProductsMenu` component with a navigation menu with product categories.
  */
 
-export default function ProductsMenu({ className }: { className: ModalProductsMenuType["type"] }) {
+export default function ProductsMenu({
+  className,
+}: {
+  className: ModalProductsMenuType["type"];
+}) {
   return (
     <nav className={className}>
       <ul>

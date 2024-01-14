@@ -7,10 +7,7 @@ export default function GiftBoxIcon() {
       fill="none"
       aria-hidden="true"
     >
-      <path
-        fill="#fff"
-        d="M0 0h34v24H0z"
-      />
+      <path fill="#fff" d="M0 0h34v24H0z" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"

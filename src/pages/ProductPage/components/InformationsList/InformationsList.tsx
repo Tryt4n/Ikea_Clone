@@ -31,7 +31,11 @@ import "./index.scss";
  * @returns A JSX element that consists of a `ul` with the class name `product-information`. Inside this `ul`, it renders `InformationItem` components for each type of information.
  */
 
-export default function InformationsList({ rating }: { rating?: ProductDataType["rating"] }) {
+export default function InformationsList({
+  rating,
+}: {
+  rating?: ProductDataType["rating"];
+}) {
   return (
     <ul className="product-information">
       <InformationItem heading="Informacje o produkcie" />
@@ -72,7 +76,13 @@ type TypeInformationItemType =
   | ModalDataRatingsType["type"]
   | ModalDataInstallmentPurchaseType["type"];
 
-function InformationItem({ heading, children }: { heading: string; children?: ReactNode }) {
+function InformationItem({
+  heading,
+  children,
+}: {
+  heading: string;
+  children?: ReactNode;
+}) {
   const { modalID, setModalData } = useModal(); // Access the modalID and setModalData function to manage modal data.
 
   let type: TypeInformationItemType;

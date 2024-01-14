@@ -62,11 +62,11 @@ import type { ShopType } from "../../../constants/shopsList";
 export function reducer(state: ReducerStateType, action: ReducerActionsType) {
   const shoppingCart: ShoppingCartType[] = getJSONFromLocalStorage(
     "shoppingCart",
-    []
+    [],
   ); // Get shopping cart from localStorage (if it exists) or set it to an empty array
   const favouriteListsStorage: FavouritesListType[] = getJSONFromLocalStorage(
     "favouriteLists",
-    undefined
+    undefined,
   ); // Get favourite lists from localStorage
 
   // Switch based on the action type
@@ -91,7 +91,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "togglePostalCodeCheckbox": {
       localStorage.setItem(
         "rememberPostalCodeCheckboxStatus",
-        action.payload.toString()
+        action.payload.toString(),
       ); // Save checkbox status to localStorage
 
       return {
@@ -154,7 +154,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const updatedShoppingCart = changeProductQuantityInShoppingCart(
         shoppingCart,
         value,
-        productNumber
+        productNumber,
       ); // Change the quantity of the product in the shopping cart
 
       saveShoppingCartToLocalStorage(updatedShoppingCart); // Save updated shopping cart to localStorage
@@ -170,7 +170,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       const updatedShoppingCart = removeProductFromShoppingCart(
         shoppingCart,
-        productNumber
+        productNumber,
       ); // Remove the product from the shopping cart
 
       saveShoppingCartToLocalStorage(updatedShoppingCart); // Save updated shopping cart to localStorage
@@ -371,7 +371,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const listWhereProductAreMovedIndex = searchForIndex(
         lists,
         listWhereProductIsMovedID,
-        "id"
+        "id",
       );
 
       let originalListProducts = lists[originalListIndex].products; // Get the original list products
@@ -393,13 +393,13 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
           // Remove the products that are being moved from the original list
           originalListProducts = removeProductsFromList(
             originalListProducts,
-            product.productNumber
+            product.productNumber,
           );
 
           // Check if the product already exists in the list where the products are being moved to
           const existingProductIndex = checkIfProductExistsInList(
             listWhereProductIsMovedProducts,
-            product
+            product,
           );
 
           // If the product already exists in the list where the products are being moved to, increase the quantity of the product and update the addedDate
@@ -442,7 +442,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       const searchedProductIndex = searchForIndex(
         currentList.products!,
         productNumber,
-        "productNumber"
+        "productNumber",
       ); // Find the product in the list
 
       // If the list exists and the product exists in the list, change the product quantity
@@ -453,7 +453,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       ) {
         changeProductQuantity(
           currentList.products[searchedProductIndex],
-          value
+          value,
         ); // Change the product quantity
 
         updateLastEditDate(currentList); // Update the last edit date of the list to the current date
@@ -473,14 +473,14 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       // Postal Code
       const postalCodeValue = getFromLocalStorage(
         "postalCode",
-        state.postalCode
+        state.postalCode,
       ); // Get postal code from localStorage
 
       // Postal Code Checkbox
       const postalCodeCheckboxValue =
         getFromLocalStorage(
           "rememberPostalCodeCheckboxStatus",
-          state.rememberPostalCodeCheckboxStatus
+          state.rememberPostalCodeCheckboxStatus,
         ) === "true"; // Get postal code checkbox status from localStorage
 
       // Chosen Shop
@@ -489,7 +489,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       // If chosen shop exists in localStorage, set chosen shop to the value from localStorage
       if (chosenShopStorage) {
         chosenShopValue = shopsList.find(
-          (shop) => shop.name === chosenShopStorage
+          (shop) => shop.name === chosenShopStorage,
         );
       }
 
@@ -536,7 +536,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     // If the action type does not exist, return the current state
     default:
       throw new Error(
-        "A case in reducer function has been specified that does not exist."
+        "A case in reducer function has been specified that does not exist.",
       );
   }
 }

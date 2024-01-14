@@ -105,10 +105,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
 
       {/* If product's rating exists, display the rating block */}
       {rating && (
-        <button
-          className="buy-module__rating"
-          aria-label="Otwórz menu ocen"
-        >
+        <button className="buy-module__rating" aria-label="Otwórz menu ocen">
           <RatingBlock rating={rating} />
         </button>
       )}
@@ -145,10 +142,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
             />
           )}
 
-          <ThumbnailsImagesContainer
-            data={data}
-            openModal={showColorsModal}
-          />
+          <ThumbnailsImagesContainer data={data} openModal={showColorsModal} />
         </section>
       )}
 

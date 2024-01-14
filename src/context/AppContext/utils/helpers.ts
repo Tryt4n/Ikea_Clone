@@ -26,7 +26,9 @@ type ProductsValueChangeType = number | "subtract" | "add";
  * console.log(sortedLists); // Outputs: [{ name: "List 2", lastEdit: new Date("2022-02-01") }, { name: "List 3", lastEdit: new Date("2022-01-15") }, { name: "List 1", lastEdit: new Date("2022-01-01") }]
  */
 export function sortLists(lists: FavouritesListType[]) {
-  return lists.sort((a, b) => compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)));
+  return lists.sort((a, b) =>
+    compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)),
+  );
 }
 
 /**
@@ -56,7 +58,7 @@ export function sortLists(lists: FavouritesListType[]) {
  */
 export function updateShoppingCart(
   shoppingCart: ShoppingCartType[],
-  newProducts: ShoppingCartType[]
+  newProducts: ShoppingCartType[],
 ) {
   let updatedShoppingCart = [...shoppingCart]; // Create a copy of the shopping cart
 
@@ -65,7 +67,7 @@ export function updateShoppingCart(
     const existingProductIndex = searchForIndex(
       updatedShoppingCart,
       newProduct.productNumber,
-      "productNumber"
+      "productNumber",
     ); // Check if the product already exists in the shopping cart
 
     // If the product already exists in the shopping cart, increase the quantity of the product
@@ -108,9 +110,13 @@ export function updateShoppingCart(
 export function changeProductQuantityInShoppingCart(
   shoppingCart: ShoppingCartType[],
   value: ProductsValueChangeType,
-  productNumber: ShoppingCartType["productNumber"]
+  productNumber: ShoppingCartType["productNumber"],
 ) {
-  const searchedProductIndex = searchForIndex(shoppingCart, productNumber, "productNumber"); // Find the product in the shopping cart
+  const searchedProductIndex = searchForIndex(
+    shoppingCart,
+    productNumber,
+    "productNumber",
+  ); // Find the product in the shopping cart
 
   // If the product exists in the shopping cart, change its quantity
   if (searchedProductIndex !== -1) {
@@ -148,9 +154,13 @@ export function changeProductQuantityInShoppingCart(
  */
 export function removeProductFromShoppingCart(
   shoppingCart: ShoppingCartType[],
-  productNumber: ShoppingCartType["productNumber"]
+  productNumber: ShoppingCartType["productNumber"],
 ) {
-  const searchedProductIndex = searchForIndex(shoppingCart, productNumber, "productNumber"); // Find the product in the shopping cart
+  const searchedProductIndex = searchForIndex(
+    shoppingCart,
+    productNumber,
+    "productNumber",
+  ); // Find the product in the shopping cart
 
   // If the product exists in the shopping cart, remove it
   if (searchedProductIndex !== -1) {
@@ -186,7 +196,7 @@ export function removeProductFromShoppingCart(
  */
 export function removeProductsFromList(
   list: ShoppingCartType[],
-  productNumber: ShoppingCartType["productNumber"]
+  productNumber: ShoppingCartType["productNumber"],
 ) {
   return (list = list.filter((p) => p.productNumber !== productNumber));
 }
@@ -215,10 +225,11 @@ export function removeProductsFromList(
  */
 export function checkIfProductExistsInList(
   listWhereProductIsMovedProducts: ShoppingCartType[],
-  product: ShoppingCartType
+  product: ShoppingCartType,
 ) {
   return listWhereProductIsMovedProducts.findIndex(
-    (existingProduct) => existingProduct.productNumber === product.productNumber
+    (existingProduct) =>
+      existingProduct.productNumber === product.productNumber,
   );
 }
 
@@ -252,7 +263,7 @@ export function checkIfProductExistsInList(
  */
 export function removeProductsFromOldList(
   oldList: FavouritesListType,
-  newList: FavouritesListType
+  newList: FavouritesListType,
 ) {
   if (oldList.products && newList.products) {
     const newProducts = newList.products; // Get new products from the new list
@@ -260,7 +271,9 @@ export function removeProductsFromOldList(
     // Remove the products that are in the new list from the old list
     oldList.products = oldList.products.filter(
       (oldProduct) =>
-        !newProducts.some((newProduct) => newProduct.productNumber === oldProduct.productNumber) // If the product is not in the new list, return true
+        !newProducts.some(
+          (newProduct) => newProduct.productNumber === oldProduct.productNumber,
+        ), // If the product is not in the new list, return true
     );
   }
 }
@@ -345,7 +358,9 @@ export function searchForIndex<T, V>(array: T[], value: V, field: keyof T) {
  *
  * @param {ShoppingCartType[]} shoppingCart - The shopping cart to be saved to localStorage.
  */
-export function saveShoppingCartToLocalStorage(shoppingCart: ShoppingCartType[]) {
+export function saveShoppingCartToLocalStorage(
+  shoppingCart: ShoppingCartType[],
+) {
   saveToLocalStorage("shoppingCart", shoppingCart);
 }
 
@@ -354,7 +369,9 @@ export function saveShoppingCartToLocalStorage(shoppingCart: ShoppingCartType[])
  *
  * @param {FavouritesListType[]} favoriteLists - The favorite lists to save to localStorage.
  */
-export function saveFavoriteListsToLocalStorage(favoriteLists: FavouritesListType[]) {
+export function saveFavoriteListsToLocalStorage(
+  favoriteLists: FavouritesListType[],
+) {
   saveToLocalStorage("favouriteLists", favoriteLists);
 }
 
@@ -381,7 +398,10 @@ export function saveFavoriteListsToLocalStorage(favoriteLists: FavouritesListTyp
  * const editingList = getEditingList(lists, listId);
  * console.log(editingList); // Outputs: { id: 2, name: "List 2", isEditing: true }
  */
-export function getEditingList(lists: FavouritesListType[], listId: FavouritesListType["id"]) {
+export function getEditingList(
+  lists: FavouritesListType[],
+  listId: FavouritesListType["id"],
+) {
   return lists.find((list) => list.id === listId);
 }
 
@@ -408,7 +428,10 @@ export function getEditingList(lists: FavouritesListType[], listId: FavouritesLi
  * const updatedLists = updateEditingList(lists, editingList);
  * console.log(updatedLists); // Outputs: [{ id: 2, name: "Updated List 2", lastEdit: new Date("current date") }, { id: 3, name: "List 3", lastEdit: new Date("2022-01-15") }, { id: 1, name: "List 1", lastEdit: new Date("2022-01-01") }]
  */
-export function updateEditingList(lists: FavouritesListType[], editingList: FavouritesListType) {
+export function updateEditingList(
+  lists: FavouritesListType[],
+  editingList: FavouritesListType,
+) {
   const listIndex = searchForIndex(lists, editingList.id, "id"); // Find the list that is being edited
 
   // If the list exists, update it
@@ -448,7 +471,10 @@ export function updateEditingList(lists: FavouritesListType[], editingList: Favo
  * const updatedLists = deleteList(lists, deletingListId);
  * console.log(updatedLists); // Outputs: [{ id: 1, name: "List 1" }, { id: 3, name: "List 3" }]
  */
-export function deleteList(lists: FavouritesListType[], deletingListId: FavouritesListType["id"]) {
+export function deleteList(
+  lists: FavouritesListType[],
+  deletingListId: FavouritesListType["id"],
+) {
   return lists.filter((list) => list.id !== deletingListId);
 }
 
@@ -468,7 +494,10 @@ export function deleteList(lists: FavouritesListType[], deletingListId: Favourit
  * const newList = createNewList(null, product);
  * console.log(newList); // Outputs: { id: "generated id", lastEdit: new Date("current date"), name: "Moja lista", products: [{ id: 1, name: "Product 1", price: 100 }] }
  */
-export function createNewList(listId: FavouritesListType["id"], product: ShoppingCartType) {
+export function createNewList(
+  listId: FavouritesListType["id"],
+  product: ShoppingCartType,
+) {
   const newList: FavouritesListType = {
     id: listId || crypto.randomUUID(), // If the list ID exists, use it, otherwise generate a new ID
     lastEdit: new Date(), // Set the last edit date to the current date
@@ -511,7 +540,10 @@ export function createNewList(listId: FavouritesListType["id"], product: Shoppin
  * const updatedList = updateListWithProducts(list, products);
  * console.log(updatedList); // Outputs: { id: 1, name: "List 1", lastEdit: new Date("current date"), products: [{ productNumber: 1, name: "Product 1", quantity: 3, addedDate: new Date("2022-01-01") }, { productNumber: 2, name: "Product 2", quantity: 1, addedDate: new Date("current date") }] }
  */
-export function updateListWithProducts(list: FavouritesListType, products: ShoppingCartType[]) {
+export function updateListWithProducts(
+  list: FavouritesListType,
+  products: ShoppingCartType[],
+) {
   const updatedList: FavouritesListType = { ...list }; // Create a copy of the list
 
   updatedList.products = updatedList.products || []; // If the list does not have products, set the products to an empty array
@@ -524,7 +556,7 @@ export function updateListWithProducts(list: FavouritesListType, products: Shopp
     const existingProductIndex = searchForIndex(
       updatedList.products,
       product.productNumber,
-      "productNumber"
+      "productNumber",
     ); // Find the product in the list
 
     // If the product exists in the list, increase the quantity of the product
@@ -561,7 +593,10 @@ export function updateListWithProducts(list: FavouritesListType, products: Shopp
  * // Decreases the product quantity by 1
  * changeProductQuantity(product, "subtract");
  */
-export function changeProductQuantity(product: ShoppingCartType, value: ProductsValueChangeType) {
+export function changeProductQuantity(
+  product: ShoppingCartType,
+  value: ProductsValueChangeType,
+) {
   // If the value is a number, set the quantity to the value
   if (typeof value === "number") {
     product.quantity = value;

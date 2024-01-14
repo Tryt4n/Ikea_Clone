@@ -5,7 +5,9 @@ import useModal from "../../../../hooks/useModal/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import lazy modal variants
 const MainMenu = lazy(() => import("../../variants/MainMenu/MainMenu"));
-const ProductsMenu = lazy(() => import("../../variants/ProductsMenu/ProductsMenu"));
+const ProductsMenu = lazy(
+  () => import("../../variants/ProductsMenu/ProductsMenu"),
+);
 const RoomsMenu = lazy(() => import("../../variants/RoomsMenu/RoomsMenu"));
 // Import components
 import LoadingSpinner from "../../../../components/ui/LazyLoadLoadingSpinner/LoadingSpinner";
@@ -60,11 +62,9 @@ export default function MenuLayout({ data }: MenuLayoutTypePropsType) {
 
             {/* The logo is only rendered if the menu is the main menu or the window width is greater than or equal to 900px. */}
             {(data.type === "menu" ||
-              ((data.type === "products-menu" || data.type === "rooms-menu") && width >= 900)) && (
-              <a
-                href="/"
-                aria-label="Idź na stronę główną"
-              >
+              ((data.type === "products-menu" || data.type === "rooms-menu") &&
+                width >= 900)) && (
+              <a href="/" aria-label="Idź na stronę główną">
                 {/* visually-hidden is a class that hides the text but keeps it accessible for screen readers and SEO purposes. */}
                 <span className="visually-hidden">Strona główna</span>
                 <IkeaLogo />

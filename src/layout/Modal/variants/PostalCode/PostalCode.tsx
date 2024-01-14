@@ -9,7 +9,10 @@ import { Form } from "./InnerComponents/Form/Form";
 import { Btns } from "./InnerComponents/Btns/Btns";
 import { SubDescription } from "./InnerComponents/SubDescription/SubDescription";
 // Import types
-import type { ModalChooseShopType, ModalPostalCodeType } from "../../types/ModalTypes";
+import type {
+  ModalChooseShopType,
+  ModalPostalCodeType,
+} from "../../types/ModalTypes";
 // Import styles
 import "./index.scss";
 
@@ -54,7 +57,9 @@ export default function PostalCode({ modalType }: PostalCodePropsType) {
       dispatchErrorMessage("Wprowadź kod pocztowy");
     } else if (!zipCodeRegex.test(zipCodeValue)) {
       // If the postal code is not valid
-      dispatchErrorMessage("Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.");
+      dispatchErrorMessage(
+        "Wprowadzony kod pocztowy jest nieprawidłowy. Spróbuj ponownie.",
+      );
     } else {
       dispatchErrorMessage(""); // Clear the error message
 

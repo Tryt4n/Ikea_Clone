@@ -59,7 +59,9 @@ export default function LoginBtn({
       <AvatarIcon />
 
       {/* // Render the "Hej! Zaloguj się" text, hidden if the 'short' prop is true */}
-      <span className={short ? "visually-hidden" : undefined}>Hej! Zaloguj się</span>
+      <span className={short ? "visually-hidden" : undefined}>
+        Hej! Zaloguj się
+      </span>
     </Btn>
   );
 }

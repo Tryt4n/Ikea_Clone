@@ -16,13 +16,11 @@ export default function EmptyCart() {
       <div className="empty-cart__inner-wrapper">
         <h3>Masz konto?</h3>
         <div>
-          <a
-            href="#"
-            className="empty-cart__login-link"
-          >
+          <a href="#" className="empty-cart__login-link">
             Dołącz lub zaloguj się
           </a>
-          &nbsp;aby szybko i sprawnie dokonywać zakupów i uzyskać dostęp do historii zamówień.
+          &nbsp;aby szybko i sprawnie dokonywać zakupów i uzyskać dostęp do
+          historii zamówień.
         </div>
       </div>
 

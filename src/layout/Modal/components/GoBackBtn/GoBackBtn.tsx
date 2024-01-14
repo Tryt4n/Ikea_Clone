@@ -43,7 +43,11 @@ type GoBackFunctionType = (
  * <GoBackBtn type={modalType} />
  */
 
-export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] }) {
+export default function GoBackBtn({
+  type,
+}: {
+  type: SideModalLayoutType["type"];
+}) {
   const { modalData, setModalData } = useModal(); // Use the useModal custom hook to get the current modal data and the function to set the modal data.
 
   /**
@@ -130,7 +134,10 @@ export default function GoBackBtn({ type }: { type: SideModalLayoutType["type"] 
         type === "delete-list-confirmation" ||
         type === "move-to-other-list" ||
         type === "move-product-from-one-list-to-another" ||
-        (type === "create-list" && modalData && modalData.type === type && modalData.product) ||
+        (type === "create-list" &&
+          modalData &&
+          modalData.type === type &&
+          modalData.product) ||
         (type === "select-list" &&
           modalData &&
           modalData.type === type &&

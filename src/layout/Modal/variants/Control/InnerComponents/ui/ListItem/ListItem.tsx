@@ -1,7 +1,9 @@
 // Import types
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type ListItemPropsType = { children: ReactNode } & ButtonHTMLAttributes<HTMLButtonElement>;
+type ListItemPropsType = {
+  children: ReactNode;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * `ListItem` is a React component that displays a list item with a button.
@@ -16,10 +18,7 @@ type ListItemPropsType = { children: ReactNode } & ButtonHTMLAttributes<HTMLButt
 export function ListItem({ children, ...props }: ListItemPropsType) {
   return (
     <li>
-      <button
-        type="button"
-        {...props}
-      >
+      <button type="button" {...props}>
         {children}
       </button>
     </li>

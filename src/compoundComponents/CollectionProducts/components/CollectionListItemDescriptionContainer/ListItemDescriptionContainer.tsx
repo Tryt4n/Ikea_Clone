@@ -39,7 +39,11 @@ export function ListItemDescriptionContainer({
   linkToProduct,
   placement,
 }: ListItemDescriptionContainerPropsType) {
-  const { isDescriptionMenuVisible, hoveredItemID, setIsDescriptionMenuVisible } = useCollection(); // Get the isDescriptionMenuVisible, hoveredItemID, and setIsDescriptionMenuVisible functions from the CollectionContext
+  const {
+    isDescriptionMenuVisible,
+    hoveredItemID,
+    setIsDescriptionMenuVisible,
+  } = useCollection(); // Get the isDescriptionMenuVisible, hoveredItemID, and setIsDescriptionMenuVisible functions from the CollectionContext
 
   // Define the condition for the item description visibility
   const visibilityCondition = hoveredItemID === id && isDescriptionMenuVisible;
@@ -61,7 +65,9 @@ export function ListItemDescriptionContainer({
         onBlur={() => setIsDescriptionMenuVisible(false)} // When the link is blurred, set the description menu visibility to false
         onMouseLeave={() => setIsDescriptionMenuVisible(false)} // When the mouse leaves the link, set the description menu visibility to false
       >
-        <div className="collection-list__item-description-inner-wrapper">{children}</div>
+        <div className="collection-list__item-description-inner-wrapper">
+          {children}
+        </div>
         <ChevronRightIcon />
       </a>
     </div>

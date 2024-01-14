@@ -172,7 +172,8 @@
     padding-left: var(--wrapper-padding-inline-start);
     padding-right: var(--wrapper-padding-inline-end);
     background-color: c.$white;
-    transform: translateX(calc((var(--wrapper-padding-inline-start)) * -1)) translateY(-100%);
+    transform: translateX(calc((var(--wrapper-padding-inline-start)) * -1))
+      translateY(-100%);
     & > * {
       position: relative;
     }
@@ -193,7 +194,9 @@
     @media screen and (width >= v.$navbar-max-width) {
       max-width: v.$navbar-max-width;
       & > * {
-        width: calc(((100% / v.$container-grid-columns) * (v.$container-grid-columns - 1)));
+        width: calc(
+          ((100% / v.$container-grid-columns) * (v.$container-grid-columns - 1))
+        );
       }
     }
   }

@@ -13,7 +13,11 @@ import type { ShoppingCartType } from "../../../../../context/AppContext/types/S
  * @returns {JSX.Element} A button with a "fs-sm" class.
  */
 
-export function BtnMoveToShoppingList({ product }: { product: ShoppingCartType }) {
+export function BtnMoveToShoppingList({
+  product,
+}: {
+  product: ShoppingCartType;
+}) {
   const { setModalData } = useModal(); // Get the setModalData function using the useModal custom hook.
 
   // Define a function to add the product to the shopping list.
@@ -26,11 +30,7 @@ export function BtnMoveToShoppingList({ product }: { product: ShoppingCartType }
   }
 
   return (
-    <button
-      type="button"
-      className="fs-sm"
-      onClick={addToShoppingList}
-    >
+    <button type="button" className="fs-sm" onClick={addToShoppingList}>
       Przenieś do listy zakupów
     </button>
   );

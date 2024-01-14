@@ -27,7 +27,7 @@ describe("Tag", () => {
     render(
       <Tag variant="white" className="additional-class">
         Tag Content
-      </Tag>
+      </Tag>,
     );
 
     // Assert

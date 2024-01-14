@@ -50,7 +50,9 @@ export function ListItemPrice({
 
         {/* If there is a size in meters, render it */}
         {sizeInMeters && (
-          <small className="collection-list__item-size-in-meters">&nbsp;/{sizeInMeters} m</small>
+          <small className="collection-list__item-size-in-meters">
+            &nbsp;/{sizeInMeters} m
+          </small>
         )}
       </div>
     </strong>

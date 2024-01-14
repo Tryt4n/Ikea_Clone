@@ -53,15 +53,8 @@ function Accordions() {
     <AccordionContainer>
       {/* Map through the `footerLists` constant and render the lists */}
       {footerLists.map((list, index) => (
-        <AccordionElement
-          key={index}
-          label={list.name}
-          id={index.toString()}
-        >
-          <InnerLists
-            list={list}
-            index={index}
-          />
+        <AccordionElement key={index} label={list.name} id={index.toString()}>
+          <InnerLists list={list} index={index} />
         </AccordionElement>
       ))}
     </AccordionContainer>
@@ -84,10 +77,7 @@ function Lists() {
           <h3>{list.name}</h3>
 
           <InnerListsWrapper>
-            <InnerLists
-              list={list}
-              index={index}
-            />
+            <InnerLists list={list} index={index} />
           </InnerListsWrapper>
         </li>
       ))}
@@ -123,7 +113,13 @@ function InnerLists({ list, index }: InnerListsPropsType) {
         <li key={element}>
           <a
             href="#"
-            tabIndex={width < 900 ? (openedAccordion === index.toString() ? 0 : -1) : undefined} // If the accordion is enabled (width less than 900px), set the `tabIndex` attribute to 0 if the accordion element is opened, otherwise set it to -1
+            tabIndex={
+              width < 900
+                ? openedAccordion === index.toString()
+                  ? 0
+                  : -1
+                : undefined
+            } // If the accordion is enabled (width less than 900px), set the `tabIndex` attribute to 0 if the accordion element is opened, otherwise set it to -1
           >
             {element}
           </a>

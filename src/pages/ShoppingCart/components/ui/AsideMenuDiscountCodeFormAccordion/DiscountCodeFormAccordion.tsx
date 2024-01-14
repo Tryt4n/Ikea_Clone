@@ -45,9 +45,9 @@ export function DiscountCodeFormAccordion() {
             id="discount-code-label"
             className="shopping-cart-menu__discount-code-label"
           >
-            W jednym zamówieniu można użyć tylko jednego kuponu/kodu. Wpisz kod bez spacji między
-            znakami i zwróć uwagę na wielkość liter. Masz kartę upominkową? Możesz ją wykorzystać na
-            dalszym etapie.
+            W jednym zamówieniu można użyć tylko jednego kuponu/kodu. Wpisz kod
+            bez spacji między znakami i zwróć uwagę na wielkość liter. Masz
+            kartę upominkową? Możesz ją wykorzystać na dalszym etapie.
           </p>
 
           <div className="shopping-cart-menu__discount-code-form-inner-wrapper">

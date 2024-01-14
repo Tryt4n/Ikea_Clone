@@ -59,12 +59,7 @@ export default function ImagePreview({ data }: ImagePreviewPropsType) {
         {/* visually-hidden is a class that hides the element from the screen, but not from the screen reader. */}
         <h2 className="visually-hidden">Podgląd obrazu</h2>
 
-        <Btn
-          variant="light"
-          shape="circle"
-          type="button"
-          onClick={closeModal}
-        >
+        <Btn variant="light" shape="circle" type="button" onClick={closeModal}>
           {/* visually-hidden is a class that hides the element from the screen, but not from the screen reader. */}
           <span className="visually-hidden">Zamknij</span>
           <CloseIcon />
@@ -92,10 +87,7 @@ export default function ImagePreview({ data }: ImagePreviewPropsType) {
                     src={images[key]} // Pass the source of the video.
                   />
                 ) : (
-                  <Image
-                    imgSrc={imgSrc}
-                    imgSrcSet={imgSrcSet}
-                  />
+                  <Image imgSrc={imgSrc} imgSrcSet={imgSrcSet} />
                 )}
               </SwiperSlide>
             );

@@ -12,7 +12,10 @@ import { reducer } from "./utils/reducer";
 // Import constants
 import { initState } from "./constants/appInitState";
 // Import types
-import type { ReducerActionsType, ReducerStateType } from "./types/ReducerTypes";
+import type {
+  ReducerActionsType,
+  ReducerStateType,
+} from "./types/ReducerTypes";
 
 // Define the type for the context
 type AppContextType = {
@@ -48,8 +51,10 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
       dispatch,
       isDesktop,
     }),
-    [state, isDesktop]
+    [state, isDesktop],
   );
 
-  return <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>
+  );
 }

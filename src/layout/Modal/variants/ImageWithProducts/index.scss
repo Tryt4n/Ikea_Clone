@@ -32,7 +32,8 @@
     right: 0;
   }
 
-  @media screen and (b.$mobile-md <= width < b.$tablet-lg), (height < b.$mobile-lg) {
+  @media screen and (b.$mobile-md <= width < b.$tablet-lg),
+    (height < b.$mobile-lg) {
     width: func.rem(480);
     max-width: func.rem(480);
     max-height: 100%;

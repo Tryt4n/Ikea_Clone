@@ -72,10 +72,7 @@ function Navigation() {
  */
 function LearnMoreLink() {
   return (
-    <a
-      href="#"
-      className="footer__learn-more"
-    >
+    <a href="#" className="footer__learn-more">
       Dowiedz się więcej
     </a>
   );

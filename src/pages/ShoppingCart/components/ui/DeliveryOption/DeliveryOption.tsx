@@ -22,7 +22,11 @@ type DeliveryOptionPropsType = {
  * @returns {JSX.Element} A label containing a radio input and a span.
  */
 
-export function DeliveryOption({ item, checkedStatus, onChangeFunction }: DeliveryOptionPropsType) {
+export function DeliveryOption({
+  item,
+  checkedStatus,
+  onChangeFunction,
+}: DeliveryOptionPropsType) {
   const { state } = useApp(); // Get the application state using the useApp custom hook.
   const { setModalData } = useModal(); // Get the setModalData function using the useModal custom hook.
 

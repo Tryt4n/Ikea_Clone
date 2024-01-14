@@ -31,7 +31,9 @@ export default function MainMenu() {
   // Change the modal data to display the products menu or the rooms menu.
   function changeMenu(label: "Produkty" | "Pomieszczenia") {
     startViewTransition(() => {
-      setModalData({ type: label === "Produkty" ? "products-menu" : "rooms-menu" });
+      setModalData({
+        type: label === "Produkty" ? "products-menu" : "rooms-menu",
+      });
     });
   }
 
@@ -47,7 +49,11 @@ export default function MainMenu() {
             key={element}
             className="main-menu__main-list-item"
             link="#"
-            as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"} // If the element is "Produkty" or "Pomieszczenia", render it as a button, otherwise render it as a link.
+            as={
+              element === "Produkty" || element === "Pomieszczenia"
+                ? "button"
+                : "a"
+            } // If the element is "Produkty" or "Pomieszczenia", render it as a button, otherwise render it as a link.
             onClickFunction={
               element === "Produkty" || element === "Pomieszczenia"
                 ? () => changeMenu(element)
@@ -60,10 +66,7 @@ export default function MainMenu() {
 
         {/* Map the mainNavigationSubList array to a list of ListItem components. */}
         {mainNavigationSubList.map((element) => (
-          <ListItem
-            key={element}
-            link="#"
-          >
+          <ListItem key={element} link="#">
             {element}
           </ListItem>
         ))}
@@ -72,10 +75,7 @@ export default function MainMenu() {
       <ul className="main-menu__list main-menu__secondary-list">
         {/* Map the secondaryNavigationList array to a list of ListItem components. */}
         {secondaryNavigationList.map((element) => (
-          <ListItem
-            key={element}
-            link="#"
-          >
+          <ListItem key={element} link="#">
             {element}
           </ListItem>
         ))}

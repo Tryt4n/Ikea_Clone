@@ -8,7 +8,9 @@ type AccordionContextType = {
 };
 
 // Create the AccordionContext with a default value of null
-export const AccordionContext = createContext<AccordionContextType | null>(null);
+export const AccordionContext = createContext<AccordionContextType | null>(
+  null,
+);
 
 /**
  * AccordionContextProvider component
@@ -19,7 +21,11 @@ export const AccordionContext = createContext<AccordionContextType | null>(null)
  *
  * @returns An AccordionContext.Provider component with the current context value and the specified children.
  */
-export function AccordionContextProvider({ children }: { children: ReactNode }) {
+export function AccordionContextProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   // Initialize the state for the currently opened accordion
   const [openedAccordion, setOpenedAccordion] = useState<undefined | string>();
 
@@ -46,5 +52,9 @@ export function AccordionContextProvider({ children }: { children: ReactNode }) 
     toggleAccordion,
   };
 
-  return <AccordionContext.Provider value={contextValue}>{children}</AccordionContext.Provider>;
+  return (
+    <AccordionContext.Provider value={contextValue}>
+      {children}
+    </AccordionContext.Provider>
+  );
 }

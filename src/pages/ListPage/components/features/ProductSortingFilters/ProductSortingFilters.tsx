@@ -28,10 +28,7 @@ export default function ProductSortingFilters() {
       </SortingButton>
 
       {/* Sort by name */}
-      <SortingButton
-        variant="name"
-        dispatchAction={{ type: "sortByName" }}
-      >
+      <SortingButton variant="name" dispatchAction={{ type: "sortByName" }}>
         Nazwa
       </SortingButton>
 

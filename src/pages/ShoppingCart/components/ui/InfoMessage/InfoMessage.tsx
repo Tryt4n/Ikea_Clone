@@ -25,6 +25,6 @@ export function InfoMessage() {
         <InfoIcon />
         <p>Przejdź dalej, aby sprawdzić dostępność opcji odbioru</p>
       </div>,
-      container
+      container,
     );
 }

@@ -45,7 +45,9 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
     modalData.type === "select-list" &&
     list.products &&
     list.products.some(
-      (product) => modalData.product && product.productNumber === modalData.product.productNumber
+      (product) =>
+        modalData.product &&
+        product.productNumber === modalData.product.productNumber,
     );
 
   /**
@@ -241,14 +243,20 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
                   {
                     // If the product is already in any list, display the heart icon, otherwise display the checkbox to add the product to the list
                     !isProductAlreadyInAnyList ? (
-                      <HeartIcon className={isProductAlreadyInAnyList ? "active" : undefined} />
+                      <HeartIcon
+                        className={
+                          isProductAlreadyInAnyList ? "active" : undefined
+                        }
+                      />
                     ) : (
                       <div className="select-list-modal__input-wrapper">
                         <Input
                           type="checkbox" // Set the input type to checkbox
                           id={list.id}
                           label={`Naciśnij aby ${
-                            isProductAlreadyInCurrentList ? "usunąć produkt z" : "dodać produkt do"
+                            isProductAlreadyInCurrentList
+                              ? "usunąć produkt z"
+                              : "dodać produkt do"
                           } listy "${list.name}"`} // Set the label text depending on whether the product is already in the list or not
                           inputProps={{
                             checked: isProductAlreadyInCurrentList, // Set the checked attribute depending on whether the product is already in the list or not

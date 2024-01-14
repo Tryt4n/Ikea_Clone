@@ -29,12 +29,16 @@ import "./index.scss";
 
 function InnerComponent(
   { ...props }: InputHTMLAttributes<HTMLInputElement>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { state } = useApp(); // Use the useApp custom hook to get the current state of the app.
   const [inputTextValue, setInputTextValue] = useState(""); // The state for the value of the input field.
 
-  const { postalCode, isPostalCodeErrorMessageVisible, postalCodeErrorMessage } = state; // Destructure the state of the app.
+  const {
+    postalCode,
+    isPostalCodeErrorMessageVisible,
+    postalCodeErrorMessage,
+  } = state; // Destructure the state of the app.
 
   useEffect(() => {
     // When the postal code changes, set the value of the input field to the postal code from the state of the app.
@@ -60,8 +64,12 @@ function InnerComponent(
           autoComplete: "off", // Disable autocomplete to prevent the browser from suggesting values based on earlier submitted values.
           pattern: `\\d{2}-\\d{3}`, // The pattern for the postal code.
           title: "Wprowadź poprawny kod pocztowy (np. 12-345)", // The title of the input field for error info in case the postal code is invalid.
-          "aria-describedby": !postalCodeErrorMessage ? "postal-code-example" : undefined, // The id of the element that describes the input field.
-          "aria-errormessage": postalCodeErrorMessage ? "postal-code-errormessage" : undefined, // The id of the element that describes the error message.
+          "aria-describedby": !postalCodeErrorMessage
+            ? "postal-code-example"
+            : undefined, // The id of the element that describes the input field.
+          "aria-errormessage": postalCodeErrorMessage
+            ? "postal-code-errormessage"
+            : undefined, // The id of the element that describes the error message.
           "aria-invalid": isPostalCodeErrorMessageVisible, // The state for the visibility of the error message.
           value: inputTextValue, // The value of the input field.
           onChange: onInputChange, // The function to call when the value of the input field changes.

@@ -42,7 +42,7 @@ export function QuantityBlock({
           value: delta === -1 ? "subtract" : "add",
           productNumber: productNumber,
         },
-      })
+      }),
     );
   }
 
@@ -55,8 +55,12 @@ export function QuantityBlock({
     startViewTransition(() =>
       dispatch({
         type: "changeProductQuantityOnList",
-        payload: { listId: listId, value: parsedValue, productNumber: productNumber },
-      })
+        payload: {
+          listId: listId,
+          value: parsedValue,
+          productNumber: productNumber,
+        },
+      }),
     );
   }
 

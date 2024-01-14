@@ -23,5 +23,9 @@ type BodyPropsType = {
  */
 
 export function Body({ children, className }: BodyPropsType) {
-  return <div className={`article${className ? ` ${className}` : ""}`}>{children}</div>;
+  return (
+    <div className={`article${className ? ` ${className}` : ""}`}>
+      {children}
+    </div>
+  );
 }

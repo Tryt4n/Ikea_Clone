@@ -54,7 +54,7 @@ export default function ThumbnailsImagesContainer({
           data,
           path,
           productVariant,
-          index
+          index,
         ); // Get the data for the thumbnails.
 
         const Element = location === href ? "div" : "a"; // If the current product path matches the href, render a div element, otherwise render an a element.
@@ -64,7 +64,9 @@ export default function ThumbnailsImagesContainer({
             key={productVariant}
             className={`product-thumbnails__link${variant === productVariant ? ` active` : ""}`} // Add variant to the class name if the variant is the currently selected one. If the variant is the currently selected one, add the class name `active`.
             href={Element === "a" ? href : undefined} // If the element is an a element, add the href attribute.
-            aria-label={Element === "div" ? "Aktualnie wybrany wariant" : undefined} // If the element is currently selected, add the aria-label attribute.
+            aria-label={
+              Element === "div" ? "Aktualnie wybrany wariant" : undefined
+            } // If the element is currently selected, add the aria-label attribute.
             onMouseEnter={() => {
               setDisplayedMainImg({
                 src: imgSrc.replace("?f=xu", ""),
@@ -99,7 +101,8 @@ export default function ThumbnailsImagesContainer({
           aria-label={`Dostępne są jeszcze ${variants.length - maxVisibleThumbnails} warianty`} // Announce the number of remaining variants to screen readers.
           onClick={() => openModal(data)} // Open the modal when the button is clicked.
         >
-          {/* Display the number of remaining variants. */}+{variants.length - maxVisibleThumbnails}
+          {/* Display the number of remaining variants. */}+
+          {variants.length - maxVisibleThumbnails}
         </Btn>
       )}
     </div>

@@ -14,7 +14,11 @@ import type { ShoppingCartType } from "../../../../../context/AppContext/types/S
  *
  * @returns A ul element with a class of "favourite-list__inner-list-grid_" and a number indicating the number of products (1, 2, or 3), containing li elements for each product. Each li element contains a div with a class of "favourite-list__product-image", which contains either a span indicating the number of additional products if there are more than 3 products and this is the third product, or an img element with the product image.
  */
-export function ImagesListWithProducts({ products }: { products: ShoppingCartType[] }) {
+export function ImagesListWithProducts({
+  products,
+}: {
+  products: ShoppingCartType[];
+}) {
   return (
     <ul
       className={`favourite-list__inner-list-grid_${
@@ -22,8 +26,15 @@ export function ImagesListWithProducts({ products }: { products: ShoppingCartTyp
       }`}
     >
       {products.map((product, index) => {
-        const { collection, name, variant, images, productNumber, nameToDisplay, variantName } =
-          product;
+        const {
+          collection,
+          name,
+          variant,
+          images,
+          productNumber,
+          nameToDisplay,
+          variantName,
+        } = product;
 
         const imgSrc = `${productLink}/${collection}-${name}-${variant}__${images.main}`;
 

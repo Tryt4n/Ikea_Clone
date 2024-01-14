@@ -82,7 +82,9 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
   function closeModalOnBackdropClick(e: MouseEvent<HTMLDialogElement>) {
     if (e.currentTarget !== e.target) return; // If the click did not occur on the backdrop, return
 
-    const dialogDimensions = (e.target as HTMLDialogElement).getBoundingClientRect(); // Get the dimensions of the dialog
+    const dialogDimensions = (
+      e.target as HTMLDialogElement
+    ).getBoundingClientRect(); // Get the dimensions of the dialog
 
     // If the click occurred outside the dialog area, close the modal
     if (
@@ -127,7 +129,7 @@ export function ModalContextProvider({ children }: { children: ReactNode }) {
       modalData,
       setModalData,
     }),
-    [modalID, modalData]
+    [modalID, modalData],
   );
 
   return (

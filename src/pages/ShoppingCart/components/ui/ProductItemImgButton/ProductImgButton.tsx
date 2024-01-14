@@ -41,16 +41,11 @@ export function ProductImgButton({ product, src }: ProductImgButtonPropsType) {
   }
 
   return (
-    <button
-      type="button"
-      onClick={openImagesPreview}
-    >
-      <span className="visually-hidden">Naciśnij aby zobaczyć galerię zdjęć produktu</span>
-      <img
-        src={src}
-        alt=""
-        loading="lazy"
-      />
+    <button type="button" onClick={openImagesPreview}>
+      <span className="visually-hidden">
+        Naciśnij aby zobaczyć galerię zdjęć produktu
+      </span>
+      <img src={src} alt="" loading="lazy" />
     </button>
   );
 }

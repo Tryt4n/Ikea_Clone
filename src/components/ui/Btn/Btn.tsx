@@ -1,7 +1,16 @@
 // React
-import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from "react";
+import {
+  ButtonHTMLAttributes,
+  ForwardedRef,
+  ReactNode,
+  forwardRef,
+} from "react";
 // Types
-import type { BtnShapesType, BtnSizesType, BtnVariantsType } from "../../../types/btnTypes";
+import type {
+  BtnShapesType,
+  BtnSizesType,
+  BtnVariantsType,
+} from "../../../types/btnTypes";
 // Style
 import "./index.scss";
 
@@ -17,8 +26,15 @@ export type BtnPropsType = {
 // Define the inner button component
 function InnerBtn(
   // Destructure the props and provide default values for variant, shape, and size
-  { children, className, variant = "dark", shape = "oval", size = "small", ...props }: BtnPropsType,
-  ref: ForwardedRef<HTMLButtonElement> // Forwarded ref
+  {
+    children,
+    className,
+    variant = "dark",
+    shape = "oval",
+    size = "small",
+    ...props
+  }: BtnPropsType,
+  ref: ForwardedRef<HTMLButtonElement>, // Forwarded ref
 ) {
   // Construct the className from the variant, size, shape, and any additional classes
   const styles = `btn btn--${variant} btn--${size} btn--${shape}${

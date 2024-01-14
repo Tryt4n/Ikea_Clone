@@ -12,7 +12,13 @@
  * @returns A JSX fragment that consists of an `img` element with the `src`, `srcSet`, `sizes`, `alt`, and `loading` attributes, and a `span` element with the class name `visually-hidden` that provides additional information for screen readers.
  */
 
-export function Image({ imgSrc, imgSrcSet }: { imgSrc: string; imgSrcSet: string }) {
+export function Image({
+  imgSrc,
+  imgSrcSet,
+}: {
+  imgSrc: string;
+  imgSrcSet: string;
+}) {
   const imgSizes =
     "(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px";
 

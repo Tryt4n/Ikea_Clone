@@ -24,7 +24,9 @@ export function ShowMoreBtn({
       <button
         className="additional-info__btn"
         onClick={() => setShowMore(!showMore)} // Toggle the showMore state when the button is clicked.
-        aria-label={showMore ? "Naciśnij aby schować" : "Naciśnij aby pokazać więcej"} // Change the aria-label depending on the showMore state.
+        aria-label={
+          showMore ? "Naciśnij aby schować" : "Naciśnij aby pokazać więcej"
+        } // Change the aria-label depending on the showMore state.
       >
         {/* Change the text inside the button depending on the showMore state. */}
         {showMore ? "Pokaż mniej" : "Dowiedz się więcej"}

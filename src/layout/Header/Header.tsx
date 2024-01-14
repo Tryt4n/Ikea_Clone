@@ -36,10 +36,7 @@ export default function Header() {
   return (
     <header>
       <h1 className="visually-hidden">IKEA</h1>
-      <div
-        className="header__messages"
-        ref={messagesRef}
-      >
+      <div className="header__messages" ref={messagesRef}>
         {width >= 900 && (
           <a href="#">
             <TruckIcon />
@@ -55,7 +52,9 @@ export default function Header() {
       <div className="page-container">
         {/* Render the hamburger button separately for desktop and mobile devices. In this case, the hamburger button is only rendered for desktop devices. For mobile devices, the hamburger button is rendered in the `NavigationBar` component. */}
         {width >= 1200 && (
-          <HamburgerButton className={`header__hamburger-btn${!inView ? " fixed" : ""}`} /> // If the header messages are not in view, add the `fixed` class to the hamburger button to fix it to the top of the page
+          <HamburgerButton
+            className={`header__hamburger-btn${!inView ? " fixed" : ""}`}
+          /> // If the header messages are not in view, add the `fixed` class to the hamburger button to fix it to the top of the page
         )}
 
         <Navbar />

@@ -27,7 +27,7 @@ describe("AddToWishListBtn", () => {
 
     // Assert
     expect(screen.getByText("Dodaj do ulubionych")).toHaveClass(
-      "visually-hidden"
+      "visually-hidden",
     );
   });
 

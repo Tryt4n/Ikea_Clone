@@ -52,7 +52,9 @@ export default function HomePage() {
 
               {/* Map over the articles data and call the componentMapper function for each article */}
               {homePageArticles.articles.map((article) => (
-                <React.Fragment key={article.id}>{componentMapper(article)}</React.Fragment>
+                <React.Fragment key={article.id}>
+                  {componentMapper(article)}
+                </React.Fragment>
               ))}
             </div>
           )}

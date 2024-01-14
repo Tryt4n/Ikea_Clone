@@ -59,7 +59,10 @@ export function CartControl() {
       text: `Liczba usuniętych artykułów: ${productsQuantity}`,
       prevState: () =>
         startViewTransition(() => {
-          dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+          dispatch({
+            type: "restoreShoppingCart",
+            payload: state.shoppingCart!,
+          });
         }), // Restore the shopping cart to the previous state on button click in the toast notification
     });
 
@@ -83,7 +86,8 @@ export function CartControl() {
           <>
             <ListItem onClick={moveAllProductsToList}>
               <HeartIcon />
-              Dodaj ({productsQuantity}) {productsQuantity === 1 ? "produkt" : "produktów"} do listy
+              Dodaj ({productsQuantity}){" "}
+              {productsQuantity === 1 ? "produkt" : "produktów"} do listy
               zakupowej
             </ListItem>
 

@@ -13,7 +13,7 @@ describe("AccordionContainer", () => {
           label="accordion-label"
           children="accordion"
         />
-      </AccordionContainer>
+      </AccordionContainer>,
     );
     const ulElement = screen.getByRole("list");
 

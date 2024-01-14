@@ -64,20 +64,12 @@ export function BtnsControl({ product }: { product: ShoppingCartType }) {
   // The component returns a div containing two buttons: one for adding the product to the shopping cart and another for deleting the product from the list.
   return (
     <div className="list-product__btns-wrapper">
-      <Btn
-        shape="circle"
-        variant="blue"
-        onClick={addToShoppingCart}
-      >
+      <Btn shape="circle" variant="blue" onClick={addToShoppingCart}>
         <span className="visually-hidden">Dodaj do koszyka</span>
         <ShoppingCartAddIcon />
       </Btn>
 
-      <Btn
-        shape="circle"
-        variant="light"
-        onClick={deleteFromList}
-      >
+      <Btn shape="circle" variant="light" onClick={deleteFromList}>
         <span className="visually-hidden">Usuń produkt z tej listy</span>
         <TrashIcon />
       </Btn>

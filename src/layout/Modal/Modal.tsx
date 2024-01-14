@@ -40,7 +40,7 @@ export const Modal = forwardRef(InnerComponent);
 
 function InnerComponent(
   { onKeyDownFunction, onClickFunction }: ModalPropsType,
-  ref: ForwardedRef<HTMLDialogElement> // Forward the ref to the dialog element
+  ref: ForwardedRef<HTMLDialogElement>, // Forward the ref to the dialog element
 ) {
   const { modalID, modalData } = useModal(); // Get modalID and modalData from useModal custom hook
 

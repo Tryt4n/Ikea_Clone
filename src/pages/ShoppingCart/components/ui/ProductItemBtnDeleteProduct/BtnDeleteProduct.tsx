@@ -29,7 +29,10 @@ export function BtnDeleteProduct({ product }: { product: ShoppingCartType }) {
       prevState: () =>
         startViewTransition(() => {
           // Dispatch an action to restore the shopping cart.
-          dispatch({ type: "restoreShoppingCart", payload: state.shoppingCart! });
+          dispatch({
+            type: "restoreShoppingCart",
+            payload: state.shoppingCart!,
+          });
         }), // Restore the shopping cart function.
     });
 
@@ -38,7 +41,7 @@ export function BtnDeleteProduct({ product }: { product: ShoppingCartType }) {
       dispatch({
         type: "removeProductFromShoppingCart",
         payload: product.productNumber,
-      })
+      }),
     );
   }
 

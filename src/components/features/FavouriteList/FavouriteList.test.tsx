@@ -22,7 +22,7 @@ describe("FavouriteList", () => {
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute(
       "href",
-      `/favourites/${exampleList.id}`
+      `/favourites/${exampleList.id}`,
     );
 
     expect(headingElement).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe("FavouriteList", () => {
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute(
       "href",
-      `/favourites/${exampleList.id}`
+      `/favourites/${exampleList.id}`,
     );
 
     expect(headingElement).toBeInTheDocument();

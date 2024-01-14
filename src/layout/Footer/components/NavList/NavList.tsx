@@ -63,10 +63,7 @@ export function NavList({ list, iconsRounded, ...props }: NavListPropsType) {
         const Icon = iconComponents[`${link}Icon`];
 
         return (
-          <li
-            key={link}
-            className={iconsRounded ? "icons-rounded" : undefined}
-          >
+          <li key={link} className={iconsRounded ? "icons-rounded" : undefined}>
             <a
               href="#"
               {...props} // Spread the rest of the props

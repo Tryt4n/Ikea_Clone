@@ -87,9 +87,16 @@ export default function Navbar() {
 
   // Define the classes for the navbar
   const navbarInnerClasses = `navbar__inner${!inView ? " scrolled" : ""}${
-    !modalData?.type && !inView && isScrolledToTop && scrollDirection !== "down" ? " slideDown" : ""
+    !modalData?.type && !inView && isScrolledToTop && scrollDirection !== "down"
+      ? " slideDown"
+      : ""
   }${
-    !modalData?.type && !inView && !isScrolledToTop && scrollDirection === "down" ? " slideUp" : ""
+    !modalData?.type &&
+    !inView &&
+    !isScrolledToTop &&
+    scrollDirection === "down"
+      ? " slideUp"
+      : ""
   }${modalData?.type && !inView ? " slideUp" : ""}${!isDesktop ? " mobile" : ""}`;
 
   return (
@@ -100,10 +107,7 @@ export default function Navbar() {
       <div className={navbarInnerClasses}>
         <div className="navbar__inner-container">
           <div className="navbar__logo logo">
-            <a
-              href="/"
-              aria-label="Idź na stronę główną."
-            >
+            <a href="/" aria-label="Idź na stronę główną.">
               <IkeaLogo />
               {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Strona głowna</span>
@@ -130,10 +134,7 @@ export default function Navbar() {
               />
             </ListElement>
 
-            <ListElement
-              as="link"
-              href="/favourites"
-            >
+            <ListElement as="link" href="/favourites">
               <HeartIcon />
               {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Lista zakupowa</span>

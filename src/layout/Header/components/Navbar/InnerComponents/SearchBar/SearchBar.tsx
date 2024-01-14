@@ -23,10 +23,7 @@ export function SearchBar() {
       onSubmit={(e) => e.preventDefault()} // Prevent the default form submission behavior
     >
       {/* Label with the `visually-hidden` class to hide it. For accessibility purposes and SEO */}
-      <label
-        htmlFor="search-product"
-        className="visually-hidden"
-      >
+      <label htmlFor="search-product" className="visually-hidden">
         Czego szukasz?
       </label>
 

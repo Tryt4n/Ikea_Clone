@@ -26,15 +26,23 @@ type HeaderPropsType = {
  *
  * @returns A heading element with the specified heading level (default is h2), the class of "article__heading", and any additional CSS classes passed through the className prop, containing the passed children.
  */
-export function Header({ children, className, headingLevel, ...props }: HeaderPropsType) {
+export function Header({
+  children,
+  className,
+  headingLevel,
+  ...props
+}: HeaderPropsType) {
   // The Element variable is set to the specified heading level or defaults to "h2"
   const Element = headingLevel ? `h${headingLevel}` : "h2";
 
   // The createElement function is used to create a heading element with the specified heading level, the class of "article__heading", and any additional CSS classes and properties
   return createElement(
     Element,
-    { ...props, className: `article__heading${className ? ` ${className}` : ""}` },
-    children
+    {
+      ...props,
+      className: `article__heading${className ? ` ${className}` : ""}`,
+    },
+    children,
   );
 }
 

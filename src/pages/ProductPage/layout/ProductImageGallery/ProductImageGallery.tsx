@@ -33,7 +33,11 @@ import "./index.scss";
  * @returns A JSX element that consists of a `SwiperContainer` component (which is either a `Swiper` element from SwiperJS library or a `section` depending on the viewport width), and a `ShowMoreImagesBtn` component if there are more than 8 images and the viewport width is greater than or equal to 900px. Inside the `SwiperContainer`, it maps over the `images` object and renders a `SwiperItem` component (which is either a `SwiperSlide` element from SwiperJS library or a `div` depending on the viewport width) for each image or video.
  */
 
-export default function ProductImageGallery({ data }: { data: ProductDataType }) {
+export default function ProductImageGallery({
+  data,
+}: {
+  data: ProductDataType;
+}) {
   const { displayedMainImg, path } = useProduct(); // Get the displayed main image and the path from the useProduct custom hook
   const { setModalData } = useModal(); // Get the setModalData function from the useModal custom hook
   const { width } = useWindowSize(); // Get the current window size from the useWindowSize custom hook
@@ -96,7 +100,9 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
               <InnerElement
                 className="product-image-gallery__btn"
                 onClick={
-                  width >= 900 && key !== "video" ? () => openModalPreview(index) : undefined
+                  width >= 900 && key !== "video"
+                    ? () => openModalPreview(index)
+                    : undefined
                 } // If SwiperJs is not used and the image is not a video, open the modal with the image preview when the button is clicked
               >
                 {/* If product is a top seller and is not limited edition set the top seller label for the first image */}
@@ -106,7 +112,9 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
 
                 {/* If product is limited edition set the limited edition label for the first image */}
                 {limitedEdition && index === 0 && (
-                  <strong className="limited-edition">Kolekcja limitowana</strong>
+                  <strong className="limited-edition">
+                    Kolekcja limitowana
+                  </strong>
                 )}
 
                 {/* If the image is a video, render the Video component. Otherwise, render the Image component. */}
@@ -116,10 +124,7 @@ export default function ProductImageGallery({ data }: { data: ProductDataType })
                     openModal={() => openModalPreview(index)} // Open the modal with the video preview when the video is clicked
                   />
                 ) : (
-                  <Image
-                    imgSrc={imgSrc}
-                    imgSrcSet={imgSrcSet}
-                  />
+                  <Image imgSrc={imgSrc} imgSrcSet={imgSrcSet} />
                 )}
               </InnerElement>
             </SwiperItem>

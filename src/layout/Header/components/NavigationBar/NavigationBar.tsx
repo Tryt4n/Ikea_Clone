@@ -71,14 +71,18 @@ export default function NavigationBar() {
                 element === "Produkty"
                   ? () => openModalByType({ type: "products-menu" })
                   : element === "Pomieszczenia"
-                  ? () => openModalByType({ type: "rooms-menu" })
-                  : undefined; // If the navigation item is "Produkty" or "Pomieszczenia", set the `onClickFunction` to open the corresponding modal
+                    ? () => openModalByType({ type: "rooms-menu" })
+                    : undefined; // If the navigation item is "Produkty" or "Pomieszczenia", set the `onClickFunction` to open the corresponding modal
 
               return (
                 <ListItem
                   key={element}
                   link="#"
-                  as={element === "Produkty" || element === "Pomieszczenia" ? "button" : "a"} // If the navigation item is "Produkty" or "Pomieszczenia", render it as a button
+                  as={
+                    element === "Produkty" || element === "Pomieszczenia"
+                      ? "button"
+                      : "a"
+                  } // If the navigation item is "Produkty" or "Pomieszczenia", render it as a button
                   onClickFunction={onClickFunction} // If the navigation item is "Produkty" or "Pomieszczenia", set the `onClickFunction` to open the corresponding modal
                 >
                   {element}
@@ -97,18 +101,28 @@ export default function NavigationBar() {
         >
           <TruckIcon />
           {/* If the postal code is set, render it, otherwise render a placeholder */}
-          <span>{state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}</span>
+          <span>
+            {state.postalCode !== "" ? state.postalCode : "Wpisz kod pocztowy"}
+          </span>
         </button>
 
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() =>
-            openModalByType(state.chosenShop ? { type: "chosen-shop" } : { type: "choose-shop" })
+            openModalByType(
+              state.chosenShop
+                ? { type: "chosen-shop" }
+                : { type: "choose-shop" },
+            )
           } // If the shop is chosen, open the chosen shop modal, otherwise open the choose shop modal
         >
           <ShopIcon />
           {/* If the shop is chosen, render its name, otherwise render a placeholder */}
-          <span>{state.chosenShop ? state.chosenShop.name.split("IKEA") : "Wybierz sklep"}</span>
+          <span>
+            {state.chosenShop
+              ? state.chosenShop.name.split("IKEA")
+              : "Wybierz sklep"}
+          </span>
         </button>
       </div>
     </div>

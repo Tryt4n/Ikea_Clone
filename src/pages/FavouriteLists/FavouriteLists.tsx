@@ -24,7 +24,9 @@ export default function FavouriteLists() {
       <MainList />
 
       {/* If there are more than one favourite lists in the state, render the OtherLists component */}
-      {state.favouriteLists && state.favouriteLists.length > 1 && <OtherLists />}
+      {state.favouriteLists && state.favouriteLists.length > 1 && (
+        <OtherLists />
+      )}
     </div>
   );
 }

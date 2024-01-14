@@ -15,7 +15,11 @@
  * calculatePrice(3, 200); // returns "600,-"
  * calculatePrice(1, 100, 99); // returns "100,99"
  */
-export function calculatePrice(multiplier: number, integer: number, decimal?: number) {
+export function calculatePrice(
+  multiplier: number,
+  integer: number,
+  decimal?: number,
+) {
   const decimalValue = decimal ? decimal / 100 : 0;
   const value = integer + decimalValue;
   const result = value * multiplier;

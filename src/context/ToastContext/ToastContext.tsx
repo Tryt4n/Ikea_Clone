@@ -14,6 +14,7 @@ import {
   useMemo,
   useState,
   useEffect,
+  useCallback,
 } from "react";
 // Import Toast component
 import Toast from "../../components/features/Toast/Toast";
@@ -62,11 +63,16 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
    * Function to close the toast. Uses the `startViewTransition` helper function to start a transition,
    * then sets the toast data to the initial state.
    */
-  function closeToast() {
+  // function closeToast() {
+  //   startViewTransition(() => {
+  //     setToastData(initToast);
+  //   });
+  // }
+  const closeToast = useCallback(() => {
     startViewTransition(() => {
       setToastData(initToast);
     });
-  }
+  }, []);
 
   // Use an effect to close the toast after 7.5 seconds if it's open
   useEffect(() => {
@@ -82,7 +88,7 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [closeToast, initToast]);
+  }, [closeToast]);
 
   // Create context values object to be passed to the provider
   const contextValue = useMemo(() => {
@@ -91,7 +97,7 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
       setToastData,
       closeToast,
     };
-  }, [toastData]);
+  }, [closeToast, toastData]);
 
   return (
     <ToastContext.Provider value={contextValue}>

@@ -19,17 +19,24 @@ export function MoreOptionsList({ product }: { product: ShoppingCartType }) {
 
   // openMoreOptionsModal is a function that sets the modal data to display more options for the product in the list.
   function openMoreOptionsModal() {
-    setModalData({ type: "more-options-for-product-in-list", products: [product] });
+    setModalData({
+      type: "more-options-for-product-in-list",
+      products: [product],
+    });
   }
 
   return (
     <ul className="list-product__more-options-list">
       <li>
-        <button className="list-product__more-options-btn">Sprawdź opcje dostawy i odbioru</button>
+        <button className="list-product__more-options-btn">
+          Sprawdź opcje dostawy i odbioru
+        </button>
       </li>
 
       <li>
-        <button className="list-product__more-options-btn">Pokaż dołączone elementy</button>
+        <button className="list-product__more-options-btn">
+          Pokaż dołączone elementy
+        </button>
       </li>
 
       <li>

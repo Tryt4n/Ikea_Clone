@@ -35,7 +35,7 @@ describe("ClubInfoDiscount", () => {
     // Act
     render(<ClubInfoDiscount price={price} href="https://example.com" />);
     const savingsText = screen.getByText(
-      /Dołącz lub zaloguj się i zaoszczędź/i
+      /Dołącz lub zaloguj się i zaoszczędź/i,
     );
 
     // Assert
@@ -58,7 +58,7 @@ describe("ClubInfoDiscount", () => {
     // Act
     render(<ClubInfoDiscount price={price} href="https://example.com" />);
     const savingsText = screen.getByText(
-      /Dołącz lub zaloguj się i zaoszczędź/i
+      /Dołącz lub zaloguj się i zaoszczędź/i,
     );
 
     // Assert

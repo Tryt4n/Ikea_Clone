@@ -15,7 +15,10 @@ export type ShoppingCartType = Pick<
   | "newTag"
   | "rating"
 > & {
-  oldPrice?: Pick<ProductDataType["oldPriceTag"], "integer" | "decimal" | "variant">;
+  oldPrice?: Pick<
+    ProductDataType["oldPriceTag"],
+    "integer" | "decimal" | "variant"
+  >;
   quantity: number;
   productLink: string;
   addedDate: Date;

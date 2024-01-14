@@ -20,10 +20,17 @@ export function getThumbnailsData(
   data: ProductDataType,
   path: Readonly<Params<string>>,
   productVariant: string,
-  index: number
+  index: number,
 ) {
   // Destructure the necessary data from the product data
-  const { relatedProducts, thumbnails, collection, nameToDisplay, variantsName, size } = data;
+  const {
+    relatedProducts,
+    thumbnails,
+    collection,
+    nameToDisplay,
+    variantsName,
+    size,
+  } = data;
 
   // Define the href for the thumbnail
   const href =

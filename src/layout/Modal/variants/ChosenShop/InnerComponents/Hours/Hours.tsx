@@ -10,7 +10,11 @@ import React from "react";
  * @example
  * <Hours hoursObject={hoursObject} />
  */
-export function Hours({ hoursObject }: { hoursObject: Record<string, string> }) {
+export function Hours({
+  hoursObject,
+}: {
+  hoursObject: Record<string, string>;
+}) {
   return (
     <dl className="chosen-shop__hours-list">
       {/* Object.entries() returns an array of a given object's own enumerable string-keyed property [key, value] pairs. */}

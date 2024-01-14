@@ -1,11 +1,6 @@
 export default function PrinterIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
       <path d="M9 18h6v-2H9v2z"></path>
       <path
         fillRule="evenodd"

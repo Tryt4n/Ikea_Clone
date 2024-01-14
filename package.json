@@ -10,7 +10,8 @@
     "test": "vitest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "date-fns": "^2.30.0",
@@ -31,9 +32,11 @@
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest-dom": "^5.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "jsdom": "^23.2.0",
+    "prettier": "^3.2.2",
     "react-intersection-observer": "^9.5.2",
     "react-router-dom": "^6.16.0",
     "sass": "^1.69.2",

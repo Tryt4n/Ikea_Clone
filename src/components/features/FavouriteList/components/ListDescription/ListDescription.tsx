@@ -83,11 +83,7 @@ export function ListDescription({
       )}
 
       {!isMainList && width >= 900 && (
-        <Btn
-          shape="circle"
-          variant="gray"
-          tabIndex={-1}
-        >
+        <Btn shape="circle" variant="gray" tabIndex={-1}>
           <span className="visually-hidden">Przejdź do listy {name}</span>
           <ArrowRightIcon />
         </Btn>

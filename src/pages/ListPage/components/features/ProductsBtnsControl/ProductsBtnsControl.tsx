@@ -44,16 +44,17 @@ export function ProductsBtnsControl() {
     if (state.editingList?.products?.length !== listState?.products?.length) {
       clearManageProductsList();
     }
-  }, [clearManageProductsList, listState?.products?.length, state.editingList?.products?.length]);
+  }, [
+    clearManageProductsList,
+    listState?.products?.length,
+    state.editingList?.products?.length,
+  ]);
 
   return (
     <div className="manage-products__btns-control">
       <Btn onClick={openManageProductsModal}>Zarządzaj</Btn>
 
-      <Btn
-        variant="light"
-        onClick={clearManageProductsList}
-      >
+      <Btn variant="light" onClick={clearManageProductsList}>
         Wyczyść wszystko
       </Btn>
     </div>

@@ -20,7 +20,11 @@ import "./index.scss";
  * @returns {JSX.Element} A list item containing various components related to the product.
  */
 
-export default function ProductItem({ product }: { product: ShoppingCartType }) {
+export default function ProductItem({
+  product,
+}: {
+  product: ShoppingCartType;
+}) {
   const {
     collection,
     images,
@@ -45,10 +49,7 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
     <li className="shopping-cart-product-item">
       <div className="shopping-cart-product-item__img-wrapper">
         {/* Render a ProductImgButton component with the product and the product image source URL as props. */}
-        <ProductImgButton
-          product={product}
-          src={productImgSrc}
-        />
+        <ProductImgButton product={product} src={productImgSrc} />
 
         {/* Render the product number. */}
         <small className="shopping-cart-product-item__product-number">
@@ -78,10 +79,7 @@ export default function ProductItem({ product }: { product: ShoppingCartType }) 
         />
 
         {/* Render a ProductControls component with the product and the quantity as props. */}
-        <ProductControls
-          quantity={quantity}
-          product={product}
-        />
+        <ProductControls quantity={quantity} product={product} />
       </section>
     </li>
   );

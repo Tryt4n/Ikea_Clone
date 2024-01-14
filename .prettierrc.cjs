@@ -2,7 +2,7 @@
 
 /** @type {import("prettier").Config} */
 module.exports = {
-  trailingComa: 'es5',
+  // trailingComma: "none",
   tabWidth: 2,
   semi: true,
   singleQuote: false,

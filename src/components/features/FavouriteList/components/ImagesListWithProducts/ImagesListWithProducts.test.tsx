@@ -81,7 +81,7 @@ describe("ImagesListWithProducts", () => {
     const listElement = screen.getByRole("list");
     const imgElements = screen.getAllByRole("img");
     const spanElement = screen.getByText(
-      `+${exampleList.products!.length - visibleImages}`
+      `+${exampleList.products!.length - visibleImages}`,
     );
 
     // Assert

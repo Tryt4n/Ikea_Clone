@@ -1,11 +1,6 @@
 export default function MagnifierIcon() {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

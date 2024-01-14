@@ -32,7 +32,10 @@ type CollectionListPropsType = {
  * @returns A CollectionContextProvider that wraps around an unordered list with a "collection-list" class and the provided children. The unordered list can optionally only be shown on hover.
  */
 
-export default function Collection({ children, showOnlyOnHover }: CollectionListPropsType) {
+export default function Collection({
+  children,
+  showOnlyOnHover,
+}: CollectionListPropsType) {
   return (
     <CollectionContextProvider>
       <ul

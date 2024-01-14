@@ -1,11 +1,6 @@
 export default function TrashIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
       <path d="M13 9h2v8h-2V9zm-2 0H9v8h2V9z"></path>
       <path
         fillRule="evenodd"

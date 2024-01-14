@@ -74,7 +74,10 @@ export default function SelectList() {
     state.favouriteLists.some(
       (list) =>
         list.products &&
-        list.products.some((product) => product.productNumber === modalData.product.productNumber)
+        list.products.some(
+          (product) =>
+            product.productNumber === modalData.product.productNumber,
+        ),
     );
 
   const Element = isProductAlreadyInAnyList ? "form" : "div"; // If the product is already in any list, use a form element, otherwise use a div element
@@ -122,7 +125,9 @@ export default function SelectList() {
           onClick={createNewList} // Call the createNewList function when the button is clicked
         >
           {/* Display different text based on the modalData.type */}
-          {modalData?.type === "move-to-other-list" ? "Utwórz nową listę" : "Stwórz listę"}
+          {modalData?.type === "move-to-other-list"
+            ? "Utwórz nową listę"
+            : "Stwórz listę"}
         </Btn>
       </div>
     </Element>

@@ -38,7 +38,9 @@ export default function ListProductsSummary() {
         (acc, product) => {
           let totalInteger = acc[0] + product.quantity * product.price.integer; // Calculate the total integer price of all products in the list.
           let totalDecimal =
-            acc[1] + product.quantity * (product.price.decimal ? product.price.decimal : 0); // Calculate the total decimal price of all products in the list.
+            acc[1] +
+            product.quantity *
+              (product.price.decimal ? product.price.decimal : 0); // Calculate the total decimal price of all products in the list.
 
           // If the total decimal price is greater than 100, add the integer part to the total integer price and set the total decimal price to the remainder.
           if (totalDecimal >= 100) {
@@ -48,7 +50,7 @@ export default function ListProductsSummary() {
 
           return [totalInteger, totalDecimal]; // Return the total integer and decimal price.
         },
-        [0, 0] // Set the initial total integer and decimal price to 0.
+        [0, 0], // Set the initial total integer and decimal price to 0.
       )
     : [0, 0]; // If there is no list, set the total price to 0.
 
@@ -56,22 +58,25 @@ export default function ListProductsSummary() {
   const totalPriceDecimal = totalPrice[1]; // Destructure the total decimal price from the totalPrice array.
 
   // Calculate the discount
-  const discount = calculateDiscount(Number(`${totalPriceInteger}.${totalPriceDecimal}`));
+  const discount = calculateDiscount(
+    Number(`${totalPriceInteger}.${totalPriceDecimal}`),
+  );
 
   // Calculate the total price with discount by subtracting the discount from the total price.
   const totalPriceWithDiscount =
     Number(`${totalPriceInteger}.${totalPriceDecimal}`) - Number(discount);
 
   // Split the totalPriceWithDiscount into integer and decimal parts.
-  const [totalPriceWithDiscountInteger, totalPriceWithDiscountDecimal] = totalPriceWithDiscount
-    .toFixed(2)
-    .split(".");
+  const [totalPriceWithDiscountInteger, totalPriceWithDiscountDecimal] =
+    totalPriceWithDiscount.toFixed(2).split(".");
 
   // Define an addProductsToShoppingCart function to add all products in the list to the shopping cart and display a toast notification.
   function addProductsToShoppingCart() {
     if (!listState?.products) return; // If there is no list, return.
 
-    const productsNames = listState.products.map((product) => product.collection); // Get the names of all products in the list.
+    const productsNames = listState.products.map(
+      (product) => product.collection,
+    ); // Get the names of all products in the list.
 
     dispatch({ type: "addToShoppingCart", payload: listState?.products }); // Add all products in the list to the shopping cart.
 

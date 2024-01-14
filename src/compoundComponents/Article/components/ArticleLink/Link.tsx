@@ -21,6 +21,9 @@ type LinkPropsType = {
  *
  * @returns An anchor element containing the passed React elements or the default string "Dowiedz się więcej".
  */
-export function Link({ children = "Dowiedz się więcej", ...props }: LinkPropsType) {
+export function Link({
+  children = "Dowiedz się więcej",
+  ...props
+}: LinkPropsType) {
   return <a {...props}>{children}</a>;
 }

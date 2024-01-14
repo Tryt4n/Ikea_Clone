@@ -34,7 +34,11 @@ import "./index.scss";
  * @returns {JSX.Element} A list item with a section containing the product header, a checkbox to add the product to the managed products list, a description of the product, a rating block, a quantity block, a control buttons block, and a more options list.
  */
 
-export default function ListProduct({ product }: { product: ShoppingCartType }) {
+export default function ListProduct({
+  product,
+}: {
+  product: ShoppingCartType;
+}) {
   const { managedProducts, setManagedProducts } = useList(); // Destructure the managedProducts and setManagedProducts variables from the useList custom hook.
   const inputRef = useRef<HTMLInputElement | null>(null); // Maintain a ref to the input element.
 
@@ -70,14 +74,14 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
   // Define a function handleManagedProducts to add or remove the product from the managed products list.
   function handleManagedProducts(product: ShoppingCartType) {
     const isProductAlreadyInList = managedProducts.some(
-      (item) => item.productNumber === product.productNumber
+      (item) => item.productNumber === product.productNumber,
     ); // Check if the product is already in the managed products list.
 
     startViewTransition(() => {
       // If the product is already in the managed products list, remove it from the list, otherwise add it to the list.
       if (isProductAlreadyInList) {
         setManagedProducts((prev) =>
-          prev.filter((item) => item.productNumber !== product.productNumber)
+          prev.filter((item) => item.productNumber !== product.productNumber),
         );
       } else {
         setManagedProducts((prev) => [...prev, product]);
@@ -105,7 +109,9 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           label="Wybierz aby dodać do listy zarządzania produktami" // Set the label of the input element.
           type="checkbox" // Set the type of the input element to checkbox.
           className={`list-product__checkbox-wrapper${
-            managedProducts.length === 0 ? " list-product__checkbox-wrapper--hidden" : ""
+            managedProducts.length === 0
+              ? " list-product__checkbox-wrapper--hidden"
+              : ""
           }`} // Set the className of the input element.
           labelProps={{
             className: "visually-hidden", // Set the className of the label element to visually-hidden for accessibility.
@@ -113,7 +119,9 @@ export default function ListProduct({ product }: { product: ShoppingCartType }) 
           inputProps={{
             ref: inputRef, // Set the ref of the input element to the inputRef.
             onChange: () => handleManagedProducts(product), // Set the onChange event handler of the input element to handleManagedProducts.
-            checked: managedProducts.some((item) => item.productNumber === product.productNumber), // Set the checked status of the input element to true if the product is already in the managed products list.
+            checked: managedProducts.some(
+              (item) => item.productNumber === product.productNumber,
+            ), // Set the checked status of the input element to true if the product is already in the managed products list.
           }}
         />
 

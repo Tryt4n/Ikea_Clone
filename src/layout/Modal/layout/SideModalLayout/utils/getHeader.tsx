@@ -19,7 +19,7 @@ import type { SideModalLayoutType } from "../../../types/ModalTypes";
 export function getHeader(
   type: string,
   modalData: SideModalLayoutType,
-  state: ReducerStateType
+  state: ReducerStateType,
 ): string | ReactElement {
   let header: string | ReactElement;
 
@@ -96,10 +96,7 @@ export function getHeader(
         <>
           <>Oszczędzaj 16,50 dzięki</>
           &nbsp;
-          <Tag
-            variant="blue"
-            className="side-modal__header-tag"
-          >
+          <Tag variant="blue" className="side-modal__header-tag">
             Oferty dla Klubowiczów IKEA Family
           </Tag>
         </>

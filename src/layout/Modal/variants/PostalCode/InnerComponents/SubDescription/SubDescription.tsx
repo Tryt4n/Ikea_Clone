@@ -12,15 +12,19 @@ import type { PostalCodePropsType } from "../../PostalCode";
  * @returns {JSX.Element} The rendered `SubDescription` component.
  */
 
-export function SubDescription({ type }: { type: PostalCodePropsType["modalType"] }) {
+export function SubDescription({
+  type,
+}: {
+  type: PostalCodePropsType["modalType"];
+}) {
   return (
     <>
       {
         // Render the sub-description text only if the type is "postal-code"
         type === "postal-code" && (
           <p className="postal-code-modal__subdescription tx-gray">
-            Do świadczenia tej usługi wykorzystujemy pliki cookie. Więcej informacji o tym, jak
-            używamy plików cookie, możesz znaleźć w{" "}
+            Do świadczenia tej usługi wykorzystujemy pliki cookie. Więcej
+            informacji o tym, jak używamy plików cookie, możesz znaleźć w{" "}
             <a
               className="postal-code-modal__link"
               href="#"

@@ -18,10 +18,7 @@ function Component() {
     <>
       {list?.products &&
         list.products.map((product) => (
-          <ListProduct
-            key={product.productNumber}
-            product={product}
-          />
+          <ListProduct key={product.productNumber} product={product} />
         ))}
     </>
   );

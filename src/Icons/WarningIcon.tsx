@@ -1,11 +1,6 @@
 export default function WarningIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
       <path d="M11.0036 14.1337h2v-6h-2v6zm1 1.5c-.6904 0-1.25.5597-1.25 1.25 0 .6904.5596 1.25 1.25 1.25.6903 0 1.25-.5596 1.25-1.25 0-.6903-.5597-1.25-1.25-1.25z"></path>
       <path
         fillRule="evenodd"

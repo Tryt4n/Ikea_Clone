@@ -18,7 +18,11 @@ import "./index.scss";
  * @returns {JSX.Element} The rendered `RoomsMenu` component.
  */
 
-export default function RoomsMenu({ className }: { className: ModalRoomsMenuType["type"] }) {
+export default function RoomsMenu({
+  className,
+}: {
+  className: ModalRoomsMenuType["type"];
+}) {
   return (
     <nav className={className}>
       <ul className="rooms-menu__list">
@@ -29,10 +33,7 @@ export default function RoomsMenu({ className }: { className: ModalRoomsMenuType
           return (
             <ListItem key={title}>
               <figure>
-                <img
-                  src={img}
-                  alt=""
-                />
+                <img src={img} alt="" />
                 <figcaption>{title}</figcaption>
               </figure>
             </ListItem>

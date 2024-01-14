@@ -220,7 +220,7 @@ describe("BackToTopBtn", () => {
     expect(button).not.toHaveAttribute("aria-hidden", "false");
 
     expect(textWrapper).not.toHaveClass(
-      "back-to-top-btn__text-wrapper--hidden"
+      "back-to-top-btn__text-wrapper--hidden",
     );
   });
 });

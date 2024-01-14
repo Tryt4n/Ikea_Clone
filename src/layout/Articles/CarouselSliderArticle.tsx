@@ -1,6 +1,12 @@
 // Import SwiperJS dependencies
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Navigation, Keyboard, FreeMode, A11y } from "swiper/modules";
+import {
+  Scrollbar,
+  Navigation,
+  Keyboard,
+  FreeMode,
+  A11y,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
@@ -62,8 +68,13 @@ type SwiperType = {
  * <CarouselSliderArticle article={article} />
  */
 
-export default function CarouselSliderArticle({ article }: { article: CarouselSliderArticleType }) {
-  const { numberOfInitialSlides, spaceBetweenSlides, breakpoints } = article.swiperConfig; // Destructure the swiperConfig object
+export default function CarouselSliderArticle({
+  article,
+}: {
+  article: CarouselSliderArticleType;
+}) {
+  const { numberOfInitialSlides, spaceBetweenSlides, breakpoints } =
+    article.swiperConfig; // Destructure the swiperConfig object
 
   return (
     <Article key={article.id}>
@@ -89,22 +100,20 @@ export default function CarouselSliderArticle({ article }: { article: CarouselSl
           return (
             <SwiperSlide key={id}>
               <Article.Slide variant={variant}>
-                <Article.Link
-                  href={link}
-                  className={linkStyles}
-                >
+                <Article.Link href={link} className={linkStyles}>
                   {/* If heading exists, render it */}
                   {heading && (
-                    <Article.Header headingLevel={article.header ? 3 : 2}>{heading}</Article.Header>
+                    <Article.Header headingLevel={article.header ? 3 : 2}>
+                      {heading}
+                    </Article.Header>
                   )}
 
                   {/* If btn.text exists, render it */}
-                  {btn.text && <span className="visually-hidden">{btn.text}</span>}
+                  {btn.text && (
+                    <span className="visually-hidden">{btn.text}</span>
+                  )}
 
-                  <Article.SlideBtn
-                    variant={btn.variant}
-                    shape={btn.shape}
-                  >
+                  <Article.SlideBtn variant={btn.variant} shape={btn.shape}>
                     {/* If btn.icon exists and btn.text doesn't exist, render icon */}
                     {btn.icon && !btn.text && (
                       <div dangerouslySetInnerHTML={{ __html: btn.icon }} />

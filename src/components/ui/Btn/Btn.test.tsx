@@ -57,7 +57,7 @@ describe("Btn", () => {
     render(
       <Btn variant={variant} shape={shape} size={size}>
         {children}
-      </Btn>
+      </Btn>,
     );
 
     // Assert
@@ -77,13 +77,13 @@ describe("Btn", () => {
     render(
       <Btn id={id} onClick={onClick} disabled={false}>
         {children}
-      </Btn>
+      </Btn>,
     );
     await user.click(screen.getByRole("button"));
 
     // Assert
     expect(onClick).toHaveBeenCalledOnce();
     expect(screen.getByRole("button")).toHaveAttribute("id", id);
-    expect(screen.getByRole("button")).not.toBeDisabled();
+    expect(screen.getByRole("button")).toBeEnabled();
   });
 });

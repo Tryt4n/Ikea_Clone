@@ -22,7 +22,11 @@ type TextContainerPropsType = {
  * @returns A div component with a "card__text-wrapper" class, and the provided className if it exists.
  */
 
-export function TextContainer({ children, className, ...props }: TextContainerPropsType) {
+export function TextContainer({
+  children,
+  className,
+  ...props
+}: TextContainerPropsType) {
   return (
     <div
       {...props}

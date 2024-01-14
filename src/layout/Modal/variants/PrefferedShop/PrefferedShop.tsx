@@ -66,7 +66,9 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
   const { setModalData } = useModal(); // Get setModalData from ModalContext
 
   // Filter the shops by the search term
-  const filteredShops = shopsList.filter((shop) => shop.name.toLowerCase().includes(searchTerm));
+  const filteredShops = shopsList.filter((shop) =>
+    shop.name.toLowerCase().includes(searchTerm),
+  );
 
   // Handle shop selection
   function selectShop(shop: ShopType) {
@@ -85,10 +87,7 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
       {filteredShops.length > 0 ? (
         <ul>
           {filteredShops.map((shop) => (
-            <li
-              key={shop.name}
-              className="preffered-shop__list-item"
-            >
+            <li key={shop.name} className="preffered-shop__list-item">
               <button
                 type="button"
                 className="preffered-shop__list-item-btn"
@@ -107,7 +106,8 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
       ) : (
         // If there are no filtered shops, display a no results message
         <em className="preffered-shop__no-result-text">
-          Niestety, nie udało nam się znaleźć sklepu IKEA na podstawie tego, co zostało wpisane.
+          Niestety, nie udało nam się znaleźć sklepu IKEA na podstawie tego, co
+          zostało wpisane.
         </em>
       )}
     </>

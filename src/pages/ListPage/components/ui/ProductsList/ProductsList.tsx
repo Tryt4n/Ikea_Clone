@@ -31,11 +31,7 @@ export function ProductsList() {
             key={product.productNumber}
             className="manage-products__list-item"
           >
-            <img
-              src={imgSrc}
-              alt={imgAlt}
-              loading="lazy"
-            />
+            <img src={imgSrc} alt={imgAlt} loading="lazy" />
           </li>
         );
       })}

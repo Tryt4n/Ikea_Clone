@@ -17,7 +17,7 @@ type FetchReturnType<T> = {
  */
 export default function useFetch<T>(
   URL: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): FetchReturnType<T> {
   // Initialize state variables
   const [data, setData] = useState<T | undefined>(undefined);

@@ -10,7 +10,9 @@ type CollectionContextType = {
 };
 
 // Create the CollectionContext with a default value of null
-export const CollectionContext = createContext<CollectionContextType | null>(null);
+export const CollectionContext = createContext<CollectionContextType | null>(
+  null,
+);
 
 /**
  * CollectionContextProvider component
@@ -23,8 +25,13 @@ export const CollectionContext = createContext<CollectionContextType | null>(nul
  * @returns A CollectionContext.Provider component with the current context value and the provided children.
  */
 
-export function CollectionContextProvider({ children }: { children: ReactNode }) {
-  const [isDescriptionMenuVisible, setIsDescriptionMenuVisible] = useState(false); // Initialize the state of the description menu visibility, defaults to false
+export function CollectionContextProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [isDescriptionMenuVisible, setIsDescriptionMenuVisible] =
+    useState(false); // Initialize the state of the description menu visibility, defaults to false
   const [hoveredItemID, setHoveredItemID] = useState(""); // Initialize the state of the currently hovered item ID, defaults to an empty string
 
   // Define the current context value
@@ -35,5 +42,9 @@ export function CollectionContextProvider({ children }: { children: ReactNode })
     setHoveredItemID,
   };
 
-  return <CollectionContext.Provider value={contextValue}>{children}</CollectionContext.Provider>;
+  return (
+    <CollectionContext.Provider value={contextValue}>
+      {children}
+    </CollectionContext.Provider>
+  );
 }

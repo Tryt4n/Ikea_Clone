@@ -18,7 +18,11 @@ import { getThumbnailsData } from "../../../../utils/getThumbnailsData";
  * <ChooseColor data={data} />
  */
 
-export default function ChooseColor({ data }: { data: ModalDataChooseColorType }) {
+export default function ChooseColor({
+  data,
+}: {
+  data: ModalDataChooseColorType;
+}) {
   const { variants, variantsName } = data.productData; // Desctructure the variants and variantsName properties from the productData property of the data object.
 
   const location = useCurrentProductPath(data.path); // Use the useCurrentProductPath custom hook to get the current product path.
@@ -31,7 +35,7 @@ export default function ChooseColor({ data }: { data: ModalDataChooseColorType }
           data.productData,
           data.path,
           productVariant,
-          index
+          index,
         ); // Use the getThumbnailsData utility function to get the data of the thumbnails.
 
         const Element = location === href ? "div" : "a"; // If the current product path is equal to the href property, render a `div` element. Otherwise, render an `a` element.
@@ -43,11 +47,7 @@ export default function ChooseColor({ data }: { data: ModalDataChooseColorType }
             className="variant-item variant-item__color"
             aria-label={Element === "div" ? "Obecnie wybrany kolor" : undefined} // Set aria-label only if the variant is currently selected.
           >
-            <img
-              src={imgSrc}
-              srcSet={imgSrcSet}
-              alt={imgAlt}
-            />
+            <img src={imgSrc} srcSet={imgSrcSet} alt={imgAlt} />
             <VariantText
               text={variantsName[variants.indexOf(productVariant)]} // Get the text of the color variant from the variantsName array.
             />

@@ -33,8 +33,8 @@ export function ListCreation() {
       <h3>Wiele list, jeden dom</h3>
 
       <p>
-        Znajdź wszystkie swoje listy w jednym miejscu. Podziel swoje ulubione listy na kategorie i
-        zapisz je tutaj.
+        Znajdź wszystkie swoje listy w jednym miejscu. Podziel swoje ulubione
+        listy na kategorie i zapisz je tutaj.
       </p>
 
       <p>Nie możesz znaleźć swoich list? Upewnij się, że jesteś zalogowany.</p>

@@ -22,7 +22,10 @@ import "./index.scss";
 
 // Define types for component props
 type CreateTypePropsType = {
-  type: CreateListModal["type"] | ChangeListNameModal["type"] | CreateListModalWithProducts["type"];
+  type:
+    | CreateListModal["type"]
+    | ChangeListNameModal["type"]
+    | CreateListModalWithProducts["type"];
 };
 
 /**
@@ -43,7 +46,9 @@ export default function NameList({ type }: CreateTypePropsType) {
   const { setToastData } = useToast(); // Get setToastData from ToastContext
 
   const [inputValue, setInputValue] = useState(
-    type === "change-list-name" && state.editingList ? state.editingList.name : ""
+    type === "change-list-name" && state.editingList
+      ? state.editingList.name
+      : "",
   ); // Set initial input value based on the type of operation and the currently editing list
 
   const [errorMessageVisibility, setErrorMessageVisibility] = useState(false); // Set initial error message visibility to false
@@ -76,11 +81,15 @@ export default function NameList({ type }: CreateTypePropsType) {
       // If creating a list with a product, add the product to the list
       if (type === "create-list" && modalData) {
         list.products =
-          modalData.type === type && modalData.product ? [modalData.product] : undefined;
+          modalData.type === type && modalData.product
+            ? [modalData.product]
+            : undefined;
       } else if (type === "create-list-with-products" && modalData) {
         // If creating a list with multiple products, add the products to the list
         list.products =
-          modalData.type === type && modalData.products ? modalData.products : undefined;
+          modalData.type === type && modalData.products
+            ? modalData.products
+            : undefined;
       }
 
       // Dispatch the appropriate action based on the type of operation
@@ -89,7 +98,10 @@ export default function NameList({ type }: CreateTypePropsType) {
           type: "createNewList",
           payload: {
             list,
-            oldListId: type === "create-list-with-products" ? state.editingList?.id : undefined, // If creating a list with a product, set the old list id to the currently editing list id
+            oldListId:
+              type === "create-list-with-products"
+                ? state.editingList?.id
+                : undefined, // If creating a list with a product, set the old list id to the currently editing list id
           },
         });
 
@@ -167,12 +179,11 @@ export default function NameList({ type }: CreateTypePropsType) {
         />
       </div>
 
-      <Btn
-        type="submit"
-        size="big"
-      >
+      <Btn type="submit" size="big">
         {/* Set the button text based on the type of operation */}
-        {type === ("create-list" || "create-list-with-products") ? "Stwórz listę" : "Zapisz"}
+        {type === ("create-list" || "create-list-with-products")
+          ? "Stwórz listę"
+          : "Zapisz"}
       </Btn>
     </form>
   );

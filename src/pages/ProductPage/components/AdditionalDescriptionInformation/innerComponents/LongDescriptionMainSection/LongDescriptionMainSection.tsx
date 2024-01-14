@@ -18,7 +18,10 @@ type LongDescriptionSectionType = {
  * @returns A JSX element that consists of a `div` with the class name `additional-info__description-container`. Inside this `div`, it renders a `h4` element that displays the `header` prop and a `p` element that displays the `description` prop.
  */
 
-export function LongDescriptionMainSection({ header, description }: LongDescriptionSectionType) {
+export function LongDescriptionMainSection({
+  header,
+  description,
+}: LongDescriptionSectionType) {
   return (
     <div className="additional-info__description-container">
       <h4 className="additional-info__heading">{header}</h4>

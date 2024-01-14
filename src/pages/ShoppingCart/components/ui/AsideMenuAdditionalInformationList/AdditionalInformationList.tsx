@@ -46,8 +46,8 @@ export function AdditionalInformationsList() {
         >
           <LockIcon />
           <span>
-            Bezpieczne zakupy z technologią szyfrowania danych SSL oraz zabezpieczenia transakcji 3D
-            Secure
+            Bezpieczne zakupy z technologią szyfrowania danych SSL oraz
+            zabezpieczenia transakcji 3D Secure
           </span>
         </button>
       </li>

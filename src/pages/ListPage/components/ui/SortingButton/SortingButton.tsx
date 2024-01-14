@@ -5,7 +5,10 @@ import { startViewTransition } from "../../../../../utils/helpers";
 // Import components
 import { Btn } from "../../../../../components/ui/Btn/Btn";
 // Import types
-import type { ReducerActionsType, SortingTypes } from "../../../context/ListContext";
+import type {
+  ReducerActionsType,
+  SortingTypes,
+} from "../../../context/ListContext";
 
 // Define the SortingButtonProps type
 type SortingButtonProps = {
@@ -33,14 +36,20 @@ type SortingButtonProps = {
  * @param {string} props.children - The text to display on the button.
  */
 
-export function SortingButton({ variant, dispatchAction, children }: SortingButtonProps) {
+export function SortingButton({
+  variant,
+  dispatchAction,
+  children,
+}: SortingButtonProps) {
   const { listState, listDispatch } = useList(); // Use the useList hook to get the list state and dispatch function
 
   return (
     <>
       {listState && (
         <Btn
-          variant={listState.listSorting === variant ? "light-with-border" : "gray"} // Set the variant of the button based on the current sorting of the list
+          variant={
+            listState.listSorting === variant ? "light-with-border" : "gray"
+          } // Set the variant of the button based on the current sorting of the list
           onClick={() =>
             // Start a view transition and dispatch the appropriate action based on the current sorting of the list
             startViewTransition(() => {
