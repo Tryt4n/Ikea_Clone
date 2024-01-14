@@ -24,7 +24,10 @@ import {
 // Import constants
 import { shopsList } from "../../../constants/shopsList";
 // Import types
-import type { ReducerActionsType, ReducerStateType } from "../types/ReducerTypes";
+import type {
+  ReducerActionsType,
+  ReducerStateType,
+} from "../types/ReducerTypes";
 import type { ShoppingCartType } from "../types/ShoppingCartType";
 import type { FavouritesListType } from "../types/FavouritesListType";
 import type { ShopType } from "../../../constants/shopsList";
@@ -57,7 +60,10 @@ import type { ShopType } from "../../../constants/shopsList";
  * console.log(newState); // Outputs: { lists: [{ id: 1, name: "List 1" }], editingList: null, isEditing: false }
  */
 export function reducer(state: ReducerStateType, action: ReducerActionsType) {
-  const shoppingCart: ShoppingCartType[] = getJSONFromLocalStorage("shoppingCart", []); // Get shopping cart from localStorage (if it exists) or set it to an empty array
+  const shoppingCart: ShoppingCartType[] = getJSONFromLocalStorage(
+    "shoppingCart",
+    []
+  ); // Get shopping cart from localStorage (if it exists) or set it to an empty array
   const favouriteListsStorage: FavouritesListType[] = getJSONFromLocalStorage(
     "favouriteLists",
     undefined
@@ -83,7 +89,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
 
     case "togglePostalCodeCheckbox": {
-      localStorage.setItem("rememberPostalCodeCheckboxStatus", action.payload.toString()); // Save checkbox status to localStorage
+      localStorage.setItem(
+        "rememberPostalCodeCheckboxStatus",
+        action.payload.toString()
+      ); // Save checkbox status to localStorage
 
       return {
         ...state,
@@ -159,7 +168,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     case "removeProductFromShoppingCart": {
       const productNumber = action.payload; // Get product number from action payload
 
-      const updatedShoppingCart = removeProductFromShoppingCart(shoppingCart, productNumber); // Remove the product from the shopping cart
+      const updatedShoppingCart = removeProductFromShoppingCart(
+        shoppingCart,
+        productNumber
+      ); // Remove the product from the shopping cart
 
       saveShoppingCartToLocalStorage(updatedShoppingCart); // Save updated shopping cart to localStorage
 
@@ -179,11 +191,19 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "createNewList": {
-      if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
-
       const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const newList = action.payload.list; // Get new list from action payload
       const oldListId = action.payload.oldListId; // Get old list ID from action payload
+
+      // If there are no lists in localStorage, create a new list
+      if (!favouriteListsStorage) {
+        saveFavoriteListsToLocalStorage([newList]);
+
+        return {
+          ...state,
+          favouriteLists: [newList], // Save the new list to state
+        };
+      }
 
       // If the old list ID exists, find the old list and the new list
       if (oldListId) {
@@ -266,13 +286,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     }
 
     case "addProductsToList": {
-      if (!favouriteListsStorage) return state; // If there are no lists in localStorage, return the current state
-
       const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
       const listId = action.payload.listId; // Get the list ID from action payload
-      const listIndex = searchForIndex(lists, listId, "id"); // Find the list that the products are being added to
 
-      // If the list does not exist or the list is empty, create a new list.
+      // If the lists storage or lists do not exist create a new list with passed product
       if (!favouriteListsStorage || lists.length === 0) {
         const newList = createNewList(listId, action.payload.products[0]); // The products array should contain only one product
 
@@ -281,6 +298,8 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
           favouriteLists: [newList], // Save the new list to state
         };
       }
+
+      const listIndex = searchForIndex(lists, listId, "id"); // Find the list that the products are being added to
 
       const products = action.payload.products; // Get products from action payload
       const updatedList = updateListWithProducts(lists[listIndex], products); // Update the list with the products
@@ -344,19 +363,26 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
         addedDate: new Date(),
       })); // Get products from action payload and set the added date to the current date
       const originalListId = action.payload.originalListId; // Get the original list ID from action payload
-      const listWhereProductIsMovedID = action.payload.listWhereProductIsMovedID; // Get the list ID where the products are being moved to from action payload
+      const listWhereProductIsMovedID =
+        action.payload.listWhereProductIsMovedID; // Get the list ID where the products are being moved to from action payload
 
       // Find the original list and the list where the products are being moved to
       const originalListIndex = searchForIndex(lists, originalListId, "id");
-      const listWhereProductAreMovedIndex = searchForIndex(lists, listWhereProductIsMovedID, "id");
+      const listWhereProductAreMovedIndex = searchForIndex(
+        lists,
+        listWhereProductIsMovedID,
+        "id"
+      );
 
       let originalListProducts = lists[originalListIndex].products; // Get the original list products
-      let listWhereProductIsMovedProducts = lists[listWhereProductAreMovedIndex].products; // Get the list where the products are being moved to
+      let listWhereProductIsMovedProducts =
+        lists[listWhereProductAreMovedIndex].products; // Get the list where the products are being moved to
 
       // If the original list does not have products, set the products to an empty array
       if (!listWhereProductIsMovedProducts) {
         listWhereProductIsMovedProducts = []; // Set the products to an empty array
-        lists[listWhereProductAreMovedIndex].products = listWhereProductIsMovedProducts; // Update the list where the products are being moved to
+        lists[listWhereProductAreMovedIndex].products =
+          listWhereProductIsMovedProducts; // Update the list where the products are being moved to
       }
 
       // If originalListProducts exists, remove the products that are being moved from the original list
@@ -378,8 +404,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
           // If the product already exists in the list where the products are being moved to, increase the quantity of the product and update the addedDate
           if (existingProductIndex !== -1) {
-            listWhereProductIsMovedProducts[existingProductIndex].quantity += product.quantity;
-            listWhereProductIsMovedProducts[existingProductIndex].addedDate = new Date();
+            listWhereProductIsMovedProducts[existingProductIndex].quantity +=
+              product.quantity;
+            listWhereProductIsMovedProducts[existingProductIndex].addedDate =
+              new Date();
           } else {
             // Otherwise, add the product to the list where the products are being moved to
             listWhereProductIsMovedProducts.push(product);
@@ -423,7 +451,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
         searchedProductIndex !== undefined && // Checking for undefined because it can be 0 and 0 is a valid index
         searchedProductIndex !== -1
       ) {
-        changeProductQuantity(currentList.products[searchedProductIndex], value); // Change the product quantity
+        changeProductQuantity(
+          currentList.products[searchedProductIndex],
+          value
+        ); // Change the product quantity
 
         updateLastEditDate(currentList); // Update the last edit date of the list to the current date
         sortLists(lists); // Sort the lists by the date of the last edit in descending order
@@ -440,7 +471,10 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
     case "loadAppData": {
       // Postal Code
-      const postalCodeValue = getFromLocalStorage("postalCode", state.postalCode); // Get postal code from localStorage
+      const postalCodeValue = getFromLocalStorage(
+        "postalCode",
+        state.postalCode
+      ); // Get postal code from localStorage
 
       // Postal Code Checkbox
       const postalCodeCheckboxValue =
@@ -454,7 +488,9 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       let chosenShopValue: ShopType | undefined;
       // If chosen shop exists in localStorage, set chosen shop to the value from localStorage
       if (chosenShopStorage) {
-        chosenShopValue = shopsList.find((shop) => shop.name === chosenShopStorage);
+        chosenShopValue = shopsList.find(
+          (shop) => shop.name === chosenShopStorage
+        );
       }
 
       // Shopping Cart
@@ -499,6 +535,8 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
     // If the action type does not exist, return the current state
     default:
-      throw new Error("A case in reducer function has been specified that does not exist.");
+      throw new Error(
+        "A case in reducer function has been specified that does not exist."
+      );
   }
 }

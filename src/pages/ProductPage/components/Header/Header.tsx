@@ -4,6 +4,8 @@ import useModal from "../../../../hooks/useModal/useModal";
 import useToast from "../../../../hooks/useToast/useToast";
 // Import components
 import AddToWishListBtn from "../../../../components/ui/AddToWishListBtn/AddToWishListBtn";
+// Import helpers functions
+import { startViewTransition } from "../../../../utils/helpers";
 // Import types
 import type { ProductDataType } from "../../types/ProductDataType";
 import type { ShoppingCartType } from "../../../../context/AppContext/types/ShoppingCartType";
@@ -57,7 +59,10 @@ export default function Header({ data }: { data: ProductDataType }) {
     variantName,
     oldPrice: oldPriceTag,
     quantity: 1,
-    productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(/\./g, "")}`, // Replace all dots in the `productNumber` with empty strings.
+    productLink: `/products/${collection}/${name}/${variant}/${productNumber.replace(
+      /\./g,
+      ""
+    )}`, // Replace all dots in the `productNumber` with empty strings.
     newTag,
     addedDate: new Date(),
     rating: rating,
@@ -69,19 +74,21 @@ export default function Header({ data }: { data: ProductDataType }) {
       // If there are no lists, create a new list.
       const newListId = crypto.randomUUID(); // Generate a random UUID for the new list.
 
-      dispatch({
-        type: "addProductsToList",
-        payload: {
-          listId: newListId,
-          products: [product],
-        },
-      });
+      startViewTransition(() => {
+        dispatch({
+          type: "addProductsToList",
+          payload: {
+            listId: newListId,
+            products: [product],
+          },
+        });
 
-      // Show a toast notification that the product has been added to the wishlist.
-      setToastData({
-        open: true,
-        text: `${product.collection} został zapisany na liście Moja lista.`,
-        link: `/favourites/${newListId}`,
+        // Show a toast notification that the product has been added to the wishlist.
+        setToastData({
+          open: true,
+          text: `${product.collection} został zapisany na liście Moja lista.`,
+          link: `/favourites/${newListId}`,
+        });
       });
     } else {
       openSelectListModal(); // Else open the modal for selecting a wishlist.
@@ -101,7 +108,8 @@ export default function Header({ data }: { data: ProductDataType }) {
     state.favouriteLists &&
     state.favouriteLists.some(
       (list) =>
-        list.products && list.products.some((product) => product.productNumber === productNumber)
+        list.products &&
+        list.products.some((product) => product.productNumber === productNumber)
     );
 
   return (
