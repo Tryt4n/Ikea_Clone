@@ -26,6 +26,7 @@ export function CardBtn(props: CardBtnPropsType) {
       aria-hidden="true" // Set aria-hidden to "true" to hide the button from screen readers
       tabIndex={-1} // Set tabIndex to -1 to remove the button from the tab order
       className="card__btn"
+      data-testid="card-btn"
     >
       <ArrowRightIcon />
     </Btn>

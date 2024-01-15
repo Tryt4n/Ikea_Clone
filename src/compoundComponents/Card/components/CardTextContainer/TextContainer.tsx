@@ -31,6 +31,7 @@ export function TextContainer({
     <div
       {...props}
       className={`card__text-wrapper${className ? ` ${className}` : ""}`}
+      data-testid="card-text-container"
     >
       {children}
     </div>

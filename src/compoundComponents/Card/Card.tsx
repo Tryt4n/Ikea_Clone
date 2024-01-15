@@ -55,6 +55,7 @@ export default function Card<T extends "div" | "a">({
     <Element
       {...(props as HTMLProps<HTMLDivElement> & HTMLProps<HTMLAnchorElement>)} // Spread the rest of the props
       className={`card bg-${variant}${className ? ` ${className}` : ""}`} // Set the class to "card", a background variant class if variant is provided, and the provided className if it exists
+      data-testid="card"
     >
       {children}
     </Element>
