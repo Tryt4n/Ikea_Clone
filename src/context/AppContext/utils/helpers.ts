@@ -27,6 +27,7 @@ type ProductsValueChangeType = number | "subtract" | "add";
  */
 export function sortLists(lists: FavouritesListType[]) {
   return lists.sort((a, b) =>
+    /* v8 ignore next */
     compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)),
   );
 }
@@ -361,6 +362,9 @@ export function searchForIndex<T, V>(array: T[], value: V, field: keyof T) {
 export function saveShoppingCartToLocalStorage(
   shoppingCart: ShoppingCartType[],
 ) {
+  if (shoppingCart === null || shoppingCart === undefined) {
+    throw new Error(`The shoppingCart value cannot be ${typeof shoppingCart}.`);
+  }
   saveToLocalStorage("shoppingCart", shoppingCart);
 }
 
@@ -372,6 +376,11 @@ export function saveShoppingCartToLocalStorage(
 export function saveFavoriteListsToLocalStorage(
   favoriteLists: FavouritesListType[],
 ) {
+  if (favoriteLists === null || favoriteLists === undefined) {
+    throw new Error(
+      `The favoriteLists value cannot be ${typeof favoriteLists}.`,
+    );
+  }
   saveToLocalStorage("favouriteLists", favoriteLists);
 }
 
@@ -639,6 +648,13 @@ export function getJSONFromLocalStorage<T>(key: string, defaultValue: T) {
  * @param {string} key - The key under which the data will be saved.
  * @param {T} data - The data to be saved to localStorage.
  */
-function saveToLocalStorage<T>(key: string, data: T) {
+export function saveToLocalStorage<T>(key: string, data: T) {
+  // If the key is null, undefined or an empty string, throw an error
+  if (key === null || key === undefined || key === "") {
+    throw new Error(
+      `The key cannot be ${typeof key === "string" ? "empty string" : typeof key}.`,
+    );
+  }
+
   localStorage.setItem(key, JSON.stringify(data));
 }
