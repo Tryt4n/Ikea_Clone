@@ -504,7 +504,7 @@ export function deleteList(
  * console.log(newList); // Outputs: { id: "generated id", lastEdit: new Date("current date"), name: "Moja lista", products: [{ id: 1, name: "Product 1", price: 100 }] }
  */
 export function createNewList(
-  listId: FavouritesListType["id"],
+  listId: FavouritesListType["id"] | undefined,
   product: ShoppingCartType,
 ) {
   const newList: FavouritesListType = {
@@ -555,11 +555,9 @@ export function updateListWithProducts(
 ) {
   const updatedList: FavouritesListType = { ...list }; // Create a copy of the list
 
-  updatedList.products = updatedList.products || []; // If the list does not have products, set the products to an empty array
-
   // Add products to the list
   products.forEach((product) => {
-    if (!updatedList.products) return; // If the list does not have products, return
+    if (!updatedList.products) updatedList.products = []; // If the list does not have products, set the products to an empty array
 
     // Check if the list already has the product
     const existingProductIndex = searchForIndex(
