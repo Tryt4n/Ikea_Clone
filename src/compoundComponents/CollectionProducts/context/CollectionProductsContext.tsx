@@ -7,6 +7,7 @@ type CollectionContextType = {
   setIsDescriptionMenuVisible: (state: boolean) => void; // A function that sets the visibility of the description menu
   hoveredItemID: string; // A string that represents the ID of the currently hovered item
   setHoveredItemID: (id: string) => void; // A function that sets the ID of the currently hovered item
+  showItemDescription: (id: string) => void; // A function that shows the item description
 };
 
 // Create the CollectionContext with a default value of null
@@ -34,12 +35,19 @@ export function CollectionContextProvider({
     useState(false); // Initialize the state of the description menu visibility, defaults to false
   const [hoveredItemID, setHoveredItemID] = useState(""); // Initialize the state of the currently hovered item ID, defaults to an empty string
 
+  // Define the function that shows the item description
+  function showItemDescription(id: string) {
+    setIsDescriptionMenuVisible(true); // Set the description menu to visible
+    setHoveredItemID(id); // Set the hovered item ID to the description container ID
+  }
+
   // Define the current context value
   const contextValue = {
     isDescriptionMenuVisible,
     setIsDescriptionMenuVisible,
     hoveredItemID,
     setHoveredItemID,
+    showItemDescription,
   };
 
   return (

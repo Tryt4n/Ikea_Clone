@@ -37,8 +37,6 @@ export function CollectionListItem({
   right,
   descriptionContainerId,
 }: CollectionListItemPropsType) {
-  const { setIsDescriptionMenuVisible, setHoveredItemID } = useCollection(); // Get the setIsDescriptionMenuVisible and setHoveredItemID functions from the CollectionContext
-
   // Define the CSS properties of the list item
   const listItemStyle: CSSProperties = {
     top: top ? top : "auto",
@@ -47,17 +45,13 @@ export function CollectionListItem({
     right: right ? right : "auto",
   };
 
-  // Define the function that shows the item description
-  function showItemDescription() {
-    setIsDescriptionMenuVisible(true); // Set the description menu to visible
-    setHoveredItemID(descriptionContainerId); // Set the hovered item ID to the description container ID
-  }
+  const { showItemDescription } = useCollection(); // Get the showItemDescription function from the CollectionContext
 
   return (
     <li
       style={listItemStyle} // Set the CSS properties
-      onFocus={showItemDescription} // When focused, show the item description
-      onMouseEnter={showItemDescription} // When hovered, show the item description
+      onFocus={() => showItemDescription(descriptionContainerId)} // When focused, show the item description
+      onMouseEnter={() => showItemDescription(descriptionContainerId)} // When hovered, show the item description
     >
       <span className="visually-hidden">Idź na stronę produktu</span>
 
