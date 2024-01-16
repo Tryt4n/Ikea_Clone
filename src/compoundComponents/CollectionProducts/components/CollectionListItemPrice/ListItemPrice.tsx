@@ -32,7 +32,7 @@ export function ListItemPrice({
   const formattedPrice = addThousandSeparator(price); // Format the price with a thousand separator
 
   return (
-    <strong>
+    <strong data-testid="collection-price">
       <div className="collection-list__item-price">
         {formattedPrice}
 

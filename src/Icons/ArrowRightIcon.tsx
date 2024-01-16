@@ -1,6 +1,12 @@
 export default function ArrowRightIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+      data-testid="arrow-right-icon"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
