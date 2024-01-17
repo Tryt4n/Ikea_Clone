@@ -206,16 +206,19 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
         };
       }
 
+      // For creating a new list for moving products from one list to newly created one
       // If the old list ID exists, find the old list and the new list
       if (oldListId) {
         const oldListIndex = searchForIndex(lists, oldListId, "id"); // Find the old list
-        const oldList = lists[oldListIndex]; // Get the old list
+        const oldList = { ...lists[oldListIndex] }; // Get a deep copy of the old list
 
         removeProductsFromOldList(oldList, newList); // Remove products from the old list that are in the new list
         updateAddedDateOfProducts(newList); // Update the added date of the products in the new list to the current date
 
         updateLastEditDate(oldList); // Update the last edit date of the old list to the current date
         updateLastEditDate(newList); // Update the last edit date of the new list to the current date
+
+        lists[oldListIndex] = oldList; // Replace the old list in the lists array with the modified old list
       }
 
       const updatedLists = [newList, ...lists]; // Create a new array of lists with the new list
