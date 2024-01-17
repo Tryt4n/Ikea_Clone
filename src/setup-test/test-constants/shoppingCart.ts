@@ -32,7 +32,7 @@ export const shoppingCart: ShoppingCartType[] = [
     },
     quantity: 2,
     productLink: "https://collection1.com",
-    addedDate: new Date(),
+    addedDate: new Date("2022-01-01"),
   },
   {
     collection: "collection2",
@@ -60,6 +60,6 @@ export const shoppingCart: ShoppingCartType[] = [
     },
     quantity: 1,
     productLink: "https://collection2.com",
-    addedDate: new Date(),
+    addedDate: new Date("2022-01-02"),
   },
 ];
