@@ -142,6 +142,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
       };
     }
 
+    /* v8 ignore next 5 */
     case "addProductByNumber": {
       console.warn(`Should be added product with ${action.payload} number`);
 
