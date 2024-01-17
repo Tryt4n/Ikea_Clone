@@ -1,6 +1,6 @@
 import type { FavouritesListType } from "../../context/AppContext/types/FavouritesListType";
 
-const date = new Date();
+const date = new Date("2021-01-01T00:00:00.000Z");
 export const exampleList: FavouritesListType = {
   id: "1234-5678-9101-1121",
   lastEdit: date,
