@@ -22,6 +22,8 @@ import {
   updateListWithProducts,
   updateShoppingCart,
 } from "./helpers";
+// Utils
+import { areDatesEqual } from "../../../setup-test/test-utils";
 // Types
 import type { FavouritesListType } from "../types/FavouritesListType";
 import type { ShoppingCartType } from "../types/ShoppingCartType";
@@ -30,12 +32,6 @@ import { shoppingCart } from "../../../setup-test/test-constants/shoppingCart";
 import { exampleList } from "../../../setup-test/test-constants/exampleList";
 
 describe("AppContext reducer helper functions", () => {
-  function areDatesEqual(date1: Date, date2: Date): boolean {
-    return (
-      date1.toISOString().slice(0, 19) === date2.toISOString().slice(0, 19)
-    );
-  }
-
   describe("#sortLists", () => {
     it("should sort an array of lists by the date of the last edit in descending order", () => {
       // Arrange

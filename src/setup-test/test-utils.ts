@@ -10,3 +10,7 @@ const customRender = (
 
 export * from "@testing-library/react";
 export { customRender as render };
+
+export function areDatesEqual(date1: Date, date2: Date): boolean {
+  return date1.toISOString().slice(0, 19) === date2.toISOString().slice(0, 19);
+}
