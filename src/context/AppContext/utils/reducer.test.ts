@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { ReducerActionsType, ReducerStateType } from "../types/ReducerTypes";
 import { reducer } from "./reducer";
 // Constants
@@ -8,6 +8,13 @@ import { shoppingCart } from "../../../setup-test/test-constants/shoppingCart";
 import { exampleList } from "../../../setup-test/test-constants/exampleList";
 
 describe("#reducer App Context function", () => {
+  beforeEach(() => {
+    localStorage.clear(); // Clear localStorage
+  });
+  afterEach(() => {
+    localStorage.clear(); // Clear localStorage
+  });
+
   it("should return the new state based on `setPostalCode` action", () => {
     // Arrange
     const action: ReducerActionsType = {
@@ -142,17 +149,33 @@ describe("#reducer App Context function", () => {
       },
     };
 
+    // Find product
+    const productIndex = shoppingCart.findIndex(
+      (product) => product.productNumber === productNumber,
+    );
+
+    // If product not found throw error
+    if (productIndex === -1) {
+      throw new Error(`Product with number ${productNumber} not found`);
+    }
+
+    // Create new shopping cart
+    const newShoppingCart = [
+      ...shoppingCart.slice(0, productIndex),
+      {
+        ...shoppingCart[productIndex],
+        quantity: quantity,
+      },
+      ...shoppingCart.slice(productIndex + 1),
+    ];
+
     const state: ReducerStateType = {
       ...initState,
-      shoppingCart: [
-        ...shoppingCart,
-        {
-          ...shoppingCart[0],
-          quantity: quantity,
-          productNumber: productNumber,
-        },
-      ],
+      shoppingCart: newShoppingCart,
     };
+
+    // Mock for localStorage
+    localStorage.setItem("shoppingCart", JSON.stringify(state.shoppingCart));
 
     // Act
     const newState = reducer(state, action);
@@ -166,40 +189,87 @@ describe("#reducer App Context function", () => {
             ...shoppingCart[0],
             quantity: changeQuantityTo,
           },
-          ...shoppingCart.slice(1),
+          { ...shoppingCart[1] },
         ],
       }),
     );
   });
 
-  it("should return the new state based on `removeProductFromShoppingCart` action", () => {
-    // Arrange
-    const productNumber = "123.456.78";
-    const action: ReducerActionsType = {
-      type: "removeProductFromShoppingCart",
-      payload: productNumber,
-    };
-    const state: ReducerStateType = {
-      ...initState,
-      shoppingCart: [
-        ...shoppingCart,
+  describe("should return the new state based on `removeProductFromShoppingCart` action", () => {
+    it("if product number is valid removes it from shopping cart", () => {
+      // Arrange
+      const productNumber = "123.456.78";
+      const action: ReducerActionsType = {
+        type: "removeProductFromShoppingCart",
+        payload: productNumber,
+      };
+
+      // Find product
+      const productIndex = shoppingCart.findIndex(
+        (product) => product.productNumber === productNumber,
+      );
+
+      // If product not found throw error
+      if (productIndex === -1) {
+        throw new Error(`Product with number ${productNumber} not found`);
+      }
+
+      // Create new shopping cart
+      const newShoppingCart = [
+        ...shoppingCart.slice(0, productIndex),
         {
-          ...shoppingCart[0],
+          ...shoppingCart[productIndex],
           productNumber: productNumber,
         },
-      ],
-    };
+        ...shoppingCart.slice(productIndex + 1),
+      ];
 
-    // Act
-    const newState = reducer(state, action);
-
-    // Assert // JSON.stringify to avoid comparing date on that objects by reference
-    expect(JSON.stringify(newState)).toEqual(
-      JSON.stringify({
+      const state: ReducerStateType = {
         ...initState,
-        shoppingCart: [...shoppingCart.slice(1)],
-      }),
-    );
+        shoppingCart: newShoppingCart,
+      };
+
+      // Mock for localStorage
+      localStorage.setItem("shoppingCart", JSON.stringify(state.shoppingCart));
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          shoppingCart: [...shoppingCart.slice(1)],
+        }),
+      );
+    });
+
+    it("if the product number is invalid do nothing", () => {
+      // Arrange
+      const productNumber = "some invalid product number";
+      const action: ReducerActionsType = {
+        type: "removeProductFromShoppingCart",
+        payload: productNumber,
+      };
+      const state: ReducerStateType = {
+        ...initState,
+        shoppingCart: shoppingCart,
+      };
+
+      // Mock for localStorage
+      localStorage.setItem("shoppingCart", JSON.stringify(state.shoppingCart));
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          shoppingCart: shoppingCart,
+        }),
+      );
+    });
   });
 
   it("should return the new state based on `clearShoppingCart` action", () => {
@@ -216,6 +286,7 @@ describe("#reducer App Context function", () => {
       ...initState,
       shoppingCart: undefined,
     });
+    expect(localStorage.getItem("shoppingCart")).toBeNull();
   });
 
   describe("should return the new state based on `createNewList` action", () => {
@@ -257,6 +328,12 @@ describe("#reducer App Context function", () => {
         ...initState,
         favouriteLists: [{ ...exampleList }],
       };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify([{ ...exampleList }]),
+      );
 
       // Act
       const newState = reducer(state, action);
@@ -325,8 +402,6 @@ describe("#reducer App Context function", () => {
       ]);
 
       expect(newState.favouriteLists.length).toBe(2);
-
-      localStorage.clear(); // Clear localStorage
     });
   });
 
@@ -353,7 +428,5 @@ describe("#reducer App Context function", () => {
         editingList: action.payload,
       }),
     );
-
-    localStorage.clear(); // Clear localStorage
   });
 });
