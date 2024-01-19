@@ -69,6 +69,9 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
     undefined,
   ); // Get favourite lists from localStorage
 
+  const date = new Date(); // Get the current date
+  date.setMilliseconds(0); // Set the milliseconds to 0
+
   // Switch based on the action type
   switch (action.type) {
     case "setPostalCode":
@@ -249,7 +252,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       const editingList: FavouritesListType = {
         ...action.payload, // Get the list from action payload
-        lastEdit: new Date(), // Set the last edit date to the current date
+        lastEdit: date, // Set the last edit date to the current date
       };
 
       const lists = favouriteListsStorage; // Assign lists to favouriteListsStorage
@@ -363,7 +366,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       const products = action.payload.products.map((product) => ({
         ...product,
-        addedDate: new Date(),
+        addedDate: date,
       })); // Get products from action payload and set the added date to the current date
       const originalListId = action.payload.originalListId; // Get the original list ID from action payload
       const listWhereProductIsMovedID =
@@ -410,7 +413,7 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
             listWhereProductIsMovedProducts[existingProductIndex].quantity +=
               product.quantity;
             listWhereProductIsMovedProducts[existingProductIndex].addedDate =
-              new Date();
+              date;
           } else {
             // Otherwise, add the product to the list where the products are being moved to
             listWhereProductIsMovedProducts.push(product);

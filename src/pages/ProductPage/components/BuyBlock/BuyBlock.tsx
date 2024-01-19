@@ -71,6 +71,10 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
 
   // Function to add the product to the shopping cart.
   function addToShoppingCart() {
+    // Set current date to the current date without milliseconds
+    const currentData = new Date();
+    currentData.setMilliseconds(0);
+
     dispatch({
       type: "addToShoppingCart",
       payload: [
@@ -88,7 +92,7 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
           images: images,
           productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
           newTag: newTag,
-          addedDate: new Date(),
+          addedDate: currentData,
           rating: rating,
         },
       ],

@@ -59,6 +59,10 @@ export default function NameList({ type }: CreateTypePropsType) {
   function onSubmit(e: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     e.preventDefault(); // Prevent default form submit
 
+    // Set current date to the current date without milliseconds
+    const currentDate = new Date();
+    currentDate.setMilliseconds(0);
+
     // Check if the list name already exists
     const isNameExist = checkIsNameAlreadyExist();
 
@@ -74,7 +78,7 @@ export default function NameList({ type }: CreateTypePropsType) {
       const list: FavouritesListType = {
         id: crypto.randomUUID(), // Generate a random id
         name: inputValue, // Set the list name to the input value
-        lastEdit: new Date(), // Set the last edit date to the current date
+        lastEdit: currentDate, // Set the last edit date to the current date
         products: undefined, // Set the products to undefined (will be added later) if creating a list with a product
       };
 

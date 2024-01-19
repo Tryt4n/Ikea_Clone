@@ -298,10 +298,14 @@ export function removeProductsFromOldList(
  */
 export function updateAddedDateOfProducts(newList: FavouritesListType) {
   if (newList.products) {
+    // Set current date to the current date without milliseconds
+    const currentDate = new Date();
+    currentDate.setMilliseconds(0);
+
     // For each product change the added date to the current date
     newList.products = newList.products.map((product) => ({
       ...product,
-      addedDate: new Date(), // Set the added date to the current date
+      addedDate: currentDate, // Set the added date to the current date
     }));
   }
 }
@@ -323,7 +327,11 @@ export function updateAddedDateOfProducts(newList: FavouritesListType) {
  * console.log(list); // Outputs: { name: "My List", lastEdit: new Date("current date") }
  */
 export function updateLastEditDate(list: FavouritesListType) {
-  list.lastEdit = new Date(); // Set the last edit date in the list to the current date
+  // Set current date to the current date without milliseconds
+  const currentDate = new Date();
+  currentDate.setMilliseconds(0);
+
+  list.lastEdit = currentDate; // Set the last edit date in the list to the current date
 }
 
 /**
@@ -507,11 +515,15 @@ export function createNewList(
   listId: FavouritesListType["id"] | undefined,
   product: ShoppingCartType,
 ) {
+  // Set current date to the current date without milliseconds
+  const currentDate = new Date();
+  currentDate.setMilliseconds(0);
+
   const newList: FavouritesListType = {
     id: listId || crypto.randomUUID(), // If the list ID exists, use it, otherwise generate a new ID
-    lastEdit: new Date(), // Set the last edit date to the current date
+    lastEdit: currentDate, // Set the last edit date to the current date
     name: "Moja lista",
-    products: [{ ...product, addedDate: new Date() }], // Add products to the new list. The products array should contain only one product
+    products: [{ ...product, addedDate: currentDate }], // Add products to the new list. The products array should contain only one product
   }; // Create a new list
 
   saveFavoriteListsToLocalStorage([newList]); // Save the new list to localStorage
@@ -555,6 +567,10 @@ export function updateListWithProducts(
 ) {
   const updatedList: FavouritesListType = { ...list }; // Create a copy of the list
 
+  // Set current date to the current date without milliseconds
+  const currentDate = new Date();
+  currentDate.setMilliseconds(0);
+
   // Add products to the list
   products.forEach((product) => {
     if (!updatedList.products) updatedList.products = []; // If the list does not have products, set the products to an empty array
@@ -573,7 +589,7 @@ export function updateListWithProducts(
       // Otherwise, add the product to the list with the added date set to the current date
       updatedList.products.push({
         ...product,
-        addedDate: new Date(), // Set the added date to the current date
+        addedDate: currentDate, // Set the added date to the current date
       });
     }
   });

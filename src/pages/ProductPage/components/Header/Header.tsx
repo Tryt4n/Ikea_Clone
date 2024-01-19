@@ -30,6 +30,10 @@ export default function Header({ data }: { data: ProductDataType }) {
   const { setModalData } = useModal(); // Access the setModalData function to manage modal data.
   const { setToastData } = useToast(); // Access the setToastData function to manage toast notifications.
 
+  // Set current date to the current date without milliseconds
+  const currentData = new Date();
+  currentData.setMilliseconds(0);
+
   // Destructure the product data.
   const {
     collection,
@@ -64,7 +68,7 @@ export default function Header({ data }: { data: ProductDataType }) {
       "",
     )}`, // Replace all dots in the `productNumber` with empty strings.
     newTag,
-    addedDate: new Date(),
+    addedDate: currentData,
     rating: rating,
   };
 

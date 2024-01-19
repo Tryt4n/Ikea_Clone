@@ -66,6 +66,10 @@ export default function ImageWithProducts({
   ): Promise<ShoppingCartType | null> {
     const URL = `https://tryt4n.github.io/Ikea-data/server/${productLink}/data.json`;
 
+    // Set current date to the current date without milliseconds
+    const currentDate = new Date();
+    currentDate.setMilliseconds(0);
+
     try {
       const response = await fetch(URL); // Fetch the data
       const fetchedData: ProductDataType = await response.json(); // Convert the response to JSON
@@ -99,7 +103,7 @@ export default function ImageWithProducts({
         images,
         productLink,
         newTag,
-        addedDate: new Date(),
+        addedDate: currentDate,
         rating: rating,
       }; // Create a product object
 
