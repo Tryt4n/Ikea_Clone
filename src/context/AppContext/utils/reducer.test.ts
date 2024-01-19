@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { ReducerActionsType, ReducerStateType } from "../types/ReducerTypes";
 import { reducer } from "./reducer";
 // Utils
 import { areDatesEqual } from "../../../setup-test/test-utils";
@@ -8,10 +7,22 @@ import { initState } from "../constants/appInitState";
 import { shopsList } from "../../../constants/shopsList";
 import { shoppingCart } from "../../../setup-test/test-constants/shoppingCart";
 import { exampleList } from "../../../setup-test/test-constants/exampleList";
+// Types
+import type {
+  ReducerActionsType,
+  ReducerStateType,
+} from "../types/ReducerTypes";
+import type { FavouritesListType } from "../types/FavouritesListType";
 
 describe("#reducer App Context function", () => {
+  let currentDate: Date;
+
   beforeEach(() => {
     localStorage.clear(); // Clear localStorage
+
+    // Set current date to the current date without milliseconds
+    currentDate = new Date();
+    currentDate.setMilliseconds(0);
   });
   afterEach(() => {
     localStorage.clear(); // Clear localStorage
@@ -326,7 +337,7 @@ describe("#reducer App Context function", () => {
           },
         },
       };
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [{ ...exampleList }],
       };
@@ -346,7 +357,7 @@ describe("#reducer App Context function", () => {
       expect(JSON.stringify(newState)).toEqual(
         JSON.stringify({
           ...state,
-          favouriteLists: [action.payload.list, ...state.favouriteLists],
+          favouriteLists: [action.payload.list, ...state.favouriteLists!],
         }),
       );
     });
@@ -366,11 +377,10 @@ describe("#reducer App Context function", () => {
           oldListId: oldListID,
         },
       };
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [{ ...exampleList, id: oldListID }],
       };
-      const date = new Date();
 
       // Mock for localStorage
       localStorage.setItem(
@@ -386,20 +396,20 @@ describe("#reducer App Context function", () => {
       expect([
         {
           ...newState.favouriteLists[0].products[0],
-          addedDate: date.toISOString().slice(0, 19), // Check without milliseconds
+          addedDate: currentDate,
         },
         {
           ...newState.favouriteLists[0].products[1],
-          addedDate: date.toISOString().slice(0, 19), // Check without milliseconds
+          addedDate: currentDate,
         },
       ]).toEqual([
         {
-          ...state.favouriteLists[0].products![0],
-          addedDate: date.toISOString().slice(0, 19), // Check without milliseconds
+          ...state.favouriteLists![0].products![0],
+          addedDate: currentDate,
         },
         {
-          ...state.favouriteLists[0].products![1],
-          addedDate: date.toISOString().slice(0, 19), // Check without milliseconds
+          ...state.favouriteLists![0].products![1],
+          addedDate: currentDate,
         },
       ]);
 
@@ -452,11 +462,10 @@ describe("#reducer App Context function", () => {
       const newName = "New name";
       const action: ReducerActionsType = {
         type: "changeListName",
-        // payload: exampleList,
         payload: { ...exampleList, name: newName },
       };
 
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [exampleList],
       };
@@ -473,7 +482,7 @@ describe("#reducer App Context function", () => {
       // Assert
       expect(newState.favouriteLists[0].name).toBe(newName);
       expect(
-        areDatesEqual(newState.favouriteLists[0].lastEdit, new Date()),
+        areDatesEqual(newState.favouriteLists[0].lastEdit, currentDate),
       ).toBe(true);
     });
 
@@ -484,7 +493,7 @@ describe("#reducer App Context function", () => {
         payload: { ...exampleList, id: "some invalid id" },
       };
 
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [exampleList],
       };
@@ -526,7 +535,7 @@ describe("#reducer App Context function", () => {
         payload: listId,
       };
 
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [{ ...exampleList, id: listId }],
       };
@@ -557,7 +566,7 @@ describe("#reducer App Context function", () => {
         payload: listId,
       };
 
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [
           { ...exampleList, id: listId },
@@ -593,7 +602,6 @@ describe("#reducer App Context function", () => {
           products: [exampleList.products![0]],
         },
       };
-      const date = new Date();
 
       // Act
       const newState = reducer(initState, action);
@@ -605,8 +613,8 @@ describe("#reducer App Context function", () => {
           {
             ...exampleList,
             name: "Moja lista",
-            lastEdit: date,
-            products: [{ ...exampleList.products![0], addedDate: date }],
+            lastEdit: currentDate,
+            products: [{ ...exampleList.products![0], addedDate: currentDate }],
           },
         ],
       });
@@ -615,6 +623,7 @@ describe("#reducer App Context function", () => {
     it("if there is at least one list add products to passed list", () => {
       // Arrange
       const listId = "some id";
+
       const passedProducts = [
         { ...exampleList.products![0] },
         { ...exampleList.products![1] },
@@ -631,7 +640,7 @@ describe("#reducer App Context function", () => {
         { ...exampleList.products![2] },
         { ...exampleList.products![3] },
       ];
-      const state = {
+      const state: ReducerStateType = {
         ...initState,
         favouriteLists: [
           {
@@ -641,8 +650,6 @@ describe("#reducer App Context function", () => {
           },
         ],
       };
-
-      const date = new Date();
 
       localStorage.setItem(
         "favouriteLists",
@@ -655,7 +662,7 @@ describe("#reducer App Context function", () => {
       const updatedPassedProducts = passedProducts.map((product) => {
         return {
           ...product,
-          addedDate: date,
+          addedDate: currentDate,
         };
       });
 
@@ -668,13 +675,312 @@ describe("#reducer App Context function", () => {
           ...state,
           favouriteLists: [
             {
-              ...state.favouriteLists[0],
-              lastEdit: date,
+              ...state.favouriteLists![0],
+              lastEdit: currentDate,
               products: expectedProducts,
             },
           ],
         }),
       );
+    });
+  });
+
+  describe("should return the new state based on `moveProductsFromOneListToAnother` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "moveProductsFromOneListToAnother",
+        payload: {
+          products: exampleList.products!,
+          listWhereProductIsMovedID: "some id",
+          originalListId: "other id",
+        },
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if there is at least one list and both passed list ids are valid", () => {
+      // Arrange
+      const movedListId = "moved list id";
+      const originalListId = "original list id";
+
+      const action: ReducerActionsType = {
+        type: "moveProductsFromOneListToAnother",
+        payload: {
+          products: exampleList.products!,
+          listWhereProductIsMovedID: movedListId,
+          originalListId: originalListId,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            id: movedListId,
+            products: [],
+          },
+          {
+            ...exampleList,
+            id: originalListId,
+            products: exampleList.products,
+          },
+        ],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      const expectedLists = [
+        {
+          ...exampleList,
+          id: movedListId,
+          lastEdit: currentDate,
+          products: [
+            ...exampleList.products!.map((product) => {
+              return {
+                ...product,
+                addedDate: currentDate,
+              };
+            }),
+          ],
+        },
+        {
+          ...state.favouriteLists![0],
+          id: originalListId,
+          lastEdit: currentDate,
+          products: [],
+        },
+      ];
+
+      // Assert
+      expect(newState.favouriteLists[0].products).toStrictEqual(
+        expectedLists[0].products,
+      );
+      expect(newState.favouriteLists[1].products).toStrictEqual([]);
+      expect(newState).toEqual({
+        ...state,
+        favouriteLists: expectedLists,
+      });
+    });
+
+    it("if there is at least one list and both passed list ids are valid, but products array is empty", () => {
+      // Arrange
+      const movedListId = "moved list id";
+      const originalListId = "original list id";
+
+      const action: ReducerActionsType = {
+        type: "moveProductsFromOneListToAnother",
+        payload: {
+          products: [],
+          listWhereProductIsMovedID: movedListId,
+          originalListId: originalListId,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            id: movedListId,
+            products: [],
+          },
+          {
+            ...exampleList,
+            id: originalListId,
+            products: [],
+          },
+        ],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      const expectedLists: FavouritesListType[] = [
+        {
+          ...exampleList,
+          id: movedListId,
+          lastEdit: currentDate,
+          products: [],
+        },
+        {
+          ...state.favouriteLists![0],
+          id: originalListId,
+          lastEdit: currentDate,
+          products: [],
+        },
+      ];
+
+      // Assert
+      expect(newState.favouriteLists[0].products).toStrictEqual([]);
+      expect(newState.favouriteLists[1].products).toStrictEqual([]);
+      expect(newState).toEqual({
+        ...state,
+        favouriteLists: expectedLists,
+      });
+    });
+
+    it("if there is at least one list and both passed list ids are valid but products are repeated", () => {
+      // Arrange
+      const movedListId = "moved list id";
+      const originalListId = "original list id";
+
+      const movedProducts = [...exampleList.products!];
+      movedProducts[0].quantity = 1;
+      const action: ReducerActionsType = {
+        type: "moveProductsFromOneListToAnother",
+        payload: {
+          products: movedProducts,
+          listWhereProductIsMovedID: movedListId,
+          originalListId: originalListId,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            id: movedListId,
+            products: [{ ...exampleList.products![0], quantity: 1 }],
+          },
+          {
+            ...exampleList,
+            id: originalListId,
+            products: exampleList.products,
+          },
+        ],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      const expectedLists = [
+        {
+          ...exampleList,
+          id: movedListId,
+          lastEdit: currentDate,
+          products: [
+            ...exampleList.products!.map((product) => {
+              return {
+                ...product,
+                addedDate: currentDate,
+              };
+            }),
+          ],
+        },
+        {
+          ...state.favouriteLists![0],
+          id: originalListId,
+          lastEdit: currentDate,
+          products: [],
+        },
+      ];
+      expectedLists[0].products[0].quantity =
+        movedProducts[0].quantity +
+        state.favouriteLists![0].products![0].quantity;
+
+      // Assert
+      expect(newState.favouriteLists[0].products).toStrictEqual(
+        expectedLists[0].products,
+      );
+      expect(newState.favouriteLists[1].products).toStrictEqual([]);
+      expect(newState).toEqual({
+        ...state,
+        favouriteLists: expectedLists,
+      });
+    });
+
+    it("if there is at least one list and both passed list ids are valid but list where products are moved does not have `products` property", () => {
+      // Arrange
+      const movedListId = "moved list id";
+      const originalListId = "original list id";
+
+      const action: ReducerActionsType = {
+        type: "moveProductsFromOneListToAnother",
+        payload: {
+          products: exampleList.products!,
+          listWhereProductIsMovedID: movedListId,
+          originalListId: originalListId,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            id: movedListId,
+            products: undefined, //! Set products to undefined
+          },
+          {
+            ...exampleList,
+            id: originalListId,
+          },
+        ],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      const expectedLists = [
+        {
+          ...exampleList,
+          id: movedListId,
+          lastEdit: currentDate,
+          products: [
+            ...exampleList.products!.map((product) => {
+              return {
+                ...product,
+                addedDate: currentDate,
+              };
+            }),
+          ],
+        },
+        {
+          ...state.favouriteLists![0],
+          id: originalListId,
+          lastEdit: currentDate,
+          products: [],
+        },
+      ];
+
+      // Assert
+      expect(newState.favouriteLists[0].products).toStrictEqual(
+        expectedLists[0].products,
+      );
+      expect(newState.favouriteLists[1].products).toStrictEqual([]);
+      expect(newState).toEqual({
+        ...state,
+        favouriteLists: expectedLists,
+      });
     });
   });
 });
