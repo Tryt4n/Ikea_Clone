@@ -511,7 +511,7 @@ export function createNewList(
     id: listId || crypto.randomUUID(), // If the list ID exists, use it, otherwise generate a new ID
     lastEdit: new Date(), // Set the last edit date to the current date
     name: "Moja lista",
-    products: [product], // Add products to the new list. The products array should contain only one product
+    products: [{ ...product, addedDate: new Date() }], // Add products to the new list. The products array should contain only one product
   }; // Create a new list
 
   saveFavoriteListsToLocalStorage([newList]); // Save the new list to localStorage
