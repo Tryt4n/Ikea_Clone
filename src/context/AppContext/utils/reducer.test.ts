@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { ReducerActionsType, ReducerStateType } from "../types/ReducerTypes";
 import { reducer } from "./reducer";
+// Utils
+import { areDatesEqual } from "../../../setup-test/test-utils";
 // Constants
 import { initState } from "../constants/appInitState";
 import { shopsList } from "../../../constants/shopsList";
@@ -428,5 +430,251 @@ describe("#reducer App Context function", () => {
         editingList: action.payload,
       }),
     );
+  });
+
+  describe("should return the new state based on `changeListName` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "changeListName",
+        payload: exampleList,
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if there is at least one list update it", () => {
+      // Arrange
+      const newName = "New name";
+      const action: ReducerActionsType = {
+        type: "changeListName",
+        // payload: exampleList,
+        payload: { ...exampleList, name: newName },
+      };
+
+      const state = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].name).toBe(newName);
+      expect(
+        areDatesEqual(newState.favouriteLists[0].lastEdit, new Date()),
+      ).toBe(true);
+    });
+
+    it("if list does not exist do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "changeListName",
+        payload: { ...exampleList, id: "some invalid id" },
+      };
+
+      const state = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState).toEqual(state);
+    });
+  });
+
+  describe("should return the new state based on `deleteList` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteList",
+        payload: exampleList.id,
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if there is only one list delete it", () => {
+      // Arrange
+      const listId = "test-id";
+      const action: ReducerActionsType = {
+        type: "deleteList",
+        payload: listId,
+      };
+
+      const state = {
+        ...initState,
+        favouriteLists: [{ ...exampleList, id: listId }],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          favouriteLists: [],
+        }),
+      );
+    });
+
+    it("if there is at least one list delete passed list by id", () => {
+      // Arrange
+      const listId = "test-id";
+      const secondListId = "second-test-id";
+      const action: ReducerActionsType = {
+        type: "deleteList",
+        payload: listId,
+      };
+
+      const state = {
+        ...initState,
+        favouriteLists: [
+          { ...exampleList, id: listId },
+          { ...exampleList, id: secondListId },
+        ],
+      };
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          favouriteLists: [{ ...exampleList, id: secondListId }],
+        }),
+      );
+    });
+  });
+
+  describe("should return the new state based on `addProductsToList` action", () => {
+    it("if there is no lists create new one with passed id and one product", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "addProductsToList",
+        payload: {
+          listId: exampleList.id,
+          products: [exampleList.products![0]],
+        },
+      };
+      const date = new Date();
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual({
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            name: "Moja lista",
+            lastEdit: date,
+            products: [{ ...exampleList.products![0], addedDate: date }],
+          },
+        ],
+      });
+    });
+
+    it("if there is at least one list add products to passed list", () => {
+      // Arrange
+      const listId = "some id";
+      const passedProducts = [
+        { ...exampleList.products![0] },
+        { ...exampleList.products![1] },
+      ];
+      const action: ReducerActionsType = {
+        type: "addProductsToList",
+        payload: {
+          listId: listId,
+          products: passedProducts,
+        },
+      };
+
+      const listProducts = [
+        { ...exampleList.products![2] },
+        { ...exampleList.products![3] },
+      ];
+      const state = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            id: listId,
+            products: listProducts,
+          },
+        ],
+      };
+
+      const date = new Date();
+
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      const updatedPassedProducts = passedProducts.map((product) => {
+        return {
+          ...product,
+          addedDate: date,
+        };
+      });
+
+      const expectedProducts = [...listProducts, ...updatedPassedProducts];
+
+      // Assert
+      expect(newState.favouriteLists[0].products.length).toBe(4);
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...state,
+          favouriteLists: [
+            {
+              ...state.favouriteLists[0],
+              lastEdit: date,
+              products: expectedProducts,
+            },
+          ],
+        }),
+      );
+    });
   });
 });
