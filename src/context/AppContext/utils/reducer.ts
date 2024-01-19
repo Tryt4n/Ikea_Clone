@@ -315,7 +315,6 @@ export function reducer(state: ReducerStateType, action: ReducerActionsType) {
 
       return {
         ...state,
-        shoppingCart: products, // Save products in the shopping cart to state
         favouriteLists: lists, // Save updated lists to state
       };
     }
