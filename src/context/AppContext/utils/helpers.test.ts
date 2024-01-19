@@ -561,6 +561,7 @@ describe("AppContext reducer helper functions", () => {
     it("should create a new list with a generated ID if listId is null or undefined, and add the provided product to the list", () => {
       // Arrange
       const product = { id: "1234", name: "Product 1", price: 100 };
+      const date = new Date();
 
       // Act
       // @ts-expect-error Testing for null
@@ -570,22 +571,23 @@ describe("AppContext reducer helper functions", () => {
       expect(newList.id).toBeDefined();
       expect(areDatesEqual(newList.lastEdit, new Date())).toBe(true);
       expect(newList.name).toEqual("Moja lista");
-      expect(newList.products).toEqual([product]);
+      expect(newList.products).toEqual([{ ...product, addedDate: date }]);
     });
 
     it("should create a new list with the provided listId, and add the provided product to the list", () => {
       // Arrange
       const listId = "listId";
       const product = shoppingCart[0];
+      const date = new Date();
 
       // Act
       const newList = createNewList(listId, product);
 
       // Expect
       expect(newList.id).toEqual(listId);
-      expect(areDatesEqual(newList.lastEdit, new Date())).toBe(true);
+      expect(areDatesEqual(newList.lastEdit, date)).toBe(true);
       expect(newList.name).toEqual("Moja lista");
-      expect(newList.products).toEqual([product]);
+      expect(newList.products).toEqual([{ ...product, addedDate: date }]);
     });
   });
 
