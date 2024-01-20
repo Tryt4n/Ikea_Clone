@@ -63,11 +63,6 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
    * Function to close the toast. Uses the `startViewTransition` helper function to start a transition,
    * then sets the toast data to the initial state.
    */
-  // function closeToast() {
-  //   startViewTransition(() => {
-  //     setToastData(initToast);
-  //   });
-  // }
   const closeToast = useCallback(() => {
     startViewTransition(() => {
       setToastData(initToast);
