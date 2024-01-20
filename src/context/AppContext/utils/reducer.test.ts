@@ -685,6 +685,186 @@ describe("#reducer App Context function", () => {
     });
   });
 
+  describe("should return the new state based on `deleteProductsFromList` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteProductsFromList",
+        payload: {
+          listId: exampleList.id,
+          productNumbers: [exampleList.products![0].productNumber],
+        },
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if the lists array is empty do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteProductsFromList",
+        payload: {
+          listId: exampleList.id,
+          productNumbers: [exampleList.products![0].productNumber],
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState).toEqual(state);
+    });
+
+    it("if there is at least one list delete passed products from passed list", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteProductsFromList",
+        payload: {
+          listId: exampleList.id,
+          productNumbers: [exampleList.products![0].productNumber],
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products.length).toBe(
+        exampleList.products!.length - 1,
+      );
+      // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState.favouriteLists[0])).toEqual(
+        JSON.stringify({
+          ...state.favouriteLists![0],
+          lastEdit: currentDate,
+          products: [
+            {
+              ...exampleList.products![1],
+            },
+            {
+              ...exampleList.products![2],
+            },
+            {
+              ...exampleList.products![3],
+            },
+          ],
+        }),
+      );
+    });
+
+    it("if there is at least one list and passed product id is invalid do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteProductsFromList",
+        payload: {
+          listId: exampleList.id,
+          productNumbers: ["some invalid product id"],
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products.length).toBe(
+        exampleList.products!.length,
+      );
+      // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState.favouriteLists[0].products)).toEqual(
+        JSON.stringify(state.favouriteLists![0].products),
+      );
+    });
+
+    it("if there is at least one list and passed products ids are both valid and invalid", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "deleteProductsFromList",
+        payload: {
+          listId: exampleList.id,
+          productNumbers: [
+            exampleList.products![0].productNumber,
+            "some invalid product id",
+          ],
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products.length).toBe(
+        exampleList.products!.length - 1,
+      );
+      // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState.favouriteLists[0])).toEqual(
+        JSON.stringify({
+          ...state.favouriteLists![0],
+          lastEdit: currentDate,
+          products: [
+            {
+              ...exampleList.products![1],
+            },
+            {
+              ...exampleList.products![2],
+            },
+            {
+              ...exampleList.products![3],
+            },
+          ],
+        }),
+      );
+    });
+  });
+
   describe("should return the new state based on `moveProductsFromOneListToAnother` action", () => {
     it("if there is no lists do nothing", () => {
       // Arrange
@@ -982,5 +1162,376 @@ describe("#reducer App Context function", () => {
         favouriteLists: expectedLists,
       });
     });
+  });
+
+  describe("should return the new state based on `changeProductQuantityOnList` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: exampleList.id,
+          productNumber: exampleList.products![0].productNumber,
+          value: 1,
+        },
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if the passed product number is invalid", () => {
+      // Arrange
+      const invalidProductNumber = "some invalid product number";
+
+      const action: ReducerActionsType = {
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: exampleList.id,
+          productNumber: invalidProductNumber,
+          value: 1,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it(`if there is at least one list and passed list id is valid and value is "add", increase passed product quantity by 1`, () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: exampleList.id,
+          productNumber: exampleList.products![0].productNumber,
+          value: "add",
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            products: exampleList.products!.map((product, index) => {
+              if (index === 0) {
+                return { ...product, quantity: 1 };
+              }
+              return product;
+            }),
+          },
+        ],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products[0].quantity).toBe(2);
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          favouriteLists: [
+            {
+              ...exampleList,
+              lastEdit: currentDate,
+              products: exampleList.products!.map((product, index) => {
+                if (index === 0) {
+                  return { ...product, quantity: 2 };
+                }
+                return product;
+              }),
+            },
+          ],
+        }),
+      );
+    });
+
+    it(`if there is at least one list and passed list id is valid and value is "subtract", decrease passed product quantity by 1`, () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: exampleList.id,
+          productNumber: exampleList.products![0].productNumber,
+          value: "subtract",
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            products: exampleList.products!.map((product, index) => {
+              if (index === 0) {
+                return { ...product, quantity: 10 };
+              }
+              return product;
+            }),
+          },
+        ],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products[0].quantity).toBe(9);
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          favouriteLists: [
+            {
+              ...exampleList,
+              lastEdit: currentDate,
+              products: exampleList.products!.map((product, index) => {
+                if (index === 0) {
+                  return { ...product, quantity: 9 };
+                }
+                return product;
+              }),
+            },
+          ],
+        }),
+      );
+    });
+
+    it(`if there is at least one list and passed list id is valid and value is between 1-99 set quantity on the passed product`, () => {
+      // Arrange
+      const quantity = 27;
+
+      const action: ReducerActionsType = {
+        type: "changeProductQuantityOnList",
+        payload: {
+          listId: exampleList.id,
+          productNumber: exampleList.products![0].productNumber,
+          value: quantity,
+        },
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [
+          {
+            ...exampleList,
+            products: exampleList.products!.map((product, index) => {
+              if (index === 0) {
+                return { ...product, quantity: quantity };
+              }
+              return product;
+            }),
+          },
+        ],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState.favouriteLists[0].products[0].quantity).toBe(quantity);
+      expect(JSON.stringify(newState)).toEqual(
+        JSON.stringify({
+          ...initState,
+          favouriteLists: [
+            {
+              ...exampleList,
+              lastEdit: currentDate,
+              products: exampleList.products!.map((product, index) => {
+                if (index === 0) {
+                  return { ...product, quantity: quantity };
+                }
+                return product;
+              }),
+            },
+          ],
+        }),
+      );
+    });
+  });
+
+  describe("should load data from localStorage and return the new state based on `loadAppData` action", () => {
+    it("if localStorage is not defined yet", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "loadAppData",
+      };
+
+      const state: ReducerStateType = {
+        postalCode: "some postal code",
+        isPostalCodeErrorMessageVisible: false,
+        postalCodeErrorMessage: "some error message",
+        rememberPostalCodeCheckboxStatus: true,
+        chosenShop: shopsList[0],
+        shoppingCart: shoppingCart,
+        favouriteLists: [exampleList],
+      };
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.postalCode).toEqual(state.postalCode);
+      expect(newState.rememberPostalCodeCheckboxStatus).toBeFalsy();
+      expect(newState.chosenShop).toBeUndefined();
+      expect(newState.shoppingCart).toEqual([]);
+      expect(newState.favouriteLists).toEqual([]);
+    });
+
+    it("if localStorage is defined", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "loadAppData",
+      };
+
+      const state: ReducerStateType = {
+        postalCode: "some postal code",
+        isPostalCodeErrorMessageVisible: false,
+        postalCodeErrorMessage: "some error message",
+        rememberPostalCodeCheckboxStatus: true,
+        chosenShop: shopsList[0],
+        shoppingCart: shoppingCart,
+        favouriteLists: [exampleList],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem("postalCode", state.postalCode);
+      localStorage.setItem(
+        "rememberPostalCodeCheckboxStatus",
+        JSON.stringify(state.rememberPostalCodeCheckboxStatus),
+      );
+      localStorage.setItem("chosenShop", state.chosenShop!.name);
+      localStorage.setItem("shoppingCart", JSON.stringify(state.shoppingCart));
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.postalCode).toEqual(state.postalCode);
+      expect(newState.rememberPostalCodeCheckboxStatus).toBeTruthy();
+      expect(newState.chosenShop).toEqual(state.chosenShop);
+      // JSON.stringify to avoid comparing date on that objects by reference
+      expect(JSON.stringify(newState.shoppingCart)).toEqual(
+        JSON.stringify(state.shoppingCart),
+      );
+      expect(JSON.stringify(newState.favouriteLists)).toEqual(
+        JSON.stringify(state.favouriteLists),
+      );
+    });
+
+    it("if localStorage for `chosenShop` contain invalid shop name", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "loadAppData",
+      };
+
+      const state: ReducerStateType = {
+        postalCode: "some postal code",
+        isPostalCodeErrorMessageVisible: false,
+        postalCodeErrorMessage: "some error message",
+        rememberPostalCodeCheckboxStatus: true,
+        chosenShop: shopsList[0],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem("chosenShop", "some invalid shop name");
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.chosenShop).toBeUndefined();
+    });
+  });
+
+  describe("should return the new state based on `restoreList` action", () => {
+    it("if there is no lists do nothing", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "restoreList",
+        payload: exampleList,
+      };
+
+      // Act
+      const newState = reducer(initState, action);
+
+      // Assert
+      expect(newState).toEqual(initState);
+    });
+
+    it("if there is at least one list restore passed list", () => {
+      // Arrange
+      const action: ReducerActionsType = {
+        type: "restoreList",
+        payload: exampleList,
+      };
+
+      const state: ReducerStateType = {
+        ...initState,
+        favouriteLists: [{ ...exampleList, products: [] }],
+      };
+
+      // Mock for localStorage
+      localStorage.setItem(
+        "favouriteLists",
+        JSON.stringify(state.favouriteLists),
+      );
+
+      // Act
+      const newState = reducer(state, action);
+
+      // Assert
+      expect(newState.favouriteLists[0]).toEqual(exampleList);
+    });
+  });
+
+  it("should throw an error if action type is invalid", () => {
+    // Arrange
+    const action: ReducerActionsType = {
+      // @ts-expect-error - checking for invalid action type
+      type: "some invalid action type",
+    };
+
+    // Act & Assert
+    expect(() => reducer(initState, action)).toThrowError();
   });
 });
