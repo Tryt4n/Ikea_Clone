@@ -67,4 +67,20 @@ describe("useWindowSize", () => {
       expect.any(Function),
     );
   });
+
+  it("should return an immutable object that cannot be modified", () => {
+    // Arrange & Act
+    const { result } = renderHook(() => useWindowSize());
+
+    // Assert
+    expect(() => {
+      // @ts-expect-error - should not be able to modify the width
+      result.current.width = 800;
+    }).toThrow(TypeError);
+
+    expect(() => {
+      // @ts-expect-error - should not be able to modify the height
+      result.current.height = 600;
+    }).toThrow(TypeError);
+  });
 });
