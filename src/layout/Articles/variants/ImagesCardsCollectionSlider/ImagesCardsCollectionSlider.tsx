@@ -11,10 +11,10 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Import components
-import Article from "../../compoundComponents/Article/Article";
+import Article from "../../../../compoundComponents/Article/Article";
 import ImageCardCollection, {
   CardCollectionType,
-} from "./components/ImageCardCollection/ImageCardCollection";
+} from "../../components/ImageCardCollection/ImageCardCollection";
 
 // Define ImageCardsCollectionSlider type
 export type ImageCardsCollectionSliderType = {

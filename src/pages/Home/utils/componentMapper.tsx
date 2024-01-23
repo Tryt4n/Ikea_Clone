@@ -1,22 +1,22 @@
 // Import article components and their types
 import CarouselSliderArticle, {
   type CarouselSliderArticleType,
-} from "../../../layout/Articles/CarouselSliderArticle";
+} from "../../../layout/Articles/variants/CarouselSliderArticle/CarouselSliderArticle";
 import ImageCardsCollectionSlider, {
   type ImageCardsCollectionSliderType,
-} from "../../../layout/Articles/ImagesCardsCollectionSlider";
+} from "../../../layout/Articles/variants/ImagesCardsCollectionSlider/ImagesCardsCollectionSlider";
 import ImgCardsArticle, {
   type ImgCardsArticleType,
-} from "../../../layout/Articles/ImgCardsArticle";
+} from "../../../layout/Articles/variants/ImgCardsArticle/ImgCardsArticle";
 import InspirationImageGalleryArticle, {
   type InspirationImageGalleryArticleType,
-} from "../../../layout/Articles/InspirationImageGalleryArticle";
+} from "../../../layout/Articles/variants/InspirationImageGalleryArticle/InspirationImageGalleryArticle";
 import MainArticle, {
   type MainArticleType,
-} from "../../../layout/Articles/MainArticle";
+} from "../../../layout/Articles/variants/MainArticle/MainArticle";
 import TextCardsArticle, {
   type TextCardsArticleType,
-} from "../../../layout/Articles/TextCardsArticle";
+} from "../../../layout/Articles/variants/TextCardsArticle/TextCardsArticle";
 // Import article types
 import type {
   ArticleContentsTypes,

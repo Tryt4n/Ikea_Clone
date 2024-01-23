@@ -1,10 +1,10 @@
 // Import types
-import type { CarouselSliderArticleType } from "../CarouselSliderArticle";
-import type { ImageCardsCollectionSliderType } from "../ImagesCardsCollectionSlider";
-import type { ImgCardsArticleType } from "../ImgCardsArticle";
-import type { InspirationImageGalleryArticleType } from "../InspirationImageGalleryArticle";
-import type { MainArticleType } from "../MainArticle";
-import type { TextCardsArticleType } from "../TextCardsArticle";
+import type { CarouselSliderArticleType } from "../variants/CarouselSliderArticle/CarouselSliderArticle";
+import type { ImageCardsCollectionSliderType } from "../variants/ImagesCardsCollectionSlider/ImagesCardsCollectionSlider";
+import type { ImgCardsArticleType } from "../variants/ImgCardsArticle/ImgCardsArticle";
+import type { InspirationImageGalleryArticleType } from "../variants/InspirationImageGalleryArticle/InspirationImageGalleryArticle";
+import type { MainArticleType } from "../variants/MainArticle/MainArticle";
+import type { TextCardsArticleType } from "../variants/TextCardsArticle/TextCardsArticle";
 
 export type ArticleVariantsTypes =
   | "main-article"

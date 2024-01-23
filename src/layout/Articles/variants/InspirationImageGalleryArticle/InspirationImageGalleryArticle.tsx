@@ -1,16 +1,16 @@
 // Import react dependencies
 import { useState } from "react";
 // Import components
-import Article from "../../compoundComponents/Article/Article";
-import ImageGallery from "../../components/features/ImageGallery/ImageGallery";
-import BtnsControl from "../../components/features/BtnsControl/BtnsControl";
-import { Btn } from "../../components/ui/Btn/Btn";
+import Article from "../../../../compoundComponents/Article/Article";
+import ImageGallery from "../../../../components/features/ImageGallery/ImageGallery";
+import BtnsControl from "../../../../components/features/BtnsControl/BtnsControl";
+import { Btn } from "../../../../components/ui/Btn/Btn";
 // Import helpers functions
-import { startViewTransition } from "../../utils/helpers";
+import { startViewTransition } from "../../../../utils/helpers";
 // Import constants
-import { btnsControlList } from "../../constants/btnsControlList";
+import { btnsControlList } from "../../../../constants/btnsControlList";
 // Import types
-import type { ImageCardsCollectionSliderType } from "./ImagesCardsCollectionSlider";
+import type { ImageCardsCollectionSliderType } from "../ImagesCardsCollectionSlider/ImagesCardsCollectionSlider";
 
 // Define types for the InspirationImageGalleryArticle component props
 export type InspirationImageGalleryArticleType = ImageCardsCollectionSliderType;

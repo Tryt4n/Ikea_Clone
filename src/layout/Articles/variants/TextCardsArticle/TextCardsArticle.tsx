@@ -1,10 +1,10 @@
 // Import components
-import Article from "../../compoundComponents/Article/Article";
-import Card from "../../compoundComponents/Card/Card";
-import CardsContainer from "../../compoundComponents/Card/CardsContainer";
+import Article from "../../../../compoundComponents/Article/Article";
+import Card from "../../../../compoundComponents/Card/Card";
+import CardsContainer from "../../../../compoundComponents/Card/CardsContainer";
 // Import types
-import type { CardHTMLElementsType } from "../../types/cardTypes";
-import type { BackgroundVariants } from "../../types/colorsVariantsType";
+import type { CardHTMLElementsType } from "../../../../types/cardTypes";
+import type { BackgroundVariants } from "../../../../types/colorsVariantsType";
 
 // Define types for the TextCardsArticle component props
 export type TextCardsArticleType = {

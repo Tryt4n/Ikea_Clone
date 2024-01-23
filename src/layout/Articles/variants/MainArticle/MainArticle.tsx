@@ -1,14 +1,14 @@
 // Import components
-import Article from "../../compoundComponents/Article/Article";
-import CollectionNameContainer from "../../compoundComponents/CollectionProducts/layout/CollectionNameContainer";
-import CollectionProductsList from "./components/CollectionProductsList/CollectionProductsList";
+import Article from "../../../../compoundComponents/Article/Article";
+import CollectionNameContainer from "../../../../compoundComponents/CollectionProducts/layout/CollectionNameContainer";
+import CollectionProductsList from "../../components/CollectionProductsList/CollectionProductsList";
 // Import types
-import type { ProductType } from "./components/CollectionProductsList/CollectionProductsList";
+import type { ProductType } from "../../components/CollectionProductsList/CollectionProductsList";
 import type {
   ArticleBtnVariantsType,
   AspectRatioType,
-} from "../../types/articleTypes";
-import type { BackgroundVariants } from "../../types/colorsVariantsType";
+} from "../../../../types/articleTypes";
+import type { BackgroundVariants } from "../../../../types/colorsVariantsType";
 
 // Main article type
 export type MainArticleType = {

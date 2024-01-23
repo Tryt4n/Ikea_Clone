@@ -11,10 +11,13 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Import components
-import Article from "../../compoundComponents/Article/Article";
+import Article from "../../../../compoundComponents/Article/Article";
 // Import types
-import type { BtnShapesType, BtnVariantsType } from "../../types/btnTypes";
-import type { BackgroundVariants } from "../../types/colorsVariantsType";
+import type {
+  BtnShapesType,
+  BtnVariantsType,
+} from "../../../../types/btnTypes";
+import type { BackgroundVariants } from "../../../../types/colorsVariantsType";
 
 // Define CarouselSliderArticle type
 export type CarouselSliderArticleType = {

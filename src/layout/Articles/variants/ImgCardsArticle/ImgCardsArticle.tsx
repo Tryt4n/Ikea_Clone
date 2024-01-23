@@ -13,14 +13,14 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 // Import custom hooks
-import useWindowSize from "../../hooks/useWindowSize/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import components
-import Article from "../../compoundComponents/Article/Article";
-import CardsContainer from "../../compoundComponents/Card/CardsContainer";
-import Card from "../../compoundComponents/Card/Card";
+import Article from "../../../../compoundComponents/Article/Article";
+import CardsContainer from "../../../../compoundComponents/Card/CardsContainer";
+import Card from "../../../../compoundComponents/Card/Card";
 // Import types
-import type { BackgroundVariants } from "../../types/colorsVariantsType";
-import type { BtnVariantsType } from "../../types/btnTypes";
+import type { BackgroundVariants } from "../../../../types/colorsVariantsType";
+import type { BtnVariantsType } from "../../../../types/btnTypes";
 
 // Define ImgCardsArticle type
 export type ImgCardsArticleType = {
