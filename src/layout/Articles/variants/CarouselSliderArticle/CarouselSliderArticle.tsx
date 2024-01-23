@@ -21,7 +21,7 @@ import type { BackgroundVariants } from "../../../../types/colorsVariantsType";
 
 // Define CarouselSliderArticle type
 export type CarouselSliderArticleType = {
-  id: "string";
+  id: string;
   header?: string;
   swiperConfig: SwiperType;
   slides: SlideType[];
@@ -29,7 +29,7 @@ export type CarouselSliderArticleType = {
 };
 
 // Define Slide type
-type SlideType = {
+export type SlideType = {
   id: string;
   variant?: BackgroundVariants;
   link: string;
