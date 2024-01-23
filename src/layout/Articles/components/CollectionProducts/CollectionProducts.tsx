@@ -44,7 +44,11 @@ export default function CollectionProducts({
         } else {
           // If the product should not be hidden on mobile, return the product list item
           return (
-            <CollectionProduct product={product} hideTooltips={hideTooltips} />
+            <CollectionProduct
+              key={product.id}
+              product={product}
+              hideTooltips={hideTooltips}
+            />
           );
         }
       })}

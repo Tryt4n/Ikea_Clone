@@ -62,7 +62,6 @@ export default function CollectionProduct({
 
   return (
     <Collection.ListItem
-      key={id}
       descriptionContainerId={id} // Set the ID of the product list item description container
       top={
         placement.topMobile
