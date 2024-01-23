@@ -26,7 +26,7 @@ import type { BtnVariantsType } from "../../../../types/btnTypes";
 export type ImgCardsArticleType = {
   id: string;
   breakOnMobile?: boolean;
-  header?: string;
+  header: string;
   imgSizes: string;
   cards: ImgCard[];
 };
@@ -137,11 +137,7 @@ export default function ImgCardsArticle({
 
                   <Card.TextContainer>
                     <div>
-                      <Card.Heading
-                        headingLevel={article.header ? 3 : 2} // If article.header is defined, use 3 as default heading level, otherwise use 2
-                      >
-                        {heading}
-                      </Card.Heading>
+                      <Card.Heading headingLevel={3}>{heading}</Card.Heading>
                       <Card.Text>{text}</Card.Text>
                     </div>
 
