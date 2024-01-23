@@ -13,7 +13,10 @@ import { btnsControlList } from "../../../../constants/btnsControlList";
 import type { ImageCardsCollectionSliderType } from "../ImagesCardsCollectionSlider/ImagesCardsCollectionSlider";
 
 // Define types for the InspirationImageGalleryArticle component props
-export type InspirationImageGalleryArticleType = ImageCardsCollectionSliderType;
+export type InspirationImageGalleryArticleType = Omit<
+  ImageCardsCollectionSliderType,
+  "subheader"
+>;
 
 /**
  * InspirationImageGalleryArticle.tsx
@@ -60,6 +63,7 @@ export default function InspirationImageGalleryArticle({
             aria-pressed={btn === pressedBtn} // Set aria-pressed attribute to true if the button is currently pressed
             disabled={btn === pressedBtn} // Disable the button if it is currently pressed
             onClick={() => handleBtnClick(index)} // Call the `handleBtnClick` function when the button is clicked
+            data-testid="inspiration-image-gallery-article-btn"
           >
             {btn}
           </Btn>
