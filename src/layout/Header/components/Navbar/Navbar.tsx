@@ -104,7 +104,7 @@ export default function Navbar() {
       className="main-layout navbar"
       ref={navbarRef} // Set the reference for the navbar
     >
-      <div className={navbarInnerClasses}>
+      <div className={navbarInnerClasses} data-testid="navbar-wrapper">
         <div className="navbar__inner-container">
           <div className="navbar__logo logo">
             <a href="/" aria-label="Idź na stronę główną.">

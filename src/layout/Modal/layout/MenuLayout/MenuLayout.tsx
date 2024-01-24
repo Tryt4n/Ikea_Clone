@@ -144,7 +144,12 @@ function ModalInnerWrapper({ title, children }: ModalInnerWrapperPropsType) {
         <ArrowLeftIcon />
       </Btn>
 
-      <strong className="menu-modal__inner-wrapper-heading">{title}</strong>
+      <strong
+        className="menu-modal__inner-wrapper-heading"
+        data-testid="menu-modal-header"
+      >
+        {title}
+      </strong>
 
       {children}
     </>

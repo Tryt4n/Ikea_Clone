@@ -57,7 +57,10 @@ export default function NavigationBar() {
   }
 
   return (
-    <div className="page-container navigation-bar">
+    <div
+      className="page-container navigation-bar"
+      data-testid="navigation-bar-container"
+    >
       {/* Render the list of navigation items only on bigger screens (>= 1200px) */}
       {width >= 1200 && (
         <nav className="navigation-bar__nav">
