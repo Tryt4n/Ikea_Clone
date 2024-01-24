@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { reducer } from "./reducer";
 // Utils
 import { areDatesEqual } from "../../../setup-test/test-utils";
@@ -18,14 +18,9 @@ describe("#reducer App Context function", () => {
   let currentDate: Date;
 
   beforeEach(() => {
-    localStorage.clear(); // Clear localStorage
-
     // Set current date to the current date without milliseconds
     currentDate = new Date();
     currentDate.setMilliseconds(0);
-  });
-  afterEach(() => {
-    localStorage.clear(); // Clear localStorage
   });
 
   it("should return the new state based on `setPostalCode` action", () => {
