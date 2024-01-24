@@ -18,10 +18,13 @@ beforeEach(() => {
     vi.fn(),
     false,
   ]);
+
+  localStorage.clear(); // Clear local storage before each test.
 });
 
 afterEach(() => {
   vi.restoreAllMocks(); // Restore all mocks back to their original value.
 
   cleanup(); // Clean up after each test.
+  localStorage.clear(); // Clear local storage after each test.
 });
