@@ -36,6 +36,8 @@ export function ShoppingCart() {
     return value;
   }
 
+  const totalQuantity = calculateShoppingCartItemsQuantity();
+
   return (
     <>
       <ShoppingCartIcon />
@@ -43,18 +45,25 @@ export function ShoppingCart() {
       <span className="visually-hidden">Koszyk</span>
 
       {/* If the shopping cart is not empty, display the total quantity of items in the shopping cart */}
-      {state && state.shoppingCart && state.shoppingCart.length > 0 && (
-        <>
-          <span className="visually-hidden">Ilość przedmiotów w koszyku:</span>
-          <span
-            className="shopping-cart-badge"
-            aria-live="polite" // Announce changes to the content of the element
-          >
-            {/* Display the total quantity of items in the shopping cart */}
-            {calculateShoppingCartItemsQuantity()}
-          </span>
-        </>
-      )}
+      {state &&
+        state.shoppingCart &&
+        state.shoppingCart.length > 0 &&
+        totalQuantity !== 0 &&
+        !Number.isNaN(totalQuantity) && (
+          <>
+            <span className="visually-hidden">
+              Ilość przedmiotów w koszyku:
+            </span>
+            <span
+              className="shopping-cart-badge"
+              aria-live="polite" // Announce changes to the content of the element
+              data-testid="shopping-cart-badge"
+            >
+              {/* Display the total quantity of items in the shopping cart */}
+              {totalQuantity}
+            </span>
+          </>
+        )}
     </>
   );
 }
