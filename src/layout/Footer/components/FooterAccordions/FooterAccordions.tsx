@@ -70,7 +70,7 @@ function Accordions() {
  */
 function Lists() {
   return (
-    <ul className="lists-wrapper">
+    <ul className="lists-wrapper" data-testid="footer-lists-wrapper">
       {/* Map through the `footerLists` constant and render the lists */}
       {footerLists.map((list, index) => (
         <li key={index}>
