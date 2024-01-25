@@ -89,4 +89,44 @@ describe("#getThumbnailsData", () => {
       "/products/collection/product/variant1/relatedVariant1",
     );
   });
+
+  it("should return the correct imgAlt property without size when size is universal", () => {
+    // Arrange
+    const data: ProductDataType = {
+      collection: "collection",
+      name: "name",
+      nameToDisplay: "nameToDisplay",
+      productNumber: "productNumber",
+      size: "universal",
+      price: {
+        integer: 10,
+      },
+      oldPriceTag: {
+        variant: "green",
+        integer: 20,
+      },
+      variants: ["variant1", "variant2"],
+      variantsName: ["variantName1", "variantName2"],
+      variant: "variant1",
+      variantName: "variantName1",
+      relatedProducts: {
+        variants: {
+          variant1: "relatedVariant1",
+          variant2: "relatedVariant2",
+        },
+      },
+      thumbnails: {},
+      images: {},
+      description: "description",
+    };
+    const path = { collection: "collection", product: "product" };
+    const productVariant = "variant1";
+    const index = 0;
+
+    // Act
+    const result = getThumbnailsData(data, path, productVariant, index);
+
+    // Assert
+    expect(result.imgAlt).toBe("collection nameToDisplay, variantName1");
+  });
 });
