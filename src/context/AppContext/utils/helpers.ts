@@ -26,6 +26,8 @@ type ProductsValueChangeType = number | "subtract" | "add";
  * console.log(sortedLists); // Outputs: [{ name: "List 2", lastEdit: new Date("2022-02-01") }, { name: "List 3", lastEdit: new Date("2022-01-15") }, { name: "List 1", lastEdit: new Date("2022-01-01") }]
  */
 export function sortLists(lists: FavouritesListType[]) {
+  if (!lists || lists.length === 0 || lists.length === 1) return lists; // If the array of lists is empty, return the array
+
   return lists.sort((a, b) =>
     /* v8 ignore next */
     compareDesc(new Date(a.lastEdit), new Date(b.lastEdit)),
