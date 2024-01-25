@@ -47,7 +47,7 @@ export default function HomePage() {
         // If the data has loaded successfully, render a div element with a ScrollRestoration component from react-router-dom and a list of article components
         <>
           {homePageArticles && (
-            <div className="articles">
+            <div className="articles" data-testid="home-page-articles">
               <ScrollRestoration />
 
               {/* Map over the articles data and call the componentMapper function for each article */}
