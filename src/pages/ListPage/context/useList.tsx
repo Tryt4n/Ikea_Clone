@@ -20,7 +20,7 @@ export default function useList() {
 
   // If useList is used outside of a ListContextProvider, throw an error
   if (list === null) {
-    throw new Error("useList must be used within a ListContextProvider");
+    throw new Error("useList must be used within ListContextProvider");
   }
 
   // Return the current value of the ListContext
