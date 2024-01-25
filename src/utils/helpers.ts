@@ -30,13 +30,14 @@ export function startViewTransition(callback: () => void) {
  *
  * This function calculates the price of a product.
  *
- * @param product - The product.
+ * @param price - The price of the product.
  *
- * @returns The price of the product.
+ * @returns The parsed price of the product.
  */
-export function getPrice(product: ShoppingCartType) {
+export function getPrice(price: ShoppingCartType["price"]) {
   // Destructure the price of the product
-  const { integer, decimal } = product.price;
+  const { integer, decimal } = price;
+
   // Return the sum of the integer part of the price and the decimal part of the price
   return integer + parseFloat(`0.${decimal || 0}`);
 }
