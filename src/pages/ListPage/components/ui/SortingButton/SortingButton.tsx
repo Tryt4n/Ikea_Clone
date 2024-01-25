@@ -6,14 +6,14 @@ import { startViewTransition } from "../../../../../utils/helpers";
 import { Btn } from "../../../../../components/ui/Btn/Btn";
 // Import types
 import type {
-  ReducerActionsType,
+  ListReducerActionsType,
   SortingTypes,
 } from "../../../context/ListContext";
 
 // Define the SortingButtonProps type
 type SortingButtonProps = {
   variant: SortingTypes; // The variant of the button
-  dispatchAction: ReducerActionsType; // The action to dispatch when the button is clicked
+  dispatchAction: ListReducerActionsType; // The action to dispatch when the button is clicked
   children: string; // The text to display on the button
 };
 
