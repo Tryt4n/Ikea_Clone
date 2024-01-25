@@ -1,5 +1,5 @@
 // Import custom hooks
-import useList from "../../context/useList";
+import useList from "../../hooks/useList";
 // Import components
 import ProductSortingFilters from "../../components/features/ProductSortingFilters/ProductSortingFilters";
 import ControlModalBtns from "../../components/features/ControlModalBtns/ControlModalBtns";

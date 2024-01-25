@@ -1,9 +1,9 @@
 // Import custom hooks
-import useList from "../../../context/useList";
+import useList from "../../../hooks/useList";
 // Import components
 import Switch from "../../../../../components/features/Switch/Switch";
 // Import constants
-import { listDisplays } from "../../../context/constants";
+import { listDisplays } from "../../../constants/constants";
 
 /**
  * BuySwitch is a component that renders a switch with two options: "buy-online" and "shopping-list".

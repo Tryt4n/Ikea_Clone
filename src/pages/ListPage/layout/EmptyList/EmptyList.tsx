@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 // Import custom hooks
 import useApp from "../../../../hooks/useApp/useApp";
-import useList from "../../context/useList";
+import useList from "../../hooks/useList";
 import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import { Btn } from "../../../../components/ui/Btn/Btn";

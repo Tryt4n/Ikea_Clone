@@ -1,7 +1,7 @@
 // Import react dependencies
 import { useRef } from "react";
 // Import custom hooks
-import useList from "../../../context/useList";
+import useList from "../../../hooks/useList";
 // Import components
 import Input from "../../../../../components/features/Input/Input";
 import RatingBlock from "../../../../../components/features/RatingBlock/RatingBlock";

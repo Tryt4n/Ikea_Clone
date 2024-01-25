@@ -1,5 +1,5 @@
 // Import custom hooks
-import useList from "../../../context/useList";
+import useList from "../../../hooks/useList";
 // Import constants
 import { productLink } from "../../../../../constants/links";
 

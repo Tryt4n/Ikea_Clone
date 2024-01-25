@@ -1,6 +1,6 @@
 // Import context
 import { useContext } from "react";
-import { ListContext } from "./ListContext";
+import { ListContext } from "../context/ListContext";
 
 /**
  * useList is a custom hook that provides the list context to the component where it is used.

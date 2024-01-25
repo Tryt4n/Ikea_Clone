@@ -1,7 +1,7 @@
 // Import react dependencies
 import { memo } from "react";
 // Import custom hooks
-import useList from "../../context/useList";
+import useList from "../../hooks/useList";
 // Import components
 import ListProduct from "../../components/features/ListProduct/ListProduct";
 

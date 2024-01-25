@@ -10,7 +10,7 @@ import {
 // Import helpers function
 import { getPrice } from "../../../utils/helpers";
 // Import constants
-import { listDisplays } from "./constants";
+import { listDisplays } from "../constants/constants";
 // Import types
 import type { ShoppingCartType } from "../../../context/AppContext/types/ShoppingCartType";
 import type { FavouritesListType } from "../../../context/AppContext/types/FavouritesListType";

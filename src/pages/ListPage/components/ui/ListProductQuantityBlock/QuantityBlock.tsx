@@ -2,7 +2,7 @@
 import { ChangeEvent } from "react";
 // Import custom hooks
 import useApp from "../../../../../hooks/useApp/useApp";
-import useList from "../../../context/useList";
+import useList from "../../../hooks/useList";
 // Import helper function
 import { startViewTransition } from "../../../../../utils/helpers";
 // Import components
