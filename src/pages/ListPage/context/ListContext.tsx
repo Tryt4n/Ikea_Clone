@@ -137,8 +137,8 @@ function listReducer(list: ReducerStateType, action: ReducerActionsType) {
 
       // Sort the products by their price
       const sortedProducts = [...list.products].sort((a, b) => {
-        const priceA = getPrice(a);
-        const priceB = getPrice(b);
+        const priceA = getPrice(a.price);
+        const priceB = getPrice(b.price);
 
         // If the order is "priceAscending", return the difference of priceA and priceB, otherwise return the difference of priceB and priceA
         return order === "priceAscending" ? priceA - priceB : priceB - priceA;
