@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../setup-test/test-utils";
 import ListPage from "./ListPage";
 import { exampleList } from "../../setup-test/test-constants/exampleList";
@@ -7,9 +7,10 @@ import useList from "./hooks/useList";
 vi.mock("./hooks/useList");
 
 describe("ListPage", () => {
-  (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-    listState: undefined,
-    listDispatch: vi.fn(),
+  beforeEach(() => {
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: undefined,
+    });
   });
 
   it("should render a component with loading state at start", () => {
