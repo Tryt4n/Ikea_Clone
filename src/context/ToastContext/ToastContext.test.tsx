@@ -52,14 +52,6 @@ describe("ToastContext", () => {
 
   it("should close toast notification if it's open", async () => {
     // Arrange
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false, // mock value
-        addListener: vi.fn(), // mock function
-        removeListener: vi.fn(), // mock function
-      };
-    });
-
     render(
       <ToastContextProvider>
         <ToastContext.Consumer>

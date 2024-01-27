@@ -19,12 +19,6 @@ describe("ProductsBtnsControl", () => {
   });
 
   beforeEach(() => {
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false,
-      };
-    });
-
     (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       state: {
         ...initState,

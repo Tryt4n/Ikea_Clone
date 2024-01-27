@@ -65,13 +65,7 @@ describe("BackToTopBtn", () => {
     // Arrange component visibility state
     const windowHeight = 1000;
     window.innerHeight = windowHeight;
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false,
-        addListener: vi.fn(), // mock function
-        removeListener: vi.fn(), // mock function
-      };
-    });
+
     const user = userEvent.setup();
 
     // Act
@@ -123,8 +117,6 @@ describe("BackToTopBtn", () => {
     window.matchMedia = vi.fn().mockImplementation(() => {
       return {
         matches: userPrefersReducedMotion,
-        addListener: vi.fn(), // mock function
-        removeListener: vi.fn(), // mock function
       };
     });
     const user = userEvent.setup();

@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import InspirationImageGalleryArticle, {
@@ -46,14 +46,6 @@ describe("InspirationImageGalleryArticle", () => {
 
   it("should change the pressed button when a button is clicked", async () => {
     // Arrange
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false,
-        addListener: vi.fn(), // mock function
-        removeListener: vi.fn(), // mock function
-      };
-    });
-
     const articleData: InspirationImageGalleryArticleType = {
       id: "1",
       header: "article header",

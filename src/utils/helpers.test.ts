@@ -6,7 +6,6 @@ describe("helper functions", () => {
   describe("#startViewTransition", () => {
     it("should call the callback function if the user's system prefers reduced motion", () => {
       const callback = vi.fn();
-      window.matchMedia = vi.fn().mockReturnValue({ matches: true });
 
       startViewTransition(callback);
 
@@ -27,7 +26,6 @@ describe("helper functions", () => {
       document.startViewTransition = vi.fn().mockImplementation((cb) => {
         cb();
       });
-      window.matchMedia = vi.fn().mockReturnValue({ matches: false });
 
       startViewTransition(callback);
 

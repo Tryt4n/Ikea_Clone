@@ -137,12 +137,6 @@ describe("ListProduct", () => {
 
   it("should remove product from managed list when checkbox is clicked", async () => {
     // Arrange
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false,
-      };
-    });
-
     const product = exampleList.products![0];
     let managedProducts: ShoppingCartType[] = exampleList.products!;
 
@@ -175,12 +169,6 @@ describe("ListProduct", () => {
 
   it("should add product to managed list when checkbox is clicked", async () => {
     // Arrange
-    window.matchMedia = vi.fn().mockImplementation(() => {
-      return {
-        matches: false,
-      };
-    });
-
     const product: ShoppingCartType = {
       collection: "some collection",
       productNumber: "9999999",
