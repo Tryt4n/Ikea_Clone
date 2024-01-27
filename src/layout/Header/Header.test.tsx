@@ -35,8 +35,6 @@ describe("Header", () => {
       name: /otwórz menu/i,
     });
 
-    screen.debug();
-
     // Assert
     expect(hamburgerButton.parentElement).not.toHaveClass("fixed");
   });
