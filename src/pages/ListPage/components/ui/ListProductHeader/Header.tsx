@@ -63,6 +63,7 @@ export function Header({
             className="list-product__img-wrapper"
             onMouseEnter={() => setImg(imgHover)}
             onMouseLeave={() => setImg(imgMain)}
+            data-testid="list-product-image-container"
           >
             <img src={imgSrc} alt={imgAlt} loading="lazy" />
           </div>
