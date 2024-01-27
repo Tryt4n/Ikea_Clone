@@ -19,6 +19,8 @@ beforeEach(() => {
     false,
   ]);
 
+  window.matchMedia = vi.fn().mockImplementation(() => ({ matches: false })); // mock user's system prefers reduced motion
+
   localStorage.clear(); // Clear local storage before each test.
 });
 
