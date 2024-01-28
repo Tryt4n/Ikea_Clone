@@ -46,7 +46,7 @@ export default function EmptyList() {
   }
 
   return (
-    <div className="empty-list">
+    <div className="empty-list" data-testid="list-page-empty-list">
       <div className="empty-list__btns-container">
         {/* Button to open the name edit modal menu. */}
         <Btn shape="circle" variant="light" onClick={openNameEditModal}>

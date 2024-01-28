@@ -72,7 +72,7 @@ export default function ListProductsSummary() {
 
   // Define an addProductsToShoppingCart function to add all products in the list to the shopping cart and display a toast notification.
   function addProductsToShoppingCart() {
-    if (!listState?.products) return; // If there is no list, return.
+    if (!listState?.products || listState.products.length < 1) return; // If there is no list, return.
 
     const productsNames = listState.products.map(
       (product) => product.collection,
@@ -84,7 +84,7 @@ export default function ListProductsSummary() {
       open: true,
       text: `${
         productsNames.length > 1 ? productsNames.join(", ") : productsNames[0]
-      } dodano to koszyka.`,
+      } dodano do koszyka.`,
       link: "/shoppingcart",
     }); // Display a toast notification.
   }
