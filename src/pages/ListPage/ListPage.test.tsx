@@ -3,17 +3,49 @@ import { render, screen } from "../../setup-test/test-utils";
 import ListPage from "./ListPage";
 import { exampleList } from "../../setup-test/test-constants/exampleList";
 import useList from "./hooks/useList";
+import useApp from "../../hooks/useApp/useApp";
+import { initState } from "../../context/AppContext/constants/appInitState";
+import { useParams } from "react-router-dom";
 
+vi.mock("../../hooks/useApp/useApp");
 vi.mock("./hooks/useList");
+vi.mock("react-router-dom", async () => ({
+  ...(await vi.importActual("react-router-dom")),
+  useParams: vi.fn(),
+}));
 
 describe("ListPage", () => {
+  const state = {
+    ...initState,
+    favouriteLists: [exampleList],
+  };
+  const dispatch = vi.fn();
+  const listState = exampleList;
+  const listDispatch = vi.fn();
+  const params = { listId: exampleList.id };
+
   beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+      dispatch: dispatch,
+    });
+
     (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      listState: undefined,
+      listState: listState,
+      listDispatch: listDispatch,
+    });
+
+    (useParams as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      params: params,
     });
   });
 
-  it("should render a component with loading state at start", () => {
+  it("should render a component with loading state when list is undefined", () => {
+    // Arrange
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: undefined,
+    });
+
     // Act
     render(<ListPage />);
 
