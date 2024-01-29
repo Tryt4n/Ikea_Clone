@@ -62,6 +62,7 @@ export function Video({
         loop // Loop the video indefinitely
         poster={src.replace("mp4?imwidth=800", "jpg?=f=m")} // Set the poster image to the first frame of the video
         muted // Mute the video
+        data-testid="product-video"
       />
       <button
         className="product-image-gallery__video-preview-btn"

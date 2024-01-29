@@ -25,7 +25,7 @@ export default function AdditionalDescriptionInformation({
   infoData: NonNullable<ProductDataType["additionalInfo"]>;
 }) {
   return (
-    <div className="additional-info">
+    <div className="additional-info" data-testid="product-page-additional-info">
       {infoData.map((section) => {
         const { title, additionalSections } = section;
 

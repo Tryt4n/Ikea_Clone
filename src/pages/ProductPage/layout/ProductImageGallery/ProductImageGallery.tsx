@@ -38,10 +38,12 @@ export default function ProductImageGallery({
 }: {
   data: ProductDataType;
 }) {
+  const initialVisibleImages = 8; // Set the initial number of visible images to 8
+
   const { displayedMainImg, path } = useProduct(); // Get the displayed main image and the path from the useProduct custom hook
   const { setModalData } = useModal(); // Get the setModalData function from the useModal custom hook
   const { width } = useWindowSize(); // Get the current window size from the useWindowSize custom hook
-  const [visibleImages, setVisibleImages] = useState(8); // Set the initial number of visible images to 8
+  const [visibleImages, setVisibleImages] = useState(initialVisibleImages); // Set the initial number of visible images to 8
 
   const { images, name, variant, topSeller, limitedEdition } = data; // Destructure the data object
 
@@ -75,7 +77,10 @@ export default function ProductImageGallery({
 
   return (
     // Spread the swiperContainerOptions object
-    <SwiperContainer {...swiperContainerOptions}>
+    <SwiperContainer
+      {...swiperContainerOptions}
+      data-testid="product-image-gallery"
+    >
       {/* Set heading for accessibility and SEO purposes */}
       <h3 className="visually-hidden">Galeria</h3>
 
@@ -104,6 +109,7 @@ export default function ProductImageGallery({
                     ? () => openModalPreview(index)
                     : undefined
                 } // If SwiperJs is not used and the image is not a video, open the modal with the image preview when the button is clicked
+                data-testid="product-image-gallery-item"
               >
                 {/* If product is a top seller and is not limited edition set the top seller label for the first image */}
                 {!limitedEdition && topSeller && index === 0 && (
@@ -135,7 +141,7 @@ export default function ProductImageGallery({
       })}
 
       {/* // If the viewport width is greater than or equal to 900px and there are more than value in visibleImages, render the ShowMoreImagesBtn component */}
-      {width >= 900 && Object.keys(images).length > 8 && (
+      {width >= 900 && Object.keys(images).length > initialVisibleImages && (
         <ShowMoreImagesBtn
           images={images}
           visibleImages={visibleImages}
