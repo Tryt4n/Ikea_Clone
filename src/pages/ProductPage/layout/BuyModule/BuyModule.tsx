@@ -1,6 +1,6 @@
 // Import custom hooks
 import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
-import useProduct from "../../context/useProduct";
+import useProduct from "../../hooks/useProduct";
 import useModal from "../../../../hooks/useModal/useModal";
 // Import components
 import Collection from "../../../../compoundComponents/CollectionProducts/layout/Collection";

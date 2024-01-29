@@ -6,7 +6,7 @@ import { Pagination, Keyboard, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 // Import custom hooks
-import useProduct from "../../context/useProduct";
+import useProduct from "../../hooks/useProduct";
 import useModal from "../../../../hooks/useModal/useModal";
 import useWindowSize from "../../../../hooks/useWindowSize/useWindowSize";
 // Import inner components

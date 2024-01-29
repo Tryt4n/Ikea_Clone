@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 // Import custom hooks
 import useApp from "../../../../hooks/useApp/useApp";
 import useToast from "../../../../hooks/useToast/useToast";
-import useProduct from "../../context/useProduct";
+import useProduct from "../../hooks/useProduct";
 // Import components
 import QuantityInput from "../../../../components/features/QuantityInput/QuantityInput";
 import { Btn } from "../../../../components/ui/Btn/Btn";
@@ -72,8 +72,8 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
   // Function to add the product to the shopping cart.
   function addToShoppingCart() {
     // Set current date to the current date without milliseconds
-    const currentData = new Date();
-    currentData.setMilliseconds(0);
+    const currentDate = new Date();
+    currentDate.setMilliseconds(0);
 
     dispatch({
       type: "addToShoppingCart",
@@ -92,7 +92,7 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
           images: images,
           productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
           newTag: newTag,
-          addedDate: currentData,
+          addedDate: currentDate,
           rating: rating,
         },
       ],

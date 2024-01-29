@@ -1,6 +1,6 @@
 // Import context
 import { useContext } from "react";
-import { ProductContext } from "./ProductContext";
+import { ProductContext } from "../context/ProductContext";
 
 /**
  * Custom React Hook that provides access to the ProductContext.

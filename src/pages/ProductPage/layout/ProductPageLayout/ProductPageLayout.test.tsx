@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import ProductPageLayout from "./ProductPageLayout";
-import useProduct from "../../context/useProduct";
+import useProduct from "../../hooks/useProduct";
 import useFetch from "../../../../hooks/useFetch/useFetch";
 import { exampleFetchedProductData } from "../../../../setup-test/test-constants/exampleFetchedProductData";
 
-vi.mock("../../context/useProduct");
+vi.mock("../../hooks/useProduct");
 vi.mock("../../../../hooks/useFetch/useFetch");
 
 describe("ProductPageLayout", () => {
