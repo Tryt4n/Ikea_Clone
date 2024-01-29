@@ -27,6 +27,10 @@ export const exampleFetchedProductData: ProductDataType = {
       "variant-2": "222222222",
       "variant-3": "333333333",
     },
+    sizes: {
+      "100x100": "55555555",
+      "200x200": "666666666",
+    },
   },
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quidem voluptatem incidunt aperiam, laboriosam aliquam doloribus nostrum eum nesciunt voluptate.",
