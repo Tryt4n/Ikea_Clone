@@ -21,6 +21,7 @@ export default function SustainableDevelopment() {
     <div
       ref={sustainabilityRef}
       className={`sustainability${inView ? ` sustainability--inView` : ""}`}
+      data-testid="product-page-sustainability"
     >
       <div className="sustainability__circle sustainability__circle--1">
         <strong className="sustainability__header">
