@@ -20,7 +20,10 @@ export function DescriptionSection({ data }: { data: AdditionalInfo }) {
   const { title, variant, header, description, subDescription } = data;
 
   return (
-    <div className="additional-info__section-container">
+    <div
+      className="additional-info__section-container"
+      data-testid="additional-product-description"
+    >
       <Header title={title} variant={variant} />
 
       <div className="additional-info__text-container">

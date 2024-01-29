@@ -23,7 +23,10 @@ export function LongDescriptionSectionWithImage({
   data: AdditionalInfo;
 }) {
   return (
-    <div className="additional-info__long-section-container">
+    <div
+      className="additional-info__long-section-container"
+      data-testid="additional-product-description-long"
+    >
       <ImgContainer img={data.backgroundImage!} />
 
       <LongDescriptionSections data={data} />

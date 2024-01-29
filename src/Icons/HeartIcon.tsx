@@ -12,6 +12,7 @@ export default function HeartIcon({
       height="24"
       fill="none"
       className={className ? className : undefined}
+      data-testid="heart-icon"
     >
       <path
         fillRule="evenodd"

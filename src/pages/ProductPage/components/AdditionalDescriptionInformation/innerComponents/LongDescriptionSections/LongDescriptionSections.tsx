@@ -61,6 +61,7 @@ export function LongDescriptionSections({ data }: { data: AdditionalInfo }) {
     <div
       ref={longDescriptionRef} // Set the ref for the long description section.
       className={`additional-info__long-content-container${showMore ? " showMore" : ""}`} // Add the class name "showMore" if the additional sections are visible.
+      data-testid="product-page-long-description-sections"
     >
       <div className="additional-info__long-content-wrapper">
         <Header title={title} variant={variant} id="long-section-header" />
