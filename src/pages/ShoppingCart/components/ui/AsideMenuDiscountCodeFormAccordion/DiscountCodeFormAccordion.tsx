@@ -39,6 +39,7 @@ export function DiscountCodeFormAccordion() {
         onSubmit={(e) => e.preventDefault()} // Prevent the default form submission
         className="shopping-cart-menu__discount-code-hidden-content-container"
         aria-hidden={!accordionOpen} // The form is hidden when the accordion is closed
+        data-testid="discount-code-form"
       >
         <div>
           <p
