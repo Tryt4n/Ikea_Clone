@@ -33,7 +33,6 @@ describe("ShoppingCart page DeliveryOptions", () => {
 
     // Act - select homeDeliveryInput
     await user.click(homeDeliveryInput);
-    screen.debug();
 
     // Assert - homeDeliveryInput is checked
     expect(homeDeliveryInput).toBeChecked();
