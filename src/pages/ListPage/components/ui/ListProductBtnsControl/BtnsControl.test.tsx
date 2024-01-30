@@ -122,7 +122,7 @@ describe("ListProductBtnsControl", () => {
     expect(setToastData).toHaveBeenCalledWith({
       open: true,
       text: `Usunięto ${exampleList.products![0].collection} z twojej listy.`,
-      prevState: expect.any(Function),
+      prevState: prevState,
     });
   });
 });
