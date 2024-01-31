@@ -65,7 +65,7 @@ export function getHeader(
       header = "Informacje o produkcie";
       break;
     case "items-included":
-      header = "Elementu w zestawie";
+      header = "Elementy w zestawie";
       break;
     case "dimensions":
       header = "Wymiary";
@@ -103,8 +103,6 @@ export function getHeader(
       );
       break;
     case "create-list":
-      header = "Nadaj swojej liście nazwę";
-      break;
     case "create-list-with-products":
       header = "Nadaj swojej liście nazwę";
       break;
