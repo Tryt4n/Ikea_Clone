@@ -21,7 +21,7 @@ import AccordionContainer from "../../../../components/features/Accordions/Accor
 import AccordionElement from "../../../../components/features/Accordions/AccordionElement/AccordionElement";
 // Import accordion context
 import { AccordionContextProvider } from "../../../../components/features/Accordions/context/AccordionContext";
-import useAccordion from "../../../../components/features/Accordions/context/useAccordion";
+import useAccordion from "../../../../components/features/Accordions/hooks/useAccordion";
 // Import constants
 import { footerLists } from "../../../../constants/footerLists";
 // Import styles

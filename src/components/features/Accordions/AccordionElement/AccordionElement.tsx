@@ -1,7 +1,7 @@
 // Import React dependencies
 import { ReactNode, useCallback, useEffect, useState } from "react";
 // Import context
-import useAccordion from "../context/useAccordion";
+import useAccordion from "../hooks/useAccordion";
 // Import icons
 import ChevronRightSmall from "../../../../Icons/ChevronRightSmall";
 import ChevronRightIcon from "../../../../Icons/ChevronRightIcon";

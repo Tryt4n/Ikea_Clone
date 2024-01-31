@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, act, renderHook } from "@testing-library/react";
 import { AccordionContextProvider } from "./AccordionContext";
-import useAccordion from "./useAccordion";
+import useAccordion from "../hooks/useAccordion";
 
 describe("AccordionContext", () => {
   it("should render children inside AccordionContext.Provider", () => {
