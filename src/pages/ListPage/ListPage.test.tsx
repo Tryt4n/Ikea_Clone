@@ -1,17 +1,18 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "../../setup-test/test-utils";
+import { render, screen, waitFor } from "../../setup-test/test-utils";
 import ListPage from "./ListPage";
 import { exampleList } from "../../setup-test/test-constants/exampleList";
 import useList from "./hooks/useList";
 import useApp from "../../hooks/useApp/useApp";
+import { useNavigate, useParams } from "react-router-dom";
 import { initState } from "../../context/AppContext/constants/appInitState";
-import { useParams } from "react-router-dom";
 
 vi.mock("../../hooks/useApp/useApp");
 vi.mock("./hooks/useList");
 vi.mock("react-router-dom", async () => ({
   ...(await vi.importActual("react-router-dom")),
   useParams: vi.fn(),
+  useNavigate: vi.fn(),
 }));
 
 describe("ListPage", () => {
@@ -20,7 +21,6 @@ describe("ListPage", () => {
     favouriteLists: [exampleList],
   };
   const dispatch = vi.fn();
-  const listState = exampleList;
   const listDispatch = vi.fn();
   const params = { listId: exampleList.id };
 
@@ -30,20 +30,14 @@ describe("ListPage", () => {
       dispatch: dispatch,
     });
 
-    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      listState: listState,
-      listDispatch: listDispatch,
-    });
-
-    (useParams as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      params: params,
-    });
+    (useParams as unknown as ReturnType<typeof vi.fn>).mockReturnValue(params);
   });
 
   it("should render a component with loading state when list is undefined", () => {
     // Arrange
     (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       listState: undefined,
+      listDispatch: listDispatch,
     });
 
     // Act
@@ -65,6 +59,7 @@ describe("ListPage", () => {
         ...exampleList,
         products: undefined,
       },
+      listDispatch: listDispatch,
     });
 
     // Act
@@ -83,6 +78,7 @@ describe("ListPage", () => {
         ...exampleList,
         products: [],
       },
+      listDispatch: listDispatch,
     });
 
     // Act
@@ -94,11 +90,14 @@ describe("ListPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("should render the list page", () => {
+  it("should render the list page", async () => {
     // Arrange
+    const list = exampleList;
+
     (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      listState: exampleList,
+      listState: list,
       managedProducts: [],
+      listDispatch: listDispatch,
     });
 
     // Act
@@ -111,5 +110,174 @@ describe("ListPage", () => {
 
     // Assert
     expect(listHeader).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalledWith({
+        type: "setEditingList",
+        payload: list,
+      });
+
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({
+        type: "initList",
+        payload: list,
+      });
+    });
+  });
+
+  it("should sort list by name", async () => {
+    // Arrange
+    const listState = {
+      ...exampleList,
+      listSorting: "name",
+    };
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: listState,
+      listDispatch: listDispatch,
+      managedProducts: [],
+    });
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({ type: "sortByName" });
+    });
+  });
+
+  it("should sort list by price ascending", async () => {
+    // Arrange
+    const listState = {
+      ...exampleList,
+      listSorting: "priceAscending",
+    };
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: listState,
+      listDispatch: listDispatch,
+      managedProducts: [],
+    });
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({
+        type: "sortByPrice",
+        payload: listState.listSorting,
+      });
+    });
+  });
+
+  it("should sort list by price descending", async () => {
+    // Arrange
+    const listState = {
+      ...exampleList,
+      listSorting: "priceDescending",
+    };
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: listState,
+      listDispatch: listDispatch,
+      managedProducts: [],
+    });
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({
+        type: "sortByPrice",
+        payload: listState.listSorting,
+      });
+    });
+  });
+
+  it("should sort list by recently added", async () => {
+    // Arrange
+    const listState = {
+      ...exampleList,
+      listSorting: "recent",
+    };
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: listState,
+      listDispatch: listDispatch,
+      managedProducts: [],
+    });
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({
+        type: "sortByDate",
+        payload: listState.listSorting,
+      });
+    });
+  });
+
+  it("should sort list by the oldest", async () => {
+    // Arrange
+    const listState = {
+      ...exampleList,
+      listSorting: "oldest",
+    };
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: listState,
+      listDispatch: listDispatch,
+      managedProducts: [],
+    });
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(listDispatch).toHaveBeenCalled();
+      expect(listDispatch).toHaveBeenCalledWith({
+        type: "sortByDate",
+        payload: listState.listSorting,
+      });
+    });
+  });
+
+  it(`should navigate to "/favourites" if the list does not exist`, async () => {
+    // Arrange
+    const list = exampleList;
+    const params = { listId: "none-existent-list-id" };
+    const navigate = vi.fn();
+
+    (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      listState: list,
+      managedProducts: [],
+      listDispatch: listDispatch,
+    });
+
+    (useParams as unknown as ReturnType<typeof vi.fn>).mockReturnValue(params);
+
+    (useNavigate as unknown as ReturnType<typeof vi.fn>).mockReturnValue(
+      navigate,
+    );
+
+    // Act
+    render(<ListPage />);
+
+    // Assert
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledOnce();
+      expect(navigate).toHaveBeenCalledWith("/favourites");
+    });
   });
 });
