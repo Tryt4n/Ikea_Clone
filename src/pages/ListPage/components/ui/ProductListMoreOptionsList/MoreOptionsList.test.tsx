@@ -41,7 +41,7 @@ describe("ListProductMoreOptionsList", () => {
     await user.click(btn);
 
     // Assert
-    expect(setModalData).toHaveBeenCalledTimes(1);
+    expect(setModalData).toHaveBeenCalledOnce();
     expect(setModalData).toHaveBeenCalledWith({
       type: "more-options-for-product-in-list",
       products: [product],

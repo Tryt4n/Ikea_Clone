@@ -54,7 +54,7 @@ describe("ListProductQuantityBlock", () => {
     await user.click(minusBtn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "changeProductQuantityOnList",
       payload: {
@@ -79,7 +79,7 @@ describe("ListProductQuantityBlock", () => {
     await user.click(plusBtn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "changeProductQuantityOnList",
       payload: {
@@ -105,7 +105,7 @@ describe("ListProductQuantityBlock", () => {
     await user.type(input, typedValue);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "changeProductQuantityOnList",
       payload: {

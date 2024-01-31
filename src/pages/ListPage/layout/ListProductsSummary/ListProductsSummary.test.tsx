@@ -60,13 +60,13 @@ describe("ListProductsSummary", () => {
       (product) => product.collection,
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "addToShoppingCart",
       payload: listState.products,
     });
 
-    expect(setToastData).toHaveBeenCalledTimes(1);
+    expect(setToastData).toHaveBeenCalledOnce();
     expect(setToastData).toHaveBeenCalledWith({
       open: true,
       text: `${expectedProductsNames.join(", ")} dodano do koszyka.`,
@@ -97,13 +97,13 @@ describe("ListProductsSummary", () => {
     await user.click(btn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "addToShoppingCart",
       payload: listState.products,
     });
 
-    expect(setToastData).toHaveBeenCalledTimes(1);
+    expect(setToastData).toHaveBeenCalledOnce();
     expect(setToastData).toHaveBeenCalledWith({
       open: true,
       text: `${listState.products![0].collection} dodano do koszyka.`,
@@ -133,8 +133,8 @@ describe("ListProductsSummary", () => {
     await user.click(btn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(0);
-    expect(setToastData).toHaveBeenCalledTimes(0);
+    expect(dispatch).not.toHaveBeenCalled();
+    expect(setToastData).not.toHaveBeenCalled();
   });
 
   it("should not add products to shopping cart if products on list are not defined", async () => {
@@ -159,7 +159,7 @@ describe("ListProductsSummary", () => {
     await user.click(btn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(0);
-    expect(setToastData).toHaveBeenCalledTimes(0);
+    expect(dispatch).not.toHaveBeenCalled();
+    expect(setToastData).not.toHaveBeenCalled();
   });
 });

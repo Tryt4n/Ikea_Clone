@@ -115,7 +115,7 @@ describe("ProductPage AdditionalInfo LongDescriptionSections", () => {
       "Naciśnij aby pokazać więcej",
     );
 
-    expect(scrollToMock).toHaveBeenCalledTimes(1);
+    expect(scrollToMock).toHaveBeenCalledOnce();
     expect(scrollToMock).toHaveBeenCalledWith({
       top: expect.any(Number),
       behavior: "smooth",
@@ -191,7 +191,7 @@ describe("ProductPage AdditionalInfo LongDescriptionSections", () => {
       "Naciśnij aby pokazać więcej",
     );
 
-    expect(scrollToMock).toHaveBeenCalledTimes(1);
+    expect(scrollToMock).toHaveBeenCalledOnce();
     expect(scrollToMock).toHaveBeenCalledWith({
       top: expect.any(Number),
       behavior: "auto",

@@ -1,11 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
-import { ListContextProvider } from "../../../context/ListContext";
 import ListProduct from "./ListProduct";
 import useList from "../../../hooks/useList";
 import { shoppingCart } from "../../../../../setup-test/test-constants/shoppingCart";
-import type { ReactNode } from "react";
 import type { ShoppingCartType } from "../../../../../context/AppContext/types/ShoppingCartType";
 import { exampleList } from "../../../../../setup-test/test-constants/exampleList";
 
@@ -17,10 +15,6 @@ describe("ListProduct", () => {
       managedProducts: [],
     });
   });
-
-  const contextWrapper = (children: ReactNode) => {
-    render(<ListContextProvider>{children}</ListContextProvider>);
-  };
 
   it("should render a component", () => {
     // Arrange
@@ -43,7 +37,7 @@ describe("ListProduct", () => {
     };
 
     // Act
-    contextWrapper(<ListProduct product={product} />);
+    render(<ListProduct product={product} />);
 
     const heading = screen.getByRole("heading", {
       level: 3,
@@ -102,7 +96,7 @@ describe("ListProduct", () => {
 
   it("should render checkbox with uncheck status if it's on the `managedProducts` list", () => {
     // Act
-    contextWrapper(<ListProduct product={shoppingCart[0]} />);
+    render(<ListProduct product={shoppingCart[0]} />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -121,7 +115,7 @@ describe("ListProduct", () => {
     });
 
     // Act
-    contextWrapper(<ListProduct product={product} />);
+    render(<ListProduct product={product} />);
 
     const checkbox = screen.getByRole("checkbox");
     const checkboxContainer = checkbox.parentElement;
@@ -156,14 +150,14 @@ describe("ListProduct", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ListProduct product={product} />);
+    render(<ListProduct product={product} />);
 
     const checkbox = screen.getByRole("checkbox");
 
     await user.click(checkbox);
 
     // Assert
-    expect(setManagedProducts).toHaveBeenCalledTimes(1);
+    expect(setManagedProducts).toHaveBeenCalledOnce();
     expect(managedProducts).toEqual(updatedProducts);
   });
 
@@ -204,7 +198,7 @@ describe("ListProduct", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ListProduct product={product} />);
+    render(<ListProduct product={product} />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -213,7 +207,7 @@ describe("ListProduct", () => {
     const expectedProducts = [...exampleList.products!, product];
 
     // Assert
-    expect(setManagedProducts).toHaveBeenCalledTimes(1);
+    expect(setManagedProducts).toHaveBeenCalledOnce();
     expect(managedProducts).toEqual(expectedProducts);
   });
 });

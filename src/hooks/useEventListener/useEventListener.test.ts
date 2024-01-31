@@ -18,7 +18,7 @@ describe("useEventListener", () => {
     await user.click(element);
 
     // Assert
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledOnce();
   });
 
   it("should not call callback after unmount", async () => {

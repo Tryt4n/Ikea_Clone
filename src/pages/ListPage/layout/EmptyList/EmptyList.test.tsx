@@ -62,13 +62,13 @@ describe("EmptyList", () => {
     await user.click(btn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "setEditingList",
       payload: listState,
     });
 
-    expect(setModalData).toHaveBeenCalledTimes(1);
+    expect(setModalData).toHaveBeenCalledOnce();
     expect(setModalData).toHaveBeenCalledWith({ type: "change-list-name" });
   });
 
@@ -84,13 +84,13 @@ describe("EmptyList", () => {
     await user.click(btn);
 
     // Assert
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "setEditingList",
       payload: listState,
     });
 
-    expect(setModalData).toHaveBeenCalledTimes(1);
+    expect(setModalData).toHaveBeenCalledOnce();
     expect(setModalData).toHaveBeenCalledWith({ type: "list-control" });
   });
 
@@ -139,7 +139,7 @@ describe("EmptyList", () => {
     await user.click(link);
 
     // Assert
-    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledOnce();
     expect(navigate).toHaveBeenCalledWith("/");
   });
 });

@@ -89,7 +89,7 @@ describe("ListProductSortingButton", () => {
     await user.click(btn);
 
     // Assert
-    expect(listDispatch).toHaveBeenCalledTimes(1);
+    expect(listDispatch).toHaveBeenCalledOnce();
     expect(listDispatch).toHaveBeenCalledWith(dispatchAction);
   });
 
@@ -121,7 +121,7 @@ describe("ListProductSortingButton", () => {
     await user.click(btn);
 
     // Assert
-    expect(listDispatch).toHaveBeenCalledTimes(1);
+    expect(listDispatch).toHaveBeenCalledOnce();
     expect(listDispatch).toHaveBeenCalledWith({
       type: "sortByDate",
       payload: "oldest",
