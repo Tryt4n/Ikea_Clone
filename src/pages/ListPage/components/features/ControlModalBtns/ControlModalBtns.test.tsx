@@ -1,28 +1,38 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
-import type { ReactNode } from "react";
-import { ListContextProvider } from "../../../context/ListContext";
 import ControlModalBtns from "./ControlModalBtns";
+import useApp from "../../../../../hooks/useApp/useApp";
+import useModal from "../../../../../hooks/useModal/useModal";
 import useList from "../../../hooks/useList";
 import { exampleList } from "../../../../../setup-test/test-constants/exampleList";
 
+vi.mock("../../../../../hooks/useApp/useApp");
+vi.mock("../../../../../hooks/useModal/useModal");
 vi.mock("../../../hooks/useList");
 
 describe("ControlModalBtns", () => {
+  const dispatch = vi.fn();
+  const setModalData = vi.fn();
+  const listState = exampleList;
+
   beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      dispatch: dispatch,
+    });
+
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+
     (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      listState: exampleList,
+      listState: listState,
     });
   });
 
-  const contextWrapper = (children: ReactNode) => {
-    render(<ListContextProvider>{children}</ListContextProvider>);
-  };
-
   it("should render three control buttons", () => {
     // Act
-    contextWrapper(<ControlModalBtns />);
+    render(<ControlModalBtns />);
     const buttons = screen.getAllByRole("button");
 
     // Assert
@@ -38,18 +48,15 @@ describe("ControlModalBtns", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ControlModalBtns />);
+    render(<ControlModalBtns />);
     const button = screen.getByRole("button", {
       name: /otwórz menu listy/i,
     });
 
-    const modal = screen.getByTestId("modal");
-
     await user.click(button);
 
     // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modal).not.toHaveClass("show");
+    expect(setModalData).not.toHaveBeenCalled();
   });
 
   it("should open menu list modal when appropriate button is clicked", async () => {
@@ -57,23 +64,21 @@ describe("ControlModalBtns", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ControlModalBtns />);
+    render(<ControlModalBtns />);
     const button = screen.getByRole("button", {
       name: /otwórz menu listy/i,
     });
-    const modal = screen.getByTestId("modal");
 
     await user.click(button);
 
-    const modalHeader = await screen.findByRole("heading", {
-      level: 2,
-      name: /ustawienia/i,
-      hidden: true,
+    // Assert
+    expect(dispatch).toHaveBeenCalledOnce();
+    expect(dispatch).toHaveBeenCalledWith({
+      type: "setEditingList",
+      payload: listState,
     });
 
-    // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modal).toHaveClass("show");
-    expect(modalHeader).toBeInTheDocument();
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "list-control" });
   });
 });

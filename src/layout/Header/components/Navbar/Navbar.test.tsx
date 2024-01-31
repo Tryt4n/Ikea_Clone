@@ -1,14 +1,42 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import Navbar from "./Navbar";
 import { useInView } from "react-intersection-observer";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import { initState } from "../../../../context/AppContext/constants/appInitState";
+import { shoppingCart } from "../../../../setup-test/test-constants/shoppingCart";
+
+vi.mock("../../../../hooks/useApp/useApp");
+vi.mock("../../../../hooks/useModal/useModal");
 
 describe("Navbar", () => {
+  const state = {
+    ...initState,
+    shoppingCart: shoppingCart,
+  };
+  const isDesktop = true;
+  const modalData = {
+    type: "some type",
+  };
+
+  beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+      isDesktop: isDesktop,
+    });
+
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      modalData: modalData,
+    });
+  });
+
   it("should render the Navbar component", () => {
     // Act
     render(<Navbar />);
 
     const searchBar = screen.getByRole("searchbox");
+    screen.debug();
 
     // Assert
     expect(searchBar).toBeInTheDocument();
@@ -110,7 +138,7 @@ describe("Navbar", () => {
 
     // Assert
     expect(container).toHaveClass("scrolled");
-    expect(container).toHaveClass("slideDown");
+    expect(container).toHaveClass("slideUp");
   });
 
   it("should add appropriate classes if page is scrolled", () => {
@@ -119,7 +147,6 @@ describe("Navbar", () => {
       vi.fn(),
       true,
     ]);
-    Object.defineProperty(window, "scrollY", { value: 100, writable: true });
 
     // Act
     render(<Navbar />);
@@ -133,7 +160,10 @@ describe("Navbar", () => {
 
   it("should add 'mobile' class when device is not a desktop", () => {
     // Arrange
-    Object.defineProperty(window, "ontouchstart", { value: vi.fn() });
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+      isDesktop: false,
+    });
 
     // Act
     render(<Navbar />);

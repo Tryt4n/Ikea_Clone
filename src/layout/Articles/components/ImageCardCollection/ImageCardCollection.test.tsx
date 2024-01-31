@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import ImageCardCollection, {
@@ -6,8 +6,19 @@ import ImageCardCollection, {
 } from "./ImageCardCollection";
 import { exampleProducts } from "../../../../setup-test/test-constants/exampleProducts";
 import { cardCollection } from "../../../../setup-test/test-constants/cardCollection";
+import useModal from "../../../../hooks/useModal/useModal";
+
+vi.mock("../../../../hooks/useModal/useModal");
 
 describe("ImageCardCollection", () => {
+  const setModalData = vi.fn();
+
+  beforeEach(() => {
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+  });
+
   it("should render an image card with associated products", () => {
     // Arrange
     const card: CardCollectionType = {
@@ -61,7 +72,11 @@ describe("ImageCardCollection", () => {
     await user.click(cardElement);
 
     // Assert - modal is open
-    expect(cardModal).toHaveClass("show");
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({
+      type: "image-with-products",
+      productsData: card,
+    });
   });
 
   it("should not open image modal when a list item or button is clicked", async () => {
@@ -89,19 +104,19 @@ describe("ImageCardCollection", () => {
     await user.click(listItem);
 
     // Assert - modal is not open
-    expect(cardModal).not.toHaveClass("show");
+    expect(setModalData).not.toHaveBeenCalled();
 
     // Act - click on button
     await user.click(button);
 
     // Assert - modal is not open
-    expect(cardModal).not.toHaveClass("show");
+    expect(setModalData).not.toHaveBeenCalled();
 
     // Act - open modal
     await user.click(cardElement);
 
     // Assert - modal is open
-    expect(cardModal).toHaveClass("show");
+    expect(setModalData).toHaveBeenCalledOnce();
   });
 
   it("should not check if the click was on a list item or a button when hideTooltips is true", async () => {
@@ -127,6 +142,6 @@ describe("ImageCardCollection", () => {
     await user.click(cardElement);
 
     // Assert - modal is open
-    expect(cardModal).toHaveClass("show");
+    expect(setModalData).toHaveBeenCalledOnce();
   });
 });

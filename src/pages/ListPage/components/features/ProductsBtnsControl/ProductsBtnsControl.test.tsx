@@ -2,17 +2,22 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import { ProductsBtnsControl } from "./ProductsBtnsControl";
-import { ReactNode } from "react";
-import { ListContextProvider } from "../../../context/ListContext";
-import useList from "../../../hooks/useList";
 import useApp from "../../../../../hooks/useApp/useApp";
+import useModal from "../../../../../hooks/useModal/useModal";
+import useList from "../../../hooks/useList";
 import { initState } from "../../../../../context/AppContext/constants/appInitState";
 import { exampleList } from "../../../../../setup-test/test-constants/exampleList";
 
 vi.mock("../../../../../hooks/useApp/useApp");
+vi.mock("../../../../../hooks/useModal/useModal");
 vi.mock("../../../hooks/useList");
 
 describe("ProductsBtnsControl", () => {
+  const state = {
+    ...initState,
+    editingList: exampleList,
+  };
+  const setModalData = vi.fn();
   let managedProducts = [exampleList.products![0], exampleList.products![1]];
   const setManagedProducts = vi.fn(() => {
     managedProducts = [];
@@ -20,10 +25,11 @@ describe("ProductsBtnsControl", () => {
 
   beforeEach(() => {
     (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
-      state: {
-        ...initState,
-        editingList: exampleList,
-      },
+      state: state,
+    });
+
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
     });
 
     (useList as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
@@ -33,13 +39,9 @@ describe("ProductsBtnsControl", () => {
     });
   });
 
-  const contextWrapper = (children: ReactNode) => {
-    render(<ListContextProvider>{children}</ListContextProvider>);
-  };
-
   it("should render two buttons for managing products and clearing all products", () => {
     // Act
-    contextWrapper(<ProductsBtnsControl />);
+    render(<ProductsBtnsControl />);
     const manageBtn = screen.getByText("Zarządzaj");
     const clearBtn = screen.getByText("Wyczyść wszystko");
 
@@ -53,27 +55,17 @@ describe("ProductsBtnsControl", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ProductsBtnsControl />);
+    render(<ProductsBtnsControl />);
     const manageBtn = screen.getByText("Zarządzaj");
-    const modal = screen.getByTestId("modal");
 
-    // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modal).not.toHaveClass("show");
-
-    // Act - open modal
     await user.click(manageBtn);
 
-    const modalHeader = screen.queryByRole("heading", {
-      level: 2,
-      hidden: true,
-      name: /zarządzaj swoimi wyborami/i,
+    // Assert
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({
+      type: "manage-products-in-list",
+      products: managedProducts,
     });
-
-    // Assert - modal is open
-    expect(modal).toHaveClass("show");
-    expect(modal).toHaveClass("side-modal");
-    expect(modalHeader).toBeInTheDocument();
   });
 
   it("should clear managed products list on clear button click", async () => {
@@ -81,13 +73,14 @@ describe("ProductsBtnsControl", () => {
     const user = userEvent.setup();
 
     // Act
-    contextWrapper(<ProductsBtnsControl />);
+    render(<ProductsBtnsControl />);
 
     const clearBtn = screen.getByText("Wyczyść wszystko");
 
     await user.click(clearBtn);
 
     // Assert
+    expect(setManagedProducts).toHaveBeenCalledOnce();
     expect(setManagedProducts).toHaveBeenCalledWith([]);
     expect(managedProducts).toEqual([]);
   });
@@ -109,9 +102,10 @@ describe("ProductsBtnsControl", () => {
     });
 
     // Act
-    contextWrapper(<ProductsBtnsControl />);
+    render(<ProductsBtnsControl />);
 
     // Assert
+    expect(setManagedProducts).toHaveBeenCalledOnce();
     expect(setManagedProducts).toHaveBeenCalledWith([]);
     expect(managedProducts).toEqual([]);
   });

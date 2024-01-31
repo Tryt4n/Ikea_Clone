@@ -4,12 +4,19 @@ import { render } from "../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import HamburgerButton from "./HamburgerButton";
 import useWindowSize from "../../../hooks/useWindowSize/useWindowSize";
+import useModal from "../../../hooks/useModal/useModal";
 
-// Mock the useWindowSize hook
+vi.mock("../../../hooks/useModal/useModal");
 vi.mock("../../../hooks/useWindowSize/useWindowSize");
 
 describe("HamburgerButton", () => {
+  const setModalData = vi.fn();
+
   beforeEach(() => {
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+
     // Mock the useWindowSize hook to return a large window width
     (useWindowSize as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       width: 1200,
@@ -37,13 +44,12 @@ describe("HamburgerButton", () => {
     // Act
     render(<HamburgerButton />);
     const button = screen.getByRole("button", { name: "Otwórz Menu" });
-    const modal = screen.getByTestId("modal");
 
     await user.click(button);
 
     // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modal).toHaveClass("menu-modal show");
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "menu" });
   });
 
   it("should render a button with additional class if provided", () => {

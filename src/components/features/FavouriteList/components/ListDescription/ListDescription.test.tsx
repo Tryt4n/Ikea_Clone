@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../../../../../setup-test/test-utils";
 import { ListDescription } from "./ListDescription";
@@ -6,8 +6,26 @@ import { exampleList as list } from "../../../../../setup-test/test-constants/ex
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import pl from "date-fns/locale/pl";
 import userEvent from "@testing-library/user-event";
+import useModal from "../../../../../hooks/useModal/useModal";
+import useApp from "../../../../../hooks/useApp/useApp";
+
+vi.mock("../../../../../hooks/useApp/useApp");
+vi.mock("../../../../../hooks/useModal/useModal");
 
 describe("ListDescription", () => {
+  const dispatch = vi.fn();
+  const setModalData = vi.fn();
+
+  beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      dispatch: dispatch,
+    });
+
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+  });
+
   it("should render the list name and last edit time", () => {
     // Act
     render(<ListDescription list={list} isMainList={false} />);
@@ -51,11 +69,7 @@ describe("ListDescription", () => {
 
   it('should render a "Przejdź do listy" button if the list is not the main list and the window width is greater than or equal to 900px', () => {
     // Arrange
-    Object.defineProperty(window, "innerWidth", {
-      writable: true,
-      configurable: true,
-      value: 900,
-    });
+    window.innerWidth = 900;
 
     // Act
     render(<ListDescription list={list} isMainList={false} />);
@@ -69,11 +83,7 @@ describe("ListDescription", () => {
 
   it(`should not render a "Przejdź do listy" button if the list is not the main list and the window width is less than 900px`, () => {
     // Arrange
-    Object.defineProperty(window, "innerWidth", {
-      writable: true,
-      configurable: true,
-      value: 899,
-    });
+    window.innerWidth = 899;
 
     // Act
     render(<ListDescription list={list} isMainList={false} />);
@@ -89,12 +99,17 @@ describe("ListDescription", () => {
     // Act
     render(<ListDescription list={list} isMainList={true} />);
     const button = screen.getByRole("button", { name: /Otwórz menu listy/ });
-    const modal = screen.getByTestId("modal");
 
     await user.click(button);
 
     // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modal).toHaveClass("side-modal show");
+    expect(dispatch).toHaveBeenCalledOnce();
+    expect(dispatch).toHaveBeenCalledWith({
+      type: "setEditingList",
+      payload: list,
+    });
+
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "list-control" });
   });
 });

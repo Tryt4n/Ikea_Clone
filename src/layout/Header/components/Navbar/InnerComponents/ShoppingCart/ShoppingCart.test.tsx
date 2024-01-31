@@ -1,13 +1,22 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../../../setup-test/test-utils";
 import { ShoppingCart } from "./ShoppingCart";
 import { shoppingCart } from "../../../../../../setup-test/test-constants/shoppingCart";
+import useApp from "../../../../../../hooks/useApp/useApp";
+import { initState } from "../../../../../../context/AppContext/constants/appInitState";
+
+vi.mock("../../../../../../hooks/useApp/useApp");
 
 describe("ShoppingCart", () => {
-  it("should render the ShoppingCart component without badge if shopping cart is empty", () => {
-    // Arrange
-    localStorage.setItem("shoppingCart", JSON.stringify([]));
+  const state = initState;
 
+  beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
+  });
+
+  it("should render the ShoppingCart component without badge if shopping cart does not exist", () => {
     // Act
     render(<ShoppingCart />);
 
@@ -15,7 +24,17 @@ describe("ShoppingCart", () => {
     expect(screen.getByText(/koszyk/i)).toBeInTheDocument();
   });
 
-  it("should render the ShoppingCart component without badge if `shoppingCart` localStorage does not exist", () => {
+  it("should render the ShoppingCart component without badge if shopping cart is empty", () => {
+    // Arrange
+    const state = {
+      ...initState,
+      shoppingCart: [],
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
+
     // Act
     render(<ShoppingCart />);
 
@@ -25,7 +44,14 @@ describe("ShoppingCart", () => {
 
   it("should render the ShoppingCart component without badge if shopping cart has not valid values", () => {
     // Arrange
-    localStorage.setItem("shoppingCart", JSON.stringify([{}, {}]));
+    const state = {
+      ...initState,
+      shoppingCart: [{}, {}],
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<ShoppingCart />);
@@ -36,7 +62,15 @@ describe("ShoppingCart", () => {
 
   it("should render the ShoppingCart component with badge if shopping cart has valid values", () => {
     // Arrange
-    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+    const state = {
+      ...initState,
+      shoppingCart: shoppingCart,
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
+
     const totalQuantity = shoppingCart.reduce(
       (total, product) => (total += product.quantity),
       0,

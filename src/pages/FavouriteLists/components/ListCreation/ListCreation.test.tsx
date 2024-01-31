@@ -1,9 +1,20 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import { ListCreation } from "./ListCreation";
+import useModal from "../../../../hooks/useModal/useModal";
+
+vi.mock("../../../../hooks/useModal/useModal");
 
 describe("ListCreation", () => {
+  const setModalData = vi.fn();
+
+  beforeEach(() => {
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+  });
+
   it("should render a component", () => {
     // Act
     render(<ListCreation />);
@@ -21,17 +32,11 @@ describe("ListCreation", () => {
     // Act
     render(<ListCreation />);
     const button = screen.getByRole("button", { name: "Stwórz listę" });
-    const modal = screen.getByTestId("modal");
 
     await user.click(button);
 
-    const modalHeading = screen.getByRole("heading", {
-      name: "Nadaj swojej liście nazwę",
-      hidden: true,
-    });
-
     // Assert
-    expect(modal).toBeInTheDocument();
-    expect(modalHeading).toBeInTheDocument();
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "create-list" });
   });
 });

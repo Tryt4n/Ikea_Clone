@@ -1,11 +1,29 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "../../../../setup-test/test-utils";
 import NavigationBar from "./NavigationBar";
 import { mainNavigationList } from "../../../../constants/navigationLists";
 import userEvent from "@testing-library/user-event";
 import { shopsList } from "../../../../constants/shopsList";
+import useApp from "../../../../hooks/useApp/useApp";
+import useModal from "../../../../hooks/useModal/useModal";
+import { initState } from "../../../../context/AppContext/constants/appInitState";
+
+vi.mock("../../../../hooks/useApp/useApp");
+vi.mock("../../../../hooks/useModal/useModal");
 
 describe("NavigationBar", () => {
+  const setModalData = vi.fn();
+
+  beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: initState,
+    });
+
+    (useModal as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      setModalData: setModalData,
+    });
+  });
+
   it("should render the NavigationBar component", () => {
     // Act
     render(<NavigationBar />);
@@ -55,14 +73,9 @@ describe("NavigationBar", () => {
     // Act - open modal
     await user.click(productsBtn);
 
-    await screen.findByTestId("menu-modal-header"); // Wait for the modal to be fully visible
-
     // Assert - modal is open
-    expect(modal).toHaveClass("show");
-    expect(modal).toHaveClass("menu-modal");
-    expect(screen.getByTestId("menu-modal-header")).toHaveTextContent(
-      "Produkty",
-    );
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "products-menu" });
   });
 
   it('should open rooms menu modal if "Pomieszczenia" button is clicked', async () => {
@@ -73,7 +86,6 @@ describe("NavigationBar", () => {
     // Act
     render(<NavigationBar />);
 
-    // const modal = screen.getByTestId("modal");
     const modal = screen.queryByTestId("modal");
     const roomsBtn = screen.getByRole("button", { name: "Pomieszczenia" });
 
@@ -83,30 +95,41 @@ describe("NavigationBar", () => {
     // Act - open modal
     await user.click(roomsBtn);
 
-    await screen.findByTestId("menu-modal-header"); // Wait for the modal to be fully visible
-
     // Assert - modal is open
-    expect(modal).toHaveClass("show");
-    expect(modal).toHaveClass("menu-modal");
-    expect(screen.getByTestId("menu-modal-header")).toHaveTextContent(
-      "Pomieszczenia",
-    );
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "rooms-menu" });
   });
 
   it("should change the postal code button text if postal code is set", () => {
     // Arrange
-    localStorage.setItem("postalCode", "12-345");
+    const state = {
+      ...initState,
+      postalCode: "12-345",
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<NavigationBar />);
 
     // Assert
-    expect(screen.getByRole("button", { name: "12-345" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: state.postalCode }),
+    ).toBeInTheDocument();
   });
 
   it("should change the shop button text if shop is chosen", () => {
     // Arrange
-    localStorage.setItem("chosenShop", shopsList[0].name);
+    const state = {
+      ...initState,
+      chosenShop: shopsList[0],
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<NavigationBar />);
@@ -121,7 +144,6 @@ describe("NavigationBar", () => {
     // Act
     render(<NavigationBar />);
 
-    const modal = screen.getByTestId("modal");
     const postalCodeBtn = screen.getByRole("button", {
       name: "Wpisz kod pocztowy",
     });
@@ -129,22 +151,14 @@ describe("NavigationBar", () => {
     await userEvent.click(postalCodeBtn);
 
     // Assert
-    expect(modal).toHaveClass("show");
-    expect(modal).toHaveClass("side-modal");
-    expect(
-      screen.getByRole("heading", {
-        level: 2,
-        name: "Użyj swojej lokalizacji",
-        hidden: true,
-      }),
-    ).toBeInTheDocument();
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "postal-code" });
   });
 
   it("should open choose shop modal if postal chosen shop button is clicked", async () => {
     // Act
     render(<NavigationBar />);
 
-    const modal = screen.getByTestId("modal");
     const postalCodeBtn = screen.getByRole("button", {
       name: "Wybierz sklep",
     });
@@ -152,14 +166,34 @@ describe("NavigationBar", () => {
     await userEvent.click(postalCodeBtn);
 
     // Assert
-    expect(modal).toHaveClass("show");
-    expect(modal).toHaveClass("side-modal");
-    expect(
-      screen.getByRole("heading", {
-        level: 2,
-        name: "Znajdź swój preferowany sklep",
-        hidden: true,
-      }),
-    ).toBeInTheDocument();
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "choose-shop" });
+  });
+
+  it("should open chosen shop modal if postal chosen shop button is clicked", async () => {
+    // Arrange
+    const state = {
+      ...initState,
+      chosenShop: shopsList[0],
+    };
+
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
+
+    const searchedButtonText = shopsList[0].name.replace(/ikea/i, "").trim();
+
+    // Act
+    render(<NavigationBar />);
+
+    const postalCodeBtn = screen.getByRole("button", {
+      name: searchedButtonText,
+    });
+
+    await userEvent.click(postalCodeBtn);
+
+    // Assert
+    expect(setModalData).toHaveBeenCalledOnce();
+    expect(setModalData).toHaveBeenCalledWith({ type: "chosen-shop" });
   });
 });
