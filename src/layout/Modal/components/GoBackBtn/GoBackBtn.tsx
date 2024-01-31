@@ -67,9 +67,6 @@ export default function GoBackBtn({
           break;
 
         case "change-list-name":
-          setModalData({ type: "list-control" });
-          break;
-
         case "delete-list-confirmation":
           setModalData({ type: "list-control" });
           break;

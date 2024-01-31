@@ -127,7 +127,7 @@ describe("ProductPage BuyBlock", () => {
     // Assert
     expect(addToCartBtn).toHaveTextContent(/dodaj do koszyka/i);
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledOnce();
     expect(dispatch).toHaveBeenCalledWith({
       type: "addToShoppingCart",
       payload: [
@@ -151,7 +151,7 @@ describe("ProductPage BuyBlock", () => {
       ],
     });
 
-    expect(setToastData).toBeCalledTimes(1);
+    expect(setToastData).toHaveBeenCalledOnce();
     expect(setToastData).toHaveBeenCalledWith({
       open: true,
       text: `${exampleFetchedProductData.collection} dodano do koszyka.`,
