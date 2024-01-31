@@ -1,6 +1,6 @@
 // Import Context
 import { useContext } from "react";
-import { AccordionContext } from "./AccordionContext";
+import { AccordionContext } from "../context/AccordionContext";
 
 /**
  * Custom React Hook that provides access to the AccordionContext.
