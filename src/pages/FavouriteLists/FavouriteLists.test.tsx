@@ -1,25 +1,47 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "../../../setup-test/test-utils";
-import FavouriteLists from "../FavouriteLists";
-import { exampleList } from "../../../setup-test/test-constants/exampleList";
-import type { FavouritesListType } from "../../../context/AppContext/types/FavouritesListType";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from "../../setup-test/test-utils";
+import FavouriteLists from "./FavouriteLists";
+import { exampleList } from "../../setup-test/test-constants/exampleList";
+import useApp from "../../hooks/useApp/useApp";
+import { initState } from "../../context/AppContext/constants/appInitState";
+
+vi.mock("../../hooks/useApp/useApp");
 
 describe("FavouriteLists", () => {
-  it("should render a component", () => {
+  const state = initState;
+
+  beforeEach(() => {
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
+  });
+
+  it("should render a component without any lists if they do not exist", () => {
     // Act
     render(<FavouriteLists />);
 
     const component = screen.getByRole("article").parentElement;
+    const articles = screen.getAllByRole("article");
+    const mainArticleHeading = screen.getByRole("heading", {
+      name: /wiele list, jeden dom/i,
+    });
 
     // Assert
     expect(component).toBeInTheDocument();
+    expect(articles).toHaveLength(1);
+    expect(mainArticleHeading).toBeInTheDocument();
   });
 
-  it("should render a component without any lists if they do not exist", () => {
+  it("should render a component without any lists if there is no one list", () => {
     // Arrange
-    const lists: FavouritesListType[] = [];
+    const state = {
+      ...initState,
+      favouriteLists: [],
+    };
 
-    localStorage.setItem("favouriteLists", JSON.stringify(lists));
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<FavouriteLists />);
@@ -36,9 +58,14 @@ describe("FavouriteLists", () => {
 
   it("should render a component only with main lists if lists has only one list", () => {
     // Arrange
-    const lists: FavouritesListType[] = [exampleList];
+    const state = {
+      ...initState,
+      favouriteLists: [exampleList],
+    };
 
-    localStorage.setItem("favouriteLists", JSON.stringify(lists));
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<FavouriteLists />);
@@ -57,7 +84,7 @@ describe("FavouriteLists", () => {
 
   it("should render a component with other lists", () => {
     // Arrange
-    const lists: FavouritesListType[] = [
+    const lists = [
       {
         ...exampleList,
         id: "1",
@@ -72,7 +99,13 @@ describe("FavouriteLists", () => {
       },
     ];
 
-    localStorage.setItem("favouriteLists", JSON.stringify(lists));
+    const state = {
+      ...initState,
+      favouriteLists: lists,
+    };
+    (useApp as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
+      state: state,
+    });
 
     // Act
     render(<FavouriteLists />);
@@ -80,11 +113,10 @@ describe("FavouriteLists", () => {
     const mainArticleHeading = screen.getByRole("heading", {
       name: /wiele list, jeden dom/i,
     });
-    // const mainList = screen.getByTestId("favourite-list");
     const listElements = screen.getAllByTestId("favourite-list");
 
     // Assert
     expect(mainArticleHeading).toBeInTheDocument();
-    expect(listElements).toHaveLength(lists.length);
+    expect(listElements).toHaveLength(state.favouriteLists.length);
   });
 });
