@@ -36,7 +36,6 @@ describe("Navbar", () => {
     render(<Navbar />);
 
     const searchBar = screen.getByRole("searchbox");
-    screen.debug();
 
     // Assert
     expect(searchBar).toBeInTheDocument();
