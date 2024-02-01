@@ -5,7 +5,7 @@ export const exampleFetchedProductData: ProductDataType = {
   name: "product-name",
   nameToDisplay: "name to display",
   productNumber: "111111111",
-  size: "120x42x74 cm",
+  size: "100x100 cm",
   price: {
     integer: 14,
     decimal: 99,
@@ -28,8 +28,9 @@ export const exampleFetchedProductData: ProductDataType = {
       "variant-3": "333333333",
     },
     sizes: {
-      "100x100": "55555555",
-      "200x200": "666666666",
+      "100x100 cm": "111111111",
+      "200x200 cm": "444444444",
+      "300x300 cm": "555555555",
     },
   },
   description:
