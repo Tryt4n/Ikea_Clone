@@ -133,7 +133,10 @@ export default function ImageWithProducts({
       {
         // If the window width is less than 1000px or the height is less than 700px and the instagram user exists, display the instagram user
         (width < 1000 || height < 700) && productsData.instagramUser && (
-          <div className="image-with-products-modal__instagram-nick-mobile">
+          <div
+            className="image-with-products-modal__instagram-nick-mobile"
+            data-testid="image-with-products-modal-instagram-user"
+          >
             <InstagramIcon />
             <span>{productsData.instagramUser}</span>
           </div>
@@ -166,7 +169,10 @@ export default function ImageWithProducts({
           )
         }
 
-        <ul className="image-with-products-modal__products-list">
+        <ul
+          className="image-with-products-modal__products-list"
+          data-testid="image-with-products-modal-list"
+        >
           {
             // Map through the products data and display each product
             productsData.products.map((product: extendedProductType) => (
