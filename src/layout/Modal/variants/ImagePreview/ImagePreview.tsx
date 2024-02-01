@@ -120,6 +120,7 @@ function Video({ src }: { src: string }) {
       controlsList="nodownload" // Disable the download button.
       preload="auto" // Preload the video.
       disablePictureInPicture // Disable the picture-in-picture mode.
+      data-testid="image-preview-video" // Set the data-testid attribute for testing.
     />
   );
 }
