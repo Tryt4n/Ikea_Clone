@@ -23,7 +23,7 @@ import {
   updateShoppingCart,
 } from "./helpers";
 // Utils
-import { areDatesEqual } from "../../../setup-test/test-utils";
+import { isSimilarDate } from "../../../setup-test/test-utils";
 // Types
 import type { FavouritesListType } from "../types/FavouritesListType";
 import type { ShoppingCartType } from "../types/ShoppingCartType";
@@ -417,7 +417,7 @@ describe("AppContext reducer helper functions", () => {
       updateLastEditDate(list as FavouritesListType);
 
       // Assert
-      expect(areDatesEqual(list.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(list.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should set the last edit date to the current date if the list does not have a last edit date", () => {
@@ -433,7 +433,7 @@ describe("AppContext reducer helper functions", () => {
       updateLastEditDate(list);
 
       // Assert
-      expect(areDatesEqual(list.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(list.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should handle empty list input without throwing errors", () => {
@@ -571,7 +571,7 @@ describe("AppContext reducer helper functions", () => {
 
       // Assert
       expect(newList.id).toBeDefined();
-      expect(areDatesEqual(newList.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(newList.lastEdit, currentDate)).toBeTruthy();
       expect(newList.name).toEqual("Moja lista");
       expect(newList.products).toEqual([
         { ...product, addedDate: currentDate },
@@ -588,7 +588,7 @@ describe("AppContext reducer helper functions", () => {
 
       // Expect
       expect(newList.id).toEqual(listId);
-      expect(areDatesEqual(newList.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(newList.lastEdit, currentDate)).toBeTruthy();
       expect(newList.name).toEqual("Moja lista");
       expect(newList.products).toEqual([
         { ...product, addedDate: currentDate },
@@ -1027,9 +1027,9 @@ describe("AppContext reducer helper functions", () => {
       expect(updatedList.products).toHaveLength(1);
       expect(updatedList.products![0].productNumber).toBe(1);
       expect(
-        areDatesEqual(updatedList.products![0].addedDate, currentDate),
-      ).toBe(true);
-      expect(areDatesEqual(updatedList.lastEdit, currentDate)).toBe(true);
+        isSimilarDate(updatedList.products![0].addedDate, currentDate),
+      ).toBeTruthy();
+      expect(isSimilarDate(updatedList.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should add new product to list with added date and update last edit date when product does not exist in list", () => {
@@ -1064,9 +1064,9 @@ describe("AppContext reducer helper functions", () => {
       expect(updatedList.products![1].productNumber).toBe(2);
 
       expect(
-        areDatesEqual(updatedList.products![1].addedDate, currentDate),
-      ).toBe(true);
-      expect(areDatesEqual(updatedList.lastEdit, currentDate)).toBe(true);
+        isSimilarDate(updatedList.products![1].addedDate, currentDate),
+      ).toBeTruthy();
+      expect(isSimilarDate(updatedList.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should increase quantity of existing product and update last edit date when product already exists in list", () => {
@@ -1099,7 +1099,7 @@ describe("AppContext reducer helper functions", () => {
       // Assert
       expect(updatedList.products).toHaveLength(1);
       expect(updatedList.products![0].quantity).toBe(3);
-      expect(areDatesEqual(updatedList.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(updatedList.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should not add any products and update last edit date when list and products are empty", () => {
@@ -1117,7 +1117,7 @@ describe("AppContext reducer helper functions", () => {
 
       // Assert
       expect(updatedList.products).toHaveLength(0);
-      expect(areDatesEqual(updatedList.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(updatedList.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should not add any products and update last edit date when products array is empty", () => {
@@ -1143,7 +1143,7 @@ describe("AppContext reducer helper functions", () => {
 
       // Assert
       expect(updatedList.products).toHaveLength(1);
-      expect(areDatesEqual(updatedList.lastEdit, currentDate)).toBe(true);
+      expect(isSimilarDate(updatedList.lastEdit, currentDate)).toBeTruthy();
     });
 
     it("should add products to list even if `products` property does not exist on the list", () => {

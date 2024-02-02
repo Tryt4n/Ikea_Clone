@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { reducer } from "./reducer";
 // Utils
-import { areDatesEqual } from "../../../setup-test/test-utils";
+import { isSimilarDate } from "../../../setup-test/test-utils";
 // Constants
 import { initState } from "../constants/appInitState";
 import { shopsList } from "../../../constants/shopsList";
@@ -477,8 +477,8 @@ describe("#reducer App Context function", () => {
       // Assert
       expect(newState.favouriteLists[0].name).toBe(newName);
       expect(
-        areDatesEqual(newState.favouriteLists[0].lastEdit, currentDate),
-      ).toBe(true);
+        isSimilarDate(newState.favouriteLists[0].lastEdit, currentDate),
+      ).toBeTruthy();
     });
 
     it("if list does not exist do nothing", () => {
