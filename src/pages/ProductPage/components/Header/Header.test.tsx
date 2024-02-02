@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "../../../../setup-test/test-utils";
+import {
+  isSimilarDate,
+  render,
+  screen,
+} from "../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import useApp from "../../../../hooks/useApp/useApp";
 import useModal from "../../../../hooks/useModal/useModal";
@@ -56,7 +60,7 @@ describe("ProductPage Header", () => {
       "",
     )}`, // Replace all dots in the `productNumber` with empty strings.
     newTag: exampleFetchedProductData.newTag,
-    addedDate: currentDate,
+    addedDate: expect.any(Date),
     rating: exampleFetchedProductData.rating,
   };
 
@@ -80,6 +84,13 @@ describe("ProductPage Header", () => {
         products: [expectedProduct],
       },
     });
+    const dispatchedAction = dispatch.mock.calls[0][0];
+    expect(
+      isSimilarDate(
+        dispatchedAction.payload.products[0].addedDate,
+        currentDate,
+      ),
+    ).toBeTruthy();
 
     expect(setToastData).toHaveBeenCalledOnce();
     expect(setToastData).toHaveBeenCalledWith({

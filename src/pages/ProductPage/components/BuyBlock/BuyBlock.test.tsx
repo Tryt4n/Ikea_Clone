@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "../../../../setup-test/test-utils";
+import {
+  isSimilarDate,
+  render,
+  screen,
+} from "../../../../setup-test/test-utils";
 import userEvent from "@testing-library/user-event";
 import BuyBlock from "./BuyBlock";
 import { exampleFetchedProductData } from "../../../../setup-test/test-constants/exampleFetchedProductData";
@@ -145,11 +149,15 @@ describe("ProductPage BuyBlock", () => {
           images: exampleFetchedProductData.images,
           productLink: `/products/${path.collection}/${path.product}/${path.type}/${path.productID}`,
           newTag: exampleFetchedProductData.newTag,
-          addedDate: currentDate,
+          addedDate: expect.any(Date),
           rating: exampleFetchedProductData.rating,
         },
       ],
     });
+    const dispatchedAction = dispatch.mock.calls[0][0];
+    expect(
+      isSimilarDate(dispatchedAction.payload[0].addedDate, currentDate),
+    ).toBeTruthy();
 
     expect(setToastData).toHaveBeenCalledOnce();
     expect(setToastData).toHaveBeenCalledWith({
