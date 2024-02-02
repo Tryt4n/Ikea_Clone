@@ -92,6 +92,7 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
                 type="button"
                 className="preffered-shop__list-item-btn"
                 onClick={() => selectShop(shop)} // Pass the selected shop to the selectShop function
+                data-testid="modal-shop-list-item-btn"
               >
                 <div className="preffered-shop__list-item-text-wrapper">
                   <strong>{shop.name}</strong>
