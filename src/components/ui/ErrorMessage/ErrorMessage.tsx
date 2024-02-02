@@ -30,6 +30,7 @@ export default function ErrorMessage({
     <small
       id={id}
       className="error-message"
+      role="alert"
       aria-hidden={errorVisibility}
       {...props}
     >
