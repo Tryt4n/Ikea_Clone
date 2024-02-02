@@ -12,7 +12,7 @@ import "./index.scss";
 
 export default function NextStep() {
   return (
-    <div className="next-step">
+    <div className="next-step" data-testid="modal-next-step">
       <strong className="next-step__list-heading">Dołącz już dziś</strong>
       <ul className="next-step__list">
         <li>Oszczędzaj z kartą IKEA Family</li>
