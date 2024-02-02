@@ -41,7 +41,7 @@ describe("ClubInfoDiscount", () => {
     // Assert
     expect(savingsText).toBeInTheDocument();
     expect(savingsText).toHaveTextContent(`${text} ${formattedPrice}`);
-    expect(formattedPrice.endsWith(",-")).toBe(true);
+    expect(formattedPrice.endsWith(",-")).toBeTruthy();
   });
 
   it("should render a text with information about the savings available to IKEA Family Club members in proper format when savings are not integer", () => {
