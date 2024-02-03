@@ -86,6 +86,7 @@ export default function SelectList() {
     <Element
       className="select-list-modal"
       onSubmit={Element === "form" ? (e) => e.preventDefault() : undefined} // Prevent form submission if the product is already in any list
+      data-testid="select-list-modal"
     >
       {modalData &&
         (modalData.type === "move-to-other-list" ||

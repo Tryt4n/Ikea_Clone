@@ -215,7 +215,10 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
                     list.products &&
                     list.products.length === 0 &&
                     isProductAlreadyInAnyList && (
-                      <div className="select-list-modal__list-item-img">
+                      <div
+                        className="select-list-modal__list-item-img"
+                        data-testid="modal-list-no-image"
+                      >
                         <NoImageIcon />
                       </div>
                     )
