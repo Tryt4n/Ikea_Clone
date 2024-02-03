@@ -104,8 +104,6 @@ describe("PostalCode Modal variant", () => {
     // Act
     render(<PostalCode modalType="postal-code" />);
 
-    screen.debug();
-
     const input = screen.getByRole("textbox");
     const button = screen.getByRole("button", {
       name: /nie wykorzystuj kodu pocztowego/i,
