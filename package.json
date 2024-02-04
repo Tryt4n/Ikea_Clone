@@ -11,7 +11,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "coverage": "vitest run --coverage",
-    "prettier": "prettier --write ."
+    "cypress:open": "cypress open",
+    "prettier": "prettier --write .",
+    "startServer": "serve"
   },
   "dependencies": {
     "date-fns": "^2.30.0",
@@ -30,6 +32,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "@vitest/coverage-v8": "^1.2.0",
+    "cypress": "^13.6.4",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest-dom": "^5.1.0",
