@@ -75,6 +75,8 @@ function InnerComponent(
       label="Zapamiętaj mój kod pocztowy do dostawy oraz informacji o dostępności i stanie magazynowym."
       labelProps={{
         onClick: inputOnChangeFunction, // The function to call when the label is clicked.
+        // @ts-expect-error - only for testing
+        "data-testid": "postal-code-checkbox-label",
       }}
       inputProps={{
         ref: ref, // The ref that is forwarded to the checkbox.
@@ -82,6 +84,8 @@ function InnerComponent(
         onChange: inputOnChangeFunction, // The function to call when the status of the checkbox changes.
         onKeyDown: inputOnKeyDownFunction, // The function to call when a key is pressed down in the checkbox.
         ...props, // The additional attributes of the checkbox.
+        // @ts-expect-error - only for testing
+        "data-testid": "postal-code-checkbox",
       }}
     />
   );

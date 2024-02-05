@@ -84,6 +84,7 @@ export default function SideModalLayout({ data }: SideModalLayoutTypeProps) {
                 className="side-modal__close-btn"
                 type="button"
                 onClick={closeModal} // Close the modal on click
+                data-testid="side-modal-close-btn"
               >
                 {/* Text is visually hidden but it is still available for screen readers and SEO purposes */}
                 <span className="visually-hidden">Zamknij</span>

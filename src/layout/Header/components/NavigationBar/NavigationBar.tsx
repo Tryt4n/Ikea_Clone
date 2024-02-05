@@ -101,6 +101,7 @@ export default function NavigationBar() {
         <button
           className="navigation-bar__btn-wrapper"
           onClick={() => openModalByType({ type: "postal-code" })} // Open the postal code modal on click
+          data-testid="postal-code-btn"
         >
           <TruckIcon />
           {/* If the postal code is set, render it, otherwise render a placeholder */}
@@ -118,6 +119,7 @@ export default function NavigationBar() {
                 : { type: "choose-shop" },
             )
           } // If the shop is chosen, open the chosen shop modal, otherwise open the choose shop modal
+          data-testid="choose-shop-btn"
         >
           <ShopIcon />
           {/* If the shop is chosen, render its name, otherwise render a placeholder */}

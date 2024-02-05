@@ -54,6 +54,7 @@ export default function MenuLayout({ data }: MenuLayoutTypePropsType) {
               variant="light"
               shape="circle"
               onClick={closeModal} // The function to call when the close button is clicked.
+              data-testid="menu-modal-close-btn"
             >
               <CloseIcon />
               {/* visually-hidden is a class that hides the text but keeps it accessible for screen readers and SEO purposes. */}
@@ -138,6 +139,7 @@ function ModalInnerWrapper({ title, children }: ModalInnerWrapperPropsType) {
         shape="circle"
         className="menu-modal__go-back-btn"
         onClick={goBack} // The function to call when the go back button is clicked.
+        data-testid="menu-modal-go-back-btn"
       >
         {/* visually-hidden is a class that hides the text but keeps it accessible for screen readers and SEO purposes. */}
         <span className="visually-hidden">Wstecz</span>

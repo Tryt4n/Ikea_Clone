@@ -55,6 +55,7 @@ export default function LoginBtn({
       onClick={openLoginModal} // Set the onClick handler to open the login modal
       className={`login-btn${className ? ` ${className}` : ""}`} // Construct the className from the "login-btn" class and any additional classes
       {...props} // Spread the rest of the props
+      data-testid="login-btn"
     >
       <AvatarIcon />
 

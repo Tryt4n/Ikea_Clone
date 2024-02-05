@@ -57,6 +57,7 @@ function InnerComponent(
         type="text"
         id="postal-code"
         label="Wprowadź kod pocztowy"
+        data-testid="postal-code-input"
         inputProps={{
           ref: ref, // The ref that is forwarded to the input field.
           className: "postal-code-input__input",
@@ -64,6 +65,8 @@ function InnerComponent(
           autoComplete: "off", // Disable autocomplete to prevent the browser from suggesting values based on earlier submitted values.
           pattern: `\\d{2}-\\d{3}`, // The pattern for the postal code.
           title: "Wprowadź poprawny kod pocztowy (np. 12-345)", // The title of the input field for error info in case the postal code is invalid.
+          // @ts-expect-error - data-testid is not a standard attribute
+          "data-testid": "postal-code-input",
           "aria-describedby": !postalCodeErrorMessage
             ? "postal-code-example"
             : undefined, // The id of the element that describes the input field.
@@ -83,6 +86,7 @@ function InnerComponent(
           id="postal-code-example"
           className="postal-code-input__example tx-gray"
           aria-hidden={isPostalCodeErrorMessageVisible}
+          data-testid="postal-code-info"
         >
           np. 12-345
         </small>
@@ -94,6 +98,7 @@ function InnerComponent(
           id="postal-code-errormessage"
           errorMessage={postalCodeErrorMessage}
           errorVisibility={!isPostalCodeErrorMessageVisible}
+          data-testid="postal-code-error"
         />
       )}
     </div>

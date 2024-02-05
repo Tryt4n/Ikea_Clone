@@ -43,6 +43,8 @@ export default function PrefferedShop() {
         inputProps={{
           onChange: handleSearchChange, // Handle search term change
           "aria-label": "Wpisz wyszukiwane miasto",
+          // @ts-expect-error - only for testing
+          "data-testid": "modal-shop-search-input",
         }}
       />
       <LocationBtn className="preffered-shop__location-btn" />
@@ -85,7 +87,7 @@ function ShopsList({ searchTerm }: { searchTerm: string }) {
     <>
       {/* If there are filtered shops, display them in a list */}
       {filteredShops.length > 0 ? (
-        <ul>
+        <ul data-testid="modal-preffered-shops-list">
           {filteredShops.map((shop) => (
             <li key={shop.name} className="preffered-shop__list-item">
               <button
