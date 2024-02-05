@@ -71,7 +71,7 @@ export function ToastContextProvider({ children }: { children: ReactNode }) {
 
   // Use an effect to close the toast after 7.5 seconds if it's open
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
 
     if (initToast) {
       timer = setTimeout(() => {
