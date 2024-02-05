@@ -16,6 +16,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended", // The recommended configuration of TypeScript-specific rules from the @typescript-eslint plugin
     "plugin:react-hooks/recommended", // The recommended configuration of rules related to React Hooks from the react-hooks plugin
     "plugin:jest-dom/recommended", // The recommended configuration of rules related to jest-dom from the jest-dom plugin
+    "plugin:cypress/recommended", // The recommended configuration of rules related to Cypress from the cypress plugin
     "plugin:prettier/recommended", // The recommended configuration of rules from the prettier plugin //! This should be the last configuration in the "extends" array so it gets the chance to override other configurations
   ],
 
@@ -26,7 +27,7 @@ module.exports = {
   parser: "@typescript-eslint/parser", // The parser from the @typescript-eslint plugin that converts TypeScript code into an abstract syntax tree that ESLint can understand
 
   // The "plugins" option specifies a list of plugins that ESLint should use
-  plugins: ["react-refresh", "@typescript-eslint", "prettier"],
+  plugins: ["react-refresh", "@typescript-eslint", "prettier", "cypress"],
 
   // The "rules" option specifies a list of rules that ESLint should enforce
   rules: {
