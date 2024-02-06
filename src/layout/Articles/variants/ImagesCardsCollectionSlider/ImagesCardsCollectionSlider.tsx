@@ -75,6 +75,7 @@ export default function ImageCardsCollectionSlider({
           },
         }} // Set breakpoints for different screen widths
         className={`mySwiper-${id}`}
+        data-testid={`image-cards-collection-slider-${id}`}
       >
         {/* Map through the cards array and render an ImageCardCollection component for each card */}
         {cards.map((card) => (

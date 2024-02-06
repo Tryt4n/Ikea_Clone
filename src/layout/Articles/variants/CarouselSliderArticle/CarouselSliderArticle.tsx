@@ -95,6 +95,7 @@ export default function CarouselSliderArticle({
         modules={[Navigation, Scrollbar, Keyboard, FreeMode, A11y]} // Import SwiperJS modules
         breakpoints={breakpoints} // Set breakpoints for different screen widths
         className={`mySwiper-${article.id}`}
+        data-testid={`carousel-slider-${article.id}`}
       >
         {/* Map through the slides array and render a SwiperSlide component for each slide */}
         {article.slides.map((slide: SlideType) => {
