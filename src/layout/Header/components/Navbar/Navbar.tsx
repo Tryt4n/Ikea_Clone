@@ -107,7 +107,11 @@ export default function Navbar() {
       <div className={navbarInnerClasses} data-testid="navbar-wrapper">
         <div className="navbar__inner-container">
           <div className="navbar__logo logo">
-            <a href="/" aria-label="Idź na stronę główną.">
+            <a
+              href="/"
+              aria-label="Idź na stronę główną."
+              data-testid="home-page-link"
+            >
               <IkeaLogo />
               {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Strona głowna</span>
@@ -134,7 +138,11 @@ export default function Navbar() {
               />
             </ListElement>
 
-            <ListElement as="link" href="/favourites">
+            <ListElement
+              as="link"
+              href="/favourites"
+              data-testid="lists-page-link"
+            >
               <HeartIcon />
               {/* The `visually-hidden` class is used to hide the text from the screen, but it is still available to screen readers */}
               <span className="visually-hidden">Lista zakupowa</span>
@@ -144,6 +152,7 @@ export default function Navbar() {
               as="link"
               href="/shoppingcart"
               className="navbar__shopping-cart"
+              data-testid="shopping-cart-link"
             >
               <ShoppingCart />
             </ListElement>
