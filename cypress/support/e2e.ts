@@ -18,3 +18,20 @@ import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(() => {
+  localStorage.clear();
+
+  cy.intercept(
+    "GET",
+    "https://tryt4n.github.io/Ikea-data/server/pages/homePage.json",
+    { fixture: "homePage.json" },
+  ).as("getHomePage");
+
+  cy.visit("/");
+  cy.wait("@getHomePage");
+});
+
+afterEach(() => {
+  localStorage.clear();
+});
