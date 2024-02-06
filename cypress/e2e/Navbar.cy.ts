@@ -1,6 +1,6 @@
 import { shopsList } from "../../src/constants/shopsList";
 
-describe("template spec", () => {
+describe("Navbar", () => {
   beforeEach(() => {
     localStorage.clear();
 
@@ -24,15 +24,14 @@ describe("template spec", () => {
 
   it("open menu modal", () => {
     cy.get('button[aria-label="Otwórz Menu"]').click();
-    cy.get("@modal").should("be.visible");
-    cy.get("@modal").should("have.class", "show");
-    cy.get("@modal").should("have.class", "menu-modal");
+    cy.get("@modal")
+      .should("be.visible")
+      .and("have.class", "show")
+      .and("have.class", "menu-modal");
 
     cy.get("@modal").within(() => {
       cy.get("nav").should("have.class", "main-menu");
-    });
 
-    cy.get("@modal").within(() => {
       cy.contains("Produkty").click();
       cy.get("nav").should("have.class", "products-menu");
     });
@@ -44,8 +43,7 @@ describe("template spec", () => {
     });
 
     cy.get("@modal").type("{esc}");
-    cy.get("@modal").should("not.be.visible");
-    cy.get("@modal").should("not.have.class", "show");
+    cy.get("@modal").should("not.be.visible").and("not.have.class", "show");
 
     cy.get("button").contains("Pomieszczenia").click();
     cy.get("@modal").should("be.visible");
@@ -57,10 +55,11 @@ describe("template spec", () => {
   it("open login modal", () => {
     cy.get("[data-testid=login-btn]").click();
 
-    cy.get("@modal").should("be.visible");
-    cy.get("@modal").should("have.class", "show");
-    cy.get("@modal").should("have.class", "side-modal");
-    cy.get("@modal").should("contain", "Zaloguj się");
+    cy.get("@modal")
+      .should("be.visible")
+      .and("have.class", "show")
+      .and("have.class", "side-modal")
+      .and("contain", "Zaloguj się");
 
     cy.get("[data-testid=side-modal-close-btn]").click();
     cy.get("@modal").should("not.be.visible");
@@ -70,16 +69,17 @@ describe("template spec", () => {
     cy.get("[data-testid=postal-code-btn]").as("postalCodeBtn");
 
     cy.get("@postalCodeBtn").click();
-    cy.get("@modal").should("be.visible");
-    cy.get("@modal").should("have.class", "show");
-    cy.get("@modal").should("have.class", "side-modal");
-    cy.get("@modal").should("contain", "Użyj swojej lokalizacji");
+    cy.get("@modal")
+      .should("be.visible")
+      .and("have.class", "show")
+      .and("have.class", "side-modal")
+      .and("contain", "Użyj swojej lokalizacji");
 
     cy.get("[data-testid=postal-code-input]").as("postalCodeInput");
     cy.get("[data-testid=postal-code-info]").as("postalCodeInfo");
-    cy.get("@postalCodeInfo").should("exist");
-
     cy.get("button").contains("Zapisz").as("saveBtn");
+
+    cy.get("@postalCodeInfo").should("exist");
     cy.get("@saveBtn").click();
     cy.get("[data-testid=postal-code-error]").as("postalCodeError");
     cy.get("@postalCodeError").contains(/wprowadź kod pocztowy/i);
@@ -99,11 +99,9 @@ describe("template spec", () => {
     cy.get("@saveBtn").click();
     cy.get("@modal").should("not.be.visible");
     cy.get("@postalCodeBtn").should("contain.text", "12-345");
-    cy.get("@toast").should("be.visible");
-    cy.get("@toast").should(
-      "contain.text",
-      "Wybrany przez ciebie kod pocztowy to: 12-345",
-    );
+    cy.get("@toast")
+      .should("be.visible")
+      .and("contain.text", "Wybrany przez ciebie kod pocztowy to: 12-345");
     cy.get("@toast").within(() => {
       cy.get("button").click();
     });
@@ -136,10 +134,11 @@ describe("template spec", () => {
     cy.get("[data-testid=choose-shop-btn]").as("chooseShopBtn");
 
     cy.get("@chooseShopBtn").click();
-    cy.get("@modal").should("be.visible");
-    cy.get("@modal").should("have.class", "show");
-    cy.get("@modal").should("have.class", "side-modal");
-    cy.get("@modal").should("contain", "Znajdź swój preferowany sklep");
+    cy.get("@modal")
+      .should("be.visible")
+      .and("have.class", "show")
+      .and("have.class", "side-modal")
+      .and("contain", "Znajdź swój preferowany sklep");
 
     cy.get("[data-testid=postal-code-input]").as("postalCodeInput");
     cy.get("[data-testid=postal-code-checkbox]").as("postalCodeCheckbox");
@@ -155,11 +154,9 @@ describe("template spec", () => {
     cy.get("button").contains("Znajdź preferowany sklep").click();
     cy.get("@postalCodeCheckbox").should("be.checked");
 
-    cy.get("@toast").should("be.visible");
-    cy.get("@toast").should(
-      "contain.text",
-      "Wybrany przez ciebie kod pocztowy to: 12-345",
-    );
+    cy.get("@toast")
+      .should("be.visible")
+      .and("contain.text", "Wybrany przez ciebie kod pocztowy to: 12-345");
     cy.get("@toast").within(() => {
       cy.get("button").click();
     });
@@ -188,8 +185,7 @@ describe("template spec", () => {
 
     cy.get("@shopSearchInput").clear();
     cy.get("@shopSearchInput").type("bydgoszcz");
-    cy.get("@shopsList").find("li").should("have.length", 1);
-    cy.get("@shopsList").find("li").click();
+    cy.get("@shopsList").find("li").should("have.length", 1).click();
     cy.get("@modal").should("contain", "IKEA Bydgoszcz");
     cy.get("[data-testid=side-modal-close-btn]").click();
     cy.get("@modal").should("not.be.visible");
@@ -199,5 +195,26 @@ describe("template spec", () => {
       .then((text) => {
         expect(text.trim()).to.equal("Bydgoszcz");
       });
+  });
+
+  it("should properly navigate through pages", () => {
+    cy.get("[data-testid=home-page-link]").as("homePageLink");
+    cy.get("[data-testid=lists-page-link]").as("listsLink");
+    cy.get("[data-testid=shopping-cart-link]").as("cartLink");
+
+    cy.get("@listsLink").click();
+    cy.url().should((url) => {
+      expect(url).to.eq(Cypress.config().baseUrl + "/favourites");
+    });
+
+    cy.get("@cartLink").click();
+    cy.url().should((url) => {
+      expect(url).to.eq(Cypress.config().baseUrl + "/shoppingcart");
+    });
+
+    cy.get("@homePageLink").click();
+    cy.url().should((url) => {
+      expect(url).to.eq(Cypress.config().baseUrl + "/");
+    });
   });
 });
