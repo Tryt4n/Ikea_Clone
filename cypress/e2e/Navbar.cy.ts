@@ -2,24 +2,10 @@ import { shopsList } from "../../src/constants/shopsList";
 
 describe("Navbar", () => {
   beforeEach(() => {
-    localStorage.clear();
-
-    cy.intercept(
-      "GET",
-      "https://tryt4n.github.io/Ikea-data/server/pages/homePage.json",
-      { fixture: "homePage.json" },
-    ).as("getHomePage");
-
-    cy.visit("/");
-    cy.wait("@getHomePage");
     cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");
-  });
-
-  afterEach(() => {
-    localStorage.clear();
   });
 
   it("open menu modal", () => {
