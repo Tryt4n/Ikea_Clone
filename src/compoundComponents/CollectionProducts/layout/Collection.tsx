@@ -41,6 +41,7 @@ export default function Collection({
       <ul
         className={`collection-list${showOnlyOnHover ? ` show-only-on-hover` : ""}`}
         aria-label="Produkty ze zdjęcia"
+        data-testid="collection-list"
       >
         {children}
       </ul>
