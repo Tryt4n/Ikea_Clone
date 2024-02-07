@@ -49,6 +49,7 @@ export function ShowMoreImagesBtn({
         variant="light-with-border"
         className="product-image-gallery__show-more-btn"
         onClick={handleShowMoreClick}
+        data-testid="toggle-show-more-images-btn"
       >
         {visibleImages === Object.keys(images).length
           ? "Pokaż mniej"
