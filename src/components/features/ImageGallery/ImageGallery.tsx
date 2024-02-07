@@ -30,7 +30,9 @@ export default function ImageGallery({
   data,
   onHoverStatus,
 }: ImageGalleryPropsType) {
-  const [countOfVisibleImages, setCountOfVisibleImages] = useState(6); // State for the count of visible images
+  const initialCount = 6; // Initial count of visible images
+  const [countOfVisibleImages, setCountOfVisibleImages] =
+    useState(initialCount); // State for the count of visible images
 
   const { width } = useWindowSize(); // Get the window width
 
@@ -48,7 +50,7 @@ export default function ImageGallery({
 
   // Define a function to show more images
   function showMoreImages() {
-    setCountOfVisibleImages((prevState) => prevState + 6);
+    setCountOfVisibleImages((prevState) => prevState + initialCount);
   }
 
   return (
@@ -75,8 +77,9 @@ export default function ImageGallery({
         <Btn
           onClick={showMoreImages}
           disabled={countOfVisibleImages >= shuffledData.length}
+          data-testid="show-more-images-in-gallery-btn"
         >
-          Pokaż {countOfVisibleImages} kolejnych inspiracji
+          Pokaż {initialCount} kolejnych inspiracji
         </Btn>
       </div>
     </div>
