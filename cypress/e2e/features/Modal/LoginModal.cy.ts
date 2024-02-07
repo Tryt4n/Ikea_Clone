@@ -1,6 +1,11 @@
 describe("Login modal", () => {
-  it("open login modal", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.wait("@getHomePage");
     cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+  });
+
+  it("open login modal", () => {
     cy.get("[data-testid=modal]").as("modal");
 
     cy.get("[data-testid=login-btn]").click();

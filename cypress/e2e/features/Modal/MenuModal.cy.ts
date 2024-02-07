@@ -1,6 +1,11 @@
 describe("Menu modal", () => {
-  it("open menu modal on menu button click", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.wait("@getHomePage");
     cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+  });
+
+  it("open menu modal on menu button click", () => {
     cy.get("[data-testid=modal]").as("modal");
 
     cy.get('button[aria-label="Otwórz Menu"]').click();
@@ -30,7 +35,6 @@ describe("Menu modal", () => {
   });
 
   it(`open menu modal on navigation "Produkty" button click`, () => {
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.get("[data-testid=modal]").as("modal");
 
     cy.get("button").contains("Produkty").click();
@@ -46,7 +50,6 @@ describe("Menu modal", () => {
   });
 
   it(`open menu modal on navigation "Pomieszczenia" button click`, () => {
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.get("[data-testid=modal]").as("modal");
 
     cy.get("button").contains("Pomieszczenia").click();

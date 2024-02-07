@@ -1,6 +1,11 @@
 describe("Postal Code modal", () => {
-  it("open postal code modal", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.wait("@getHomePage");
     cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+  });
+
+  it("open postal code modal", () => {
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");
 

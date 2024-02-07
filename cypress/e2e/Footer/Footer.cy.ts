@@ -1,6 +1,11 @@
 import { footerLists } from "../../../src/constants/footerLists";
 
 describe("Footer", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.wait("@getHomePage");
+  });
+
   it("should properly handle accordions on mobile view", () => {
     cy.viewport(899, 1400);
 
@@ -14,8 +19,8 @@ describe("Footer", () => {
       cy.get("[role=region]").as("accordionsContent");
     });
 
-    cy.get("@accordionsContent").each((accordion) => {
-      cy.wrap(accordion).should("not.be.visible");
+    cy.get("@accordionsContent").each(($accordion) => {
+      cy.wrap($accordion).should("not.be.visible");
     });
 
     cy.get("@accordionsContainer").children().first().as("firstAccordion");
@@ -58,9 +63,9 @@ describe("Footer", () => {
         "true",
       );
       cy.get("@secondAccordionButton").should("be.visible");
-      cy.get("@accordionsContent").each((accordion, index) => {
+      cy.get("@accordionsContent").each(($accordion, index) => {
         if (index !== 1) {
-          cy.wrap(accordion).should("not.be.visible");
+          cy.wrap($accordion).should("not.be.visible");
         }
       });
 
@@ -72,8 +77,8 @@ describe("Footer", () => {
         "false",
       );
     });
-    cy.get("@accordionsContent").each((accordion) => {
-      cy.wrap(accordion).should("not.be.visible");
+    cy.get("@accordionsContent").each(($accordion) => {
+      cy.wrap($accordion).should("not.be.visible");
     });
   });
 });

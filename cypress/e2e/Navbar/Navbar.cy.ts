@@ -1,4 +1,9 @@
 describe("Navbar", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.wait("@getHomePage");
+  });
+
   it("should properly navigate through pages", () => {
     cy.get("[data-testid=home-page-link]").as("homePageLink");
     cy.get("[data-testid=lists-page-link]").as("listsLink");
