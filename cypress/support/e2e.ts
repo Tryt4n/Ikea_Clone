@@ -30,7 +30,6 @@ beforeEach(() => {
 
   cy.intercept(
     "GET",
-    // "https://tryt4n.github.io/Ikea-data/server/products/korken/sloik-z-pokrywka/szklo-bezbarwne/50213546/data.json",
     /https:\/\/tryt4n\.github\.io\/Ikea-data\/server\/products\/.*/,
     { fixture: "productPage.json" },
   ).as("getProductPage");
