@@ -50,7 +50,7 @@ export function FooterAccordions() {
  */
 function Accordions() {
   return (
-    <AccordionContainer>
+    <AccordionContainer data-testid="footer-accordions">
       {/* Map through the `footerLists` constant and render the lists */}
       {footerLists.map((list, index) => (
         <AccordionElement key={index} label={list.name} id={index.toString()}>

@@ -94,6 +94,7 @@ export default function BackToTopBtn() {
           onMouseLeave={width >= 600 ? () => setIsExpanded(false) : undefined} // Handle expanding functionality only on larger screens
           onClick={scrollToTop}
           aria-hidden={width >= 600 ? !isVisible : undefined} // Handle expanding functionality only on larger screens
+          data-testid="back-to-top-btn"
         >
           <ChevronRightIcon />
 
