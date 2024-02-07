@@ -197,6 +197,7 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
               className="select-list-modal__list-item"
               onClick={handleListActions} // Handle the list actions on click
               type="button"
+              data-testid="modal-list-item"
             >
               <div className="select-list-modal__list-wrapper">
                 {/* If the list has products and the first product has an image, display the image */}
@@ -265,6 +266,8 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
                             checked: isProductAlreadyInCurrentList, // Set the checked attribute depending on whether the product is already in the list or not
                             onChange: handleListActions, // Handle the list actions on change
                             tabIndex: -1, // Set the tab index to -1 to prevent the checkbox from being focused because it is handled by other elements
+                            // @ts-expect-error - only for testing purposes
+                            "data-testid": "modal-product-list-checkbox",
                           }}
                           labelProps={{
                             className: "visually-hidden", // Hide the label text, but it is still accessible for screen readers

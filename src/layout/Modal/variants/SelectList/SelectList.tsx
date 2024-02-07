@@ -105,7 +105,10 @@ export default function SelectList() {
       {
         // if there are favouriteLists in the state, render a list of lists
         state.favouriteLists && (
-          <ul className="select-list-modal__list">
+          <ul
+            className="select-list-modal__list"
+            data-testid="modal-lists-list"
+          >
             {/* Map through the favouriteLists and render a List component for each list */}
             {state.favouriteLists.map((list) => (
               <List

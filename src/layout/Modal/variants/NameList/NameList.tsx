@@ -174,12 +174,15 @@ export default function NameList({ type }: CreateTypePropsType) {
             "aria-errormessage": "list-error-message", // Set the error message id
             "aria-invalid": errorMessageVisibility, // Set the error message visibility
             onChange: onInputChange, // Handle input change
+            // @ts-expect-error - only for testing purposes
+            "data-testid": "new-list-name-input",
           }}
         />
         <ErrorMessage
           id="list-error-message" // Set the error message id
           errorMessage="Taka nazwa już istnieje" // Set the error message text
           errorVisibility={!errorMessageVisibility} // Set the error message visibility
+          data-testid="list-error-message"
         />
       </div>
 

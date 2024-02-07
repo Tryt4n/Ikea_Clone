@@ -149,6 +149,7 @@ export default function GoBackBtn({
           shape="circle"
           className="side-modal__go-back-btn"
           onClick={() => goBack(type)} // When the button is clicked, the goBack function is called with the type of the modal.
+          data-testid="side-modal-go-back-btn"
         >
           <ArrowLeftIcon />
         </Btn>

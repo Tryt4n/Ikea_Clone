@@ -216,6 +216,7 @@ export function ProductItem({ product, fetchedData }: ProductItemPropsType) {
               e.preventDefault(); // Prevent the default form submission
               addToShoppingCart(productLink); // Add the product to the shopping cart
             }}
+            data-testid="add-product-to-cart-btn"
           >
             {/* Visually hidden text used for screen readers and SEO purposes */}
             <span className="visually-hidden">Dodaj produkt do koszyka</span>
@@ -229,6 +230,7 @@ export function ProductItem({ product, fetchedData }: ProductItemPropsType) {
               e.preventDefault(); // Prevent the default form submission
               addToShoppingList(productLink); // Add the product to the shopping list
             }}
+            data-testid="add-product-to-list-btn"
           />
         </div>
       </a>
