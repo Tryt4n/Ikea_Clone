@@ -5,7 +5,7 @@
  */
 
 // Importing React dependencies
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
 
 // Importing the main App component
@@ -17,7 +17,7 @@ import "./style.scss";
 // Using ReactDOM to render the App component into the root div element
 // Add type assertion to avoid TS error, because we know that the root element exists
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <App />,
+  // </React.StrictMode>,
 );
