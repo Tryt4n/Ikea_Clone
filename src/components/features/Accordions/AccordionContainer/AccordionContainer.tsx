@@ -1,5 +1,5 @@
 // Import React dependencies
-import { ReactElement } from "react";
+import { ReactElement, type HTMLProps } from "react";
 // Import context
 import { AccordionContextProvider } from "../context/AccordionContext";
 // Import components
@@ -8,11 +8,11 @@ import AccordionElement from "../AccordionElement/AccordionElement";
 import "../index.scss";
 
 // Define the type for the AccordionContainer props
-export interface AccordionContainerPropsType {
+export type AccordionContainerPropsType = {
   children:
     | ReactElement<typeof AccordionElement>[]
     | ReactElement<typeof AccordionElement>; // The children of the AccordionContainer, which should be one or more AccordionElement components
-}
+} & HTMLProps<HTMLUListElement>; // The props for the ul element
 
 /**
  * AccordionContainer component
@@ -26,10 +26,13 @@ export interface AccordionContainerPropsType {
 
 export default function AccordionContainer({
   children,
+  ...props
 }: AccordionContainerPropsType) {
   return (
     <AccordionContextProvider>
-      <ul className="accordions-container">{children}</ul>
+      <ul className="accordions-container" {...props}>
+        {children}
+      </ul>
     </AccordionContextProvider>
   );
 }
