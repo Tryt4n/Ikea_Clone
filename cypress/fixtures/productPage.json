@@ -1,0 +1,73 @@
+{
+  "collection": "KORKEN",
+  "name": "sloik-z-pokrywka",
+  "nameToDisplay": "Słoik z pokrywką",
+  "productNumber": "502.135.46",
+  "size": "1 l",
+  "price": {
+    "integer": 12,
+    "decimal": 99
+  },
+  "variants": [
+    "szklo-bezbarwne",
+    "szklo-bezbarwne-wzor-jaskrawopomaranczowy",
+    "szklo-bezbarwne-wzor-jaskrawozielony-liliowy"
+  ],
+  "variantsName": [
+    "szkło bezbarwne",
+    "szkło bezbarwne wzór/jaskrawozielony",
+    "szkło bezbarwne wzór/jaskrawozielony liliowy"
+  ],
+  "variant": "szklo-bezbarwne",
+  "variantName": "szkło bezbarwne",
+  "relatedProducts": {
+    "sizes": {
+      "0.5 l": "70213545",
+      "1 l": "50213546",
+      "1.8 l": "70213550",
+      "13 cl": "40323654",
+      "2 l": "90213549"
+    },
+    "variants": {
+      "szklo-bezbarwne": "50213546",
+      "szklo-bezbarwne-wzor-jaskrawopomaranczowy": "30553645",
+      "szklo-bezbarwne-zwor-jaskrawozielony-liliowy": "40553758"
+    }
+  },
+  "description": "Seria KORKEN idealnie nadaje się do przechowywania marynat i dżemów, serwowania napojów lub zachowania chrupkości ciasteczek. Hermetyczna uszczelka zamyka wewnątrz wszystkie wartości odżywcze.",
+  "rating": {
+    "rate": 5,
+    "quantity": 1524
+  },
+  "thumbnails": {
+    "variant_1": "0713739_pe729738_s5.jpg",
+    "variant_2": "1173194_pe893854_s5.jpg",
+    "variant_3": "1173189_pe893849_s5.jpg"
+  },
+  "images": {
+    "main": "0713739_pe729738_s5.jpg",
+    "image_1": "0250208_pe320559_s5.jpg",
+    "image_2": "1060991_ph162475_s5.jpg",
+    "image_3": "0379200_ph022158_s5.jpg",
+    "image_4": "1059754_pe849771_s5.jpg",
+    "image_5": "0897521_pe611672_s5.jpg",
+    "image_6": "0685519_ph144879_s5.jpg",
+    "imgHover": "1060982_ph168838_s5.jpg",
+    "image_7": "1060979_ph175670_s5.jpg",
+    "image_8": "1060983_ph168835_s5.jpg"
+  },
+  "sustainableDevelopment": true,
+  "additionalInfo": [
+    {
+      "title": "Zrównoważone życie w domu",
+      "variant": "green",
+      "header": "Przechowuj przetwory zachowując ich aromat i smak",
+      "description": "Słoiki KORKEN świetnie nadają się do przechowywania dżemu, kiszonych ogórków i innych przysmaków domowej roboty. Mają szczelne zamknięcie, dzięki któremu zatrzymują wszystkie smaki i aromaty w środku. Słoiki są szklane, więc ich zawartość nie jest tajemnicą, co zwiększa szansę, że jedzenie w porę trafi do żołądka zamiast do kosza."
+    },
+    {
+      "title": "Materiał",
+      "header": "Czym jest szkło?",
+      "description": "Szkło powstaje głównie z piasku, sody i wapna stapianych ze sobą w wysokiej temperaturze. Dzięki hartowaniu i różnym dodatkom do mieszanki otrzymuje się bardzo wytrzymałe i odporne na uderzenia szkło – nawet takie, które można przełożyć prosto z zamrażalnika do piekarnika bez obaw, że popęka. Sporą zaletą szkła jest też możliwość wielokrotnego poddawania go recyklingowi bez pogarszania jego właściwości. Do przetopienia szkła z recyklingu zużywa się o wiele mniej energii niż podczas jego pierwotnej produkcji. Dlatego chcemy docelowo oferować wyłącznie szkło pochodzące z recyklingu."
+    }
+  ]
+}
