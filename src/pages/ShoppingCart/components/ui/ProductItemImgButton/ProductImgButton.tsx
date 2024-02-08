@@ -41,7 +41,11 @@ export function ProductImgButton({ product, src }: ProductImgButtonPropsType) {
   }
 
   return (
-    <button type="button" onClick={openImagesPreview}>
+    <button
+      type="button"
+      onClick={openImagesPreview}
+      data-testid="shopping-cart-product-img-button"
+    >
       <span className="visually-hidden">
         Naciśnij aby zobaczyć galerię zdjęć produktu
       </span>

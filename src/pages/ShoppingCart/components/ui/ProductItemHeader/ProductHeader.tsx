@@ -51,7 +51,9 @@ export function ProductHeader({
       </div>
 
       {/* Render the calculated price of the product. */}
-      <strong>{calculatePrice(quantity, price.integer, price.decimal)}</strong>
+      <strong data-testid="shopping-cart-product-price">
+        {calculatePrice(quantity, price.integer, price.decimal)}
+      </strong>
     </header>
   );
 }

@@ -37,6 +37,7 @@ export default function Header({ text }: { text: string }) {
         shape="circle"
         variant="light"
         onClick={openShoppingCartControlModal}
+        data-testid="shopping-cart-menu-btn"
       >
         {/* Add text with visually-hidden class for accessibility. */}
         <span className="visually-hidden">Otwórz menu koszyka</span>

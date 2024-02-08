@@ -50,6 +50,7 @@ export function BtnDeleteProduct({ product }: { product: ShoppingCartType }) {
       type="button"
       className="fs-sm"
       onClick={removeProductFromShoppingCart}
+      data-testid="shopping-cart-delete-product-btn"
     >
       Usuń produkt
     </button>

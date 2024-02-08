@@ -27,6 +27,7 @@ export function ShowMoreBtn({
         aria-label={
           showMore ? "Naciśnij aby schować" : "Naciśnij aby pokazać więcej"
         } // Change the aria-label depending on the showMore state.
+        data-testid="show-more-btn"
       >
         {/* Change the text inside the button depending on the showMore state. */}
         {showMore ? "Pokaż mniej" : "Dowiedz się więcej"}

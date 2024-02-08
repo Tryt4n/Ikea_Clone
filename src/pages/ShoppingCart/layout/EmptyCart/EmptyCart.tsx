@@ -12,7 +12,7 @@ import "./index.scss";
 
 export default function EmptyCart() {
   return (
-    <section className="empty-cart">
+    <section className="empty-cart" data-testid="shopping-cart-empty">
       <div className="empty-cart__inner-wrapper">
         <h3>Masz konto?</h3>
         <div>

@@ -15,7 +15,7 @@ export default function ProductsList() {
   const { state } = useApp(); // Get the application state using the useApp custom hook.
 
   return (
-    <ul>
+    <ul data-testid="shopping-cart-products-list">
       {/* If the shopping cart is not empty or undefined, render a ProductItem component for each product in the shopping cart. */}
       {state.shoppingCart &&
         state.shoppingCart.map((product) => {

@@ -30,7 +30,12 @@ export function BtnMoveToShoppingList({
   }
 
   return (
-    <button type="button" className="fs-sm" onClick={addToShoppingList}>
+    <button
+      type="button"
+      className="fs-sm"
+      onClick={addToShoppingList}
+      data-testid="shopping-cart-move-to-other-list-btn"
+    >
       Przenieś do listy zakupów
     </button>
   );
