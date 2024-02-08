@@ -78,6 +78,7 @@ export function Video({
         }`} // Add the `firstPlayback` class if the video is played for the first time
         onClick={width >= 900 ? handleVideoPlayPause : undefined} // Play or pause the video only on larger devices
         onTouchStart={width < 900 ? handleVideoPlayPause : undefined} // Play or pause the video on smaller devices
+        data-testid="product-video-control-btn"
       >
         {/* Visually hidden text for accessibility and SEO purposes */}
         <span className="visually-hidden">
