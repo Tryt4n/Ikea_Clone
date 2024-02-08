@@ -25,7 +25,7 @@ describe("Product Page", () => {
     });
   });
 
-  it("should load image gallery as carousel slider", () => {
+  it("should load image gallery as carousel slider on smaller devices", () => {
     cy.viewport(899, 800);
 
     cy.get("[data-testid=product-image-gallery]").as("imageGallery");
@@ -45,9 +45,30 @@ describe("Product Page", () => {
     });
   });
 
-  it("should change main image when thumbnail is hovered", () => {
-    cy.viewport(900, 800);
+  it("should play/pause video when play/pause button is clicked", () => {
+    cy.get("[data-testid=product-video]").as("productVideo");
+    cy.get("[data-testid=product-video-control-btn]").as("videoBtnControl");
 
+    cy.get("@videoBtnControl").within(() => {
+      cy.get("svg[data-testid=play-icon]").as("playIcon");
+    });
+
+    cy.get("@playIcon").should("exist");
+    cy.get("@playIcon").should("be.visible");
+
+    cy.get("@videoBtnControl").click();
+    cy.get("@playIcon").should("not.exist");
+    cy.get("@videoBtnControl").within(() => {
+      cy.get("svg[data-testid=pause-icon]").as("pauseIcon");
+    });
+    cy.get("@pauseIcon").should("exist");
+
+    cy.get("@videoBtnControl").click();
+    cy.get("@pauseIcon").should("not.exist");
+    cy.get("@playIcon").should("exist");
+  });
+
+  it("should change main image when thumbnail is hovered", () => {
     cy.get("[data-testid=product-image-gallery-item]")
       .children()
       .first()
