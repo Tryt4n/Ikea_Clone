@@ -46,6 +46,7 @@ export default function ChooseColor({
             href={Element === "a" ? href : undefined} // Set href only if the Element is an `a` element.
             className="variant-item variant-item__color"
             aria-label={Element === "div" ? "Obecnie wybrany kolor" : undefined} // Set aria-label only if the variant is currently selected.
+            data-testid="modal-product-variant"
           >
             <img src={imgSrc} srcSet={imgSrcSet} alt={imgAlt} />
             <VariantText

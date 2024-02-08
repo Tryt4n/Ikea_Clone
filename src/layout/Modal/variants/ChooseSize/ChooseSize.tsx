@@ -43,6 +43,7 @@ export default function ChooseSize({
               aria-label={
                 Element === "div" ? "Obecnie wybrany rozmiar" : undefined
               } // Set aria-label only if the variant is currently selected.
+              data-testid="modal-product-size"
             >
               {productVariant}
             </Element>

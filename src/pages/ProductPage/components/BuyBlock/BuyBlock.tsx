@@ -126,6 +126,7 @@ export default function BuyBlock({ product }: { product: ProductDataType }) {
         type="submit"
         aria-live="polite" // Announce changes in the button text to screen readers.
         onClick={addToShoppingCart} // Add the product to the shopping cart when the button is clicked.
+        data-testid="add-to-cart-btn"
       >
         Dodaj {quantity > 1 && `${quantity} szt. `}do koszyka
       </Btn>

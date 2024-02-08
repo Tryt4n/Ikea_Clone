@@ -47,6 +47,7 @@ export default function ThumbnailsImagesContainer({
     <div
       className="product-thumbnails"
       aria-label="Linki do innych wariantów produktu"
+      data-testid="product-thumbnails-container"
     >
       {/* Map over the variants array and render a div or an a element for each variant, depending on whether the variant is the currently selected one. Each div or a element contains an img element and a span element. */}
       {variants.slice(0, maxVisibleThumbnails).map((productVariant, index) => {

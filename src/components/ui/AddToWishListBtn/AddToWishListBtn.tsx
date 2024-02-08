@@ -29,6 +29,7 @@ export default function AddToWishListBtn({
     <Btn
       {...props} // Spread the rest of the props
       shape="circle" // Set the shape to "circle"
+      data-testid="add-to-wishlist-btn"
     >
       {/* // Render a visually hidden "Dodaj do ulubionych" label for accessibility */}
       <span className="visually-hidden">Dodaj do ulubionych</span>

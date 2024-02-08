@@ -139,6 +139,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
               onClick={() => showColorsModal(data)} // Show the choose color modal when the button is clicked
               aria-label="Naciśnij aby otworzyć menu wyboru kolorów"
               aria-controls={modalID}
+              data-testid="modal-control-btn-color"
             />
           )}
 
@@ -156,6 +157,7 @@ export default function BuyModule({ data }: { data: ProductDataType }) {
             onClick={() => showSizesModal(data)} // Show the choose size modal when the button is clicked
             aria-label="Naciśnij aby otworzyć menu wyboru rozmiarów"
             aria-controls={modalID}
+            data-testid="modal-control-btn-size"
           />
         </section>
       )}
