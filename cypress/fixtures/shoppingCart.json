@@ -1,0 +1,76 @@
+[
+  {
+    "productNumber": "194.702.27",
+    "collection": "KIVIK",
+    "name": "1o-sofa-rozkladana",
+    "nameToDisplay": "1o sofa rozkładana",
+    "variant": "kelinge-szaroturkusowy",
+    "variantName": "kelinge szaroturkusowy",
+    "size": "universal",
+    "price": { "integer": 1899, "decimal": 99 },
+    "images": {
+      "main": "1130881_pe877955_s5.jpg",
+      "video": "https://www.ikea.com/pvid/1165607_fe002145.mp4?imwidth=800",
+      "image_1": "1130882_pe877956_s5.jpg",
+      "imgHover": "1165807_pe890987_s5.jpg",
+      "image_2": "1148204_ph184815_s5.jpg",
+      "image_3": "1165806_pe890958_s5.jpg",
+      "image_4": "1055820_pe848115_s5.jpg",
+      "image_5": "1208552_pe908628_s5.jpg"
+    },
+    "productLink": "/products/kivik/1o-sofa-rozkladana/kelinge-szaroturkusowy/19470227",
+    "addedDate": "2024-01-14T14:12:29.487Z",
+    "rating": { "rate": 4.5, "quantity": 2 },
+    "quantity": 1
+  },
+  {
+    "quantity": 3,
+    "productNumber": "305.137.63",
+    "collection": "GLADOM",
+    "name": "stolik-z-taca",
+    "nameToDisplay": "Stolik z tacą",
+    "variant": "ciemny-szaro-bezowy",
+    "variantName": "ciemny szaro-beżowy",
+    "size": "45x53 cm",
+    "price": { "integer": 69, "decimal": 99 },
+    "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+    "images": {
+      "main": "0998388_pe823016_s5.jpg",
+      "imgHover": "1064053_ph182221_s5.jpg",
+      "image_1": "1064054_ph182209_s5.jpg",
+      "image_2": "0998392_pe823020_s5.jpg",
+      "image_3": "0998389_pe823017_s5.jpg",
+      "image_4": "0998393_pe823018_s5.jpg",
+      "image_5": "0731682_pe738389_s5.jpg"
+    },
+    "productLink": "/products/gladom/stolik-z-taca/ciemny-szaro-bezowy/30513763",
+    "addedDate": "2024-01-14T14:14:20.382Z",
+    "rating": { "rate": 5, "quantity": 177 }
+  },
+  {
+    "quantity": 1,
+    "productNumber": "703.378.19",
+    "collection": "GLADOM",
+    "name": "stolik-z-taca",
+    "nameToDisplay": "Stolik z tacą",
+    "variant": "bialy",
+    "variantName": "biały",
+    "size": "45x53 cm",
+    "price": { "integer": 69, "decimal": 99 },
+    "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+    "images": {
+      "main": "0470732_pe612912_s5.jpg",
+      "imgHover": "0836821_pe709866_s5.jpg",
+      "image_1": "0733581_ph152596_s5.jpg",
+      "image_2": "0709546_ph152945_s5.jpg",
+      "image_3": "0733531_ph153300_s5.jpg",
+      "image_4": "0709849_ph153191_s5.jpg",
+      "image_5": "0731682_pe738389_s5.jpg",
+      "image_6": "0836819_pe617310_s5.jpg",
+      "image_7": "0475197_pe615469_s5.jpg"
+    },
+    "productLink": "/products/gladom/stolik-z-taca/bialy/70337819",
+    "addedDate": "2024-01-17T12:48:24.383Z",
+    "rating": { "rate": 5, "quantity": 177 }
+  }
+]
