@@ -187,4 +187,43 @@ describe("Product Page", () => {
     cy.get("@toast").should("be.visible");
     cy.get("@shoppingCartBadge").should("contain.text", "11");
   });
+
+  it("should handle more information button click", () => {
+    cy.get("[data-testid=additional-product-description-long]").as(
+      "descriptionContainer",
+    );
+    cy.get("button[data-testid=show-more-btn]").as("showMoreBtn");
+    cy.get("[data-testid=product-page-long-description-sections]").as(
+      "sectionsContainer",
+    );
+
+    cy.get("@showMoreBtn").should("contain.text", "Dowiedz się więcej");
+
+    cy.get("@sectionsContainer").within(() => {
+      cy.get("section").as("sections");
+
+      cy.get("@sections").each(($section) => {
+        cy.wrap($section).should("not.be.visible");
+      });
+
+      cy.get("@showMoreBtn").click();
+      cy.get("@showMoreBtn").should("contain.text", "Pokaż mniej");
+
+      cy.get("@sections").each(($section) => {
+        cy.wrap($section).should("be.visible");
+      });
+
+      cy.get("@showMoreBtn").scrollIntoView();
+      cy.get("@showMoreBtn").click();
+      cy.get("@showMoreBtn").should("contain.text", "Dowiedz się więcej");
+
+      cy.get("@descriptionContainer").then(($container) => {
+        const navbarHeight = 90;
+        const containerTop = $container.offset()!.top - navbarHeight;
+        cy.window().then(($window) => {
+          expect(containerTop).to.be.at.most($window.scrollY);
+        });
+      });
+    });
+  });
 });
