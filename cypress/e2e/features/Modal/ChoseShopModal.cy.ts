@@ -1,4 +1,4 @@
-import { shopsList } from "../../../src/constants/shopsList";
+import { shopsList } from "../../../../src/constants/shopsList";
 
 describe("Chose shop modal", () => {
   beforeEach(() => {
