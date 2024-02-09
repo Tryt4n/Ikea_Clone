@@ -81,5 +81,189 @@
     "lastEdit": "2024-01-14T15:09:14.211Z",
     "name": "Moja lista",
     "products": []
+  },
+  {
+    "id": "33c43e04-1753-48c7-81aa-dc029915d4db",
+    "name": "Some list",
+    "lastEdit": "2024-02-09T11:19:38.000Z",
+    "products": [
+      {
+        "collection": "KIVIK",
+        "images": {
+          "main": "1130881_pe877955_s5.jpg",
+          "video": "https://www.ikea.com/pvid/1165607_fe002145.mp4?imwidth=800",
+          "image_1": "1130882_pe877956_s5.jpg",
+          "imgHover": "1165807_pe890987_s5.jpg",
+          "image_2": "1148204_ph184815_s5.jpg",
+          "image_3": "1165806_pe890958_s5.jpg",
+          "image_4": "1055820_pe848115_s5.jpg",
+          "image_5": "1208552_pe908628_s5.jpg"
+        },
+        "name": "1o-sofa-rozkladana",
+        "nameToDisplay": "1o sofa rozkładana",
+        "price": { "integer": 1899 },
+        "productNumber": "194.702.27",
+        "size": "universal",
+        "variant": "kelinge-szaroturkusowy",
+        "variantName": "kelinge szaroturkusowy",
+        "quantity": 9,
+        "productLink": "/products/KIVIK/1o-sofa-rozkladana/kelinge-szaroturkusowy/19470227",
+        "addedDate": "2024-01-16T07:34:48.790Z",
+        "rating": { "rate": 4.5, "quantity": 2 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0998388_pe823016_s5.jpg",
+          "imgHover": "1064053_ph182221_s5.jpg",
+          "image_1": "1064054_ph182209_s5.jpg",
+          "image_2": "0998392_pe823020_s5.jpg",
+          "image_3": "0998389_pe823017_s5.jpg",
+          "image_4": "0998393_pe823018_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "305.137.63",
+        "size": "45x53 cm",
+        "variant": "ciemny-szaro-bezowy",
+        "variantName": "ciemny szaro-beżowy",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 4,
+        "productLink": "/products/GLADOM/stolik-z-taca/ciemny-szaro-bezowy/30513763",
+        "addedDate": "2024-01-17T12:48:21.854Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0567223_pe664991_s5.jpg",
+          "image_1": "0837078_pe664995_s5.jpg",
+          "image_2": "0837072_pe664992_s5.jpg",
+          "imgHover": "0802833_ph163155_s5.jpg",
+          "image_3": "1058801_ph163156_s5.jpg",
+          "image_4": "0709540_ph153583_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "504.119.90",
+        "size": "45x53 cm",
+        "variant": "czarny",
+        "variantName": "czarny",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 5,
+        "productLink": "/products/GLADOM/stolik-z-taca/czarny/50411990",
+        "addedDate": "2024-01-19T06:06:55.424Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0568691_pe665565_s5.jpg",
+          "imgHover": "1191496_pe900639_s5.jpg",
+          "image_1": "0568694_pe665568_s5.jpg",
+          "image_2": "0568695_pe665566_s5.jpg",
+          "image_3": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "005.336.49",
+        "size": "45x53 cm",
+        "variant": "czerwony",
+        "variantName": "czerwony",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 1,
+        "productLink": "/products/GLADOM/stolik-z-taca/czerwony/00533649",
+        "addedDate": "2024-01-17T12:48:39.272Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "EKET",
+        "images": {
+          "main": "1212326_pe910599_s5.jpg",
+          "video": "https://www.ikea.com/pvid/0774528_fe000142.mp4?imwidth=800",
+          "imgHover": "0715166_pe730358_s5.jpg",
+          "image_1": "1007193_pe825995_s5.jpg",
+          "image_2": "0703494_pe724763_s5.jpg",
+          "image_4": "0732079_pe738561_s5.jpg",
+          "image_5": "0631841_pe695226_s5.jpg"
+        },
+        "name": "szafka-scienna",
+        "nameToDisplay": "Szafka ścienna",
+        "price": { "integer": 90 },
+        "productNumber": "392.862.66",
+        "size": "35x35x35 cm",
+        "variant": "dab-bejcowany-na-bialo",
+        "variantName": "dąb bejcowany na biało",
+        "oldPrice": { "variant": "red", "integer": 115 },
+        "quantity": 3,
+        "productLink": "/products/EKET/szafka-scienna/dab-bejcowany-na-bialo/39286266",
+        "addedDate": "2024-01-19T06:06:55.424Z",
+        "rating": { "rate": 5, "quantity": 40 }
+      },
+      {
+        "quantity": 1,
+        "productNumber": "703.378.19",
+        "collection": "GLADOM",
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "variant": "bialy",
+        "variantName": "biały",
+        "size": "45x53 cm",
+        "price": { "integer": 69, "decimal": 99 },
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "images": {
+          "main": "0470732_pe612912_s5.jpg",
+          "imgHover": "0836821_pe709866_s5.jpg",
+          "image_1": "0733581_ph152596_s5.jpg",
+          "image_2": "0709546_ph152945_s5.jpg",
+          "image_3": "0733531_ph153300_s5.jpg",
+          "image_4": "0709849_ph153191_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg",
+          "image_6": "0836819_pe617310_s5.jpg",
+          "image_7": "0475197_pe615469_s5.jpg"
+        },
+        "productLink": "/products/gladom/stolik-z-taca/bialy/70337819",
+        "addedDate": "2024-02-09T11:19:38.000Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      }
+    ]
+  },
+  {
+    "id": "7ccb1960-b4df-4272-80a0-671df8293cdb",
+    "name": "Another list",
+    "lastEdit": "2024-01-17T13:50:49.007Z",
+    "products": [
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0470732_pe612912_s5.jpg",
+          "imgHover": "0836821_pe709866_s5.jpg",
+          "image_1": "0733581_ph152596_s5.jpg",
+          "image_2": "0709546_ph152945_s5.jpg",
+          "image_3": "0733531_ph153300_s5.jpg",
+          "image_4": "0709849_ph153191_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg",
+          "image_6": "0836819_pe617310_s5.jpg",
+          "image_7": "0475197_pe615469_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "703.378.19",
+        "size": "45x53 cm",
+        "variant": "bialy",
+        "variantName": "biały",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 1,
+        "productLink": "/products/GLADOM/stolik-z-taca/bialy/70337819",
+        "addedDate": "2024-01-17T13:00:39.700Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      }
+    ]
   }
 ]
