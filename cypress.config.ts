@@ -5,5 +5,6 @@ export default defineConfig({
     baseUrl: "http://localhost:5173",
     viewportWidth: 1200,
     viewportHeight: 1400,
+    experimentalRunAllSpecs: true,
   },
 });
