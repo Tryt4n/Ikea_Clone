@@ -119,6 +119,8 @@ export default function DeleteListConfirmation() {
             label="Potwierdzam, że chcę usunąć tę listę wraz z jej zawartością"
             labelProps={{
               onClick: inputOnChangeFunction, // Change the status of the checkbox when the label is clicked.
+              // @ts-expect-error - only for testing purposes
+              "data-testid": "delete-list-checkbox-label",
             }}
             inputProps={{
               ref: checkboxRef, // Assign the checkbox ref to the input element.
@@ -126,6 +128,8 @@ export default function DeleteListConfirmation() {
               checked: checkboxStatus, // Assign the checkbox status to the checked attribute.
               onChange: inputOnChangeFunction, // Change the status of the checkbox when the input is changed.
               onKeyDown: inputOnKeyDownFunction, // Change the status of the checkbox when the input is focused and the user presses the space or enter key.
+              // @ts-expect-error - only for testing purposes
+              "data-testid": "delete-list-checkbox",
             }}
           />
 
@@ -134,6 +138,7 @@ export default function DeleteListConfirmation() {
             errorMessage="Potwierdź, że chcesz usunąć tę listę."
             errorVisibility={!isErrorMessageVisible} // Hide the error message if the checkbox is checked.
             aria-live="polite" // Announce the error message when it changes.
+            data-testid="delete-list-checkbox-error-message"
           />
         </div>
 
@@ -142,6 +147,7 @@ export default function DeleteListConfirmation() {
           variant="warn"
           size="big"
           className="delete-list-confirmation-modal__btn"
+          data-testid="delete-list-confirmation-modal-btn"
         >
           <WarningIcon />
           Usuń listę

@@ -226,7 +226,7 @@ export function List({ list, isProductAlreadyInAnyList }: ListPropsType) {
                 }
 
                 <div className="select-list-modal__list-text-wrapper">
-                  <strong>{list.name}</strong>
+                  <strong data-testid="list-name-modal">{list.name}</strong>
                   <time
                     dateTime={list.lastEdit.toString()} // Convert the date to a string with date-fns
                   >

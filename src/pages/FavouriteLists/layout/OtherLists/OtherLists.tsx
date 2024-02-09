@@ -28,7 +28,10 @@ export function OtherLists() {
           <h2 className="visually-hidden">Twoje listy</h2>
 
           {/* Render a list of FavouriteList components */}
-          <ul className="favourite-lists__list">
+          <ul
+            className="favourite-lists__list"
+            data-testid="favourite-lists-other-lists"
+          >
             {state.favouriteLists.map((list, index) => {
               // Skip the first list in the state, because it is rendered in the MainList component
               if (index === 0) return null;

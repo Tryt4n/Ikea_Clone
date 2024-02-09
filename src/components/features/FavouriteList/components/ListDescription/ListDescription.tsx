@@ -75,6 +75,7 @@ export function ListDescription({
             variant="gray"
             className="favourite-list__btn-menu"
             onClick={openListControlMenu}
+            data-testid="main-list-control-menu-btn"
           >
             <span className="visually-hidden">Otwórz menu listy</span>
             <TripleDotsMenuIcon />

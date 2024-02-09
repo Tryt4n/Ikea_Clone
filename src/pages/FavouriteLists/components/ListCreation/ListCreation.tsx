@@ -40,7 +40,9 @@ export function ListCreation() {
       <p>Nie możesz znaleźć swoich list? Upewnij się, że jesteś zalogowany.</p>
 
       <div className="favourite-lists__btns-wrapper">
-        <Btn onClick={openCreateListModal}>Stwórz listę</Btn>
+        <Btn onClick={openCreateListModal} data-testid="create-new-list-btn">
+          Stwórz listę
+        </Btn>
         <Btn variant="white-with-border">Zaloguj się</Btn>
       </div>
     </section>

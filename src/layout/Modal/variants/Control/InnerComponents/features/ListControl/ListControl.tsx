@@ -65,7 +65,10 @@ export function ListControl() {
 
   return (
     <>
-      <ListItem onClick={openChangeListNameModal}>
+      <ListItem
+        onClick={openChangeListNameModal}
+        data-testid="change-list-name-modal-btn"
+      >
         <EditIcon />
         Zmień nazwę listy
       </ListItem>
@@ -78,6 +81,7 @@ export function ListControl() {
             onClick={() => {
               openMoveToOtherListModal();
             }}
+            data-testid="move-to-other-list-modal-btn"
           >
             <ArrowRightIcon />
             Przenieś do innej listy
@@ -100,7 +104,10 @@ export function ListControl() {
         ) : null
       }
 
-      <ListItem onClick={openDeleteListModal}>
+      <ListItem
+        onClick={openDeleteListModal}
+        data-testid="delete-list-modal-btn"
+      >
         <TrashIcon />
         Usuń swoją listę
       </ListItem>

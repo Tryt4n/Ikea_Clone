@@ -27,7 +27,10 @@ export function MainList() {
         <p>Zacznij organizować swoją wymarzoną przestrzeń.</p>
       </hgroup>
 
-      <div className="favourite-lists__container">
+      <div
+        className="favourite-lists__container"
+        data-testid="favourite-lists-container"
+      >
         <ListCreation />
 
         {/* If there are favourite lists in the state, render the first one which would be the main list */}
