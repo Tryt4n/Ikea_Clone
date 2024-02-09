@@ -31,6 +31,7 @@ export function GoNextStep() {
       variant="blue"
       className="shopping-cart-menu__next-btn"
       onClick={openNexStepModal}
+      data-testid="shopping-cart-next-step-btn"
     >
       <span>Dalej</span>
 

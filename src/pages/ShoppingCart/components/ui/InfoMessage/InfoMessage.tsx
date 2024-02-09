@@ -21,7 +21,10 @@ export function InfoMessage() {
   // If the container exists, render the div inside it using the createPortal function from react-dom.
   if (container)
     return createPortal(
-      <div className="delivery-options__info">
+      <div
+        className="delivery-options__info"
+        data-testid="shopping-cart-delivery-message"
+      >
         <InfoIcon />
         <p>Przejdź dalej, aby sprawdzić dostępność opcji odbioru</p>
       </div>,

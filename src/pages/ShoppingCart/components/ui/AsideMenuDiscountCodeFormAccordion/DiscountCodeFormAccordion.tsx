@@ -25,6 +25,7 @@ export function DiscountCodeFormAccordion() {
         type="button"
         className="shopping-cart-menu__discount-code-btn"
         onClick={() => setAccordionOpen(!accordionOpen)} // When the button is clicked, the accordionOpen state is toggled
+        data-testid="discount-code-btn"
       >
         <div className="shopping-cart-menu__discount-code-inner-wrapper">
           <DiscountIcon />

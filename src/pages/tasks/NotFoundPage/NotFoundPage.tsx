@@ -27,7 +27,9 @@ export default function NotFoundPage() {
         <p>Strona której szukasz niestety nie istnieje.</p>
         <p>Spróbuj po linkiem poniżej.</p>
         {/* Navigate to home page */}
-        <a href="/">Wróć do strony głównej IKEA</a>
+        <a href="/" data-testid="not-found-page-link">
+          Wróć do strony głównej IKEA
+        </a>
       </div>
     </div>
   );

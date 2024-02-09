@@ -21,7 +21,7 @@ export function FinalPrice({ price }: { price: string }) {
   return (
     <div className="shopping-cart-menu__price-wrapper shopping-cart-menu__price-wrapper--big">
       <p>Wartość produktów</p>
-      <strong>{price}</strong>
+      <strong data-testid="shopping-cart-final-price">{price}</strong>
     </div>
   );
 }

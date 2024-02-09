@@ -32,6 +32,7 @@ export function AdditionalInformationsList() {
           className="shopping-cart-menu__btn-wrapper"
           // When the button is clicked, the openModalByType function is called with the "refund" type
           onClick={() => openModalByType("refund")}
+          data-testid="shopping-cart-refund-btn"
         >
           <ReturnIcon />
           <span>365 dni na zwrot gdy zmienisz zdanie</span>
@@ -43,6 +44,7 @@ export function AdditionalInformationsList() {
           className="shopping-cart-menu__btn-wrapper"
           // When the button is clicked, the openModalByType function is called with the "data-encryption" type
           onClick={() => openModalByType("data-encryption")}
+          data-testid="shopping-cart-data-encryption-btn"
         >
           <LockIcon />
           <span>

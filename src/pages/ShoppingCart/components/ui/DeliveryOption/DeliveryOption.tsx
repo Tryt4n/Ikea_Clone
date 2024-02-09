@@ -45,7 +45,10 @@ export function DeliveryOption({
 
   return (
     <>
-      <label className="delivery-options__box">
+      <label
+        className="delivery-options__box"
+        data-testid={`shopping-cart-delivery-option-${item.option}`}
+      >
         <input
           type="radio"
           name="deliveryOption"

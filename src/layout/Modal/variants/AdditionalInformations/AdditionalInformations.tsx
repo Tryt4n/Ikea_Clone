@@ -62,6 +62,7 @@ export default function AdditionalInformations({
       <Btn
         className="additional-informations-modal__btn"
         onClick={closeModal} // The function to call when the close button is clicked.
+        data-testid="additional-informations-modal-close-btn"
       >
         Zamknij
       </Btn>
