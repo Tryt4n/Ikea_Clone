@@ -21,6 +21,9 @@ describe("Shopping Cart Page", () => {
 
     cy.get("[data-testid=shopping-cart-menu-btn]").click();
     cy.get("@modal").should("be.visible");
+    cy.get("@modal").within(() => {
+      cy.get("h2").should("contain.text", "Koszyk");
+    });
   });
 
   it("should handle shopping cart with products", () => {
