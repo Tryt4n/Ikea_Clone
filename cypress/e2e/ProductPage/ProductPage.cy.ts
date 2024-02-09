@@ -27,6 +27,7 @@ describe("Product Page", () => {
 
   it("should load image gallery as carousel slider on smaller devices", () => {
     cy.viewport(899, 800);
+    cy.reload();
 
     cy.get("[data-testid=product-image-gallery]").as("imageGallery");
 
@@ -63,6 +64,8 @@ describe("Product Page", () => {
     });
     cy.get("@pauseIcon").should("exist");
 
+    // Wait for .play() action to be called on the video element before the .pause() action is called
+    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.get("@videoBtnControl").click();
     cy.get("@pauseIcon").should("not.exist");
     cy.get("@playIcon").should("exist");
