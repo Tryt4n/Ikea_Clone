@@ -2,6 +2,7 @@ describe("Images gallery", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.wait("@getHomePage");
+    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
   });
 
   it("should handle images gallery behavior", () => {
