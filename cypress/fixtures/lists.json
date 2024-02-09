@@ -1,0 +1,85 @@
+[
+  {
+    "id": "c2f09ac3-dc2d-4641-a959-f3b6f0ed1c49",
+    "name": "New list",
+    "lastEdit": "2024-02-09T11:25:25.000Z",
+    "products": [
+      {
+        "collection": "KIVIK",
+        "images": {
+          "main": "1130881_pe877955_s5.jpg",
+          "video": "https://www.ikea.com/pvid/1165607_fe002145.mp4?imwidth=800",
+          "image_1": "1130882_pe877956_s5.jpg",
+          "imgHover": "1165807_pe890987_s5.jpg",
+          "image_2": "1148204_ph184815_s5.jpg",
+          "image_3": "1165806_pe890958_s5.jpg",
+          "image_4": "1055820_pe848115_s5.jpg",
+          "image_5": "1208552_pe908628_s5.jpg"
+        },
+        "name": "1o-sofa-rozkladana",
+        "nameToDisplay": "1o sofa rozkładana",
+        "price": { "integer": 1899 },
+        "productNumber": "194.702.27",
+        "size": "universal",
+        "variant": "kelinge-szaroturkusowy",
+        "variantName": "kelinge szaroturkusowy",
+        "quantity": 2,
+        "productLink": "/products/KIVIK/1o-sofa-rozkladana/kelinge-szaroturkusowy/19470227",
+        "addedDate": "2024-01-16T07:35:18.244Z",
+        "rating": { "rate": 4.5, "quantity": 2 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0998388_pe823016_s5.jpg",
+          "imgHover": "1064053_ph182221_s5.jpg",
+          "image_1": "1064054_ph182209_s5.jpg",
+          "image_2": "0998392_pe823020_s5.jpg",
+          "image_3": "0998389_pe823017_s5.jpg",
+          "image_4": "0998393_pe823018_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "305.137.63",
+        "size": "45x53 cm",
+        "variant": "ciemny-szaro-bezowy",
+        "variantName": "ciemny szaro-beżowy",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 1,
+        "productLink": "/products/GLADOM/stolik-z-taca/ciemny-szaro-bezowy/30513763",
+        "addedDate": "2024-01-16T07:35:26.966Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "quantity": 1,
+        "productNumber": "400.825.36",
+        "collection": "SOARÉ",
+        "name": "podkladka",
+        "nameToDisplay": "Podkładka",
+        "variant": "hiacynt-wodny",
+        "variantName": "Hiacynt Wodny",
+        "size": "37 cm",
+        "price": { "integer": 19, "decimal": 99 },
+        "images": {
+          "main": "0711868_pe728538_s5.jpg",
+          "image_1": "0896829_pe606393_s5.jpg",
+          "hover": "0896839_pe607504_s5.jpg",
+          "image_2": "0523102_ph141076_s5.jpg",
+          "image_3": "0947715_ph173952_s5.jpg",
+          "image_4": "1062088_pe850652_s5.jpg"
+        },
+        "productLink": "/products/soare/podkladka/hiacynt-wodny/40082536",
+        "addedDate": "2024-02-06T12:39:16.000Z",
+        "rating": { "rate": 5, "quantity": 270 }
+      }
+    ]
+  },
+  {
+    "id": "fa7bcc0c-5566-471f-8653-4d4364748427",
+    "lastEdit": "2024-01-14T15:09:14.211Z",
+    "name": "Moja lista",
+    "products": []
+  }
+]
