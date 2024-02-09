@@ -45,9 +45,7 @@ describe("Image with products modal", () => {
         cy.get("@firstProduct").within(() => {
           // Add product to cart
           cy.get("[data-testid=add-product-to-cart-btn]").click();
-          cy.get("[data-testid=add-product-to-list-btn]").as(
-            "addProductToList",
-          );
+          cy.get("[data-testid=add-to-wishlist-btn]").as("addProductToList");
           cy.get("[data-testid=heart-icon]").as("addProductToListIcon");
         });
         // Check if svg icon is properly styled
