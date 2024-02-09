@@ -52,7 +52,11 @@ export default function Toast({ toastData, closeToast }: ToastPropsType) {
 
         {/* If a previous state function is provided, display a button to restore it */}
         {prevState && (
-          <button className="toast-notification__text-accent" onClick={restore}>
+          <button
+            className="toast-notification__text-accent"
+            onClick={restore}
+            data-testid="toast-notification-undo-btn"
+          >
             Cofnij
           </button>
         )}

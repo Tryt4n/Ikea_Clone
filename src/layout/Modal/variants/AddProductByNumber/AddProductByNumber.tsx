@@ -84,6 +84,8 @@ export default function AddProductByNumber() {
           maxLength: 10, // The maximum number of characters that can be entered in the input.
           pattern: "^\\d{0,3}(\\.\\d{0,3}(\\.\\d{0,2})?)?$", // The pattern that the input value must match. The input value should have the format: 103.242.78
           title: "Wprowadzona wartość powinna mieć taki format: 103.242.78",
+          // @ts-expect-error - only for testing purposes
+          "data-testid": "add-product-by-number-input",
         }}
       />
 

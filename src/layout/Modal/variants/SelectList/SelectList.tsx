@@ -127,6 +127,7 @@ export default function SelectList() {
           type="button"
           variant={isProductAlreadyInAnyList ? "white-with-border" : "dark"} // If the product is already in any list, use a white button with a border, otherwise use a dark button
           onClick={createNewList} // Call the createNewList function when the button is clicked
+          data-testid="create-new-list-modal-btn"
         >
           {/* Display different text based on the modalData.type */}
           {modalData?.type === "move-to-other-list"

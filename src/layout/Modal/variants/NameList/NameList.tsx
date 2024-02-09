@@ -186,7 +186,7 @@ export default function NameList({ type }: CreateTypePropsType) {
         />
       </div>
 
-      <Btn type="submit" size="big">
+      <Btn type="submit" size="big" data-testid="save-new-list-modal-btn">
         {/* Set the button text based on the type of operation */}
         {type === ("create-list" || "create-list-with-products")
           ? "Stwórz listę"

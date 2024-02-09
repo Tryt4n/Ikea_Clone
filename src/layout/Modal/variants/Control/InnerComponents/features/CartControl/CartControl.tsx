@@ -75,7 +75,10 @@ export function CartControl() {
 
   return (
     <>
-      <ListItem onClick={openAddProductByNumberModal}>
+      <ListItem
+        onClick={openAddProductByNumberModal}
+        data-testid="add-product-by-number-modal-btn"
+      >
         <ShoppingCartAddIcon />
         Dodaj produkt, wpisując jego numer
       </ListItem>
@@ -84,14 +87,20 @@ export function CartControl() {
         // If the shopping cart is not empty render elements
         productsQuantity && productsQuantity > 0 ? (
           <>
-            <ListItem onClick={moveAllProductsToList}>
+            <ListItem
+              onClick={moveAllProductsToList}
+              data-testid="move-products-to-other-list-modal-btn"
+            >
               <HeartIcon />
               Dodaj ({productsQuantity}){" "}
               {productsQuantity === 1 ? "produkt" : "produktów"} do listy
               zakupowej
             </ListItem>
 
-            <ListItem onClick={clearShoppingCart}>
+            <ListItem
+              onClick={clearShoppingCart}
+              data-testid="delete-all-products-from-shopping-cart-modal-btn"
+            >
               <TrashIcon />
               Usuń wszystkie produkty z koszyka
             </ListItem>
