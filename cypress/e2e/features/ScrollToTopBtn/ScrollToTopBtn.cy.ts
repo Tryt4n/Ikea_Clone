@@ -4,6 +4,7 @@ describe("Scroll To Top Button", () => {
       "/products/some-collection-name/some-product-name/some-variant/123456",
     );
     cy.wait("@getProductPage");
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
   });
 
   it("should scroll the page on scroll to top button click", () => {
