@@ -1,7 +1,7 @@
 describe("Lists Page", () => {
   beforeEach(() => {
     cy.visit("/favourites");
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
     cy.get("[data-testid=modal]").as("modal");
   });
@@ -41,7 +41,7 @@ describe("Lists Page", () => {
     cy.fixture("lists.json").then((fixture) => {
       localStorage.setItem("favouriteLists", JSON.stringify(fixture));
       cy.reload();
-      cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+      cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
       cy.get("[data-testid=favourite-lists-container]").as("listsContainer");
       cy.get("[data-testid=favourite-list]").as("favouriteLists");

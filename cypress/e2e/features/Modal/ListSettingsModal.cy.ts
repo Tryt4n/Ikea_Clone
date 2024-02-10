@@ -4,7 +4,7 @@ describe("List Settings Modal", () => {
       localStorage.setItem("favouriteLists", JSON.stringify(fixture));
     });
     cy.visit("/favourites");
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");

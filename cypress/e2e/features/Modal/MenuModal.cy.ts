@@ -2,7 +2,7 @@ describe("Menu modal", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.wait("@getHomePage");
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
   });
 
   it("open menu modal on menu button click", () => {

@@ -6,7 +6,7 @@ describe("Shopping Cart Page", () => {
       localStorage.setItem("shoppingCart", JSON.stringify(fixture));
     });
     cy.visit("/shoppingcart");
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");

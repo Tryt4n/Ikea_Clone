@@ -65,7 +65,7 @@ describe("Product Page", () => {
     cy.get("@pauseIcon").should("exist");
 
     // Wait for .play() action to be called on the video element before the .pause() action is called
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.get("@videoBtnControl").click();
     cy.get("@pauseIcon").should("not.exist");
     cy.get("@playIcon").should("exist");

@@ -4,7 +4,7 @@ describe("Shopping cart page menu Modal", () => {
       localStorage.setItem("shoppingCart", JSON.stringify(fixture));
     });
     cy.visit("/shoppingcart");
-    cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");
@@ -102,7 +102,7 @@ describe("Shopping cart page menu Modal", () => {
     cy.fixture("lists.json").then((listsFixture) => {
       localStorage.setItem("favouriteLists", JSON.stringify(listsFixture));
       cy.reload();
-      cy.wait(300); // eslint-disable-line cypress/no-unnecessary-waiting
+      cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
 
       cy.get("@shoppingCartMenuBtn").click();
 
