@@ -187,5 +187,63 @@ describe("Single List Page", () => {
     cy.get("@priceForMembers").should("contain.text", "955,39");
   });
 
-  it("should handle managing only chosen products", () => {});
+  it("should handle managing only chosen products", () => {
+    cy.wait(500);
+
+    cy.get("[data-testid=list-product]").as("listProducts");
+    cy.get("input[data-testid=list-product-checkbox]").as(
+      "listProductCheckboxes",
+    );
+
+    // Add first product to manage list
+    cy.get("@listProductCheckboxes").first().click({ force: true });
+
+    cy.get("[data-testid=list-manage-selected-products]").as(
+      "manageSelectedProductsContainer",
+    );
+    cy.get("@manageSelectedProductsContainer")
+      .should("be.visible")
+      .within(() => cy.get("ul").children().should("have.length", 1));
+
+    // Remove first product from manage list and add it again
+    cy.get("@listProductCheckboxes").first().click({ force: true });
+    cy.get("@manageSelectedProductsContainer").should("not.exist");
+    cy.get("@listProductCheckboxes").first().click({ force: true });
+    cy.get("@manageSelectedProductsContainer")
+      .should("be.visible")
+      .within(() => cy.get("ul").children().should("have.length", 1));
+
+    // Add second and third product to manage list
+    cy.get("@listProductCheckboxes").eq(1).click({ force: true });
+    cy.get("@manageSelectedProductsContainer").within(() =>
+      cy.get("ul").children().should("have.length", 2),
+    );
+
+    cy.get("@listProductCheckboxes").eq(2).click({ force: true });
+    cy.get("@manageSelectedProductsContainer").within(() =>
+      cy.get("ul").children().should("have.length", 3),
+    );
+
+    // Open manage list modal
+    cy.get("@manageSelectedProductsContainer").within(() =>
+      cy.get("button[data-testid=manage-selected-products-btn]").click(),
+    );
+    cy.get("@modal")
+      .should("be.visible")
+      .within(() => {
+        cy.get("ul").children().should("have.length", 3);
+      });
+    cy.get("body").type("{esc}");
+    cy.get("@modal").should("not.be.visible");
+
+    // Clear all products from manage list
+    cy.get("@manageSelectedProductsContainer").within(() =>
+      cy
+        .get("button[data-testid=manage-selected-products-clear-all-btn]")
+        .click(),
+    );
+    cy.get("@manageSelectedProductsContainer").should("not.exist");
+  });
+
+  it("should handle list sorting", () => {});
 });
