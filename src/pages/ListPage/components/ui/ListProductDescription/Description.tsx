@@ -63,7 +63,7 @@ export function Description({
         </p>
       )}
 
-      <strong className="list-product__price">
+      <strong className="list-product__price" data-testid="list-product-price">
         {totalPriceInteger}
         <sup>
           <small>,{totalPriceDecimal}</small>

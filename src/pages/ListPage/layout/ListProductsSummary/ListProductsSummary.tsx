@@ -97,7 +97,7 @@ export default function ListProductsSummary() {
       {/* Display the price with discount for IKEA Family members. */}
       <div className="list-products-summary__wrapper">
         <span>Cena dla Klubowiczów IKEA Family</span>
-        <strong>
+        <strong data-testid="list-total-price-for-members">
           {/* {totalPriceInteger} */}
           {totalPriceWithDiscountInteger}
           <sup>
@@ -111,7 +111,7 @@ export default function ListProductsSummary() {
       <div className="list-products-summary__wrapper">
         <span>Cena dla pozostałych klientów</span>
         {/* <em>{totalPriceWithDiscount}</em> */}
-        <em>
+        <em data-testid="list-total-price">
           {totalPriceInteger}
           {totalPriceDecimal ? `,${totalPriceDecimal}` : ""}
         </em>

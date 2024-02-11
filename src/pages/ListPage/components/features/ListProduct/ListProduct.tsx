@@ -91,7 +91,7 @@ export default function ListProduct({
 
   return (
     <li className="list-product">
-      <section>
+      <section data-testid="list-product">
         <h3 className="visually-hidden">{collection}</h3>
 
         <Header

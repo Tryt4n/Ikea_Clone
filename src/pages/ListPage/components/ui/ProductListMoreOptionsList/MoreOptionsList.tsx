@@ -43,6 +43,7 @@ export function MoreOptionsList({ product }: { product: ShoppingCartType }) {
         <button
           className="list-product__more-options-btn"
           onClick={openMoreOptionsModal}
+          data-testid="list-product-more-options-btn"
         >
           Więcej opcji
         </button>

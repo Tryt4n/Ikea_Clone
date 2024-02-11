@@ -31,7 +31,7 @@ export default function Switch({
   props,
 }: SwitchType) {
   return (
-    <div className="switch-wrapper">
+    <div className="switch-wrapper" data-testid="switch">
       <Btn size="big" {...props} {...firstPropertyProps} />
 
       <Btn size="big" {...props} {...secondPropertyProps} />

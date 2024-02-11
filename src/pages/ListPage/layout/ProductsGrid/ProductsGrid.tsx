@@ -14,7 +14,7 @@ import "./index.scss";
 
 export default function ProductsGrid() {
   return (
-    <ul className="products-grid">
+    <ul className="products-grid" data-testid="list-products-list">
       <JoinIkeaFamily />
 
       <BuyOnlineGrid />

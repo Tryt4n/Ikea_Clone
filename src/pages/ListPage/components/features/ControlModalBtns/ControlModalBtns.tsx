@@ -47,7 +47,12 @@ export default function ControlModalBtns() {
         <span className="visually-hidden">Drukuj listę</span>
         <PrinterIcon />
       </Btn>
-      <Btn shape="circle" variant="light" onClick={openListMenuModal}>
+      <Btn
+        shape="circle"
+        variant="light"
+        onClick={openListMenuModal}
+        data-testid="open-list-menu-modal"
+      >
         <span className="visually-hidden">Otwórz menu listy</span>
         <TripleDotsMenuIcon />
       </Btn>

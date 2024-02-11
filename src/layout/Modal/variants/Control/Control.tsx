@@ -40,5 +40,9 @@ export default function Control({ type }: ControlPropsType) {
   };
 
   // Render the control component based on the type prop.
-  return <ul className="product-control">{controlComponentMap[type]}</ul>;
+  return (
+    <ul className="product-control" data-testid="product-control-menu-modal">
+      {controlComponentMap[type]}
+    </ul>
+  );
 }

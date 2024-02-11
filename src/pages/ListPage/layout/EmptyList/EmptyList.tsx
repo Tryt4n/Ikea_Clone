@@ -49,8 +49,13 @@ export default function EmptyList() {
     <div className="empty-list" data-testid="list-page-empty-list">
       <div className="empty-list__btns-container">
         {/* Button to open the name edit modal menu. */}
-        <Btn shape="circle" variant="light" onClick={openNameEditModal}>
-          <span className="visually-hidden">Edytuj listę</span>
+        <Btn
+          shape="circle"
+          variant="light"
+          onClick={openNameEditModal}
+          data-testid="change-list-name-modal-btn"
+        >
+          <span className="visually-hidden">Zmień nazwę listy</span>
           <EditIcon />
         </Btn>
 
@@ -60,6 +65,7 @@ export default function EmptyList() {
           variant="light"
           className="empty-list__btn-menu"
           onClick={openListControlMenu}
+          data-testid="list-control-menu-modal-btn"
         >
           <span className="visually-hidden">Otwórz menu listy</span>
           <TripleDotsMenuIcon />
