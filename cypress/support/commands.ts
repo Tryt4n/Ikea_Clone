@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +36,22 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add(
+  "checkProductsSortingInList",
+  //   (element, productsArray: ShoppingCartType[]) => {
+  <T>(element, productsArray: T) => {
+    cy.get(`${element}`).each(($product, index) => {
+      cy.wrap($product)
+        .find("a")
+        .invoke("attr", "href")
+        .then((href) => {
+          if (href) {
+            expect(href).to.eq(productsArray[index].productLink.toLowerCase());
+          } else {
+            throw new Error("TEST_ERROR: No href attribute found.");
+          }
+        });
+    });
+  },
+);
