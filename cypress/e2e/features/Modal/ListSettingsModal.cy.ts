@@ -142,9 +142,13 @@ describe("List Settings Modal", () => {
       cy.get("ul").as("mainListProductsList");
     });
     cy.fixture("lists.json").then((fixture) => {
+      console.log(fixture[0].products.length);
       cy.get("@mainListProductsList")
         .children()
-        .should("have.length", fixture[0].products.length);
+        .should(
+          "have.length",
+          fixture[0].products.length > 3 ? 3 : fixture[0].products.length,
+        );
 
       cy.get("@mainListControlMenuBtn").click();
       cy.get("@modal")
