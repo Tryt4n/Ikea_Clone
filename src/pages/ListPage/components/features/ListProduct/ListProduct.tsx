@@ -122,6 +122,8 @@ export default function ListProduct({
             checked: managedProducts.some(
               (item) => item.productNumber === product.productNumber,
             ), // Set the checked status of the input element to true if the product is already in the managed products list.
+            // @ts-expect-error - only for testing purposes
+            "data-testid": "list-product-checkbox",
           }}
         />
 

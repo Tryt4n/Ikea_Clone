@@ -14,7 +14,10 @@ import "./index.scss";
 
 export default function ManageProducts() {
   return (
-    <div className="manage-products">
+    <div
+      className="manage-products"
+      data-testid="list-manage-selected-products"
+    >
       <ProductsList />
 
       <ProductsBtnsControl />

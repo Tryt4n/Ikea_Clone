@@ -52,9 +52,18 @@ export function ProductsBtnsControl() {
 
   return (
     <div className="manage-products__btns-control">
-      <Btn onClick={openManageProductsModal}>Zarządzaj</Btn>
+      <Btn
+        onClick={openManageProductsModal}
+        data-testid="manage-selected-products-btn"
+      >
+        Zarządzaj
+      </Btn>
 
-      <Btn variant="light" onClick={clearManageProductsList}>
+      <Btn
+        variant="light"
+        onClick={clearManageProductsList}
+        data-testid="manage-selected-products-clear-all-btn"
+      >
         Wyczyść wszystko
       </Btn>
     </div>
