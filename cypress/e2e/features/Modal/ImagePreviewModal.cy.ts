@@ -2,7 +2,7 @@ describe("Image preview modal", () => {
   beforeEach(() => {
     cy.visit("/products/korken/sloik-z-pokrywka/szklo-bezbarwne/50213546");
     cy.wait("@getProductPage");
-    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500);
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=product-image-gallery-item]").as(

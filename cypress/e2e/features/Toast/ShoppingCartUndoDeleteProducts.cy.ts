@@ -1,10 +1,10 @@
-describe("Shopping cart page menu Modal", () => {
+describe("Shopping cart page undo action on Toast button click", () => {
   beforeEach(() => {
     cy.fixture("shoppingCart.json").then((fixture) => {
       localStorage.setItem("shoppingCart", JSON.stringify(fixture));
     });
     cy.visit("/shoppingcart");
-    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500);
 
     cy.get("[data-testid=modal]").as("modal");
     cy.get("[data-testid=toast-notification]").as("toast");

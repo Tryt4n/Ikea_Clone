@@ -4,7 +4,7 @@ describe("Additional informations modals", () => {
       localStorage.setItem("shoppingCart", JSON.stringify(fixture));
     });
     cy.visit("/shoppingcart");
-    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500);
 
     cy.get("[data-testid=modal]").as("modal");
   });

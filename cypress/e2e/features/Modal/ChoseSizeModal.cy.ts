@@ -2,7 +2,7 @@ describe("Chose size modal", () => {
   beforeEach(() => {
     cy.visit("/products/korken/sloik-z-pokrywka/szklo-bezbarwne/50213546");
     cy.wait("@getProductPage");
-    cy.wait(500); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.wait(500);
   });
 
   it("should open chose size modal", () => {
