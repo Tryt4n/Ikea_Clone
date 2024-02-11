@@ -151,6 +151,7 @@ function BtnsControl({ products }: { products: ShoppingCartType[] }) {
         type="button"
         className="manage-products-modal__btn"
         onClick={openSelectListModal} // Open the select-list modal.
+        data-testid="move-selected-products-to-other-list-modal-btn"
       >
         <ArrowRightIcon />
         <span>Przenieś do innej listy</span>
@@ -160,6 +161,7 @@ function BtnsControl({ products }: { products: ShoppingCartType[] }) {
         type="button"
         className="manage-products-modal__btn"
         onClick={deleteProductsFromList} // Delete the products from the list.
+        data-testid="delete-selected-products-from-list-btn"
       >
         <TrashIcon />
         <span>Usuń z listy</span>
