@@ -36,5 +36,6 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "cypress/no-unnecessary-waiting": "off",
   },
 };
