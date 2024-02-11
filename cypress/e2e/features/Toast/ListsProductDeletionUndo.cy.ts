@@ -42,7 +42,7 @@ describe("List page undo action on Toast button click", () => {
       .should("have.length", lists[0].products!.length + 1);
   });
 
-  it.only("should undo deletion of multiple products in list", () => {
+  it("should undo deletion of multiple products in list", () => {
     cy.wait(500);
 
     cy.get("[data-testid=modal]").as("modal");
