@@ -58,6 +58,7 @@ export function SortingButton({
                 : listDispatch(dispatchAction);
             })
           }
+          data-testid={`sort-by-${variant}-btn`}
         >
           {children}
         </Btn>

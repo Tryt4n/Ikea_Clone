@@ -98,7 +98,7 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
   /* v8 ignore end */
 
   return (
-    <div className="btns-control">
+    <div className="btns-control" data-testid="btns-control">
       <Btn
         variant="light"
         shape="circle"
@@ -112,7 +112,11 @@ export default function BtnsControl({ children }: { children: ReactNode }) {
         <ArrowLeft />
       </Btn>
 
-      <div className="btns-control__inner-wrapper" ref={containerRef}>
+      <div
+        className="btns-control__inner-wrapper"
+        ref={containerRef}
+        data-testid="control-btns-container"
+      >
         {children}
       </div>
 
