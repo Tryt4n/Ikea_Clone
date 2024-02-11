@@ -276,5 +276,344 @@ describe("Single List Page", () => {
     });
   });
 
-  it("should handle list sorting", () => {});
+  describe("should handle list sorting", () => {
+    it("should sort list by recently added", () => {
+      cy.get("[data-testid=list-product]").as("listProducts");
+      cy.get("[data-testid=sort-by-recent-btn]").as("sortBtn");
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+
+      // cy.get("@listProducts").each(($product, index) => {
+      //   cy.wrap($product)
+      //     .find("a")
+      //     .invoke("attr", "href")
+      //     .then((href) => {
+      //       if (href) {
+      //         expect(href).to.eq(
+      //           lists[0].products![index].productLink.toLowerCase(),
+      //         );
+      //       } else {
+      //         throw new Error("TEST_ERROR: No href attribute found.");
+      //       }
+      //     });
+      // });
+
+      // Sort products
+      cy.get("@sortBtn").click();
+
+      // First product
+      cy.get("@listProducts")
+        .first()
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![5].productLink.toLowerCase(),
+          );
+        });
+
+      // Second product
+      cy.get("@listProducts")
+        .eq(1)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![2].productLink.toLowerCase(),
+          );
+        });
+
+      // Third product
+      cy.get("@listProducts")
+        .eq(2)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![3].productLink.toLowerCase(),
+          );
+        });
+
+      // Fourth product
+      cy.get("@listProducts")
+        .eq(3)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![4].productLink.toLowerCase(),
+          );
+        });
+
+      // Fifth product
+      cy.get("@listProducts")
+        .eq(4)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![1].productLink.toLowerCase(),
+          );
+        });
+
+      // Sixth product
+      cy.get("@listProducts")
+        .eq(5)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![0].productLink.toLowerCase(),
+          );
+        });
+
+      // Un-sort products
+      cy.get("@sortBtn").click();
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+    });
+
+    it("should sort list by name", () => {
+      cy.get("[data-testid=list-product]").as("listProducts");
+      cy.get("[data-testid=sort-by-name-btn]").as("sortBtn");
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+
+      // Sort products
+      cy.get("@sortBtn").click();
+
+      // First product
+      cy.get("@listProducts")
+        .first()
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![5].productLink.toLowerCase(),
+          );
+        });
+
+      // Second product
+      cy.get("@listProducts")
+        .eq(1)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![2].productLink.toLowerCase(),
+          );
+        });
+
+      // Third product
+      cy.get("@listProducts")
+        .eq(2)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![3].productLink.toLowerCase(),
+          );
+        });
+
+      // Fourth product
+      cy.get("@listProducts")
+        .eq(3)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![4].productLink.toLowerCase(),
+          );
+        });
+
+      // Fifth product
+      cy.get("@listProducts")
+        .eq(4)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![0].productLink.toLowerCase(),
+          );
+        });
+
+      // Sixth product
+      cy.get("@listProducts")
+        .eq(5)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![1].productLink.toLowerCase(),
+          );
+        });
+
+      // Un-sort products
+      cy.get("@sortBtn").click();
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+    });
+
+    it("should sort list by price ascending", () => {
+      cy.get("[data-testid=list-product]").as("listProducts");
+      cy.get("[data-testid=sort-by-priceAscending-btn]").as("sortBtn");
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+
+      // Sort products
+      cy.get("@sortBtn").click();
+
+      // First product
+      cy.get("@listProducts")
+        .first()
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![1].productLink.toLowerCase(),
+          );
+        });
+
+      // Second product
+      cy.get("@listProducts")
+        .eq(1)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![2].productLink.toLowerCase(),
+          );
+        });
+
+      // Third product
+      cy.get("@listProducts")
+        .eq(2)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![3].productLink.toLowerCase(),
+          );
+        });
+
+      // Fourth product
+      cy.get("@listProducts")
+        .eq(3)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![4].productLink.toLowerCase(),
+          );
+        });
+
+      // Fifth product
+      cy.get("@listProducts")
+        .eq(4)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![5].productLink.toLowerCase(),
+          );
+        });
+
+      // Sixth product
+      cy.get("@listProducts")
+        .eq(5)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![0].productLink.toLowerCase(),
+          );
+        });
+
+      // Un-sort products
+      cy.get("@sortBtn").click();
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+    });
+
+    it("should sort list by price descending", () => {
+      cy.get("[data-testid=list-product]").as("listProducts");
+      cy.get("[data-testid=sort-by-priceDescending-btn]").as("sortBtn");
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+
+      // Sort products
+      cy.get("@sortBtn").click();
+
+      // First product
+      cy.get("@listProducts")
+        .first()
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![0].productLink.toLowerCase(),
+          );
+        });
+
+      // Second product
+      cy.get("@listProducts")
+        .eq(1)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![5].productLink.toLowerCase(),
+          );
+        });
+
+      // Third product
+      cy.get("@listProducts")
+        .eq(2)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![2].productLink.toLowerCase(),
+          );
+        });
+
+      // Fourth product
+      cy.get("@listProducts")
+        .eq(3)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![3].productLink.toLowerCase(),
+          );
+        });
+
+      // Fifth product
+      cy.get("@listProducts")
+        .eq(4)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![4].productLink.toLowerCase(),
+          );
+        });
+
+      // Sixth product
+      cy.get("@listProducts")
+        .eq(5)
+        .within(() => {
+          cy.get("a").should(
+            "have.attr",
+            "href",
+            lists[0].products![1].productLink.toLowerCase(),
+          );
+        });
+
+      // Un-sort products
+      cy.get("@sortBtn").click();
+
+      cy.checkProductsSortingInList("@listProducts", lists[0].products);
+    });
+  });
 });
