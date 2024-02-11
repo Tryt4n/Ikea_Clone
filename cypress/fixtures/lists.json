@@ -29,30 +29,6 @@
         "rating": { "rate": 4.5, "quantity": 2 }
       },
       {
-        "collection": "GLADOM",
-        "images": {
-          "main": "0998388_pe823016_s5.jpg",
-          "imgHover": "1064053_ph182221_s5.jpg",
-          "image_1": "1064054_ph182209_s5.jpg",
-          "image_2": "0998392_pe823020_s5.jpg",
-          "image_3": "0998389_pe823017_s5.jpg",
-          "image_4": "0998393_pe823018_s5.jpg",
-          "image_5": "0731682_pe738389_s5.jpg"
-        },
-        "name": "stolik-z-taca",
-        "nameToDisplay": "Stolik z tacą",
-        "price": { "integer": 69, "decimal": 99 },
-        "productNumber": "305.137.63",
-        "size": "45x53 cm",
-        "variant": "ciemny-szaro-bezowy",
-        "variantName": "ciemny szaro-beżowy",
-        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
-        "quantity": 1,
-        "productLink": "/products/GLADOM/stolik-z-taca/ciemny-szaro-bezowy/30513763",
-        "addedDate": "2024-01-16T07:35:26.966Z",
-        "rating": { "rate": 5, "quantity": 177 }
-      },
-      {
         "quantity": 1,
         "productNumber": "400.825.36",
         "collection": "SOARÉ",
@@ -73,6 +49,100 @@
         "productLink": "/products/soare/podkladka/hiacynt-wodny/40082536",
         "addedDate": "2024-02-06T12:39:16.000Z",
         "rating": { "rate": 5, "quantity": 270 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0998388_pe823016_s5.jpg",
+          "imgHover": "1064053_ph182221_s5.jpg",
+          "image_1": "1064054_ph182209_s5.jpg",
+          "image_2": "0998392_pe823020_s5.jpg",
+          "image_3": "0998389_pe823017_s5.jpg",
+          "image_4": "0998393_pe823018_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "305.137.63",
+        "size": "45x53 cm",
+        "variant": "ciemny-szaro-bezowy",
+        "variantName": "ciemny szaro-beżowy",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 4,
+        "productLink": "/products/GLADOM/stolik-z-taca/ciemny-szaro-bezowy/30513763",
+        "addedDate": "2024-02-09T14:51:33.000Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0567223_pe664991_s5.jpg",
+          "image_1": "0837078_pe664995_s5.jpg",
+          "image_2": "0837072_pe664992_s5.jpg",
+          "imgHover": "0802833_ph163155_s5.jpg",
+          "image_3": "1058801_ph163156_s5.jpg",
+          "image_4": "0709540_ph153583_s5.jpg",
+          "image_5": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "504.119.90",
+        "size": "45x53 cm",
+        "variant": "czarny",
+        "variantName": "czarny",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 5,
+        "productLink": "/products/GLADOM/stolik-z-taca/czarny/50411990",
+        "addedDate": "2024-02-09T14:51:33.000Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "GLADOM",
+        "images": {
+          "main": "0568691_pe665565_s5.jpg",
+          "imgHover": "1191496_pe900639_s5.jpg",
+          "image_1": "0568694_pe665568_s5.jpg",
+          "image_2": "0568695_pe665566_s5.jpg",
+          "image_3": "0731682_pe738389_s5.jpg"
+        },
+        "name": "stolik-z-taca",
+        "nameToDisplay": "Stolik z tacą",
+        "price": { "integer": 69, "decimal": 99 },
+        "productNumber": "005.336.49",
+        "size": "45x53 cm",
+        "variant": "czerwony",
+        "variantName": "czerwony",
+        "oldPrice": { "variant": "red", "integer": "89", "decimal": 99 },
+        "quantity": 1,
+        "productLink": "/products/GLADOM/stolik-z-taca/czerwony/00533649",
+        "addedDate": "2024-02-09T14:51:33.000Z",
+        "rating": { "rate": 5, "quantity": 177 }
+      },
+      {
+        "collection": "EKET",
+        "images": {
+          "main": "1212326_pe910599_s5.jpg",
+          "video": "https://www.ikea.com/pvid/0774528_fe000142.mp4?imwidth=800",
+          "imgHover": "0715166_pe730358_s5.jpg",
+          "image_1": "1007193_pe825995_s5.jpg",
+          "image_2": "0703494_pe724763_s5.jpg",
+          "image_4": "0732079_pe738561_s5.jpg",
+          "image_5": "0631841_pe695226_s5.jpg"
+        },
+        "name": "szafka-scienna",
+        "nameToDisplay": "Szafka ścienna",
+        "price": { "integer": 90 },
+        "productNumber": "392.862.66",
+        "size": "35x35x35 cm",
+        "variant": "dab-bejcowany-na-bialo",
+        "variantName": "dąb bejcowany na biało",
+        "oldPrice": { "variant": "red", "integer": 115 },
+        "quantity": 3,
+        "productLink": "/products/EKET/szafka-scienna/dab-bejcowany-na-bialo/39286266",
+        "addedDate": "2024-02-09T14:51:33.000Z",
+        "rating": { "rate": 5, "quantity": 40 }
       }
     ]
   },
