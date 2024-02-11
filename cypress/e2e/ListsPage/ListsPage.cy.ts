@@ -7,6 +7,7 @@ describe("Lists Page", () => {
   });
 
   it("should render page without any lists", () => {
+    cy.wait(500);
     cy.get("[data-testid=favourite-lists-container]").as("listsContainer");
 
     cy.get("article").should("have.length", 1);
@@ -24,6 +25,7 @@ describe("Lists Page", () => {
       localStorage.setItem("favouriteLists", JSON.stringify([fixture[0]]));
     });
     cy.reload();
+    cy.wait(500);
 
     cy.get("[data-testid=favourite-lists-container]").as("listsContainer");
 
