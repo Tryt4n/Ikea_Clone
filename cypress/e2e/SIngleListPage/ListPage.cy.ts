@@ -245,5 +245,36 @@ describe("Single List Page", () => {
     cy.get("@manageSelectedProductsContainer").should("not.exist");
   });
 
+  it("should navigate to product page on product click", () => {
+    // Create an array of product links
+    const productLinks: string[] = [];
+
+    cy.get("[data-testid=list-product]").each(($product) => {
+      cy.wrap($product)
+        .find("a")
+        .invoke("attr", "href")
+        .then((href) => {
+          if (href) {
+            productLinks.push(href);
+          } else {
+            throw new Error("TEST_ERROR: No href attribute found.");
+          }
+        });
+    });
+
+    // Iterating through the link array and checking the URL for each product
+    cy.wrap(productLinks).each((link, index) => {
+      cy.visit(link as unknown as string);
+      cy.url().should((url) => {
+        expect(url).to.eq(
+          Cypress.config().baseUrl +
+            lists[0].products![index].productLink.toLowerCase(),
+        );
+      });
+
+      cy.go("back");
+    });
+  });
+
   it("should handle list sorting", () => {});
 });
