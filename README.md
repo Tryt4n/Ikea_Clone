@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# IKEA - clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Original [IKEA](https://www.ikea.com/pl/pl/) page.
 
-Currently, two official plugins are available:
+Link to to my [ikea clone page](https://cloneikea.netlify.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Build with **React**, **TypeScript** and **SCSS**.
 
-## Expanding the ESLint configuration
+## Watch video how application works:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- for [desktop](https://ikea-clone-video-desktop-preview.netlify.app/)
+- for [mobile](https://ikea-clone-video-mobile-preview.netlify.app/)
 
-- Configure the top-level `parserOptions` property like this:
+## Used Libraries
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **react-router-dom**
+- **[Swiper](https://swiperjs.com/)** for carousel sliders
+- **[date-fns](https://date-fns.org/)** for handling dates
+- **[react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer)**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Technologies used for testing
+
+- **vitest** with **react-testing-library** for unit and integration tests.
+
+  ![Coverage report](tests/unit&integration-tests.png)
+
+- **Cypress** for e2e tests.
+  ![Cypress tests](tests/e2e-cypress-tests.png)
+
+## Performance and Accessibility
+
+App is well optimized for performance, features loading states, and is fully accessible. It meets all accessibility standards.
+
+[Click](tests/lighthouse.html) to see whole Lighthouse report.
+
+![Lighthouse report](screenshots/lighthouse.png)
