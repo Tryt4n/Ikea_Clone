@@ -57,7 +57,7 @@ describe("EmptyList", () => {
     // Act
     render(<EmptyList />);
 
-    const btn = screen.getByRole("button", { name: /edytuj listę/i });
+    const btn = screen.getByRole("button", { name: /zmień nazwę listy/i });
 
     await user.click(btn);
 
@@ -106,7 +106,7 @@ describe("EmptyList", () => {
     render(<EmptyList />);
 
     const btnListEdit = screen.getByRole("button", {
-      name: /edytuj listę/i,
+      name: /zmień nazwę listy/i,
     });
     const btnListMenu = screen.getByRole("button", {
       name: /otwórz menu listy/i,
