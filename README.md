@@ -31,6 +31,4 @@ Build with **React**, **TypeScript** and **SCSS**.
 
 App is well optimized for performance, features loading states, and is fully accessible. It meets all accessibility standards.
 
-[Click](tests/lighthouse.html) to see whole Lighthouse report.
-
 ![Lighthouse report](screenshots/lighthouse.png)
